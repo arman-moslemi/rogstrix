@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "IRANSans-Black";
+  src: url("../webfonts/IRANSans_Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IRANSans-Bold";
+  src: url("../webfonts/IRANSans_Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IRANSans-Light";
+  src: url("../webfonts/IRANSans_Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IRANSans-Medium";
+  src: url("../webfonts/IRANSans_Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IRANSans-Ultra";
+  src: url("../webfonts/IRANSans_UltraLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("../webfonts/IRANSans.ttf") format("truetype");
+}
+
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.row{
+  margin-right:0px !important;
+  margin-left: 0px !important;
+}
+.d-flex{
+  display: flex;
+}
+.d-flex-center{
+  display: flex;
+  align-items: center;
+}
+.d-flex-start-start{
+  display: flex;
+  justify-content: start;
+}
+.d-flex-end-end{
+  display: flex;
+  justify-content: end;
+}
+.d-inline-block{
+  display: inline-block;
+}
+.ta-right{
+  text-align: right;
+}
+.ta-left{
+  text-align: left;
+}
+.ta-center{
+  text-align: center;
+}
+.logo-light{
+  width: 200px;
+}
+.mar-des-right-1{
+  margin-right:1rem;
+}
+.mar-des-left-1{
+  margin-left:1rem;
+}
+.mar-des-top-1{
+  margin-top:1rem;
+}
+.mar-des-bottom-1{
+  margin-bottom: 1rem;
+}
+.mar-des-right-2{
+  margin-right:2rem;
+}
+.mar-des-left-2{
+  margin-left:2rem;
+}
+.mar-des-top-2{
+  margin-top:2rem;
+}
+.mar-des-bottom-2{
+  margin-bottom: 2rem;
+}
+
+body{
+  background-color: #f1f1f1;
+}
+/**********Main Header********/
+.mainHeader{
+  padding:3rem 2rem;
+  background-color: #fff;
+}
+.headerBTN{
+  background-color: transparent;
+  border:none;
+}
+.headerBTN:hover{
+  background-color: transparent;
+  border:none;
+}
+.headerBTN:active{
+  border:none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.headerBTN:focus ,.headerBTN:focus-visible{
+  border:none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.headerBTN svg:hover{
+  fill:#ff004e ;
+  stroke: #ff004e;
+}
+/******Home Page******/
+.heroSlider{
+  padding:3rem 2rem;
+}
+

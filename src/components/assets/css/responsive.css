@@ -1,0 +1,10 @@
+@media screen and (max-width:550px){
+    .logo-light{
+        width: 150px !important;
+    }
+}
+@media screen and (max-width:460px){
+    .logo-light{
+        width: 120px !important;
+    }
+}
