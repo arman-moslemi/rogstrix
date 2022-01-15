@@ -121,3 +121,132 @@ body{
   padding:3rem 2rem;
 }
 
+/***********footer**************/
+.footerBg{
+  
+ 
+  padding-top:4rem;
+
+  background-image: url('../../assets/img/footerImg.png');
+  background-repeat:no-repeat;
+}
+.backgroundFooter{
+  background-color: #1a1b1e;
+  padding-right:6rem;
+  padding-left: 6rem;
+  padding-top: 2rem;
+}
+.footerTitle{
+  font-family: IRANSans-Bold;
+  color:#ff004e;
+  font-size: 25px;
+text-shadow: 1px 1px 10px #ff004eb0;
+}
+.footerUL li a {
+  color:#fff !important;
+  font-family: IRANSans;
+  font-size: 18px;
+}
+.footerUL li{
+  margin-bottom:30px;
+  margin-top: 30px;
+}
+.footerUL{
+  list-style: none !important;
+}
+.footerTitle{
+  margin-bottom:45px;
+}
+.iconBoxFooter{
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+  background-color: #ff004e;
+  box-shadow: 1px 1px 20px 1px rgba(255, 0, 78, 0.58);
+  border-radius: 50%;
+  margin-left: 20px;
+  padding: 10px;
+}
+.iconBoxFooter img{
+  width: 100% !important;
+}
+.footerItem{
+  color: #fff;
+  font-family: IRANSans-Light;
+  font-size: 18px;
+  margin-bottom: 0px !important;
+}
+.alignItem-center{
+  align-items: center;
+}
+.mar-bottom-2{
+  margin-bottom: 2rem;
+}
+.mailTitle{
+  font-family: IRANSans-Bold;
+  color:#fff;
+  font-size: 16px;
+  text-align: right;
+  margin-top: 50px;
+}
+.emailInput{
+  background-color: #fff;
+  padding:10px 15px;
+  font-family: IRANSans;
+  font-size: 12px;
+  border: none;
+  width: 310px;
+  height: 40px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.submitBtn{
+  background-color: #2b25dc;
+  color:#fff;
+  font-family: IRANSans-Medium;
+  width: 92px;
+  height: 40px;
+  border: none;
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+}
+.socialIcon img{
+  height: 30px;
+  width: 30px;
+}
+.socialIcon{
+  display:inline-block;
+}
+.socialRow{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.upBtn{
+  background-color: #141111;
+
+  height: 50px;
+  width: 100px;
+  border:none !important;
+  border-radius: 150px 150px 0 0;
+}
+.upBtn img{
+  width: 35%;
+}
+.lastFooterRow{
+  background-color: #141111;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lastFooterRow p{
+  color:#fff;
+  text-align: center;
+  font-family: IRANSans-Ultra;
+  font-size: 16px;
+  margin-bottom: 0px !important;
+}

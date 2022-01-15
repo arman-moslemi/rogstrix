@@ -5,3 +5,106 @@
 .mouseImg{
     width: 100%;
 }
+.d-flex-start-start{
+    display: flex;
+    justify-content: start;
+  }
+  .boxTitle{
+      font-family: IRANSans-Bold;
+      font-size: 40px;
+  }
+  .iconBox{
+      width:71px;
+      height: 71px;
+      max-width: 71px;
+      min-width: 71px;
+      max-height: 71px;
+      min-height: 71px;
+      background-color: #ff004e;
+      border-radius: 50%;
+      box-shadow: 1px 1px 20px 1px rgba(255, 0, 78, 0.58);
+      text-align: center;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .firstLine{
+      color:#0e0d0d;
+      font-family: IRANSans-Bold;
+      font-size: 20px;
+      margin-bottom: 5px;
+  }
+  .secondLine{
+      color: #0e0e0e;
+      font-size:15px;
+      font-family: IRANSans-Light;
+  }
+  .pad-right-6{
+      padding-right: 6rem;
+  }
+  .pad-left-6{
+      padding-left:6rem;
+  }
+  .mar-bottom-45{
+      margin-bottom: 45px;
+  }
+  .mar-bottom-30{
+      margin-bottom:30px;
+  }
+  .mar-top-45{
+      margin-top: 45px;
+  }
+  .iconBox svg{
+   
+  }
+  @media screen and (max-width:850px){
+     
+      #secondCol{
+          order:2;
+          width: 100% !important;
+          max-width: 100% !important;
+          display: block !important;
+          flex: unset;
+      }
+      #firstCol{
+          order:1;
+          width: 100% !important;
+          max-width: 100% !important;
+          display: block !important;
+          flex: unset;
+      }
+      
+      .mouseImg{
+          width: 436px !important;
+          height: 436px !important;
+          margin-right: auto;
+          margin-left: auto;
+          display: block;
+      }
+  }
+  @media screen and (max-width:600px){
+      .pad-left-6{
+          padding-left:2rem !important;
+      }
+      .pad-right-6{
+          padding-right: 2rem !important;
+      }
+  }
+  @media screen and (max-width:450px){
+   .boxTitle{
+       font-size: 22px !important;
+   }
+   .firstLine{
+       font-size: 18px !important;
+   }
+   .secondLine{
+       font-size: 15px !important;
+   }
+   .mouseImg{
+       width: 100% !important;
+       height: auto !important;
+   }
+
+} 
