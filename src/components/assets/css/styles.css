@@ -22,7 +22,10 @@
   font-family: "IRANSans";
   src: url("../webfonts/IRANSans.ttf") format("truetype");
 }
-
+@font-face {
+  font-family: "Kalameh";
+  src: url("../webfonts/Kalameh.ttf") format("truetype");
+}
 *{
   padding: 0px;
   margin: 0px;
@@ -118,7 +121,7 @@ body{
 }
 /******Home Page******/
 .heroSlider{
-  padding:3rem 2rem;
+  background-color: #fff;
 }
 
 /***********footer**************/

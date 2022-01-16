@@ -1,0 +1,132 @@
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.sliderImg{
+  display: block;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10%;
+}
+.firstSlider{
+  background-image: url('../../../../assets/img/sliderBack.png');
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.secondCol{
+  background-image: url('../../../../assets/img/columnBack.png');
+  background-size: cover;
+  height: 100%;
+}
+.sliderRow{
+  height: 100%;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  display: flex;
+  align-items: center;
+}
+.sliderTitle{
+  font-family: Kalameh;
+  font-size: 70px;
+  margin-bottom: 0px;
+}
+.sliderSlogan{
+  margin-bottom: 0px;
+  font-family: IRANSans;
+  font-size: 25px;
+}
+.sliderDescription{
+  color: #1a1b1e;
+  font-family: IRANSans-Light;
+  margin-top: 40px;
+  width: 70%;
+  line-height: 2;
+}
+.plus1Img{
+  position: absolute;
+  top: 7%;
+opacity: 70%;
+width: 90px;
+}
+.plus2Img{
+  position: absolute;
+  TOP: 40%;
+right: -10%;
+width: 50px;
+}
+.swiper-button-next{
+  left: 65% !important ;
+  color:transparent !important;
+  border:none;
+  background-size: cover;
+  width: 50px;
+  top: unset;
+  bottom: 32%;
+  background-image:url('../../../../assets/img/slider1Left.png') !important;
+}
+.swiper-button-prev{
+  top: unset;
+  bottom: 32%;
+  right: 28% !important ;
+  color:transparent !important;
+  border:none;
+  background-size: cover;
+  width: 50px;
+  background-image:url('../../../../assets/img/slider1Right.png') !important;
+}
+.swiper-slide{
+  cursor: auto !important;
+}
+.sliderBtn{
+  background-color: #ff004e;
+  font-family: IRANSans-Medium;
+  color:#fff;
+  padding: 10px 25px;
+  border: none;
+  border-radius:25px;
+  box-shadow: 1px 1px 20px 1px rgba(255, 0, 78, 0.58);
+  margin-top: 80px;
+}
+.blackBox{
+  background-color: #1a1b1e;
+  box-shadow: 1px 1px 20px 20px #1a1b1e28;
+  height: 135px;
+  width: 135px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+.blackBox img{
+  width: 100%;
+}
+.blackBoxRow{
+  display: flex;
+  margin-top: 40px;
+}
+.firstLineStatistic{
+  font-family: IRANSans-Medium;
+  font-size: 60px;
+  color:#1a1b1e;
+  margin-bottom: 0px !important;
+}
+.secondLineStatistic{
+  font-family: IRANSans-Light;
+  color: #ff004e;
+  font-size: 26px;
+  margin-bottom: 0px !important;
+}
+.grayBack{
+  background-color: #f1f1f1;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
