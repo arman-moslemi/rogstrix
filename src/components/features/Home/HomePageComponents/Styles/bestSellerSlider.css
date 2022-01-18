@@ -10,3 +10,44 @@
   width: 100%;
   height: 100%;
 }
+.swiper-button-next{
+  left: 35% !important ;
+  color:transparent !important;
+  border:none;
+  background-size: cover;
+  width: 50px;
+  top: unset;
+  bottom: 8%;
+  background-image:url('../../../../assets/img/blueLeft.png') !important;
+}
+.swiper-button-prev{
+  top: unset;
+  bottom: 8%;
+  right: 35% !important ;
+  color:transparent !important;
+  border:none;
+  background-size: cover;
+  width: 50px;
+  background-image:url('../../../../assets/img/blueRight.png') !important;
+}
+.seeAll{
+  background-color: transparent !important;
+  border: none;
+  color: #ff004e;
+  font-family: IRANSans-Medium;
+}
+.seeAll :hover{
+  color: #ff004e !important;
+}
+.mar-top-22{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.sliderTiltleBottom{
+  font-size: 25px;
+  font-family: IRANSans-Bold;
+  color:#0a0909;
+}
+.btn-primary:hover{
+  color: #ff004e !important;
+}

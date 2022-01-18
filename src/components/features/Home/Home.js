@@ -4,6 +4,7 @@ import WhyRogstrix from "./HomePageComponents/WhyRogstrix";
 import FirstSlider from "./HomePageComponents/FirstSlider";
 import Statistic from "./HomePageComponents/Statistic";
 import BestSellerSlider from "./HomePageComponents/BestSellerSlider";
+import { Container ,Col, Button,Row} from "react-bootstrap";
 const Home = () => {
 
   return (
@@ -13,7 +14,22 @@ const Home = () => {
     <FirstSlider/>
      <Statistic/>
       <WhyRogstrix/>
-      <BestSellerSlider/>
+      <Container className="bestSellerContainer" fluid>
+        <div className="row">
+        <Col md={1} className="rightBoxCol">
+          <div>
+            <p>
+            محصولات پرفروش راگ
+            </p>
+          </div>
+        </Col>
+        <Col md={11} className="">
+        <div className="bestsliderBox bestSellerContainerCol2">
+          <BestSellerSlider/>
+        </div>
+        </Col>
+        </div>
+      </Container>
       <Footer />
     </>
   );

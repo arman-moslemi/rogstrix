@@ -65,7 +65,7 @@ width: 90px;
 right: -10%;
 width: 50px;
 }
-.swiper-button-next{
+.firstSlider .swiper-button-next{
   left: 65% !important ;
   color:transparent !important;
   border:none;
@@ -75,7 +75,7 @@ width: 50px;
   bottom: 32%;
   background-image:url('../../../../assets/img/slider1Left.png') !important;
 }
-.swiper-button-prev{
+.firstSlider .swiper-button-prev{
   top: unset;
   bottom: 32%;
   right: 28% !important ;

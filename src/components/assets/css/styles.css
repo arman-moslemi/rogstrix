@@ -253,3 +253,47 @@ text-shadow: 1px 1px 10px #ff004eb0;
   font-size: 16px;
   margin-bottom: 0px !important;
 }
+/********best seller box*****/
+.bestSellerContainer{
+  background-color: #f1f1f1;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  padding-right: 0px;
+}
+.rightBoxCol div p{
+  font-family: Kalameh;
+  float: right;
+
+		height: 100%;
+  color:#fff;
+		background: #ff004e;
+		padding: 10px;
+	padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+		font-size: 40px;
+    writing-mode: sideways-lr;
+    box-shadow: 1px 1px 20px 1px rgba(255, 0, 78, 0.58);
+width: 100%;
+border: 1px solid #707070;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+justify-content: center;
+}
+.rightBoxCol div{
+  position: relative;
+  height: 100%;
+}
+.rightBoxCol{
+  padding-right: 0px !important;
+
+}
+.bestSellerContainerCol2{
+  background-color: #fff;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 20px;
+  border: solid 1px rgba(255, 255, 255, 0.07);
+}

@@ -1,0 +1,60 @@
+.SliderCard{
+    border-radius: 20px;
+  border: solid 1px #d9d9d9;
+  background-color: #f1f1f1;
+  width: 100%;
+  margin-top: 100px;
+}
+.sliderCardImg{
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+.sliderCardDiv{
+    margin-top: -100px;
+}
+.cardTitleW100{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-right: 6px solid #ff004e;
+    border-left: 6px solid #ff004e;
+    background-image: linear-gradient(to bottom, rgba(246, 48, 63, 0.1) -52%, rgba(246, 48, 63, 0.1) 66%);
+}
+.cardTitleW100 p{
+    margin-bottom: 0px !important;
+    font-family: IRANSans-Medium;
+    color: #0a0909;
+}
+.pad-right-1{
+    padding-right: 1rem;
+    
+}
+.pad-left-1{
+    padding-left: 1rem;
+}
+.cardDes{
+    margin-bottom: 5px;
+    color: #0a0909;
+    font-family: IRANSans-Light;
+    font-size: 15px;
+}
+.mar-top-2{
+    margin-top: 1rem;
+    margin-bottom:1rem
+}
+.strokeOutPrice{
+    color: #898989;
+    font-family: IRANSans-Light;
+    text-decoration: line-through;
+    font-size: 20px;
+    margin-bottom: 5px !important;
+}
+.cardPrice{
+    font-family: IRANSans-Bold;
+    color: #ff004e;
+    font-size: 25px;
+}
