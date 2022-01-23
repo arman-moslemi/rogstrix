@@ -1,0 +1,103 @@
+.specialOfferSlider .swiper-button-next{
+    left: 0% !important ;
+    color:transparent !important;
+
+    background-size: cover;
+    width: auto !important;
+    bottom: 50%;
+    background-image:url('../../../../assets/img/specialSliderLeft.png') !important;
+   
+  }
+  .specialOfferSlider .swiper-button-prev{
+ 
+    bottom: 50%;
+    right: 0% !important ;
+    color:transparent !important;
+ width: auto !important;
+    background-size: cover;
+    background-image:url('../../../../assets/img/specialSliderRight.png') !important;
+  
+  }
+  .specialOfferSlider{
+    margin-top: 20px;
+  }
+  .BestSellingCard{
+    background-color: #fff;
+    padding:1rem 2rem;
+    border: 1px solid #e8e8e8;
+  }
+  .BestSellingCard img{
+    width: 180px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    height: 180px;
+  }
+  .colorList div{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #000;
+  }
+  #color1{
+    background-color: #fff;
+  }
+  #color2{
+    background-color: #a7a7a73d;
+  }
+  #color3{
+    background-color: #ffb92154;
+  }
+  .colorList{
+    list-style: none;
+    position: absolute;
+left: 20px;
+
+bottom: -20px;
+  }
+  .colorList li{
+    margin: 5px;
+  }
+  .specialSliderCardBox{
+    position: relative;
+  }
+  .productName{
+    font-size: 16px;
+    font-family: IRANSans;
+    color:#1a1a1a;
+    margin-top: 30px;
+    text-align: right;
+  }
+ 
+  .pd0{
+    padding: 0px;
+  }
+
+  .marginTop30{
+    margin-top: 30px;
+  }
+  .grayStrokeOut{
+    text-decoration: line-through;
+    font-family: IRANSans-Light;
+    color: #898989;
+  }
+  .grayPrice{
+    color:#000;
+    font-family: IRANSans-Medium;
+  }
+  .seeAllCards{
+    color: #f6303f;
+    font-family: IRANSans-Light;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .seeAllCards:hover{
+    text-decoration: none;
+    color: #f6303f;
+  }
+  .pad0{
+    padding: 0px;
+  }
+  .marginTop20{
+    margin-top: 20px;
+  }

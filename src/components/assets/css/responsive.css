@@ -8,3 +8,13 @@
         width: 120px !important;
     }
 }
+@media screen and (max-width:768px){
+    .loginBox{
+        width: 500px !important;
+    }
+}
+@media screen and (max-width:590px){
+    .loginBox{
+        width: 90% !important;
+    }
+}

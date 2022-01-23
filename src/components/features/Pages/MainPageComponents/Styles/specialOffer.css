@@ -1,0 +1,83 @@
+.MainPageSpecialOffer{
+    background-color: #f8f8f8;
+    padding: 1rem;
+}
+.specialOfferUl a{
+    color: #2b2b2b;
+    font-family: IRANSans-Light;
+    font-size: 16px;
+    text-decoration: none;
+}
+.specialOfferUl li{
+    list-style: none;
+    padding: 10px;
+}
+.specialOfferUl li:hover{
+    background-color: #f6303f;
+  
+  
+}
+.specialOfferUl li:hover a{
+    color: #fff;
+}
+.redBanner{
+    padding: 15px;
+    border-radius: 10px;
+    height: 172px;
+    width: 172px;
+    background: radial-gradient(circle,#fe367e 0,#ff2454 100%);
+}
+.blackBanner{
+    padding: 15px;
+    border-radius: 10px;
+    height: 172px;
+    width: 172px;
+    background: radial-gradient(circle,#17181a75 0,#17181a 60%);
+    margin-top: 20px;
+}
+
+.blackBanner img{
+    width: 100%;
+}
+.redBanner img{
+    width: 100%;
+}
+.blackBanner p,.redBanner p{
+    color: #fff;
+    font-size: 20px;
+    font-family: IRANSans-Bold;
+    text-align: center;
+    margin-top: 15px;
+}
+.specialOfferTitle{
+    font-family: IRANSans-Bold;
+    color: #f6303f;
+    font-size: 30px;
+    display: inline-block;
+}
+.seeAll{
+    background-color: transparent !important;
+    border: none;
+    color: #f6303f;
+    font-family: IRANSans-Medium;
+    display: inline-block;
+}
+.w20{
+    width: 20%;
+    text-align: left;
+}
+.w80{
+    width: 80%;
+}
+.pdTop15{
+    padding-top: 15px;
+}
+.seeAllDiv{
+    padding: 0px 250px;
+margin-top: -55px;
+text-align: left;
+}
+.margin25{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

@@ -30,6 +30,12 @@
   padding: 0px;
   margin: 0px;
 }
+a{
+  text-decoration: none;
+}
+input{
+  font-family: IRANSans-Light;
+}
 .row{
   margin-right:0px !important;
   margin-left: 0px !important;
@@ -41,6 +47,7 @@
   display: flex;
   align-items: center;
 }
+
 .d-flex-start-start{
   display: flex;
   justify-content: start;
@@ -296,4 +303,488 @@ justify-content: center;
   padding-left: 20px;
   border-radius: 20px;
   border: solid 1px rgba(255, 255, 255, 0.07);
+}
+/*********Each Category************/
+.EachCategoryBody{
+  background-color: #f1f1f1;
+}
+.EachCategoryContainer{
+  padding-right:1rem;
+  padding-left: 1rem;
+}
+.breadCrumbs ul li{
+  display: inline-block;
+}
+.breadCrumbs ul li a{
+  color: #0a0909;
+  font-size: 14px;
+  font-family: IRANSans-Light;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.breadCrumbs ul{
+  display: flex;
+}
+.breadCrumbs{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.whiteBoxCategory{
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  border-radius: 5px;
+ 
+  padding: 25px;
+  margin-bottom:30px;
+}
+.BoxTitle{
+  font-family: IRANSans-Bold;
+  color:#0a0909;
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.margin-top-3{
+  margin-top: 3rem;
+}
+.test{
+  background-color: #000;
+}
+.colmar-top-3{
+  margin-top: 3rem;
+}
+.marginTop3{
+  margin-top: 3rem;
+}
+/********Login********/
+.loginPage{
+  background-color: #000;
+  height: 100vh;
+  padding-top: 120px;
+}
+.loginBox{
+  border: solid 1px #444;
+  background-color: #282828;
+  border-radius:5px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  height: 497px;
+  width: 400px;
+  padding:30px;
+}
+.loginBox img{
+  width: 160px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-top: 10px;
+}
+.closeBtn{
+  background-color: transparent;
+  border: none;
+}
+.closeIcon{
+  color: #fff;
+  opacity: 0.5;
+}
+.loginTitle{
+  font-family: IRANSans-Bold;
+  color:#fff;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+.loginText{
+  color:#a0a0a0;
+  font-family: IRANSans-Light;
+  font-size: 15px;
+}
+.inputLogin{
+  background-color: #fff;
+  width: 100%;
+  padding:10px 15px;
+  border: none;
+  border-radius:5px;
+  text-align: center;
+}
+.rememberPassLable{
+  color:#a0a0a0;
+  font-family: IRANSans-Light;
+  font-size: 12px;
+  margin-right: 10px;
+}
+.checkbox:checked:before{
+  background-color:green;
+  }
+  .ma-top-1{
+    margin-top: 10px;
+  }
+  .pad0{
+    padding: 0px;
+  }
+  .mar-top-40{
+    margin-top: 40px;
+  }
+  .loginBtn{
+    background-color: #f6303f;
+    color: #fff;
+    font-family: IRANSans-Medium;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .mar-top-20{
+    margin-top: 20px;
+  }
+  input:checked{
+    background-color: red;
+  }
+  .whiteColor{
+    color: #fff;
+  }
+  .whiteColor:hover{
+    color: #f6303f;
+    text-decoration: none;
+  }
+  .underLine{
+    color: #a0a0a0;
+    text-decoration: underline;
+  }
+  .underLine:hover{
+    color: #f6303f;
+  }
+  .loginBtn:focus{
+    outline: none !important;
+  }
+  .redBox{
+    background-color: #f6303f;
+    padding: 4px 15px;
+  }
+  .redBox p{
+    margin-bottom: 0px;
+    color: #fff;
+    font-size: 25px;
+  }
+  .w73{
+    width: 73px;
+  }
+  .mar-top-35{
+    margin-top: 35px;
+  }
+  .marBottom0{
+    margin-bottom: 0px !important;
+  }
+  .marTop35{
+    margin-top: 15px;
+  }
+  .mar-top-80{
+    margin-top: 80px;
+  }
+
+  /*********Header ******/
+  .Header{
+    padding: 25px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hedearRedLogo{
+    width: 160px;
+  }
+  /********switch****/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffc1c5;
+    -webkit-transition: .4s;
+    transition: .4s;
+    height: 12px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+   
+    background-color: #f6303f;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 5px;
+    top:-3px;
+  }
+  
+  input:checked + .slider {
+    background-color: #fa6a76;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #f6303f;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+.margin-right-60{
+  margin-right: 60px;
+  margin-top: 20px;
+}
+.headerBtn{
+  background-color: transparent;
+  border: none;
+  font-family: IRANSans-Light;
+  color: #1a1a1a;
+  width: 130px;
+}
+.headerBtn:active,.headerBtn:focus{
+  outline: none !important;
+}
+.headerBtn:hover{
+  color: #f6303f !important;
+}
+
+/*******Menu********/
+.mainBack{
+  background-color: #fff;
+  padding-right: 30px;
+   padding-left: 30px;
+   border: 1px solid #a7a7a7;
+}
+.MainMenu{
+ 
+
+
+
+}
+.MainMenuBtn{
+  background-color: transparent !important;
+  border-radius: 0px;
+ 
+  border-top: none;
+  border-bottom:none;
+  color: #1a1a1a;
+  padding: 20px;
+  font-family: IRANSans-Light;
+}
+.marginLeft15{
+  margin-left: 15px;
+}
+.borderRight1{
+  border-right: 1px solid #a7a7a7;
+  border-left: none !important;
+}
+.borderLeft1{
+  border-left: 1px solid #a7a7a7;
+  border-right: 1px solid #a7a7a7;
+}
+.menuDown{
+  color: #ed2124;
+  margin-right: 5px;
+}
+.borderLeft1:hover{
+  border-left: 1px solid #a7a7a7;
+  border-right: 1px solid #a7a7a7;
+}
+.borderRight1:hover{
+  border-right: 1px solid #a7a7a7;
+  border-left: none !important;
+}
+.MainMenuBtn:active{
+  color: #ff004e !important;
+}
+.MainMenuBtn:focus{
+  color: #ff004e !important;
+  box-shadow: none !important;
+}
+
+/********404**********/
+.errorImg{
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 35%;
+}
+.errorPage{
+  background-color: #fff;
+  padding: 130px;
+}
+.errorPageText{
+  text-align: center;
+  font-family: IRANSans-Light;
+  font-size: 24px;
+  color: #444444;
+  margin: 40px;
+}
+.errorBtn{
+  color: #fff;
+  font-family: IRANSans-Bold;
+  background-color: #f6303f;
+  border: none;
+  font-size: 20px;
+  padding: 10px 25px;
+}
+.errorBtn:hover{
+  background-color: #fff;
+  color: #f6303f;
+  border:2px solid #f6303f;
+}
+/***********RedBox***********/
+.redBox{
+  background-color: #f6303f;
+  padding: 40px 100px;
+}
+.innerRedBox{
+  display: flex;
+  justify-content: space-between;
+}
+.innerRedBox p{
+  font-size: 18px;
+  font-family: IRANSans;
+  text-align: center;
+  margin-top: 20px;
+}
+.innerRedBox img{
+  
+}
+.innerRedBox div{
+  text-align: center;
+  height: 100px;
+}
+/*********MainPage*********/
+.MainPageContainer{
+  padding: 0px !important;
+  background-color: #fff !important;
+}
+.bannerRow{
+  background-color: #fff;
+  padding: 3.5rem;
+}
+.bannerBackground{
+  background-color: #f6303f;
+  
+  border-radius: 15px;
+  padding: 15px 45px;
+}
+.redbannerImg{
+  width: 100%;
+}
+.bannerFirstLine{
+  font-family: IRANSans-Bold;
+  font-size: 25px;
+  color: #fff;
+  text-align: right;
+  margin-bottom: 5px;
+}
+.bannerSecondLine{
+  font-family: IRANSans-Light;
+  text-align: right;
+  font-size: 18px;
+  color: #fff;
+}
+.blackBox{
+  background-color: #2b2b2b !important;
+}
+
+.productBannerBox{
+  display: flex;
+  padding: 30px;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+#backBlack{
+  background-color: #2b2b2b;
+}
+#backGray{
+  background-color: #e8e8e8;
+}
+.miniText{
+  font-family: IRANSans-Ultra;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+.brandText{
+  font-family: IRANSans-Bold;
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+.productLink{
+  text-decoration: none;
+  color: #ff2e2e;
+  font-family: IRANSans-Medium;
+  text-align: right;
+  font-size: 20px;
+ 
+}
+.productBannerBox img{
+  width: 150px;
+  height: 136px;
+}
+.colorBlack{
+  color: #000 !important;
+}
+.customRow{
+  background-color: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.bestSellingDiv{
+  padding: 0px 30px;
+  background-color: #fff;
+  
+}
+.backWhite{
+  background-color: #fff;
+}
+.colorBlack{
+  color: #111;
+}
+.newProductBox{
+  background-color: #222;
+  padding: 2rem;
+}
+.colorWhite{
+  color: #fff !important;
+}
+.marginTop30{
+  margin-top: 30px;
+}
+.newsDiv{
+  padding-right: 2rem;
+  padding-left: 2rem;
 }

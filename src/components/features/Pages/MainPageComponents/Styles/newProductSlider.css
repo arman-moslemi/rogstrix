@@ -1,0 +1,68 @@
+.MainPageSliderImg{
+    width: 100%;
+}
+.NewProductSlider .swiper-button-next{
+    left: 0% !important ;
+    color:transparent !important;
+
+    background-size: auto;
+    border: 1px solid #707070;
+    padding: 50px 15px;
+    bottom: 50%;
+    background-image:url('../../../../assets/img/MainSliderLeft.png') !important;
+  }
+  .NewProductSlider .swiper-button-prev{
+   border: 1px solid #707070;
+    bottom: 50%;
+    right: 0% !important ;
+    color:transparent !important;
+ 
+    background-size: auto;
+    padding: 50px 15px;
+    background-image:url('../../../../assets/img/MainSliderRight.png') !important;
+  }
+  .NewProductSlider .swiper-pagination-bullet {
+    width: 80px;
+height: 5px;
+display: inline-block;
+border-radius: 2px;
+background-color: #BBBBBB;
+opacity: 1;
+  }
+  .NewProductSlider .swiper-pagination-bullet-active{
+      background-color: #F6303F;
+      opacity: 1;
+  }
+  .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+  
+      text-align: right;
+      padding-right: 2rem;
+  }
+  .NewProductCard{
+margin-top: 30px;
+  }
+  .specialSliderCardBox{
+      background-color: #fff;
+  }
+  .whiteBoxSlider{
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+  }
+  .NewProductCardBox img{
+      width: 100%;
+  }
+  .newProductName{
+      font-family: IRANSans-Bold;
+      font-size: 18px;
+      color: #1a1a1a;
+  }
+  .newProductPrice{
+      color: #000;
+      font-family: IRANSans-Light;
+      font-size: 20px;
+      margin-top: 40px;
+  }
+  .NewProductCardBox{
+      align-items: center;
+  }

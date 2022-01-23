@@ -1,0 +1,23 @@
+.categoryList li{
+margin-bottom: 20px;
+list-style: none;
+}
+.categoryBTN{
+    color:#17181a;
+    font-family: IRANSans;
+    font-size: 17px;
+    background-color: transparent;
+    border: none !important;
+    padding:5px 35px;
+}
+
+.categoryList{
+padding-top: 30px;
+text-align: center;
+}
+.categoryBTN:focus {
+    border-right: 4px solid #ff004e !important;
+    outline: none !important;
+    color: #fff;
+    background-image:linear-gradient(to right, rgba(255, 0, 78, 0.05), rgba(255, 0, 78, 0.36)) !important;
+}

@@ -4,7 +4,7 @@ import Search from "../../../assets/icons/search";
 import Basket from "../../../assets/icons/basket";
 import LogoBlack from "../../../assets/img/Logo-black.png"
 import { Container ,Col, Button} from "react-bootstrap";
-const Header = () => {
+const MainPageHeader = () => {
   return (
    
       <div className="mainHeader">
@@ -32,4 +32,4 @@ const Header = () => {
    
   );
 }; 
-export default Header;
+export default MainPageHeader;

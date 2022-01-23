@@ -1,0 +1,43 @@
+.exclusiveSlider .swiper-button-next{
+    left: 0% !important ;
+    color:transparent !important;
+
+    background-size: cover;
+    width: auto !important;
+    bottom: 50%;
+    background-image:url('../../../../assets/img/specialSliderLeft.png') !important;
+   
+  }
+  .exclusiveSlider .swiper-button-prev{
+ 
+    bottom: 50%;
+    right: 0% !important ;
+    color:transparent !important;
+ width: auto !important;
+    background-size: cover;
+    background-image:url('../../../../assets/img/specialSliderRight.png') !important;
+  
+  }
+  .exclusiveSliderCard img{
+      width: 100%;
+  }
+  .padding30{
+      padding:30px;
+  }
+  .exclusiveBox{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    display: block;
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+  #blackColor{
+      color: #111111;
+  }
+  .exclusiveSliderCard p{
+      font-family: IRANSans-Medium;
+      color: #000;
+      font-size: 20px;
+      margin-top: 30px;
+  }
