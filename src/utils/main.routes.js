@@ -7,6 +7,7 @@ import Login from '../components/features/Pages/Login';
 import RecoveryPass from "../components/features/Pages/RecoveryPass";
 import Verify from "../components/features/Pages/Verify";
 import ErrorPage from "../components/features/Pages/404";
+import Products from '../components/features/Pages/Products';
 import MainPage from "../components/features/Pages/MainPage";
 import WrongPass from "../components/features/Pages/WrongPass";
 import PrivateRoute from './PrivateRoute';
@@ -67,6 +68,13 @@ const MainRoutes = (props) => {
 					path='/MainPage'
 					name='MainPage'
 					render={(props) => <MainPage/>}>
+
+					</Route>
+					<Route
+
+					path='/Products'
+					name='Products'
+					render={(props) => <Products/>}>
 
 					</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
