@@ -1,5 +1,5 @@
 import react from "react";
-import "./Styles/bestSellingSlider.css"
+import "./Styles/completedCard.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 
@@ -14,7 +14,7 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const bestSellingSliderCard = (props) => {
+const CompletedCards = (props) => {
   return (
    
       <div className="BestSellingCard">
@@ -65,4 +65,4 @@ null
    
   );
 }; 
-export default bestSellingSliderCard;
+export default CompletedCards;

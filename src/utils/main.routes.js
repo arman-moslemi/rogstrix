@@ -10,6 +10,7 @@ import ErrorPage from "../components/features/Pages/404";
 import Products from '../components/features/Pages/Products';
 import MainPage from "../components/features/Pages/MainPage";
 import WrongPass from "../components/features/Pages/WrongPass";
+import CompletedSystems from '../components/features/Pages/CompletedSystems';
 import PrivateRoute from './PrivateRoute';
 const MainRoutes = (props) => {
 	return (
@@ -75,6 +76,13 @@ const MainRoutes = (props) => {
 					path='/Products'
 					name='Products'
 					render={(props) => <Products/>}>
+
+					</Route>
+					<Route
+
+					path='/CompletedSystems'
+					name='سیستم های تکمیل شده'
+					render={(props) => <CompletedSystems/>}>
 
 					</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}

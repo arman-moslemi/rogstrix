@@ -10,13 +10,13 @@ import {
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
-import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
 import { FaTimes , FaSearch ,FaChevronLeft } from 'react-icons/fa';
-import Sorts from './EachCategoryComponents/Sorts';
+
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
-import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
-const Products = () => {
+import PageTitle from "../../assets/img/pageTitle.png"
+import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
+const CompletedSystems = () => {
 
   return (
     <div className="EachCategoryBody">
@@ -45,6 +45,19 @@ const Products = () => {
               </a>
             </li>
           </ul>
+        </div>
+        <div className="pageTitle">
+            <div>
+            <img src={PageTitle}/>
+            </div>
+            <div>
+                <p>
+                    سیستم های تکمیل شده
+                </p>
+            </div>
+            <div>
+            <img src={PageTitle}/>
+            </div>
         </div>
         <div className="row " style={{marginBottom:25}}>
           <Col md={3}>
@@ -849,7 +862,7 @@ const Products = () => {
           </div>
           </Col>
           <Col md={9}>
-          <Sorts/>
+     
           <div className="productsWhiteBox">
               <div className="whiteBoxHeader">
                   <div className="dashedHrdiv">
@@ -871,54 +884,9 @@ const Products = () => {
                           </Button>
                   </div>
               </div>
-              <div className="row">
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-              
-
-              </div>
+           
           </div>
-          <div className="productsWhiteBox">
-          <div className="row margin25">
-                   <Col md={12}>
-                   <div className="">
-                        <p className="specialOfferTitle colorBlack">
-                           محصولات پرفروش
-                        </p>
-                    </div>
-                    <div className="seeAllDiv" style={{paddingLeft:50}}>
-                        <Button className="seeAll">مشاهده همه
-                        <FaChevronLeft/>
-                        </Button>
-                    </div>
-                   </Col>
-               </div>
-              <div className="myPadding">
-              <BestSellingProductsSlider/>
-              </div>
-          </div>
+      
           </Col>
          
         </div>
@@ -929,4 +897,4 @@ const Products = () => {
     </div>
   );
 };
-export default Products;
+export default CompletedSystems;

@@ -830,6 +830,7 @@ text-align: right;
 font-family: IRANSans-Medium;
 color: #000;
 border:none !important;
+border-bottom: 1px solid #e8e8e8;
 
 }
 .productAccardion .accordion__panel{
@@ -865,6 +866,7 @@ border:none !important;
 .productAccardion .accordion__panel{
  
   padding: 0px !important;
+  padding-bottom: 15px !important;
 }
 .checkBoxDiv label{
   font-family: IRANSans-Light;
@@ -875,17 +877,111 @@ border:none !important;
 }
 .checkBoxDiv{
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+
 }
 .pad2{
   padding: 1rem;
   border-top: 1px solid #e8e8e8;
-  border-bottom: 1px solid #e8e8e8;
+
 }
 .scrollBar{
   height: 242px;
 overflow: scroll;
   overflow-x: scroll;
 overflow-x: hidden;
+}
+.productsWhiteBox{
+  background-color: #fff;
+  margin-top: 15px;
+  padding: 2rem;
+}
+.whiteBoxHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashedHrdiv{
+  width: 34%;
+}
+.whiteBoxTitle{
+  color: #111;
+  font-family: IRANSans-Bold;
+  font-size: 35px;
+}
+.allProductsBtn{
+  background-color: transparent;
+  border: none;
+  color: #ed2124;
+  font-family: IRANSans;
+}
+.dashedHr{
+  border-top: 1px dashed #707070;
+}
+.marginTop15{
+  margin-top: 15px;
+}
+.rangeText{
+  text-align: center;
+  color: #898989;
+  font-family: IRANSans-Ultra;
+font-size: 13px;
+}
+.rangeInput{
+  border: 1px solid 
+  #e8e8e8
+  ;
+  border-radius: 5px;
+  padding: 5px 10px;
+  height: 30px;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+display: block;
+}
+.marginB0{
+  margin-bottom: 0px !important;
+}
+.maxFont{
+  font-size: 16px;
+}
+.rangeBorder{
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.rangeBtn{
+  border: none;
+  background-color: #f6303f  ;
+  border-radius: 5px;
+  color: #fff;
+  font-family: IRANSans;
+  width: 153px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.productBlackBox{
+  
+}
+.myPadding{
+  padding: 1rem;
+}
+/**************completed Systems*******/
+.pageTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+.pageTitle p{
+  font-family: IRANSans-Bold;
+  color: #f6303f;
+  font-size: 35px;
+  text-align: center;
+  margin-right: 30px;
+  margin-left: 30px;
 }

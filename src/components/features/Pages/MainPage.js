@@ -129,19 +129,19 @@ const MainPage = () => {
                </div>
      <div className="d-flex justify-content-center margin">
      <div>
-           <BestSellingSliderCard/>
+           <BestSellingSliderCard viewList={true}/>
          </div>
          <div>
-           <BestSellingSliderCard/>
+           <BestSellingSliderCard viewList={true}/>
          </div>
          <div>
-           <BestSellingSliderCard/>
+           <BestSellingSliderCard viewList={true}/>
          </div>
          <div>
-           <BestSellingSliderCard/>
+           <BestSellingSliderCard viewList={true}/>
          </div>
          <div>
-           <BestSellingSliderCard/>
+           <BestSellingSliderCard viewList={true}/>
          </div>
      </div>
        </div>
