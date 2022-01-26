@@ -1,4 +1,3 @@
-import React from "react";
 import MainPageHeader from "./layouts/MainPageHeader";
 import Footer from "./layouts/Footer";
 import {
@@ -11,20 +10,15 @@ import {
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
 import { FaTimes , FaSearch ,FaChevronLeft } from 'react-icons/fa';
-
+import Sorts from './EachCategoryComponents/Sorts';
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
 import PageTitle from "../../assets/img/pageTitle.png"
 
-import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
-
-
-
-
-
-
-const CompletedSystems = () => {
+import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
+const SelectPowerSupply = () => {
 
   return (
     <div className="EachCategoryBody">
@@ -60,8 +54,7 @@ const CompletedSystems = () => {
             </div>
             <div>
                 <p>
-                    سیستم های تکمیل شده
-                </p>
+                انتخاب منبع تغذیه                </p>
             </div>
             <div>
             <img src={PageTitle}/>
@@ -105,6 +98,190 @@ const CompletedSystems = () => {
                  
               </div>
 
+          </div>
+          <div className="whiteBoxProduct">
+          <Accordion allowZeroExpanded ={true}>
+            <AccordionItem className="productAccardion">
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                        برندها
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+               <div className="pad2">
+               <div className="d-flex searchInput">
+                <div >
+          <FaSearch color={'#a0a0a0'}/>
+        </div>
+        <input
+          
+          type={'text'}
+          placeholder={"نام برند را وارد کنید ..."}
+        
+         
+        />
+        
+      </div>
+     
+               </div>
+      <div className="pad2">
+      <div className="scrollBar">
+          <div className="d-flex checkBoxDiv">
+          <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+                  همه
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              کولر مستر
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              کورسیر
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              سی سونیک
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              گیگابایت
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              ای وی جی ای
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              کورسیر
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              کورسیر
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              کورسیر
+              </label>
+          </div>
+          <div className="d-flex checkBoxDiv">
+               <Checkbox
+        
+        defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}
+      />
+              <label>
+              کورسیر
+              </label>
+          </div>
+      </div>
+      </div>
+                </AccordionItemPanel>
+            </AccordionItem>
+         
+        </Accordion>
           </div>
           <div className="whiteBoxProduct">
           <Accordion allowZeroExpanded ={true}>
@@ -164,14 +341,12 @@ const CompletedSystems = () => {
          
         </Accordion>
           </div>
-         
-        
           <div className="whiteBoxProduct">
           <Accordion allowZeroExpanded ={true}>
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        سی پی یو
+                        رده مصرف انرژی
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -205,7 +380,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              AMD Ryzen 9 5900X
+              +۸۰ تیتانیوم
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -220,7 +395,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              AMD Ryzen 7 5800X
+              +۸۰ پلاتینیوم
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -235,7 +410,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              AMD Ryzen 7 3700X
+              +۸۰ طلایی
               </label>
           </div>
        
@@ -251,63 +426,15 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    سی پی یو اورکلاک شده
+                     مصرف انرژی (وات)
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
-              <div className="pad2">
-              <div className="scrollBar">
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                          همه
-                      </label>
-                  </div>
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                      بله
-                      </label>
-                  </div>
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                     خیر
-                      </label>
-                  </div>
-                
-               
-              </div>
-              </div>
-                        </AccordionItemPanel>
+                <div className="pad2">
+                <RangeSlider/>
+     
+               </div>
+                </AccordionItemPanel>
             </AccordionItem>
          
         </Accordion>
@@ -317,77 +444,15 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    سوکت سی پی یو
+                    طول (میلیمتر)
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
-              <div className="pad2">
-              <div className="scrollBar">
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                          همه
-                      </label>
-                  </div>
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                      AM4
-                      </label>
-                  </div>
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                      LGA1150
-                      </label>
-                  </div>
-                  <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                      LGA1151
-                      </label>
-                  </div>
-               
-              </div>
-              </div>
-                        </AccordionItemPanel>
+                <div className="pad2">
+                <RangeSlider/>
+     
+               </div>
+                </AccordionItemPanel>
             </AccordionItem>
          
         </Accordion>
@@ -397,7 +462,7 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    خنک کننده سی پی یو
+                        ماژولار
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -431,7 +496,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              استوک
+              هیچکدام
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -446,7 +511,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              Corsair H100i RGB PLATINUM SE
+             کامل
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -461,7 +526,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              Corsair iCUE H100i ELITE CAPELLIX
+             نیمه
               </label>
           </div>
         
@@ -477,7 +542,7 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    کارت گرافیک
+                        رنگ
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -511,7 +576,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              GeForce RTX 2070 SUPER
+                سیاه
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -526,7 +591,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              GeForce RTX 3070
+              سفید
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -541,7 +606,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              GeForce RTX 3080
+              سیاه/قرمز
               </label>
           </div>
       
@@ -557,7 +622,7 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    SLI / CrossFire
+                        نوع
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -591,7 +656,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              2-Way CrossFire
+              ATX
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -606,7 +671,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              2-Way SLI
+              ATX12V
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -621,7 +686,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              3-Way SLI
+              Flex ATX
               </label>
           </div>
         
@@ -638,7 +703,7 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    کیس
+                       بدون فن
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -672,7 +737,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              Corsair 4000D Airflow
+             باشد
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -687,7 +752,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              Fractal Design Meshify C
+              نباشد
               </label>
           </div>
       
@@ -704,7 +769,7 @@ const CompletedSystems = () => {
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    نوع کیس
+                    اتصالات EPS/ATX
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -741,7 +806,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              ATX Full Tower
+              4 x EPS 8-pin
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -756,7 +821,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              ATX Mid Tower
+              3 x EPS 8-pin
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -771,7 +836,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              MicroATX Mini Tower
+              2 x EPS 8-pin
               </label>
           </div>
           <div className="d-flex checkBoxDiv">
@@ -786,7 +851,7 @@ const CompletedSystems = () => {
         }}
       />
               <label>
-              Mini ITX Desktop
+              1 x EPS 8-pin + 1 x ATX 4-pin
               </label>
           </div>
       </div>
@@ -798,24 +863,31 @@ const CompletedSystems = () => {
           </div>
           </Col>
           <Col md={9}>
-     
+          
           <div className="productsWhiteBox">
-              <div className="whiteBoxHeader">
+          <div className="whiteBoxHeader">
               <div className="borderDashedBottom">
                 <div>
                   <p>
-                    همه سیستم های تکمیل شده
+                  شناسایی ۱۲۶ قطعه سازگار
                   </p>
                 </div>
                 <div>
-                <label for="sort" className="sortLabel">مرتب کردن بر اساس</label>
-  <select name="sort" id="sort">
-    <option>پر فروش ترین</option>
-    <option>ارزان ترین</option>
-    <option>گران ترین</option>
-    <option>جدید ترین</option>
-  </select>
-
+                <div className="d-flex checkBoxDiv">
+                       <Checkbox
+                
+                defaultChecked
+                sx={{
+                  color: '#f6303f',
+                  '&.Mui-checked': {
+                    color: '#f6303f',
+                  },
+                }}
+              />
+                      <label>
+                         نمایش همه قطعات
+                      </label>
+                  </div>
                 </div>
                 <div className="d-flex">
                 <div >
@@ -825,7 +897,7 @@ const CompletedSystems = () => {
       <input
           className="searchInput"
           type={'text'}
-          placeholder={"جستجو در میان سیستم ها ..."}
+          placeholder={"جستجو در میان منبع تغذیه..."}
         
          
         />
@@ -834,35 +906,25 @@ const CompletedSystems = () => {
                 </div>
               </div>
               </div>
-              <div className="row marginTop30">
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards/>
-                </Col>
-              </div>
-           
+           <div className="selectRow">
+             <div>
+               <Button className="selectAll marginLeft60">
+                 انتخاب همه
+               </Button>
+             </div>
+             <div>
+               <Button className="selectAll marginLeft60">
+                 حذف انتخاب همه
+               </Button>
+             </div>
+             <div>
+               <Button className="compareBtn">
+                 مقایسه انتخاب شده ها (حداکثر 4 مورد)
+               </Button>
+             </div>
+           </div>
           </div>
-      
+        
           </Col>
          
         </div>
@@ -873,4 +935,4 @@ const CompletedSystems = () => {
     </div>
   );
 };
-export default CompletedSystems;
+export default SelectPowerSupply;

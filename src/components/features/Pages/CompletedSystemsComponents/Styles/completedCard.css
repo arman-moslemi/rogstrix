@@ -1,0 +1,74 @@
+.completedCard{
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    margin-top: 25px;
+}
+.madeSystemImg{
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: -40px;
+}
+.imgBox{
+    position: relative;
+}
+.grayOverlay{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #282828;
+    opacity: 0.85;
+    border-top-right-radius:5px ;
+    border-top-left-radius: 5px;
+    padding: 5px;
+}
+.userName p{
+    color: #fff;
+    font-family: IRANSans;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    font-size: 13px;
+}
+.imgBox{
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+}
+.userProfile img{
+    width: 33px;
+    height: 33px;
+}
+.completeProductTitle{
+    color: #f6303f;
+    font-family: IRANSans-Bold;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+.marginBottom15{
+    margin-bottom: 15px;
+}
+.completeProductDetail{
+    color: #282828    ;
+    font-family: IRANSans-Light;
+    font-size: 12px;
+    margin-top: 20px;
+    line-height: 1.88;
+}
+.bottomDashed{
+    border-top: 2px dotted #111;
+}
+.completedPrice{
+    font-family: IRANSans-Bold;
+    color: #111;
+    font-size: 16px;
+}
+.bottomIcon{
+    font-size: 15px;
+    font-family: IRANSans;
+}
+.marginLeft10{
+    margin-left: 10px;
+}

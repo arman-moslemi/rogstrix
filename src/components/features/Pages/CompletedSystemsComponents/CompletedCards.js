@@ -2,7 +2,9 @@ import react from "react";
 import "./Styles/completedCard.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
-
+import {FaCommentDots , FaLongArrowAltUp} from "react-icons/fa";
+import MadeSystem from "../../../assets/img/madeSystem.png";
+import userProfile from "../../../assets/img/userProfile.png";
 export const truncate = (str, len) => {
   console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
@@ -17,51 +19,56 @@ export const truncate = (str, len) => {
 const CompletedCards = (props) => {
   return (
    
-      <div className="BestSellingCard">
-  <div className="specialSliderCardBox">
-  <img src={specialSliderImg}/>
-      <ul className="colorList">
-        <li>
-          <div id="color1"></div>
-        </li>
-        <li>
-          <div id="color2"></div>
-        </li>
-        <li>
-          <div id="color3"></div>
-        </li>
-      </ul>
-  </div>
-  <p className="productName">
-    {truncate("هندزفری شیائومی مدل m123",25)}
-  </p>
-<div className="row marginTop30">
-  <Col md={4} className="pad0 ta-right">
-    <p className="grayStrokeOut">
-      60.000
-    </p>
-  </Col>
-  <Col md={8} className="pad0 ta-left">
-    <p className="grayPrice">
-      573.000 تومان
-    </p>
-  </Col>
-</div>
-{
-  props.viewList==true?
-<div className="row marginTop20">
-  <Col md={12} className="pad0 ta-right">
-    <a href="#" className="seeAllCards" >
-      مشاهده لیست هندزفری
-    </a>
-  </Col>
-  </div>
-  :
-null
-}
+     <div className="completedCard">
+       <div className="imgBox marginBottom15">
+         <div className="grayOverlay">
+           <div className="userProfile">
+             <img src={userProfile}/>
+           </div>
+           <div className="userName">
+             <p>{truncate("محسن رحمتی",20)}</p>
+           </div>
+         </div>
+       <img src={MadeSystem} className="madeSystemImg"/>
+       </div>
+       <p className="completeProductTitle">
+       {truncate("سیستم گیمینگ خوب و سریع اینتل",100)}
+       </p>
+      <p className="completeProductDetail">
+      Intel Core i5-11400
+      <br/>
+Parametric Video Card (Chipset: GeForce RTX 3060; Cooling: 2 Fans, 3 Fans, 120 mm Radiator, ...)
+<br/>
+Phanteks Eclipse P300A Mesh ATX Mid Tower
+      </p>
+      <hr className="bottomDashed"/>
+      <div className="row">
+        <Col md={5} className="pd0">
+        <div className="d-flex align-items-center">
+          <div>
+            <p className="bottomIcon">
+              <FaCommentDots size={18} className="marginLeft10"/>
+              5
+            </p>
+          </div>
+          <div style={{marginRight:15}}>
+            <p className="bottomIcon">
+              <FaLongArrowAltUp size={18} className="marginLeft10"/>
+             12
+            </p>
+          </div>
+          <div>
 
-
+          </div>
+        </div>
+        </Col>
+        <Col md={7} className="pd0 ta-left">
+          <p className="completedPrice">
+          ۲۴،۵۶۵،۰۰۰ تومان
+          </p>
+        </Col>
       </div>
+     </div>
    
   );
 }; 

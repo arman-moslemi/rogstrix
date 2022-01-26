@@ -10,6 +10,7 @@ import ErrorPage from "../components/features/Pages/404";
 import Products from '../components/features/Pages/Products';
 import MainPage from "../components/features/Pages/MainPage";
 import WrongPass from "../components/features/Pages/WrongPass";
+import SelectPowerSupply from '../components/features/Pages/SelectPowerSupply';
 import CompletedSystems from '../components/features/Pages/CompletedSystems';
 import PrivateRoute from './PrivateRoute';
 const MainRoutes = (props) => {
@@ -83,6 +84,13 @@ const MainRoutes = (props) => {
 					path='/CompletedSystems'
 					name='سیستم های تکمیل شده'
 					render={(props) => <CompletedSystems/>}>
+
+					</Route>
+					<Route
+
+					path='/SelectPowerSupply'
+					name='انتخاب منبع تغذیه'
+					render={(props) => <SelectPowerSupply/>}>
 
 					</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
