@@ -75,3 +75,120 @@
     display: flex;
     align-items: center;
 }
+.suggestionBlogBox{
+    background-color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 8px solid #f6303f;
+    padding: 2rem;
+}
+.SuggestionTitle{
+    font-family: IRANSans-Bold;
+    font-size: 20px;
+    color: #f6303f;
+    text-align: center;
+}
+.suggestionBlogBox ul li{
+    list-style: none;
+    font-family: IRANSans;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-right: 5px solid #a7a7a7;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    
+}
+.suggestionBlogBox ul li a{
+    color: #111;
+    font-size: 14px;
+}
+.suggestionBlogBox ul{
+    margin-top: 30px;
+}
+.suggestionBlogBox ul li a:hover{
+    color: #f6303f;
+    text-decoration: none;
+}
+.suggestionBlogBox ul li:hover{
+    border-right-color: #f6303f !important;
+}
+.RelatedPostBox{
+    background-color: #f6303f;
+    border-radius: 5px;
+}
+.RelatedPost1{
+    padding: 2rem 2rem 1rem 2rem;
+}
+.RelatedPost1 p{
+    color: #fff;
+    font-family: IRANSans-Bold;
+    margin-bottom: 0px;
+}
+.whiteDashed{
+    border-top: 1px dashed #fff;
+    margin: 0px;
+}
+.RelatedPost2{
+    padding: 2rem 2rem 1rem 2rem;
+}
+.RelatedPostImg{
+    width: 70px;
+    height: 70px;
+}
+.RelatedTitle{
+    font-family: IRANSans;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.RelatedDate{
+    font-family: IRANSans-Light;
+    color: #111;
+    font-size: 12px;
+}
+.blogTitle{
+    font-family: IRANSans-Bold;
+}
+.BlogPhoto{
+    width: auto;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.grayBox{
+    background-color: #f0f0f1;
+    padding: 10px 15px;
+    width: auto;
+}
+.urlCopy{
+    margin-bottom: 0px;
+    font-family: IRANSans-Light;
+    color: #898989;
+    margin-right: 25px;
+    font-size: 15px;
+}
+.colorGray{
+    color: #898989;
+}
+.bradius5{
+    border-radius: 5px;
+}
+.readMoreTitle{
+    color: #f6303f;
+    font-family: IRANSans-Bold;
+    font-size: 15px;
+}
+.pd3{
+    padding: 2rem;
+}
+.dashedRed{
+    border-color: #f6303f;
+    border-style: dashed;
+}
+.addToClipboard{
+    background-color: transparent !important;
+    border: none;
+}

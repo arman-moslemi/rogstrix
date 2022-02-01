@@ -15,11 +15,13 @@ import CompletedSystems from '../components/features/Pages/CompletedSystems';
 import SystemGuide from "../components/features/Pages/SystemGuide";
 import CompareSupplySystem from '../components/features/Pages/CompareSupplySystem';
 import SingleProduct from '../components/features/Pages/SingleProduct';
-import MakeSystem from '../components/features/Pages/MakeSystem';
+import MakeSystemSingle from '../components/features/Pages/MakeSystemSingle';
 import BlogMain from "../components/features/Pages/BlogMain";
 import PrivateRoute from './PrivateRoute';
 import RegisterVerify from '../components/features/Pages/RegisterVerify';
 import Register from '../components/features/Pages/RecoveryPass';
+import SingleBlog from '../components/features/Pages/SingleBlog';
+import AssembleMain from '../components/features/Pages/AssembleMain';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -123,9 +125,9 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/MakeSystem'
+					path='/MakeSystemSingle'
 					name='ساخت سیستم'
-					render={(props) => <MakeSystem/>}>
+					render={(props) => <MakeSystemSingle/>}>
 
 					</Route>
 					<Route
@@ -147,6 +149,20 @@ const MainRoutes = (props) => {
 					path='/RegisterVerify'
 					name='ثبت نام'
 					render={(props) => <RegisterVerify/>}>
+
+						</Route>
+						<Route
+
+					path='/SingleBlog'
+					name='هر مقاله'
+					render={(props) => <SingleBlog/>}>
+
+						</Route>
+						<Route
+
+						path='/AssembleMain'
+						name='اسمبل'
+						render={(props) => <AssembleMain/>}>
 
 						</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
