@@ -21,6 +21,8 @@ const CompletedCards = (props) => {
    
      <div className="completedCard">
        <div className="imgBox marginBottom15">
+       {
+  props.viewOverlay==true?
          <div className="grayOverlay">
            <div className="userProfile">
              <img src={userProfile}/>
@@ -29,6 +31,10 @@ const CompletedCards = (props) => {
              <p>{truncate("محسن رحمتی",20)}</p>
            </div>
          </div>
+ :
+ null
+ }
+
        <img src={MadeSystem} className="madeSystemImg"/>
        </div>
        <p className="completeProductTitle">

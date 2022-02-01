@@ -3,7 +3,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
-const RecoveryPass = () => {
+const Register = () => {
 
   return (
    <div className="loginPage">
@@ -13,7 +13,7 @@ const RecoveryPass = () => {
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-                ثبت نام
+                بازیابی رمز عبور
             </p>
             <p className="loginText">
             شماره موبایل یا ایمیل خود را وارد کنید.
@@ -36,7 +36,7 @@ const RecoveryPass = () => {
             </div>
             <div className="mar-top-40">
                 <button className="loginBtn" type="submit">
-                ارسال کد تایید
+                ارسال درخواست بازیابی رمز عبور
                 </button>
             </div>
           
@@ -44,4 +44,4 @@ const RecoveryPass = () => {
    </div>
   );
 };
-export default RecoveryPass;
+export default Register;

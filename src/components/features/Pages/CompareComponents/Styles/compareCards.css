@@ -1,0 +1,71 @@
+.compareCards{
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    width: 277px;
+}
+.compareBox1{
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+.compareBox1 img{
+    width: 180px;
+    border: 1px solid #111;
+    height: 180px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.compareTitle{
+    margin-bottom: 0px;
+    color: #f6303f;
+    font-family: IRANSans-Bold;
+    font-size: 20px;
+    
+}
+.addBtn{
+    color: #fff;
+    background-color: #f6303f;
+    font-family: IRANSans;
+    border: none !important;
+    width: 100%;
+}
+.addBtn:hover{
+    background-color: #fff;
+    border: 2px solid #f6303f !important;
+    color: #f6303f;
+}
+.priceText{
+    font-size: 12px;
+    color: #666;
+    font-family: IRANSans-Ultra;
+    margin-bottom: 0px;
+}
+.price{
+    font-family: IRANSans-Medium;
+    color: #111;
+    font-size: 14px;
+}
+.dashedHr{
+    border-top: 2px dashed #111;
+    margin: 0px !important;
+}
+.reviewP{
+    font-family: IRANSans-Light;
+    color: #111;
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+.firstLine1{
+    font-family: IRANSans-Bold;
+    color: #111;
+    font-size: 15px;
+    margin-bottom: 0px !important;
+}
+.secondLine2{
+    font-family: IRANSans;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+.compareHR2{
+    border-top-color: rgb(179, 179, 179) !important;
+    margin: 3px 0px;
+}

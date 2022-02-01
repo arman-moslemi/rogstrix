@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
-const Login = () => {
+const RegisterVerify = () => {
 
   return (
    <div className="loginPage">
@@ -13,24 +13,16 @@ const Login = () => {
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-               ورود
+                کد تایید
             </p>
             <p className="loginText">
-            شماره موبایل یا ایمیل خود را وارد کنید.
+            کد تایید ارسال شده را وارد کنید
             </p>
             <input className="inputLogin marTop35" placeholder="ایمیل خود را وارد کنید" type="email"/>
-            <div className="row ma-top-1 d-flex-start-start">
-                <Col md={6} xs={6} sm={6} className="pad0">
-                <input type="checkbox" id="rememberPass" name="rememberPass" value="rememberPass"/>
-                <label for="rememberPass" className="rememberPassLable">مرا به خاطر بسپار</label>
-                </Col>
-                <Col md={6} xs={6} sm={6} className="pad0 ta-left" >
-                    <p className="rememberPassLable" style={{marginTop:7}}>رمز خود را فراموش کرده ام</p>
-                </Col>
-            </div>
+           
             <div className="mar-top-40">
                 <button className="loginBtn" type="submit">
-                ورود به راگ استریک
+                تایید شماره موبایل
                 </button>
             </div>
             <div className="mar-top-20">
@@ -42,4 +34,4 @@ const Login = () => {
    </div>
   );
 };
-export default Login;
+export default RegisterVerify;

@@ -458,11 +458,11 @@ justify-content: center;
   .loginBtn:focus{
     outline: none !important;
   }
-  .redBox{
+  .redBox33{
     background-color: #f6303f;
     padding: 4px 15px;
   }
-  .redBox p{
+  .redBox33 p{
     margin-bottom: 0px;
     color: #fff;
     font-size: 25px;
@@ -673,6 +673,7 @@ justify-content: center;
   font-family: IRANSans;
   text-align: center;
   margin-top: 20px;
+  color: #fff !important;
 }
 .innerRedBox img{
   
@@ -1048,4 +1049,334 @@ color: #a0a0a0;
 }
 .marginLeft60{
   margin-left: 60px;
+}
+#width30{
+  width: 30%;
+}
+.marginLeftt20{
+  margin-left: 5px;
+}
+#w95{
+  width: 95% !important;
+margin-right: auto;
+margin-left: auto;
+display: block;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.tableTitle{
+  margin-bottom: 0px;
+  font-family: IRANSans;
+  font-size: 12px;
+}
+.tableBox{
+  border: 1px solid #a0a0a0;
+  border-radius: 5px;
+}
+.rowImg img{
+  width: 62px;
+  height: 62px;
+  border: 1px solid #a0a0a0;
+}
+.productNameRow{
+  font-family: IRANSans-Bold;
+  color:#111;
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+.pNameRow{
+  font-family: IRANSans;
+  color:#111;
+  font-size: 12px;
+  margin-bottom: 0px;
+  display: flex;
+}
+.redColor{
+  color: #f6303f !important;
+  margin-bottom: 0px;
+}
+.addRowBtn{
+  background-color: #f6303f;
+  color: #fff;
+  border: none !important;
+  font-family: IRANSans-Light;
+}
+.addRowBtn:hover{
+  background-color: #fff;
+  color: #f6303f;
+  border: 1px solid #f6303f !important;
+}
+.borderBottom{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+/**************SystemGuide****/
+.radius10{
+  border-radius: 10px;
+}
+.dashedBlackHr hr{
+  border-top: 2px dotted #a0a0a0;
+
+}
+.dashedBlackHr{
+  width: 35%;
+}
+.blackHeader{
+  font-size: 35px;
+  font-family: IRANSans-Bold;
+  color: #111;
+  margin-bottom: 0px;
+}
+/****************SingleProduct********/
+@import "~react-image-gallery/styles/css/image-gallery.css";
+.singleBox1{
+  border-top: 10px solid #f6303f;
+  background-color: #fff;
+  padding: 2rem 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+.image-gallery-slide{
+  padding: 5px;
+  border: 1px solid #111;
+  width: 100%;
+  height: 333px;
+}
+.image-gallery-image{
+  object-fit: unset !important;
+width: 100%;
+height: 100%;
+max-height: 100%;
+}
+.image-gallery-thumbnail .image-gallery-thumbnail-image{
+  width: 83px;
+  height: 83px;
+}
+.image-gallery-thumbnail:hover{
+  border: 2px solid #111;
+}
+.redLightBox{
+  border: solid 0.3px #aaa;
+  background-color: #fff3f4;
+  border-radius: 5px;
+  padding: 2rem;
+}
+.boxTitle2{
+  font-family: IRANSans-Medium;
+  color: #111;
+  font-size: 15px;
+}
+#colorGray{
+  color: #a0a0a0;
+}
+.grayHr{
+  border-top: 1px solid #dbdbdb !important;
+}
+.redBack{
+  background-color: #f6303f;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+}
+.redBack p{
+  color: #fff;
+  font-family: IRANSans-Bold;
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+.addToCart{
+  color: #fff;
+  font-family: IRANSans-Medium;
+  text-align: center;
+  width: 100%;
+  border: none;
+  background-color: #f6303f;
+}
+.BoldFont{
+  font-family: IRANSans-Bold;
+  font-size: 20px;
+}
+.mediumFont{
+  font-family: IRANSans-Light !important;
+}
+.NormalFont{
+  font-size: 15px;
+  margin-top: 25px;
+  font-family: IRANSans-Medium;
+}
+.colorBox{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 20px;
+  border: 2px solid #a0a0a0;
+padding: 5px;
+}
+#color6{
+  background-color: #1a1a1a;
+}
+#color2{
+  background-color: #5a4c7f;
+}
+#color3{
+  background-color: #06cdae;
+}
+#color4{
+  background-color: #ffb3ef;
+}
+#color5{
+  background-color: #24e0ff
+
+  ;
+}
+.detailTitle{
+  font-family: IRANSans-Medium;
+  color: #111;
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.detail2Title{
+  font-family: IRANSans;
+  color: #a0a0a0;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+}
+.mavaredBishtar{
+  background-color: transparent;
+  color:#a0a0a0;
+  font-family: IRANSans-Light;
+  font-size: 15px;
+  border: none;
+
+}
+.mavaredBishtar:hover{
+  background-color: transparent;
+  border: 1px solid #a0a0a0;
+
+}
+.addressSingle{
+  font-family: IRANSans-Bold;
+  color:#616161;
+font-size: 16px;
+margin-bottom: 0px;
+}
+.dottedH{
+  border-top: 1px dotted #aaa;
+}
+.productDetail{
+  font-family: IRANSans;
+  color: #111;
+  line-height: 1.9;
+  font-size: 15px;
+}
+.whiteBox3{
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+}
+.SingleProductRedBox{
+  background-color: #f6303f;
+  border-radius: 5px;
+
+}
+.redBoxTitle{
+  padding: 1rem;
+}
+.redBoxTitle p{
+  color: #fff;
+  font-family: IRANSans-Bold;
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+.whiteDotted{
+  border-top: 1px dashed #fff;
+}
+#colorRed{
+  color: #f6303f !important;
+}
+#borderRed{
+  border-color: #f6303f !important;
+}
+.profileComment{
+  height: 50px;
+  width: 50px;
+  border: 1px solid #111;
+}
+.commenterName{
+  margin-bottom: 0px;
+  font-family: IRANSans-Bold;
+  margin-right: 20px;
+}
+.commentInput{
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-family: IRANSans-Light;
+}
+.addComment{
+  background-color: #f6303f;
+  font-family: IRANSans;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 15px;
+}
+.font12{
+  font-size: 14px !important;
+  font-family: IRANSans-Medium !important;
+}
+.commentDate{
+  margin-bottom: 0px;
+  color: #898989;
+  font-size: 12px;
+  margin-right: 20px;
+  font-family: IRANSans-Light;
+  margin-left: 15px;
+}
+.commentText{
+  color: #282828;
+  font-family:IRANSans;
+  font-size: 13px;
+  line-height: 1.83;
+}
+/*********makeSystem***********/
+.selectedOption{
+  border: 1px solid #f6303f !important;
+ 
+  color: #f6303f !important;
+  min-width: 80px !important;
+
+}
+.selectBtn{
+  border: 1px solid #a7a7a7;
+  background-color: #fff;
+  color: #a7a7a7;
+  font-family: IRANSans-Light;
+
+  min-width: 80px !important;
+}
+.selectBtn:hover{
+  background-color: #f6303f !important;
+  color: #fff !important;
+}
+.w200{
+  width: 25%;
+}
+/**********Main Blog********/
+.borderNone{
+  border: none !important;
+}
+.BlogMainImg{
+  width: 100%;
+  height: 600px;
+}
+.BlogSecondImg{
+  width: 100%;
+  height: 290px;
+}
+.margintop20{
+  margin-top: 20px;
 }

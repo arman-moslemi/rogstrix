@@ -1,4 +1,4 @@
-import MainPageHeader from "./layouts/MainPageHeader";
+import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import { NavLink } from "react-router-dom";
 import { Container ,Col, Button,Row} from "react-bootstrap";
@@ -9,7 +9,7 @@ const EachCategory = () => {
 
   return (
     <div className="EachCategoryBody">
-      <MainPageHeader />
+      <Header />
     
 
    

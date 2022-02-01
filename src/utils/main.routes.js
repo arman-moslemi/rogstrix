@@ -12,7 +12,14 @@ import MainPage from "../components/features/Pages/MainPage";
 import WrongPass from "../components/features/Pages/WrongPass";
 import SelectPowerSupply from '../components/features/Pages/SelectPowerSupply';
 import CompletedSystems from '../components/features/Pages/CompletedSystems';
+import SystemGuide from "../components/features/Pages/SystemGuide";
+import CompareSupplySystem from '../components/features/Pages/CompareSupplySystem';
+import SingleProduct from '../components/features/Pages/SingleProduct';
+import MakeSystem from '../components/features/Pages/MakeSystem';
+import BlogMain from "../components/features/Pages/BlogMain";
 import PrivateRoute from './PrivateRoute';
+import RegisterVerify from '../components/features/Pages/RegisterVerify';
+import Register from '../components/features/Pages/RecoveryPass';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -93,6 +100,55 @@ const MainRoutes = (props) => {
 					render={(props) => <SelectPowerSupply/>}>
 
 					</Route>
+					<Route
+
+					path='/SystemGuide'
+					name='راهنمای ساخت سیستم'
+					render={(props) => <SystemGuide/>}>
+
+					</Route>
+					<Route
+
+					path='/CompareSupplySystem'
+					name='مقایسه منبع تغذیه'
+					render={(props) => <CompareSupplySystem/>}>
+
+					</Route>
+					<Route
+
+					path='/SingleProduct'
+					name='هر محصول'
+					render={(props) => <SingleProduct/>}>
+
+					</Route>
+					<Route
+
+					path='/MakeSystem'
+					name='ساخت سیستم'
+					render={(props) => <MakeSystem/>}>
+
+					</Route>
+					<Route
+
+					path='/BlogMain'
+					name='صفحه اصلی بلاگ'
+					render={(props) => <BlogMain/>}>
+
+						</Route>
+						<Route
+
+					path='/Register'
+					name='ثبت نام'
+					render={(props) => <Register/>}>
+
+						</Route>
+						<Route
+
+					path='/RegisterVerify'
+					name='ثبت نام'
+					render={(props) => <RegisterVerify/>}>
+
+						</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
 			</Switch>
 		</BrowserRouter>

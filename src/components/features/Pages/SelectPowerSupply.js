@@ -1,4 +1,4 @@
-import MainPageHeader from "./layouts/MainPageHeader";
+import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import {
     Accordion,
@@ -11,18 +11,18 @@ import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
-import { FaTimes , FaSearch ,FaChevronLeft } from 'react-icons/fa';
+import { FaTimes , FaSearch ,FaChevronDown  } from 'react-icons/fa';
 import Sorts from './EachCategoryComponents/Sorts';
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
 import PageTitle from "../../assets/img/pageTitle.png"
-
+import MadeSystem from "../../assets/img/madeSystem.png";
 import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
 const SelectPowerSupply = () => {
 
   return (
     <div className="EachCategoryBody">
-      <MainPageHeader />
+      <Header />
     
 
    
@@ -923,6 +923,508 @@ const SelectPowerSupply = () => {
                </Button>
              </div>
            </div>
+          <div className="tableBox">
+          <div className="d-flex justify-content-around" id="w95">
+                <div className="ta-center" id="width30">
+                <p className="tableTitle">
+                <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                  نام
+                  
+                </p>
+                </div>
+                <div className="ta-center">
+                <p className="tableTitle">
+                <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                 
+                  فرم فکتور
+                </p>
+</div>
+<div className="ta-center">
+<p className="tableTitle">
+<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                 
+                  رده انرژی
+                </p>
+</div>
+<div className="ta-center">
+<p className="tableTitle">
+<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                 
+                 مصرف(وات)
+                </p>
+</div>
+<div className="ta-center">
+<p className="tableTitle">
+<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                 
+                 ماژولار
+                </p>
+</div>
+<div className="ta-center">
+<p className="tableTitle">
+<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                 
+                  قیمت (تومان)
+                </p>
+</div>
+<div className="ta-center">
+<p className="tableTitle">
+<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                 
+                  امتیاز
+                </p>
+</div>
+           </div>
+           <hr className="mt-0 mb-0"/>
+           <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          <div className="borderBottom d-flex justify-content-around align-items-center">
+             <div>
+               <Checkbox     defaultChecked
+        sx={{
+          color: '#f6303f',
+          '&.Mui-checked': {
+            color: '#f6303f',
+          },
+        }}/>
+             </div>
+                <div className="rowImg">
+                  <img src={MadeSystem}/>
+                </div>
+                <div>
+                  <p className="productNameRow">
+                  Cooler Master MWE White V2 230V
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    Atx
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    500 W
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    بله
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                    1.257.000
+                  </p>
+                </div>
+                <div>
+                  <p className="pNameRow">
+                   
+                   (123)
+                   <p className="redColor">5</p>
+                  </p>
+                </div>
+                <div>
+                  <Button className="addRowBtn">
+                    افزودن
+                  </Button>
+                </div>
+          </div>
+          </div>
           </div>
         
           </Col>

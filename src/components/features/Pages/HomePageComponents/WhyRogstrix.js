@@ -18,8 +18,8 @@ const Header = () => {
                <Location/>
               </div>
               <div>
-                <p className="firstLine">ارسال به سراسر کشور</p>
-                <p className="secondLine">امکان سفارش کالا از سراسر کشور،ارسال سریع و آسان کالا به سراسر کشور</p>
+                <p className="firstLine3">ارسال به سراسر کشور</p>
+                <p className="secondLine3">امکان سفارش کالا از سراسر کشور،ارسال سریع و آسان کالا به سراسر کشور</p>
                 </div>
             </div>
             <div className="d-flex-start-start mar-bottom-30">
@@ -27,8 +27,8 @@ const Header = () => {
                <Garantee/>
               </div>
               <div>
-                <p className="firstLine">ضمانت اصالت کالا</p>
-                <p className="secondLine">خرید کالای اصل ایسوس راگ با بیمه نامه معتبر.</p>
+                <p className="firstLine3">ضمانت اصالت کالا</p>
+                <p className="secondLine3">خرید کالای اصل ایسوس راگ با بیمه نامه معتبر.</p>
                 </div>
             </div>
             <div className="d-flex-start-start mar-bottom-30">
@@ -36,8 +36,8 @@ const Header = () => {
                <Calender/>
               </div>
               <div>
-                <p className="firstLine">ضمانت بازگشت ۷ روزه</p>
-                <p className="secondLine">امکان بازگشت محصول در صورت مشکل فنی یا مغایرت کالا</p>
+                <p className="firstLine3">ضمانت بازگشت ۷ روزه</p>
+                <p className="secondLine3">امکان بازگشت محصول در صورت مشکل فنی یا مغایرت کالا</p>
                 </div>
             </div>
             </Col>

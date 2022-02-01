@@ -1,4 +1,4 @@
-import MainPageHeader from "./layouts/MainPageHeader";
+import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import {
     Accordion,
@@ -20,7 +20,7 @@ const Products = () => {
 
   return (
     <div className="EachCategoryBody">
-      <MainPageHeader />
+      <Header />
     
 
    

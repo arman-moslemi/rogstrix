@@ -1,0 +1,12 @@
+.redBox2{
+    padding: 1rem;
+}
+.compareHR{
+    border-top: 1px solid #ef4548 !important;
+}
+.firstLine{
+    color: #fff;
+}
+.secondLine{
+    color: rgb(207, 207, 207);
+}

@@ -1,0 +1,77 @@
+.whiteCategory{
+    background-color: #fff;
+    border-radius: 5px;
+}
+.categoryTitle{
+    padding: 2rem;
+}
+.categoryTitle p{
+    font-family: IRANSans-Bold;
+    color: #1a1a1a;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+.w100{
+    width: 100%;
+    margin: 0px !important;
+}
+.categoryBlog li a{
+    text-decoration: none;
+    color: #1a1a1a;
+    font-family: IRANSans;
+}
+.categoryBlog li{
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.dashedBlackHr{
+    border-top-style: dashed;
+}
+.boldText{
+    font-family: IRANSans-Bold;
+}
+.blogBox{
+    background-color: #fff;
+}
+.blackRow{
+    border-bottom: solid 5px #f6303f;
+  background-color: #222;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.blogBoxTitle{
+    color: #f6303f;
+    font-family: IRANSans-Medium;
+    font-size: 22px;
+    margin-bottom: 0px;
+}
+.userName{
+    font-family: IRANSans;
+    color: #a0a0a0;
+    margin-bottom: 0px;
+    font-size: 12px;
+    margin-right: 5px;
+}
+.borderRight1{
+    border-right: 1px solid #a0a0a0;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.Blogimg{
+    width: 100%;
+    height: 230px;
+}
+.blogDes{
+    color: #616161;
+    font-family: IRANSans-Light;
+    line-height: 2;
+    font-size: 14px;
+}
+.pdrightleft2{
+    padding-right: 2rem;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+}

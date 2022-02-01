@@ -1,5 +1,5 @@
 import React from "react";
-import MainPageHeader from "./layouts/MainPageHeader";
+import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import {
     Accordion,
@@ -28,7 +28,7 @@ const CompletedSystems = () => {
 
   return (
     <div className="EachCategoryBody">
-      <MainPageHeader />
+      <Header />
     
 
    
@@ -836,28 +836,28 @@ const CompletedSystems = () => {
               </div>
               <div className="row marginTop30">
                 <Col md={4}>
-                  <CompletedCards/>
+                  <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                  <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                <CompletedCards viewOverlay={true}/>
                 </Col>
                 <Col md={4}>
-                  <CompletedCards/>
+                <CompletedCards viewOverlay={true}/>
                 </Col>
               </div>
            
