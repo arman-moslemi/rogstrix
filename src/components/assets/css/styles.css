@@ -1381,3 +1381,138 @@ margin-bottom: 0px;
   margin-top: 20px;
 }
 /*********AssembleMain**********/
+/*********panel******/
+.UserPanelContainer{
+  background-color: #f4f4f4;
+}
+.UserPanelContainer{
+  padding: 8%;
+}
+.panelWhiteBox{
+  background-color: #fff;
+  border-radius: 10px;
+}
+.colTitle{
+font-family: IRANSans-Bold;
+margin-bottom: 0px;
+color: #ff004e;
+}
+.EditInformationInput{
+  border: 1px solid #e8e8e8;
+  padding: 5px;
+  border-radius: 5px;
+}
+.informationSelect{
+  width: 220px;
+height: 36.8px;
+font-family: IRANSans;
+border: none;
+border-radius: 5px;
+padding: 5px;
+}
+.saveBtn{
+  background-color: #ff004e;
+  font-family: IRANSans-Bold;
+  color: #fff;
+  border: none;
+}
+.saveBtn:hover{
+  background-color: #fff;
+color: #ff004e;
+border: 1px solid #ff004e;
+}
+.addressAdd{
+  font-family: IRANSans-Bold;
+  color: #fff;
+  background-color: #25bddc;
+  border: none;
+}
+.addressAdd:hover{
+  background-color: #fff;
+  border: 1px solid #25bddc;
+  color: #25bddc !important;
+}
+.shadowBox{
+  border-radius: 10px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  padding: 25px 20px;
+}
+.glassBtn{
+  background-color: transparent !important;
+  border: none !important;
+  font-family: IRANSans-Medium;
+}
+#colorBlue{
+  color: #25bddc;
+}
+#colorRed{
+  color: #ed2124;
+}
+.w80block{
+  width: 80%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.w70{
+  width: 70%;
+}
+.grayBoxTop{
+  background-color: #d2d2d2;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+#w7{
+  width: 7%;
+  text-align: center;
+}
+#w28{
+  width: 28%;
+  text-align: center;
+}
+#w15{
+  width: 15%;
+  text-align: center;
+}
+#w12{
+  width:12.5%;
+  text-align: center;
+}
+#w35{
+  width: 35%;
+  text-align: center;
+}
+#w50{
+  width: 50%;
+  text-align: center;
+}
+
+.grayBoxTop p{
+  font-family: IRANSans-Medium;
+  color: #1b1b1b;
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+.tableOrder p{
+  font-family: IRANSans;
+  color: #1b1b1b;
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+.tableOrder{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.pdbottom150{
+  padding-bottom: 150px;
+}

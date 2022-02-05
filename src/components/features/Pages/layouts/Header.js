@@ -29,7 +29,7 @@ const Header = () => {
         <FaShoppingBasket size={25} style={{marginLeft:10}}/>
         سبد خرید
         </button>
-        <select name="cars" id="cars">
+        <select name="Lang" id="language">
             <option value="persian">Fa</option>
             <option value="english">En</option>
 
