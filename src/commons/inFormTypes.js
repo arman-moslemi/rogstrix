@@ -1,2 +1,3 @@
 // export const apiUrl ="https://api.cafemelkseeone.ir/api/WebApi/";
-export const apiUrl = "http://localhost:63384/api/WebApi/";
+export const apiUrl ="https://api.rogstrix.com/api/webapi/";
+export const apiAsset ="https://api.rogstrix.com/images/";

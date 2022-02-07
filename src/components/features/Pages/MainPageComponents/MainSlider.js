@@ -6,11 +6,13 @@ import "swiper/swiper.min.css";
 import "./Styles/mainSlider.css";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import MainPageSlide1 from "../../../assets/img/MainPageSlide1.png"
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
+
 SwiperCore.use([Navigation,Pagination]);
 // if you want to use array
 
 
-const MainSlider = () => {
+const MainSlider = ({data}) => {
   return (
     <div>
       <Swiper
@@ -19,20 +21,20 @@ const MainSlider = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        
-        
+
+
         className="MainPageSlider"
       >
        <SwiperSlide>
-       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+       <img src={apiAsset+data?.MainSlider1} className="MainPageSliderImg"/>
 
        </SwiperSlide>
        <SwiperSlide>
-       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+       <img src={apiAsset+data?.MainSlider2} className="MainPageSliderImg"/>
 
        </SwiperSlide>
        <SwiperSlide>
-       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+       <img src={apiAsset+data?.MainSlider3} className="MainPageSliderImg"/>
 
        </SwiperSlide>
       </Swiper>

@@ -4,11 +4,12 @@ import blackBanner from "../../../assets/img/blackBanner.png";
 import "./Styles/specialOffer.css";
 import SpecialOfferSlider from "./SpecialOfferSlider";
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 
 // if you want to use array
 
 
-const SpecialOffer = () => {
+const SpecialOffer = ({data}) => {
   return (
     <div className="MainPageSpecialOffer">
         <div className="row margin25">
@@ -41,7 +42,7 @@ const SpecialOffer = () => {
                         تبلت
                     </a>
                 </li>
-               
+
                 <li>
                     <a href="#">
                        موبایل و گجت
@@ -68,22 +69,22 @@ const SpecialOffer = () => {
                     </a>
                 </li>
             </ul>
-            </Col>   
+            </Col>
             <Col md={8}>
-             
+
                 <SpecialOfferSlider/>
             </Col>
             <Col md={2} className="pdTop15">
                 <div className="redBanner">
-                    <img src={redBanner}/>
+                    <img src={apiAsset+data?.LeftSlider1}/>
                     <p>ایسوس</p>
                 </div>
                 <div className="blackBanner">
-                    <img src={blackBanner}/>
+                    <img src={apiAsset+data?.LeftSlider2}/>
                     <p>سامسونگ</p>
                 </div>
-                </Col>   
-        </div>  
+                </Col>
+        </div>
     </div>
   );
 };

@@ -14,7 +14,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "bootstrap-v4-rtl": "^4.5.2-1",
     "cli-truncate": "^3.1.0",
     "google-map-react": "^2.1.9",

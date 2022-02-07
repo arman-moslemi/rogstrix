@@ -1,6 +1,7 @@
 import Footer from "./layouts/Footer";
 import Header from "./layouts/Header";
 import Menu from "./layouts/Menu";
+import React,{useState,useEffect} from 'react'
 import RedBox from "./layouts/RedBox";
 import BlackBox from "./layouts/BlackBox";
 import MainSlider from "./MainPageComponents/MainSlider";
@@ -14,17 +15,62 @@ import img7 from "../../assets/img/img7.png";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import NewProductSliderCard from "./MainPageComponents/NewProductSliderCard";
 import WeblogSlider from "./MainPageComponents/WeblogSlider";
-const MainPage = () => {
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
+const MainPage = () => {
+  const [slider,setSlider]=useState([])
+  const [special,setSpecial]=useState([])
+
+  const mainSlider=()=>{
+    const axios = require("axios");
+
+      axios
+          .get(apiUrl + "MainSlider")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setSlider(response.data.Data[0])
+          console.log(response.data.Data[0].MainSlider1)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setSpecial(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <>
-     
-    
-      <Header/> 
-      <Menu/> 
+
+
+      <Header/>
+      <Menu/>
       <Container className="MainPageContainer ta-center" fluid>
-        <MainSlider/>
-        <SpecialOffer/>
+        <MainSlider data={slider}/>
+        <SpecialOffer data={slider}/>
         <div className="bannerRow">
     <div className="row">
       <Col md={6}>
@@ -65,8 +111,8 @@ const MainPage = () => {
       </Col>
     </div>
         </div>
-        <BlackBox/>
-       <ExclusiveSlider/>
+        <BlackBox data={slider}/>
+       <ExclusiveSlider data={slider}/>
        <div>
          <div className="row customRow">
            <Col md={4}>
@@ -74,12 +120,12 @@ const MainPage = () => {
                 <div className="ta-right">
                   <p className="miniText">اتو برقی</p>
                   <p className="brandText">Russel Hobbs</p>
-                  <a href="#" className="productLink">
+                  <a href={slider.LinkDownSlider1} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
                 <div>
-                <img src={img7}/>
+                <img src={apiAsset+slider?.DownSlider1}/>
                 </div>
               </div>
            </Col>
@@ -88,12 +134,12 @@ const MainPage = () => {
                 <div className="ta-right">
                   <p className="miniText colorBlack">اتو برقی</p>
                   <p className="brandText colorBlack">Russel Hobbs</p>
-                  <a href="#" className="productLink">
+                  <a href={slider.LinkDownSlider2} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
                 <div>
-                <img src={img7}/>
+                <img src={apiAsset+slider?.DownSlider2}/>
                 </div>
               </div>
            </Col>
@@ -102,18 +148,18 @@ const MainPage = () => {
                 <div className="ta-right">
                   <p className="miniText">اتو برقی</p>
                   <p className="brandText">Russel Hobbs</p>
-                  <a href="#" className="productLink">
+                  <a href={slider.LinkDownSlider3} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
                 <div>
-                <img src={img7}/>
+                <img src={apiAsset+slider?.DownSlider3}/>
                 </div>
               </div>
            </Col>
          </div>
        </div>
-      
+
        <div className="bestSellingDiv">
        <div className="row margin25 backWhite">
                    <Col md={12}>
@@ -152,12 +198,12 @@ const MainPage = () => {
                 <div className="ta-right">
                   <p className="miniText">اتو برقی</p>
                   <p className="brandText">Russel Hobbs</p>
-                  <a href="#" className="productLink">
+                  <a href={slider.LinkDownSlider4} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
                 <div>
-                <img src={img7}/>
+                <img src={apiAsset+slider?.DownSlider4}/>
                 </div>
               </div>
            </Col>
@@ -166,12 +212,12 @@ const MainPage = () => {
                 <div className="ta-right">
                   <p className="miniText colorBlack">اتو برقی</p>
                   <p className="brandText colorBlack">Russel Hobbs</p>
-                  <a href="#" className="productLink">
+                  <a href={slider.LinkDownSlider5} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
                 <div>
-                <img src={img7}/>
+                <img src={apiAsset+slider?.DownSlider5}/>
                 </div>
               </div>
            </Col>
@@ -180,12 +226,12 @@ const MainPage = () => {
                 <div className="ta-right">
                   <p className="miniText">اتو برقی</p>
                   <p className="brandText">Russel Hobbs</p>
-                  <a href="#" className="productLink">
+                  <a href={slider.LinkDownSlider6} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
                 <div>
-                <img src={img7}/>
+                <img src={apiAsset+slider?.DownSlider6}/>
                 </div>
               </div>
            </Col>
@@ -217,8 +263,8 @@ const MainPage = () => {
         <Col md={6} className="marginTop30">
           <NewProductSlider/>
         </Col>
-        </div> 
-             
+        </div>
+
       </div>
       <div className="newsDiv">
        <div className="row margin25 backWhite">
@@ -236,11 +282,11 @@ const MainPage = () => {
                <div>
                  <WeblogSlider/>
                </div>
-     
-       </div> 
+
+       </div>
       </Container>
-      
-      <RedBox/> 
+
+      <RedBox/>
       <Footer />
     </>
   );

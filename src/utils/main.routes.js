@@ -37,7 +37,7 @@ const MainRoutes = (props) => {
 					exact
 					path='/'
 					name='صفحه اصلی'
-					render={(props) => <Home {...props} />}
+					render={(props) => <MainPage {...props} />}
 				/>
 					<Route
 
@@ -83,9 +83,9 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/MainPage'
-					name='MainPage'
-					render={(props) => <MainPage/>}>
+					path='/Home'
+					name='HomeReg'
+					render={(props) => <Home/>}>
 
 					</Route>
 					<Route
