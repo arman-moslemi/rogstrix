@@ -22,6 +22,13 @@ import RegisterVerify from '../components/features/Pages/RegisterVerify';
 import Register from '../components/features/Pages/RecoveryPass';
 import SingleBlog from '../components/features/Pages/SingleBlog';
 import AssembleMain from '../components/features/Pages/AssembleMain';
+import EditInformation from '../components/features/Pages/EditInformation';
+import Address from '../components/features/Pages/Address';
+import ChangePassword from '../components/features/Pages/ChangePassword';
+import ProductsViewed from '../components/features/Pages/ProductsViewed';
+import UserOrder from '../components/features/Pages/UserOrder';
+import UserComments from '../components/features/Pages/UserComments';
+import SevedProducts from '../components/features/Pages/SevedProducts';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -163,6 +170,55 @@ const MainRoutes = (props) => {
 						path='/AssembleMain'
 						name='اسمبل'
 						render={(props) => <AssembleMain/>}>
+
+						</Route>
+						<Route
+
+						path='/EditInformation'
+						name='ویرایش اطلاعات'
+						render={(props) => <EditInformation/>}>
+
+						</Route>
+						<Route
+
+						path='/Address'
+						name='آدرس های من'
+						render={(props) => <Address/>}>
+
+						</Route>
+						<Route
+
+						path='/ChangePassWord'
+						name='تغییر کلمه عبور'
+						render={(props) => <ChangePassword/>}>
+
+						</Route>
+						<Route
+
+						path='/ProductsViewd'
+						name='محصولات مشاهده شده'
+						render={(props) => <ProductsViewed/>}>
+
+						</Route>
+						<Route
+
+						path='/UserOrder'
+						name='سفارش های من'
+						render={(props) => <UserOrder/>}>
+
+						</Route>
+						<Route
+
+						path='/UserComments'
+						name='نظرات من'
+						render={(props) => <UserComments/>}>
+
+						</Route>
+						<Route
+
+						path='/SavedProducts'
+						name='محصولات ذخیره شده'
+						render={(props) => <SevedProducts/>}>
 
 						</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}

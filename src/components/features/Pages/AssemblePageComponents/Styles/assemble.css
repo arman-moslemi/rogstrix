@@ -1,0 +1,120 @@
+.exclusiveSlider2 .swiper-button-next{
+    left: 0% !important ;
+    color:transparent !important;
+
+    background-size: cover;
+    width: auto !important;
+    bottom: 40%;
+    background-image:url('../../../../assets/img/specialSliderLeft.png') !important;
+   
+  }
+  .exclusiveSlider2 .swiper-button-prev{
+ 
+    bottom: 40%;
+    right: 0% !important ;
+    color:transparent !important;
+ width: auto !important;
+    background-size: cover;
+    background-image:url('../../../../assets/img/specialSliderRight.png') !important;
+  
+  }
+  .exclusiveSliderCard2 img{
+     width: 100%;
+  }
+  .padding30{
+      padding:30px;
+  }
+  .exclusiveBox2{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    display: block;
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+  #blackColor{
+      color: #111111;
+  }
+  .exclusiveSliderCard2 p{
+      font-family: IRANSans-Medium;
+      color: #000;
+      font-size: 20px;
+      margin-top: 30px;
+  }
+  .exclusiveSliderCard2{
+    border: 1px solid #f4f4f4;
+    background-color: #fff;
+    border-radius: 10px;
+    width:269px;
+    height: 269px;
+    display: flex;
+    align-items: center;
+  }
+  /* .exclusiveSlider2 .swiper-pagination-bullet {
+    width: 80px;
+height: 5px;
+display: inline-block;
+border-radius: 2px;
+background-color: #BBBBBB;
+opacity: 1;
+  }
+  .exclusiveSlider2 .swiper-pagination-bullet-active{
+      background-color: #F6303F;
+      opacity: 1;
+  }
+  .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+  
+      text-align: right;
+      padding-right: 2rem;
+  } */
+  .topBarBox{
+    background-color: #414141;
+    display: flex;
+    justify-content: space-between;
+    padding:10px 15px;
+  }
+  .linkCopy{
+    font-family: IRANSans;
+    color: #fff;
+    margin-bottom: 0px;
+  }
+  .attachBtn{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    margin-right: 15px;
+  }
+  .attachBtn:hover{
+    background-color: transparent;
+    border: none;
+  }
+  .colorWhite{
+    color: #fff;
+    border-right-color: #fff;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .colorWhite p{
+    color: #fff;
+    margin-right: 15px;
+  }
+  .colorWhite button{
+    background-color: transparent !important;
+    display: flex;
+    border: none !important;
+  }
+  .fontWeightBold{
+    font-family: IRANSans-Bold;
+  margin-bottom: 0px;
+  }
+  .fontWeightLight{
+    font-family: IRANSans-Light;
+    margin-bottom: 0px;
+  }
+.secondBox{
+  padding:10px 15px;
+  background-color: #00b16a;
+}
+.assembleBox{
+  background-color: #fff ;
+}
