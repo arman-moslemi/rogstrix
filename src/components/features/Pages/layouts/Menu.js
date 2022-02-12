@@ -1,13 +1,31 @@
 import react from "react";
 import RedLogo from '../../../assets/img/redLogo.png';
 import { FaChevronDown } from 'react-icons/fa';
-import { Container ,Col, Button} from "react-bootstrap";
+import { Container ,Col, Button,Dropdown,DropdownButton} from "react-bootstrap";
 import AssembleMenu from "../../../assets/icons/assembleMenu";
 import GuideMenu from "../../../assets/icons/guideMenu";
 import MenuCase from "../../../assets/icons/menuCase";
 import MouseMenu from "../../../assets/icons/mouseMenu";
 import RedMenuLogo from "../../../assets/icons/redMenuIcon";
 import UpdateMenu from "../../../assets/icons/updateMenu";
+import ReactMegaMenu from "react-mega-menu";
+const Test1 = () => {
+   return <div className="">
+
+<div className="row" style={{marginRight:"0px",marginLeft:"0px"}}>
+ <Col md={12}>
+    <p>salam</p>
+ </Col>
+</div>
+   </div>
+
+ }
+const dataMegaMenu = [
+   {
+     label: 'لامپ', key: 1, items: <Test1 />
+   }
+ 
+ ]
 const Menu = () => {
   return (
    <Container fluid className="pad0">
@@ -33,12 +51,18 @@ const Menu = () => {
         <UpdateMenu className="marginLeft15"/>
         ارتقائ لپ تاپ
      </Button>
-     <Button className="MainMenuBtn borderRight1">
-     
-        <MouseMenu className="marginLeft15"/>
-        مشاهده ی محصولات
-        <FaChevronDown className="menuDown"/>
-     </Button>
+     <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic" className="MainMenuBtn borderRight1">
+  <MouseMenu className="marginLeft15"/>
+  مشاهده محصولات
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <ReactMegaMenu
+    data={dataMegaMenu}
+    />
+  </Dropdown.Menu>
+</Dropdown>
      <Button className="MainMenuBtn borderLeft1">
       <RedMenuLogo/>
      </Button>
