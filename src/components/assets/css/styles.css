@@ -1568,6 +1568,73 @@ background-color: #fff;
 }
 
 /****************megaMenu********/
-.menuuuu{
-  width: 200px;
+.megaMenu{
+  width: 100%;
+  background-color: #fff;
+  height: auto;
+  position:absolute;
+  z-index: 10000;
+}
+.MegaMenuFirstRow{
+  background-color: #111;
+  display: flex;
+}
+.megaMenuFirstRowBox{
+  width: 12.5%;
+  height: 170px;
+  border-right: 0.5px solid #5a5a5a;
+  border-left: 0.5px solid #5a5a5a;
+  align-content: center;
+justify-content: center;
+display: flex;
+align-items: center;
+}
+.megaMenuFirstRowBox svg:hover{
+  fill: #f6303f;
+  stroke: #f6303f;
+}
+.megaMenuFirstRowBox svg:hover path{
+  fill: #f6303f;
+  stroke: #f6303f;
+}
+.megaMenuFirstRowBox:hover{
+  background-color: #fff;
+}
+.megaMenuFirstRowBox:hover path{
+  fill: #f6303f;
+  stroke: #f6303f;
+}
+.MegaMenuContainer{
+
+background-color: #fff;
+padding: 25px;
+display: flex;
+}
+.MegaMenuCol{
+  width: 20%;
+}
+.MegaMenuCol ul{
+  margin-bottom: 25px;
+}
+.listTitle{
+  list-style: none;
+  font-family: IRANSans-Bold;
+  font-size: 15px;
+  color: #111;
+  margin-bottom: 10px;
+}
+.listTitle a{
+  color: #111;
+  text-decoration: none;
+}
+.listItems{
+  list-style: none;
+  font-family: IRANSans-Light;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.listItems a{
+  color: #111;
+  text-decoration: none;
 }
