@@ -10,33 +10,29 @@ SwiperCore.use([Navigation]);
 // if you want to use array
 
 
-const WeblogSlider = () => {
+const WeblogSlider = ({data}) => {
   return (
     <div>
          <Swiper className="weblogSlider" slidesPerView={2} spaceBetween={10} navigation={true} >
+           {
+             data?.map((item)=>{
+               return(
+
   <SwiperSlide>
-    <WeblogCardSlider/>
+    <WeblogCardSlider data={item}/>
   </SwiperSlide>
-  <SwiperSlide>
+               )
+             })
+           }
+  {/* <SwiperSlide>
     <WeblogCardSlider/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <WeblogCardSlider/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <WeblogCardSlider/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <WeblogCardSlider/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <WeblogCardSlider/>
-  </SwiperSlide>
- 
-  
- 
+  </SwiperSlide> */}
+
+
+
+
   </Swiper>
-  
+
     </div>
   );
 };

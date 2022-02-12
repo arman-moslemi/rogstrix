@@ -15,22 +15,22 @@ SwiperCore.use([Navigation]);
 // if you want to use array
 
 
-const FirstSlider = () => {
+const FirstSlider = ({data}) => {
   return (
     <div>
       <Swiper
-        
+
         navigation={true}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        
-        
+
+
         className="firstSlider"
       >
        <SwiperSlide>
         <div className="row sliderRow">
-        
+
         <Col md={6} className="firstCol">
           <p className="sliderTitle">راگ استریکس</p>
           <p className="sliderSlogan">
@@ -43,21 +43,21 @@ const FirstSlider = () => {
             پر طرفدارها
           </Button>
           <div className="blackBoxRow">
-            
+
               <div className="blackBox">
                 <img src={sliderMouse}/>
               </div>
-           
-           
+
+
             <div className="blackBox">
                 <img src={sliderCase}/>
               </div>
-            
-           
+
+
             <div className="blackBox">
                 <img src={sliderMouse}/>
               </div>
-            
+
           </div>
         </Col>
         <Col md={6} className="secondCol">
@@ -70,7 +70,7 @@ const FirstSlider = () => {
        </SwiperSlide>
        <SwiperSlide>
         <div className="row sliderRow">
-        
+
         <Col md={6} className="firstCol">
           <p className="sliderTitle">راگ استریکس</p>
           <p className="sliderSlogan">
@@ -83,21 +83,21 @@ const FirstSlider = () => {
             پر طرفدارها
           </Button>
           <div className="blackBoxRow">
-            
+
               <div className="blackBox">
                 <img src={sliderMouse}/>
               </div>
-           
-           
+
+
             <div className="blackBox">
                 <img src={sliderCase}/>
               </div>
-            
-           
+
+
             <div className="blackBox">
                 <img src={sliderMouse}/>
               </div>
-            
+
           </div>
         </Col>
         <Col md={6} className="secondCol">

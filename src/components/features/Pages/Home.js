@@ -56,9 +56,9 @@ const Home = () => {
   }, []);
   return (
     <>
-      <MainPageHeader />
+      <MainPageHeader  />
 
-    <FirstSlider/>
+    <FirstSlider data={slider}/>
     <div className="row mt-5">
       <Col md={2}>
       <CategoryList/>

@@ -60,13 +60,14 @@ input{
   display: inline-block;
 }
 .ta-right{
-  text-align: right;
+  text-align: right !important;
 }
+
 .ta-left{
-  text-align: left;
+  text-align: left !important;
 }
 .ta-center{
-  text-align: center;
+  text-align: center !important;
 }
 .logo-light{
   width: 200px;
@@ -133,8 +134,8 @@ body{
 
 /***********footer**************/
 .footerBg{
-  
- 
+
+
   padding-top:4rem;
 
   background-image: url('../../assets/img/footerImg.png');
@@ -333,7 +334,7 @@ justify-content: center;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
   border-radius: 5px;
- 
+
   padding: 25px;
   margin-bottom:30px;
 }
@@ -499,16 +500,16 @@ justify-content: center;
     position: relative;
     display: inline-block;
     width: 45px;
-    
+
   }
-  
+
   /* Hide default HTML checkbox */
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
   /* The slider */
   .slider {
     position: absolute;
@@ -522,40 +523,40 @@ justify-content: center;
     transition: .4s;
     height: 12px;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
     height: 18px;
     width: 18px;
     left: 4px;
-   
+
     background-color: #f6303f;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 5px;
     top:-3px;
   }
-  
+
   input:checked + .slider {
     background-color: #fa6a76;
   }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px #f6303f;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
 .margin-right-60{
   margin-right: 60px;
   margin-top: 20px;
@@ -582,7 +583,7 @@ justify-content: center;
    border: 1px solid #a7a7a7;
 }
 .MainMenu{
- 
+
 
 
 
@@ -590,7 +591,7 @@ justify-content: center;
 .MainMenuBtn{
   background-color: transparent !important;
   border-radius: 0px;
- 
+
   border-top: none;
   border-bottom:none;
   color: #1a1a1a;
@@ -676,7 +677,7 @@ justify-content: center;
   color: #fff !important;
 }
 .innerRedBox img{
-  
+
 }
 .innerRedBox div{
   text-align: center;
@@ -693,7 +694,7 @@ justify-content: center;
 }
 .bannerBackground{
   background-color: #f6303f;
-  
+
   border-radius: 15px;
   padding: 15px 45px;
 }
@@ -750,7 +751,7 @@ justify-content: center;
   font-family: IRANSans-Medium;
   text-align: right;
   font-size: 20px;
- 
+
 }
 .productBannerBox img{
   width: 150px;
@@ -767,7 +768,7 @@ justify-content: center;
 .bestSellingDiv{
   padding: 0px 30px;
   background-color: #fff;
-  
+
 }
 .backWhite{
   background-color: #fff;
@@ -865,7 +866,7 @@ border-bottom: 1px solid #e8e8e8;
   color: #a0a0a0;
 }
 .productAccardion .accordion__panel{
- 
+
   padding: 0px !important;
   padding-bottom: 15px !important;
 }
@@ -928,7 +929,7 @@ overflow-x: hidden;
 font-size: 13px;
 }
 .rangeInput{
-  border: 1px solid 
+  border: 1px solid
   #e8e8e8
   ;
   border-radius: 5px;
@@ -966,7 +967,7 @@ display: block;
   margin-bottom: 20px;
 }
 .productBlackBox{
-  
+
 }
 .myPadding{
   padding: 1rem;
@@ -1031,7 +1032,7 @@ color: #a0a0a0;
   border: none;
   font-family: IRANSans;
   color: #000;
- 
+
 }
 .compareBtn{
   background-color: transparent;
@@ -1345,7 +1346,7 @@ margin-bottom: 0px;
 /*********makeSystem***********/
 .selectedOption{
   border: 1px solid #f6303f !important;
- 
+
   color: #f6303f !important;
   min-width: 80px !important;
 
@@ -1403,7 +1404,7 @@ color: #ff004e;
   border-radius: 5px;
 }
 .informationSelect{
-  width: 220px;
+width: 220px;
 height: 36.8px;
 font-family: IRANSans;
 border: none;
@@ -1462,6 +1463,10 @@ border: 1px solid #ff004e;
 .w70{
   width: 70%;
 }
+
+.w40{
+  width: 40%;
+}
 .grayBoxTop{
   background-color: #d2d2d2;
   padding: 10px;
@@ -1515,4 +1520,49 @@ border: 1px solid #ff004e;
 }
 .pdbottom150{
   padding-bottom: 150px;
+}
+/* Ticket */
+.addTicketBtn{
+  background-color: #25bddc;
+  font-family: IRANSans-Bold;
+  color: #fff;
+  border: none;
+}
+.statusTicketBtn{
+  background-color: #fff;
+  font-family: IRANSans;
+  color: #ff004e;
+  border: solid 1px #ff004e;
+  width: 140px;
+  height: 80%;
+
+}
+.statusTicketBtn2{
+  background-color: #fff;
+  font-family: IRANSans;
+  color: #ffd428;
+  border: solid 1px #ffd428;
+  width: 140px;
+
+}
+.statusTicketBtn3{
+  background-color: #fff;
+  font-family: IRANSans;
+  color: #2eb913;
+  border: solid 1px #2eb913;
+  width: 140px;
+}
+
+.ticketBox{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  border-radius: 5px;
+background-color: #fff;
+  padding: 25px;
+  margin-bottom:30px;
+}
+#w5{
+  width: 15%;
+}
+#w50{
+  width: 50%;
 }

@@ -20,6 +20,7 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [special,setSpecial]=useState([])
+  const [blog,setBlog]=useState([])
 
   const mainSlider=()=>{
     const axios = require("axios");
@@ -45,6 +46,22 @@ const MainPage = () => {
         if (response.data.result == "true") {
 
           setSpecial(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios.get(apiUrl + "LastBlog")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setBlog(response.data.Data)
           console.log(11)
           console.log(response.data.Data)
 
@@ -280,7 +297,7 @@ const MainPage = () => {
                    </Col>
                </div>
                <div>
-                 <WeblogSlider/>
+                 <WeblogSlider data={blog}/>
                </div>
 
        </div>

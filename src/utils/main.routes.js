@@ -23,6 +23,7 @@ import Register from '../components/features/Pages/RecoveryPass';
 import SingleBlog from '../components/features/Pages/SingleBlog';
 import AssembleMain from '../components/features/Pages/AssembleMain';
 import EditInformation from '../components/features/Pages/EditInformation';
+import TicketList from '../components/features/Pages/TicketList';
 import Address from '../components/features/Pages/Address';
 import ChangePassword from '../components/features/Pages/ChangePassword';
 import ProductsViewed from '../components/features/Pages/ProductsViewed';
@@ -219,6 +220,13 @@ const MainRoutes = (props) => {
 						path='/SavedProducts'
 						name='محصولات ذخیره شده'
 						render={(props) => <SevedProducts/>}>
+
+						</Route>
+						<Route
+
+						path='/TicketList'
+						name='لیست تیکت ها '
+						render={(props) => <TicketList/>}>
 
 						</Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}

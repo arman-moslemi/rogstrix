@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaRegUser ,FaRegEye,FaCircle} from 'react-icons/fa';
 import blog1 from "../../../assets/img/blog1.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
+  // console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -16,22 +17,22 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const WeblogSliderCard = () => {
+const WeblogSliderCard = ({data}) => {
   return (
-   
+
       <div className="weblogSliderCard">
         <div className="row">
             <Col md={4}>
-                <img src={blog1}/>
+                <img src={apiAsset+data.Pic}/>
             </Col>
             <Col md={8} className="ta-right">
                 <p className="blogCardTitle">
-                {truncate("سلامسلامسلامسلامسلامسلامسلامسلامسلام",35)}
+                {truncate(data.Title,35)}
                 </p>
                 <div className="d-flex justify-content-start align-items-center">
                     <div className="blogCardDetail d-flex align-items-center mr10">
                     <FaRegUser color={'#b2b2b2'}/>
-                    <p>حسین رهنما</p>
+                    <p>{data.Username}</p>
                     </div>
                     <div className="mr10">
                         <FaCircle color={'#b2b2b2'} size={5}/>
@@ -44,19 +45,19 @@ const WeblogSliderCard = () => {
                         <FaCircle color={'#b2b2b2'} size={5}/>
                     </div>
                     <div className="blogCardDetail d-flex align-items-center mr10">
-                    
-                    <p>14 مرداد 1400</p>
+
+                    <p>{data.Date}</p>
                     </div>
                 </div>
                 <p className="blogDescription">
-               {truncate(" لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.",250)} 
-                
+               {truncate(data.Text,250)}
+
                </p>
             </Col>
         </div>
 
       </div>
-   
+
   );
-}; 
+};
 export default WeblogSliderCard;
