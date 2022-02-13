@@ -12,6 +12,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 const Home = () => {
   const [slider,setSlider]=useState([])
   const [special,setSpecial]=useState([])
+  const [cat,setCat]=useState()
 
   const mainSlider=()=>{
     const axios = require("axios");
@@ -32,7 +33,7 @@ const Home = () => {
       .catch(function (error) {
         console.log(error);
       });
-      axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
+      axios.post(apiUrl + "LastRogMainProduct ",{MainGroupID:1})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -50,6 +51,26 @@ const Home = () => {
       });
 
   }
+  const setcategory=()=>{
+    const axios = require("axios");
+
+    axios.post(apiUrl + "LastRogMainProduct ",{MainGroupID:cat})
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+        setSpecial(response.data.Data)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   useEffect(() => {
     mainSlider();
 // alert(val)
@@ -61,11 +82,11 @@ const Home = () => {
     <FirstSlider data={slider}/>
     <div className="row mt-5">
       <Col md={2}>
-      <CategoryList/>
+      <CategoryList cat={setCat}/>
       </Col>
       <Col md={10}>
       <div className="bestsliderBox bestSellerContainerCol2">
-          <BestSellerSlider/>
+          <BestSellerSlider data={special}/>
         </div>
       </Col>
     </div>
@@ -82,7 +103,7 @@ const Home = () => {
         </Col>
         <Col md={11} className="">
         <div className="bestsliderBox bestSellerContainerCol2">
-          <BestSellerSlider/>
+          <BestSellerSlider data={special}/>
         </div>
         </Col>
         </div>

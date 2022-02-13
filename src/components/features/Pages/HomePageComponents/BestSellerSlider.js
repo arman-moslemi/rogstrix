@@ -10,22 +10,21 @@ SwiperCore.use([Navigation]);
 // if you want to use array
 
 
-const BestSellerSlider = () => {
+const BestSellerSlider = ({data}) => {
   return (
     <div>
          <Swiper slidesPerView={3} spaceBetween={30} navigation={true} className="mySwiper">
+           {
+             data?.map((item)=>{
+               return(
+
   <SwiperSlide>
-    <SliderCard/>
+    <SliderCard data={item}/>
   </SwiperSlide>
-  <SwiperSlide>
-  <SliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-  <SliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-  <SliderCard/>
-  </SwiperSlide>
+               )
+             })
+           }
+
   <div className="row mar-top-22">
     <Col md={4}>
 
@@ -42,7 +41,7 @@ const BestSellerSlider = () => {
     </Col>
   </div>
   </Swiper>
-  
+
     </div>
   );
 };

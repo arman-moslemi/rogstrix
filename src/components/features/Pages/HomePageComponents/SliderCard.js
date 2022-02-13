@@ -2,19 +2,19 @@ import react from "react";
 import "./Styles/sliderCard.css"
 import cardImg from "../../../assets/img/cardImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
-const SliderCard = () => {
+const SliderCard = ({data}) => {
   return (
-   
+
       <div className="SliderCard">
        <div className="sliderCardDiv">
        <img src={cardImg} className="sliderCardImg"/>
        </div>
        <div className="cardTitleW100">
-          <p>مانیتور ۴۰ اینچ اولد ویژه گیمینگ</p>
+          <p>{data.Title}</p>
        </div>
        <div className="row pad-right-1 pad-left-1 mar-top-2">
          <Col md={6} className="ta-right">
-        <p className="cardDes">
+        {/* <p className="cardDes">
           نوع اتصال : بی سیم
         </p>
         <p className="cardDes">
@@ -22,19 +22,17 @@ const SliderCard = () => {
         </p>
         <p className="cardDes">
           مناسب برای : بازی
-        </p>
+        </p> */}
          </Col>
          <Col md={6} className="ta-left">
           <p className="strokeOutPrice">
-            60.000.000
-          </p>
+{data.Cost}          </p>
           <p className="cardPrice">
-            56.000.000
-          </p>
+{data.SpecialCost}          </p>
          </Col>
        </div>
       </div>
-   
+
   );
-}; 
+};
 export default SliderCard;
