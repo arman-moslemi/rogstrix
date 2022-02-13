@@ -16,6 +16,7 @@ import MegaMenuMobile from "../../../assets/icons/MegaMenuMobile";
 import MegaMenuPrinter from "../../../assets/icons/MegaMenuPrinter";
 import MegaMenuServer from "../../../assets/icons/MegaMenuServer";
 import MegaMenuTablet from "../../../assets/icons/MegaMenuTablet";
+import { Link, useHistory } from "react-router-dom";
 
 
 const Menu = () => {
@@ -23,28 +24,30 @@ const Menu = () => {
 const onClick = () =>{
    setShowMega(!showMega);
 };
+const history = useHistory();
+
   return (
    <Container fluid className="pad0">
    <div className="desktopMenu">
    <div className="mainBack">
    <div className="MainMenu d-flex">
      <Button className="MainMenuBtn borderRight1">
-     
+
         <MenuCase className="marginLeft15 menuResponsiveNone"/>
         سیستم‌های تکمیل شده
      </Button>
      <Button className="MainMenuBtn borderRight1">
-     
+
       <AssembleMenu className="marginLeft15 menuResponsiveNone"/>
          ساخت سیستم
      </Button>
      <Button className="MainMenuBtn borderRight1">
-     
+
          <GuideMenu className="marginLeft15 menuResponsiveNone"/>
          راهنمای ساخت سیستم
      </Button>
      <Button className="MainMenuBtn borderRight1">
-     
+
         <UpdateMenu className="marginLeft15 menuResponsiveNone"/>
         ارتقائ لپ تاپ
      </Button>
@@ -54,10 +57,10 @@ const onClick = () =>{
   <FaChevronDown/>
   </Button>
 
-     <Button className="MainMenuBtn borderLeft1">
+     <Button onClick={()=>history.push("/Home")} className="MainMenuBtn borderLeft1">
       <RedMenuLogo/>
      </Button>
-      
+
      </div>
    </div>
    {showMega ?<div className="megaMenu">
@@ -120,7 +123,7 @@ const onClick = () =>{
                      مانیتور بنکیو
                   </a>
                </li>
-             
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -138,9 +141,9 @@ const onClick = () =>{
                     آی ام دی
                   </a>
                </li>
-           
-            
-             
+
+
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -163,7 +166,7 @@ const onClick = () =>{
                      مادربورد گیگابایت
                   </a>
                </li>
-        
+
             </ul>
          </div>
          <div className="MegaMenuCol">
@@ -198,7 +201,7 @@ const onClick = () =>{
                      مانیتور بنکیو
                   </a>
                </li>
-             
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -216,9 +219,9 @@ const onClick = () =>{
                     آی ام دی
                   </a>
                </li>
-           
-            
-             
+
+
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -241,7 +244,7 @@ const onClick = () =>{
                      مادربورد گیگابایت
                   </a>
                </li>
-        
+
             </ul>
          </div>
          <div className="MegaMenuCol">
@@ -276,7 +279,7 @@ const onClick = () =>{
                      مانیتور بنکیو
                   </a>
                </li>
-             
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -294,9 +297,9 @@ const onClick = () =>{
                     آی ام دی
                   </a>
                </li>
-           
-            
-             
+
+
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -319,7 +322,7 @@ const onClick = () =>{
                      مادربورد گیگابایت
                   </a>
                </li>
-        
+
             </ul>
          </div>
          <div className="MegaMenuCol">
@@ -354,7 +357,7 @@ const onClick = () =>{
                      مانیتور بنکیو
                   </a>
                </li>
-             
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -372,9 +375,9 @@ const onClick = () =>{
                     آی ام دی
                   </a>
                </li>
-           
-            
-             
+
+
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -397,7 +400,7 @@ const onClick = () =>{
                      مادربورد گیگابایت
                   </a>
                </li>
-        
+
             </ul>
          </div>
          <div className="MegaMenuCol">
@@ -432,7 +435,7 @@ const onClick = () =>{
                      مانیتور بنکیو
                   </a>
                </li>
-             
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -450,9 +453,9 @@ const onClick = () =>{
                     آی ام دی
                   </a>
                </li>
-           
-            
-             
+
+
+
             </ul>
             <ul>
                <li className="listTitle">
@@ -475,7 +478,7 @@ const onClick = () =>{
                      مادربورد گیگابایت
                   </a>
                </li>
-        
+
             </ul>
          </div>
       </div>
@@ -497,25 +500,25 @@ const onClick = () =>{
          <button>
          <GuideMenu/>
          </button>
-         
+
       </div>
       <div className="responsiveMenuBox">
          <button>
          <UpdateMenu/>
          </button>
-         
+
       </div>
       <div className="responsiveMenuBox">
          <button>
          <RedMenuLogo/>
          </button>
-         
+
       </div>
    </div>
    </div>
    </Container>
-     
-   
+
+
   );
-}; 
+};
 export default Menu;

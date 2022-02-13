@@ -127,7 +127,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/SingleProduct'
+					path='/SingleProduct/:id'
 					name='هر محصول'
 					render={(props) => <SingleProduct/>}>
 

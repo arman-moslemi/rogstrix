@@ -9,33 +9,110 @@ import SimilarSlider from "./SingleProductComponents/SimilarSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import SingleProductRedBox from "./SingleProductComponents/SingleProductRedBox";
 import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList} from 'react-icons/fa';
-const images = [
-    {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
-    {
-        original: 'https://picsum.photos/id/1019/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1019/250/150/',
-      }
-  ];
-const SingleProduct = () => {
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
+const SingleProduct = () => {
+  const params = useParams().id;
+  const history = useHistory();
+  const [product,setProduct]=useState([])
+  const [property,setProperty]=useState([])
+  const [com,setCom]=useState([])
+  const mainSlider=()=>{
+    const axios = require("axios");
+
+      axios
+          .post(apiUrl + "SingleProduct",{
+            ProductID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProduct(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios
+          .post(apiUrl + "SingleProperty",{
+            ProductID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProperty(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .post(apiUrl + "SingleProductComment ",{
+            ProductID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setCom(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  }
+
+const images = [
+  {
+    original: product.Pic1,
+    thumbnail: product.Pic1,
+  },
+  {
+    original: product.Pic2,
+    thumbnail: product.Pic2,
+  },
+  {
+    original: product.Pic3,
+    thumbnail: product.Pic3,
+  },
+  {
+      original: product.Pic4,
+      thumbnail: product.Pic4,
+    }
+];
+
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <div className="SingleProduct">
-        <Header/> 
-      <Menu/> 
-    
+        <Header/>
+      <Menu/>
 
-   
+
+
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
@@ -66,8 +143,7 @@ const SingleProduct = () => {
         </Col>
         <Col md={6}>
         <p className="boxTitle2 BoldFont">
-        Razer Gaming Computer Mouse
-                </p>
+{product.ProductName}                </p>
                 <hr className="grayHr"/>
                 <p className="boxTitle2 mediumFont">
                     رنگ : مشکی
@@ -85,17 +161,23 @@ const SingleProduct = () => {
                     </div>
                 </div>
                 <p className="boxTitle2 NormalFont">ویژگی‌های محصول</p>
+{
+  property.map((item)=>{
+    return(
 
                 <div className="d-flex align-items-center mb-2">
                 <FaCaretLeft/>
                 <p className="detailTitle">
-                    نوع اتصال :
+                   {item.MainTitle}:
                 </p>
                 <p className="detail2Title">
-                    بی سیم
+                    {item.Title}
                 </p>
                 </div>
-                <div className="d-flex align-items-center mb-2">
+    )
+  })
+}
+                {/* <div className="d-flex align-items-center mb-2">
                 <FaCaretLeft/>
                 <p className="detailTitle">
                     نوع :
@@ -103,36 +185,10 @@ const SingleProduct = () => {
                 <p className="detail2Title">
                     آرگونومیک
                 </p>
-                </div>
-                <div className="d-flex align-items-center mb-2">
-                <FaCaretLeft/>
-                <p className="detailTitle">
-                    مناسب برای :
-                </p>
-                <p className="detail2Title">
-                    بازی
-                </p>
-                </div>
-                <div className="d-flex align-items-center mb-2">
-                <FaCaretLeft/>
-                <p className="detailTitle">
-                    رابط :
-                </p>
-                <p className="detail2Title">
-                   بلوتوث
-                </p>
-                </div>
-                <div className="d-flex align-items-center mb-2">
-                <FaCaretLeft/>
-                <p className="detailTitle">
-                    باتری :
-                </p>
-                <p className="detail2Title">
-                    دارد
-                </p>
-                </div>
+                </div> */}
+
                 <Button className="mavaredBishtar mt-3">
-                
+
                 موارد بیشتر
                 <FaPlus className="ml-2"/>
                 </Button>
@@ -160,14 +216,14 @@ const SingleProduct = () => {
                     مشخصات فروش
                 </p>
                 <div className="d-flex align-items-center justify-content-between">
-               
+
                   <div className="starRate">
                   <FaRegStar className="mr-1 ml-1" color="#111111"/>
                     <FaRegStar className="mr-1 ml-1" color="#111111"/>
                     <FaStar className="mr-1 ml-1" color="#f6303f"/>
                     <FaStar className="mr-1 ml-1" color="#f6303f"/>
                     <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    
+
                   </div>
                   <div>
                     <p className="reviewP" id="colorGray">
@@ -194,7 +250,7 @@ const SingleProduct = () => {
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                  از این کالا ۴ عدد در انبار موجود است      
+                  از این کالا ۴ عدد در انبار موجود است
                                 </p>
                   </div>
               </div>
@@ -212,29 +268,29 @@ const SingleProduct = () => {
                   <div  className="mr-3">
                   <p className="reviewP" id="colorGray">
                   قیمت محصول                   </p>
-                 
+
                   </div>
                   <div>
                       <div className="d-flex">
                           <div>
                           <p className="strokeOutPrice">
-                            ۵۰،۰۰۰،۰۰۰
+                           {product.Cost}
                             </p>
                           </div>
                           <div>
                               <div className="redBack ml-2">
-                                  <p>10%</p>
+                                  <p>{((parseInt(product.Cost)-parseInt(product.SpecialCost))/parseInt(product.Cost))*100}%</p>
                               </div>
                           </div>
                       </div>
                   <p className="specialPrice">
-                 ۵۶،۰۰۰،۰۰۰
+                  {product.SpecialCost}
                   </p>
 
 
                   </div>
               </div>
-              <div className="d-flex align-items-center mt-5">
+              {/* <div className="d-flex align-items-center mt-5">
                   <div  className="mr-3">
                       <FaEye/>
                   </div>
@@ -242,7 +298,7 @@ const SingleProduct = () => {
                   <p className="reviewP" id="colorGray">
                 10 نفر در حال مشاهده این محصول هستند                </p>
                   </div>
-              </div>
+              </div> */}
               <Button className="addToCart mt-2">
                   افزودن به سبد خرید
               </Button>
@@ -252,12 +308,12 @@ const SingleProduct = () => {
         </div>
         <div className="row mt-4 mb-3">
           <Col md={3}>
-            <SingleProductRedBox/>
+            <SingleProductRedBox data={product}/>
           </Col>
           <Col md={9}>
             <div className="whiteBox3">
             <p className="boxTitle2 BoldFont">
-            توضیحات درباره Razer Gaming Computer Mouse 
+            توضیحات درباره Razer Gaming Computer Mouse
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
@@ -281,11 +337,11 @@ const SingleProduct = () => {
               <SimilarSlider/>
             </div>
             <div className="whiteBox3 mt-3">
-         <CommentBox/>
+         <CommentBox data={com}/>
             </div>
           </Col>
         </div>
-   
+
       </Container>
       <RedBox/>
       <Footer />
