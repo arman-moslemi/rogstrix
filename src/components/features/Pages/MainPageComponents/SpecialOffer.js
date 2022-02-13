@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import redBanner from "../../../assets/img/redBanner.png";
 import blackBanner from "../../../assets/img/blackBanner.png";
 import "./Styles/specialOffer.css";
@@ -10,6 +10,59 @@ import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 
 
 const SpecialOffer = ({data}) => {
+    const [special,setSpecial]=useState([])
+
+    const mainProduct=(ss)=>{
+        const axios = require("axios");
+
+
+          axios.post(apiUrl + "LastMainProduct",{MainGroupID:ss})
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+              setSpecial(response.data.Data)
+              console.log(11)
+              console.log(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+      }
+      const mainSlider=()=>{
+        const axios = require("axios");
+
+
+          axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+              setSpecial(response.data.Data)
+              console.log(11)
+              console.log(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+      }
+
+      useEffect(() => {
+        mainSlider();
+    // alert(val)
+      }, []);
   return (
     <div className="MainPageSpecialOffer">
         <div className="row margin25">
@@ -27,52 +80,38 @@ const SpecialOffer = ({data}) => {
         <div className="row">
         <Col md={2} className="pdTop15">
             <ul className="specialOfferUl">
-            <li>
-                    <a href="#">
+            <li onClick={()=>mainProduct(1)}>
+                    {/* <a href="#"> */}
                         کامپیوتر
-                    </a>
+                    {/* </a> */}
                 </li>
-                <li>
-                    <a href="#">
+                <li onClick={()=>mainProduct(2)}>
                         لپ تاپ
-                    </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li onClick={()=>mainProduct(3)}>
                         تبلت
-                    </a>
                 </li>
 
-                <li>
-                    <a href="#">
+                <li onClick={()=>mainProduct(4)}>
                        موبایل و گجت
-                    </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li onClick={()=>mainProduct(5)}>
                         شبکه و سرور
-                    </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li onClick={()=>mainProduct(6)}>
                        کالای اداری
-                    </a>
                 </li>
                 <li>
-                    <a href="#">
                         تصویربرداری
-                    </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li onClick={()=>mainProduct(7)}>
                         کنسول بازی
-                    </a>
                 </li>
             </ul>
             </Col>
             <Col md={8}>
 
-                <SpecialOfferSlider/>
+                <SpecialOfferSlider data={special}/>
             </Col>
             <Col md={2} className="pdTop15">
                 <div className="redBanner">

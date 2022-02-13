@@ -42,7 +42,7 @@ const MainRoutes = (props) => {
 				/>
 					<Route
 
-					path='/EachCategory'
+					path='/EachCategory/:id'
 					name='هر دسته بندی'
 					render={(props) => <EachCategory/>}>
 

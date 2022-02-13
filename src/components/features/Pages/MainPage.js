@@ -19,7 +19,6 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 const MainPage = () => {
   const [slider,setSlider]=useState([])
-  const [special,setSpecial]=useState([])
   const [blog,setBlog]=useState([])
 
   const mainSlider=()=>{
@@ -41,22 +40,7 @@ const MainPage = () => {
       .catch(function (error) {
         console.log(error);
       });
-      axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
-      .then(function (response) {
-        if (response.data.result == "true") {
 
-          setSpecial(response.data.Data)
-          console.log(11)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
       axios.get(apiUrl + "LastBlog")
       .then(function (response) {
         if (response.data.result == "true") {
@@ -75,6 +59,7 @@ const MainPage = () => {
       });
 
   }
+
   useEffect(() => {
     mainSlider();
 // alert(val)

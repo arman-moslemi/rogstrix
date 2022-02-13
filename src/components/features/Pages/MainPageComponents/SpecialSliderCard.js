@@ -2,9 +2,9 @@ import react from "react";
 import "./Styles/specialOfferSlider.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -14,13 +14,13 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const SpecialSliderCard = () => {
+const SpecialSliderCard = ({data}) => {
   return (
-   
+
       <div className="SpecialSliderCard">
   <div className="specialSliderCardBox">
-  <img src={specialSliderImg}/>
-      <ul className="colorList">
+  <img src={apiAsset+data.Pic1}/>
+      {/* <ul className="colorList">
         <li>
           <div id="color1"></div>
         </li>
@@ -30,10 +30,10 @@ const SpecialSliderCard = () => {
         <li>
           <div id="color3"></div>
         </li>
-      </ul>
+      </ul> */}
   </div>
   <p className="productName">
-    {truncate("هندزفری شیائومی مدل m123",25)}
+    {truncate(data.ProductName+" "+data.WarrantyName,30)}
   </p>
   <hr className="redHr"/>
   <div className="row">
@@ -44,15 +44,14 @@ const SpecialSliderCard = () => {
     </Col>
     <Col md={8} className="ta-left pd0">
       <p className="specialPrice">
-      ۵۶،۰۰۰،۰۰۰
-      </p>
+{data.SpecialCost}      </p>
       <p className="strokeOutPrice">
-      ۵۰،۰۰۰،۰۰۰
+      {data.Cost}
       </p>
     </Col>
   </div>
       </div>
-   
+
   );
-}; 
+};
 export default SpecialSliderCard;

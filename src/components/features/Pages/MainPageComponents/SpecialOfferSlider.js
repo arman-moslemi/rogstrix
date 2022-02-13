@@ -10,28 +10,21 @@ SwiperCore.use([Navigation]);
 // if you want to use array
 
 
-const SpecialOfferSlider = () => {
+const SpecialOfferSlider = ({data}) => {
   return (
     <div>
          <Swiper className="specialOfferSlider" slidesPerView={3} spaceBetween={30} navigation={true} >
-  <SwiperSlide>
-    <SpecialSliderCard/>
+           {
+             data.map((item)=>{
+               return(
+
+  <SwiperSlide  >
+    <SpecialSliderCard data={item}/>
   </SwiperSlide>
-  <SwiperSlide>
-    <SpecialSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <SpecialSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <SpecialSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <SpecialSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <SpecialSliderCard/>
-  </SwiperSlide>
+               )
+             })
+           }
+ 
  
   
  
