@@ -2,19 +2,224 @@
     .logo-light{
         width: 150px !important;
     }
+    .backgroundFooter{
+        padding-right: 2rem;
+        padding-left: 2rem;
+
+    }
 }
 @media screen and (max-width:460px){
     .logo-light{
         width: 120px !important;
+    }
+    .innerRedBox{
+        width: 100% !important;
+    }
+    .redBox{
+        padding: 10px !important;
+    }
+    .innerRedBox p{
+        font-size: 8px !important;
+    }
+    .backgroundFooter{
+        padding-right: 0rem !important;
+        padding-left: 0rem !important;
+    }
+
+    .footerLightTitle{
+        font-size: 10px !important;
+    }
+    .footerLightUl li a{
+        font-size: 8px !important;
+    }
+    .errorPageText{
+        font-size: 20px;
+    }
+    .errorBtn{
+        font-size: 15px !important;
     }
 }
 @media screen and (max-width:768px){
     .loginBox{
         width: 500px !important;
     }
+    .MainMenuBtn{
+        font-size: 10px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+    .hedearRedLogo{
+        width: 100px;
+    }
+    .headerBtn{
+        width: 115px;
+font-size: 13px;
+    }
 }
 @media screen and (max-width:590px){
     .loginBox{
         width: 90% !important;
+    }
+    .errorImg{
+        width: 100% !important;
+    }
+    .errorPage{
+        padding: 50px !important;
+    }
+    .commingsoonText{
+        font-size: 25px !important;
+    }
+}
+@media screen and (max-width:1000px){
+    .errorImg{
+        width: 60%;
+    }
+    .redBox{
+        padding: 40px;
+    }
+    .innerRedBox p{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width:1308px){
+    .MainMenuBtn{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .UserPanelContainer{
+        padding: 3% 2%;
+    }
+}
+@media screen and (max-width:1100px){
+    .menuResponsiveNone{
+        display: none;
+    }
+    .fontWeightBold{
+        font-size: 13px;
+    }
+    .fontWeightNormal{
+        font-size: 13px;
+    }
+    .rightMenuBox1{
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .BCategoryResNone{
+        display: none !important;
+    }
+    .resWidth100{
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+    .BCategoryDesNone{
+        display:block !important;
+    }
+}
+@media screen and (max-width:880px){
+    .MainMenuBtn{
+        font-size: 13px;
+    }
+    .megaMenuFirstRowBox{
+        height: 100px;
+    }
+    .listItems{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width:630px){
+    .Header{
+        display: none;
+    }
+    .responsiveHeader{
+        display:block !important;
+    }
+    .responsiveHeader{
+        background-color: #fff;
+       
+    }
+    .responsiveHeaderLogo{
+        width: 76%;
+        text-align: center;
+    }
+    .responsiveHeaderLogo img{
+        width: 50%;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+    }
+    .responsiveLanguage{
+        width: 12%;
+    }
+    .borderBottomResponsive{
+        border-bottom: 1px solid #d2d2d2;
+        padding: 15px 15px;
+    }
+    .pdR0{
+        padding-right: 0px !important;
+    }
+    .responsiveInput{
+        background-color: #f2f2f2 !important;
+        border: none !important;
+    }
+    .responsiveInput input{
+        background-color: #f2f2f2 !important;
+        border: none !important;
+    }
+    .switch{
+        width: 70px !important;
+        margin-top:20px;
+
+    }
+    .pdTB5{
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+    .pdTB10{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        border-bottom: 1px solid #d2d2d2;
+    }
+.desktopMenu{
+    display:none !important;
+}
+.responsiveMenuBox button{
+    background-color: transparent !important;
+    border: none !important;
+}
+}
+
+
+@media screen and (max-width:760px){
+.Logores-block{
+    display: block !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+.footerResNone{
+    display: none !important;
+}
+.footerDesNone{
+    display: block !important;
+}
+.socialRow{
+    width: 80% !important;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px !important;
+}
+.addressAdd{
+    font-size: 10px;
+}
+.glassBtn{
+    font-size: 13px;
+}
+}
+@media screen and (max-width:410px){
+    .errorPageText{
+        font-size: 15px;
+    }
+    .errorPage{
+        padding: 30px !important;
     }
 }

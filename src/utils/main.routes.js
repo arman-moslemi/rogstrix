@@ -30,13 +30,14 @@ import ProductsViewed from '../components/features/Pages/ProductsViewed';
 import UserOrder from '../components/features/Pages/UserOrder';
 import UserComments from '../components/features/Pages/UserComments';
 import SevedProducts from '../components/features/Pages/SevedProducts';
+import CommingSoon from '../components/features/Pages/ComingSoon';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route
 					exact
-					path='/'
+					path='/MainPage'
 					name='صفحه اصلی'
 					render={(props) => <MainPage {...props} />}
 				/>
@@ -229,6 +230,10 @@ const MainRoutes = (props) => {
 						render={(props) => <TicketList/>}>
 
 						</Route>
+						<Route
+						path='/'
+						name='در حال به روز رسانی'
+						render={(props) => <CommingSoon/>}></Route>
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
 			</Switch>
 		</BrowserRouter>

@@ -5,7 +5,7 @@ import { FaPlus } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RightMenu from "./UserPanelComponents/RightMenu";
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelAddress from "../../assets/icons/panelAddress";
@@ -21,10 +21,10 @@ const Address = () => {
  
     <Container className="UserPanelContainer" fluid>
      <div className="row">
-         <Col md={3}>
+         <Col md={3} xs={12}>
              <RightMenu/>
          </Col>
-         <Col md={9}>
+         <Col md={9} xs={12}>
              <div className="panelWhiteBox">
              <div className="rightMenuBox1">
              <div className="d-flex align-items-center justify-content-between">
@@ -75,7 +75,7 @@ const Address = () => {
     
     </Container>
     <RedBox/>
-    <Footer />
+    <FooterMain/>
   </div>
   );
 };

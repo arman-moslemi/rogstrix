@@ -1,4 +1,4 @@
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Header from "./layouts/Header";
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
@@ -22,7 +22,7 @@ const ErrorPage = () => {
        </Button>
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain/>
     </>
   );
 };
