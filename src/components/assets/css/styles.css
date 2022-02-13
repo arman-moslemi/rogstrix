@@ -1638,3 +1638,68 @@ display: flex;
   color: #111;
   text-decoration: none;
 }
+/*******FooterMain******/
+.footerLightTitle{
+  font-family: IRANSans-Bold;
+  color: #fff;
+  font-size: 16px;
+}
+.footerLightUl li{
+  list-style: none;
+}
+.footerLightUl li a{
+  text-decoration: none;
+  font-family: IRANSans;
+  color: #fff;
+  font-size: 14px;
+  line-height: 3.08;
+}
+.footerLightUl li a:hover{
+  color: #f6303f !important;
+}
+.backRed{
+  background-color: #f6303f !important;
+}
+.enamadBox{
+  height: 143px;
+  background-color: #fff;
+  
+  padding: 5px;
+  width: 100%;
+}
+.enamadBox img{
+  width: 100%;
+}
+.w230{
+  width: 230px;
+}
+.pd22{
+  padding-right: 2px;
+  padding-left: 2px;
+}
+.responsiveHeader{
+  display: none;
+}
+.d-none{
+  display: none;
+}
+.footerDesNone{
+  display: none;
+}
+.redDiv{
+  border-radius: 10px;
+  background-color: rgba(246, 48, 63, 0.65);
+  bottom: 5%;
+  right: 3%;
+  position: absolute;
+  padding: 10px 15px;
+}
+.redDiv p{
+  font-family: IRANSans-Bold;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+.BCategoryDesNone{
+  display: none;
+}

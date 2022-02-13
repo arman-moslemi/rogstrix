@@ -3,13 +3,20 @@ import React from "react";
 import "./Styles/blog.css";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaCaretLeft,FaStar,FaRegStar} from 'react-icons/fa';
-
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+  } from 'react-accessible-accordion';
 // if you want to use array
 
 
 const Category = () => {
   return (
-  <div className="whiteCategory">
+      <>
+  <div className="whiteCategory BCategoryResNone">
   <div className="categoryTitle">
       <p>
           دسته بندی
@@ -84,6 +91,30 @@ const Category = () => {
       </ul>
   </div>
   </div>
+  <div className="BCategoryDesNone">
+  <Accordion allowZeroExpanded ={true}>
+            <AccordionItem className="productAccardion">
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                        برندها
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+               <div className="pad2">
+            
+     
+               </div>
+      <div className="pad2">
+      <div className="scrollBar">
+        
+      </div>
+      </div>
+                </AccordionItemPanel>
+            </AccordionItem>
+         
+        </Accordion>
+  </div>
+  </>
   );
 };
 

@@ -25,30 +25,31 @@ const onClick = () =>{
 };
   return (
    <Container fluid className="pad0">
+   <div className="desktopMenu">
    <div className="mainBack">
    <div className="MainMenu d-flex">
      <Button className="MainMenuBtn borderRight1">
      
-        <MenuCase className="marginLeft15"/>
+        <MenuCase className="marginLeft15 menuResponsiveNone"/>
         سیستم‌های تکمیل شده
      </Button>
      <Button className="MainMenuBtn borderRight1">
      
-      <AssembleMenu className="marginLeft15"/>
+      <AssembleMenu className="marginLeft15 menuResponsiveNone"/>
          ساخت سیستم
      </Button>
      <Button className="MainMenuBtn borderRight1">
      
-         <GuideMenu className="marginLeft15"/>
+         <GuideMenu className="marginLeft15 menuResponsiveNone"/>
          راهنمای ساخت سیستم
      </Button>
      <Button className="MainMenuBtn borderRight1">
      
-        <UpdateMenu className="marginLeft15"/>
+        <UpdateMenu className="marginLeft15 menuResponsiveNone"/>
         ارتقائ لپ تاپ
      </Button>
      <Button className="MainMenuBtn borderRight1" onClick={onClick}>
-  <MouseMenu className="marginLeft15"/>
+  <MouseMenu className="marginLeft15 menuResponsiveNone"/>
   مشاهده محصولات
   <FaChevronDown/>
   </Button>
@@ -479,6 +480,39 @@ const onClick = () =>{
          </div>
       </div>
    </div>:null}
+   </div>
+   <div className="responsiveHeader">
+   <div className="d-flex align-items-center justify-content-around pdTB10">
+      <div className="responsiveMenuBox">
+         <button>
+         <MenuCase/>
+         </button>
+      </div>
+      <div className="responsiveMenuBox">
+         <button>
+         <AssembleMenu/>
+         </button>
+      </div>
+      <div className="responsiveMenuBox">
+         <button>
+         <GuideMenu/>
+         </button>
+         
+      </div>
+      <div className="responsiveMenuBox">
+         <button>
+         <UpdateMenu/>
+         </button>
+         
+      </div>
+      <div className="responsiveMenuBox">
+         <button>
+         <RedMenuLogo/>
+         </button>
+         
+      </div>
+   </div>
+   </div>
    </Container>
      
    
