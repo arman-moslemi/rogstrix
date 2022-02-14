@@ -18,6 +18,7 @@ import Checkbox from '@mui/material/Checkbox';
 import PageTitle from "../../assets/img/pageTitle.png"
 import MadeSystem from "../../assets/img/madeSystem.png";
 import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
+import PaginationCustom from "./layouts/Pagination";
 const SelectPowerSupply = () => {
 
   return (
@@ -1425,12 +1426,15 @@ const SelectPowerSupply = () => {
                 </div>
           </div>
           </div>
+          <div className="paginationBox ta-center">
+          <PaginationCustom/>
+          </div>
           </div>
         
           </Col>
          
         </div>
-   
+        
       </Container>
       <RedBox/>
       <Footer />

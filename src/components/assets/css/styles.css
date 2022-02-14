@@ -1703,3 +1703,20 @@ display: flex;
 .BCategoryDesNone{
   display: none;
 }
+.paginationBox{
+  width: 60%;
+margin-right: auto;
+margin-left: auto;
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root{
+  font-family: IRANSans !important;
+  margin: 0px 10px !important;
+}
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #f6303f !important;
+  color:#fff !important;
+  border: none !important;
+}

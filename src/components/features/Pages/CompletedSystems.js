@@ -16,7 +16,7 @@ import { FaTimes , FaSearch ,FaChevronLeft } from 'react-icons/fa';
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
 import PageTitle from "../../assets/img/pageTitle.png"
-
+import PaginationCustom from "./layouts/Pagination";
 import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
 
 
@@ -860,7 +860,9 @@ const CompletedSystems = () => {
                 <CompletedCards viewOverlay={true}/>
                 </Col>
               </div>
-           
+              <div className="paginationBox ta-center">
+          <PaginationCustom/>
+          </div>
           </div>
       
           </Col>
