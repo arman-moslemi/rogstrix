@@ -4,23 +4,35 @@ import "./Styles/blog.css";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaRegUser,FaRegEye} from 'react-icons/fa';
 import Blog3 from "../../../assets/img/Blog3.png";
+import { Link, useHistory } from "react-router-dom";
+
 // if you want to use array
 
+export const truncate = (str, len) => {
+    if (str?.length > len && str?.length > 0) {
+      let new_str = str + " ";
+      new_str = str?.substr(0, len);
+      new_str = str?.substr(0, new_str.lastIndexOf(" "));
+      new_str = new_str.length > 0 ? new_str : str?.substr(0, len);
+      return new_str + "...";
+    }
+    return str;
+  };
+const BlogBox = ({data}) => {
+    const history = useHistory();
 
-const BlogBox = () => {
   return (
   <div className="blogBox mb-3">
       <div className="blackRow">
           <div>
               <p className="blogBoxTitle">
-              معرفی چهار برند برتر لپ تاپ ...
-              </p>
+{data.Title}              </p>
           </div>
           <div className="d-flex align-items-center">
             <div className="d-flex align-items-center borderRight1">
                 <FaRegUser color={'#a0a0a0'}/>
                 <p className="userName">
-                    حسین رهنما
+                   {data.Username}
                 </p>
             </div>
             <div className="d-flex align-items-center borderRight1">
@@ -30,10 +42,9 @@ const BlogBox = () => {
                 </p>
             </div>
             <div className="d-flex align-items-center borderRight1">
-                
+
                 <p className="userName">
-                    15 مرداد 1400
-                </p>
+{data.Date}                </p>
             </div>
           </div>
           </div>
@@ -43,14 +54,13 @@ const BlogBox = () => {
               </Col>
               <Col md={9}>
                   <p className="blogDes">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، ری 
-                  </p>
+{ truncate(data?.Description,200)}                  </p>
               </Col>
           </div>
           <hr className="grayHr"/>
           <div className="row pdrightleft2">
               <Col md={12} className="ta-left">
-                  <Button className="addComment  mb-3">
+                  <Button onClick={()=>history.push("/SingleBlog/"+data.BlogID)} className="addComment  mb-3">
                       ادامه مطلب
                   </Button>
               </Col>

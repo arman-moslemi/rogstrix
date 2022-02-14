@@ -30,7 +30,7 @@ const CommentBox = ({data}) => {
               </Col>
             </div>
             {
-              data.map((item)=>{
+              data?.map((item)=>{
 return(
 
 <div className="mt-3">

@@ -143,7 +143,7 @@ const images = [
         </Col>
         <Col md={6}>
         <p className="boxTitle2 BoldFont">
-{product.ProductName}                </p>
+{product.ProductName+" "+product.BrandName}                </p>
                 <hr className="grayHr"/>
                 <p className="boxTitle2 mediumFont">
                     رنگ : مشکی
@@ -308,17 +308,16 @@ const images = [
         </div>
         <div className="row mt-4 mb-3">
           <Col md={3}>
-            <SingleProductRedBox data={product}/>
+            <SingleProductRedBox data={property}/>
           </Col>
           <Col md={9}>
             <div className="whiteBox3">
             <p className="boxTitle2 BoldFont">
-            توضیحات درباره Razer Gaming Computer Mouse
+            توضیحات درباره {product.ProductName+" "+product.BrandName}
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                </p>
+{product.Description}                </p>
             </div>
 
             <div className="whiteBox3 mt-3 pd0">

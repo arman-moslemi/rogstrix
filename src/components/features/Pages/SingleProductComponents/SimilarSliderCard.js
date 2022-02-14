@@ -4,7 +4,6 @@ import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -16,7 +15,7 @@ export const truncate = (str, len) => {
 };
 const SimilarSliderCard = (props) => {
   return (
-   
+
       <div className="BestSellingCard">
   <div className="specialSliderCardBox">
   <img src={specialSliderImg}/>
@@ -62,7 +61,7 @@ null
 
 
       </div>
-   
+
   );
-}; 
+};
 export default SimilarSliderCard;

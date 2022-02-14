@@ -18,15 +18,73 @@ import RelatedPost from "./BlogComponents/RelatedPost";
 import ShowBlog from "./BlogComponents/ShowBlog";
 import ReadMore from "./BlogComponents/ReadMore";
 import CommentBox from "./SingleProductComponents/CommentBox";
-const SingleBlog = () => {
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
+const SingleBlog = () => {
+  const [data,setData]=useState([])
+  const params = useParams().id;
+  const history = useHistory();
+const [cat,setCat]=useState(params);
+const [com,setCom]=useState([]);
+console.log(params)
+  const mainSlider=()=>{
+    const axios = require("axios");
+
+      axios
+          .post(apiUrl + "SingleBlog",{
+            BlogID:cat
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setData(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .post(apiUrl + "SingleBlogComment",{
+            BlogID:cat
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setCom(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  }
+
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, [cat]);
   return (
     <div className="SingleProduct">
-        <Header/> 
+        <Header/>
       <BlogHeader/>
-    
 
-   
+
+
       <Container className="EachCategoryContainer" fluid>
       <div className="breadCrumbs mt-2">
           <ul>
@@ -61,12 +119,12 @@ const SingleBlog = () => {
         <ShowBlog/>
         <ReadMore/>
         <div className="whiteBox3 mt-3">
-         <CommentBox/>
+         <CommentBox data={com}/>
             </div>
          </Col>
-       
+
        </div>
-      
+
       </Container>
       <RedBox/>
       <Footer />

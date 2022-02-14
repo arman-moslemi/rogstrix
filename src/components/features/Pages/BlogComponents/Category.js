@@ -10,10 +10,11 @@ import {
     AccordionItemButton,
     AccordionItemPanel,
   } from 'react-accessible-accordion';
+import { Link } from "react-router-dom";
 // if you want to use array
 
 
-const Category = () => {
+const Category = ({data,cat}) => {
   return (
       <>
   <div className="whiteCategory BCategoryResNone">
@@ -25,69 +26,23 @@ const Category = () => {
   <hr className="dashedBlackHr w100"/>
   <div className="categoryTitle pt-1">
       <p className="boldText mt-3">
-          تازه های تکنولوژی
+          تازه
       </p>
       <ul className="categoryBlog">
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
+              {
+                  data?.map((item)=>{
+                      return(
+                      <li>
+
+              <Link onClick={()=>cat(item.BlogTypeID)}>
+{item.TypeName}              </Link>
           </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره ۱ (۲۷)
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره 11 
-              </a>
-          </li>
-          <li>
-              <a href="#">
-              زیردسته شماره 12 
-              </a>
-          </li>
+                      )
+                  }
+                  )
+              }
+
+
       </ul>
   </div>
   </div>
@@ -101,17 +56,17 @@ const Category = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                <div className="pad2">
-            
-     
+
+
                </div>
       <div className="pad2">
       <div className="scrollBar">
-        
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
   </div>
   </>

@@ -162,7 +162,7 @@ const MainRoutes = (props) => {
 						</Route>
 						<Route
 
-					path='/SingleBlog'
+					path='/SingleBlog/:id'
 					name='هر مقاله'
 					render={(props) => <SingleBlog/>}>
 
