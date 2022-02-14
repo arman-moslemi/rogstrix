@@ -27,20 +27,25 @@ const SingleBlog = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
   const history = useHistory();
-const [cat,setCat]=useState(params);
+const [cat,setCat]=useState();
 const [com,setCom]=useState([]);
+const [type,setType]=useState([])
+const [special,setSpecial]=useState([])
+
 console.log(params)
   const mainSlider=()=>{
     const axios = require("axios");
 
       axios
           .post(apiUrl + "SingleBlog",{
-            BlogID:cat
+            BlogID:params
           })
       .then(function (response) {
         if (response.data.result == "true") {
 
-          setData(response.data.Data)
+          setData(response.data.Data[0])
+          console.log(888)
+          console.log(params)
           console.log(response.data.Data)
 
       }
@@ -53,7 +58,7 @@ console.log(params)
       });
       axios
           .post(apiUrl + "SingleBlogComment",{
-            BlogID:cat
+            BlogID:params
           })
       .then(function (response) {
         if (response.data.result == "true") {
@@ -69,15 +74,45 @@ console.log(params)
       .catch(function (error) {
         console.log(error);
       });
+      axios.get(apiUrl + "BlogType")
+      .then(function (response) {
+        if (response.data.result == "true") {
 
+          setType(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
 
+      }
+      else{
+        console.log(response.data.result)
 
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios.post(apiUrl + "LastMainProduct ",{MainGroupID:1})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setSpecial(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, [cat]);
+  }, []);
   return (
     <div className="SingleProduct">
         <Header/>
@@ -91,33 +126,24 @@ console.log(params)
             <li>
               <a>
               <FaCaretLeft/>
-                سایت راگ استریکس
+                سایت راگ استریکس/
               </a>
-            </li>
-            /
-            <li>
+
               <a>
-                سی پی یو
-              </a>
-            </li>
-            /
-            <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
+{data.Title}              </a>
             </li>
           </ul>
         </div>
        <div className="row mt-2 mb-5">
        <Col md={3}>
-         <SuggestionBlogs/>
+         <SuggestionBlogs data={special}/>
          <RelatedPost/>
-         <Category/>
+         <Category data={type}/>
          </Col>
          <Col md={9}>
           <img className="BlogMainImg" src={Blog2}/>
-        <ShowBlog/>
-        <ReadMore/>
+        <ShowBlog data={data}/>
+        {/* <ReadMore/> */}
         <div className="whiteBox3 mt-3">
          <CommentBox data={com}/>
             </div>
