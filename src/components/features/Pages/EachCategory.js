@@ -9,6 +9,7 @@ import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
+import PaginationCustom from "./layouts/Pagination";
 const EachCategory = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
@@ -107,6 +108,9 @@ return(
             <CardBox/>
             </Col> */}
 
+          </div>
+          <div className="paginationBox ta-center">
+          <PaginationCustom/>
           </div>
         </div>
           </Col>

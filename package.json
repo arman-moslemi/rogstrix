@@ -26,6 +26,7 @@
     "react-icons": "^4.3.1",
     "react-image-gallery": "^1.2.7",
     "react-mega-menu": "^1.0.1",
+    "react-paginate": "^8.1.0",
     "react-range": "^1.8.12",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
