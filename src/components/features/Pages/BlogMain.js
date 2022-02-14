@@ -1,5 +1,5 @@
 
-import Footer from "./layouts/Footer";
+import FooterMain from './layouts/FooterMain';
 import Header from "./layouts/Header";
 import React,{useState,useEffect} from 'react'
 
@@ -119,7 +119,7 @@ const BlogMain = () => {
 
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
-const Register = () => {
+const RegisterStep1 = () => {
 
   return (
    <div className="loginPage">
@@ -13,12 +13,12 @@ const Register = () => {
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-                بازیابی رمز عبور
+                ثبت نام
             </p>
             <p className="loginText">
-            شماره موبایل یا ایمیل خود را وارد کنید.
+            شماره موبایل خود را وارد کنید.
             </p>
-            <input className="inputLogin  marTop35" placeholder="ایمیل خود را وارد کنید" type="email"/>
+            <input className="inputLogin  marTop35" placeholder="شماره موبایل خود را وارد کنید" type="text"/>
             <div className="d-flex justify-content-between mar-top-35 align-items-center">
                 <div>
                 <p className="rememberPassLable marBottom0">کد تصویر را وارد کنید</p>
@@ -44,4 +44,4 @@ const Register = () => {
    </div>
   );
 };
-export default Register;
+export default RegisterStep1;

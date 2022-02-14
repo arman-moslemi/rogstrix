@@ -4,7 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
 import Checkbox from '@mui/material/Checkbox';
-const Login = () => {
+const RegisterStep2 = () => {
 
   return (
    <div className="loginPage">
@@ -14,7 +14,7 @@ const Login = () => {
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-               ورود
+              ثبت نام
             </p>
             <p className="loginText">
             ایمیل خود را وارد کنید.
@@ -45,7 +45,7 @@ const Login = () => {
             </div>
             <div className="mar-top-30">
                 <button className="loginBtn" type="submit">
-                ورود به راگ استریک
+                ثبت نام در راگ استریکس
                 </button>
             </div>
             <div className="mar-top-20">
@@ -57,4 +57,4 @@ const Login = () => {
    </div>
   );
 };
-export default Login;
+export default RegisterStep2;

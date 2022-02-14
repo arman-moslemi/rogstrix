@@ -49,10 +49,10 @@ const BlogBox = ({data}) => {
           </div>
           </div>
           <div className="row mt-4 pdrightleft2">
-              <Col md={3}>
+              <Col md={3} xs={12} sm={12}>
                   <img src={Blog3} className="Blogimg"/>
               </Col>
-              <Col md={9}>
+              <Col md={9} xs={12} sm={12}>
                   <p className="blogDes">
 { truncate(data?.Description,200)}                  </p>
               </Col>

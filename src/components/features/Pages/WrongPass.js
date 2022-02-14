@@ -16,9 +16,9 @@ const WrongPass = () => {
             رمز ورود/نام کاربری اشتباه است
             </p>
             <p className="loginText">
-            برای بازیابی رمز شماره موبایل یا ایمیل خود را وارد کنید
+            برای بازیابی رمز شماره موبایل خود را وارد کنید
             </p>
-            <input className="inputLogin marTop35" placeholder="4456" type="email"/>
+            <input className="inputLogin marTop35" placeholder="4456" type="text"/>
           
             <div className="mar-top-80">
                 <button className="loginBtn" type="submit">

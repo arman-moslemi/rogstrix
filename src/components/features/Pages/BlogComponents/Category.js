@@ -48,10 +48,10 @@ const Category = ({data,cat}) => {
   </div>
   <div className="BCategoryDesNone">
   <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
+            <AccordionItem className="productAccardion mb-4">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        برندها
+                       دسته بندی ها
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>

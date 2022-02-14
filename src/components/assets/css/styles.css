@@ -986,6 +986,7 @@ display: block;
   text-align: center;
   margin-right: 30px;
   margin-left: 30px;
+  margin-bottom: 0px !important;
 }
 .borderDashedBottom{
   border-bottom: 2px dashed #000;
@@ -1124,7 +1125,7 @@ padding-bottom: 10px;
   width: 35%;
 }
 .blackHeader{
-  font-size: 35px;
+  font-size: 25px;
   font-family: IRANSans-Bold;
   color: #111;
   margin-bottom: 0px;
@@ -1704,7 +1705,7 @@ display: flex;
   display: none;
 }
 .paginationBox{
-  width: 60%;
+  width: 100%;
 margin-right: auto;
 margin-left: auto;
 display: flex;
@@ -1719,4 +1720,30 @@ margin-top: 20px;
   background-color: #f6303f !important;
   color:#fff !important;
   border: none !important;
+}
+.compareCardDiv{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.EachCategoryRow{
+  display: flex;
+}
+.EachCategoryCol1{
+  width: 15%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.EachCategoryCol2{
+  width: 85%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.categoryDesNone{
+
+display: none;
+}
+.systemGuideCard{
+  width: 325px;
+  margin-bottom: 20px;
 }

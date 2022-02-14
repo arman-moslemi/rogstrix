@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../components/features/Pages/Home';
 import EachCategory from '../components/features/Pages/EachCategory'
 import Login from '../components/features/Pages/Login';
-import RecoveryPass from "../components/features/Pages/RecoveryPass";
+
 import Verify from "../components/features/Pages/Verify";
 import ErrorPage from "../components/features/Pages/404";
 import Products from '../components/features/Pages/Products';
@@ -19,7 +19,9 @@ import MakeSystemSingle from '../components/features/Pages/MakeSystemSingle';
 import BlogMain from "../components/features/Pages/BlogMain";
 import PrivateRoute from './PrivateRoute';
 import RegisterVerify from '../components/features/Pages/RegisterVerify';
-import Register from '../components/features/Pages/RecoveryPass';
+import RegisterStep1 from '../components/features/Pages/RegisterStep1';
+import RegisterStep2 from '../components/features/Pages/RegisterStep2';
+import RecoveryPass from '../components/features/Pages/RecoveryPass';
 import SingleBlog from '../components/features/Pages/SingleBlog';
 import AssembleMain from '../components/features/Pages/AssembleMain';
 import EditInformation from '../components/features/Pages/EditInformation';
@@ -148,11 +150,18 @@ const MainRoutes = (props) => {
 						</Route>
 						<Route
 
-					path='/Register'
-					name='ثبت نام'
-					render={(props) => <Register/>}>
+					path='/RegisterStep1'
+					name='ثبت نام گام1'
+					render={(props) => <RegisterStep1/>}>
 
 						</Route>
+						<Route
+
+path='/RegisterStep2'
+name='ثبت نام گام2'
+render={(props) => <RegisterStep2/>}>
+
+	</Route>
 						<Route
 
 					path='/RegisterVerify'

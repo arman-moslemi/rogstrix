@@ -1,6 +1,6 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
-
+import FooterMain from "./layouts/FooterMain";
+import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
@@ -14,7 +14,7 @@ const CompareSupplySystem = () => {
   return (
     <div className="EachCategoryBody">
      <Header/> 
-    
+    <Menu/>
 
    
       <Container className="EachCategoryContainer" fluid>
@@ -32,25 +32,23 @@ const CompareSupplySystem = () => {
             </div>
         </div>
         <div className="productsWhiteBox radius10">
-          <div className="row">
-            <Col md={3}>
+          <div className="compareCardDiv">
+           
               <CompareCards/>
-            </Col>
-            <Col md={3}>
+           
               <CompareCards/>
-            </Col>
-            <Col md={3}>
+          
               <CompareCards/>
-            </Col>
-            <Col md={3}>
+            
+           
               <CompareCards/>
-            </Col>
+           
           </div>
         </div>
    
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

@@ -18,7 +18,7 @@ const RegisterVerify = () => {
             <p className="loginText">
             کد تایید ارسال شده را وارد کنید
             </p>
-            <input className="inputLogin marTop35" placeholder="ایمیل خود را وارد کنید" type="email"/>
+            <input className="inputLogin marTop35" placeholder="کد تایید را وارد کنید" type="text"/>
            
             <div className="mar-top-40">
                 <button className="loginBtn" type="submit">

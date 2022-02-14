@@ -38,7 +38,7 @@ const EditInformation = () => {
                  <hr className="grayDashed" />
                  <div className="rightMenuBox1">
                      <div className="row">
-                         <Col md={6}>
+                         <Col md={6} className="customCol">
                             <p className="colTitle">
                                 حساب حقیقی
                             </p>
@@ -153,7 +153,7 @@ const EditInformation = () => {
                             </div>
 
                          </Col>
-                         <Col md={6}>
+                         <Col md={6} className="customCol">
                          <p className="colTitle">
                                 حساب حقوقی
                             </p>
@@ -249,7 +249,7 @@ const EditInformation = () => {
                         </div> : null}
                          </Col>
                      </div>
-                     <div className="row">
+                     <div className="row mt-4">
          <Col md={12} className="ta-left">
              <Button className="saveBtn">
                  ذخیره تغییرات
