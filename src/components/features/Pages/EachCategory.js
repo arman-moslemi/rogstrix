@@ -1,5 +1,5 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import { NavLink } from "react-router-dom";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import CardBox from '../Pages/EachCategoryComponents/CardBox';
@@ -74,33 +74,28 @@ console.log(params)
             </li>
           </ul>
         </div>
-        <div className="row">
-          <Col md={2}>
-
-          </Col>
-          <Col md={10}>
+       
+       <div className="EachCategoryRow marginTop3 mb-4">
+       <div className="EachCategoryCol1 categoryResNone">
+          <CategoryList cat={setCat} className=""/>
+          </div>
+          <div className="EachCategoryCol2">
           <Sorts/>
-          </Col>
-
-        </div>
-       <div className="row marginTop3">
-       <Col md={2}>
-          <CategoryList cat={setCat}/>
-          </Col>
-          <Col md={10}>
-
+          <div className="categoryDesNone">
+          <CategoryList cat={setCat} />
+          </div>
            <div className="whiteBoxCategory">
           <p className="BoxTitle">
             همه مانیتورها
           </p>
 
-          <div className="row margin-top-3">
+          <div className="CardBoxDiv margin-top-3">
             {
               data.map((item)=>{
 return(
-            <Col md={4} className="colmar-top-3">
+            
               <CardBox data={item} className="test" />
-            </Col>
+            
 )
               })
             }
@@ -113,10 +108,10 @@ return(
           <PaginationCustom/>
           </div>
         </div>
-          </Col>
+          </div>
        </div>
       </Container>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

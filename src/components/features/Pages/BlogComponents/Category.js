@@ -93,20 +93,78 @@ const Category = () => {
   </div>
   <div className="BCategoryDesNone">
   <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
+            <AccordionItem className="productAccardion mb-4">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        برندها
+                       دسته بندی ها
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-               <div className="pad2">
-            
-     
-               </div>
+               
       <div className="pad2">
       <div className="scrollBar">
-        
+      <ul className="categoryBlog">
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره ۱ (۲۷)
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره 11 
+              </a>
+          </li>
+          <li>
+              <a href="#">
+              زیردسته شماره 12 
+              </a>
+          </li>
+      </ul>
       </div>
       </div>
                 </AccordionItemPanel>

@@ -1,6 +1,7 @@
 .compareCards{
     border: 1px solid #e8e8e8;
     border-radius: 10px;
+    margin-bottom: 15px;
     width: 277px;
 }
 .compareBox1{

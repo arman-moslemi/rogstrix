@@ -71,34 +71,25 @@ const SystemGuide = () => {
               <hr/>
             </div>
            </div>
-           <div className="row mt-20">
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
+           <div className="compareCardDiv mt-20">
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
            </div>
            <div className="whiteBoxHeader">
             <div className="dashedBlackHr" style={{border:'none'}}>
@@ -115,34 +106,25 @@ const SystemGuide = () => {
               <hr/>
             </div>
            </div>
-           <div className="row mt-20">
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
-             <Col md={3}>
-               <CompletedCards/>
-             </Col>
+           <div className="compareCardDiv mt-20">
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
+            <div className="systemGuideCard">
+            <CompletedCards/>
+            </div>
            </div>
           </div>
         

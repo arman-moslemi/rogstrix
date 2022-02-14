@@ -7,6 +7,12 @@
         padding-left: 2rem;
 
     }
+    .pageTitle img{
+        width: 50px !important;
+    }
+    .pageTitle{
+        padding: 3rem 1rem !important;
+    }
 }
 @media screen and (max-width:460px){
     .logo-light{
@@ -38,6 +44,13 @@
     .errorBtn{
         font-size: 15px !important;
     }
+    .dashedBlackHr{
+        width: 8% !important;
+    }
+    .blackHeader{
+        font-size: 12px;
+    }
+   
 }
 @media screen and (max-width:768px){
     .loginBox{
@@ -55,6 +68,38 @@
         width: 115px;
 font-size: 13px;
     }
+    .categoryResNone{
+        display: none !important;
+    }
+    .categoryDesNone{
+        display: block !important;
+    }
+    .EachCategoryCol2{
+        width: 100% !important;
+    }
+    .categoryList li{
+        display: inline-block;
+    }
+    .categoryList {
+        padding-top: 5px;
+        text-align: center;
+        width: 100%;
+        overflow-y: scroll;
+        white-space: nowrap;}
+        .categoryBTN {
+            color: #17181a;
+            font-family: IRANSans;
+            font-size: 13px;
+            background-color: transparent;
+            border: none !important;
+            padding: 5px 15px;
+          }
+          .tableOrder p{
+              font-size: 10px !important;
+          }
+          .grayBoxTop p{
+              font-size: 10px !important;
+          }
 }
 @media screen and (max-width:590px){
     .loginBox{
@@ -69,6 +114,9 @@ font-size: 13px;
     .commingsoonText{
         font-size: 25px !important;
     }
+    .pageTitle p{
+        font-size: 20px !important;
+    }
 }
 @media screen and (max-width:1000px){
     .errorImg{
@@ -80,6 +128,29 @@ font-size: 13px;
     .innerRedBox p{
         font-size: 13px;
     }
+    .EachCategoryCol2{
+        width: 65%;
+    }
+    .EachCategoryCol1{
+        width: 35%;
+    }
+    .customCol{
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+    .EditInformationInput{
+        width: 70%;
+    }
+    .informationSelect{
+        width: 70%;
+    }
+    .saveBtn{
+        margin-bottom: 30px;
+    }
+    .dashedBlackHr{
+        width: 25%;
+    }
 }
 @media screen and (max-width:1308px){
     .MainMenuBtn{
@@ -88,6 +159,12 @@ font-size: 13px;
     }
     .UserPanelContainer{
         padding: 3% 2%;
+    }
+    .EachCategoryCol2{
+        width: 80%;
+    }
+    .EachCategoryCol1{
+        width: 20%;
     }
 }
 @media screen and (max-width:1100px){
@@ -115,6 +192,27 @@ font-size: 13px;
     .BCategoryDesNone{
         display:block !important;
     }
+    .w230{
+        width: 120px;
+    }
+    .BestSellingCard img{
+        width: 100%;
+        height: auto;
+    }
+    .BestSellingCard .row{
+        display: block !important;
+    }
+    .BestSellingCard .row .col-md-8{
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+    .BestSellingCard .row .col-md-4{
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+    .BestSellingCard{
+        padding: 0.5rem !important;
+    }
 }
 @media screen and (max-width:880px){
     .MainMenuBtn{
@@ -125,6 +223,23 @@ font-size: 13px;
     }
     .listItems{
         font-size: 10px;
+    }
+    .Blogimg{
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .BlogMainImg{
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .blackRow{
+        display: block;
+    }
+    .blogBoxTitle{
+        margin-bottom: 20px;
+    }
+    .w230{
+        width: 120px;
     }
 }
 @media screen and (max-width:630px){
@@ -180,6 +295,13 @@ font-size: 13px;
         padding-bottom: 10px !important;
         border-bottom: 1px solid #d2d2d2;
     }
+    .borderRight1{
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
+    .saveBtn{
+        font-size: 12px !important;
+    }
 .desktopMenu{
     display:none !important;
 }
@@ -214,6 +336,15 @@ font-size: 13px;
 .glassBtn{
     font-size: 13px;
 }
+.w70{
+    width: 50% !important;
+}
+.dashedBlackHr{
+    width: 20%;
+}
+.blackHeader{
+    font-size: 15px;
+}
 }
 @media screen and (max-width:410px){
     .errorPageText{
@@ -222,4 +353,35 @@ font-size: 13px;
     .errorPage{
         padding: 30px !important;
     }
+   
+}
+@media screen and (max-width:1230px){
+    .compareCards{
+        width: 260px;
+    }
+    .compareTitle{
+        font-size: 15px;
+    }
+    .sortLable{
+        margin-right: 2px;
+    }
+}
+@media screen and (max-width:1358px){
+    .sortLable li button{
+        padding: 2px !important;
+        font-size: 10px !important;
+    }
+    .sortText{
+        font-size: 10px;
+    }
+    .topWhiteBox{
+        overflow: auto;
+        white-space: nowrap; 
+    }
+}
+@media screen and (max-width:1431px){
+    .SliderCard{
+        width: 330px;
+    }
+    
 }

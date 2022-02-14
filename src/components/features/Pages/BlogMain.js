@@ -1,5 +1,5 @@
 
-import Footer from "./layouts/Footer";
+import FooterMain from './layouts/FooterMain';
 import Header from "./layouts/Header";
 
 import RedBox from "./layouts/RedBox";
@@ -65,7 +65,7 @@ const BlogMain = () => {
    
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

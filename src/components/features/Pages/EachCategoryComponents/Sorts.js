@@ -5,7 +5,7 @@ import './Styles/sort.css';
 const Sorts = () => {
 
   return (
-    <div className="topWhiteBox">
+    <div className="topWhiteBox mb-4">
     <div className="d-flex-start-start align-items-center">
      <div className="d-flex-start-start align-items-center">
        <SortIcon/>
