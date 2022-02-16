@@ -100,6 +100,18 @@ font-size: 13px;
           .grayBoxTop p{
               font-size: 10px !important;
           }
+          .cartDiv{
+              display: block !important;
+          }
+          .cartCol1{
+              width: 100% !important;
+          }
+          .cartCol2{
+              width: 100% !important;
+          }
+          .CartContainer {
+              padding: 3% !important;
+          }
 }
 @media screen and (max-width:590px){
     .loginBox{
@@ -212,6 +224,15 @@ font-size: 13px;
     }
     .BestSellingCard{
         padding: 0.5rem !important;
+    }
+    .priceRowCart p{
+        font-size: 10px;
+    }
+    .CartColorP{
+        font-size: 10px;
+    }
+    .glassBtn{
+        font-size: 10px;
     }
 }
 @media screen and (max-width:880px){
@@ -377,6 +398,9 @@ font-size: 13px;
     .topWhiteBox{
         overflow: auto;
         white-space: nowrap; 
+    }
+    .CartContainer {
+        padding: 1%;
     }
 }
 @media screen and (max-width:1431px){

@@ -1747,3 +1747,104 @@ display: none;
   width: 325px;
   margin-bottom: 20px;
 }
+
+/***************cartStep1**********/
+.cartDiv{
+  display: flex;
+
+}
+.cartCol1{
+  width: 73.5%;
+
+ 
+  margin-left: 0.5%;
+}
+.whiteBoxCart{
+  background-color: #fff;
+  border-radius: 10px;
+}
+.cartCol2{
+  width: 25.5%;
+  margin-right: 0.5%;
+  
+ 
+}
+.pd30{
+  padding:30px;
+}
+.CartContainer{
+  padding:4% 7%;
+}
+.CartTitle{
+  font-family: IRANSans-Bold;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+.priceRowCart{
+  display: flex;
+  justify-content: space-between;
+}
+.priceRowCart p{
+  font-family: IRANSans-Bold;
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.CartProductName{
+  font-family: IRANSans-Bold;
+  color: #111;
+  font-size: 20px;
+}
+.CartProductImg{
+  width: 120px;
+  height: 120px;
+  padding: 5px;
+  border: 1px solid;
+  margin-left: 15px;
+}
+.pd4{
+  padding: 25px;
+}
+.CartColor{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #06cdae;
+  border: 1px solid #a0a0a0;
+  padding: 2px;
+  margin-left: 15px;
+}
+.CartColorP{
+  font-family: IRANSans;
+  font-size:15px;
+  margin-bottom: 0px;
+}
+.counterDiv{
+  border: 1px solid #a7a7a7;
+  width: 72px;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: IRANSans;
+  color: #ff004e;
+  margin-right: 20px;
+}
+.decBTN{
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ff004e;
+}
+.inBTN{
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ff004e;
+}
+.colorRed{
+  color: #ff004e;
+}
+.borderRight{
+  border-right: 1px solid #f4f4f4 !important;
+}
+.w30{
+  width: 30%;
+}

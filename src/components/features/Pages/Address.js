@@ -61,7 +61,7 @@ const Address = () => {
                      </p>
                      <div className="d-flex align-items-center justify-content-end">
                          <Button className="glassBtn" id="colorBlue">
-                             ویرایش
+                             ثبت
                          </Button>
                          <Button className="glassBtn" id="colorRed">
                              حذف

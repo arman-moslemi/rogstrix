@@ -33,6 +33,8 @@ import UserOrder from '../components/features/Pages/UserOrder';
 import UserComments from '../components/features/Pages/UserComments';
 import SevedProducts from '../components/features/Pages/SevedProducts';
 import CommingSoon from '../components/features/Pages/ComingSoon';
+import CartStep1 from '../components/features/Pages/CartStep1';
+import CartStep2 from '../components/features/Pages/CartStep2';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -240,9 +242,24 @@ render={(props) => <RegisterStep2/>}>
 
 						</Route>
 						<Route
+
+						path='/Cart1'
+						name='سبد خرید گام 1'
+						render={(props) => <CartStep1/>}>
+
+						</Route>
+						<Route
+
+path='/Cart2'
+name='سبد خرید گام 2'
+render={(props) => <CartStep2/>}>
+
+</Route>
+						<Route
 						path='/'
 						name='در حال به روز رسانی'
 						render={(props) => <CommingSoon/>}></Route>
+					
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
 			</Switch>
 		</BrowserRouter>
