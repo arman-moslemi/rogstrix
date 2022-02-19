@@ -279,12 +279,12 @@ const images = [
                           </div>
                           <div>
                               <div className="redBack ml-2">
-                                  <p>{((parseInt(product.Cost)-parseInt(product.SpecialCost))/parseInt(product.Cost))*100}%</p>
+                                  <p>{(parseInt(product.SpecialCost)/parseInt(product.Cost))*100}%</p>
                               </div>
                           </div>
                       </div>
                   <p className="specialPrice">
-                  {product.SpecialCost}
+                  {parseInt(product.Cost)-parseInt(product.SpecialCost)}
                   </p>
 
 

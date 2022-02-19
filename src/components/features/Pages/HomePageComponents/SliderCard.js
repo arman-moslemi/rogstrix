@@ -28,7 +28,8 @@ const SliderCard = ({data}) => {
           <p className="strokeOutPrice">
 {data.Cost}          </p>
           <p className="cardPrice">
-{data.SpecialCost}          </p>
+          {parseInt(data.Cost)-parseInt(data.SpecialCost)}
+       </p>
          </Col>
        </div>
       </div>

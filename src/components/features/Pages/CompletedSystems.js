@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from 'react'
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import {
@@ -18,6 +18,7 @@ import Checkbox from '@mui/material/Checkbox';
 import PageTitle from "../../assets/img/pageTitle.png"
 import PaginationCustom from "./layouts/Pagination";
 import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 
 
@@ -25,13 +26,40 @@ import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
 
 
 const CompletedSystems = () => {
+  const [data,setData]=useState([])
 
+
+  const mainSlider=()=>{
+    const axios = require("axios");
+    axios.get(apiUrl + "AllDefaultSystems")
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+        setData(response.data.Data)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
+
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <div className="EachCategoryBody">
       <Header />
-    
 
-   
+
+
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
@@ -82,13 +110,13 @@ const CompletedSystems = () => {
                             حذف
                         </Button>
                   </Col>
-                  
+
               </div>
              </div>
               <div className="filterFlex">
             <div style={{padding:'1rem'}}>
             <div className="filterSelect">
-                      
+
                       کول مستر
                       <FaTimes style={{marginRight:5}}/>
                   </div>
@@ -98,11 +126,11 @@ const CompletedSystems = () => {
                   </div>
                   <div className="filterSelect">
 
-                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰               
+                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰
                   <FaTimes style={{marginRight:5}}/>
                      </div>
             </div>
-                 
+
               </div>
 
           </div>
@@ -117,7 +145,7 @@ const CompletedSystems = () => {
                 <AccordionItemPanel>
                <div className="pad2">
                 <RangeSlider/>
-     
+
                </div>
             <div className="rangeBorder">
             <div className="row">
@@ -125,16 +153,16 @@ const CompletedSystems = () => {
             <p className="rangeText">
                 از
             </p>
-         
-            
+
+
       </Col>
       <Col md={6}>
       <p className="rangeText">
                 از
             </p>
-           
-           
-         
+
+
+
       </Col>
       </div>
       <div className="row align-items-center">
@@ -161,11 +189,11 @@ const CompletedSystems = () => {
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
-         
-        
+
+
           <div className="whiteBoxProduct">
           <Accordion allowZeroExpanded ={true}>
             <AccordionItem className="productAccardion">
@@ -175,12 +203,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -195,7 +223,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -210,7 +238,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -225,7 +253,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -238,12 +266,12 @@ const CompletedSystems = () => {
               AMD Ryzen 7 3700X
               </label>
           </div>
-       
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -255,12 +283,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
               <div className="pad2">
               <div className="scrollBar">
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -275,7 +303,7 @@ const CompletedSystems = () => {
                   </div>
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -290,7 +318,7 @@ const CompletedSystems = () => {
                   </div>
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -303,13 +331,13 @@ const CompletedSystems = () => {
                      خیر
                       </label>
                   </div>
-                
-               
+
+
               </div>
               </div>
                         </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -321,12 +349,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
               <div className="pad2">
               <div className="scrollBar">
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -341,7 +369,7 @@ const CompletedSystems = () => {
                   </div>
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -356,7 +384,7 @@ const CompletedSystems = () => {
                   </div>
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -371,7 +399,7 @@ const CompletedSystems = () => {
                   </div>
                   <div className="d-flex checkBoxDiv">
                        <Checkbox
-                
+
                 defaultChecked
                 sx={{
                   color: '#f6303f',
@@ -384,12 +412,12 @@ const CompletedSystems = () => {
                       LGA1151
                       </label>
                   </div>
-               
+
               </div>
               </div>
                         </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -401,12 +429,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -421,7 +449,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -436,7 +464,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -451,7 +479,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -464,12 +492,12 @@ const CompletedSystems = () => {
               Corsair iCUE H100i ELITE CAPELLIX
               </label>
           </div>
-        
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -481,12 +509,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -501,7 +529,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -516,7 +544,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -531,7 +559,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -544,12 +572,12 @@ const CompletedSystems = () => {
               GeForce RTX 3080
               </label>
           </div>
-      
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -561,12 +589,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -581,7 +609,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -596,7 +624,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -611,7 +639,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -624,13 +652,13 @@ const CompletedSystems = () => {
               3-Way SLI
               </label>
           </div>
-        
-     
+
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -642,12 +670,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -662,7 +690,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -677,7 +705,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -690,13 +718,13 @@ const CompletedSystems = () => {
               Fractal Design Meshify C
               </label>
           </div>
-      
-          
+
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -708,12 +736,12 @@ const CompletedSystems = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -726,12 +754,12 @@ const CompletedSystems = () => {
                   همه
               </label>
           </div>
-         
-       
-       
+
+
+
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -746,7 +774,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -761,7 +789,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -776,7 +804,7 @@ const CompletedSystems = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -793,12 +821,12 @@ const CompletedSystems = () => {
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           </Col>
           <Col md={9}>
-     
+
           <div className="productsWhiteBox">
               <div className="whiteBoxHeader">
               <div className="borderDashedBottom">
@@ -826,49 +854,39 @@ const CompletedSystems = () => {
           className="searchInput"
           type={'text'}
           placeholder={"جستجو در میان سیستم ها ..."}
-        
-         
+
+
         />
       </div>
-        
+
                 </div>
               </div>
               </div>
               <div className="row marginTop30">
-                <Col md={4}>
+                {
+                  data.map((item)=>{
+return(
+
+  <Col md={4}>
+                  <CompletedCards data={item} viewOverlay={true}/>
+                </Col>
+                  )
+                  })
+                }
+                {/* <Col md={4}>
                   <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                  <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                <CompletedCards viewOverlay={true}/>
-                </Col>
-                <Col md={4}>
-                <CompletedCards viewOverlay={true}/>
-                </Col>
+                </Col> */}
+
               </div>
               <div className="paginationBox ta-center">
           <PaginationCustom/>
           </div>
           </div>
-      
+
           </Col>
-         
+
         </div>
-   
+
       </Container>
       <RedBox/>
       <Footer />

@@ -3,8 +3,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
-const RegisterVerify = () => {
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import React,{useState,useEffect} from 'react'
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
 
+const RegisterVerify = () => {
+    const history = useHistory();
+    const params = useParams().id;
+
+    const [code,setCode]=useState()
+    const submit=()=>{
+      const axios = require("axios");
+      console.log(code)
+
+
+  if(!code)
+  {
+  alert(" مقادیر را وارد نمائید")
+  }
+  else{
+    history.push("/RegisterStep2/"+params)
+
+  }
+    //   axios.post(apiUrl + "Login",{Email:email,Password:pass})
+    //   .then(function (response) {
+    //     if (response.data.result == "true") {
+
+    //       // setBlog(response.data.Data)
+    //       history.push("/EditInformation")
+
+    //   }
+    //   else{
+    //     alert("نام کاربری یا رمز عبور نادرست می باشد")
+
+    //   }})
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+    // }
+
+
+
+    }
   return (
    <div className="loginPage">
        <div className="loginBox">
@@ -18,10 +59,10 @@ const RegisterVerify = () => {
             <p className="loginText">
             کد تایید ارسال شده را وارد کنید
             </p>
-            <input className="inputLogin marTop35" placeholder="کد تایید را وارد کنید" type="text"/>
-           
+            <input className="inputLogin marTop35" placeholder="کد تایید را وارد کنید" type="text" onChange={(e)=>setCode(e.target.value)}/>
+
             <div className="mar-top-40">
-                <button className="loginBtn" type="submit">
+                <button onClick={()=>submit()} className="loginBtn" type="submit">
                 تایید شماره موبایل
                 </button>
             </div>

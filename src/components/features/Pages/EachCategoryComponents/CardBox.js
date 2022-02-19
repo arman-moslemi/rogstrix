@@ -28,7 +28,7 @@ const CardBox = ({data}) => {
           <p className="strokeOutPrice">
 {data.Cost}          </p>
           <p className="cardPrice">
-{data.SpecialCost}
+{parseInt(data.Cost)-parseInt(data.SpecialCost)}
         </p>
          </Col>
        </div>

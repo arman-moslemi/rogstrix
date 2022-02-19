@@ -44,7 +44,8 @@ const SpecialSliderCard = ({data}) => {
     </Col>
     <Col md={8} className="ta-left pd0">
       <p className="specialPrice">
-{data.SpecialCost}      </p>
+      {parseInt(data.Cost)-parseInt(data.SpecialCost)}
+  </p>
       <p className="strokeOutPrice">
       {data.Cost}
       </p>
