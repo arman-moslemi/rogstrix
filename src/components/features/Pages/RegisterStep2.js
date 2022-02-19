@@ -4,8 +4,47 @@ import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
 import Checkbox from '@mui/material/Checkbox';
+import {useParams } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import React,{useState,useEffect} from 'react'
+import { Link, useHistory } from "react-router-dom";
 const RegisterStep2 = () => {
+  const history = useHistory();
+    const params = useParams().id;
 
+    const [email,setEmail]=useState()
+    const [pass,setPass]=useState()
+    const submit=()=>{
+      const axios = require("axios");
+      console.log(email)
+
+
+  if(!email)
+  {
+  alert(" مقادیر را وارد نمائید")
+  }
+  else{
+
+      axios.post(apiUrl + "Login",{Email:email,Password:pass,Mobile:params})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          // setBlog(response.data.Data)
+          history.push("/EditInformation")
+
+      }
+      else{
+        alert("نام کاربری یا رمز عبور نادرست می باشد")
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+
+
+
+    }
   return (
    <div className="loginPage">
        <div className="loginBox">
@@ -25,7 +64,7 @@ const RegisterStep2 = () => {
                 <Col md={6} xs={6} sm={6} className="pad0">
                 <div className="d-flex checkBoxDiv">
           <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -39,9 +78,9 @@ const RegisterStep2 = () => {
               </label>
           </div>
                 </Col>
-                <Col md={6} xs={6} sm={6} className="pad0 ta-left" >
+                {/* <Col md={6} xs={6} sm={6} className="pad0 ta-left" >
                     <a className="rememberPassLable" style={{marginTop:7}}>رمز خود را فراموش کرده ام</a>
-                </Col>
+                </Col> */}
             </div>
             <div className="mar-top-30">
                 <button className="loginBtn" type="submit">

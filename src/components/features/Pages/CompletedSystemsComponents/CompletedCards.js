@@ -5,8 +5,10 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaCommentDots , FaLongArrowAltUp} from "react-icons/fa";
 import MadeSystem from "../../../assets/img/madeSystem.png";
 import userProfile from "../../../assets/img/userProfile.png";
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
+
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
+  // console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -18,7 +20,7 @@ export const truncate = (str, len) => {
 };
 const CompletedCards = (props) => {
   return (
-   
+
      <div className="completedCard">
        <div className="imgBox marginBottom15">
        {
@@ -28,24 +30,20 @@ const CompletedCards = (props) => {
              <img src={userProfile}/>
            </div>
            <div className="userName">
-             <p>{truncate("محسن رحمتی",20)}</p>
+             <p>{truncate("",20)}</p>
            </div>
          </div>
  :
  null
  }
 
-       <img src={MadeSystem} className="madeSystemImg"/>
+       <img src={props.data.Pic1?apiAsset+props.data.Pic1:MadeSystem} className="madeSystemImg"/>
        </div>
        <p className="completeProductTitle">
-       {truncate("سیستم گیمینگ خوب و سریع اینتل",100)}
+       {truncate(props.data.SystemName,100)}
        </p>
       <p className="completeProductDetail">
-      Intel Core i5-11400
-      <br/>
-Parametric Video Card (Chipset: GeForce RTX 3060; Cooling: 2 Fans, 3 Fans, 120 mm Radiator, ...)
-<br/>
-Phanteks Eclipse P300A Mesh ATX Mid Tower
+     {props.data.Description}
       </p>
       <hr className="bottomDashed"/>
       <div className="row">
@@ -70,12 +68,12 @@ Phanteks Eclipse P300A Mesh ATX Mid Tower
         </Col>
         <Col md={7} className="pd0 ta-left">
           <p className="completedPrice">
-          ۲۴،۵۶۵،۰۰۰ تومان
+          {props.data.Cost} تومان
           </p>
         </Col>
       </div>
      </div>
-   
+
   );
-}; 
+};
 export default CompletedCards;

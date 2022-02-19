@@ -16,10 +16,12 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import NewProductSliderCard from "./MainPageComponents/NewProductSliderCard";
 import WeblogSlider from "./MainPageComponents/WeblogSlider";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [blog,setBlog]=useState([])
+  const history = useHistory();
 
   const mainSlider=()=>{
     const axios = require("axios");
@@ -277,7 +279,7 @@ const MainPage = () => {
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
-                        <Button className="seeAll">مشاهده همه</Button>
+                        <Button onClick={()=>history.push('/BlogMain')} className="seeAll">مشاهده همه</Button>
                     </div>
                    </Col>
                </div>

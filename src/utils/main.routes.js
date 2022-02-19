@@ -159,14 +159,14 @@ const MainRoutes = (props) => {
 						</Route>
 						<Route
 
-path='/RegisterStep2'
+path='/RegisterStep2/:id'
 name='ثبت نام گام2'
 render={(props) => <RegisterStep2/>}>
 
 	</Route>
 						<Route
 
-					path='/RegisterVerify'
+					path='/RegisterVerify/:id'
 					name='ثبت نام'
 					render={(props) => <RegisterVerify/>}>
 

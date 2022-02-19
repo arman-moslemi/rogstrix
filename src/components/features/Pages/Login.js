@@ -4,8 +4,47 @@ import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
 import Checkbox from '@mui/material/Checkbox';
-const Login = () => {
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import React,{useState,useEffect} from 'react'
+import { Link, useHistory } from "react-router-dom";
 
+const Login = () => {
+  const history = useHistory();
+
+  const [email,setEmail]=useState()
+  const [pass,setPass]=useState()
+  const login=()=>{
+    const axios = require("axios");
+    console.log(email)
+    console.log(pass)
+
+if(!email || !pass)
+{
+alert("همه مقادیر را وارد نمائید")
+}
+else{
+
+
+    axios.post(apiUrl + "Login",{Email:email,Password:pass})
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+        // setBlog(response.data.Data)
+        history.push("/EditInformation")
+
+    }
+    else{
+      alert("نام کاربری یا رمز عبور نادرست می باشد")
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+
+
+  }
   return (
    <div className="loginPage">
        <div className="loginBox">
@@ -19,13 +58,13 @@ const Login = () => {
             <p className="loginText">
             ایمیل خود را وارد کنید.
             </p>
-            <input className="inputLogin mt-2" placeholder="ایمیل خود را وارد کنید" type="email"/>
-            <input className="inputLogin marTop35" placeholder="رمز عبور خود را وارد کنید" type="password"/>
+            <input className="inputLogin mt-2" placeholder="ایمیل خود را وارد کنید" type="email" onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="inputLogin marTop35" placeholder="رمز عبور خود را وارد کنید" type="password"onChange={(e)=>setPass(e.target.value)}/>
             <div className="row ma-top-1 d-flex-start-start">
                 <Col md={6} xs={6} sm={6} className="pad0">
                 <div className="d-flex checkBoxDiv">
           <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -39,12 +78,15 @@ const Login = () => {
               </label>
           </div>
                 </Col>
-                <Col md={6} xs={6} sm={6} className="pad0 ta-left" >
-                    <a className="rememberPassLable" style={{marginTop:7}}>رمز خود را فراموش کرده ام</a>
+                <Col md={3} xs={3} sm={3} className="pad0 ta-left" >
+                    <Link onClick={()=>history.push("/RegisterStep1")} className="rememberPassLable" style={{marginTop:20}}>ثبت نام</Link>
+                </Col>
+                <Col md={3} xs={3} sm={3} className="pad0 ta-left" >
+                    <a className="rememberPassLable" style={{marginTop:7}}>فراموشی رمز</a>
                 </Col>
             </div>
             <div className="mar-top-30">
-                <button className="loginBtn" type="submit">
+                <button onClick={()=>login()} className="loginBtn" type="submit">
                 ورود به راگ استریک
                 </button>
             </div>

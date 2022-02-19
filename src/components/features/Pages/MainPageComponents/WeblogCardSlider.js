@@ -5,6 +5,7 @@ import { FaRegUser ,FaRegEye,FaCircle} from 'react-icons/fa';
 import blog1 from "../../../assets/img/blog1.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -18,10 +19,12 @@ export const truncate = (str, len) => {
   return str;
 };
 const WeblogSliderCard = ({data}) => {
+  const history = useHistory();
+
   return (
 
       <div className="weblogSliderCard">
-        <div className="row">
+        <div  onClick={()=>history.push("/SingleBlog/"+data.BlogID)} className="row">
             <Col md={4}>
                 <img src={apiAsset+data.Pic}/>
             </Col>

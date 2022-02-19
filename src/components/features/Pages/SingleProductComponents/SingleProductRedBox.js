@@ -19,7 +19,7 @@ const SingleProductRedBox = ({data}) => {
 
 
               {
-data.map((item)=>{
+data?.map((item)=>{
   return(
 
               <div className="mt-4">
