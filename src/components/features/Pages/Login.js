@@ -82,7 +82,7 @@ else{
                     <Link onClick={()=>history.push("/RegisterStep1")} className="rememberPassLable" style={{marginTop:20}}>ثبت نام</Link>
                 </Col>
                 <Col md={3} xs={3} sm={3} className="pad0 ta-left" >
-                    <a className="rememberPassLable" style={{marginTop:7}}>فراموشی رمز</a>
+                    <Link className="rememberPassLable" style={{marginTop:7}} onClick={()=>history.push("/RecoveryPass")}>فراموشی رمز</Link>
                 </Col>
             </div>
             <div className="mar-top-30">

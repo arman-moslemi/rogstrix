@@ -19,22 +19,23 @@ const RegisterStep2 = () => {
       console.log(email)
 
 
-  if(!email)
+  if(!email || !pass)
   {
   alert(" مقادیر را وارد نمائید")
   }
   else{
 
-      axios.post(apiUrl + "Login",{Email:email,Password:pass,Mobile:params})
+      axios.post(apiUrl + "InsertCustomer",{Email:email,Password:pass,Mobile:params})
       .then(function (response) {
         if (response.data.result == "true") {
 
           // setBlog(response.data.Data)
-          history.push("/EditInformation")
+          alert("ثبت نام با موفقیت انجام شد")
+          history.push("/Login")
 
       }
       else{
-        alert("نام کاربری یا رمز عبور نادرست می باشد")
+        alert("عملیات با خطا روبرو شد")
 
       }})
       .catch(function (error) {
@@ -58,8 +59,8 @@ const RegisterStep2 = () => {
             <p className="loginText">
             ایمیل خود را وارد کنید.
             </p>
-            <input className="inputLogin mt-2" placeholder="ایمیل خود را وارد کنید" type="email"/>
-            <input className="inputLogin marTop35" placeholder="رمز عبور خود را وارد کنید" type="password"/>
+            <input className="inputLogin mt-2" placeholder="ایمیل خود را وارد کنید" type="email"onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="inputLogin marTop35" placeholder="رمز عبور خود را وارد کنید" type="password"onChange={(e)=>setPass(e.target.value)}/>
             <div className="row ma-top-1 d-flex-start-start">
                 <Col md={6} xs={6} sm={6} className="pad0">
                 <div className="d-flex checkBoxDiv">
@@ -83,7 +84,7 @@ const RegisterStep2 = () => {
                 </Col> */}
             </div>
             <div className="mar-top-30">
-                <button className="loginBtn" type="submit">
+                <button onClick={()=>submit()} className="loginBtn" type="submit">
                 ثبت نام در راگ استریکس
                 </button>
             </div>
