@@ -1,4 +1,4 @@
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Header from "./layouts/Header";
 import Menu from "./layouts/Menu";
 import React,{useState,useEffect} from 'react'
@@ -292,7 +292,7 @@ const MainPage = () => {
       </Container>
 
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </>
   );
 };
