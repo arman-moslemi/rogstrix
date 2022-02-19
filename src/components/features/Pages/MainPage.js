@@ -7,13 +7,13 @@ import BlackBox from "./layouts/BlackBox";
 import MainSlider from "./MainPageComponents/MainSlider";
 import SpecialOffer from "./MainPageComponents/SpecialOffer";
 import ExclusiveSlider from "./MainPageComponents/ExclusiveSlider";
-import NewProductSlider from "./MainPageComponents/NewProductsSlider";
+import NewProductSliderCard from "./MainPageComponents/NewProductSliderCard";
 import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
 import bannerAssemble from "../../assets/img/bannerAssemble.png";
 import bannerCase from "../../assets/img/bannerCase.png";
 import img7 from "../../assets/img/img7.png";
 import { Container ,Col, Button,Row} from "react-bootstrap";
-import NewProductSliderCard from "./MainPageComponents/NewProductSliderCard";
+
 import WeblogSlider from "./MainPageComponents/WeblogSlider";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
@@ -121,44 +121,40 @@ const MainPage = () => {
          <div className="row customRow">
            <Col md={4}>
               <div className="productBannerBox" id="backBlack">
-                <div className="ta-right">
-                  <p className="miniText">اتو برقی</p>
-                  <p className="brandText">Russel Hobbs</p>
+              <img src={apiAsset+slider?.DownSlider1}/>
+                <div className="">
+                
                   <a href={slider.LinkDownSlider1} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                <div>
-                <img src={apiAsset+slider?.DownSlider1}/>
-                </div>
+              
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backGray">
-                <div className="ta-right">
-                  <p className="miniText colorBlack">اتو برقی</p>
-                  <p className="brandText colorBlack">Russel Hobbs</p>
+           <img src={apiAsset+slider?.DownSlider2}/>
+                
+                <div className="">
+                  
                   <a href={slider.LinkDownSlider2} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                <div>
-                <img src={apiAsset+slider?.DownSlider2}/>
-                </div>
+                
+              
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
-                <div className="ta-right">
-                  <p className="miniText">اتو برقی</p>
-                  <p className="brandText">Russel Hobbs</p>
+           <img src={apiAsset+slider?.DownSlider3}/>
+                <div className="">
+                 
                   <a href={slider.LinkDownSlider3} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                <div>
-                <img src={apiAsset+slider?.DownSlider3}/>
-                </div>
+                
               </div>
            </Col>
          </div>
@@ -199,44 +195,40 @@ const MainPage = () => {
          <div className="row customRow">
            <Col md={4}>
               <div className="productBannerBox" id="backBlack">
-                <div className="ta-right">
-                  <p className="miniText">اتو برقی</p>
-                  <p className="brandText">Russel Hobbs</p>
+              <img src={apiAsset+slider?.DownSlider4}/>
+                <div className="">
+                 
                   <a href={slider.LinkDownSlider4} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                <div>
-                <img src={apiAsset+slider?.DownSlider4}/>
-                </div>
+               
+                
+                
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backGray">
-                <div className="ta-right">
-                  <p className="miniText colorBlack">اتو برقی</p>
-                  <p className="brandText colorBlack">Russel Hobbs</p>
+           <img src={apiAsset+slider?.DownSlider5}/>
+                <div className="">
+                  
                   <a href={slider.LinkDownSlider5} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                <div>
-                <img src={apiAsset+slider?.DownSlider5}/>
-                </div>
+               
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
-                <div className="ta-right">
-                  <p className="miniText">اتو برقی</p>
-                  <p className="brandText">Russel Hobbs</p>
+           <img src={apiAsset+slider?.DownSlider6}/>
+                <div className="">
+                  
                   <a href={slider.LinkDownSlider6} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                <div>
-                <img src={apiAsset+slider?.DownSlider6}/>
-                </div>
+                
               </div>
            </Col>
          </div>
@@ -256,16 +248,25 @@ const MainPage = () => {
                </div>
       <div className="row">
         <Col md={6} className="marginTop30">
-          <NewProductSlider/>
+        <div className=" whiteBoxSlider">
+          <NewProductSliderCard/>
+          </div>
         </Col>
         <Col md={6} className="marginTop30">
-          <NewProductSlider/>
+        <div className=" whiteBoxSlider">
+          <NewProductSliderCard/>
+          </div>
         </Col>
         <Col md={6} className="marginTop30">
-          <NewProductSlider/>
+        <div className=" whiteBoxSlider">
+          <NewProductSliderCard/>
+          </div>
         </Col>
         <Col md={6} className="marginTop30">
-          <NewProductSlider/>
+          <div className=" whiteBoxSlider">
+          <NewProductSliderCard/>
+          </div>
+        
         </Col>
         </div>
 

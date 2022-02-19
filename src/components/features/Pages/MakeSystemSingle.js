@@ -61,10 +61,10 @@ const MakeSystem = () => {
         </div>
         <div className="singleBox1">
         <div className="row">
-        <Col md={3}>
+        <Col md={3} id="singleOrder1">
         <ImageGallery items={images} showNav={false} showFullscreenButton={false} showPlayButton={false}/>
         </Col>
-        <Col md={6}>
+        <Col md={6} id="singleOrder3">
         <p className="boxTitle2 BoldFont">
         Razer Gaming Computer Mouse
                 </p>
@@ -151,7 +151,7 @@ const MakeSystem = () => {
                   </div>
               </div>
         </Col>
-        <Col md={3}>
+        <Col md={3} id="singleOrder2">
             <div className="redLightBox">
                 <p className="boxTitle2">
                     مشخصات فروش
@@ -248,10 +248,10 @@ const MakeSystem = () => {
         </div>
         </div>
         <div className="row mt-4 mb-3">
-          <Col md={3}>
+          <Col md={3} id="singleOrder1">
             <SingleProductRedBox/>
           </Col>
-          <Col md={9}>
+          <Col md={9} id="singleOrder2">
           <div className="whiteBox3">
             <p className="boxTitle2 BoldFont">
            قطعات سازگار
@@ -289,7 +289,10 @@ const MakeSystem = () => {
                 </p>
             </div>
 
-            <div className="whiteBox3 mt-3 pd0">
+           
+          </Col>
+        </div>
+        <div className="whiteBox3 mt-3 pd0">
             <div className="row margin25 ">
                    <Col md={12}>
                    <div className="">
@@ -307,8 +310,6 @@ const MakeSystem = () => {
             <div className="whiteBox3 mt-3">
          <CommentBox/>
             </div>
-          </Col>
-        </div>
    
       </Container>
       <RedBox/>

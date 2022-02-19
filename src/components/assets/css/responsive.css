@@ -13,6 +13,9 @@
     .pageTitle{
         padding: 3rem 1rem !important;
     }
+    .swiper-slide {
+        width: 220px;
+      }
 }
 @media screen and (max-width:460px){
     .logo-light{
@@ -234,6 +237,10 @@ font-size: 13px;
     .glassBtn{
         font-size: 10px;
     }
+    .swiper-slide{
+        width: 277px !important;
+        min-width: 277px;
+    }
 }
 @media screen and (max-width:880px){
     .MainMenuBtn{
@@ -261,6 +268,9 @@ font-size: 13px;
     }
     .w230{
         width: 120px;
+    }
+    .swiper-slide{
+        width: 170px;
     }
 }
 @media screen and (max-width:630px){
@@ -330,6 +340,43 @@ font-size: 13px;
     background-color: transparent !important;
     border: none !important;
 }
+#singleOrder1{
+    order:1;
+    width:100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+#singleOrder2{
+    order:2;
+    width:100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+#singleOrder3{
+    order: 3;
+    width:100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-top: 15px;
+}
+.redBox2 {
+    margin-bottom: 15px !important;
+}
+.redLightBox{
+    margin-top: 15px;
+}
+.addressSingle{
+    font-size: 12px;
+}
+.seeAllDiv{
+    padding: 0px 230px;
+}
+.specialOfferTitle{
+    font-size: 15px;
+}
+.swiper-slide{
+    width: 260px !important;
+}
 }
 
 
@@ -386,6 +433,24 @@ font-size: 13px;
     .sortLable{
         margin-right: 2px;
     }
+    #singleOrder1{
+        order:1;
+        width: 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    #singleOrder2{
+        order:2;
+        width: 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    #singleOrder3{
+        order: 3;
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 @media screen and (max-width:1358px){
     .sortLable li button{
@@ -409,3 +474,18 @@ font-size: 13px;
     }
     
 }
+.swiper-container {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .swiper-container {
+      width: 100% !important;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .swiper-container {
+      width: 100% !important;
+    }
+  }

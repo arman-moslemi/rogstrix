@@ -13,7 +13,21 @@ SwiperCore.use([Navigation]);
 const SimilarSlider = () => {
   return (
     <div>
-         <Swiper className="specialOfferSlider" slidesPerView={4} spaceBetween={10} navigation={true} >
+         <Swiper  
+          breakpoints={{
+            // when window width is >= 640px
+            499: {
+              slidesPerView: 1,
+              spaceBetweenSlides: 50
+          },
+          // when window width is <= 999px
+        
+          999: {
+              slidesPerView: 5,
+              spaceBetweenSlides: 50
+          }
+          }}
+          className="specialOfferSlider" slidesPerView={5} spaceBetween={10} navigation={true} >
   <SwiperSlide>
     <SimilarSliderCard viewList={true}/>
   </SwiperSlide>
