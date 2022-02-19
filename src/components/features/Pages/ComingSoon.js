@@ -1,6 +1,7 @@
 
 import ErrorImg from "../../assets/img/404.png";
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import AlertModal from './layouts/AlertModal';
 const CommingSoon = () => {
 
   return (
