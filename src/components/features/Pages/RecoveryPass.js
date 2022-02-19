@@ -6,10 +6,14 @@ import RedLogo from '../../assets/img/redLogo.png';
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
+
 const RecoveryPass = () => {
     const history = useHistory();
 
     const [mobile,setMobile]=useState()
+    const [open,setOpen]=useState(false)
+    const [title,setTitle]=useState("")
 
     const login=()=>{
       const axios = require("axios");
@@ -17,22 +21,25 @@ const RecoveryPass = () => {
 
   if(!mobile)
   {
-  alert("همه مقادیر را وارد نمائید")
+  setTitle("همه مقادیر را وارد نمائید")
+  setOpen(true)
   }
   else{
-
 
       axios.post(apiUrl + "ForgettingSMS",{Mobile:mobile})
       .then(function (response) {
         if (response.data.result == "true") {
 
           // setBlog(response.data.Data)
+          setTitle("رمز برای شما ارسال گردید")
+          setOpen(true)
           history.push("/Login")
 
       }
-      else{
-        alert("شماره ورودی نادرست می باشد")
 
+      else{
+        setTitle("شماره ورودی نادرست می باشد")
+setOpen(true)
       }})
       .catch(function (error) {
         console.log(error);
@@ -45,6 +52,8 @@ const RecoveryPass = () => {
   return (
    <div className="loginPage">
        <div className="loginBox">
+           <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
            <button className="closeBtn">
            <FaTimes className="closeIcon" size={25}/>
            </button>
@@ -55,7 +64,7 @@ const RecoveryPass = () => {
             <p className="loginText">
             شماره موبایل خود را وارد کنید
             </p>
-            <input className="inputLogin  marTop35" placeholder="شماره موبایل خود را وارد کنید" type="text"/>
+            <input className="inputLogin  marTop35" placeholder="شماره موبایل خود را وارد کنید" onChange={(e)=>setMobile(e.target.value)}type="text"/>
             {/* <div className="d-flex justify-content-between mar-top-35 align-items-center">
                 <div>
                 <p className="rememberPassLable marBottom0">کد تصویر را وارد کنید</p>
@@ -72,7 +81,7 @@ const RecoveryPass = () => {
                 </div>
             </div> */}
             <div className="mar-top-40">
-                <button className="loginBtn" type="submit">
+                <button onClick={()=>login()} className="loginBtn" type="submit">
                 ارسال درخواست بازیابی رمز عبور
                 </button>
             </div>

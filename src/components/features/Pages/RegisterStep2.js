@@ -8,10 +8,13 @@ import {useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
+
 const RegisterStep2 = () => {
   const history = useHistory();
     const params = useParams().id;
-
+    const [open,setOpen]=useState(false)
+    const [title,setTitle]=useState("")
     const [email,setEmail]=useState()
     const [pass,setPass]=useState()
     const submit=()=>{
@@ -21,8 +24,9 @@ const RegisterStep2 = () => {
 
   if(!email || !pass)
   {
-  alert(" مقادیر را وارد نمائید")
-  }
+
+    setTitle("همه مقادیر را وارد نمائید")
+    setOpen(true)  }
   else{
 
       axios.post(apiUrl + "InsertCustomer",{Email:email,Password:pass,Mobile:params})
@@ -35,7 +39,8 @@ const RegisterStep2 = () => {
 
       }
       else{
-        alert("عملیات با خطا روبرو شد")
+        setTitle("عملیات با خطا روبرو شد")
+        setOpen(true)
 
       }})
       .catch(function (error) {
@@ -49,9 +54,11 @@ const RegisterStep2 = () => {
   return (
    <div className="loginPage">
        <div className="loginBox">
-           <button className="closeBtn">
+       <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
+           {/* <button className="closeBtn">
            <FaTimes className="closeIcon" size={25}/>
-           </button>
+           </button> */}
             <img src={RedLogo}/>
             <p className="loginTitle">
               ثبت نام

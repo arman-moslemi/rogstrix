@@ -6,20 +6,22 @@ import RedLogo from '../../assets/img/redLogo.png';
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
 
 const RegisterStep1 = () => {
     const history = useHistory();
 
     const [mobile,setMobile]=useState()
-
+    const [open,setOpen]=useState(false)
+    const [title,setTitle]=useState("")
     const login=()=>{
       const axios = require("axios");
       console.log(mobile)
 
   if(!mobile)
   {
-  alert("همه مقادیر را وارد نمائید")
-  }
+    setTitle("همه مقادیر را وارد نمائید")
+    setOpen(true)  }
   else{
 
 
@@ -32,8 +34,8 @@ const RegisterStep1 = () => {
 
       }
       else{
-        alert("شماره ورودی نادرست می باشد")
-
+        setTitle("شماره ورودی نادرست می باشد")
+        setOpen(true)
       }})
       .catch(function (error) {
         console.log(error);
@@ -46,6 +48,8 @@ const RegisterStep1 = () => {
   return (
    <div className="loginPage">
        <div className="loginBox">
+       <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
            <button className="closeBtn">
            <FaTimes className="closeIcon" size={25}/>
            </button>

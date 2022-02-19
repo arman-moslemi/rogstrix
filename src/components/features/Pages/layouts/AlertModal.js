@@ -48,40 +48,42 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
-  const [open, setOpen] = React.useState(false);
+export default function CustomizedDialogs(props) {
+  // const [open, setOpen] = React.useState(true);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    // setOpen(true);
   };
   const handleClose = () => {
-    setOpen(false);
+    // setOpen(false);
+    props.setOpen(false)
   };
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         هشدار
-      </Button>
+      </Button> */}
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
-        open={open}
+        open={props.open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          هشدار!
+          پیام!
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-         متن هشدار اینجا قرار میگیرد
-          </Typography>
-        
+{
+  props.Title
+}          </Typography>
+
         </DialogContent>
-        <DialogActions>
+        {/* <DialogActions>
           <Button autoFocus onClick={handleClose}>
             بازگشت به عقب
           </Button>
-        </DialogActions>
+        </DialogActions> */}
       </BootstrapDialog>
     </div>
   );
