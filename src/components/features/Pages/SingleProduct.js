@@ -1,5 +1,5 @@
 import MainPageHeader from "./layouts/MainPageHeader";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Header from "./layouts/Header";
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
@@ -138,10 +138,10 @@ const images = [
         </div>
         <div className="singleBox1">
         <div className="row">
-        <Col md={3}>
+        <Col md={3} id="singleOrder1">
         <ImageGallery items={images} showNav={false} showFullscreenButton={false} showPlayButton={false}/>
         </Col>
-        <Col md={6}>
+        <Col md={6} id="singleOrder3">
         <p className="boxTitle2 BoldFont">
 {product.ProductName+" "+product.BrandName}                </p>
                 <hr className="grayHr"/>
@@ -210,7 +210,7 @@ const images = [
                   </div>
               </div>
         </Col>
-        <Col md={3}>
+        <Col md={3} id="singleOrder2">
             <div className="redLightBox">
                 <p className="boxTitle2">
                     مشخصات فروش
@@ -307,10 +307,10 @@ const images = [
         </div>
         </div>
         <div className="row mt-4 mb-3">
-          <Col md={3}>
+          <Col md={3} id="singleOrder1">
             <SingleProductRedBox data={property}/>
           </Col>
-          <Col md={9}>
+          <Col md={9} id="singleOrder2">
             <div className="whiteBox3">
             <p className="boxTitle2 BoldFont">
             توضیحات درباره {product.ProductName+" "+product.BrandName}
@@ -320,7 +320,10 @@ const images = [
 {product.Description}                </p>
             </div>
 
-            <div className="whiteBox3 mt-3 pd0">
+         
+          </Col>
+        </div>
+        <div className="whiteBox3 mt-3 pd30">
             <div className="row margin25 ">
                    <Col md={12}>
                    <div className="">
@@ -338,12 +341,10 @@ const images = [
             <div className="whiteBox3 mt-3">
          <CommentBox data={com}/>
             </div>
-          </Col>
-        </div>
 
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };
