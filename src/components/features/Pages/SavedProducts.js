@@ -1,6 +1,6 @@
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FaTimes } from 'react-icons/fa';
+import { FaRegGrinTongueWink, FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RightMenu from "./UserPanelComponents/RightMenu";
 import Header from "./layouts/Header";
@@ -9,12 +9,12 @@ import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelSeen from "../../assets/icons/panelSeen";
 import Checkbox from '@mui/material/Checkbox';
-import ProductsViewdCard from "./UserPanelComponents/ProductsViewdCard";
+import SavedProductsCard from "./UserPanelComponents/SavedProductsCard";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
-const ProductsViewed = () => {
+const SavedProducts = () => {
     const params = useParams().id;
     const [data,setData]=useState()
     const [product,setProduct]=useState()
@@ -42,7 +42,7 @@ const ProductsViewed = () => {
         });
 
         axios
-            .post(apiUrl + "CustomerProductShow",{
+            .post(apiUrl + "CustomerProductSave",{
               CustomerID:params
             })
         .then(function (response) {
@@ -82,27 +82,28 @@ const ProductsViewed = () => {
              <div className="d-flex align-items-center">
       <PanelSeen className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                   محصولات مشاهده شده
+                  محصولات ذخیره شده
                 </p>
           </div>
                  </div>
                  <hr className="grayDashed" />
                  <div className="rightMenuBox1">
-                     <div className="row">
-                     {
+                    <div className="row">
+                        {
 product?.map((item)=>{
     return(
-                       <Col md={4} className="mb-4">
-                   <ProductsViewdCard data={item}/>
-                       </Col>
-                         )
+
+                        <Col md={4} className="mb-4">
+                            <SavedProductsCard viewOverlay={true} data={item}/>
+                        </Col>
+    )
 })
                         }
-                       {/* <Col md={4} className="mb-4">
-                   <ProductsViewdCard/>
-                       </Col> */}
+                        {/* <Col md={4} className="mb-4">
+                            <SavedProductsCard viewOverlay={true}/>
+                        </Col> */}
 
-                     </div>
+                    </div>
 
                  </div>
              </div>
@@ -115,4 +116,4 @@ product?.map((item)=>{
   </div>
   );
 };
-export default ProductsViewed;
+export default SavedProducts;

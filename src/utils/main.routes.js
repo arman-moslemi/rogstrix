@@ -31,7 +31,7 @@ import ChangePassword from '../components/features/Pages/ChangePassword';
 import ProductsViewed from '../components/features/Pages/ProductsViewed';
 import UserOrder from '../components/features/Pages/UserOrder';
 import UserComments from '../components/features/Pages/UserComments';
-import SevedProducts from '../components/features/Pages/SevedProducts';
+import SavedProducts from '../components/features/Pages/SavedProducts';
 import CommingSoon from '../components/features/Pages/ComingSoon';
 import CartStep1 from '../components/features/Pages/CartStep1';
 import CartStep2 from '../components/features/Pages/CartStep2';
@@ -229,9 +229,9 @@ render={(props) => <RegisterStep2/>}>
 						</Route>
 						<Route
 
-						path='/SavedProducts'
+						path='/SavedProducts/:id'
 						name='محصولات ذخیره شده'
-						render={(props) => <SevedProducts/>}>
+						render={(props) => <SavedProducts/>}>
 
 						</Route>
 						<Route

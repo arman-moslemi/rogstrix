@@ -62,7 +62,7 @@ const RightMenu = ({data,id}) => {
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelComment className="rightMenuImg"/>
-      <Link onClick={()=>history.push("/SevedProducts/"+id)} className="fontWeightMedium ml-4"  >
+      <Link onClick={()=>history.push("/SavedProducts/"+id)} className="fontWeightMedium ml-4"  >
                     سیستم های ذخیره شده
                 </Link>
           </div>

@@ -1,4 +1,4 @@
-import {react,useState} from "react";
+import React,{useState,useEffect} from 'react'
 import RedLogo from '../../../assets/img/redLogo.png';
 import { FaChevronDown } from 'react-icons/fa';
 import { Container ,Col, Button,Dropdown,DropdownButton} from "react-bootstrap";
@@ -17,7 +17,9 @@ import MegaMenuPrinter from "../../../assets/icons/MegaMenuPrinter";
 import MegaMenuServer from "../../../assets/icons/MegaMenuServer";
 import MegaMenuTablet from "../../../assets/icons/MegaMenuTablet";
 import { Link, useHistory } from "react-router-dom";
-
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
 
 const Menu = () => {
    const [showMega, setShowMega] = useState(false);
@@ -25,7 +27,36 @@ const onClick = () =>{
    setShowMega(!showMega);
 };
 const history = useHistory();
+const [data,setData]=useState()
 
+const groups=()=>{
+   const axios = require("axios");
+
+
+   axios.get(apiUrl + "AllMainGroup")
+   .then(function (response) {
+     if (response.data.result == "true") {
+
+        setData(response.data.Data)
+
+        console.log(response.data.Data)
+
+       // history.push("/RegisterVerify/"+mobile)
+
+   }
+   else{
+
+   }})
+   .catch(function (error) {
+     console.log(error);
+   });
+
+
+ }
+ useEffect(() => {
+   groups();
+// alert(val)
+ }, []);
   return (
    <Container fluid className="pad0">
    <div className="desktopMenu">
@@ -92,6 +123,49 @@ const history = useHistory();
       </div>
       <div className="MegaMenuContainer">
          <div className="MegaMenuCol">
+         {
+data.map((item)=>{
+   return(
+
+            <ul>
+               <li className="listTitle">
+                  <a href="#">
+                     مانیتور
+                  </a>
+               </li>
+               <li className="listItems">
+                  <a href="#">
+                     مانیتور ایسوس
+                  </a>
+               </li>
+               <li className="listItems">
+                  <a href="#">
+                     مانیتور ال جی
+                  </a>
+               </li>
+               <li className="listItems">
+                  <a href="#">
+                     مانیتور سامسونگ
+                  </a>
+               </li>
+               <li className="listItems">
+                  <a href="#">
+                     مانیتور ویوسونیک
+                  </a>
+               </li>
+               <li className="listItems">
+                  <a href="#">
+                     مانیتور بنکیو
+                  </a>
+               </li>
+
+            </ul>
+   )
+})
+         }
+
+         </div>
+         {/* <div className="MegaMenuCol">
             <ul>
                <li className="listTitle">
                   <a href="#">
@@ -402,85 +476,7 @@ const history = useHistory();
                </li>
 
             </ul>
-         </div>
-         <div className="MegaMenuCol">
-            <ul>
-               <li className="listTitle">
-                  <a href="#">
-                     مانیتور
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور ایسوس
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور ال جی
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور سامسونگ
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور ویوسونیک
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور بنکیو
-                  </a>
-               </li>
-
-            </ul>
-            <ul>
-               <li className="listTitle">
-                  <a href="#">
-                     سی پی یو
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     اینتل
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                    آی ام دی
-                  </a>
-               </li>
-
-
-
-            </ul>
-            <ul>
-               <li className="listTitle">
-                  <a href="#">
-                     مادربورد
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مادربورد ایسوس
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مادربورد ام اس آی
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مادربورد گیگابایت
-                  </a>
-               </li>
-
-            </ul>
-         </div>
+         </div> */}
       </div>
    </div>:null}
    </div>

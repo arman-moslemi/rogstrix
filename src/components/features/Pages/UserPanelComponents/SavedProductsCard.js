@@ -5,8 +5,10 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaCommentDots , FaLongArrowAltUp} from "react-icons/fa";
 import MadeSystem from "../../../assets/img/madeSystem.png";
 import userProfile from "../../../assets/img/userProfile.png";
+import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
+  // console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -16,10 +18,11 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const SevedProductsCard = (props) => {
+const SavedProductsCard = (props) => {
+  const history=useHistory()
   return (
-   
-     <div className="completedCard">
+
+     <Link onClick={()=>history.push("/singleProduct/"+props.data.ProductID)} className="completedCard">
        <div className="imgBox marginBottom15">
        {
   props.viewOverlay==true?
@@ -27,25 +30,22 @@ const SevedProductsCard = (props) => {
            <div className="userProfile">
              <img src={userProfile}/>
            </div>
-           <div className="userName">
+           {/* <div className="userName">
              <p>{truncate("محسن رحمتی",20)}</p>
-           </div>
+           </div> */}
          </div>
  :
  null
  }
 
-       <img src={MadeSystem} className="madeSystemImg"/>
+       <img src={apiAsset+props.data.Pic1} className="madeSystemImg"/>
        </div>
        <p className="completeProductTitle">
-       {truncate("سیستم گیمینگ خوب و سریع اینتل",100)}
+       {truncate(props.data.ProductName+" "+props.data.BrandName,100)}
        </p>
       <p className="completeProductDetail">
-      Intel Core i5-11400
-      <br/>
-Parametric Video Card (Chipset: GeForce RTX 3060; Cooling: 2 Fans, 3 Fans, 120 mm Radiator, ...)
-<br/>
-Phanteks Eclipse P300A Mesh ATX Mid Tower
+{props.data.Description}      <br/>
+
       </p>
       <hr className="bottomDashed"/>
       <div className="row">
@@ -57,12 +57,12 @@ Phanteks Eclipse P300A Mesh ATX Mid Tower
               5
             </p>
           </div>
-          <div style={{marginRight:15}}>
+          {/* <div style={{marginRight:15}}>
             <p className="bottomIcon">
               <FaLongArrowAltUp size={18} className="marginLeft10"/>
              12
             </p>
-          </div>
+          </div> */}
           <div>
 
           </div>
@@ -70,12 +70,12 @@ Phanteks Eclipse P300A Mesh ATX Mid Tower
         </Col>
         <Col md={7} className="pd0 ta-left">
           <p className="completedPrice">
-          ۲۴،۵۶۵،۰۰۰ تومان
+          {props.data.Cost} تومان
           </p>
         </Col>
       </div>
-     </div>
-   
+     </Link>
+
   );
-}; 
-export default SevedProductsCard;
+};
+export default SavedProductsCard;

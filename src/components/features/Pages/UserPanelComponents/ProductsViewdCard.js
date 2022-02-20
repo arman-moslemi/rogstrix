@@ -2,9 +2,11 @@ import react from "react";
 import "./Styles/userPanel.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
+  // console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -15,12 +17,14 @@ export const truncate = (str, len) => {
   return str;
 };
 const ProductsViewdCard = (props) => {
+  const history=useHistory()
+
   return (
-   
-      <div className="BestSellingCard">
+
+      <Link onClick={()=>history.push("/singleProduct/"+props.data.ProductID)} className="BestSellingCard">
   <div className="specialSliderCardBox">
-  <img src={specialSliderImg}/>
-      <ul className="colorList">
+  <img src={apiAsset+props.data.Pic1}/>
+      {/* <ul className="colorList">
         <li>
           <div id="color1"></div>
         </li>
@@ -30,24 +34,24 @@ const ProductsViewdCard = (props) => {
         <li>
           <div id="color3"></div>
         </li>
-      </ul>
+      </ul> */}
   </div>
   <p className="productName">
-    {truncate("هندزفری شیائومی مدل m123",25)}
+    {truncate(props.data.ProductName,25)}
   </p>
 <div className="row marginTop30">
   <Col md={4} className="pad0 ta-right">
     <p className="grayStrokeOut">
-      60.000
-    </p>
+    {props.data.Cost }   </p>
   </Col>
   <Col md={8} className="pad0 ta-left">
     <p className="grayPrice">
-      573.000 تومان
+    {parseInt(props.data.Cost)-parseInt(props.data?.SpecialCost)}
+ تومان
     </p>
   </Col>
 </div>
-{
+{/* {
   props.viewList==true?
 <div className="row marginTop20">
   <Col md={12} className="pad0 ta-right">
@@ -58,11 +62,11 @@ const ProductsViewdCard = (props) => {
   </div>
   :
 null
-}
+} */}
 
 
-      </div>
-   
+      </Link>
+
   );
-}; 
+};
 export default ProductsViewdCard;

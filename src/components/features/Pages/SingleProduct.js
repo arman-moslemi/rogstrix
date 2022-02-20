@@ -20,13 +20,37 @@ const SingleProduct = () => {
   const [product,setProduct]=useState([])
   const [property,setProperty]=useState([])
   const [com,setCom]=useState([])
+  const ProductSave=()=>{
+    const axios = require("axios");
+
+    axios
+        .post(apiUrl + "AddCustomerProductSave",{
+          ProductID:params,
+          CustomerID:1
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+        console.log(777)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   const mainSlider=()=>{
     const axios = require("axios");
 
       axios
           .post(apiUrl + "SingleProduct",{
             ProductID:params,
-            CustomerID:0
+            CustomerID:1
           })
       .then(function (response) {
         if (response.data.result == "true") {
@@ -214,9 +238,9 @@ const images = [
               </div> */}
         </Col>
         <Col md={3} id="singleOrder2">
-        
+
             <div className="redLightBox" style={{position:'relative'}}>
-            <Button className="save-btn-single" id="save-btn">
+            <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
                                                 <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
                                                     height="29.652" viewBox="0 0 27.45 29.652">
                                                     <g id="save" transform="translate(0.5 0.489)">
@@ -359,7 +383,7 @@ const images = [
               <SimilarSlider/>
             </div>
             <div className="whiteBox3 mt-3">
-         <CommentBox data={com}/>
+         <CommentBox data={com} id={params} type={"product"}/>
             </div>
 
       </Container>

@@ -23,19 +23,54 @@ const Address = () => {
     const [data,setData]=useState([])
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
+    const [address1,setAddress1]=useState("")
+    const [address2,setAddress2]=useState("")
+    const [postalCode1,setPostalCode1]=useState("")
+    const [postalCode2,setPostalCode2]=useState("")
     const history = useHistory();
     const params = useParams().id;
     const [open1, setOpen1] = useState(false);
     const handleOpen1 = () => setOpen1(true);
     const handleClose1 = () => setOpen1(false);
     const [open2, setOpen2] = useState(false);
+    const [open3, setOpen3] = useState(false);
     const handleOpen2 = () => setOpen2(true);
+    const handleOpen3 = () => setOpen3(true);
     const handleClose2 = () => setOpen2(false);
+    const handleClose3 = () => setOpen3(false);
     const getData=()=>{
         const axios = require("axios");
 
 
         axios.post(apiUrl + "OneCustomer",{CustomerID:params})
+        .then(function (response) {
+          if (response.data.result == "true") {
+
+             setData(response.data.Data)
+             setAddress1(response.data.Data.Address1)
+             setAddress2(response.data.Data.Address2)
+             console.log(response.data.Data)
+
+            // history.push("/RegisterVerify/"+mobile)
+
+        }
+        else{
+          setTitle("شماره ورودی نادرست می باشد")
+          setOpen(true)
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
+
+      }
+      const AddAddress=()=>{
+        const axios = require("axios");
+
+
+        axios.post(apiUrl + "CustomerAddress",{CustomerID:params,Address1:address1,Address2:address1,PostalCode1:postalCode1,PostalCode2:postalCode2,CityID1:"",CityID2:"",RegionID1:"",RegionID2:""})
         .then(function (response) {
           if (response.data.result == "true") {
 
@@ -95,10 +130,16 @@ const style = {
                    آدرس های من
                 </p>
       </div>
+      {
+        address2?
+        null
+        :
+
       <Button className="addressAdd" onClick={handleOpen1}>
           <FaPlus className="mr-2"/>
           افزودن آدرس جدید
       </Button>
+      }
       <Modal
         open={open1}
         onClose={handleClose1}
@@ -139,16 +180,15 @@ const style = {
              <p className="fontWeightMedium mb-2">
                                    کد پستی
                                 </p>
-                                <input className="EditInformationInput w100"/>
+                                <input onChange={(e)=>address1?setPostalCode2(e.target.value):setPostalCode1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-                                   کد پستی
-                                </p>
-                                <textarea className="EditInformationInput w100"/>
+             آدرس                                </p>
+                                <textarea  onChange={(e)=>address1?setAddress2(e.target.value):setAddress1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
-                 <Button className="saveBtn mt-4">
+                 <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
                      ذخیره
                  </Button>
              </Col>
@@ -160,11 +200,11 @@ const style = {
                  <hr className="grayDashed" />
                  <div className="rightMenuBox1">
                      {
-                         data.Address1?
+                         address1?
 
                  <div className="shadowBox mb-4">
                      <p className="fontWeightNormal">
-{data.Address1}                     </p>
+{address1}                     </p>
                      <div className="d-flex align-items-center justify-content-end">
                          <Button className="glassBtn" id="colorBlue" onClick={handleOpen2}>
                              ویرایش
@@ -209,24 +249,23 @@ const style = {
              <p className="fontWeightMedium mb-2">
                                    کد پستی
                                 </p>
-                                <input className="EditInformationInput w100"/>
+                                <input onChange={(e)=>setPostalCode1(e.target.value)}value={postalCode1} className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-                                   کد پستی
-                                </p>
-                                <textarea className="EditInformationInput w100"/>
+آدرس                                </p>
+                                <textarea onChange={(e)=>setAddress1(e.target.value)} value={address1}className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
-                 <Button className="saveBtn mt-4">
+                 <Button onClick={()=>AddAddress()}className="saveBtn mt-4">
                      ذخیره
                  </Button>
              </Col>
          </div>
         </Box>
       </Modal>
-                         <Button className="glassBtn" id="colorRed">
-                             حذف
+      <Button onClick={()=>{setAddress1("");setPostalCode1("");AddAddress()}}>
+                                   حذف
                          </Button>
                      </div>
                  </div>
@@ -234,20 +273,76 @@ const style = {
 null
                      }
                      {
-                         data.Address2?
+                         address2?
                  <div className="shadowBox mb-4">
                      <p className="fontWeightNormal">
-                     {data.Address2}
+                     {address2}
                      </p>
                      <div className="d-flex align-items-center justify-content-end">
-                         <Button className="glassBtn" id="colorBlue">
+                         <Button onClick={()=>handleOpen3()} className="glassBtn" id="colorBlue">
                              ویرایش
                          </Button>
-                         <Button className="glassBtn" id="colorRed">
+                         <Modal
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            ویرایش آدرس
+          </Typography>
+          <hr/>
+         <div className="row">
+             <Col md={4}>
+
+                                <p className="fontWeightMedium mb-2">
+                                   استان
+                                </p>
+                                <select name="state" id="state" className="informationSelect">
+                                   <option value="man">تهران</option>
+                                    <option value="woman">اصفهان</option>
+
+                                  </select>
+
+             </Col>
+             <Col md={4}>
+
+            <p className="fontWeightMedium mb-2">
+               شهر
+            </p>
+            <select name="state" id="state" className="informationSelect">
+               <option value="man">تهران</option>
+                <option value="woman">اصفهان</option>
+
+              </select>
+
+</Col>
+             <Col md={4}>
+             <p className="fontWeightMedium mb-2">
+                                   کد پستی
+                                </p>
+                                <input onChange={(e)=>setPostalCode2(e.target.value)} value={postalCode2} className="EditInformationInput w100"/>
+             </Col>
+             <Col md={12}>
+             <p className="fontWeightMedium mb-2 mt-4">
+آدرس                                </p>
+                                <textarea onChange={(e)=>setAddress2(e.target.value)} value={address2} className="EditInformationInput w100"/>
+             </Col>
+             <Col md={12} className="ta-left">
+                 <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
+                     ذخیره
+                 </Button>
+             </Col>
+         </div>
+        </Box>
+      </Modal>
+                         <Button onClick={()=>{setAddress2("");setPostalCode2("");AddAddress()}} className="glassBtn" id="colorRed">
                              حذف
                          </Button>
                      </div>
                  </div>
+
                  :
                  null
                  }

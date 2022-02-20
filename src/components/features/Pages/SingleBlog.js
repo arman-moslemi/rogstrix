@@ -107,6 +107,8 @@ console.log(params)
       .catch(function (error) {
         console.log(error);
       });
+
+
   }
 
   useEffect(() => {
@@ -137,15 +139,15 @@ console.log(params)
        <div className="row mt-2 mb-5">
        <Col md={3}>
          <SuggestionBlogs data={special}/>
-         <RelatedPost/>
+         <RelatedPost BlogTypeID={data.BlogTypeID}/>
          <Category data={type}/>
          </Col>
          <Col md={9}>
-          <img className="BlogMainImg" src={Blog2}/>
+          <img className="BlogMainImg" src={data.Pic}/>
         <ShowBlog data={data}/>
         {/* <ReadMore/> */}
         <div className="whiteBox3 mt-3">
-         <CommentBox data={com}/>
+         <CommentBox data={com} id={params}/>
             </div>
          </Col>
 
