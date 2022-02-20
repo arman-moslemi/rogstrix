@@ -8,9 +8,26 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaAngleDoubleRight ,FaAngleDoubleLeft ,FaAward,FaPlus } from 'react-icons/fa';
 import Img1 from "../../assets/img/img1.png";
 import Radio from '@mui/material/Radio';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "50%",
+    bgcolor: 'background.paper',
+    border: "none",
+    borderRadius:5,
+    boxShadow: 24,
+    p: 4,
+  };
 const CartStep1 = () => {
     const [count,setCount]=useState(1)
-
+    const [open1, setOpen1] = useState(false);
+    const handleOpen1 = () => setOpen1(true);
+    const handleClose1 = () => setOpen1(false);
    const increment = () => {
     setCount(count+1)
     console.log(count)
@@ -161,10 +178,66 @@ const CartStep1 = () => {
                    انتخاب آدرس
                 </p>
       </div>
-      <Button className="addressAdd">
+      <Button className="addressAdd" onClick={handleOpen1}>
           <FaPlus className="mr-2"/>
           افزودن آدرس جدید
       </Button>
+      <Modal
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            افزودن آدرس جدید
+          </Typography>
+          <hr/>
+         <div className="row">
+             <Col md={4}>
+            
+                                <p className="fontWeightMedium mb-2">
+                                   استان
+                                </p>
+                                <select name="state" id="state" className="informationSelect">
+                                   <option value="man">تهران</option>
+                                    <option value="woman">اصفهان</option>
+
+                                  </select>
+                           
+             </Col>
+             <Col md={4}>
+            
+            <p className="fontWeightMedium mb-2">
+               شهر
+            </p>
+            <select name="state" id="state" className="informationSelect">
+               <option value="man">تهران</option>
+                <option value="woman">اصفهان</option>
+
+              </select>
+       
+</Col>
+             <Col md={4}>
+             <p className="fontWeightMedium mb-2">
+                                   کد پستی
+                                </p>
+                                <input className="EditInformationInput w100"/>
+             </Col>
+             <Col md={12}>
+             <p className="fontWeightMedium mb-2 mt-4">
+                                   کد پستی
+                                </p>
+                                <textarea className="EditInformationInput w100"/>
+             </Col>
+             <Col md={12} className="ta-left">
+                 <Button className="saveBtn mt-4">
+                     ذخیره
+                 </Button>
+             </Col>
+         </div>
+        </Box>
+      </Modal>
           </div>
                  </div>
                  <hr className="grayDashed" />
