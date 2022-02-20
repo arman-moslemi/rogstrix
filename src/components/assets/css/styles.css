@@ -1415,25 +1415,25 @@ border-radius: 5px;
 padding: 5px;
 }
 .saveBtn{
-  background-color: #ff004e;
-  font-family: IRANSans-Bold;
-  color: #fff;
-  border: none;
+  background-color: #ff004e !important;
+  font-family: IRANSans-Bold !important;
+  color: #fff !important;
+  border: none !important;
 }
 .saveBtn:hover{
-  background-color: #fff;
-color: #ff004e;
-border: 1px solid #ff004e;
+  background-color: #fff !important;
+color: #ff004e !important;
+border: 1px solid #ff004e !important;
 }
 .addressAdd{
-  font-family: IRANSans-Bold;
-  color: #fff;
-  background-color: #25bddc;
+  font-family: IRANSans-Bold !important;
+  color: #fff !important;
+  background-color: #25bddc !important;
   border: none;
 }
 .addressAdd:hover{
-  background-color: #fff;
-  border: 1px solid #25bddc;
+  background-color: #fff !important;
+  border: 1px solid #25bddc !important;
   color: #25bddc !important;
 }
 .shadowBox{
@@ -1850,6 +1850,11 @@ display: none;
 .w30{
   width: 30%;
 }
+<<<<<<< HEAD
+=======
+.specialPrice{
+  margin-top: 5px;}
+>>>>>>> dd1539817ebf5f0824de8b7f2244dff21214365b
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
   width: 25%;
 }
@@ -1865,4 +1870,28 @@ display: none;
 }
 .specialPrice{
   margin-top: 5px;
+}
+.css-2ulfj5-MuiTypography-root{
+  font-family: IRANSans-Bold !important;
+  font-size: 15px !important;
+}
+.save-btn-single{
+  position: absolute;
+  background-color: transparent !important;
+  padding: 0px !important;
+  border: none !important;
+  top: 0px;
+  left:5%;
+}
+.save-btn-single:hover svg{
+
+}
+.save-btn:hover svg .Icon_awesome-plus, .save-btn:hover {
+  fill: #fff !important;
+  color: #fff !important;
+}
+
+.save-btn:hover svg path{
+  fill: #E74868;
+  color: #E74868;
 }
