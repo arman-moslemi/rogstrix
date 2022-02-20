@@ -7,10 +7,12 @@ import Checkbox from '@mui/material/Checkbox';
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
 
 const Login = () => {
   const history = useHistory();
-
+  const [open,setOpen]=useState(false)
+  const [title,setTitle]=useState("")
   const [email,setEmail]=useState()
   const [pass,setPass]=useState()
   const login=()=>{
@@ -20,7 +22,9 @@ const Login = () => {
 
 if(!email || !pass)
 {
-alert("همه مقادیر را وارد نمائید")
+
+  setTitle("همه مقادیر را وارد نمائید")
+  setOpen(true)
 }
 else{
 
@@ -34,7 +38,8 @@ else{
 
     }
     else{
-      alert("نام کاربری یا رمز عبور نادرست می باشد")
+      setTitle("نام کاربری یا رمز عبور نادرست می باشد")
+      setOpen(true)
 
     }})
     .catch(function (error) {
@@ -48,9 +53,11 @@ else{
   return (
    <div className="loginPage">
        <div className="loginBox">
-           <button className="closeBtn">
+       <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
+           {/* <button className="closeBtn">
            <FaTimes className="closeIcon" size={25}/>
-           </button>
+           </button> */}
             <img src={RedLogo}/>
             <p className="loginTitle">
                ورود
@@ -82,7 +89,7 @@ else{
                     <Link onClick={()=>history.push("/RegisterStep1")} className="rememberPassLable" style={{marginTop:20}}>ثبت نام</Link>
                 </Col>
                 <Col md={3} xs={3} sm={3} className="pad0 ta-left" >
-                    <a className="rememberPassLable" style={{marginTop:7}}>فراموشی رمز</a>
+                    <Link className="rememberPassLable" style={{marginTop:7}} onClick={()=>history.push("/RecoveryPass")}>فراموشی رمز</Link>
                 </Col>
             </div>
             <div className="mar-top-30">

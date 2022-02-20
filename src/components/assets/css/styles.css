@@ -1666,7 +1666,7 @@ display: flex;
 .enamadBox{
   height: 143px;
   background-color: #fff;
-  
+
   padding: 5px;
   width: 100%;
 }
@@ -1758,7 +1758,7 @@ display: none;
 .cartCol1{
   width: 73.5%;
 
- 
+
   margin-left: 0.5%;
 }
 .whiteBoxCart{
@@ -1768,8 +1768,8 @@ display: none;
 .cartCol2{
   width: 25.5%;
   margin-right: 0.5%;
-  
- 
+
+
 }
 .pd30{
   padding:30px;
@@ -1850,6 +1850,21 @@ display: none;
 .w30{
   width: 30%;
 }
+<<<<<<< HEAD
 .specialPrice{
   margin-top: 5px;
+=======
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+  width: 25%;
+}
+.css-140puxv-MuiTypography-root-MuiDialogTitle-root{
+  padding-right: 50px;
+  font-family: IRANSans-Bold !important;
+}
+.css-d3wcwz-MuiTypography-root{
+  font-family: IRANSans-Medium !important;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  font-family: IRANSans !important;
+>>>>>>> 1fa052fb10f726474f6e5f864848792d92886c0a
 }
