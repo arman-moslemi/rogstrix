@@ -33,8 +33,8 @@ else{
     .then(function (response) {
       if (response.data.result == "true") {
 
-        // setBlog(response.data.Data)
-        history.push("/EditInformation")
+         console.log(response.data.Data)
+        history.push("/EditInformation/"+response.data.Data[0].CustomerID)
 
     }
     else{

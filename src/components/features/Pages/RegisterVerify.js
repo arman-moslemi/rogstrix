@@ -7,11 +7,13 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
 
 const RegisterVerify = () => {
     const history = useHistory();
     const params = useParams().id;
-
+    const [open,setOpen]=useState(false)
+    const [title,setTitle]=useState("")
     const [code,setCode]=useState()
     const submit=()=>{
       const axios = require("axios");
@@ -20,28 +22,28 @@ const RegisterVerify = () => {
 
   if(!code)
   {
-  alert(" مقادیر را وارد نمائید")
+  setTitle(" مقادیر را وارد نمائید")
+  setOpen(true)
   }
   else{
-    history.push("/RegisterStep2/"+params)
 
-  }
-    //   axios.post(apiUrl + "Login",{Email:email,Password:pass})
-    //   .then(function (response) {
-    //     if (response.data.result == "true") {
+      axios.post(apiUrl + "VerifyRegister",{VerifyCode:code})
+      .then(function (response) {
+        if (response.data.result == "true") {
 
-    //       // setBlog(response.data.Data)
-    //       history.push("/EditInformation")
+          // setBlog(response.data.Data)
+          history.push("/RegisterStep2/"+params)
 
-    //   }
-    //   else{
-    //     alert("نام کاربری یا رمز عبور نادرست می باشد")
+      }
+      else{
+        setTitle("کد نادرست می باشد")
+        setOpen(true)
 
-    //   }})
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // }
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
 
 
 
@@ -49,6 +51,8 @@ const RegisterVerify = () => {
   return (
    <div className="loginPage">
        <div className="loginBox">
+       <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
            <button className="closeBtn">
            <FaTimes className="closeIcon" size={25}/>
            </button>

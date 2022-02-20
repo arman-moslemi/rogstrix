@@ -25,16 +25,19 @@ const SingleProduct = () => {
 
       axios
           .post(apiUrl + "SingleProduct",{
-            ProductID:params
+            ProductID:params,
+            CustomerID:0
           })
       .then(function (response) {
         if (response.data.result == "true") {
 
           setProduct(response.data.Data)
+          console.log(777)
           console.log(response.data.Data)
 
       }
       else{
+        console.log(888)
         console.log(response.data.result)
 
       }})
@@ -192,13 +195,13 @@ const images = [
                 موارد بیشتر
                 <FaPlus className="ml-2"/>
                 </Button>
-                <div className="d-flex align-items-center mt-4">
+                {/* <div className="d-flex align-items-center mt-4">
                   <FaMapMarkerAlt color="#f6303f" size={24} className="mr-2"/>
                   <p className="addressSingle">
                   ارسال به فارس / شیراز / خیابان فلان / کوچه فلان / فلانی
                   </p>
-                </div>
-                <hr className="dottedH"/>
+                </div> */}
+                {/* <hr className="dottedH"/>
                 <div className="d-flex align-items-center">
                   <div  className="mr-3">
                       <FaClipboardList/>
@@ -208,7 +211,7 @@ const images = [
                     + 12 فروش
                     </p>
                   </div>
-              </div>
+              </div> */}
         </Col>
         <Col md={3} id="singleOrder2">
             <div className="redLightBox">
@@ -320,7 +323,7 @@ const images = [
 {product.Description}                </p>
             </div>
 
-         
+
           </Col>
         </div>
         <div className="whiteBox3 mt-3 pd30">

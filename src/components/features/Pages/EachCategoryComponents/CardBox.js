@@ -2,10 +2,14 @@ import react from "react";
 import "./Styles/cardBox.css"
 import cardImg from "../../../assets/img/cardImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+
 const CardBox = ({data}) => {
+  const history = useHistory();
+
   return (
 
-      <div className="SliderCard">
+      <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} className="SliderCard">
        <div className="sliderCardDiv">
        <img src={cardImg} className="sliderCardImg"/>
        </div>
@@ -32,7 +36,7 @@ const CardBox = ({data}) => {
         </p>
          </Col>
        </div>
-      </div>
+      </Link>
 
   );
 };

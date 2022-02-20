@@ -13,7 +13,10 @@ import PanelOrder from "../../../assets/icons/panelOrder";
 import PanelPassword from "../../../assets/icons/panelPassword";
 import PanelSeen from "../../../assets/icons/panelSeen";
 import PanelUser from "../../../assets/icons/panelUser";
-const RightMenu = () => {
+import { Link, useHistory } from "react-router-dom";
+
+const RightMenu = ({data,id}) => {
+    const history = useHistory();
 
   return (
   <div className="rightMenu">
@@ -22,64 +25,64 @@ const RightMenu = () => {
             <PanelUser className="rightMenuImg"/>
             <div className="ml-4">
                 <p className="fontWeightBold">
-                    کاربر شماره یک
-                </p>
-                <p className="fontWeightNormal">
+{data?.NameFamily?.split(',')[0]+" "+data?.NameFamily?.split(',')[1]}
+</p>
+                {/* <p className="fontWeightNormal">
                     تاریخ عضویت : 00/01/02
-                </p>
+                </p> */}
             </div>
         </div>
-        
+
       </div>
       <hr className="grayDashed" />
       <div className="rightMenuBox1">
       <div className="d-flex align-items-center mb-4 mt-4">
       <PanelInformation className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/EditInformation/"+id)} className="fontWeightMedium ml-4" >
                     مشخصات کاربری
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelAddress className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/Address/"+id)} className="fontWeightMedium ml-4"  >
                     آدرس های من
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelPassword className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/ChangePassword/"+id)} className="fontWeightMedium ml-4"  >
                     تغییر کلمه عبور
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelOrder className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/TicketList/"+id)} className="fontWeightMedium ml-4"  >
                     سفارش های من
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelComment className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/SevedProducts/"+id)} className="fontWeightMedium ml-4"  >
                     سیستم های ذخیره شده
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelSeen className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/ProductsViewed/"+id)} className="fontWeightMedium ml-4"  >
                     محصولات مشاهده شده
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelAlert className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/SystemGuide")} className="fontWeightMedium ml-4"  >
                     لیست اطلاع رسانی
-                </a>
+                </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelExit className="rightMenuImg"/>
-      <a className="fontWeightMedium ml-4" href="#">
+      <Link onClick={()=>history.push("/Login")} className="fontWeightMedium ml-4"  >
                     خروج
-                </a>
+                </Link>
           </div>
       </div>
       </div>

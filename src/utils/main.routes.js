@@ -187,28 +187,28 @@ render={(props) => <RegisterStep2/>}>
 						</Route>
 						<Route
 
-						path='/EditInformation'
+						path='/EditInformation/:id'
 						name='ویرایش اطلاعات'
 						render={(props) => <EditInformation/>}>
 
 						</Route>
 						<Route
 
-						path='/Address'
+						path='/Address/:id'
 						name='آدرس های من'
 						render={(props) => <Address/>}>
 
 						</Route>
 						<Route
 
-						path='/ChangePassWord'
+						path='/ChangePassWord/:id'
 						name='تغییر کلمه عبور'
 						render={(props) => <ChangePassword/>}>
 
 						</Route>
 						<Route
 
-						path='/ProductsViewd'
+						path='/ProductsViewed/:id'
 						name='محصولات مشاهده شده'
 						render={(props) => <ProductsViewed/>}>
 
@@ -259,7 +259,7 @@ render={(props) => <CartStep2/>}>
 						path='/'
 						name='در حال به روز رسانی'
 						render={(props) => <CommingSoon/>}></Route>
-					
+
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
 			</Switch>
 		</BrowserRouter>

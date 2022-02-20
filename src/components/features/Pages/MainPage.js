@@ -21,6 +21,7 @@ import { Link, useHistory } from "react-router-dom";
 const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [blog,setBlog]=useState([])
+  const [newPro,setNew]=useState([])
   const history = useHistory();
 
   const mainSlider=()=>{
@@ -60,6 +61,23 @@ const MainPage = () => {
         console.log(error);
       });
 
+
+      axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setNew(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   useEffect(() => {
@@ -123,38 +141,38 @@ const MainPage = () => {
               <div className="productBannerBox" id="backBlack">
               <img src={apiAsset+slider?.DownSlider1}/>
                 <div className="">
-                
+
                   <a href={slider.LinkDownSlider1} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-              
+
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backGray">
            <img src={apiAsset+slider?.DownSlider2}/>
-                
+
                 <div className="">
-                  
+
                   <a href={slider.LinkDownSlider2} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                
-              
+
+
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
            <img src={apiAsset+slider?.DownSlider3}/>
                 <div className="">
-                 
+
                   <a href={slider.LinkDownSlider3} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                
+
               </div>
            </Col>
          </div>
@@ -197,38 +215,38 @@ const MainPage = () => {
               <div className="productBannerBox" id="backBlack">
               <img src={apiAsset+slider?.DownSlider4}/>
                 <div className="">
-                 
+
                   <a href={slider.LinkDownSlider4} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-               
-                
-                
+
+
+
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backGray">
            <img src={apiAsset+slider?.DownSlider5}/>
                 <div className="">
-                  
+
                   <a href={slider.LinkDownSlider5} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-               
+
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
            <img src={apiAsset+slider?.DownSlider6}/>
                 <div className="">
-                  
+
                   <a href={slider.LinkDownSlider6} className="productLink">
                     مشاهده محصول
                   </a>
                 </div>
-                
+
               </div>
            </Col>
          </div>
@@ -247,27 +265,19 @@ const MainPage = () => {
                    </Col>
                </div>
       <div className="row">
+        {
+          newPro.map((item)=>{
+            return(
+
         <Col md={6} className="marginTop30">
         <div className=" whiteBoxSlider">
-          <NewProductSliderCard/>
+          <NewProductSliderCard data={item}/>
           </div>
         </Col>
-        <Col md={6} className="marginTop30">
-        <div className=" whiteBoxSlider">
-          <NewProductSliderCard/>
-          </div>
-        </Col>
-        <Col md={6} className="marginTop30">
-        <div className=" whiteBoxSlider">
-          <NewProductSliderCard/>
-          </div>
-        </Col>
-        <Col md={6} className="marginTop30">
-          <div className=" whiteBoxSlider">
-          <NewProductSliderCard/>
-          </div>
-        
-        </Col>
+            )
+          })
+        }
+
         </div>
 
       </div>

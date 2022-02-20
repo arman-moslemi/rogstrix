@@ -1,4 +1,4 @@
-import {React,useState} from "react";
+import React,{useState,useEffect} from 'react'
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaTimes } from 'react-icons/fa';
@@ -10,20 +10,118 @@ import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelInformation from "../../assets/icons/panelInformation";
 import Checkbox from '@mui/material/Checkbox';
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import CustomizedDialogs from './layouts/AlertModal';
 
 const EditInformation = () => {
     const [showText, setShowText] = useState(false);
-    const onClick = () => setShowText(true);
+    const onClick = () => setShowText(!showText);
+    const [data,setData]=useState([])
+    const [open,setOpen]=useState(false)
+    const [title,setTitle]=useState("")
+    const [email,setEmail]=useState("")
+    const [name,setName]=useState("")
+    const [family,setFamily]=useState("")
+    const [gender,setGender]=useState("")
+    const [nationalCode,setNationalCode]=useState("")
+    const [mobile,setMobile]=useState("")
+    const [phone,setPhone]=useState("")
+    const [prePhone,setPrePhone]=useState("")
+    const [birthday,setBirthday]=useState("")
+    const [cardNumber,setCardNumber]=useState("")
+    const [companyName,setCompanyName]=useState("")
+    const [economicCode,setEconomicCode]=useState("")
+    const [nationalCodeCompany,setNationalCodeCompany]=useState("")
+    const [phoneCompany,setPhoneCompany]=useState("")
+    const [prePhoneCompany,setPrePhoneCompany]=useState("")
+    const [registrationCode,setRegistrationCode]=useState("")
+    const history = useHistory();
+    const params = useParams().id;
+
+    const editInfo=()=>{
+      const axios = require("axios");
+
+
+        axios.post(apiUrl + "EditCustomerFull",{CustomerID:1,Mobile:mobile,Email:email,Password:"",NameFamily:name+","+family,NationalCode:nationalCode,
+        Phone:phone+prePhone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:""
+    })
+        .then(function (response) {
+          if (response.data.result == "true") {
+
+            setTitle("اطلاعات با موفقیت ذخیره شد")
+            setOpen(true)
+            console.log(11)
+            console.log(response.data.Data)
+
+        }
+        else{
+            setTitle("عملیات با خطا روبرو شد")
+            setOpen(true)
+          console.log(response.data.result)
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    const getData=()=>{
+        const axios = require("axios");
+
+
+        axios.post(apiUrl + "OneCustomer",{CustomerID:params})
+        .then(function (response) {
+          if (response.data.result == "true") {
+
+             setData(response.data.Data)
+             console.log(response.data.Data)
+             setName(response.data.Data.NameFamily.split(',')[0])
+             setFamily(response.data.Data.NameFamily.split(',')[1])
+             setEmail(response.data.Data.Email)
+             setMobile(response.data.Data.Mobile)
+             setPhone(response.data.Data.Phone.substring(0, 8))
+             setPrePhone(response.data.Data.Phone.substring(8, response.data.Data.Phone.Length))
+             setCardNumber(response.data.Data.CardNumber)
+             setBirthday(response.data.Data.Birthday)
+             setCompanyName(response.data.Data.CompanyName)
+             setEconomicCode(response.data.Data.EconomicCode)
+             setNationalCodeCompany(response.data.Data.NationalCodeCompany)
+             setNationalCode(response.data.Data.NationalCode)
+             setPhoneCompany(response.data.Data.PhoneCompany.substring(0, 8))
+             setPrePhoneCompany(response.data.Data.PhoneCompany.substring(8, response.data.Data.PhoneCompany))
+             setGender(response.data.Data.Gender)
+             setRegistrationCode(response.data.Data.RegistrationCode)
+            // history.push("/RegisterVerify/"+mobile)
+
+        }
+        else{
+          setTitle("شماره ورودی نادرست می باشد")
+          setOpen(true)
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
+
+      }
+    useEffect(() => {
+  getData()
+    }, []);
   return (
     <div className="">
     <Header />
   <Menu/>
 
- 
+
     <Container className="UserPanelContainer" fluid>
+    <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
      <div className="row">
          <Col md={3}>
-             <RightMenu/>
+             <RightMenu data={data} id={params}/>
          </Col>
          <Col md={9}>
              <div className="panelWhiteBox">
@@ -46,25 +144,25 @@ const EditInformation = () => {
                                 <p className="fontWeightMedium">
                                     ایمیل
                                 </p>
-                                <input className="EditInformationInput"/>
+                                <input onChange={(e)=>setEmail(e.target.value)} value={email} disabled={true} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     * نام
                                 </p>
-                                <input className="EditInformationInput"/>
+                                <input onChange={(e)=>setName(e.target.value)} value={name} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     * نام خانوادگی
                                 </p>
-                                <input className="EditInformationInput"/>
+                                <input onChange={(e)=>setFamily(e.target.value)} value={family} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                    جنسیت
                                 </p>
-                                <select name="gender" id="gender" className="informationSelect">
+                                <select name="gender" id="gender" onChange={(ss)=>{setGender(ss.target.value)}} value={gender==true||gender=="man"?"man":"woman"} className="informationSelect">
                                    <option value="man">آقا</option>
                                     <option value="woman">خانم</option>
 
@@ -74,15 +172,15 @@ const EditInformation = () => {
                                 <p className="fontWeightMedium">
                                    * کدملی
                                 </p>
-                                <input className="EditInformationInput"/>
+                                <input onChange={(e)=>setNationalCode(e.target.value)} value={nationalCode} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   
+
                                 </p>
                                 <div className="d-flex checkBoxDiv">
           <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -96,24 +194,24 @@ const EditInformation = () => {
               </label>
           </div>
                             </div>
-                            
+
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                   * موبایل
                                 </p>
-                                <input className="EditInformationInput"/>
+                                <input disabled={true} value={mobile} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     تلفن ثابت
                                 </p>
                                <div className="d-flex justify-content-start">
-                               <input className="EditInformationInput" style={{width:150,marginLeft:10}}/>
-                               <input className="EditInformationInput" style={{width:60}}/>
-                                
+                               <input onChange={(e)=>setPhone(e.target.value)} value={phone} className="EditInformationInput" style={{width:150,marginLeft:10}}/>
+                               <input onChange={(e)=>setPrePhone(e.target.value)} value={prePhone} className="EditInformationInput" style={{width:60}}/>
+
                                </div>
                             </div>
-                            <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
+                            {/* <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     محل سکونت
                                 </p>
@@ -123,7 +221,7 @@ const EditInformation = () => {
                                     <option value="man">ساری</option>
                                     <option value="woman">شیراز</option>
                                   </select>
-                             
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
@@ -135,21 +233,21 @@ const EditInformation = () => {
                                     <option value="man">ساری</option>
                                     <option value="woman">شیراز</option>
                                   </select>
-                              
-                            </div>
+
+                            </div> */}
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                    تاریخ تولد
                                 </p>
-                                <input className="EditInformationInput"/>
-                              
+                                <input onChange={(e)=>setBirthday(e.target.value)} value={birthday}className="EditInformationInput"/>
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                    شماره کارت
                                 </p>
-                                <input className="EditInformationInput"/>
-                              
+                                <input onChange={(e)=>setCardNumber(e.target.value)} value={cardNumber}className="EditInformationInput"/>
+
                             </div>
 
                          </Col>
@@ -158,7 +256,8 @@ const EditInformation = () => {
                                 حساب حقوقی
                             </p>
                             <div className="mt-4">
-                            {showText ?null:<Button className="saveBtn w100" style={{marginTop:20}} onClick={onClick}>
+                            {showText ?<Button className="saveBtn w100" style={{marginTop:20}} onClick={onClick}>
+                               حساب حقیقی                            </Button>:<Button className="saveBtn w100" style={{marginTop:20}} onClick={onClick}>
                                 فعال کردن حساب حقوقی
                             </Button>}
                             </div>
@@ -166,7 +265,7 @@ const EditInformation = () => {
                             {showText ? <div>
                         <div className="d-flex checkBoxDiv mt-4 mb-4">
           <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -176,53 +275,53 @@ const EditInformation = () => {
         }}
       />
               <label className="fontWeightMedium">
-              مایل به تکمیل اطلاعات حقوقی برای خرید سازمانی هستم. 
+              مایل به تکمیل اطلاعات حقوقی برای خرید سازمانی هستم.
               </label>
           </div>
           <p className="fontWeightMedium">
-          با تکمیل اطلاعات حقوقی سازمان مورد نظر خود می‌توانید اقدام 
-به خرید سازمانی با دریافت فاکتور رسمی و گواهی ارزش افزوده 
-نمایید. 
+          با تکمیل اطلاعات حقوقی سازمان مورد نظر خود می‌توانید اقدام
+به خرید سازمانی با دریافت فاکتور رسمی و گواهی ارزش افزوده
+نمایید.
                                 </p>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     نام شرکت یا اداره
                                 </p>
-                                <input className="EditInformationInput"/>
-                             
+                                <input onChange={(e)=>setCompanyName(e.target.value)} value={companyName}className="EditInformationInput"/>
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     کد اقتصادی
                                 </p>
-                                <input className="EditInformationInput"/>
-                             
+                                <input onChange={(e)=>setEconomicCode(e.target.value)}value={economicCode} className="EditInformationInput"/>
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                    شناسه ملی
                                 </p>
-                                <input className="EditInformationInput"/>
-                             
+                                <input onChange={(e)=>setNationalCodeCompany(e.target.value)} value={nationalCodeCompany}className="EditInformationInput"/>
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                    شماره ثبت
                                 </p>
-                                <input className="EditInformationInput"/>
-                             
+                                <input onChange={(e)=>setRegistrationCode(e.target.value)}value={registrationCode} className="EditInformationInput"/>
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                     تلفن ثابت
                                 </p>
                                <div className="d-flex justify-content-start">
-                               <input className="EditInformationInput" style={{width:150,marginLeft:10}}/>
-                               <input className="EditInformationInput" style={{width:60}}/>
-                                
+                               <input onChange={(e)=>setPrePhoneCompany(e.target.value)} value={prePhoneCompany} className="EditInformationInput" style={{width:150,marginLeft:10}}/>
+                               <input onChange={(e)=>setPhoneCompany(e.target.value)} value={phoneCompany}className="EditInformationInput" style={{width:60}}/>
+
                                </div>
                             </div>
-                            <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
+                            {/* <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
                                 محل دفتر مرکزی
                                 </p>
@@ -232,7 +331,7 @@ const EditInformation = () => {
                                     <option value="man">ساری</option>
                                     <option value="woman">شیراز</option>
                                   </select>
-                              
+
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
@@ -244,14 +343,14 @@ const EditInformation = () => {
                                     <option value="man">ساری</option>
                                     <option value="woman">شیراز</option>
                                   </select>
-                              
-                            </div>
+
+                            </div> */}
                         </div> : null}
                          </Col>
                      </div>
                      <div className="row mt-4">
          <Col md={12} className="ta-left">
-             <Button className="saveBtn">
+             <Button onClick={()=>editInfo()} className="saveBtn">
                  ذخیره تغییرات
              </Button>
          </Col>
@@ -260,7 +359,7 @@ const EditInformation = () => {
              </div>
          </Col>
      </div>
-    
+
     </Container>
     <RedBox/>
     <Footer />

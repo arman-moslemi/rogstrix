@@ -2,9 +2,10 @@ import react from "react";
 import "./Styles/newProductSlider.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 export const truncate = (str, len) => {
-  console.log("truncate", str, str.length, len);
+  // console.log("truncate", str, str.length, len);
   if (str.length > len && str.length > 0) {
     let new_str = str + " ";
     new_str = str.substr(0, len);
@@ -14,22 +15,22 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const NewProductSliderCard = () => {
+const NewProductSliderCard = ({data}) => {
   return (
-   
+
       <div className="NewProductCard">
   <div className="row NewProductCardBox">
   <Col md={7} className="ta-right">
     <p className="newProductName">
-        {truncate("هندزفری شارژی صدای  شیائومی مدل x2621  ",45)}
+    {truncate(data.ProductName+" "+data.BrandName,45)}
     </p>
     <p className="newProductPrice">
-        573.000 تومان
+    {parseInt(data.Cost)-parseInt(data.SpecialCost)} تومان
     </p>
   </Col>
   <Col md={5} className="ta-left">
-  <img src={specialSliderImg}/>
-      <ul className="colorList">
+  <img src={apiAsset+data.Pic1}/>
+      {/* <ul className="colorList">
         <li>
           <div id="color1"></div>
         </li>
@@ -39,11 +40,11 @@ const NewProductSliderCard = () => {
         <li>
           <div id="color3"></div>
         </li>
-      </ul>
+      </ul> */}
   </Col>
   </div>
   </div>
-   
+
   );
-}; 
+};
 export default NewProductSliderCard;
