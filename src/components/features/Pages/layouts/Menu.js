@@ -17,9 +17,9 @@ import MegaMenuPrinter from "../../../assets/icons/MegaMenuPrinter";
 import MegaMenuServer from "../../../assets/icons/MegaMenuServer";
 import MegaMenuTablet from "../../../assets/icons/MegaMenuTablet";
 import { Link, useHistory } from "react-router-dom";
-import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
-import CustomizedDialogs from './layouts/AlertModal';
+// import CustomizedDialogs from './layouts/AlertModal';
 
 const Menu = () => {
    const [showMega, setShowMega] = useState(false);
@@ -37,9 +37,9 @@ const groups=()=>{
    .then(function (response) {
      if (response.data.result == "true") {
 
-        setData(response.data.Data)
+        setData(response.data.GroupData)
 
-        console.log(response.data.Data)
+        console.log(response.data.GroupData)
 
        // history.push("/RegisterVerify/"+mobile)
 
@@ -96,104 +96,90 @@ const groups=()=>{
    </div>
    {showMega ?<div className="megaMenu">
       <div className="MegaMenuFirstRow">
-         <a className="megaMenuFirstRowBox" href="#">
+         <Link onClick={()=>history.push("/EachCategory/1")} className="megaMenuFirstRowBox" >
             <MegaMenuCase/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/2")} className="megaMenuFirstRowBox" >
             <MegaMenuLapTop/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/3")} className="megaMenuFirstRowBox" >
             <MegaMenuTablet/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/4")} className="megaMenuFirstRowBox" >
             <MegaMenuMobile/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/5")} className="megaMenuFirstRowBox" >
             <MegaMenuServer/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/6")} className="megaMenuFirstRowBox" >
             <MegaMenuPrinter/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/7")} className="megaMenuFirstRowBox" >
             <MegaMenuCamera/>
-         </a>
-         <a className="megaMenuFirstRowBox" href="#">
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/8")} className="megaMenuFirstRowBox" >
             <MegaMenuConsole/>
-         </a>
+         </Link>
       </div>
       <div className="MegaMenuContainer">
-         <div className="MegaMenuCol">
          {
-data.map((item)=>{
-   return(
+            data.map((item)=>{
+               return(
+      <div className="MegaMenuCol">
 
             <ul>
                <li className="listTitle">
-                  <a href="#">
-                     مانیتور
-                  </a>
+                  <Link onClick={()=>history.push("/EachCategory/"+item.MainGroupID)}>
+{item[0].MainTitle}                  </Link>
                </li>
+{
+   item.map((item2)=>{
+      return(
                <li className="listItems">
-                  <a href="#">
-                     مانیتور ایسوس
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور ال جی
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور سامسونگ
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور ویوسونیک
-                  </a>
-               </li>
-               <li className="listItems">
-                  <a href="#">
-                     مانیتور بنکیو
-                  </a>
+                  <Link onClick={()=>history.push("/products/"+item.GroupID)}>
+{item2.Title }                 </Link>
                </li>
 
+      )
+   })
+}
+
+
             </ul>
+         </div>
    )
 })
          }
 
-         </div>
          {/* <div className="MegaMenuCol">
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مانیتور
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ال جی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور سامسونگ
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ویوسونیک
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور بنکیو
                   </a>
                </li>
@@ -201,17 +187,17 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      سی پی یو
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      اینتل
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                     آی ام دی
                   </a>
                </li>
@@ -221,22 +207,22 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مادربورد
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ام اس آی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد گیگابایت
                   </a>
                </li>
@@ -246,32 +232,32 @@ data.map((item)=>{
          <div className="MegaMenuCol">
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مانیتور
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ال جی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور سامسونگ
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ویوسونیک
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور بنکیو
                   </a>
                </li>
@@ -279,17 +265,17 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      سی پی یو
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      اینتل
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                     آی ام دی
                   </a>
                </li>
@@ -299,22 +285,22 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مادربورد
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ام اس آی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد گیگابایت
                   </a>
                </li>
@@ -324,32 +310,32 @@ data.map((item)=>{
          <div className="MegaMenuCol">
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مانیتور
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ال جی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور سامسونگ
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ویوسونیک
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور بنکیو
                   </a>
                </li>
@@ -357,17 +343,17 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      سی پی یو
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      اینتل
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                     آی ام دی
                   </a>
                </li>
@@ -377,22 +363,22 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مادربورد
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ام اس آی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد گیگابایت
                   </a>
                </li>
@@ -402,32 +388,32 @@ data.map((item)=>{
          <div className="MegaMenuCol">
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مانیتور
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ال جی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور سامسونگ
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور ویوسونیک
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مانیتور بنکیو
                   </a>
                </li>
@@ -435,17 +421,17 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      سی پی یو
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      اینتل
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                     آی ام دی
                   </a>
                </li>
@@ -455,22 +441,22 @@ data.map((item)=>{
             </ul>
             <ul>
                <li className="listTitle">
-                  <a href="#">
+                  <a >
                      مادربورد
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ایسوس
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد ام اس آی
                   </a>
                </li>
                <li className="listItems">
-                  <a href="#">
+                  <a >
                      مادربورد گیگابایت
                   </a>
                </li>

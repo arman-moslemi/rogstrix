@@ -16,14 +16,52 @@ import Sorts from './EachCategoryComponents/Sorts';
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
 import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import PaginationCustom from "./layouts/Pagination";
 const Products = () => {
+  const [data,setData]=useState([])
+  const params = useParams().id;
+  const history = useHistory();
+console.log(params)
+  const mainSlider=()=>{
+    const axios = require("axios");
 
+      axios
+          .post(apiUrl + "GroupProduct",{
+            GroupID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setData(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  }
+
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <div className="EachCategoryBody">
       <Header />
-    
 
-   
+
+
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
@@ -61,13 +99,13 @@ const Products = () => {
                             حذف
                         </Button>
                   </Col>
-                  
+
               </div>
              </div>
               <div className="filterFlex">
             <div style={{padding:'1rem'}}>
             <div className="filterSelect">
-                      
+
                       کول مستر
                       <FaTimes style={{marginRight:5}}/>
                   </div>
@@ -77,11 +115,11 @@ const Products = () => {
                   </div>
                   <div className="filterSelect">
 
-                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰               
+                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰
                   <FaTimes style={{marginRight:5}}/>
                      </div>
             </div>
-                 
+
               </div>
 
           </div>
@@ -100,21 +138,21 @@ const Products = () => {
           <FaSearch color={'#a0a0a0'}/>
         </div>
         <input
-          
+
           type={'text'}
           placeholder={"نام برند را وارد کنید ..."}
-        
-         
+
+
         />
-        
+
       </div>
-     
+
                </div>
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
           <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -129,7 +167,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -144,7 +182,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -159,7 +197,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -174,7 +212,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -189,7 +227,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -204,7 +242,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -219,7 +257,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -234,7 +272,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -249,7 +287,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -266,7 +304,7 @@ const Products = () => {
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -280,7 +318,7 @@ const Products = () => {
                 <AccordionItemPanel>
                <div className="pad2">
                 <RangeSlider/>
-     
+
                </div>
             <div className="rangeBorder">
             <div className="row">
@@ -288,16 +326,16 @@ const Products = () => {
             <p className="rangeText">
                 از
             </p>
-         
-            
+
+
       </Col>
       <Col md={6}>
       <p className="rangeText">
                 از
             </p>
-           
-           
-         
+
+
+
       </Col>
       </div>
       <div className="row align-items-center">
@@ -324,7 +362,7 @@ const Products = () => {
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -336,12 +374,12 @@ const Products = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -356,7 +394,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -371,7 +409,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -386,7 +424,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -399,12 +437,12 @@ const Products = () => {
               +۸۰ طلایی
               </label>
           </div>
-       
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -418,11 +456,11 @@ const Products = () => {
                 <AccordionItemPanel>
                 <div className="pad2">
                 <RangeSlider/>
-     
+
                </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -436,11 +474,11 @@ const Products = () => {
                 <AccordionItemPanel>
                 <div className="pad2">
                 <RangeSlider/>
-     
+
                </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -452,12 +490,12 @@ const Products = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -472,7 +510,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -487,7 +525,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -502,7 +540,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -515,12 +553,12 @@ const Products = () => {
              نیمه
               </label>
           </div>
-        
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -532,12 +570,12 @@ const Products = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -552,7 +590,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -567,7 +605,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -582,7 +620,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -595,12 +633,12 @@ const Products = () => {
               سیاه/قرمز
               </label>
           </div>
-      
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -612,12 +650,12 @@ const Products = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -632,7 +670,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -647,7 +685,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -662,7 +700,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -675,13 +713,13 @@ const Products = () => {
               Flex ATX
               </label>
           </div>
-        
-     
+
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -693,12 +731,12 @@ const Products = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -713,7 +751,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -728,7 +766,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -741,13 +779,13 @@ const Products = () => {
               نباشد
               </label>
           </div>
-      
-          
+
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -759,12 +797,12 @@ const Products = () => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -777,12 +815,12 @@ const Products = () => {
                   همه
               </label>
           </div>
-         
-       
-       
+
+
+
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -797,7 +835,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -812,7 +850,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -827,7 +865,7 @@ const Products = () => {
           </div>
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -844,7 +882,7 @@ const Products = () => {
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           </Col>
@@ -857,7 +895,7 @@ const Products = () => {
                   </div>
                   <div>
                       <p className="whiteBoxTitle">
-                          همه موبایل ها
+                          همه {data[0].Title} ها
                       </p>
                   </div>
                   <div className="dashedHrdiv">
@@ -867,40 +905,31 @@ const Products = () => {
                       <Button className="allProductsBtn">
                       مشاهده همه
                           <FaChevronLeft/>
-                          
+
                           </Button>
                   </div>
               </div>
               <div className="row">
+                {
+                  data?.map((item)=>{
+return(
+
+
                   <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
+                        <BestSellingSliderCard data={item}/>
                   </Col>
-                  <Col md={3} className="marginTop15">
+)
+                  })
+                }
+                  {/* <Col md={3} className="marginTop15">
                         <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-                  <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard/>
-                  </Col>
-              
+                  </Col> */}
+
+
 
               </div>
           </div>
-          <div className="productsWhiteBox">
+          {/* <div className="productsWhiteBox">
           <div className="row margin25">
                    <Col md={12}>
                    <div className="">
@@ -918,11 +947,11 @@ const Products = () => {
               <div className="myPadding">
               <BestSellingProductsSlider/>
               </div>
-          </div>
+          </div> */}
           </Col>
-         
+
         </div>
-   
+
       </Container>
       <RedBox/>
       <Footer />

@@ -96,7 +96,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/Products'
+					path='/Products/:id'
 					name='Products'
 					render={(props) => <Products/>}>
 
@@ -243,14 +243,14 @@ render={(props) => <RegisterStep2/>}>
 						</Route>
 						<Route
 
-						path='/Cart1'
+						path='/CartStep1'
 						name='سبد خرید گام 1'
 						render={(props) => <CartStep1/>}>
 
 						</Route>
 						<Route
 
-path='/Cart2'
+path='/CartStep2'
 name='سبد خرید گام 2'
 render={(props) => <CartStep2/>}>
 

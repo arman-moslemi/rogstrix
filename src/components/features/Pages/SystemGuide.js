@@ -14,9 +14,9 @@ const SystemGuide = () => {
   return (
     <div className="EachCategoryBody">
       <Header />
-    
 
-   
+
+
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
@@ -52,9 +52,9 @@ const SystemGuide = () => {
             </div>
         </div>
         <div className="row " style={{marginBottom:25}}>
-         
+
           <Col md={12}>
-          
+
           <div className="productsWhiteBox radius10">
           <div className="whiteBoxHeader">
             <div className="dashedBlackHr" style={{border:'none'}}>
@@ -127,12 +127,12 @@ const SystemGuide = () => {
             </div>
            </div>
           </div>
-        
+
           </Col>
-          
-         
+
+
         </div>
-   
+
       </Container>
       <RedBox/>
       <Footer />

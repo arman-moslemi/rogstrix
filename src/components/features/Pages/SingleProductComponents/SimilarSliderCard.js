@@ -2,6 +2,7 @@ import react from "react";
 import "./Styles/singleProduct.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -13,40 +14,28 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const SimilarSliderCard = (props) => {
+const SimilarSliderCard = ({data}) => {
   return (
 
       <div className="BestSellingCard">
-  <div className="specialSliderCardBox">
-  <img src={specialSliderImg}/>
-      <ul className="colorList">
-        <li>
-          <div id="color1"></div>
-        </li>
-        <li>
-          <div id="color2"></div>
-        </li>
-        <li>
-          <div id="color3"></div>
-        </li>
-      </ul>
-  </div>
+
   <p className="productName">
-    {truncate("هندزفری شیائومی مدل m123",25)}
+  <img src={apiAsset+data?.Pic1}/>
   </p>
 <div className="row marginTop30">
   <Col md={4} className="pad0 ta-right">
     <p className="grayStrokeOut">
-      60.000
+    {data?.Cost}
     </p>
   </Col>
   <Col md={8} className="pad0 ta-left">
     <p className="grayPrice">
-      573.000 تومان
+    {parseInt(data?.Cost)-parseInt(data?.SpecialCost)}
+ تومان
     </p>
   </Col>
 </div>
-{
+{/* {
   props.viewList==true?
 <div className="row marginTop20">
   <Col md={12} className="pad0 ta-right">
@@ -57,7 +46,7 @@ const SimilarSliderCard = (props) => {
   </div>
   :
 null
-}
+} */}
 
 
       </div>

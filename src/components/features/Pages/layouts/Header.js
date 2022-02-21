@@ -1,14 +1,20 @@
-import react from "react";
+import react,{useContext} from "react";
 import RedLogo from '../../../assets/img/redLogo.png';
 import { FaSearch , FaUser ,FaShoppingBasket,FaTable} from 'react-icons/fa';
 import { Container ,Col, Button} from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../../../../context/auth-context";
+
 const Header = () => {
+  const history = useHistory();
+  const { isLoggedIn, token } = useContext(AuthContext);
+
   return (
    <Container fluid className="pad0">
     <div className="Header">
       <div className="d-flex">
       <div>
-        <img src={RedLogo} className="hedearRedLogo"/>   
+        <img src={RedLogo} className="hedearRedLogo"/>
        </div>
        <div className="margin-right-60">
         <label class="switch">
@@ -19,13 +25,20 @@ const Header = () => {
       </div>
       <div className="d-flex">
         <button className="headerBtn">
-        <FaSearch size={25}/>    
+        <FaSearch size={25}/>
         </button>
-        <button className="headerBtn">
-        <FaUser style={{marginLeft:10}} size={25}/>
+        {!isLoggedIn?
+        <button onClick={()=>history.push("/Login")} className="headerBtn">
+          <FaUser style={{marginLeft:10}} size={25}/>
         ثبت نام / ورود
+
         </button>
-        <button className="headerBtn" >
+        :
+        <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
+          <FaUser style={{marginLeft:10}} size={25}/>
+کاربر
+        </button>        }
+        <button  onClick={()=>history.push("/CartStep1")} className="headerBtn" >
         <FaShoppingBasket size={25} style={{marginLeft:10}}/>
         سبد خرید
         </button>
@@ -35,18 +48,18 @@ const Header = () => {
 
         </select>
       </div>
-     
-      
+
+
      </div>
      <div className="responsiveHeader">
        <div className="d-flex align-items-center borderBottomResponsive">
        <div className="responsiveLanguage">
        <button className="headerBtn">
-       <FaTable color={'#a0a0a0'} fontSize={20}/> 
+       <FaTable color={'#a0a0a0'} fontSize={20}/>
        </button>
          </div>
          <div className="responsiveHeaderLogo">
-         <img src={RedLogo} className=""/>  
+         <img src={RedLogo} className=""/>
          </div>
          <div className="responsiveLanguage">
          <select name="Lang" id="language">
@@ -66,21 +79,21 @@ const Header = () => {
           style={{width:'100%'}}
           type={'text'}
           placeholder={"جستجو ..."}
-        
-         
+
+
         />
-        
+
       </div>
          </Col>
          <Col xs={6} className="d-flex align-items-center">
-        
+
         <button className="headerBtn">
         <FaUser style={{marginLeft:10}} size={25}/>
-        
+
         </button>
         <button className="headerBtn" >
         <FaShoppingBasket size={25} style={{marginLeft:10}}/>
-        
+
         </button>
         <label class="switch">
          <input type="checkbox"/>
@@ -90,8 +103,8 @@ const Header = () => {
        </div>
      </div>
    </Container>
-     
-   
+
+
   );
-}; 
+};
 export default Header;

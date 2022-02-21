@@ -11,8 +11,9 @@ import SingleProductRedBox from "./SingleProductComponents/SingleProductRedBox";
 import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList} from 'react-icons/fa';
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { AuthContext } from "../../../context/auth-context";
 
 const SingleProduct = () => {
   const params = useParams().id;
@@ -20,13 +21,16 @@ const SingleProduct = () => {
   const [product,setProduct]=useState([])
   const [property,setProperty]=useState([])
   const [com,setCom]=useState([])
+  const [similar,setSimilar]=useState([])
+  const [rate,setRate]=useState(0)
+  const { isLoggedIn, token } = useContext(AuthContext);
   const ProductSave=()=>{
     const axios = require("axios");
 
     axios
         .post(apiUrl + "AddCustomerProductSave",{
           ProductID:params,
-          CustomerID:1
+          CustomerID:token
         })
     .then(function (response) {
       if (response.data.result == "true") {
@@ -50,7 +54,7 @@ alert("با موفقیت ذخیره شد")
       axios
           .post(apiUrl + "SingleProduct",{
             ProductID:params,
-            CustomerID:1
+            CustomerID:isLoggedIn?token:""
           })
       .then(function (response) {
         if (response.data.result == "true") {
@@ -106,8 +110,47 @@ alert("با موفقیت ذخیره شد")
         console.log(error);
       });
 
+      axios
+          .post(apiUrl + "SimilarProduct",{
+            ProductID:params,
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
 
+          setSimilar(response.data.Data)
+          console.log(777)
+          console.log(response.data.Data)
 
+      }
+      else{
+        console.log(888)
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios
+      .post(apiUrl + "ProductRateShow",{
+        ProductID:params,
+      })
+  .then(function (response) {
+    if (response.data.result == "true") {
+
+      setRate(response.data.Data)
+      console.log(222)
+      console.log(response.data.Data)
+
+  }
+  else{
+    console.log(888)
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
   }
 
 const images = [
@@ -151,15 +194,13 @@ const images = [
             </li>
             /
             <li>
-              <a>
-                سی پی یو
-              </a>
+              <Link onClick={()=>history.push("/EachCategory/"+product.MainGroupID)}>
+{product.MainTitle}              </Link>
             </li>
             /
             <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
+              <Link onClick={()=>history.push("/products/"+product.GroupID)}>
+{product.Title}              </Link>
             </li>
           </ul>
         </div>
@@ -172,20 +213,20 @@ const images = [
         <p className="boxTitle2 BoldFont">
 {product.ProductName+" "+product.BrandName}                </p>
                 <hr className="grayHr"/>
-                <p className="boxTitle2 mediumFont">
+                {/* <p className="boxTitle2 mediumFont">
                     رنگ : مشکی
-                </p>
+                </p> */}
                 <div className="d-flex">
-                    <div className="colorBox" id="color6">
+                  {
+                    product?.ColorID?.split(',').map((item)=>{
+                      return(
+                    <div className="colorBox" style={{backgroundColor:"#"+item}} i>
                     </div>
-                    <div className="colorBox" id="color2">
-                    </div>
-                    <div className="colorBox" id="color3">
-                    </div>
-                    <div className="colorBox" id="color4">
-                    </div>
-                    <div className="colorBox" id="color5">
-                    </div>
+
+                      )
+                    })
+                  }
+
                 </div>
                 <p className="boxTitle2 NormalFont">ویژگی‌های محصول</p>
 {
@@ -240,38 +281,52 @@ const images = [
         <Col md={3} id="singleOrder2">
 
             <div className="redLightBox" style={{position:'relative'}}>
-            <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
-                                                <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
-                                                    height="29.652" viewBox="0 0 27.45 29.652">
-                                                    <g id="save" transform="translate(0.5 0.489)">
-                                                        <path id="Icon_material-label" data-name="Icon material-label"
-                                                            d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
-                                                            transform="translate(33.95 -4.411) rotate(90)" fill="none"
-                                                            stroke="#e74868" stroke-width="1" />
-                                                        <path className="Icon_awesome-plus" id="Icon_awesome-plus"
-                                                            data-name="Icon awesome-plus"
-                                                            d="M14.585,8.421H9.536V3.372A1.122,1.122,0,0,0,8.414,2.25H7.293A1.122,1.122,0,0,0,6.171,3.372V8.421H1.122A1.122,1.122,0,0,0,0,9.543v1.122a1.122,1.122,0,0,0,1.122,1.122H6.171v5.049a1.122,1.122,0,0,0,1.122,1.122H8.414a1.122,1.122,0,0,0,1.122-1.122V11.786h5.049a1.122,1.122,0,0,0,1.122-1.122V9.543A1.122,1.122,0,0,0,14.585,8.421Z"
-                                                            transform="translate(23.501 3.545) rotate(90)"
-                                                            fill="#e74868" />
-                                                    </g>
-                                                </svg>
-                                            </Button>
+              {
+                isLoggedIn?
+
+                <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
+                                                    <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
+                                                        height="29.652" viewBox="0 0 27.45 29.652">
+                                                        <g id="save" transform="translate(0.5 0.489)">
+                                                            <path id="Icon_material-label" data-name="Icon material-label"
+                                                                d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
+                                                                transform="translate(33.95 -4.411) rotate(90)" fill="none"
+                                                                stroke="#e74868" stroke-width="1" />
+                                                            <path className="Icon_awesome-plus" id="Icon_awesome-plus"
+                                                                data-name="Icon awesome-plus"
+                                                                d="M14.585,8.421H9.536V3.372A1.122,1.122,0,0,0,8.414,2.25H7.293A1.122,1.122,0,0,0,6.171,3.372V8.421H1.122A1.122,1.122,0,0,0,0,9.543v1.122a1.122,1.122,0,0,0,1.122,1.122H6.171v5.049a1.122,1.122,0,0,0,1.122,1.122H8.414a1.122,1.122,0,0,0,1.122-1.122V11.786h5.049a1.122,1.122,0,0,0,1.122-1.122V9.543A1.122,1.122,0,0,0,14.585,8.421Z"
+                                                                transform="translate(23.501 3.545) rotate(90)"
+                                                                fill="#e74868" />
+                                                        </g>
+                                                    </svg>
+                                                </Button>
+                :
+                null
+              }
                 <p className="boxTitle2">
                     مشخصات فروش
                 </p>
                 <div className="d-flex align-items-center justify-content-between">
 
                   <div className="starRate">
-                  <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
+
+                    {
+                      [...new Array(5)].map((item,index)=>{
+                        return(
+index+1>rate?
+<FaRegStar className="mr-1 ml-1" color="#111111"/>
+                          :
+                          <FaStar className="mr-1 ml-1" color="#f6303f"/>
+
+                        )
+                      })
+                    }
+
 
                   </div>
                   <div>
                     <p className="reviewP" id="colorGray">
-                    امتیاز: ۴ از ۵ (۲۴ نظر)
+                    امتیاز: {rate} از ۵ ({com.length} نظر)
                     </p>
                   </div>
 
@@ -294,7 +349,7 @@ const images = [
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                  از این کالا ۴ عدد در انبار موجود است
+                  از این کالا {product.Number} عدد در انبار موجود است
                                 </p>
                   </div>
               </div>
@@ -328,7 +383,7 @@ const images = [
                           </div>
                       </div>
                   <p className="specialPrice">
-                  {parseInt(product.Cost)-parseInt(product.SpecialCost)}
+                  {parseInt(product.Cost)-parseInt(product.SpecialCost)}تومان
                   </p>
 
 
@@ -380,7 +435,7 @@ const images = [
                     </div>
                    </Col>
                </div>
-              <SimilarSlider/>
+              <SimilarSlider data={similar}/>
             </div>
             <div className="whiteBox3 mt-3">
          <CommentBox data={com} id={params} type={"product"}/>

@@ -24,7 +24,7 @@ const CompletedCards = (props) => {
      <div className="completedCard">
        <div className="imgBox marginBottom15">
        {
-  props.viewOverlay==true?
+  props?.viewOverlay==true?
          <div className="grayOverlay">
            <div className="userProfile">
              <img src={userProfile}/>
@@ -37,13 +37,13 @@ const CompletedCards = (props) => {
  null
  }
 
-       <img src={props.data.Pic1?apiAsset+props.data.Pic1:MadeSystem} className="madeSystemImg"/>
+       <img src={props?.data?.Pic1?apiAsset+props?.data?.Pic1:MadeSystem} className="madeSystemImg"/>
        </div>
        <p className="completeProductTitle">
-       {truncate(props.data.SystemName,100)}
+       {truncate(props?.data?.SystemName?props?.data?.SystemName:"",100)}
        </p>
       <p className="completeProductDetail">
-     {props.data.Description}
+     {props?.data?.Description}
       </p>
       <hr className="bottomDashed"/>
       <div className="row">
@@ -55,12 +55,12 @@ const CompletedCards = (props) => {
               5
             </p>
           </div>
-          <div style={{marginRight:15}}>
+          {/* <div style={{marginRight:15}}>
             <p className="bottomIcon">
               <FaLongArrowAltUp size={18} className="marginLeft10"/>
              12
             </p>
-          </div>
+          </div> */}
           <div>
 
           </div>
@@ -68,7 +68,7 @@ const CompletedCards = (props) => {
         </Col>
         <Col md={7} className="pd0 ta-left">
           <p className="completedPrice">
-          {props.data.Cost} تومان
+          {props?.data?.Cost} تومان
           </p>
         </Col>
       </div>

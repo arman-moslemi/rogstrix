@@ -91,12 +91,17 @@ return(
 {item.Date}    </p>
 
     <div className="starRate">
-      <FaRegStar className="mr-1 ml-1" color="#111111" size={10}/>
-        <FaRegStar className="mr-1 ml-1" color="#111111" size={10}/>
-        <FaStar className="mr-1 ml-1" color="#f6303f" size={10}/>
-        <FaStar className="mr-1 ml-1" color="#f6303f" size={10}/>
-        <FaStar className="mr-1 ml-1" color="#f6303f" size={10}/>
+    {
+                      [...new Array(5)].map((index)=>{
+                        return(
+index+1>item?.Rate?
+<FaRegStar className="mr-1 ml-1" color="#111111"/>
+                          :
+                          <FaStar className="mr-1 ml-1" color="#f6303f"/>
 
+                        )
+                      })
+                    }
       </div>
  </div>
 

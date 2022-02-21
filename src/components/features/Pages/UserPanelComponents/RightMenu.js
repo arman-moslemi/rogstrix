@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,9 +14,11 @@ import PanelPassword from "../../../assets/icons/panelPassword";
 import PanelSeen from "../../../assets/icons/panelSeen";
 import PanelUser from "../../../assets/icons/panelUser";
 import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../../../../context/auth-context";
 
 const RightMenu = ({data,id}) => {
     const history = useHistory();
+    const { logout } = useContext(AuthContext);
 
   return (
   <div className="rightMenu">
@@ -80,7 +82,7 @@ const RightMenu = ({data,id}) => {
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelExit className="rightMenuImg"/>
-      <Link onClick={()=>history.push("/Login")} className="fontWeightMedium ml-4"  >
+      <Link onClick={()=>{logout();history.push("/Login")}} className="fontWeightMedium ml-4"  >
                     خروج
                 </Link>
           </div>

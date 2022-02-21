@@ -62,19 +62,13 @@ console.log(params)
             </li>
             /
             <li>
-              <a>
-                سی پی یو
-              </a>
+              <Link onClick={()=>history.push("/EachCategory/"+params)}>
+{data[0].MainTitle}              </Link>
             </li>
-            /
-            <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
-            </li>
+
           </ul>
         </div>
-       
+
        <div className="EachCategoryRow marginTop3 mb-4">
        <div className="EachCategoryCol1 categoryResNone">
           <CategoryList cat={setCat} className=""/>
@@ -86,16 +80,16 @@ console.log(params)
           </div>
            <div className="whiteBoxCategory">
           <p className="BoxTitle">
-            همه مانیتورها
+            همه {data[0].MainTitle}ها
           </p>
 
           <div className="CardBoxDiv margin-top-3">
             {
               data.map((item)=>{
 return(
-            
+
               <CardBox data={item} className="test" />
-            
+
 )
               })
             }

@@ -5,12 +5,15 @@ import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
 import Checkbox from '@mui/material/Checkbox';
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
-import React,{useState,useEffect} from 'react'
+import React,{useState,useContext} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { AuthContext } from "../../../context/auth-context";
 
 const Login = () => {
   const history = useHistory();
+  const auth = useContext(AuthContext);
+
   const [open,setOpen]=useState(false)
   const [title,setTitle]=useState("")
   const [email,setEmail]=useState()
@@ -32,8 +35,9 @@ else{
     axios.post(apiUrl + "Login",{Email:email,Password:pass})
     .then(function (response) {
       if (response.data.result == "true") {
-
-         console.log(response.data.Data)
+        console.log(response.data.Data)
+        auth.login(response.data.Data[0].CustomerID);
+        console.log("auth", auth.isLoggedIn);
         history.push("/EditInformation/"+response.data.Data[0].CustomerID)
 
     }
