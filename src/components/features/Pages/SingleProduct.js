@@ -23,6 +23,7 @@ const SingleProduct = () => {
   const [com,setCom]=useState([])
   const [similar,setSimilar]=useState([])
   const [rate,setRate]=useState(0)
+  const [color,setColor]=useState()
   const { isLoggedIn, token } = useContext(AuthContext);
   const ProductSave=()=>{
     const axios = require("axios");
@@ -31,6 +32,35 @@ const SingleProduct = () => {
         .post(apiUrl + "AddCustomerProductSave",{
           ProductID:params,
           CustomerID:token
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+        console.log(777)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  const AddToCart=()=>{
+    const axios = require("axios");
+console.log(555)
+console.log(token)
+    axios
+        .post(apiUrl + "ShoppingBasketAdd",{
+          ProductID:params,
+          CustomerID:token,
+          Cost:parseInt(product.Cost)-parseInt(product.SpecialCost),
+          ColorID:color,
+          Number:1
+
         })
     .then(function (response) {
       if (response.data.result == "true") {
@@ -220,7 +250,7 @@ const images = [
                   {
                     product?.ColorID?.split(',').map((item)=>{
                       return(
-                    <div className="colorBox" style={{backgroundColor:"#"+item}} i>
+                    <div onClick={()=>setColor(item)} className="colorBox" style={{backgroundColor:"#"+item}} i>
                     </div>
 
                       )
@@ -398,7 +428,7 @@ index+1>rate?
                 10 نفر در حال مشاهده این محصول هستند                </p>
                   </div>
               </div> */}
-              <Button className="addToCart mt-2">
+              <Button onClick={()=>AddToCart()} className="addToCart mt-2">
                   افزودن به سبد خرید
               </Button>
             </div>

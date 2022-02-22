@@ -1,4 +1,3 @@
-import React,{useEffect,useState} from 'react'
 import Header from "./layouts/Header";
 import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
@@ -11,6 +10,11 @@ import Radio from '@mui/material/Radio';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import React,{useState,useEffect,useContext} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { AuthContext } from "../../../context/auth-context";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -41,12 +45,46 @@ const CartStep1 = () => {
         if(count!=0)
         setCount(count-1)
       }
+      const [data,setData]=useState([])
+      const params = useParams().id;
+      const history = useHistory();
+    console.log(params)
+      const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "ShoppingBasketView",{
+                CustomerID:params
+              })
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+              setData(response.data.Data)
+              console.log(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+
+      }
+
+      useEffect(() => {
+        mainSlider();
+    // alert(val)
+      }, []);
   return (
     <div className="EachCategoryBody">
-     <Header/> 
+     <Header/>
     <Menu/>
 
-   
+
       <Container className="CartContainer" fluid>
       <p className="CartTitle">
           سبد خرید
@@ -56,20 +94,23 @@ const CartStep1 = () => {
            <div className='whiteBoxCart'>
            <div className="rightMenuBox1">
              <div className="d-flex align-items-center">
-      
+
       <p className="fontWeightBold" href="#">
                    محصولات انتخاب شده
                 </p>
           </div>
                  </div>
                  <hr className="grayDashed" />
-                 <div className="d-flex justify-content-between pd4">
+            {
+            data.map((item)=>{
+                return(
+
+            <div className="d-flex justify-content-between pd4">
                      <div className="d-flex">
-                        <img src={Img1} className="CartProductImg"/>
+                        <img src={apiAsset+item.Pic1} className="CartProductImg"/>
                         <div>
                             <p className="CartProductName">
-                            Razer Gaming Computer Mouse
-                            </p>
+{item.ProductName}                            </p>
                             <div className="d-flex align-items-center">
                                 <div className="CartColor">
 
@@ -96,12 +137,12 @@ const CartStep1 = () => {
                     <div className="priceRowCart mb-4 mt-4">
                     <div>
                         <p className='colorRed'>
-                            قیمت :  
+                            قیمت :
                         </p>
                     </div>
                     <div>
                         <p className='colorRed'>
-                            3.250.000 تومان
+                            {item.Cost} تومان
                         </p>
                     </div>
                 </div>
@@ -115,8 +156,11 @@ const CartStep1 = () => {
                      </div>
                      </div>
                  </div>
+                )
+            })
+                 }
                  <hr className="cartHr"></hr>
-                 <div className="d-flex justify-content-between pd4">
+                 {/* <div className="d-flex justify-content-between pd4">
                      <div className="d-flex">
                         <img src={Img1} className="CartProductImg"/>
                         <div>
@@ -149,7 +193,7 @@ const CartStep1 = () => {
                     <div className="priceRowCart mb-4 mt-4">
                     <div>
                         <p className='colorRed'>
-                            قیمت :  
+                            قیمت :
                         </p>
                     </div>
                     <div>
@@ -167,13 +211,13 @@ const CartStep1 = () => {
                          </Button>
                      </div>
                      </div>
-                 </div>
+                 </div> */}
            </div>
            <div className='whiteBoxCart mt-4'>
            <div className="rightMenuBox1">
              <div className="d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center">
-      
+
       <p className="fontWeightBold ml-4" href="#">
                    انتخاب آدرس
                 </p>
@@ -195,7 +239,7 @@ const CartStep1 = () => {
           <hr/>
          <div className="row">
              <Col md={4}>
-            
+
                                 <p className="fontWeightMedium mb-2">
                                    استان
                                 </p>
@@ -204,10 +248,10 @@ const CartStep1 = () => {
                                     <option value="woman">اصفهان</option>
 
                                   </select>
-                           
+
              </Col>
              <Col md={4}>
-            
+
             <p className="fontWeightMedium mb-2">
                شهر
             </p>
@@ -216,7 +260,7 @@ const CartStep1 = () => {
                 <option value="woman">اصفهان</option>
 
               </select>
-       
+
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
@@ -245,7 +289,7 @@ const CartStep1 = () => {
                  <div className="shadowBox mb-4">
                      <p className="fontWeightNormal">
                      <Radio
-       
+
         sx={{
           color: '#ff004e',
           '&.Mui-checked': {
@@ -264,20 +308,20 @@ const CartStep1 = () => {
                          </Button>
                      </div>
                  </div>
-                
+
                  </div>
            </div>
            <div className='whiteBoxCart mt-4'>
            <div className="rightMenuBox1">
              <div className="d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center">
-      
+
       <p className="fontWeightBold ml-4" href="#">
                   انتخاب نحوه ارسال
                 </p>
       </div>
       <Button className="saveBtn">
-          
+
          ثبت
       </Button>
           </div>
@@ -287,7 +331,7 @@ const CartStep1 = () => {
                  <div className="shadowBox mb-4 w30">
                      <p className="fontWeightBold">
                      <Radio
-       
+
        sx={{
          color: '#ff004e',
          '&.Mui-checked': {
@@ -300,12 +344,12 @@ const CartStep1 = () => {
                    <p className='fontWeightNormal'>
                        هزینه ارسال : 12000 تومان
                    </p>
-                    
+
                  </div>
                  <div className="shadowBox mb-4 w30">
                      <p className="fontWeightBold">
                      <Radio
-       
+
        sx={{
          color: '#ff004e',
          '&.Mui-checked': {
@@ -318,12 +362,12 @@ const CartStep1 = () => {
                    <p className='fontWeightNormal'>
                        هزینه ارسال : 12000 تومان
                    </p>
-                    
+
                  </div>
                  <div className="shadowBox mb-4 w30">
                      <p className="fontWeightBold">
                      <Radio
-       
+
        sx={{
          color: '#ff004e',
          '&.Mui-checked': {
@@ -336,9 +380,9 @@ const CartStep1 = () => {
                    <p className='fontWeightNormal'>
                        هزینه ارسال : 12000 تومان
                    </p>
-                    
+
                  </div>
-                
+
                  </div>
            </div>
             </div>
@@ -347,7 +391,7 @@ const CartStep1 = () => {
             <div className="priceRowCart mb-4">
                     <div>
                         <p>
-                            جمع سبد خرید : 
+                            جمع سبد خرید :
                         </p>
                     </div>
                     <div>
@@ -386,13 +430,13 @@ const CartStep1 = () => {
                 </Button>
             </div>
               <p className='fontWeightNormal mt-4'>
-              کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، 
+              کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ،
 برای ثبت سفارش مراحل بعدی را تکمیل کنید.
 
               </p>
             </div>
             </div>
-   
+
       </Container>
       <RedBox/>
       <FooterMain />

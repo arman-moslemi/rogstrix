@@ -29,7 +29,7 @@ const SimilarSlider = ({data}) => {
           }}
           className="specialOfferSlider" slidesPerView={5} spaceBetween={10} navigation={true} >
 {
-  data.map((item)=>{
+  data?.map((item)=>{
     return(
 
   <SwiperSlide>

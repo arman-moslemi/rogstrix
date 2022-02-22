@@ -74,12 +74,12 @@ const RightMenu = ({data,id}) => {
                     محصولات مشاهده شده
                 </Link>
           </div>
-          <div className="d-flex align-items-center mb-4 mt-4">
+          {/* <div className="d-flex align-items-center mb-4 mt-4">
       <PanelAlert className="rightMenuImg"/>
       <Link onClick={()=>history.push("/SystemGuide")} className="fontWeightMedium ml-4"  >
                     لیست اطلاع رسانی
                 </Link>
-          </div>
+          </div> */}
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelExit className="rightMenuImg"/>
       <Link onClick={()=>{logout();history.push("/Login")}} className="fontWeightMedium ml-4"  >

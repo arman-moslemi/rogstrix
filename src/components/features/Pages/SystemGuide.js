@@ -9,8 +9,44 @@ import {FaAngleDoubleRight ,FaAngleDoubleLeft  } from 'react-icons/fa';
 import PageTitle from "../../assets/img/pageTitle.png"
 
 import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import PaginationCustom from "./layouts/Pagination";
 const SystemGuide = () => {
+  const [data,setData]=useState([])
+  const params = useParams().id;
+  const history = useHistory();
+console.log(params)
+  const mainSlider=()=>{
+    const axios = require("axios");
 
+      axios
+          .get(apiUrl + "SystemGuide")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setData(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  }
+
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <div className="EachCategoryBody">
       <Header />

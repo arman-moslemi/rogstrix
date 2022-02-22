@@ -243,7 +243,7 @@ render={(props) => <RegisterStep2/>}>
 						</Route>
 						<Route
 
-						path='/CartStep1'
+						path='/CartStep1/:id'
 						name='سبد خرید گام 1'
 						render={(props) => <CartStep1/>}>
 
