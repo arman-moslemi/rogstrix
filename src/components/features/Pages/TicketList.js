@@ -63,9 +63,9 @@ const TicketList = () => {
     <p className="fontWeightNormal mb-0">ارور در پرداخت وجه...</p>
 </div>
 <div className="w20 ta-center" >
-<Button className="statusTicketBtn w28"
+<div className="statusTicketBtn w28 h40"
 > بسته شده
-    </Button>
+    </div>
 </div>
 <div className="w20 ta-center">
 <p className=" ml-2 md-0">00/02/01 15:00</p>
@@ -83,9 +83,9 @@ const TicketList = () => {
     <p className="fontWeightNormal mb-0">ارور در پرداخت وجه...</p>
 </div>
 <div className="w20 ta-center" >
-<Button className="statusTicketBtn2 w28"
+<div className="statusTicketBtn2 w28 h40"
 > درانتظار پاسخ
-    </Button>
+    </div>
 </div>
 <div className="w20 ta-center">
 <p className=" ml-2 md-0">00/02/01 15:00</p>
@@ -103,9 +103,9 @@ const TicketList = () => {
     <p className="fontWeightNormal mb-0">ارور در پرداخت وجه...</p>
 </div>
 <div className="w20 ta-center" >
-<Button className="statusTicketBtn3 w28"
+<div className="statusTicketBtn3 w28 h40"
 > پاسخ داده شده
-    </Button>
+    </div>
 </div>
 <div className="w20 ta-center">
 <p className=" ml-2 md-0">00/02/01 15:00</p>

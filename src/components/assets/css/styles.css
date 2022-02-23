@@ -1895,3 +1895,18 @@ display: none;
 .redBox2 p{
   font-family: IRANSans;
 }
+.left5{
+  left: 15% !important;
+}
+.addTicketBtn:hover{
+  color: #fff !important;
+  background-color: #ff004e !important;
+}
+.h40{
+  height: 30px;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+}
