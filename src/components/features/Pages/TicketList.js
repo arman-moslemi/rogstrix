@@ -31,6 +31,9 @@ const TicketList = () => {
     const [open1, setOpen1] = useState(false);
     const handleOpen1 = () => setOpen1(true);
     const handleClose1 = () => setOpen1(false);
+    const [open, setOpen2] = useState(false);
+    const handleOpen2 = () => setOpen2(true);
+    const handleClose2 = () => setOpen2(false);
     const [showText, setShowText] = useState(false);
     const onClick = () => setShowText(true);
   return (
@@ -132,7 +135,9 @@ const TicketList = () => {
 </div>
 <div className="ta-center" id="w5">
 {/* <p className="fontWeightBold ml-4 md-0">مشاهده</p> */}
+<Button className="glassBtn">
 <FaEye className="ml-4 md-0 " />
+</Button>
 
 </div>
 </div>
@@ -151,9 +156,9 @@ const TicketList = () => {
 <p className="fontWeightNormal ml-2 md-0">00/02/01 15:00</p>
 </div>
 <div className="ta-center" id="w5">
-{/* <p className="fontWeightBold ml-4 md-0">مشاهده</p> */}
+<Button className="glassBtn">
 <FaEye className="ml-4 md-0 " />
-
+</Button>
 </div>
 </div>
 </div>
@@ -171,9 +176,9 @@ const TicketList = () => {
 <p className="fontWeightNormal ml-2 md-0">00/02/01 15:00</p>
 </div>
 <div className="ta-center" id="w5">
-{/* <p className="fontWeightBold ml-4 md-0">مشاهده</p> */}
-<FaEye color="#f4f4f4" height="200px" className="ml-4 md-0 " />
-
+<Button className="glassBtn">
+<FaEye className="ml-4 md-0 " />
+</Button>
 </div>
 </div>
 </div>
