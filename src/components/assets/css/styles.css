@@ -1910,3 +1910,21 @@ justify-content: center;
 align-content: center;
 align-items: center;
 }
+
+.serviceForm{
+  padding:2% 0% 2% 0% !important;
+}
+.cFormDiv span{
+  font-size: 12px !important;
+}
+.cFormDiv svg{
+  font-size: 8px !important;
+}
+.cFormDiv input, .cFormDiv textarea{
+  font-size: 10px !important;
+}
+.cFormDiv3 p{
+  font-family: IRANSans-Bold;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
