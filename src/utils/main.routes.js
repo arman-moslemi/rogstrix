@@ -138,7 +138,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/MakeSystemSingle'
+					path='/MakeSystemSingle/:id'
 					name='ساخت سیستم'
 					render={(props) => <MakeSystemSingle/>}>
 

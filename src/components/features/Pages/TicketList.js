@@ -1,4 +1,4 @@
-import {React,useState} from "react";
+import React,{useState,useEffect} from 'react'
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaTimes } from 'react-icons/fa';
@@ -15,6 +15,9 @@ import Radio from '@mui/material/Radio';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -36,6 +39,56 @@ const TicketList = () => {
     const handleClose2 = () => setOpen2(false);
     const [showText, setShowText] = useState(false);
     const onClick = () => setShowText(true);
+    const params = useParams().id;
+    const [data,setData]=useState()
+    const [product,setProduct]=useState()
+
+    const ProductSave=()=>{
+        const axios = require("axios");
+
+
+        axios.post(apiUrl + "OneCustomer",{CustomerID:params})
+        .then(function (response) {
+          if (response.data.result == "true") {
+
+             setData(response.data.Data)
+
+             console.log(response.data.Data)
+
+            // history.push("/RegisterVerify/"+mobile)
+
+        }
+        else{
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+        axios
+            .post(apiUrl + "CustomerProductSave",{
+              CustomerID:params
+            })
+        .then(function (response) {
+          if (response.data.result == "true") {
+            console.log(777)
+            setProduct(response.data.Data)
+            console.log(response.data.Data)
+
+        }
+        else{
+          console.log(888)
+          console.log(response.data.result)
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+      useEffect(() => {
+        ProductSave();
+    // alert(val)
+      }, []);
   return (
     <div className="">
     <Header />

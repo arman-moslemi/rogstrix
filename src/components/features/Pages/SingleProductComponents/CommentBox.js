@@ -12,14 +12,17 @@ import StartRate from './StarRate';
 // if you want to use array
 
 
-const CommentBox = ({data,id,type}) => {
+const CommentBox = ({data,id,type,token}) => {
   const [releated,setRel]=useState()
+  const [rate,setRate]=useState(5)
   const [open,setOpen]=useState(false)
   const [title,setTitle]=useState("")
   const mainSlider=()=>{
-      const axios = require("axios");
-type=="product"?
-axios.post(apiUrl + "InsertProductComment",{ProductID:id,CustomerID:1,Title:"",Text:releated})
+    const axios = require("axios");
+    console.log(token)
+    if(token)
+{type=="product"?
+axios.post(apiUrl + "InsertProductComment",{ProductID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
 .then(function (response) {
   if (response.data.result == "true") {
 
@@ -36,7 +39,7 @@ else{
   console.log(error);
 })
 :
-      axios.post(apiUrl + "InsertBlogComment",{BlogID:id,CustomerID:1,Title:"",Text:releated})
+      axios.post(apiUrl + "InsertBlogComment",{BlogID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -51,7 +54,11 @@ setOpen(true)
       }})
       .catch(function (error) {
         console.log(error);
-      });
+      });}
+      else{
+        setTitle("ابتدا وارد شوید")
+setOpen(true)
+      }
   }
   return (
     <>
@@ -71,7 +78,7 @@ setOpen(true)
             <p className='commenterName' style={{marginTop:8,marginLeft:10}}>
               امتیاز شما به این محصول :
             </p>
-            <StartRate/>
+            <StartRate  setRate={setRate} />
           </div>
            </div>
            <textarea type="text" onChange={(e)=>setRel(e.target.value)} placeholder={"نظرتان را بنویسید"} className="commentInput"/>

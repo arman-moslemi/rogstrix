@@ -68,18 +68,7 @@ const CompletedSystems = () => {
                 سایت راگ استریکس
               </a>
             </li>
-            /
-            <li>
-              <a>
-                سی پی یو
-              </a>
-            </li>
-            /
-            <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
-            </li>
+
           </ul>
         </div>
         <div className="pageTitle">

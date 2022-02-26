@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
-export default function StartRate() {
+export default function StartRate({setRate}) {
   const [rating, setRating] = useState(0) // initial rating value
 
   // Catch Rating value
-  const handleRating = (rate: number) => {
+  const handleRating = (rate) => {
     setRating(rate)
+    console.log(888)
+    console.log(rate)
+    setRate(rate/10)
     // other logic
   }
 

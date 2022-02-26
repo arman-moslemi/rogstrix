@@ -6,6 +6,7 @@ import {FaCommentDots , FaLongArrowAltUp} from "react-icons/fa";
 import MadeSystem from "../../../assets/img/madeSystem.png";
 import userProfile from "../../../assets/img/userProfile.png";
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -19,9 +20,11 @@ export const truncate = (str, len) => {
   return str;
 };
 const CompletedCards = (props) => {
+  const history = useHistory();
+
   return (
 
-     <div className="completedCard">
+     <Link onClick={()=>history.push("/MakeSystemSingle/"+props.data.SystemID)} className="completedCard">
        <div className="imgBox marginBottom15">
        {
   props?.viewOverlay==true?
@@ -72,7 +75,7 @@ const CompletedCards = (props) => {
           </p>
         </Col>
       </div>
-     </div>
+     </Link>
 
   );
 };

@@ -8,34 +8,227 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import SimilarSlider from "./SingleProductComponents/SimilarSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import SingleProductRedBox from "./SingleProductComponents/SingleProductRedBox";
-import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList} from 'react-icons/fa';
-const images = [
+import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList,FaRandom} from 'react-icons/fa';
+import {useParams } from "react-router-dom";
+import React,{useState,useEffect,useContext} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { AuthContext } from "../../../context/auth-context";
+import Truck from "../../assets/icons/truck";
+import Box from "../../assets/icons/box";
+import Garantee2 from "../../assets/icons/garantee2";
+import { Link, useHistory } from "react-router-dom";
+
+const MakeSystem = () => {
+  const params = useParams().id;
+  const history = useHistory();
+  const [product,setProduct]=useState([])
+  const [com,setCom]=useState([])
+  const [similar,setSimilar]=useState([])
+  const [rate,setRate]=useState(0)
+  const [color,setColor]=useState()
+  const { isLoggedIn, token } = useContext(AuthContext);
+  const [property,setProperty]=useState([])
+  const [count,setCount]=useState(1)
+  const [open1, setOpen1] = useState(false);
+  const increment = () => {
+    setCount(count+1)
+    console.log(count)
+
+      }
+
+      const   decrement = () => {
+        // this.setState({
+        //   count: this.state.count - 1
+        // });
+        if(count!=0)
+        setCount(count-1)
+      }
+  const ProductSave=()=>{
+    const axios = require("axios");
+
+    axios
+        .post(apiUrl + "AddCustomerProductSave",{
+          ProductID:params,
+          CustomerID:token
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+        console.log(777)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  const AddToCart=()=>{
+    const axios = require("axios");
+console.log(555)
+console.log(token)
+    axios
+        .post(apiUrl + "ShoppingBasketAdd",{
+          SystemID:params,
+          CustomerID:token,
+          Cost:parseInt(product.Cost)-parseInt(product.SpecialCost),
+          ColorID:color,
+          Number:count
+
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+        console.log(777)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  const mainSlider=()=>{
+    const axios = require("axios");
+
+      axios
+          .post(apiUrl + "SingleSystem",{
+            SystemID:params,
+            CustomerID:isLoggedIn?token:""
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProduct(response.data.Data)
+          console.log(777)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(888)
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios
+          .post(apiUrl + "SingleProperty",{
+            ProductID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProperty(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .post(apiUrl + "SingleSystemComment ",{
+            SystemID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setCom(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios
+          .post(apiUrl + "SingleSystemRelated",{
+            SystemID:params,
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setSimilar(response.data.Data)
+          console.log(777)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(888)
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios
+      .post(apiUrl + "SystemRateShow",{
+        SystemID:params,
+      })
+  .then(function (response) {
+    if (response.data.result == "true") {
+
+      setRate(response.data.Data)
+      console.log(222)
+      console.log(response.data.Data)
+
+  }
+  else{
+    console.log(888)
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
+  }
+  const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+      original: product.Pic1,
+      thumbnail: product.Pic1,
     },
     {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+      original: product.Pic2,
+      thumbnail: product.Pic2,
     },
     {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+      original: product.Pic3,
+      thumbnail: product.Pic3,
     },
     {
-        original: 'https://picsum.photos/id/1019/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1019/250/150/',
+        original: product.Pic4,
+        thumbnail: product.Pic4,
       }
   ];
-const MakeSystem = () => {
-
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <div className="SingleProduct">
-        <Header/> 
-      <Menu/> 
-    
+        <Header/>
+      <Menu/>
 
-   
+
+
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
@@ -47,15 +240,12 @@ const MakeSystem = () => {
             </li>
             /
             <li>
-              <a>
-                سی پی یو
-              </a>
+              <Link onClick={()=>history.push("/")}>
+{product.TypeName}              </Link>
             </li>
             /
             <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
+{product.SystemName}
             </li>
           </ul>
         </div>
@@ -66,11 +256,10 @@ const MakeSystem = () => {
         </Col>
         <Col md={6} id="singleOrder3">
         <p className="boxTitle2 BoldFont">
-        Razer Gaming Computer Mouse
-                </p>
+{product.SystemName}                </p>
                 <hr className="grayHr"/>
-               
-              
+
+
                 <p className="boxTitle2 NormalFont">تعیین مشخصات دقیق‌تر محصول
                 </p>
 
@@ -86,7 +275,7 @@ const MakeSystem = () => {
                   3.9GHZ
                 </Button>
                 </div>
-                
+
                 <div className="d-flex align-items-center mb-4">
                 <FaCaretLeft/>
                 <p className="detailTitle w200">
@@ -132,8 +321,8 @@ const MakeSystem = () => {
                     10 * 20 * 10 سانتی متر
                 </p>
                 </div>
-         
-                <div className="d-flex align-items-center mt-4">
+
+                {/* <div className="d-flex align-items-center mt-4">
                   <FaMapMarkerAlt color="#f6303f" size={24} className="mr-2"/>
                   <p className="addressSingle">
                   ارسال به فارس / شیراز / خیابان فلان / کوچه فلان / فلانی
@@ -149,102 +338,161 @@ const MakeSystem = () => {
                     + 12 فروش
                     </p>
                   </div>
-              </div>
+              </div> */}
         </Col>
         <Col md={3} id="singleOrder2">
-            <div className="redLightBox">
-                <p className="boxTitle2">
-                    مشخصات فروش
+
+<div className="redLightBox" style={{position:'relative'}}>
+  {
+    isLoggedIn?
+
+    <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
+                                        <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
+                                            height="29.652" viewBox="0 0 27.45 29.652">
+                                            <g id="save" transform="translate(0.5 0.489)">
+                                                <path id="Icon_material-label" data-name="Icon material-label"
+                                                    d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
+                                                    transform="translate(33.95 -4.411) rotate(90)" fill="none"
+                                                    stroke="#e74868" stroke-width="1" />
+                                                <path className="Icon_awesome-plus" id="Icon_awesome-plus"
+                                                    data-name="Icon awesome-plus"
+                                                    d="M14.585,8.421H9.536V3.372A1.122,1.122,0,0,0,8.414,2.25H7.293A1.122,1.122,0,0,0,6.171,3.372V8.421H1.122A1.122,1.122,0,0,0,0,9.543v1.122a1.122,1.122,0,0,0,1.122,1.122H6.171v5.049a1.122,1.122,0,0,0,1.122,1.122H8.414a1.122,1.122,0,0,0,1.122-1.122V11.786h5.049a1.122,1.122,0,0,0,1.122-1.122V9.543A1.122,1.122,0,0,0,14.585,8.421Z"
+                                                    transform="translate(23.501 3.545) rotate(90)"
+                                                    fill="#e74868" />
+                                            </g>
+                                        </svg>
+                                    </Button>
+    :
+    null
+  }
+ {
+                isLoggedIn?
+
+                <Button  className="save-btn-single left5" id="save-btn">
+                                                    <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
+                                                        height="29.652" viewBox="0 0 27.45 29.652">
+                                                        <g id="save" transform="translate(0.5 0.489)">
+                                                            <path id="Icon_material-label" data-name="Icon material-label"
+                                                                d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
+                                                                transform="translate(33.95 -4.411) rotate(90)" fill="none"
+                                                                stroke="#e74868" stroke-width="1" />
+                                                           <FaRandom color="#ff004e" style={{margin:50}}/>
+                                                        </g>
+                                                    </svg>
+                                                </Button>
+                :
+                null
+              }
+    <p className="boxTitle2">
+        مشخصات فروش
+    </p>
+    <div className="d-flex align-items-center justify-content-between">
+
+      <div className="starRate">
+
+        {
+          [...new Array(5)].map((item,index)=>{
+            return(
+index+1>rate?
+<FaRegStar className="mr-1 ml-1" color="#111111"/>
+              :
+              <FaStar className="mr-1 ml-1" color="#f6303f"/>
+
+            )
+          })
+        }
+
+
+      </div>
+      <div>
+        <p className="reviewP" id="colorGray">
+        امتیاز: {rate} از ۵ ({com.length} نظر)
+        </p>
+      </div>
+
+  </div>
+  <hr className="grayHr"/>
+  <div className="d-flex align-items-center">
+      <div  className="mr-3">
+          <Garantee2/>
+      </div>
+      <div>
+      <p className="reviewP" id="colorGray">
+        ضمانت اصل بودن کالا
+        </p>
+      </div>
+  </div>
+  <hr className="grayHr"/>
+  <div className="d-flex align-items-center">
+      <div  className="mr-3">
+          <Box/>
+      </div>
+      <div>
+      <p className="reviewP" id="colorGray">
+      از این کالا {product.Number} عدد در انبار موجود است
+                    </p>
+      </div>
+  </div>
+  <div className="d-flex align-items-center">
+      <div  className="mr-3">
+          <Truck/>
+      </div>
+      <div>
+      <p className="reviewP" id="colorGray">
+      ارسال تا ۳ روز دیگر                    </p>
+      </div>
+  </div>
+  <hr className="grayHr"/>
+  <div className="d-flex align-items-center justify-content-between">
+    <div>
+    <p className="reviewP" id="colorGray">تعداد : </p></div>
+  <div className="counterDiv d-flex justify-content-center">
+  <button onClick={()=>decrement()} className="decBTN">-</button>
+  <span style={{marginRight:'0'}}>{count}</span>
+  <button onClick={()=>increment()} className="inBTN">+</button>
+</div>
+  </div>
+  <hr className="grayHr"/>
+  <div className="d-flex align-items-center  justify-content-between">
+      <div  className="mr-3">
+      <p className="reviewP" id="colorGray">
+      قیمت محصول                   </p>
+
+      </div>
+      <div>
+          <div className="d-flex">
+              <div>
+              <p className="strokeOutPrice">
+               {product.Cost}
                 </p>
-                <div className="d-flex align-items-center justify-content-between">
-               
-                  <div className="starRate">
-                  <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    
-                  </div>
-                  <div>
-                    <p className="reviewP" id="colorGray">
-                    امتیاز: ۴ از ۵ (۲۴ نظر)
-                    </p>
-                  </div>
-
               </div>
-              <hr className="grayHr"/>
-              <div className="d-flex align-items-center">
-                  <div  className="mr-3">
-                      <FaStar/>
-                  </div>
-                  <div>
-                  <p className="reviewP" id="colorGray">
-                    ضمانت اصل بودن کالا
-                    </p>
+              <div>
+                  <div className="redBack ml-2">
+                      <p>{(parseInt(product.SpecialCost)/parseInt(product.Cost))*100}%</p>
                   </div>
               </div>
-              <hr className="grayHr"/>
-              <div className="d-flex align-items-center">
-                  <div  className="mr-3">
-                      <FaStar/>
-                  </div>
-                  <div>
-                  <p className="reviewP" id="colorGray">
-                  از این کالا ۴ عدد در انبار موجود است      
-                                </p>
-                  </div>
-              </div>
-              <div className="d-flex align-items-center">
-                  <div  className="mr-3">
-                      <FaStar/>
-                  </div>
-                  <div>
-                  <p className="reviewP" id="colorGray">
-                  ارسال تا ۳ روز دیگر                    </p>
-                  </div>
-              </div>
-              <hr className="grayHr"/>
-              <div className="d-flex align-items-center  justify-content-between">
-                  <div  className="mr-3">
-                  <p className="reviewP" id="colorGray">
-                  قیمت محصول                   </p>
-                 
-                  </div>
-                  <div>
-                      <div className="d-flex">
-                          <div>
-                          <p className="strokeOutPrice">
-                            ۵۰،۰۰۰،۰۰۰
-                            </p>
-                          </div>
-                          <div>
-                              <div className="redBack ml-2">
-                                  <p>10%</p>
-                              </div>
-                          </div>
-                      </div>
-                  <p className="specialPrice">
-                 ۵۶،۰۰۰،۰۰۰
-                  </p>
+          </div>
+      <p className="specialPrice">
+      {parseInt(product.Cost)-parseInt(product.SpecialCost)}تومان
+      </p>
 
 
-                  </div>
-              </div>
-              <div className="d-flex align-items-center mt-5">
-                  <div  className="mr-3">
-                      <FaEye/>
-                  </div>
-                  <div>
-                  <p className="reviewP" id="colorGray">
-                10 نفر در حال مشاهده این محصول هستند                </p>
-                  </div>
-              </div>
-              <Button className="addToCart mt-2">
-                  افزودن به سبد خرید
-              </Button>
-            </div>
-        </Col>
+      </div>
+  </div>
+  {/* <div className="d-flex align-items-center mt-5">
+      <div  className="mr-3">
+          <FaEye/>
+      </div>
+      <div>
+      <p className="reviewP" id="colorGray">
+    10 نفر در حال مشاهده این محصول هستند                </p>
+      </div>
+  </div> */}
+  <Button onClick={()=>AddToCart()} className="addToCart mt-4">
+      افزودن به سبد خرید
+  </Button>
+</div>
+</Col>
         </div>
         </div>
         <div className="row mt-4 mb-3">
@@ -262,34 +510,33 @@ const MakeSystem = () => {
                 <p className="detailTitle">
                 مشاهده خنک‌کننده سی پی یو سازگار با این محصول
                 </p>
-              
+
                 </div>
                 <div className="d-flex align-items-center mb-2">
                 <FaCaretLeft/>
                 <p className="detailTitle">
                 مشاهده مادربورد سازگار با این محصول
                 </p>
-              
+
                 </div>
                 <div className="d-flex align-items-center mb-2">
                 <FaCaretLeft/>
                 <p className="detailTitle">
                 مشاهده سیستم عامل سازگار با این محصول
                 </p>
-              
+
                 </div>
             </div>
             <div className="whiteBox3 mt-4">
             <p className="boxTitle2 BoldFont">
-            توضیحات درباره Razer Gaming Computer Mouse 
+            توضیحات درباره {product.SystemName}
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                </p>
+{product.Description}                </p>
             </div>
 
-           
+
           </Col>
         </div>
         <div className="whiteBox3 mt-3 pd0">
@@ -305,12 +552,12 @@ const MakeSystem = () => {
                     </div>
                    </Col>
                </div>
-              <SimilarSlider/>
+               <SimilarSlider data={similar}/>
             </div>
             <div className="whiteBox3 mt-3">
          <CommentBox/>
             </div>
-   
+
       </Container>
       <RedBox/>
       <Footer />

@@ -20,9 +20,9 @@ import ReadMore from "./BlogComponents/ReadMore";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
-
+import { AuthContext } from "../../../context/auth-context";
 const SingleBlog = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
@@ -31,6 +31,7 @@ const [cat,setCat]=useState();
 const [com,setCom]=useState([]);
 const [type,setType]=useState([])
 const [special,setSpecial]=useState([])
+const { isLoggedIn, token } = useContext(AuthContext);
 
 console.log(params)
   const mainSlider=()=>{
@@ -147,7 +148,7 @@ console.log(params)
         <ShowBlog data={data}/>
         {/* <ReadMore/> */}
         <div className="whiteBox3 mt-3">
-         <CommentBox data={com} id={params}/>
+         <CommentBox data={com} id={params} token={token}/>
             </div>
          </Col>
 

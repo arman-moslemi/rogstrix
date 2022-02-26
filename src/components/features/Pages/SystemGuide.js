@@ -89,6 +89,10 @@ console.log(params)
         </div>
         <div className="row " style={{marginBottom:25}}>
 
+
+            {
+              data.map((item)=>{
+return(
           <Col md={12}>
 
           <div className="productsWhiteBox radius10">
@@ -99,8 +103,7 @@ console.log(params)
             <div>
               <p className="blackHeader">
                 <FaAngleDoubleRight className="mr-4"/>
-                سیستم های گیمینگ
-                <FaAngleDoubleLeft className="ml-4"/>
+{item[0].TypeName}                <FaAngleDoubleLeft className="ml-4"/>
                 </p>
             </div>
             <div className="dashedBlackHr" style={{border:'none'}}>
@@ -108,63 +111,30 @@ console.log(params)
             </div>
            </div>
            <div className="compareCardDiv mt-20">
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-           </div>
-           <div className="whiteBoxHeader">
-            <div className="dashedBlackHr" style={{border:'none'}}>
-              <hr/>
-            </div>
-            <div>
-              <p className="blackHeader">
-                <FaAngleDoubleRight className="mr-4"/>
-                سیستم های اداری
-                <FaAngleDoubleLeft className="ml-4"/>
-                </p>
-            </div>
-            <div className="dashedBlackHr" style={{border:'none'}}>
-              <hr/>
-            </div>
-           </div>
-           <div className="compareCardDiv mt-20">
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-            <div className="systemGuideCard">
-            <CompletedCards/>
-            </div>
-           </div>
-          </div>
+           {
+              item.map((items)=>{
+                return(
 
-          </Col>
+            <div className="systemGuideCard">
+            <CompletedCards data={items}/>
+            </div>
+                )
+              })
+            }
+
+           </div>
+
+   </div>
+
+   </Col>
+)
+})
+}
+
+
+
+
+
 
 
         </div>

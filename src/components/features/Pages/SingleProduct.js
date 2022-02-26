@@ -513,7 +513,7 @@ index+1>rate?
               <SimilarSlider data={similar}/>
             </div>
             <div className="whiteBox3 mt-3">
-         <CommentBox data={com} id={params} type={"product"}/>
+         <CommentBox token={token} data={com} id={params} type={"product"}/>
             </div>
 
       </Container>
