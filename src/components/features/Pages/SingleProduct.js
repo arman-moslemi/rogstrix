@@ -8,13 +8,15 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import SimilarSlider from "./SingleProductComponents/SimilarSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import SingleProductRedBox from "./SingleProductComponents/SingleProductRedBox";
-import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList} from 'react-icons/fa';
+import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList,FaRandom} from 'react-icons/fa';
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
-
+import Truck from "../../assets/icons/truck";
+import Box from "../../assets/icons/box";
+import Garantee2 from "../../assets/icons/garantee2";
 const SingleProduct = () => {
   const params = useParams().id;
   const history = useHistory();
@@ -206,6 +208,21 @@ const images = [
     mainSlider();
 // alert(val)
   }, []);
+  const [count,setCount]=useState(1)
+  const [open1, setOpen1] = useState(false);
+  const increment = () => {
+    setCount(count+1)
+    console.log(count)
+
+      }
+
+      const   decrement = () => {
+        // this.setState({
+        //   count: this.state.count - 1
+        // });
+        if(count!=0)
+        setCount(count-1)
+      }
   return (
     <div className="SingleProduct">
         <Header/>
@@ -333,6 +350,24 @@ const images = [
                 :
                 null
               }
+                {
+                isLoggedIn?
+
+                <Button  className="save-btn-single left5" id="save-btn">
+                                                    <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
+                                                        height="29.652" viewBox="0 0 27.45 29.652">
+                                                        <g id="save" transform="translate(0.5 0.489)">
+                                                            <path id="Icon_material-label" data-name="Icon material-label"
+                                                                d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
+                                                                transform="translate(33.95 -4.411) rotate(90)" fill="none"
+                                                                stroke="#e74868" stroke-width="1" />
+                                                           <FaRandom color="#ff004e" style={{margin:50}}/>
+                                                        </g>
+                                                    </svg>
+                                                </Button>
+                :
+                null
+              }
                 <p className="boxTitle2">
                     مشخصات فروش
                 </p>
@@ -364,7 +399,7 @@ index+1>rate?
               <hr className="grayHr"/>
               <div className="d-flex align-items-center">
                   <div  className="mr-3">
-                      <FaStar/>
+                      <Garantee2/>
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
@@ -375,7 +410,7 @@ index+1>rate?
               <hr className="grayHr"/>
               <div className="d-flex align-items-center">
                   <div  className="mr-3">
-                      <FaStar/>
+                      <Box/>
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
@@ -385,12 +420,22 @@ index+1>rate?
               </div>
               <div className="d-flex align-items-center">
                   <div  className="mr-3">
-                      <FaStar/>
+                      <Truck/>
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
                   ارسال تا ۳ روز دیگر                    </p>
                   </div>
+              </div>
+              <hr className="grayHr"/>
+              <div className="d-flex align-items-center justify-content-between">
+                <div>
+                <p className="reviewP" id="colorGray">تعداد : </p></div>
+              <div className="counterDiv d-flex justify-content-center">
+              <button onClick={()=>decrement()} className="decBTN">-</button>
+              <span style={{marginRight:'0'}}>{count}</span>
+              <button onClick={()=>increment()} className="inBTN">+</button>
+            </div>
               </div>
               <hr className="grayHr"/>
               <div className="d-flex align-items-center  justify-content-between">
@@ -428,7 +473,7 @@ index+1>rate?
                 10 نفر در حال مشاهده این محصول هستند                </p>
                   </div>
               </div> */}
-              <Button onClick={()=>AddToCart()} className="addToCart mt-2">
+              <Button onClick={()=>AddToCart()} className="addToCart mt-4">
                   افزودن به سبد خرید
               </Button>
             </div>

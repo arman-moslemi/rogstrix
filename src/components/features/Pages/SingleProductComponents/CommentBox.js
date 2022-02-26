@@ -8,7 +8,7 @@ import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import CustomizedDialogs from '../layouts/AlertModal';
-
+import StartRate from './StarRate';
 // if you want to use array
 
 
@@ -59,12 +59,20 @@ setOpen(true)
             نظرات و دیدگاه
                 </p>
                 <hr className="dottedH" id="borderRed"/>
-           <div className="d-flex align-items-center">
-           <img className="profileComment" src={UserProfile}/>
+           <div className="d-flex align-items-center justify-content-between">
+          <div className="d-flex align-items-center">
+          <img className="profileComment" src={UserProfile}/>
              <p className="commenterName">
 کاربر             </p>
 <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
 
+          </div>
+          <div className="d-flex align-items-center">
+            <p className='commenterName' style={{marginTop:8,marginLeft:10}}>
+              امتیاز شما به این محصول :
+            </p>
+            <StartRate/>
+          </div>
            </div>
            <textarea type="text" onChange={(e)=>setRel(e.target.value)} placeholder={"نظرتان را بنویسید"} className="commentInput"/>
             <div className="row mt-2">

@@ -1850,11 +1850,8 @@ display: none;
 .w30{
   width: 30%;
 }
-<<<<<<< HEAD
-=======
 .specialPrice{
   margin-top: 5px;}
->>>>>>> dd1539817ebf5f0824de8b7f2244dff21214365b
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
   width: 25%;
 }
@@ -1894,4 +1891,40 @@ display: none;
 .save-btn:hover svg path{
   fill: #E74868;
   color: #E74868;
+}
+.redBox2 p{
+  font-family: IRANSans;
+}
+.left5{
+  left: 15% !important;
+}
+.addTicketBtn:hover{
+  color: #fff !important;
+  background-color: #ff004e !important;
+}
+.h40{
+  height: 30px;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+}
+
+.serviceForm{
+  padding:2% 0% 2% 0% !important;
+}
+.cFormDiv span{
+  font-size: 12px !important;
+}
+.cFormDiv svg{
+  font-size: 8px !important;
+}
+.cFormDiv input, .cFormDiv textarea{
+  font-size: 10px !important;
+}
+.cFormDiv3 p{
+  font-family: IRANSans-Bold;
+  margin-left: 15px;
+  margin-bottom: 0px;
 }
