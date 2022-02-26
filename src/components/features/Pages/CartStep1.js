@@ -112,12 +112,12 @@ const CartStep1 = () => {
                             <p className="CartProductName">
 {item.ProductName}                            </p>
                             <div className="d-flex align-items-center">
-                                <div className="CartColor">
+                                <div className="CartColor" style={{backgroundColor:"#"+item.ColorID}}>
 
                                 </div>
-                                <p className="CartColorP">
+                                {/* <p className="CartColorP">
                                     رنگ سبز
-                                </p>
+                                </p> */}
                             </div>
                             <p className="CartColorP mt-4">
                                 <FaAward/>
