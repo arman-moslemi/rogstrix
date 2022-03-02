@@ -1989,3 +1989,15 @@ align-items: center;
 .orange{
   color:#f78300 !important;
 }
+.backBlue{
+  background-color: #25bddc;
+}
+.pd20{
+  padding: 10px 25px;
+}
+.mr100{
+  margin-right: 100px;
+}
+.w240{
+  width: 240px;
+}

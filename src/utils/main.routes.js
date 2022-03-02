@@ -35,6 +35,7 @@ import SavedProducts from '../components/features/Pages/SavedProducts';
 import CommingSoon from '../components/features/Pages/ComingSoon';
 import CartStep1 from '../components/features/Pages/CartStep1';
 import CartStep2 from '../components/features/Pages/CartStep2';
+import AssembleSecond from '../components/features/Pages/AssembleSecond';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -185,6 +186,13 @@ render={(props) => <RegisterStep2/>}>
 						render={(props) => <AssembleMain/>}>
 
 						</Route>
+						<Route
+
+path='/AssembleSecond'
+name='اسمبل'
+render={(props) => <AssembleSecond/>}>
+
+</Route>
 						<Route
 
 						path='/EditInformation/:id'
