@@ -1,4 +1,3 @@
-import {React,useState} from "react";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaRegEye } from 'react-icons/fa';
@@ -10,8 +9,11 @@ import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelOrder from "../../assets/icons/panelOrder";
 import Checkbox from '@mui/material/Checkbox';
+import {useParams } from "react-router-dom";
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 export const truncate = (str, len) => {
-    console.log("truncate", str, str.length, len);
+    // console.log("truncate", str, str.length, len);
     if (str.length > len && str.length > 0) {
       let new_str = str + " ";
       new_str = str.substr(0, len);
@@ -22,7 +24,56 @@ export const truncate = (str, len) => {
     return str;
   };
 const UserOrder = () => {
-  
+    const params = useParams().id;
+    const [data,setData]=useState()
+    const [product,setProduct]=useState()
+
+    const CustomerOrder=()=>{
+        const axios = require("axios");
+
+
+        axios.post(apiUrl + "OneCustomer",{CustomerID:params})
+        .then(function (response) {
+          if (response.data.result == "true") {
+
+             setData(response.data.Data)
+
+             console.log(response.data.Data)
+
+            // history.push("/RegisterVerify/"+mobile)
+
+        }
+        else{
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+        axios
+            .post(apiUrl + "CustomerOrder",{
+              CustomerID:params
+            })
+        .then(function (response) {
+          if (response.data.result == "true") {
+            console.log(777)
+            setProduct(response.data.Data)
+            console.log(response.data.Data)
+
+        }
+        else{
+          console.log(888)
+          console.log(response.data.result)
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+      useEffect(() => {
+        CustomerOrder();
+    // alert(val)
+      }, []);
   return (
     <div className="">
     <Header />
@@ -32,7 +83,7 @@ const UserOrder = () => {
     <Container className="UserPanelContainer" fluid>
      <div className="row">
          <Col md={3}>
-             <RightMenu/>
+         <RightMenu data={data} id={params}/>
          </Col>
          <Col md={9}>
              <div className="panelWhiteBox pdbottom150">

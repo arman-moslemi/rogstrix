@@ -58,8 +58,14 @@ const RightMenu = ({data,id}) => {
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
       <PanelOrder className="rightMenuImg"/>
-      <Link onClick={()=>history.push("/TicketList/"+id)} className="fontWeightMedium ml-4"  >
+      <Link onClick={()=>history.push("/ََUserOrder/"+id)} className="fontWeightMedium ml-4"  >
                     سفارش های من
+                </Link>
+          </div>
+          <div className="d-flex align-items-center mb-4 mt-4">
+      <PanelOrder className="rightMenuImg"/>
+      <Link onClick={()=>history.push("/TicketList/"+id)} className="fontWeightMedium ml-4"  >
+                    تیکت های من
                 </Link>
           </div>
           <div className="d-flex align-items-center mb-4 mt-4">
