@@ -4,7 +4,7 @@ import Footer from "./layouts/Footer";
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
-
+import Img1 from "../../assets/img/img1.png";
 import { FaTimes , FaShareAlt ,FaArrowUp ,FaLink,FaPlus,FaRegCommentAlt,FaRegCheckCircle} from 'react-icons/fa';
 import AssembleSlidr from "./AssemblePageComponents/AssembleSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
@@ -86,10 +86,229 @@ const AssembleMain = () => {
               </p>
             </div>
           </div>
-          <div className="d-flex align-items-center justify-content-between">
-            <p className="tableFirstRow">
+          <div className="d-flex align-items-center justify-content-between tRow">
+            <div className="d-flex">
+            <p className="tableFirstRowText">
               قطعه
             </p>
+            <div className="vl"></div>
+            </div>
+            <p className="tableFirstRowText">
+              انتخاب قطعه
+            </p>
+            <p className="tableFirstRowText">
+              قیمت(ریال)
+            </p>
+            <p className="tableFirstRowText">
+              خرید
+            </p>
+            <p className="tableFirstRowText">
+              حذف
+            </p>
+          </div>
+          <hr className="grayHr"/>
+          <div className="d-flex align-items-center justify-content-between tRow">
+            <div>
+              <p className="tableFirstRowText">
+                سی پی یو
+              </p>
+              <p className="miniText2">
+                CPU
+              </p>
+            </div>
+           <div className="d-flex">
+           <div>
+              <img src={Img1} className="assembleImg"/>
+            </div>
+            <div>
+              <p className="productAssembleName">
+              MSI B550-A PRO ATX AM4 Motherboard
+              </p>
+              <p className="miniText2">
+              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
+              </p>
+            </div>
+           </div>
+            <div>
+              <p className="productAssembleName">
+              ۷۵،۰۰۰،۰۰۰
+              </p>
+              </div>
+              <div>
+                <button className="buyAssembleBtn">
+                  خرید
+                </button>
+              </div>
+              <div>
+                <button className="glassBtn">
+                  <FaTimes/>
+                </button>
+              </div>
+        
+          
+          
+          </div>
+          <hr className="grayHr"/>
+          <div className="d-flex align-items-center justify-content-between tRow">
+            <div>
+              <p className="tableFirstRowText">
+                سی پی یو
+              </p>
+              <p className="miniText2">
+                CPU
+              </p>
+            </div>
+           <div className="d-flex">
+           <div>
+              <img src={Img1} className="assembleImg"/>
+            </div>
+            <div>
+              <p className="productAssembleName">
+              MSI B550-A PRO ATX AM4 Motherboard
+              </p>
+              <p className="miniText2">
+              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
+              </p>
+            </div>
+           </div>
+            <div>
+              <p className="productAssembleName">
+              ۷۵،۰۰۰،۰۰۰
+              </p>
+              </div>
+              <div>
+                <button className="buyAssembleBtn">
+                  خرید
+                </button>
+              </div>
+              <div>
+                <button className="glassBtn">
+                  <FaTimes/>
+                </button>
+              </div>
+        
+          
+          
+          </div>
+          <hr className="grayHr"/>
+          <div className="d-flex align-items-center justify-content-between tRow">
+            <div>
+              <p className="tableFirstRowText">
+                سی پی یو
+              </p>
+              <p className="miniText2">
+                CPU
+              </p>
+            </div>
+           <div className="d-flex">
+           <div>
+              <img src={Img1} className="assembleImg"/>
+            </div>
+            <div>
+              <p className="productAssembleName">
+              MSI B550-A PRO ATX AM4 Motherboard
+              </p>
+              <p className="miniText2">
+              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
+              </p>
+            </div>
+           </div>
+            <div>
+              <p className="productAssembleName">
+              ۷۵،۰۰۰،۰۰۰
+              </p>
+              </div>
+              <div>
+                <button className="buyAssembleBtn">
+                  خرید
+                </button>
+              </div>
+              <div>
+                <button className="glassBtn">
+                  <FaTimes/>
+                </button>
+              </div>
+        
+          
+          
+          </div>
+          <hr className="grayHr"/>
+          <div className="d-flex align-items-center justify-content-between tRow">
+            <div>
+              <p className="tableFirstRowText">
+                سی پی یو
+              </p>
+              <p className="miniText2">
+                CPU
+              </p>
+            </div>
+           <div className="d-flex">
+           <div>
+              <img src={Img1} className="assembleImg"/>
+            </div>
+            <div>
+              <p className="productAssembleName">
+              MSI B550-A PRO ATX AM4 Motherboard
+              </p>
+              <p className="miniText2">
+              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
+              </p>
+            </div>
+           </div>
+            <div>
+              <p className="productAssembleName">
+              ۷۵،۰۰۰،۰۰۰
+              </p>
+              </div>
+              <div>
+                <button className="buyAssembleBtn">
+                  خرید
+                </button>
+              </div>
+              <div>
+                <button className="glassBtn">
+                  <FaTimes/>
+                </button>
+              </div>
+        
+          
+          
+          </div>
+          <hr className="grayHr"/>
+          <div className="d-flex justify-content-end tRow mb-4 pb-4">
+            <div className="d-flex mr-4">
+            <p className="miniText2">
+              قیمت کل :
+              </p>
+            <p className="productAssembleName">
+              225.000.000 تومان
+              </p>
+             
+            </div>
+            <div>
+            <button className="buyAssembleBtn">
+                  خرید کل قطعات
+                </button>
+            </div>
+          </div>
+          <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
+          <hr class="dottedH"></hr>
+          <div className="padding20">
+            <div className="d-flex">
+              <p className="hoshdar">
+                هشدار !
+              </p>
+              <p className="productAssembleName MediumFont" >
+              برخی از چیپست‌های مادربورد فلان با سی‌پی‌یوهای فلان سازگاری ندارند و باید فلان چیز را هم نصب کنید تا مشکل برطرف شود.
+              </p>
+            </div>
+            <div className="d-flex">
+              <p className="hoshdar orange">
+                توجه !
+              </p>
+              <p className="productAssembleName MediumFont" >
+              توجه داشته باشید که برخی از قطعات ممکن است از نظر اندازه با هم سازگار نباشند و با هم جور نشوند. در حال حاضر هنوز این نوع سازگاری قابل بررسی نیست. </p>
+            </div>
           </div>
         </div>
         <div className="whiteBox3 mt-3">

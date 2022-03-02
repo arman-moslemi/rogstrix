@@ -20,7 +20,7 @@ const AssembleSlidr = () => {
     <div style={{backgroundColor:'#fff'}}>
       
          <div className="exclusiveBox2">
-         <Swiper className="exclusiveSlider2" slidesPerView={4} spaceBetween={35} navigation={true}  pagination={true}
+         <Swiper className="exclusiveSlider2" slidesPerView={4} spaceBetween={35} navigation={true}  pagination={false}
         
         grabCursor={true}
         centeredSlides={true}

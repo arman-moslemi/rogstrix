@@ -1928,3 +1928,64 @@ align-items: center;
   margin-left: 15px;
   margin-bottom: 0px;
 }
+.tableFirstRow{
+  font-family: IRANSans-Bold;
+  background-color: #ff004e;
+  border: none !important;
+  border-radius: 5px;
+  color: #fff !important;
+}
+.tRow{
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+.tableFirstRowText{
+  font-family: IRANSans-Light;
+  color: #111;
+  margin-bottom: 5px !important;
+}
+.vl{
+  border-left: 1px solid #111;
+  height: 20px;
+  margin-right: 75px;
+}
+.assembleImg{
+  height: 60px;
+  width: 60px;
+  border: 1px solid #111;
+  padding: 5px;
+  margin-left: 15px;
+}
+.miniText2{
+  color: #a0a0a0;
+  font-family: IRANSans-Light;
+  margin-bottom: 0px !important;
+}
+.productAssembleName{
+  font-family: IRANSans-Bold;
+  margin-bottom: 5px !important;
+}
+.buyAssembleBtn{
+  background-color: #f6303f;
+  border: none;
+  font-family: IRANSans;
+  color: #fff;
+  padding: 5px 25px;
+  border-radius: 5px;
+}
+.padding20{
+  padding: 20px;
+}
+.hoshdar{
+  color: #ff004e;
+  font-family: IRANSans-Bold;
+  margin-left: 20px;
+}
+.MediumFont{
+  font-family: IRANSans-Medium !important;
+}
+.orange{
+  color:#f78300 !important;
+}
