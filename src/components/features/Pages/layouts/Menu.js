@@ -62,9 +62,9 @@ const groups=()=>{
    <div className="desktopMenu">
    <div className="mainBack">
    <div className="MainMenu d-flex">
-     <Button className="MainMenuBtn borderRight1">
+     <Button onClick={()=>history.push("/CompletedSystems")} className="MainMenuBtn borderRight1">
 
-        <MenuCase className="marginLeft15 menuResponsiveNone"/>
+        <MenuCase  className="marginLeft15 menuResponsiveNone"/>
         سیستم‌های تکمیل شده
      </Button>
      <Button className="MainMenuBtn borderRight1">
@@ -72,7 +72,8 @@ const groups=()=>{
       <AssembleMenu className="marginLeft15 menuResponsiveNone"/>
          ساخت سیستم
      </Button>
-     <Button className="MainMenuBtn borderRight1">
+
+     <Button onClick={()=>history.push("/SystemGuide")} className="MainMenuBtn borderRight1">
 
          <GuideMenu className="marginLeft15 menuResponsiveNone"/>
          راهنمای ساخت سیستم

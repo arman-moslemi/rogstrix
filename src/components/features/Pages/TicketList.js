@@ -18,6 +18,8 @@ import Typography from '@mui/material/Typography';
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import CustomizedDialogs from './layouts/AlertModal';
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -34,7 +36,9 @@ const TicketList = () => {
     const [open1, setOpen1] = useState(false);
     const handleOpen1 = () => setOpen1(true);
     const handleClose1 = () => setOpen1(false);
-    const [open, setOpen2] = useState(false);
+    const [open2, setOpen2] = useState(false);
+    const [open,setOpen]=useState(false)
+    const [title,setTitle]=useState("")
     const handleOpen2 = () => setOpen2(true);
     const handleClose2 = () => setOpen2(false);
     const [showText, setShowText] = useState(false);
@@ -42,6 +46,8 @@ const TicketList = () => {
     const params = useParams().id;
     const [data,setData]=useState()
     const [product,setProduct]=useState()
+    const [titleSup,setTitleSup]=useState()
+    const [text,setText]=useState()
 
     const ProductSave=()=>{
         const axios = require("axios");
@@ -66,7 +72,7 @@ const TicketList = () => {
         });
 
         axios
-            .post(apiUrl + "CustomerProductSave",{
+            .post(apiUrl + "CustomerSupport",{
               CustomerID:params
             })
         .then(function (response) {
@@ -85,6 +91,33 @@ const TicketList = () => {
           console.log(error);
         });
       }
+      const AddSupport=()=>{
+        const axios = require("axios");
+if(!titleSup || !text){
+  setTitle("همه موارد را وارد نماپید")
+  setOpen(true)
+}
+else
+{
+        axios.post(apiUrl + "InsertNewSupport",{CustomerID:params,Title:titleSup,Text:text})
+        .then(function (response) {
+          if (response.data.result == "true") {
+setOpen1(false)
+            setTitle("تیکت با موفقیت ثبت شد")
+            setOpen(true)
+
+            // history.push("/RegisterVerify/"+mobile)
+
+        }
+        else{
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+}
+     
+      }
       useEffect(() => {
         ProductSave();
     // alert(val)
@@ -98,8 +131,10 @@ const TicketList = () => {
     <Container className="UserPanelContainer" fluid>
      <div className="row">
          <Col md={3}>
-             <RightMenu/>
+         <RightMenu data={data} id={params}/>
          </Col>
+         <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
+
          <Col md={9}>
              <div className="panelWhiteBox">
              <div className="rightMenuBox1">
@@ -131,7 +166,7 @@ const TicketList = () => {
       <div className="cFormDiv3 ta-right d-flex align-items-center"  style={{marginTop:"20px"}}>
      <p>عنوان پیام : </p>
 
-     <input placeholder="عنوان پیام خود را وارد کنید" type='text' style={{float:"right !important"}} className="EditInformationInput"/>
+     <input onChange={(e)=>setTitleSup(e.target.value)} placeholder="عنوان پیام خود را وارد کنید" type='text' style={{float:"right !important"}} className="EditInformationInput"/>
       </div>
       </div>
   </Col>
@@ -141,13 +176,13 @@ const TicketList = () => {
     <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
      <p>متن پیام : </p>
 
-     <textarea placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"20px 0px"}}  className="EditInformationInput w100 mt-2"/>
+     <textarea onChange={(e)=>setText(e.target.value)} placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"20px 0px"}}  className="EditInformationInput w100 mt-2"/>
       </div>
     </Col>
 </Row>
 <div className="row mt-4">
          <Col md={12} className="ta-left">
-             <Button className="saveBtn">
+             <Button onClick={()=>AddSupport()} className="saveBtn">
                  ارسال پیام
              </Button>
          </Col>
@@ -173,18 +208,37 @@ const TicketList = () => {
 </div>
 
 </div>
+{
+  product?.map((item)=>{
+    return(
+
 <div className="d-flex">
 <div className="ticketBox  d-flex w-100 ma-top-1">
 <div className="ta-right" id="w50">
-    <p className="fontWeightNormal mb-0">ارور در پرداخت وجه...</p>
+    <p className="fontWeightNormal mb-0">{item.Title}...</p>
 </div>
 <div className="w20 ta-center" >
+  {
+    item.Status==1?
+    <div className="statusTicketBtn2 w28 h40"
+> درانتظار پاسخ
+    </div>
+    :
+    item.Status==2?
+    <div className="statusTicketBtn3 w28 h40"
+> پاسخ داده شده
+    </div>
+:
+
+
 <div className="statusTicketBtn w28 h40"
 > بسته شده
     </div>
+  }
+ 
 </div>
 <div className="w20 ta-center">
-<p className="fontWeightNormal ml-2 md-0">00/02/01 15:00</p>
+<p className="fontWeightNormal ml-2 md-0">{item.Date} {item.Time}</p>
 </div>
 <div className="ta-center" id="w5">
 {/* <p className="fontWeightBold ml-4 md-0">مشاهده</p> */}
@@ -195,46 +249,11 @@ const TicketList = () => {
 </div>
 </div>
 </div>
-<div className="d-flex">
-<div className="ticketBox  d-flex w-100 ma-top-1">
-<div className="ta-right" id="w50">
-    <p className="fontWeightNormal mb-0">ارور در پرداخت وجه...</p>
-</div>
-<div className="w20 ta-center" >
-<div className="statusTicketBtn2 w28 h40"
-> درانتظار پاسخ
-    </div>
-</div>
-<div className="w20 ta-center">
-<p className="fontWeightNormal ml-2 md-0">00/02/01 15:00</p>
-</div>
-<div className="ta-center" id="w5">
-<Button className="glassBtn">
-<FaEye className="ml-4 md-0 " />
-</Button>
-</div>
-</div>
-</div>
-<div className="d-flex">
-<div className="ticketBox  d-flex w-100 ma-top-1">
-<div className="ta-right" id="w50">
-    <p className="fontWeightNormal mb-0">ارور در پرداخت وجه...</p>
-</div>
-<div className="w20 ta-center" >
-<div className="statusTicketBtn3 w28 h40"
-> پاسخ داده شده
-    </div>
-</div>
-<div className="w20 ta-center">
-<p className="fontWeightNormal ml-2 md-0">00/02/01 15:00</p>
-</div>
-<div className="ta-center" id="w5">
-<Button className="glassBtn">
-<FaEye className="ml-4 md-0 " />
-</Button>
-</div>
-</div>
-</div>
+    )
+  })
+}
+
+
 <div>
 
 </div>

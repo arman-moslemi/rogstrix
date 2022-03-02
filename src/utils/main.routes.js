@@ -236,7 +236,7 @@ render={(props) => <RegisterStep2/>}>
 						</Route>
 						<Route
 
-						path='/TicketList'
+						path='/TicketList/:id'
 						name='لیست تیکت ها '
 						render={(props) => <TicketList/>}>
 
