@@ -14,6 +14,7 @@ import SelectPowerSupply from '../components/features/Pages/SelectPowerSupply';
 import CompletedSystems from '../components/features/Pages/CompletedSystems';
 import SystemGuide from "../components/features/Pages/SystemGuide";
 import CompareSupplySystem from '../components/features/Pages/CompareSupplySystem';
+import CompareSupplyProduct from '../components/features/Pages/CompareSupplyProduct';
 import SingleProduct from '../components/features/Pages/SingleProduct';
 import MakeSystemSingle from '../components/features/Pages/MakeSystemSingle';
 import BlogMain from "../components/features/Pages/BlogMain";
@@ -125,9 +126,16 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/CompareSupplySystem'
-					name='مقایسه منبع تغذیه'
+					path='/CompareSupplySystem/:id'
+					name='مقایسه '
 					render={(props) => <CompareSupplySystem/>}>
+
+					</Route>
+					<Route
+
+					path='/CompareSupplyProduct/:id'
+					name='مقایسه '
+					render={(props) => <CompareSupplyProduct/>}>
 
 					</Route>
 					<Route

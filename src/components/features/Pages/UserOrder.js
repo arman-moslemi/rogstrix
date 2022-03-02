@@ -12,9 +12,10 @@ import Checkbox from '@mui/material/Checkbox';
 import {useParams } from "react-router-dom";
 import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+
 export const truncate = (str, len) => {
     // console.log("truncate", str, str.length, len);
-    if (str.length > len && str.length > 0) {
+    if (str?.length > len && str?.length > 0) {
       let new_str = str + " ";
       new_str = str.substr(0, len);
       new_str = str.substr(0, new_str.lastIndexOf(" "));
@@ -57,7 +58,7 @@ const UserOrder = () => {
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(777)
-            setProduct(response.data.Data)
+            setProduct(response.data.Data[0])
             console.log(response.data.Data)
 
         }
@@ -76,7 +77,7 @@ const UserOrder = () => {
       }, []);
   return (
     <div className="">
-    <Header />
+    <Header/>
   <Menu/>
 
  
@@ -133,36 +134,58 @@ const UserOrder = () => {
                         </p>
                          </div>
                  </div>
+                 {
+                   product?.map((item,index)=>{
+                     return(
                  <div className="tableOrder">
                      <div id="w7">
                          <p>
-                             1
+                             {index+1}
                          </p>
                      </div>
                      <div id="w28">
                         <p>
-                        {truncate("هندزفری شیائومی مدل akl9068768760",25)}
+                      {  item.FactorNumber}
                         </p>
                      </div>
                      <div id="w15">
                      <p>
-                     1400/12/01
-                        </p>
+{item.Date}                        </p>
                      </div>
                      <div id="w12">
                      <p>
-                     23.000.000
-                        </p>
+{item.CostTotal}                        </p>
                      </div>
                      <div id="w12">
+{item.Payment==1?
                      <p>
-                            پرداخت شده
-                        </p>
+‍‍‍پرداخت شده
+                       </p>
+:
+<p>
+
+  ‍‍‍پرداخت نشده
+</p>
+}
+
                          </div>
                          <div id="w12">
-                         <p>
-                          درحال ارسال
-                        </p>
+{
+item.Condition==0?
+  <p>
+    ارسال نشده
+  </p>
+                           :
+                           item.Status==1?
+                           <p>
+                           درحال ارسال
+                         </p>
+                           :
+                           <p>
+ارسال شده                         </p>
+
+}                    
+
                          </div>
                          <div id="w12">
                          <a href="#">
@@ -170,44 +193,11 @@ const UserOrder = () => {
                          </a>
                          </div>
                  </div>
-                 <div className="tableOrder">
-                     <div id="w7">
-                         <p>
-                             1
-                         </p>
-                     </div>
-                     <div id="w28">
-                        <p>
-                        {truncate("هندزفری شیائومی مدل akl9068768760",25)}
-                        </p>
-                     </div>
-                     <div id="w15">
-                     <p>
-                     1400/12/01
-                        </p>
-                     </div>
-                     <div id="w12">
-                     <p>
-                     23.000.000
-                        </p>
-                     </div>
-                     <div id="w12">
-                     <p>
-                            پرداخت شده
-                        </p>
-                         </div>
-                         <div id="w12">
-                         <p>
-                          درحال ارسال
-                        </p>
-                         </div>
-                         <div id="w12">
-                         <a href="#">
-                             <FaRegEye color={'#ff004e'}/>
-                         </a>
-                         </div>
-                 </div>
-              
+
+                     )
+                   })
+                 }
+           
              </div>
          </Col>
      </div>

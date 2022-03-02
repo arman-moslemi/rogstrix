@@ -12,11 +12,11 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import CompareCards from "./CompareComponents/CompareCards";
-const CompareSupplySystem = () => {
+const CompareSupplyProduct = () => {
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
   const [data3,setData3]=useState([])
-  const [data4,setData4]=useState([])  
+  const [data4,setData4]=useState([])
   const params = useParams().id;
   const history = useHistory();
 console.log(params)
@@ -24,7 +24,7 @@ console.log(params)
     const axios = require("axios");
 
       axios
-          .post(apiUrl + "CompareSystem",{
+          .post(apiUrl + "CompareProduct",{
             SystemID:params?.split("T")[0],
             SystemID2:params?.split("T")[1],
             SystemID3:params?.split("T")[2],
@@ -34,10 +34,7 @@ console.log(params)
         if (response.data.result == "true") {
 
           setData(response.data.Data)
-          setData2(response.data.Data2)
-          setData3(response.data.Data3)
-          setData4(response.data.Data4)
-          console.log(response.data)
+          console.log(response.data.Data)
 
       }
       else{
@@ -97,4 +94,4 @@ console.log(params)
     </div>
   );
 };
-export default CompareSupplySystem;
+export default CompareSupplyProduct;

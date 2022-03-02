@@ -69,7 +69,7 @@ const groups=()=>{
      </Button>
      <Button className="MainMenuBtn borderRight1">
 
-      <AssembleMenu className="marginLeft15 menuResponsiveNone"/>
+      <AssembleMenu onClick={()=>history.push("/AssembleMain")} className="marginLeft15 menuResponsiveNone"/>
          ساخت سیستم
      </Button>
 
