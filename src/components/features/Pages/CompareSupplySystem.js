@@ -78,15 +78,37 @@ console.log(params)
         </div>
         <div className="productsWhiteBox radius10">
           <div className="compareCardDiv">
+            {
+              data.length>0?
+
+              <CompareCards data={data}/>
+              :
+              null
+            }
+            {
+              data2.length>0?
+
+              <CompareCards data={data2}/>
+              :
+              null
+            }
+            {
+              data3.length>0?
+
+              <CompareCards data={data3}/>
+              :
+              null
+            }
+            {
+              data4.length>0?
+
+              <CompareCards data={data4}/>
+              :
+              null
+            }
            
-              <CompareCards/>
            
-              <CompareCards/>
-          
-              <CompareCards/>
             
-           
-              <CompareCards/>
            
           </div>
         </div>
