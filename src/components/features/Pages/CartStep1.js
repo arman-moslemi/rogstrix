@@ -239,14 +239,13 @@ const CartStep1 = () => {
           <hr/>
          <div className="row">
              <Col md={4}>
-
+ 
                                 <p className="fontWeightMedium mb-2">
                                    استان
                                 </p>
                                 <select name="state" id="state" className="informationSelect">
                                    <option value="man">تهران</option>
-                                    <option value="woman">اصفهان</option>
-
+                                   <option value="woman">اصفهان</option>
                                   </select>
 
              </Col>

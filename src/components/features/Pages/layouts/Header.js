@@ -38,7 +38,7 @@ const Header = () => {
           <FaUser style={{marginLeft:10}} size={25}/>
 کاربر
         </button>        }
-        <button  onClick={()=>history.push("/CartStep1")} className="headerBtn" >
+        <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
         <FaShoppingBasket size={25} style={{marginLeft:10}}/>
         سبد خرید
         </button>

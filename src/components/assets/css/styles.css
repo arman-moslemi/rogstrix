@@ -2001,3 +2001,9 @@ align-items: center;
 .w240{
   width: 240px;
 }
+.glassBtn2{
+  background-color: transparent !important;
+  color: #ff004e !important;
+  font-family: 'IRANSans';
+  border: none !important;
+}

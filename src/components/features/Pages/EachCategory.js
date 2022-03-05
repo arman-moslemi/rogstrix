@@ -63,7 +63,7 @@ console.log(params)
             /
             <li>
               <Link onClick={()=>history.push("/EachCategory/"+params)}>
-{data[0].MainTitle}              </Link>
+{data[0]?.MainTitle}              </Link>
             </li>
 
           </ul>
@@ -80,7 +80,7 @@ console.log(params)
           </div>
            <div className="whiteBoxCategory">
           <p className="BoxTitle">
-            همه {data[0].MainTitle}ها
+            همه {data[0]?.MainTitle}ها
           </p>
 
           <div className="CardBoxDiv margin-top-3">

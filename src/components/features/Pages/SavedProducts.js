@@ -42,7 +42,7 @@ const SavedProducts = () => {
         });
 
         axios
-            .post(apiUrl + "CustomerProductSave",{
+            .post(apiUrl + "SystemsCustomer",{
               CustomerID:params
             })
         .then(function (response) {

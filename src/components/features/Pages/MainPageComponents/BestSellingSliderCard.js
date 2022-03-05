@@ -1,8 +1,10 @@
-import react from "react";
+import {react,useState,useEffect} from "react";
 import "./Styles/bestSellingSlider.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import {FaRandom} from 'react-icons/fa';
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -15,10 +17,28 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const bestSellingSliderCard = ({data}) => {
-  return (
+const BestSellingSliderCard = ({data}) => {
+  const [compare,setCompare]=useState()
+  const history = useHistory();
 
+  const getCompare=()=>{
+setCompare(localStorage.getItem("compare"))
+
+if(localStorage.getItem("compare")?.split('T')?.length>4)
+{localStorage.setItem("compare","")
+}
+  }
+  const goCompare=()=>{
+    !localStorage.getItem("compare")?localStorage.setItem("compare",localStorage.getItem("compare")):localStorage.setItem("compare",localStorage.getItem("compare")+"T"+data.ProductID) ;
+    history.push("/CompareSupplyProduct/"+localStorage.getItem("compare"))
+  }
+  useEffect(() => {
+    getCompare()
+  }, []);
+    return (
+      
       <div className="BestSellingCard">
+        <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} className="completedCard">
   <div className="specialSliderCardBox">
   <img src={apiAsset+data?.Pic1}/>
       {/* <ul className="colorList">
@@ -37,18 +57,38 @@ const bestSellingSliderCard = ({data}) => {
   {truncate(data?.ProductName+" "+data?.BrandName,30)}
   </p>
 <div className="row marginTop30">
+{  data?.SpecialCost?
+
   <Col md={4} className="pad0 ta-right">
     <p className="grayStrokeOut">
     {data?.Cost}
     </p>
   </Col>
+    :
+    null}
   <Col md={8} className="pad0 ta-left">
+{  data?.SpecialCost?
     <p className="grayPrice">
     {parseInt(data?.Cost)-parseInt(data?.SpecialCost)}
  تومان
     </p>
+    :
+    <p className="grayPrice">
+    {parseInt(data?.Cost)}
+ تومان
+    </p>}
   </Col>
 </div>
+</Link>
+<div className="row">
+  <Col md={12} className="ta-right pd0">
+    <Button onClick={()=>goCompare()} className="glassBtn2">
+      <FaRandom/>
+      مقایسه محصول
+
+    </Button>
+    </Col>
+  </div>
 {/* {
   props.viewList==true?
 <div className="row marginTop20">
@@ -67,4 +107,4 @@ null
 
   );
 };
-export default bestSellingSliderCard;
+export default BestSellingSliderCard;
