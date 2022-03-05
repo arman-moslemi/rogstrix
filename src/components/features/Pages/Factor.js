@@ -36,7 +36,7 @@ const Factor = () => {
   <div className="row">
     <Col md={12}>
       <div className="factorTable">
-        <div className="row rightMenuBox1" style={{backgroundColor:'#ff004e'}}>
+        <div className="row rightMenuBox1" style={{backgroundColor:'#111'}}>
           <Col md={4} className="ta-right">
           <p className="fontWeightBold colorWhite" href="#">
                   شماره فاکتور : 1236
