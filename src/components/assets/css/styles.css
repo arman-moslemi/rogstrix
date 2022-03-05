@@ -2001,3 +2001,19 @@ align-items: center;
 .w240{
   width: 240px;
 }
+.factorTable{
+  border: 1px solid #707070;
+  border-radius: 5px;
+}
+.pdtb10{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.colorWhite{
+  color: #fff !important;
+}
+.fontWeightM{
+  font-family: IRANSans-Medium !important;
+  color: #111;
+  font-size: 15px;
+}
