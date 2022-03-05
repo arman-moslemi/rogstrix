@@ -11,7 +11,7 @@ import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-import CompareCards from "./CompareComponents/CompareCards";
+import CompareCardProduct from "./CompareComponents/CompareCards";
 const CompareSupplyProduct = () => {
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
@@ -74,16 +74,38 @@ console.log(params)
             </div>
         </div>
         <div className="productsWhiteBox radius10">
-          <div className="compareCardDiv">
+        <div className="compareCardDiv">
+            {
+              data.length>0?
+
+              <CompareCardProduct data={data}/>
+              :
+              null
+            }
+            {
+              data2.length>0?
+
+              <CompareCardProduct data={data2}/>
+              :
+              null
+            }
+            {
+              data3.length>0?
+
+              <CompareCardProduct data={data3}/>
+              :
+              null
+            }
+            {
+              data4.length>0?
+
+              <CompareCardProduct data={data4}/>
+              :
+              null
+            }
            
-              <CompareCards/>
            
-              <CompareCards/>
-          
-              <CompareCards/>
             
-           
-              <CompareCards/>
            
           </div>
         </div>

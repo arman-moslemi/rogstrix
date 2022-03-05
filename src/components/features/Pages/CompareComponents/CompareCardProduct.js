@@ -15,7 +15,7 @@ export const truncate = (str, len) => {
   }
   return str;
 };
-const CompareCards = ({data}) => {
+const CompareCardProduct = ({data}) => {
   return (
    
       <div className="compareCards mx-auto d-block">
@@ -234,4 +234,4 @@ data.map((item)=>{
    
   );
 }; 
-export default CompareCards;
+export default CompareCardProduct;
