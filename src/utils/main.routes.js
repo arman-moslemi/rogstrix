@@ -37,6 +37,7 @@ import CommingSoon from '../components/features/Pages/ComingSoon';
 import CartStep1 from '../components/features/Pages/CartStep1';
 import CartStep2 from '../components/features/Pages/CartStep2';
 import AssembleSecond from '../components/features/Pages/AssembleSecond';
+import Factor from '../components/features/Pages/Factor';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -87,6 +88,13 @@ const MainRoutes = (props) => {
 					path='/404'
 					name='404'
 					render={(props) => <ErrorPage/>}>
+
+					</Route>
+					<Route
+
+					path='/Factor'
+					name='factor'
+					render={(props) => <Factor/>}>
 
 					</Route>
 					<Route
