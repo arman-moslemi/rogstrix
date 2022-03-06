@@ -58,7 +58,7 @@ const UserOrder = () => {
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(777)
-            setProduct(response.data.Data[0])
+            setProduct(response.data.Data)
             console.log(response.data.Data)
 
         }
@@ -145,19 +145,19 @@ const UserOrder = () => {
                      </div>
                      <div id="w28">
                         <p>
-                      {  item.FactorNumber}
+                      {  item[0].FactorNumber}
                         </p>
                      </div>
                      <div id="w15">
                      <p>
-{item.Date}                        </p>
+{item[0].Date}                        </p>
                      </div>
                      <div id="w12">
                      <p>
-{item.CostTotal}                        </p>
+{item[0].CostTotal}                        </p>
                      </div>
                      <div id="w12">
-{item.Payment==1?
+{item[0].Payment==1?
                      <p>
 ‍‍‍پرداخت شده
                        </p>
@@ -188,7 +188,7 @@ item.Condition==0?
 
                          </div>
                          <div id="w12">
-                         <a href="#">
+                         <a href={"/Factor/"+item[0].FactorNumber}>
                              <FaRegEye color={'#ff004e'}/>
                          </a>
                          </div>

@@ -92,7 +92,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/Factor'
+					path='/Factor/:id'
 					name='factor'
 					render={(props) => <Factor/>}>
 

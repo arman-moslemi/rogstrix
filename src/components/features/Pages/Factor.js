@@ -25,7 +25,54 @@ export const truncate = (str, len) => {
     return str;
   };
 const Factor = () => {
- 
+  const params = useParams().id;
+  const [data,setData]=useState()
+  const [product,setProduct]=useState()
+  const CustomerOrder=()=>{
+    const axios = require("axios");
+
+    axios.post(apiUrl + "OneCustomer",{CustomerID:params})
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+         setData(response.data.Data)
+
+         console.log(response.data.Data)
+
+        // history.push("/RegisterVerify/"+mobile)
+
+    }
+    else{
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    axios
+        .post(apiUrl + "CustomerOrderDetail",{
+          FactorNumber:params
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+        console.log(777)
+        setProduct(response.data.Data)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  useEffect(() => {
+    CustomerOrder();
+// alert(val)
+  }, []);
     
   return (
     <div className="Factor">
@@ -39,17 +86,17 @@ const Factor = () => {
         <div className="row rightMenuBox1" style={{backgroundColor:'#111'}}>
           <Col md={4} className="ta-right">
           <p className="fontWeightBold colorWhite" href="#">
-                  شماره فاکتور : 1236
+                  شماره فاکتور : {params}
                 </p>
           </Col>
           <Col md={4} className="ta-center">
           <p className="fontWeightBold colorWhite" href="#">
-                 تاریخ : 28/12/00
+                 تاریخ : {product?product[0].Date:null}
                 </p>
           </Col>
           <Col md={4} className="ta-left">
           <p className="fontWeightBold colorWhite" href="#">
-                   جمع فاکتور : 225000 تومان
+                   جمع فاکتور : {product?product[0].CostTotal:null} تومان
                 </p>
           </Col>
         </div>
@@ -78,74 +125,38 @@ const Factor = () => {
         </div>
        
         <hr className="grayDashed" />
-        <div className="row  pdtb10">
-        <Col md={1} className="ta-right">
-            <p className="fontWeightBold">
-             1
-            </p>
-          </Col>
-          <Col md={8} className="ta-right">
-            <p className="fontWeightM">
-              مانیتور
-            </p>
-          </Col>
-          <Col md={1} className="ta-right">
-          <p className="fontWeightM">
-              2
-            </p>
-          </Col>
-          <Col md={2} className="ta-right">
-          <p className="fontWeightM">
-             123000 تومان
-            </p>
-          </Col>
-        </div>
-        <hr className="grayDashed" />
-        <div className="row  pdtb10">
-        <Col md={1} className="ta-right">
-            <p className="fontWeightBold">
-             2
-            </p>
-          </Col>
-          <Col md={8} className="ta-right">
-            <p className="fontWeightM">
-              مانیتور
-            </p>
-          </Col>
-          <Col md={1} className="ta-right">
-          <p className="fontWeightM">
-              2
-            </p>
-          </Col>
-          <Col md={2} className="ta-right">
-          <p className="fontWeightM">
-             123000 تومان
-            </p>
-          </Col>
-        </div>
-        <hr className="grayDashed" />
-        <div className="row  pdtb10">
-        <Col md={1} className="ta-right">
-            <p className="fontWeightBold">
-             3
-            </p>
-          </Col>
-          <Col md={8} className="ta-right">
-            <p className="fontWeightM">
-              مانیتور
-            </p>
-          </Col>
-          <Col md={1} className="ta-right">
-          <p className="fontWeightM">
-              2
-            </p>
-          </Col>
-          <Col md={2} className="ta-right">
-          <p className="fontWeightM">
-             123000 تومان
-            </p>
-          </Col>
-        </div>
+        {
+          product?.map((item,index)=>{
+            return(
+              <div>
+              <div className="row  pdtb10">
+              <Col md={1} className="ta-right">
+                  <p className="fontWeightBold">
+                   {index+1}
+                  </p>
+                </Col>
+                <Col md={8} className="ta-right">
+                  <p className="fontWeightM">
+                    {item.ProductName}
+                  </p>
+                </Col>
+                <Col md={1} className="ta-right">
+                <p className="fontWeightM">
+                    {item.Number}
+                  </p>
+                </Col>
+                <Col md={2} className="ta-right">
+                <p className="fontWeightM">
+                   {item.Cost} تومان
+                  </p>
+                </Col>
+              </div>
+              <hr className="grayDashed" />
+</div>
+            )
+          })
+        }
+       
       </div>
     </Col>
   </div>
