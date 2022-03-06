@@ -22,6 +22,8 @@ const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [blog,setBlog]=useState([])
   const [newPro,setNew]=useState([])
+  const [seller,setSeller]=useState()
+  const [special,setSpecial]=useState()
   const history = useHistory();
 
   const mainSlider=()=>{
@@ -33,7 +35,6 @@ const MainPage = () => {
         if (response.data.result == "true") {
 
           setSlider(response.data.Data[0])
-          console.log(response.data.Data[0].MainSlider1)
 
       }
       else{
@@ -55,6 +56,24 @@ const MainPage = () => {
       }
       else{
         console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios.get(apiUrl + "BestSellersProduct")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setSeller(response.data.Data)
+          console.log(22)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(22)
+
+        console.log(response)
 
       }})
       .catch(function (error) {
@@ -186,27 +205,23 @@ const MainPage = () => {
                             محصولات پر فروش
                         </p>
                     </div>
-                    <div className="seeAllDiv" style={{paddingLeft:50}}>
+                    {/* <div className="seeAllDiv" style={{paddingLeft:50}}>
                         <Button className="seeAll">مشاهده همه</Button>
-                    </div>
+                    </div> */}
                    </Col>
                </div>
      <div className="d-flex justify-content-center margin">
+     {
+         seller?.map((item)=>{
+           return(
+
      <div>
-           <BestSellingSliderCard viewList={true}/>
+           <BestSellingSliderCard viewList={true} data={item}/>
          </div>
-         <div>
-           <BestSellingSliderCard viewList={true}/>
-         </div>
-         <div>
-           <BestSellingSliderCard viewList={true}/>
-         </div>
-         <div>
-           <BestSellingSliderCard viewList={true}/>
-         </div>
-         <div>
-           <BestSellingSliderCard viewList={true}/>
-         </div>
+           )
+         })
+       }
+        
      </div>
        </div>
        <div>

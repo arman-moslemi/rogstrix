@@ -4,6 +4,7 @@ import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import MadeSystem from "../../../assets/img/madeSystem.png";
 import {FaStar,FaRegStar} from 'react-icons/fa';
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -20,7 +21,7 @@ const CompareCards = ({data}) => {
    
       <div className="compareCards mx-auto d-block">
           <div className="compareBox1">
-              <img src={MadeSystem} className="mx-auto d-block"/>
+          <img src={apiAsset+data[0].Pic} className="mx-auto d-block"/>
               <p className="compareTitle">
 {data[0].SystemName}              </p>
               <div className="row mt-3">
@@ -29,7 +30,7 @@ const CompareCards = ({data}) => {
                         قیمت محصول :
                     </p>
                     <p className="price">
-                        540.000 تومان
+                        {data[0].Cost} تومان
                     </p>
                   </Col>
                   <Col md={5}>
@@ -48,11 +49,18 @@ const CompareCards = ({data}) => {
                     </p>
                   </div>
                   <div className="starRate">
-                  <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
+                  {
+                      [...new Array(5)].map((item,index)=>{
+                        return(
+index+1>data[0].Rate?
+<FaRegStar className="mr-1 ml-1" color="#111111"/>
+                          :
+                          <FaStar className="mr-1 ml-1" color="#f6303f"/>
+
+                        )
+                      })
+                    }
+              
                     
                   </div>
 

@@ -31,7 +31,8 @@ const SingleProduct = () => {
     const axios = require("axios");
 
     axios
-        .post(apiUrl + "AddCustomerProductSave",{
+        // .post(apiUrl + "AddCustomerProductSave",{
+        .post(apiUrl + "CreateSyatemCustomer",{
           ProductID:params,
           CustomerID:token
         })

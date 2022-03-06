@@ -39,7 +39,7 @@ const SpecialSliderCard = ({data}) => {
   <div className="row">
     <Col md={4} className="pd0">
       <div className="timeSpecialOffer">
-        <p>۴:۱۰:۲۴</p>
+        <p>{data.SpecialTime- new Date().getHours()}:00:00</p>
       </div>
     </Col>
     <Col md={8} className="ta-left pd0">

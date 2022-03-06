@@ -67,9 +67,9 @@ const groups=()=>{
         <MenuCase  className="marginLeft15 menuResponsiveNone"/>
         سیستم‌های تکمیل شده
      </Button>
-     <Button className="MainMenuBtn borderRight1">
+     <Button onClick={()=>history.push("/AssembleSecond")} className="MainMenuBtn borderRight1">
  
-      <AssembleMenu onClick={()=>history.push("/AssembleMain")} className="marginLeft15 menuResponsiveNone"/>
+      <AssembleMenu  className="marginLeft15 menuResponsiveNone"/>
          ساخت سیستم
      </Button>
 
@@ -78,11 +78,11 @@ const groups=()=>{
          <GuideMenu className="marginLeft15 menuResponsiveNone"/>
          راهنمای ساخت سیستم
      </Button>
-     <Button className="MainMenuBtn borderRight1">
+     {/* <Button className="MainMenuBtn borderRight1">
 
         <UpdateMenu className="marginLeft15 menuResponsiveNone"/>
         ارتقائ لپ تاپ
-     </Button>
+     </Button> */}
      <Button className="MainMenuBtn borderRight1" onClick={onClick}>
   <MouseMenu className="marginLeft15 menuResponsiveNone"/>
   مشاهده محصولات
@@ -130,14 +130,14 @@ const groups=()=>{
 
             <ul>
                <li className="listTitle">
-                  <Link onClick={()=>history.push("/EachCategory/"+item.MainGroupID)}>
+                  <Link onClick={()=>history.push("/EachCategory/"+item[0].MainGroupID)}>
 {item[0].MainTitle}                  </Link>
                </li>
 {
    item.map((item2)=>{
       return(
                <li className="listItems">
-                  <Link onClick={()=>history.push("/products/"+item.GroupID)}>
+                  <Link onClick={()=>history.push("/products/"+item2.GroupID)}>
 {item2.Title }                 </Link>
                </li>
 

@@ -895,7 +895,7 @@ console.log(params)
                   </div>
                   <div>
                       <p className="whiteBoxTitle">
-                          همه {data[0].Title} ها
+                          همه {data[0]?.Title} ها
                       </p>
                   </div>
                   <div className="dashedHrdiv">

@@ -1,9 +1,11 @@
-import react from "react";
+import react,{useContext} from "react";
 import "./Styles/compareCards.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import MadeSystem from "../../../assets/img/madeSystem.png";
 import {FaStar,FaRegStar} from 'react-icons/fa';
+import { apiUrl,apiAsset } from "../../../../commons/inFormTypes";
+import { AuthContext } from "../../../../context/auth-context";
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -16,24 +18,55 @@ export const truncate = (str, len) => {
   return str;
 };
 const CompareCardProduct = ({data}) => {
+  const { isLoggedIn, token } = useContext(AuthContext);
+
+  const AddToCart=()=>{
+    const axios = require("axios");
+console.log(555)
+console.log(token)
+    axios
+        .post(apiUrl + "ShoppingBasketAdd",{
+          ProductID:data[0].ProductID,
+          CustomerID:token,
+          Cost:parseInt(data[0]?.Cost)-parseInt(data[0]?.SpecialCost),
+          ColorID:null,
+          Number:1
+
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+        console.log(777)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   return (
    
       <div className="compareCards mx-auto d-block">
           <div className="compareBox1">
-              <img src={MadeSystem} className="mx-auto d-block"/>
+              <img src={apiAsset+data[0].Pic} className="mx-auto d-block"/>
               <p className="compareTitle">
-{data[0].SystemName}              </p>
+{data[0].ProductName} {data[0].BrandName}             </p>
               <div className="row mt-3">
                   <Col md={7}>
                     <p className="priceText">
                         قیمت محصول :
                     </p>
                     <p className="price">
-                        540.000 تومان
+                        {data[0].Cost}تومان
                     </p>
                   </Col>
                   <Col md={5}>
-                      <Button className="addBtn">
+                      <Button onClick={()=>AddToCart()} className="addBtn">
                           افزودن
                       </Button>
                   </Col>
@@ -44,15 +77,22 @@ const CompareCardProduct = ({data}) => {
               <div className="d-flex align-items-center justify-content-between align-item-center">
                   <div>
                     <p className="reviewP">
-                    (۵۶ نظر، میانگین ۴.۱)
+                    ({data[0].Comments} نظر)
                     </p>
                   </div>
                   <div className="starRate">
-                  <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaRegStar className="mr-1 ml-1" color="#111111"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
-                    <FaStar className="mr-1 ml-1" color="#f6303f"/>
+                  {
+                      [...new Array(5)].map((item,index)=>{
+                        return(
+index+1>data[0].Rate?
+<FaRegStar className="mr-1 ml-1" color="#111111"/>
+                          :
+                          <FaStar className="mr-1 ml-1" color="#f6303f"/>
+
+                        )
+                      })
+                    }
+              
                     
                   </div>
 
@@ -63,10 +103,10 @@ data.map((item)=>{
 
               <div className="mt-4">
                   <p className="firstLine1">
-                    {item.ProductName}
+                    {item.Title}
                   </p>
                   <p className="secondLine2">
-                    {/* AMD */}
+                    {item.SubTitle}
                   </p>
               </div>
   )

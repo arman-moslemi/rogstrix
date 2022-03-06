@@ -16,16 +16,18 @@ const SpecialOffer = ({data}) => {
         const axios = require("axios");
 
 
-          axios.post(apiUrl + "LastMainProduct",{MainGroupID:ss})
+          axios.post(apiUrl + "SpecialMainProduct",{MainGroupID:ss})
           .then(function (response) {
             if (response.data.result == "true") {
 
               setSpecial(response.data.Data)
-              console.log(11)
+              console.log(999)
               console.log(response.data.Data)
 
           }
           else{
+            console.log(999)
+
             console.log(response.data.result)
 
           }})
@@ -39,16 +41,18 @@ const SpecialOffer = ({data}) => {
         const axios = require("axios");
 
 
-          axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
+          axios.post(apiUrl + "LastSpecialMainProduct")
           .then(function (response) {
             if (response.data.result == "true") {
 
               setSpecial(response.data.Data)
-              console.log(11)
+              console.log(999)
               console.log(response.data.Data)
 
           }
           else{
+            console.log(777)
+
             console.log(response.data.result)
 
           }})

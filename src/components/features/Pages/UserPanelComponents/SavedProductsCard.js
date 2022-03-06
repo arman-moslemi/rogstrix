@@ -30,9 +30,11 @@ const SavedProductsCard = (props) => {
            <div className="userProfile">
              <img src={userProfile}/>
            </div>
-           {/* <div className="userName">
-             <p>{truncate("محسن رحمتی",20)}</p>
-           </div> */}
+           <div className="userName">
+             <p>
+               {/* {truncate("محسن رحمتی",20)} */}
+               </p>
+           </div>
          </div>
  :
  null

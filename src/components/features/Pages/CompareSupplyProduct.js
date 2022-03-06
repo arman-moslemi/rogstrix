@@ -11,7 +11,7 @@ import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-import CompareCardProduct from "./CompareComponents/CompareCards";
+import CompareCardProduct from "./CompareComponents/CompareCardProduct";
 const CompareSupplyProduct = () => {
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
@@ -25,16 +25,19 @@ console.log(params)
 
       axios
           .post(apiUrl + "CompareProduct",{
-            SystemID:params?.split("T")[0],
-            SystemID2:params?.split("T")[1],
-            SystemID3:params?.split("T")[2],
-            SystemID4:params?.split("T")[3]
+            ProductID:params?.split("T")[0],
+            ProductID2:params?.split("T")[1],
+            ProductID3:params?.split("T")[2],
+            ProductID4:params?.split("T")[3]
           })
       .then(function (response) {
         if (response.data.result == "true") {
 
           setData(response.data.Data)
-          console.log(response.data.Data)
+          setData2(response.data.Data2)
+          setData3(response.data.Data3)
+          setData4(response.data.Data4)
+          console.log(response.data)
 
       }
       else{

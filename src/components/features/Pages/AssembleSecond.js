@@ -9,8 +9,43 @@ import { FaTimes , FaShareAlt ,FaArrowUp ,FaLink,FaPlus,FaRegCommentAlt,FaRegChe
 import AssembleSlidr from "./AssemblePageComponents/AssembleSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import PageTitle from "../../assets/img/pageTitle.png";
-const AssembleSecond = () => {
+import { Link, useHistory } from "react-router-dom";
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
+const AssembleSecond = () => {
+  
+  const history = useHistory();
+  const [data,setData]=useState()
+  
+  const groups=()=>{
+     const axios = require("axios");
+  
+  
+     axios.get(apiUrl + "AllMainGroup")
+     .then(function (response) {
+       if (response.data.result == "true") {
+  
+          setData(response.data.GroupData)
+  
+          console.log(response.data.GroupData[0])
+  
+         // history.push("/RegisterVerify/"+mobile)
+  
+     }
+     else{
+  
+     }})
+     .catch(function (error) {
+       console.log(error);
+     });
+  
+  
+   }
+   useEffect(() => {
+     groups();
+  // alert(val)
+   }, []);
   return (
     <div className="EachCategoryBody">
       <Header />
@@ -155,30 +190,35 @@ const AssembleSecond = () => {
           
           
           </div>
-          <hr className="grayHr"/>
+{
+  data[0].map((item)=>{
+    return(
+      <div>
+  <hr className="grayHr"/>
           <div className="d-flex align-items-center  tRow">
             <div className="w240">
               <p className="tableFirstRowText">
-               خنک کننده سی پی یو
-              </p>
+{item.Title}              </p>
               <p className="miniText2">
-                CPU Cooler
-              </p>
+{item.EngTitle}              </p>
             </div>
          
            
               <div className="">
                 <button className="buyAssembleBtn">
-                 + انتخاب خنک کننده
+                 + {item.Title}
                 </button>
               </div>
             
         
           
-          
           </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
+          </div>
+          
+)
+  })
+}
+          {/* <div className="d-flex align-items-center  tRow">
             <div className="w240">
               <p className="tableFirstRowText">
                مادربورد
@@ -373,7 +413,7 @@ const AssembleSecond = () => {
           
           
           </div>
-          <hr className="grayHr"/>
+          <hr className="grayHr"/> */}
           <div className="d-flex justify-content-end tRow mb-4 pb-4">
             <div className="d-flex mr-4">
             <p className="miniText2">
