@@ -1,6 +1,6 @@
-import react,{useContext} from "react";
+import react,{useContext,useState} from "react";
 import RedLogo from '../../../assets/img/redLogo.png';
-import { FaSearch , FaUser ,FaShoppingBasket,FaTable} from 'react-icons/fa';
+import { FaSearch , FaUser ,FaShoppingBasket,FaTable,FaTimes} from 'react-icons/fa';
 import { Container ,Col, Button} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../../../context/auth-context";
@@ -8,7 +8,10 @@ import { AuthContext } from "../../../../context/auth-context";
 const Header = () => {
   const history = useHistory();
   const { isLoggedIn, token } = useContext(AuthContext);
-
+  const [showSearch, setshowSearch] = useState(false);
+  const onClick = () =>{
+    setshowSearch(!showSearch);
+  };
   return (
    <Container fluid className="pad0">
     <div className="Header">
@@ -24,7 +27,7 @@ const Header = () => {
        </div>
       </div>
       <div className="d-flex">
-        <button className="headerBtn">
+        <button className="headerBtn" onClick={()=>onClick()}>
         <FaSearch size={25}/>
         </button>
         {!isLoggedIn?
@@ -51,6 +54,17 @@ const Header = () => {
 
 
      </div>
+     {
+       showSearch?
+       <div className="searchBoxDiv ta-center">
+            <FaSearch/>
+            <input className="desktopSerachBox" placeholder="محصول مورد نظر را جستجو کنید..."/>
+            <FaTimes/>
+     </div>
+     :
+     null
+     }
+     
      <div className="responsiveHeader">
        <div className="d-flex align-items-center borderBottomResponsive">
        <div className="responsiveLanguage">
