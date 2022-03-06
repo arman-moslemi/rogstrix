@@ -2015,5 +2015,15 @@ align-items: center;
 .fontWeightM{
   font-family: IRANSans-Medium !important;
   color: #111;
-  font-size: 15px;
+  font-size: 15px;}
+.glassBtn2{
+  background-color: transparent !important;
+  color: #ff004e !important;
+  font-family: 'IRANSans';
+  border: none !important;
+}
+.desktopSerachBox{
+  margin: 10px;
+  width: 600px;
+  padding: 5px;
 }
