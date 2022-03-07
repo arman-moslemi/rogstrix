@@ -32,16 +32,16 @@ const SingleProduct = () => {
 
     axios
         // .post(apiUrl + "AddCustomerProductSave",{
-        .post(apiUrl + "CreateSyatemCustomer",{
+        .post(apiUrl + "CreateSystemCustomer",{
           ProductID:params,
           CustomerID:token
         })
     .then(function (response) {
       if (response.data.result == "true") {
 alert("با موفقیت ذخیره شد")
-        console.log(777)
+        console.log(222)
         console.log(response.data.Data)
-
+history.push("/AssembleSecond")
     }
     else{
       console.log(888)
@@ -331,7 +331,7 @@ const images = [
             <div className="redLightBox" style={{position:'relative'}}>
               {
                 isLoggedIn?
-
+<div>
                 <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
                                                     <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
                                                         height="29.652" viewBox="0 0 27.45 29.652">
@@ -348,10 +348,12 @@ const images = [
                                                         </g>
                                                     </svg>
                                                 </Button>
+                                                <p>افزودن به ساخت سیستم</p>
+                                                </div>
                 :
                 null
               }
-                {
+                {/* {
                 isLoggedIn?
 
                 <Button  className="save-btn-single left5" id="save-btn">
@@ -368,7 +370,7 @@ const images = [
                                                 </Button>
                 :
                 null
-              }
+              } */}
                 <p className="boxTitle2">
                     مشخصات فروش
                 </p>

@@ -9,9 +9,14 @@ const Header = () => {
   const history = useHistory();
   const { isLoggedIn, token } = useContext(AuthContext);
   const [showSearch, setshowSearch] = useState(false);
+  const [search, setSearch] = useState("");
   const onClick = () =>{
     setshowSearch(!showSearch);
   };
+const  _handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      history.push("/ProductsSearch/"+search)    }
+  }
   return (
    <Container fluid className="pad0">
     <div className="Header">
@@ -57,9 +62,10 @@ const Header = () => {
      {
        showSearch?
        <div className="searchBoxDiv ta-center">
-            <FaSearch/>
-            <input className="desktopSerachBox" placeholder="محصول مورد نظر را جستجو کنید..."/>
-            <FaTimes/>
+            <div className="desktopSerachBox">
+            <FaSearch onClick={()=>history.push("/ProductsSearch/"+search)}/>
+            <input className="" onKeyDown={_handleKeyDown} onChange={(e)=>setSearch(e.target.value)} placeholder="محصول مورد نظر را جستجو کنید..."/>
+           </div>
      </div>
      :
      null

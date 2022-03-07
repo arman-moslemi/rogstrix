@@ -108,7 +108,7 @@ alert("با موفقیت ذخیره شد")
         if (response.data.result == "true") {
 
           setProduct(response.data.Data)
-          console.log(777)
+          console.log(898989)
           console.log(response.data.Data)
 
       }
@@ -140,7 +140,7 @@ alert("با موفقیت ذخیره شد")
         console.log(error);
       });
       axios
-          .post(apiUrl + "SingleSystemComment ",{
+          .post(apiUrl + "SingleSystemComment",{
             SystemID:params
           })
       .then(function (response) {
@@ -343,7 +343,7 @@ alert("با موفقیت ذخیره شد")
         <Col md={3} id="singleOrder2">
 
 <div className="redLightBox" style={{position:'relative'}}>
-  {
+  {/* {
     isLoggedIn?
 
     <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
@@ -382,7 +382,7 @@ alert("با موفقیت ذخیره شد")
                                                 </Button>
                 :
                 null
-              }
+              } */}
     <p className="boxTitle2">
         مشخصات فروش
     </p>
@@ -406,7 +406,7 @@ index+1>rate?
       </div>
       <div>
         <p className="reviewP" id="colorGray">
-        امتیاز: {rate} از ۵ ({com.length} نظر)
+        امتیاز: {parseInt(rate)} از ۵ ({com.length} نظر)
         </p>
       </div>
 
@@ -555,7 +555,7 @@ index+1>rate?
                <SimilarSlider data={similar}/>
             </div>
             <div className="whiteBox3 mt-3">
-         <CommentBox/>
+            <CommentBox token={token} data={com} id={params} type={"system"}/>
             </div>
 
       </Container>

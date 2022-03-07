@@ -8,6 +8,8 @@ import Login from '../components/features/Pages/Login';
 import Verify from "../components/features/Pages/Verify";
 import ErrorPage from "../components/features/Pages/404";
 import Products from '../components/features/Pages/Products';
+import ProductsSearch from '../components/features/Pages/ProductsSearch';
+import ProductsSpecial from '../components/features/Pages/ProductsSpecial';
 import MainPage from "../components/features/Pages/MainPage";
 import WrongPass from "../components/features/Pages/WrongPass";
 import SelectPowerSupply from '../components/features/Pages/SelectPowerSupply';
@@ -109,6 +111,20 @@ const MainRoutes = (props) => {
 					path='/Products/:id'
 					name='Products'
 					render={(props) => <Products/>}>
+
+					</Route>
+					<Route
+
+					path='/ProductsSearch/:id'
+					name='Products'
+					render={(props) => <ProductsSearch/>}>
+
+					</Route>
+					<Route
+
+					path='/ProductsSpecial'
+					name='Products'
+					render={(props) => <ProductsSpecial/>}>
 
 					</Route>
 					<Route

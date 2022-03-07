@@ -5,12 +5,14 @@ import "./Styles/specialOffer.css";
 import SpecialOfferSlider from "./SpecialOfferSlider";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 // if you want to use array
 
 
 const SpecialOffer = ({data}) => {
     const [special,setSpecial]=useState([])
+    const history = useHistory();
 
     const mainProduct=(ss)=>{
         const axios = require("axios");
@@ -77,7 +79,7 @@ const SpecialOffer = ({data}) => {
                         </p>
                     </div>
                     <div className="seeAllDiv">
-                        <Button className="seeAll">مشاهده همه</Button>
+                        <Button onClick={()=>history.push("/ProductsSpecial")} className="seeAll">مشاهده همه</Button>
                     </div>
                    </Col>
                </div>

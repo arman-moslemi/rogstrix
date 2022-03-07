@@ -2025,5 +2025,19 @@ align-items: center;
 .desktopSerachBox{
   margin: 10px;
   width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
   padding: 5px;
+  background-color: #fff;
+    text-align: right;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+.desktopSerachBox input{
+  border: none !important;
+  width: 100%;
+  border: none !important;
+    width: 90%;
+    margin-right: 2%;
 }

@@ -38,6 +38,23 @@ else{
 .catch(function (error) {
   console.log(error);
 })
+:type="system"?
+axios.post(apiUrl + "InsertSystemComment",{SystemID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
+.then(function (response) {
+  if (response.data.result == "true") {
+
+    console.log(159786)
+    console.log(response.data.Data)
+setTitle("پیام با موفقیت اضافه شد")
+setOpen(true)
+}
+else{
+  console.log(response.data.result)
+
+}})
+.catch(function (error) {
+  console.log(error);
+})
 :
       axios.post(apiUrl + "InsertBlogComment",{BlogID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
       .then(function (response) {
@@ -107,9 +124,10 @@ return(
 
     <div className="starRate">
     {
-                      [...new Array(5)].map((index)=>{
+                      [...new Array(5)].map((item2,index)=>{
+                        console.log(index)
                         return(
-index+1>item?.Rate?
+index+1>item.Rate?
 <FaRegStar className="mr-1 ml-1" color="#111111"/>
                           :
                           <FaStar className="mr-1 ml-1" color="#f6303f"/>

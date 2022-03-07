@@ -9,7 +9,7 @@ export default function StartRate({setRate}) {
     setRating(rate)
     console.log(888)
     console.log(rate)
-    setRate(rate/10)
+    setRate(rate/20)
     // other logic
   }
 
