@@ -7,7 +7,7 @@ import ImageGallery from 'react-image-gallery';
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import SimilarSlider from "./SingleProductComponents/SimilarSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
-import SingleProductRedBox from "./SingleProductComponents/SingleProductRedBox";
+import SingleProductRedBoxSystem from "./SingleProductComponents/SingleProductRedBoxSystem";
 import {FaCaretLeft,FaStar,FaRegStar,FaEye ,FaPlus ,FaMapMarkerAlt,FaClipboardList,FaRandom} from 'react-icons/fa';
 import {useParams } from "react-router-dom";
 import React,{useState,useEffect,useContext} from 'react'
@@ -108,8 +108,10 @@ alert("با موفقیت ذخیره شد")
         if (response.data.result == "true") {
 
           setProduct(response.data.Data)
+          setProperty(response.data.Data2)
+
           console.log(898989)
-          console.log(response.data.Data)
+          console.log(response.data.Data2)
 
       }
       else{
@@ -121,24 +123,24 @@ alert("با موفقیت ذخیره شد")
         console.log(error);
       });
 
-      axios
-          .post(apiUrl + "SingleProperty",{
-            ProductID:params
-          })
-      .then(function (response) {
-        if (response.data.result == "true") {
+      // axios
+      //     .post(apiUrl + "SingleProperty",{
+      //       ProductID:params
+      //     })
+      // .then(function (response) {
+      //   if (response.data.result == "true") {
 
-          setProperty(response.data.Data)
-          console.log(response.data.Data)
+      //     setProperty(response.data.Data)
+      //     console.log(response.data.Data)
 
-      }
-      else{
-        console.log(response.data.result)
+      // }
+      // else{
+      //   console.log(response.data.result)
 
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
+      // }})
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
       axios
           .post(apiUrl + "SingleSystemComment",{
             SystemID:params
@@ -262,65 +264,40 @@ alert("با موفقیت ذخیره شد")
 
                 <p className="boxTitle2 NormalFont">تعیین مشخصات دقیق‌تر محصول
                 </p>
+{
+  property.map((item)=>{
+    return(
 
                 <div className="d-flex align-items-center mb-4 mt-4">
                 <FaCaretLeft/>
                 <p className="detailTitle w200">
-                   Core Clock
-                </p>
-                <Button className="selectBtn selectedOption">
-                  3.7GHZ
-                </Button>
-                <Button className="selectBtn ml-5">
-                  3.9GHZ
-                </Button>
-                </div>
+{item[0].ProductName}                </p>
+{
+  item.map((item2,index2)=>{
+    return(
+        index2==0?
+          <Button className="selectBtn selectedOption">
+          {                  item2.SubTitle} 
+                         </Button>
+      :
+      index2==1?
+      
+        <Button className="selectBtn ml-5">
+          {                  item2.SubTitle} 
+        </Button>
+      :
+      null
+      
 
-                <div className="d-flex align-items-center mb-4">
-                <FaCaretLeft/>
-                <p className="detailTitle w200">
-                   Boost Clock
-                </p>
-                <Button className="selectBtn selectedOption">
-                  4.6GHZ
-                </Button>
-                <Button className="selectBtn ml-5">
-                  4.4GHZ
-                </Button>
+    )
+  })
+}
                 </div>
-                <div className="d-flex align-items-center mb-4">
-                <FaCaretLeft/>
-                <p className="detailTitle w200">
-                    Core Family
-                </p>
-                <Button className="selectBtn selectedOption">
-                Vermeer
-                </Button>
-                <Button className="selectBtn ml-5">
-                Cezann
-                </Button>
-                </div>
-                <div className="d-flex align-items-center mb-4">
-                <FaCaretLeft/>
-                <p className="detailTitle w200">
-                    Integrated Graphics
-                </p>
-                <Button className="selectBtn selectedOption">
-                 None
-                </Button>
-                <Button className="selectBtn ml-5">
-                Radeon Vega 7
-                </Button>
-                </div>
-                <div className="d-flex align-items-center mb-2">
-                <FaCaretLeft/>
-                <p className="detailTitle">
-                 ابعاد قطعه :
-                </p>
-                <p className="detail2Title">
-                    10 * 20 * 10 سانتی متر
-                </p>
-                </div>
+    )
+  })
+}
+
+              
 
                 {/* <div className="d-flex align-items-center mt-4">
                   <FaMapMarkerAlt color="#f6303f" size={24} className="mr-2"/>
@@ -497,7 +474,7 @@ index+1>rate?
         </div>
         <div className="row mt-4 mb-3">
           <Col md={3} id="singleOrder1">
-            <SingleProductRedBox/>
+            <SingleProductRedBoxSystem data={property}/>
           </Col>
           <Col md={9} id="singleOrder2">
           <div className="whiteBox3">

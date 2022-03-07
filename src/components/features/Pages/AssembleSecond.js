@@ -59,7 +59,7 @@ const AssembleSecond = () => {
             </div>
             <div>
                 <p>
-                سیستم عالی گیمینگ AMD                </p>
+                ساخت سیستم               </p>
             </div>
             <div>
             <img src={PageTitle}/>

@@ -27,6 +27,11 @@ const Address = () => {
     const [address2,setAddress2]=useState("")
     const [postalCode1,setPostalCode1]=useState("")
     const [postalCode2,setPostalCode2]=useState("")
+    const [city1,setCity1]=useState(0)
+    const [reg1,setReg1]=useState(0)
+    const [city2,setCity2]=useState(0)
+    const [reg2,setReg2]=useState(0)
+    const [cities,setCity]=useState([])
     const history = useHistory();
     const params = useParams().id;
     const [open1, setOpen1] = useState(false);
@@ -61,20 +66,12 @@ const Address = () => {
         .catch(function (error) {
           console.log(error);
         });
-
-
-
-
-      }
-      const AddAddress=()=>{
-        const axios = require("axios");
-
-
-        axios.post(apiUrl + "CustomerAddress",{CustomerID:params,Address1:address1,Address2:address1,PostalCode1:postalCode1,PostalCode2:postalCode2,CityID1:"",CityID2:"",RegionID1:"",RegionID2:""})
+        axios.get(apiUrl + "AllCities")
         .then(function (response) {
           if (response.data.result == "true") {
 
-             setData(response.data.Data)
+             setCity(response.data.Data)
+
              console.log(response.data.Data)
 
             // history.push("/RegisterVerify/"+mobile)
@@ -82,6 +79,47 @@ const Address = () => {
         }
         else{
           setTitle("شماره ورودی نادرست می باشد")
+          setOpen(true)
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
+
+      }
+      const AddAddress=(type)=>{
+        const axios = require("axios");
+if(type=="delete1"){
+setAddress1("")
+setPostalCode1("")
+setCity1(0)
+}
+if(type=="delete2"){
+setAddress2("")
+console.log(999)
+console.log(address2)
+setPostalCode2("")
+setCity2(0)
+}
+        console.log(444)
+
+        axios.post(apiUrl + "CustomerAddress",{CustomerID:params,Address1:type=="delete1"?"":address1,Address2:type=="delete2"?"":address2,PostalCode1:type=="delete1"?"":postalCode1,PostalCode2:type=="delete2"?"":postalCode2
+          ,CityID1:parseInt(city1),CityID2:parseInt(city2),RegionID1:reg1,RegionID2:reg2})
+        .then(function (response) {
+          if (response.data.result == "true") {
+            console.log(88)
+
+//              setData(response.data.Data)
+//              console.log(response.data.Data)
+// setOpen1(false)
+// setOpen2(false)
+            // history.push("/RegisterVerify/"+mobile)
+
+        }
+        else{
+          setTitle("خطا")
           setOpen(true)
         }})
         .catch(function (error) {
@@ -152,28 +190,44 @@ const style = {
           </Typography>
           <hr/>
          <div className="row">
-             <Col md={4}>
+         <Col md={4}>
 
                                 <p className="fontWeightMedium mb-2">
-                                   استان
+                                   شهر
                                 </p>
-                                <select name="state" id="state" className="informationSelect">
-                                   <option value="man">تهران</option>
-                                    <option value="woman">اصفهان</option>
+                                <select onChange={(e)=>!address1?setCity1(e.target.value):setCity2(e.target.value)} name="state" id="state" className="informationSelect">
+                                {
+                                    cities.map((item)=>{
+                                      return(
+
+                                        <option  value={item.CityID}>{item.CityName}</option>
+                                      )
+                                    })
+                                  }
 
                                   </select>
 
              </Col>
              <Col md={4}>
+{
+  city1==1577||city2==1577?
 
-            <p className="fontWeightMedium mb-2">
-               شهر
-            </p>
-            <select name="state" id="state" className="informationSelect">
-               <option value="man">تهران</option>
-                <option value="woman">اصفهان</option>
-
+  <div>
+  <p className="fontWeightMedium mb-2">
+     منطقه
+  </p>
+  <select onChange={(e)=>!address1?setReg1(e.target.value):setReg2(e.target.value)} name="state" id="state" className="informationSelect">
+  {[...new Array(22)].map((item,index)=>{
+              return(
+     <option  value={index+1}>{index+1}</option>
+  )}  )
+}
               </select>
+              </div>
+  :
+  null
+}
+
 
 </Col>
              <Col md={4}>
@@ -224,25 +278,41 @@ const style = {
              <Col md={4}>
 
                                 <p className="fontWeightMedium mb-2">
-                                   استان
+                                   شهر
                                 </p>
-                                <select name="state" id="state" className="informationSelect">
-                                   <option value="man">تهران</option>
-                                    <option value="woman">اصفهان</option>
+                                <select onChange={(e)=>setCity1(e.target.value)} name="state" id="state" className="informationSelect">
+                                {
+                                    cities.map((item)=>{
+                                      return(
+
+                                        <option  value={item.CityID}>{item.CityName}</option>
+                                      )
+                                    })
+                                  }
 
                                   </select>
 
              </Col>
              <Col md={4}>
+{
+  city1==1577?
 
-            <p className="fontWeightMedium mb-2">
-               شهر
-            </p>
-            <select name="state" id="state" className="informationSelect">
-               <option value="man">تهران</option>
-                <option value="woman">اصفهان</option>
-
+  <div>
+  <p className="fontWeightMedium mb-2">
+     منطقه
+  </p>
+  <select onChange={(e)=>setReg1(e.target.value)} name="state" id="state" className="informationSelect">
+  {[...new Array(22)].map((item,index)=>{
+              return(
+     <option  value={index+1}>{index+1}</option>
+  )}  )
+}
               </select>
+              </div>
+  :
+  null
+}
+
 
 </Col>
              <Col md={4}>
@@ -264,7 +334,7 @@ const style = {
          </div>
         </Box>
       </Modal>
-      <Button onClick={()=>{setAddress1("");setPostalCode1("");AddAddress()}}>
+      <Button onClick={()=>{setAddress1("");setPostalCode1("");AddAddress("delete1")}} className="glassBtn" id="colorRed">
                                    حذف
                          </Button>
                      </div>
@@ -294,28 +364,44 @@ null
           </Typography>
           <hr/>
          <div className="row">
-             <Col md={4}>
+         <Col md={4}>
 
-                                <p className="fontWeightMedium mb-2">
-                                   استان
-                                </p>
-                                <select name="state" id="state" className="informationSelect">
-                                   <option value="man">تهران</option>
-                                    <option value="woman">اصفهان</option>
+<p className="fontWeightMedium mb-2">
+   شهر
+</p>
+<select onChange={(e)=>setCity2(e.target.value)} name="state" id="state" className="informationSelect">
+{
+    cities.map((item)=>{
+      return(
 
-                                  </select>
+        <option  value={item.CityID}>{item.CityName}</option>
+      )
+    })
+  }
 
-             </Col>
-             <Col md={4}>
+  </select>
 
-            <p className="fontWeightMedium mb-2">
-               شهر
-            </p>
-            <select name="state" id="state" className="informationSelect">
-               <option value="man">تهران</option>
-                <option value="woman">اصفهان</option>
+</Col>
+<Col md={4}>
+{
+city2==1577?
 
-              </select>
+<div>
+<p className="fontWeightMedium mb-2">
+منطقه
+</p>
+<select onChange={(e)=>setReg2(e.target.value)} name="state" id="state" className="informationSelect">
+{[...new Array(22)].map((item,index)=>{
+return(
+<option  value={index+1}>{index+1}</option>
+)}  )
+}
+</select>
+</div>
+:
+null
+}
+
 
 </Col>
              <Col md={4}>
@@ -337,7 +423,7 @@ null
          </div>
         </Box>
       </Modal>
-                         <Button onClick={()=>{setAddress2("");setPostalCode2("");AddAddress()}} className="glassBtn" id="colorRed">
+                         <Button onClick={()=>{setAddress2("");setPostalCode2("");AddAddress("delete2")}} className="glassBtn" id="colorRed">
                              حذف
                          </Button>
                      </div>

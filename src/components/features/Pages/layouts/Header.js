@@ -22,7 +22,7 @@ const  _handleKeyDown = (e) => {
     <div className="Header">
       <div className="d-flex">
       <div>
-        <img src={RedLogo} className="hedearRedLogo"/>
+        <img src={RedLogo} onClick={()=>history.push("/")} className="hedearRedLogo"/>
        </div>
        <div className="margin-right-60">
         <label class="switch">
