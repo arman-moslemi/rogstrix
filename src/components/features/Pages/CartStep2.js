@@ -74,7 +74,7 @@ const CartStep2 = () => {
                  </div>
                  <div className="shadowBox mb-4">
               <div className='row align-items-center'>
-                  <Col md={6}>
+                  <Col md={6} className="shaCol1">
                   <p className="fontWeightBold">
                      <Radio
        
@@ -90,11 +90,11 @@ const CartStep2 = () => {
                    پس از واریز مبلغ به شماره حساب فوق کد رهگیری را ثبت نمایید
                    </p>
                   </Col>
-                  <Col md={6} className="ta-left">
+                  <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
                   شماره حساب : 1010252536254152635596596595
                   </p>
-                  <div className='d-flex align-items-center justify-content-end mt-2'>
+                  <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
                           کد رهگیری : 
                       </p>
@@ -106,7 +106,7 @@ const CartStep2 = () => {
                  </div>
                  <div className="shadowBox mb-4">
               <div className='row align-items-center'>
-                  <Col md={6}>
+                  <Col md={6} className="shaCol1">
                   <p className="fontWeightBold">
                      <Radio
        
@@ -122,11 +122,11 @@ const CartStep2 = () => {
                    پس از واریز مبلغ به آدرس کیف پول فوق،کد رهگیری را اینجا ثبت نمایید
                    </p>
                   </Col>
-                  <Col md={6} className="ta-left">
+                  <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
                   آدرس کیف پول : http://wllet......
                   </p>
-                  <div className='d-flex align-items-center justify-content-end mt-2'>
+                  <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
                           کد رهگیری : 
                       </p>

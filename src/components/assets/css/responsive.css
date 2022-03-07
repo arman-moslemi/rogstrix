@@ -132,6 +132,18 @@ font-size: 13px;
     .pageTitle p{
         font-size: 20px !important;
     }
+    .w30{
+        width: 100%;
+    }
+    .f1{
+        display:block !important;
+        margin-top: 5px;
+    }
+    .shaCol1{
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
 }
 @media screen and (max-width:1000px){
     .errorImg{
@@ -193,11 +205,21 @@ max-width: 70%;
         flex: 0 0 100%;
         max-width: 100%;
     }
+    .shaCol1{
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: right !important;
+        margin-top: 15px;
+    }
     .headerResNone{
         display: none !important;
     }
     .headerDesNone{
         display:  block !important;
+    }
+    .f3{
+        display: block !important;
+        text-align: right !important;
     }
 }
 @media screen and (max-width:1308px){
