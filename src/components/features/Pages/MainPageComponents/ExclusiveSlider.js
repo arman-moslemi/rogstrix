@@ -19,7 +19,7 @@ const ExclusiveSlider = () => {
   return (
     <div style={{backgroundColor:'#fff'}}>
          <div className="row padding30">
-                   <Col md={12}>
+                   <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle" id="blackColor">
                             پیشنهادهای ویژه

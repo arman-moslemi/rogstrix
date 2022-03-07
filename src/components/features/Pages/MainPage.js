@@ -117,10 +117,10 @@ const MainPage = () => {
       <Col md={6}>
       <div className="bannerBackground">
         <div className="row align-items-center">
-          <Col md={2}>
+          <Col md={2} className="bannerCol1">
             <img src={bannerAssemble} className="redbannerImg"/>
           </Col>
-          <Col md={10}>
+          <Col md={10} className="bannerCol2">
           <p className="bannerFirstLine">
           ساخت و اسمبل کردن سیستم
           </p>
@@ -135,10 +135,10 @@ const MainPage = () => {
       <Col md={6}>
       <div className="bannerBackground">
         <div className="row align-items-center">
-          <Col md={2}>
+          <Col md={2} className="bannerCol1">
             <img src={bannerCase} className="redbannerImg"/>
           </Col>
-          <Col md={10}>
+          <Col md={10} className="bannerCol2">
           <p className="bannerFirstLine">
           سیستم های آماده
           </p>
@@ -268,7 +268,7 @@ const MainPage = () => {
        </div>
       <div className="newProductBox">
       <div className="row margin25">
-                   <Col md={12}>
+                   <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle colorWhite">
                            محصولات جدید
@@ -284,7 +284,7 @@ const MainPage = () => {
           newPro.map((item)=>{
             return(
 
-        <Col md={6} className="marginTop30">
+        <Col md={6} className="marginTop30 newProductCol">
         <div className=" whiteBoxSlider">
           <NewProductSliderCard data={item}/>
           </div>
@@ -298,7 +298,7 @@ const MainPage = () => {
       </div>
       <div className="newsDiv">
        <div className="row margin25 backWhite">
-                   <Col md={12}>
+                   <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
                            وبلاگ و خبرنامه

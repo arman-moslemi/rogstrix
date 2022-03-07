@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import Menu from "./layouts/Menu";
+import FooterMain from "./layouts/FooterMain";
 import {
     Accordion,
     AccordionItem,
@@ -11,7 +12,7 @@ import {
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
-import { FaTimes , FaSearch ,FaChevronLeft } from 'react-icons/fa';
+import { FaTimes , FaSearch ,FaFilter} from 'react-icons/fa';
 
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
@@ -19,7 +20,7 @@ import PageTitle from "../../assets/img/pageTitle.png"
 import PaginationCustom from "./layouts/Pagination";
 import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
-
+import Filter from "../../assets/icons/Filter";
 
 
 
@@ -57,7 +58,7 @@ const CompletedSystems = () => {
   return (
     <div className="EachCategoryBody">
       <Header />
-
+<Menu/>
 
 
       <Container className="EachCategoryContainer" fluid>
@@ -85,7 +86,7 @@ const CompletedSystems = () => {
             </div>
         </div>
         <div className="row " style={{marginBottom:25}}>
-          <Col md={3}>
+          <Col md={3} className="completSystemCol1">
           <div className="redBoxFilter">
              <div className="pd2">
              <div className="row">
@@ -814,10 +815,10 @@ const CompletedSystems = () => {
         </Accordion>
           </div>
           </Col>
-          <Col md={9}>
+          <Col md={9} className="completSystemCol2">
 
           <div className="productsWhiteBox">
-              <div className="whiteBoxHeader">
+              <div className="whiteBoxHeader headerResNone">
               <div className="borderDashedBottom">
                 <div>
                   <p>
@@ -851,6 +852,83 @@ const CompletedSystems = () => {
                 </div>
               </div>
               </div>
+              <div className="whiteBoxHeader headerDesNone">
+              <div className="borderDashedBottom topBarComplete">
+               <div className='topBarCol1'>
+               <div>
+                  <p>
+                    همه سیستم های تکمیل شده
+                  </p>
+                </div>
+                <div>
+                <label for="sort" className="sortLabel">مرتب کردن بر اساس</label>
+  <select name="sort" id="sort">
+    <option>پر فروش ترین</option>
+    <option>ارزان ترین</option>
+    <option>گران ترین</option>
+    <option>جدید ترین</option>
+  </select>
+
+                </div>
+               </div>
+                <div  className="topBarCol2">
+                <div>
+          <Button className="filterBtn" style={{color:'#a7a7a7'}}>
+            
+            فیلترها
+            <Filter style={{marginRight:5}}/>
+          </Button>
+        </div>
+                <div className="d-flex">
+                <div >
+          <FaSearch color={'#a0a0a0'} size={20}/>
+        </div>
+     <div>
+      <input
+          className="searchInput"
+          type={'text'}
+          placeholder={"جستجو در میان سیستم ها ..."}
+
+
+        />
+      </div>
+
+                </div>
+                </div>
+              </div>
+              </div>
+              <div className="whiteBoxHeader MobileHeader">
+              <div className="borderDashedBottom topBarComplete">
+               <div className='topBarCol1'>
+               <div>
+                  <p>
+                    همه سیستم های تکمیل شده
+                  </p>
+                </div>
+              
+               </div>
+                <div  className="topBarMobCol2">
+                <div>
+                <label for="sort" className="sortLabel">مرتب کردن بر اساس</label>
+  <select name="sort" id="sort">
+    <option>پر فروش ترین</option>
+    <option>ارزان ترین</option>
+    <option>گران ترین</option>
+    <option>جدید ترین</option>
+  </select>
+
+                </div>
+                <div>
+          <Button className="filterBtn" style={{color:'#a7a7a7'}}>
+            
+            فیلترها
+            <Filter style={{marginRight:5}}/>
+          </Button>
+        </div>
+              
+                </div>
+              </div>
+              </div>
               <div className="row marginTop30">
                 {
                   data.map((item)=>{
@@ -878,7 +956,7 @@ return(
 
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

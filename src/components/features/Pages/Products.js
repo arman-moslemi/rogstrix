@@ -1,4 +1,5 @@
 import Header from "./layouts/Header";
+import Menu from "./layouts/Menu";
 import Footer from "./layouts/Footer";
 import {
     Accordion,
@@ -59,7 +60,7 @@ console.log(params)
   return (
     <div className="EachCategoryBody">
       <Header />
-
+<Menu/>
 
 
       <Container className="EachCategoryContainer" fluid>

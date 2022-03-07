@@ -70,7 +70,7 @@ const SpecialOffer = ({data}) => {
   return (
     <div className="MainPageSpecialOffer">
         <div className="row margin25">
-                   <Col md={12}>
+                   <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle">
                             پیشنهادهای ویژه
@@ -82,7 +82,7 @@ const SpecialOffer = ({data}) => {
                    </Col>
                </div>
         <div className="row">
-        <Col md={2} className="pdTop15">
+        <Col md={2} className="pdTop15 colSpecial1">
             <ul className="specialOfferUl">
             <li onClick={()=>mainProduct(1)}>
                     {/* <a href="#"> */}
@@ -113,11 +113,11 @@ const SpecialOffer = ({data}) => {
                 </li>
             </ul>
             </Col>
-            <Col md={8}>
+            <Col md={8} className="colSpecial2">
 
                 <SpecialOfferSlider data={special}/>
             </Col>
-            <Col md={2} className="pdTop15">
+            <Col md={2} className="pdTop15" className="colSpecial3">
                 <div className="redBanner">
                     <img src={apiAsset+data?.LeftSlider1}/>
                     <p>ایسوس</p>

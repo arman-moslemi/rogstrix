@@ -2027,3 +2027,37 @@ align-items: center;
   width: 600px;
   padding: 5px;
 }
+.bottomIcon{
+  color: #111 !important;
+}
+.completedCard a{
+  text-decoration: none !important;
+}
+.bottomDashed7070{
+  border-top: 1px dotted #707070;
+}
+.headerDesNone{
+  display: none;
+}
+.topBarCol1{
+  display: flex;
+  align-items: center;
+}
+.topBarCol2{
+  display: flex;
+  align-items: center;
+}
+.topBarCol1 div{
+  margin-right: 2px;
+  margin-left: 2px;
+}
+.topBarCol2 div{
+  margin-right: 2px;
+  margin-left: 2px;
+}
+.MobileHeader{
+  display: none;
+}
+.SliderCard{
+  text-decoration: none !important;
+}

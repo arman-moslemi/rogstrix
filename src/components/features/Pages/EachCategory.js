@@ -1,5 +1,6 @@
 import Header from "./layouts/Header";
 import FooterMain from "./layouts/FooterMain";
+import Menu from "./layouts/Menu";
 import { NavLink } from "react-router-dom";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import CardBox from '../Pages/EachCategoryComponents/CardBox';
@@ -49,7 +50,7 @@ console.log(params)
   return (
     <div className="EachCategoryBody">
       <Header />
-
+<Menu/>
 
 
       <Container className="EachCategoryContainer" fluid>
