@@ -1,6 +1,6 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
-
+import FooterMain from "./layouts/FooterMain";
+import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
@@ -50,7 +50,7 @@ console.log(params)
   return (
     <div className="EachCategoryBody">
       <Header />
-
+<Menu/>
 
 
       <Container className="EachCategoryContainer" fluid>
@@ -141,7 +141,7 @@ return(
 
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

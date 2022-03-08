@@ -4,7 +4,10 @@ import { FaSearch , FaUser ,FaShoppingBasket,FaTable,FaTimes} from 'react-icons/
 import { Container ,Col, Button} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../../../context/auth-context";
-
+import MenuUser from "../../../assets/icons/userMenu";
+import CartMenu from "../../../assets/icons/cartMenu";
+import MenuSearch from "../../../assets/icons/menuSearch";
+import Dashboard from "../../../assets/icons/dashboard";
 const Header = () => {
   const history = useHistory();
   const { isLoggedIn, token } = useContext(AuthContext);
@@ -33,21 +36,21 @@ const  _handleKeyDown = (e) => {
       </div>
       <div className="d-flex">
         <button className="headerBtn" onClick={()=>onClick()}>
-        <FaSearch size={25}/>
+        <MenuSearch/>
         </button>
         {!isLoggedIn?
         <button onClick={()=>history.push("/Login")} className="headerBtn">
-          <FaUser style={{marginLeft:10}} size={25}/>
+          <MenuUser style={{marginLeft:10}}/>
         ثبت نام / ورود
 
         </button>
         :
         <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
-          <FaUser style={{marginLeft:10}} size={25}/>
+          <MenuUser style={{marginLeft:10}} />
 کاربر
         </button>        }
         <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
-        <FaShoppingBasket size={25} style={{marginLeft:10}}/>
+        <CartMenu style={{marginLeft:10}}/>
         سبد خرید
         </button>
         <select name="Lang" id="language">
@@ -75,7 +78,7 @@ const  _handleKeyDown = (e) => {
        <div className="d-flex align-items-center borderBottomResponsive">
        <div className="responsiveLanguage">
        <button className="headerBtn">
-       <FaTable color={'#a0a0a0'} fontSize={20}/>
+       <Dashboard/>
        </button>
          </div>
          <div className="responsiveHeaderLogo">
@@ -108,11 +111,11 @@ const  _handleKeyDown = (e) => {
          <Col xs={6} className="d-flex align-items-center">
 
         <button className="headerBtn">
-        <FaUser style={{marginLeft:10}} size={25}/>
+        <MenuUser style={{marginLeft:10}} />
 
         </button>
         <button className="headerBtn" >
-        <FaShoppingBasket size={25} style={{marginLeft:10}}/>
+        <CartMenu  style={{marginLeft:10}}/>
 
         </button>
         <label class="switch">

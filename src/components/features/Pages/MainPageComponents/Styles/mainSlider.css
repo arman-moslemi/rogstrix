@@ -36,3 +36,50 @@
   .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
       bottom: 30px !important;
   }
+  @media screen and (max-width:1000px){
+    .MainPageSlider{
+      height: 50vh;
+    }
+   .MainPageSlider .swiper-slide{
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .MainPageSliderImg{
+      width: 100% !important;
+    height: 100% !important;
+    }
+    .colSpecial1{
+      flex: 0 0 25%;
+max-width: 25%;
+    }
+    .colSpecial2{
+      flex: 0 0 75%;
+max-width: 75%;
+    }
+    .colSpecial3{
+      display: none !important;
+      flex: 0 0 0%;
+max-width: 0%;
+    }
+    .colSpecial1{
+      flex: 0 0 40%;
+      max-width: 40%;
+    }
+    .colSpecial2{
+      flex: 0 0 60%;
+      max-width: 60%;
+    }
+    
+    .resTaCenter{
+      text-align: right;
+    }
+    .seeAllDiv{
+      padding: 0px;
+    }
+    .bannerRow{
+      padding: 0.8rem;
+    }
+    .bannerBackground{
+      padding: 10px;
+    }
+  }

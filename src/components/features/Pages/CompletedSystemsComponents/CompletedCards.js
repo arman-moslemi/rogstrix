@@ -24,7 +24,8 @@ const CompletedCards = (props) => {
 
   return (
 
-     <Link onClick={()=>history.push("/MakeSystemSingle/"+props.data.SystemID)} className="completedCard">
+    <div className="completedCard">
+       <Link onClick={()=>history.push("/MakeSystemSingle/"+props.data.SystemID)} >
        <div className="imgBox marginBottom15">
        {
   props?.viewOverlay==true?
@@ -48,7 +49,7 @@ const CompletedCards = (props) => {
       <p className="completeProductDetail">
      {props?.data?.Description}
       </p>
-      <hr className="bottomDashed"/>
+      <hr className="bottomDashed7070"/>
       <div className="row">
         <Col md={5} className="pd0">
         <div className="d-flex align-items-center">
@@ -76,6 +77,7 @@ const CompletedCards = (props) => {
         </Col>
       </div>
      </Link>
+    </div>
 
   );
 };

@@ -132,6 +132,18 @@ font-size: 13px;
     .pageTitle p{
         font-size: 20px !important;
     }
+    .w30{
+        width: 100%;
+    }
+    .f1{
+        display:block !important;
+        margin-top: 5px;
+    }
+    .shaCol1{
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
 }
 @media screen and (max-width:1000px){
     .errorImg{
@@ -165,6 +177,49 @@ font-size: 13px;
     }
     .dashedBlackHr{
         width: 25%;
+    }
+    .bannerCol1{
+        flex: 0 0 30%;
+max-width: 30%;
+    }
+    .bannerCol2{
+        flex: 0 0 70%;
+max-width: 70%;
+    }
+    .bannerFirstLine{
+        font-size: 18px;
+    }
+    .newProductCol{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .weblogSlider .swiper-slide{
+        width: 100% !important;
+    }
+    .completSystemCol1{
+        flex: 0 0 0%;
+        max-width: 0%;
+        display: none !important;
+    }
+    .completSystemCol2{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .shaCol1{
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: right !important;
+        margin-top: 15px;
+    }
+    .headerResNone{
+        display: none !important;
+    }
+    .headerDesNone{
+        display:  block !important;
+    }
+    .f3{
+        display: block !important;
+        text-align: right !important;
     }
 }
 @media screen and (max-width:1308px){
@@ -271,6 +326,9 @@ font-size: 13px;
     }
     .swiper-slide{
         width: 170px;
+    }
+    .linkCopy{
+        display: none;
     }
 }
 @media screen and (max-width:630px){
@@ -413,6 +471,15 @@ font-size: 13px;
 .blackHeader{
     font-size: 15px;
 }
+.bannerBackground{
+    margin-bottom: 15px;
+}
+.productBannerBox{
+    margin-bottom: 15px;
+}
+.MainPageSpecialOffer .seeAllDiv{
+    padding: 0px !important;
+}
 }
 @media screen and (max-width:410px){
     .errorPageText{
@@ -482,10 +549,68 @@ font-size: 13px;
     .swiper-container {
       width: 100% !important;
     }
+    .headerDesNone{
+        display: none !important;
+    }
+    .MobileHeader{
+        display: block !important;
+    }
+    .topBarMobCol2{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    .EachCategoryContainer{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .completSystemCol2{
+        padding: 0px;
+    }
+    .productsWhiteBox{
+        padding:15px;
+    }
+    .topBarMobCol2 div{
+        display: flex;
+        align-items: center;
+    }
+    .sortLabel{
+        font-size: 10px;
+    }
+    #sort {
+        margin-right: 20px;
+        background-color: transparent !important;
+        border: solid 1px #a0a0a0;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-family: IRANSans;
+        width: 100px;
+        color: #a0a0a0;
+        font-size: 10px;
+      }
+      .filterBtn{
+          font-size: 10px;
+      }
   }
+
   
   @media screen and (max-width: 768px) {
     .swiper-container {
       width: 100% !important;
     }
   }
+@media screen and (max-width:900px){
+    .topBarComplete{
+        display: block;
+    }
+    .topBarCol1{
+        justify-content: space-between;
+    }
+    .topBarCol2{
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .breadCrumbs ul{
+        display: unset;
+    }
+}

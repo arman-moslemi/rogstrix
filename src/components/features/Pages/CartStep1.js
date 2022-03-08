@@ -245,7 +245,7 @@ setCity2(0)
             data.map((item)=>{
                 return(
 
-            <div className="d-flex justify-content-between pd4">
+            <div className="d-flex justify-content-between pd4 f1">
                      <div className="d-flex">
                         <img src={apiAsset+item.Pic1} className="CartProductImg"/>
                         <div>
@@ -266,7 +266,7 @@ setCity2(0)
                         </div>
                      </div>
                      <div>
-                     <div  className="d-flex ta-center pd0 d-inline-block align-items-center" style={{borderBottom:"none"}}>
+                     <div  className="d-flex ta-center pd0 d-inline-block align-items-center" style={{borderBottom:"none",marginTop:5}}>
                     <p className="CartColorP">تعداد :</p>
                     <div className="counterDiv">
               <button onClick={()=>decrement()} className="decBTN">-</button>
@@ -668,9 +668,7 @@ null
           </div>
                  </div>
                  <hr className="grayDashed" />
-                 <div className="rightMenuBox1 d-flex">
-                   
-                  
+                 <div className="rightMenuBox1 d-flex f1">
                  <div className="shadowBox mb-4 w30">
                      <p className="fontWeightBold">
                      <Radio

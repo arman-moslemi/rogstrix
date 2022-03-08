@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 import MainPageHeader from "./layouts/MainPageHeader";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import WhyRogstrix from "./HomePageComponents/WhyRogstrix";
 import FirstSlider from "./HomePageComponents/FirstSlider";
 import Statistic from "./HomePageComponents/Statistic";
@@ -108,7 +108,7 @@ const Home = () => {
         </Col>
         </div>
       </Container>
-      <Footer />
+      <FooterMain />
     </>
   );
 };

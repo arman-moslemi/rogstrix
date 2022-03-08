@@ -1,5 +1,6 @@
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import Menu from "./layouts/Menu";
 import {
     Accordion,
     AccordionItem,
@@ -24,7 +25,7 @@ const SelectPowerSupply = () => {
   return (
     <div className="EachCategoryBody">
       <Header />
-    
+    <Menu/>
 
    
       <Container className="EachCategoryContainer" fluid>
