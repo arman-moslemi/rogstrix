@@ -1,5 +1,6 @@
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import React,{useState,useEffect,useContext} from 'react'
 
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -9,8 +10,51 @@ import { FaTimes , FaShareAlt ,FaArrowUp ,FaLink,FaPlus,FaRegCommentAlt,FaRegChe
 import AssembleSlidr from "./AssemblePageComponents/AssembleSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import PageTitle from "../../assets/img/pageTitle.png";
-const AssembleMain = () => {
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { AuthContext } from "../../../context/auth-context";
+import { Link, useHistory ,useParams} from "react-router-dom";
 
+const AssembleMain = () => {
+  const { isLoggedIn, token } = useContext(AuthContext);
+  const params = useParams().id;
+  const history = useHistory();
+  const [product,setProduct]=useState([])
+  const [com,setCom]=useState([])
+  const [similar,setSimilar]=useState([])
+  const [property,setProperty]=useState([])
+
+  const mainSlider=()=>{
+    const axios = require("axios");
+
+      axios
+          .post(apiUrl + "SingleSystem",{
+            SystemID:params,
+            CustomerID:isLoggedIn?token:""
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProduct(response.data.Data)
+          setProperty(response.data.Data2)
+
+          console.log(898989)
+          console.log(response.data.Data2)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(888)
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+    useEffect(() => {
+      mainSlider();
+  // alert(val)
+    }, []);
   return (
     <div className="EachCategoryBody">
       <Header />
@@ -75,7 +119,7 @@ const AssembleMain = () => {
          
             </div>
           </div>
-          <div className="secondBox">
+          {/* <div className="secondBox">
             <div className="d-flex align-items-center colorWhite">
               <FaRegCheckCircle color={'#fff'}/>
               <p className="fontWeightBold">
@@ -85,7 +129,7 @@ const AssembleMain = () => {
                 هیچ ناسازگاری یا مشکلی وجود ندارد.
               </p>
             </div>
-          </div>
+          </div> */}
           <div className="d-flex align-items-center justify-content-between tRow">
             <div className="d-flex">
             <p className="tableFirstRowText">
@@ -106,193 +150,38 @@ const AssembleMain = () => {
               حذف
             </p>
           </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div>
-              <p className="tableFirstRowText">
-                سی پی یو
-              </p>
-              <p className="miniText2">
-                CPU
-              </p>
-            </div>
-           <div className="d-flex">
-           <div>
-              <img src={Img1} className="assembleImg"/>
-            </div>
-            <div>
-              <p className="productAssembleName">
-              MSI B550-A PRO ATX AM4 Motherboard
-              </p>
-              <p className="miniText2">
-              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-              </p>
-            </div>
-           </div>
-            <div>
-              <p className="productAssembleName">
-              ۷۵،۰۰۰،۰۰۰
-              </p>
-              </div>
-              <div>
-                <button className="buyAssembleBtn">
-                  خرید
-                </button>
-              </div>
-              <div>
-                <button className="glassBtn">
-                  <FaTimes/>
-                </button>
-              </div>
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div>
-              <p className="tableFirstRowText">
-                سی پی یو
-              </p>
-              <p className="miniText2">
-                CPU
-              </p>
-            </div>
-           <div className="d-flex">
-           <div>
-              <img src={Img1} className="assembleImg"/>
-            </div>
-            <div>
-              <p className="productAssembleName">
-              MSI B550-A PRO ATX AM4 Motherboard
-              </p>
-              <p className="miniText2">
-              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-              </p>
-            </div>
-           </div>
-            <div>
-              <p className="productAssembleName">
-              ۷۵،۰۰۰،۰۰۰
-              </p>
-              </div>
-              <div>
-                <button className="buyAssembleBtn">
-                  خرید
-                </button>
-              </div>
-              <div>
-                <button className="glassBtn">
-                  <FaTimes/>
-                </button>
-              </div>
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div>
-              <p className="tableFirstRowText">
-                سی پی یو
-              </p>
-              <p className="miniText2">
-                CPU
-              </p>
-            </div>
-           <div className="d-flex">
-           <div>
-              <img src={Img1} className="assembleImg"/>
-            </div>
-            <div>
-              <p className="productAssembleName">
-              MSI B550-A PRO ATX AM4 Motherboard
-              </p>
-              <p className="miniText2">
-              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-              </p>
-            </div>
-           </div>
-            <div>
-              <p className="productAssembleName">
-              ۷۵،۰۰۰،۰۰۰
-              </p>
-              </div>
-              <div>
-                <button className="buyAssembleBtn">
-                  خرید
-                </button>
-              </div>
-              <div>
-                <button className="glassBtn">
-                  <FaTimes/>
-                </button>
-              </div>
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div>
-              <p className="tableFirstRowText">
-                سی پی یو
-              </p>
-              <p className="miniText2">
-                CPU
-              </p>
-            </div>
-           <div className="d-flex">
-           <div>
-              <img src={Img1} className="assembleImg"/>
-            </div>
-            <div>
-              <p className="productAssembleName">
-              MSI B550-A PRO ATX AM4 Motherboard
-              </p>
-              <p className="miniText2">
-              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-              </p>
-            </div>
-           </div>
-            <div>
-              <p className="productAssembleName">
-              ۷۵،۰۰۰،۰۰۰
-              </p>
-              </div>
-              <div>
-                <button className="buyAssembleBtn">
-                  خرید
-                </button>
-              </div>
-              <div>
-                <button className="glassBtn">
-                  <FaTimes/>
-                </button>
-              </div>
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex justify-content-end tRow mb-4 pb-4">
-            <div className="d-flex mr-4">
-            <p className="miniText2">
-              قیمت کل :
-              </p>
-            <p className="productAssembleName">
-              225.000.000 تومان
-              </p>
-             
-            </div>
-            <div>
-            <button className="buyAssembleBtn">
-                  خرید کل قطعات
-                </button>
-            </div>
-          </div>
+          {
+            property.map((item)=>{
+              return(
+                <div>
+                <hr className="grayHr"/>
+                        <div className="d-flex align-items-center  tRow">
+                          <div className="w240">
+                            <p className="tableFirstRowText">
+                           {item.Title}         
+                           </p>
+                            <p className="miniText2">
+                           {item.EngTitle}             
+                            </p>
+                          </div>
+                       
+                         
+                            <div className="">
+                              <button onClick={()=>history.push("/products/"+item.GroupID)} className="buyAssembleBtn">
+                               + {item.Title}
+                              </button>
+                            </div>
+                          
+                      
+                        
+                        </div>
+                        </div>
+              )
+            })
+          }
+                        <hr className="grayHr"/>
+
           <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
-          <hr class="dottedH"></hr>
           <div className="padding20">
             <div className="d-flex">
               <p className="hoshdar">

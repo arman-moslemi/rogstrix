@@ -213,7 +213,7 @@ render={(props) => <RegisterStep2/>}>
 						</Route>
 						<Route
 
-						path='/AssembleMain'
+						path='/AssembleMain/:id'
 						name='اسمبل'
 						render={(props) => <AssembleMain/>}>
 

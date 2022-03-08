@@ -28,7 +28,8 @@ const RegisterStep1 = () => {
       axios.post(apiUrl + "RegisterSMS",{Mobile:mobile})
       .then(function (response) {
         if (response.data.result == "true") {
-
+          console.log(response.data.Data)
+localStorage.setItem("ver",response.data.Data)
           // setBlog(response.data.Data)
           history.push("/RegisterVerify/"+mobile)
 
@@ -45,6 +46,7 @@ const RegisterStep1 = () => {
 
 
     }
+    
   return (
    <div className="loginPage">
        <div className="loginBox">

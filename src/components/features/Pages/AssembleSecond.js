@@ -10,17 +10,21 @@ import AssembleSlidr from "./AssemblePageComponents/AssembleSlider";
 import CommentBox from "./SingleProductComponents/CommentBox";
 import PageTitle from "../../assets/img/pageTitle.png";
 import { Link, useHistory } from "react-router-dom";
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { AuthContext } from "../../../context/auth-context";
 
 const AssembleSecond = () => {
-  
+  const { isLoggedIn, token } = useContext(AuthContext);
+
   const history = useHistory();
   const [data,setData]=useState()
-  
+  const [product,setProduct]=useState()
+  const [agree,setAgree]=useState()
+  var Guest=localStorage.getItem("guest")
+
   const groups=()=>{
      const axios = require("axios");
-  
   
      axios.get(apiUrl + "AllMainGroup")
      .then(function (response) {
@@ -28,15 +32,56 @@ const AssembleSecond = () => {
   
           setData(response.data.GroupData[0])
   
+          console.log(77)
           console.log(response.data.GroupData[0])
   
          // history.push("/RegisterVerify/"+mobile)
   
      }
      else{
-  
+      console.log(1111)
+
      }})
      .catch(function (error) {
+      console.log(55)
+
+       console.log(error);
+     });
+     
+   
+  
+  
+   }
+  const groups2=async()=>{
+     const axios = require("axios");
+     const storedData = JSON.parse(localStorage.getItem("userData")).token
+  console.log(555)
+  console.log(storedData)
+  console.log(storedData.length)
+  console.log(isLoggedIn)
+     
+     axios.post(apiUrl + "SingleSystemImperfect",{
+       CustomerID:storedData?storedData:0,
+       GuestID:storedData?0:Guest
+     })
+     .then(function (response) {
+       if (response.data.result == "true") {
+  
+        setProduct(response.data.Data)
+        setAgree(response.data.Data2)
+  
+          console.log(response.data.Data2)
+  
+         // history.push("/RegisterVerify/"+mobile)
+  
+     }
+     else{
+      console.log(999)
+
+     }})
+     .catch(function (error) {
+      console.log(999)
+
        console.log(error);
      });
   
@@ -44,9 +89,12 @@ const AssembleSecond = () => {
    }
    useEffect(() => {
      groups();
+     groups2();
   // alert(val)
-   }, [data]);
-  return (
+   }, []);
+ 
+   return (
+    
     <div className="EachCategoryBody">
       <Header />
     
@@ -114,9 +162,17 @@ const AssembleSecond = () => {
               <p className="fontWeightBold">
                 سازگاری قطعات :
               </p>
+              {
+                agree?
+                <p className="fontWeightLight">
+
+{agree}
+</p>
+                :
               <p className="fontWeightLight">
                 هیچ ناسازگاری یا مشکلی وجود ندارد.
               </p>
+              }
             </div>
             <div className="d-flex align-items-center colorWhite backBlue pd20">
               <FaRegCheckCircle color={'#fff'}/>
@@ -149,58 +205,66 @@ const AssembleSecond = () => {
             </p>
           </div>
           <hr className="grayHr"/>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div>
-              <p className="tableFirstRowText">
-                سی پی یو
-              </p>
-              <p className="miniText2">
-                CPU
-              </p>
-            </div>
-           <div className="d-flex">
-           <div>
-              <img src={Img1} className="assembleImg"/>
-            </div>
-            <div>
-              <p className="productAssembleName">
-              MSI B550-A PRO ATX AM4 Motherboard
-              </p>
-              <p className="miniText2">
-              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-              </p>
-            </div>
-           </div>
-            <div>
-              <p className="productAssembleName">
-              ۷۵،۰۰۰،۰۰۰
-              </p>
-              </div>
-              <div>
-                <button className="buyAssembleBtn">
-                  خرید
-                </button>
-              </div>
-              <div>
-                <button className="glassBtn">
-                  <FaTimes/>
-                </button>
-              </div>
         
-          
-          
-          </div>
 {
+  
   data?.map((item)=>{
     return(
+product?
+    product?.map((item2)=>{
+    return(
+      item.GroupID==item2.GroupID?
+      <div className="d-flex align-items-center justify-content-between tRow">
+      <div>
+        <p className="tableFirstRowText">
+{item2.Title}        </p>
+        <p className="miniText2">
+          {item2.EngTitle}
+        </p>
+      </div>
+     <div className="d-flex">
+     <div>
+        <img src={apiAsset+item2.Pic} className="assembleImg"/>
+      </div>
+      <div>
+        <p className="productAssembleName">
+{item2.ProductName}        </p>
+        {/* <p className="miniText2">
+        مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
+        </p> */}
+      </div>
+     </div>
+      <div>
+        <p className="productAssembleName">
+        {item2.Cost}
+        </p>
+        </div>
+        <div>
+          <button onClick={()=>history.push("/singleProduct/"+item2.ProductID)} className="buyAssembleBtn">
+            خرید
+          </button>
+        </div>
+        <div>
+          <button className="glassBtn">
+            <FaTimes/>
+          </button>
+        </div>
+  
+    
+    
+    </div>
+
+      :
       <div>
   <hr className="grayHr"/>
           <div className="d-flex align-items-center  tRow">
             <div className="w240">
               <p className="tableFirstRowText">
-{item.Title}              </p>
+             {item.Title}         
+             </p>
               <p className="miniText2">
-{item.EngTitle}              </p>
+             {item.EngTitle}             
+              </p>
             </div>
          
            
@@ -213,10 +277,36 @@ const AssembleSecond = () => {
         
           
           </div>
-          </div>
-          
+          </div>          
 )
   })
+  :
+  <div>
+  <hr className="grayHr"/>
+          <div className="d-flex align-items-center  tRow">
+            <div className="w240">
+              <p className="tableFirstRowText">
+             {item.Title}         
+             </p>
+              <p className="miniText2">
+             {item.EngTitle}             
+              </p>
+            </div>
+         
+           
+              <div className="">
+                <button onClick={()=>history.push("/products/"+item.GroupID)} className="buyAssembleBtn">
+                 + {item.Title}
+                </button>
+              </div>
+            
+        
+          
+          </div>
+          </div>  
+    )
+})
+
 }
           {/* <div className="d-flex align-items-center  tRow">
             <div className="w240">

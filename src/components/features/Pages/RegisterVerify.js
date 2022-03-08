@@ -19,33 +19,39 @@ const RegisterVerify = () => {
       const axios = require("axios");
       console.log(code)
 
-
+var ss=localStorage.getItem("ver")
   if(!code)
   {
   setTitle(" مقادیر را وارد نمائید")
   setOpen(true)
   }
   else{
-
-      axios.post(apiUrl + "VerifyRegister",{VerifyCode:code})
-      .then(function (response) {
-        if (response.data.result == "true") {
+if(ss==code)
+ {  
+      // axios.post(apiUrl + "VerifyRegister",{VerifyCode:code})
+      // .then(function (response) {
+      //   if (response.data.result == "true") {
 
           // setBlog(response.data.Data)
+          localStorage.setItem("ver","")
+
           history.push("/RegisterStep2/"+params)
 
-      }
-      else{
-        setTitle("کد نادرست می باشد")
-        setOpen(true)
+    //   }
+    //   else{
+    //     setTitle("کد نادرست می باشد")
+    //     setOpen(true)
 
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
+    //   }})
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
     }
-
-
+    else{
+              setTitle("کد نادرست می باشد")
+        setOpen(true)
+    }
+}
 
     }
   return (

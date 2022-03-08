@@ -51,6 +51,7 @@ const RegisterStep2 = () => {
 
 
     }
+    
   return (
    <div className="loginPage">
        <div className="loginBox">

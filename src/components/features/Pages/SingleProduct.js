@@ -28,13 +28,16 @@ const SingleProduct = () => {
   const [color,setColor]=useState()
   const { isLoggedIn, token } = useContext(AuthContext);
   const ProductSave=()=>{
+    var Guest=localStorage.getItem("guest")
+
     const axios = require("axios");
 
     axios
         // .post(apiUrl + "AddCustomerProductSave",{
         .post(apiUrl + "CreateSystemCustomer",{
           ProductID:params,
-          CustomerID:token
+          CustomerID:isLoggedIn?token:0,
+          GuestID:isLoggedIn?0:Guest?Guest:0
         })
     .then(function (response) {
       if (response.data.result == "true") {
@@ -188,20 +191,20 @@ alert("با موفقیت ذخیره شد")
 
 const images = [
   {
-    original: product.Pic1,
-    thumbnail: product.Pic1,
+    original: apiAsset+product.Pic1,
+    thumbnail: apiAsset+product.Pic1,
   },
   {
-    original: product.Pic2,
-    thumbnail: product.Pic2,
+    original: apiAsset+product.Pic2,
+    thumbnail: apiAsset+product.Pic2,
   },
   {
-    original: product.Pic3,
-    thumbnail: product.Pic3,
+    original: apiAsset+product.Pic3,
+    thumbnail: apiAsset+product.Pic3,
   },
   {
-      original: product.Pic4,
-      thumbnail: product.Pic4,
+      original: apiAsset+product.Pic4,
+      thumbnail: apiAsset+product.Pic4,
     }
 ];
 
@@ -268,8 +271,11 @@ const images = [
                   {
                     product?.ColorID?.split(',').map((item)=>{
                       return(
+                        item?
                     <div onClick={()=>setColor(item)} className="colorBox" style={{backgroundColor:"#"+item}} i>
                     </div>
+                    :
+                    null
 
                       )
                     })
@@ -329,8 +335,7 @@ const images = [
         <Col md={3} id="singleOrder2">
 
             <div className="redLightBox" style={{position:'relative'}}>
-              {
-                isLoggedIn?
+           
 <div>
                 <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
                                                     <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
@@ -350,9 +355,7 @@ const images = [
                                                 </Button>
                                                 <p>افزودن به ساخت سیستم</p>
                                                 </div>
-                :
-                null
-              }
+               
                 {/* {
                 isLoggedIn?
 
@@ -456,7 +459,7 @@ index+1>rate?
                           </div>
                           <div>
                               <div className="redBack ml-2">
-                                  <p>{(parseInt(product.SpecialCost)/parseInt(product.Cost))*100}%</p>
+                                  <p>{parseInt((parseInt(product.SpecialCost)/parseInt(product.Cost))*100)}%</p>
                               </div>
                           </div>
                       </div>
