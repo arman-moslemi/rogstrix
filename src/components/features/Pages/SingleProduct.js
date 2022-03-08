@@ -43,8 +43,15 @@ const SingleProduct = () => {
       if (response.data.result == "true") {
 alert("با موفقیت ذخیره شد")
         console.log(222)
-        console.log(response.data.Data)
-history.push("/AssembleSecond")
+        console.log(response.data.Data2)
+        // response.data.Data2?
+if(!Guest || Guest==0){
+
+  localStorage.setItem("guest",response.data.Data2?response.data.Data2:0)
+}
+
+        
+        history.push("/AssembleSecond")
     }
     else{
       console.log(888)

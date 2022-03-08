@@ -54,10 +54,10 @@ const AssembleSecond = () => {
    }
   const groups2=async()=>{
      const axios = require("axios");
-     const storedData = JSON.parse(localStorage.getItem("userData")).token
+     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
   console.log(555)
   console.log(storedData)
-  console.log(storedData.length)
+  // console.log(storedData.length)
   console.log(isLoggedIn)
      
      axios.post(apiUrl + "SingleSystemImperfect",{
@@ -70,10 +70,8 @@ const AssembleSecond = () => {
         setProduct(response.data.Data)
         setAgree(response.data.Data2)
   
-          console.log(response.data.Data2)
-  
-         // history.push("/RegisterVerify/"+mobile)
-  
+          console.log(response.data.Data)
+    
      }
      else{
       console.log(999)
@@ -87,6 +85,70 @@ const AssembleSecond = () => {
   
   
    }
+
+   const deleteProduct=(id)=>{
+    const axios = require("axios");
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+
+    axios.post(apiUrl + "DeleteSystemCustomer",{
+      CustomerID:storedData?storedData:0,
+      GuestID:storedData?0:Guest,
+      ProductID:id
+    })
+    .then(function (response) {
+      if (response.data.result == "true") {
+        setProduct(response.data.Data)
+        setAgree(response.data.Data2)
+  
+          console.log(response.data.Data)
+  
+    }
+    else{
+     console.log(1111)
+
+    }})
+    .catch(function (error) {
+     console.log(55)
+
+      console.log(error);
+    });
+    
+  
+ 
+ 
+  }
+   const ProductSave=()=>{
+    const axios = require("axios");
+if(isLoggedIn)
+   { axios.post(apiUrl + "SaveSystemCustomer",{
+      CustomerID:token
+     
+    })
+    .then(function (response) {
+      if (response.data.result == "true") {
+        setProduct(response.data.Data)
+        setAgree(response.data.Data2)
+  
+          console.log(response.data.Data)
+  
+    }
+    else{
+     console.log(1111)
+
+    }})
+    .catch(function (error) {
+     console.log(55)
+
+      console.log(error);
+    });}
+    else{
+      alert("ابتدا واردشوید")
+    }
+    
+  
+ 
+ 
+  }
    useEffect(() => {
      groups();
      groups2();
@@ -118,23 +180,23 @@ const AssembleSecond = () => {
           <div className="topBarBox">
           <div className="d-flex align-items-center">
             <div className="d-flex align-items-center colorWhite">
-                <Button>
+                <Button onClick={()=>ProductSave()}>
                 <FaPlus color={'#fff'}/>
                 <p className="userName">
-                    شخصی سازی این سیستم
+                    ذخیره این سیستم
                 </p>
                 </Button>
             </div>
             <div className="d-flex align-items-center borderRight1 colorWhite" >
                 <FaArrowUp color={'#fff'}/>
                 <p className="userName">
-                   2
+                   
                 </p>
             </div>
             <div className="d-flex align-items-center borderRight1 colorWhite">
                 <FaRegCommentAlt color={'#fff'}/>
                 <p className="userName">
-                    10
+                    
                 </p>
             </div>
             <div className="d-flex align-items-center borderRight1 colorWhite">
@@ -187,15 +249,15 @@ const AssembleSecond = () => {
           <div className="d-flex align-items-center justify-content-between tRow">
             <div className="d-flex">
             <p className="tableFirstRowText">
-              قطعه
+              گروه قطعه
             </p>
             <div className="vl"></div>
             </div>
             <p className="tableFirstRowText">
-              انتخاب قطعه
+              نام قطعه
             </p>
             <p className="tableFirstRowText">
-              قیمت(ریال)
+              قیمت(تومان)
             </p>
             <p className="tableFirstRowText">
               خرید
@@ -210,7 +272,7 @@ const AssembleSecond = () => {
   
   data?.map((item)=>{
     return(
-product?
+product?.length>0?
     product?.map((item2)=>{
     return(
       item.GroupID==item2.GroupID?
@@ -218,13 +280,13 @@ product?
       <div>
         <p className="tableFirstRowText">
 {item2.Title}        </p>
-        <p className="miniText2">
+        {/* <p className="miniText2">
           {item2.EngTitle}
-        </p>
+        </p> */}
       </div>
      <div className="d-flex">
      <div>
-        <img src={apiAsset+item2.Pic} className="assembleImg"/>
+        <img src={apiAsset+item2.Pic1} className="assembleImg"/>
       </div>
       <div>
         <p className="productAssembleName">
@@ -236,7 +298,7 @@ product?
      </div>
       <div>
         <p className="productAssembleName">
-        {item2.Cost}
+        {parseInt(item2.Cost)-parseInt(item2.SpecialCost)}تومان
         </p>
         </div>
         <div>
@@ -245,7 +307,7 @@ product?
           </button>
         </div>
         <div>
-          <button className="glassBtn">
+          <button onClick={()=>deleteProduct(item2.ProductID)} className="glassBtn">
             <FaTimes/>
           </button>
         </div>
@@ -281,6 +343,7 @@ product?
 )
   })
   :
+  
   <div>
   <hr className="grayHr"/>
           <div className="d-flex align-items-center  tRow">
@@ -288,9 +351,9 @@ product?
               <p className="tableFirstRowText">
              {item.Title}         
              </p>
-              <p className="miniText2">
+              {/* <p className="miniText2">
              {item.EngTitle}             
-              </p>
+              </p> */}
             </div>
          
            
@@ -308,209 +371,14 @@ product?
 })
 
 }
-          {/* <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-               مادربورد
-              </p>
-              <p className="miniText2">
-                mother board
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-                 + انتخاب مادربورد
-                </button>
-              </div>
-            
         
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-              مموری (رم)
-              </p>
-              <p className="miniText2">
-               Memory
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-                + انتخاب مموری
-                </button>
-              </div>
-            
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-              هارد اینترنال
-              </p>
-              <p className="miniText2">
-               Storage
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-                + انتخاب هارد
-                </button>
-              </div>
-            
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-              کارت گرافیک
-              </p>
-              <p className="miniText2">
-              Video Card
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-                + انتخاب کارت گرافیک
-                </button>
-              </div>
-            
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div>
-              <p className="tableFirstRowText">
-                سی پی یو
-              </p>
-              <p className="miniText2">
-                CPU
-              </p>
-            </div>
-           <div className="d-flex">
-           <div>
-              <img src={Img1} className="assembleImg"/>
-            </div>
-            <div>
-              <p className="productAssembleName">
-              MSI B550-A PRO ATX AM4 Motherboard
-              </p>
-              <p className="miniText2">
-              مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-              </p>
-            </div>
-           </div>
-            <div>
-              <p className="productAssembleName">
-              ۷۵،۰۰۰،۰۰۰
-              </p>
-              </div>
-              <div>
-                <button className="buyAssembleBtn">
-                  خرید
-                </button>
-              </div>
-              <div>
-                <button className="glassBtn">
-                  <FaTimes/>
-                </button>
-              </div>
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-              منبع تغذیه (پاور)
-              </p>
-              <p className="miniText2">
-              Power Supply
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-                + انتخاب منبع تغذیه
-                </button>
-              </div>
-            
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-              سیستم عامل
-              </p>
-              <p className="miniText2">
-              operating system
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-                + انتخاب سیستم عامل
-                </button>
-              </div>
-            
-        
-          
-          
-          </div>
-          <hr className="grayHr"/>
-          <div className="d-flex align-items-center  tRow">
-            <div className="w240">
-              <p className="tableFirstRowText">
-              نمایشگر
-              </p>
-              <p className="miniText2">
-              monitor
-              </p>
-            </div>
-         
-           
-              <div className="">
-                <button className="buyAssembleBtn">
-               + انتخاب نمایشگر
-                </button>
-              </div>
-            
-        
-          
-          
-          </div>
-          <hr className="grayHr"/> */}
           <div className="d-flex justify-content-end tRow mb-4 pb-4">
             <div className="d-flex mr-4">
             <p className="miniText2">
               قیمت کل :
               </p>
             <p className="productAssembleName">
-              225.000.000 تومان
+             {product?.length>0?product[0].SystemCost:0} تومان
               </p>
              
             </div>

@@ -24,6 +24,7 @@ import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
 const Products = () => {
   const [data,setData]=useState([])
+  const [product,setProduct]=useState([])
   const params = useParams().id;
   const history = useHistory();
 console.log(params)
@@ -38,6 +39,25 @@ console.log(params)
         if (response.data.result == "true") {
 
           setData(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .post(apiUrl + "FilterProduct",{
+            GroupID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProduct(response.data.Data)
+          console.log(44)
           console.log(response.data.Data)
 
       }

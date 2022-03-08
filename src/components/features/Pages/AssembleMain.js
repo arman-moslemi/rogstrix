@@ -29,18 +29,15 @@ const AssembleMain = () => {
     const axios = require("axios");
 
       axios
-          .post(apiUrl + "SingleSystem",{
+          .post(apiUrl + "CompareSystem",{
             SystemID:params,
-            CustomerID:isLoggedIn?token:""
           })
       .then(function (response) {
         if (response.data.result == "true") {
 
-          setProduct(response.data.Data)
-          setProperty(response.data.Data2)
+          setProperty(response.data.Data)
 
           console.log(898989)
-          console.log(response.data.Data2)
           console.log(response.data.Data)
 
       }
@@ -143,7 +140,7 @@ const AssembleMain = () => {
               انتخاب قطعه
             </p>
             <p className="tableFirstRowText">
-              قیمت(ریال)
+              قیمت(تومان)
             </p>
             <p className="tableFirstRowText">
               خرید
@@ -155,29 +152,45 @@ const AssembleMain = () => {
           {
             property.map((item)=>{
               return(
+                <div className="d-flex align-items-center justify-content-between tRow">
                 <div>
-                <hr className="grayHr"/>
-                        <div className="d-flex align-items-center  tRow">
-                          <div className="w240">
-                            <p className="tableFirstRowText">
-                           {item.Title}         
-                           </p>
-                            <p className="miniText2">
-                           {item.EngTitle}             
-                            </p>
-                          </div>
-                       
-                         
-                            <div className="">
-                              <button onClick={()=>history.push("/products/"+item.GroupID)} className="buyAssembleBtn">
-                               + {item.Title}
-                              </button>
-                            </div>
-                          
-                      
-                        
-                        </div>
-                        </div>
+                  <p className="tableFirstRowText">
+          {item.Title}        </p>
+                  {/* <p className="miniText2">
+                    {item.EngTitle}
+                  </p> */}
+                </div>
+               <div className="d-flex">
+               <div>
+                  <img src={apiAsset+item.Pic} className="assembleImg"/>
+                </div>
+                <div>
+                  <p className="productAssembleName">
+          {item.ProductName}        </p>
+                  {/* <p className="miniText2">
+                  مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
+                  </p> */}
+                </div>
+               </div>
+                <div>
+                  <p className="productAssembleName">
+                  {item.Cost}
+                  </p>
+                  </div>
+                  <div>
+                    <button onClick={()=>history.push("/singleProduct/"+item.ProductID)} className="buyAssembleBtn">
+                      خرید
+                    </button>
+                  </div>
+                  <div>
+                    <button className="glassBtn">
+                      <FaTimes/>
+                    </button>
+                  </div>
+            
+              
+              
+              </div>
               )
             })
           }

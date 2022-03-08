@@ -44,16 +44,24 @@ const MakeSystem = () => {
         setCount(count-1)
       }
   const ProductSave=()=>{
+   if( !isLoggedIn){
+    alert("ابتدا وارد شوید")
+
+   }
+   else{
+
+   
     const axios = require("axios");
 
     axios
-        .post(apiUrl + "AddCustomerProductSave",{
-          ProductID:params,
+        .post(apiUrl + "PersonalizeSystem",{
+          SystemID:params,
           CustomerID:token
         })
     .then(function (response) {
       if (response.data.result == "true") {
 alert("با موفقیت ذخیره شد")
+history.push("/AssembleSecond")
         console.log(777)
         console.log(response.data.Data)
 
@@ -66,6 +74,7 @@ alert("با موفقیت ذخیره شد")
     .catch(function (error) {
       console.log(error);
     });
+  }
   }
   const AddToCart=()=>{
     const axios = require("axios");
@@ -320,8 +329,7 @@ alert("با موفقیت ذخیره شد")
         <Col md={3} id="singleOrder2">
 
 <div className="redLightBox" style={{position:'relative'}}>
-  {/* {
-    isLoggedIn?
+ 
 
     <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
                                         <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
@@ -339,10 +347,9 @@ alert("با موفقیت ذخیره شد")
                                             </g>
                                         </svg>
                                     </Button>
-    :
-    null
-  }
- {
+                                    <p>شخصی سازی این سیستم</p>
+                                                
+ {/* {
                 isLoggedIn?
 
                 <Button  className="save-btn-single left5" id="save-btn">
