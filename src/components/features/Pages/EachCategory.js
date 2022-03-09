@@ -45,6 +45,7 @@ console.log(params)
 
   useEffect(() => {
     mainSlider();
+    
 // alert(val)
   }, [cat]);
   return (

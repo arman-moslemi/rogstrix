@@ -25,7 +25,12 @@ import PaginationCustom from "./layouts/Pagination";
 const Products = () => {
   const [data,setData]=useState([])
   const [product,setProduct]=useState([])
+  const [filter,setFilter]=useState([])
+  const [brand,setBrand]=useState([])
   const params = useParams().id;
+  const [from,setFrom]=useState(0)
+  const [to,setTo]=useState(0)
+  const [head,setHead]=useState("")
   const history = useHistory();
 console.log(params)
   const mainSlider=()=>{
@@ -39,8 +44,9 @@ console.log(params)
         if (response.data.result == "true") {
 
           setData(response.data.Data)
-          console.log(response.data.Data)
-
+          console.log(55)
+          console.log(response.data.Data[0][0].Title)
+setHead(response.data.Data[0][0].Title)
       }
       else{
         console.log(response.data.result)
@@ -68,15 +74,74 @@ console.log(params)
       .catch(function (error) {
         console.log(error);
       });
+      axios
+          .get(apiUrl + "AllBrand")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setBrand(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
 
 
 
   }
+  const setCost=()=>{
 
+
+    console.log(14563)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+setData([...data].filter((a) => (a.Cost <= to && a.Cost>from) ))
+console.log(data)
+
+}
+  const proFilter=(type,val,vv)=>{
+
+if(type==1){
+  setFilter([...filter,{id:val,title:vv.SubProperty}])
+}
+else{
+  setFilter( filter.filter((el)=>el.title!=vv.SubProperty));
+
+}
+
+
+var ff=[]
+
+    console.log(14563)
+    console.log(filter)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+filter?.map((item)=>{
+data.map((item2)=>{
+  if(item.id==item2.SubPropertyID)
+  ff.push(item2)
+})
+})
+console.log(ff)
+// if(ff.length!=0){
+
+  setData(ff)
+// }
+if(filter.length==0)
+{
+mainSlider()
+}
+}
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, []);
+  }, [head]);
   return (
     <div className="EachCategoryBody">
       <Header />
@@ -110,29 +175,28 @@ console.log(params)
                     </p>
                   </Col>
                   <Col md={5} className="ta-left">
-                        <Button className="filterBtn">
+                        {/* <Button className="filterBtn">
                             حذف
-                        </Button>
+                        </Button> */}
                   </Col>
 
               </div>
              </div>
               <div className="filterFlex">
             <div style={{padding:'1rem'}}>
+              {
+                filter?.map((item)=>{
+                  return(
             <div className="filterSelect">
 
-                      کول مستر
-                      <FaTimes style={{marginRight:5}}/>
+{item.title}                      
+{/* <FaTimes style={{marginRight:5}}/> */}
                   </div>
-                  <div className="filterSelect">
-                     همه رده انرژی
-                     <FaTimes style={{marginRight:5}}/>
-                  </div>
-                  <div className="filterSelect">
 
-                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰
-                  <FaTimes style={{marginRight:5}}/>
-                     </div>
+                  )
+                })
+              }
+           
             </div>
 
               </div>
@@ -165,10 +229,13 @@ console.log(params)
                </div>
       <div className="pad2">
       <div className="scrollBar">
+            {
+              brand?.map((item)=>{
+                return(
           <div className="d-flex checkBoxDiv">
           <Checkbox
 
-        defaultChecked
+        
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
@@ -176,145 +243,16 @@ console.log(params)
           },
         }}
       />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
 
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
               <label>
-              کولر مستر
+                  {item.BrandName}
               </label>
+         
           </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سی سونیک
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              گیگابایت
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ای وی جی ای
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
+         
+         )
+        })
+      }
       </div>
       </div>
                 </AccordionItemPanel>
@@ -356,11 +294,12 @@ console.log(params)
       <div className="row align-items-center">
           <Col md={6}>
           <p className="rangeText marginB0">
-          ۲،۳۰۰،۰۰۰
+          {/* ۲،۳۰۰،۰۰۰ */}
+          <input onChange={(e)=>setTo(e.target.value)} className="rangeInput"/>
             </p>
           </Col>
           <Col md={6}>
-          <input className="rangeInput"/>
+          <input onChange={(e)=>setFrom(e.target.value)} className="rangeInput"/>
           </Col>
       </div>
       <div className="row marginTop15">
@@ -372,7 +311,7 @@ console.log(params)
           </Col>
       </div>
             </div>
-            <Button className="rangeBtn">
+            <Button onClick={()=>setCost()}className="rangeBtn">
                 اعمال محدوده قیمت
             </Button>
                 </AccordionItemPanel>
@@ -425,6 +364,15 @@ console.log(params)
             color: '#f6303f',
           },
         }}
+        value={item2.SubPropertyID}
+        onChange={(e)=>e.target.checked? proFilter(1,e.target.value,item2)
+          :
+        
+         proFilter(2,e.target.value,item2)
+        
+        
+          
+         }
       />
               <label>
               {item2.SubProperty}
@@ -456,9 +404,15 @@ console.log(params)
                       <hr className="dashedHr"/>
                   </div>
                   <div>
+                       {
+                         data[0]?
                       <p className="whiteBoxTitle">
-                          همه {data[0]?.Title} ها
-                      </p>
+
+                         همه {data[0][0]?.Title} ها
+                         </p>
+                         :
+                         null
+                       }
                   </div>
                   <div className="dashedHrdiv">
                       <hr className="dashedHr"/>
@@ -478,7 +432,7 @@ return(
 
 
                   <Col md={3} className="marginTop15">
-                        <BestSellingSliderCard data={item}/>
+                        <BestSellingSliderCard data={item[0]}/>
                   </Col>
 )
                   })
