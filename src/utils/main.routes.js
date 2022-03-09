@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route,HashRouter } from 'react-router-dom';
 
 import Home from '../components/features/Pages/Home';
 import EachCategory from '../components/features/Pages/EachCategory'
@@ -42,7 +42,8 @@ import AssembleSecond from '../components/features/Pages/AssembleSecond';
 import Factor from '../components/features/Pages/Factor';
 const MainRoutes = (props) => {
 	return (
-		<BrowserRouter>
+		// <BrowserRouter>
+		<HashRouter>
 			<Switch>
 				<Route
 					exact
@@ -302,7 +303,7 @@ render={(props) => <CartStep2/>}>
 
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
 			</Switch>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
 
