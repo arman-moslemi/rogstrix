@@ -268,8 +268,13 @@ const images = [
         <ImageGallery items={images} showNav={false} showFullscreenButton={false} showPlayButton={false}/>
         </Col>
         <Col md={6} id="singleOrder3">
+        <div className="d-flex justify-content-between">
         <p className="boxTitle2 BoldFont">
 {product.ProductName+" "+product.BrandName}                </p>
+<Button onClick={()=>ProductSave()} className="addAseembleBtn" >
+                                            +  افزودن به ساخت سیستم
+                                                </Button>
+        </div>
                 <hr className="grayHr"/>
                 {/* <p className="boxTitle2 mediumFont">
                     رنگ : مشکی
@@ -344,23 +349,8 @@ const images = [
             <div className="redLightBox" style={{position:'relative'}}>
            
 <div>
-                <Button onClick={()=>ProductSave()} className="save-btn-single" id="save-btn">
-                                                    <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
-                                                        height="29.652" viewBox="0 0 27.45 29.652">
-                                                        <g id="save" transform="translate(0.5 0.489)">
-                                                            <path id="Icon_material-label" data-name="Icon material-label"
-                                                                d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
-                                                                transform="translate(33.95 -4.411) rotate(90)" fill="none"
-                                                                stroke="#e74868" stroke-width="1" />
-                                                            <path className="Icon_awesome-plus" id="Icon_awesome-plus"
-                                                                data-name="Icon awesome-plus"
-                                                                d="M14.585,8.421H9.536V3.372A1.122,1.122,0,0,0,8.414,2.25H7.293A1.122,1.122,0,0,0,6.171,3.372V8.421H1.122A1.122,1.122,0,0,0,0,9.543v1.122a1.122,1.122,0,0,0,1.122,1.122H6.171v5.049a1.122,1.122,0,0,0,1.122,1.122H8.414a1.122,1.122,0,0,0,1.122-1.122V11.786h5.049a1.122,1.122,0,0,0,1.122-1.122V9.543A1.122,1.122,0,0,0,14.585,8.421Z"
-                                                                transform="translate(23.501 3.545) rotate(90)"
-                                                                fill="#e74868" />
-                                                        </g>
-                                                    </svg>
-                                                </Button>
-                                                <p>افزودن به ساخت سیستم</p>
+               
+                                               
                                                 </div>
                
                 {/* {
