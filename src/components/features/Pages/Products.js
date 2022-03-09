@@ -94,15 +94,9 @@ console.log(params)
             /
             <li>
               <a>
-                سی پی یو
-              </a>
+{data[0]?.Title}              </a>
             </li>
-            /
-            <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
-            </li>
+           
           </ul>
         </div>
         <div className="row " style={{marginBottom:25}}>
@@ -386,19 +380,23 @@ console.log(params)
 
         </Accordion>
           </div>
+         {
+           product.map((item)=>{
+             return(
+
           <div className="whiteBoxProduct">
           <Accordion allowZeroExpanded ={true}>
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        رده مصرف انرژی
+                        {item[0].MainProperty}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
 
       <div className="pad2">
       <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
+          {/* <div className="d-flex checkBoxDiv">
                <Checkbox
 
         defaultChecked
@@ -412,11 +410,15 @@ console.log(params)
               <label>
                   همه
               </label>
-          </div>
+          </div> */}
+          {
+            item.map((item2)=>{
+              return(
+
           <div className="d-flex checkBoxDiv">
                <Checkbox
 
-        defaultChecked
+        // defaultChecked
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
@@ -425,39 +427,13 @@ console.log(params)
         }}
       />
               <label>
-              +۸۰ تیتانیوم
+              {item2.SubProperty}
               </label>
           </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              +۸۰ پلاتینیوم
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              +۸۰ طلایی
-              </label>
-          </div>
+              )
+            })
+          }
+        
 
       </div>
       </div>
@@ -466,449 +442,14 @@ console.log(params)
 
         </Accordion>
           </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                     مصرف انرژی (وات)
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                <div className="pad2">
-                <RangeSlider/>
+             )
+           })
+         }
 
-               </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                    طول (میلیمتر)
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                <div className="pad2">
-                <RangeSlider/>
-
-               </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        ماژولار
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              هیچکدام
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             کامل
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             نیمه
-              </label>
-          </div>
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        رنگ
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                سیاه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سفید
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سیاه/قرمز
-              </label>
-          </div>
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        نوع
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ATX
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ATX12V
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              Flex ATX
-              </label>
-          </div>
-
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                       بدون فن
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             باشد
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              نباشد
-              </label>
-          </div>
-
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                    اتصالات EPS/ATX
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-
-
-
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              4 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              3 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              2 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              1 x EPS 8-pin + 1 x ATX 4-pin
-              </label>
-          </div>
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
+        
           </Col>
           <Col md={9}>
-          <Sorts/>
+          <Sorts setData={setData} data={data}/>
           <div className="productsWhiteBox">
               <div className="whiteBoxHeader">
                   <div className="dashedHrdiv">
@@ -922,13 +463,13 @@ console.log(params)
                   <div className="dashedHrdiv">
                       <hr className="dashedHr"/>
                   </div>
-                  <div>
+                  {/* <div>
                       <Button className="allProductsBtn">
                       مشاهده همه
                           <FaChevronLeft/>
 
                           </Button>
-                  </div>
+                  </div> */}
               </div>
               <div className="row">
                 {
