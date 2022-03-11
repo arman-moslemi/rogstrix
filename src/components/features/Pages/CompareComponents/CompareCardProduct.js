@@ -103,7 +103,7 @@ data.map((item)=>{
 
               <div className="mt-4">
                   <p className="firstLine1">
-                    {item.Title}
+                    {item.MainTitle}
                   </p>
                   <p className="secondLine2">
                     {item.SubTitle}

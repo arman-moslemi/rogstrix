@@ -45,7 +45,7 @@ console.log(params)
 
           setData(response.data.Data)
           console.log(55)
-          console.log(response.data.Data[0][0].Title)
+          console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
       }
       else{
@@ -105,13 +105,16 @@ setData([...data].filter((a) => (a.Cost <= to && a.Cost>from) ))
 console.log(data)
 
 }
+var gg=[]
   const proFilter=(type,val,vv)=>{
 
 if(type==1){
   setFilter([...filter,{id:val,title:vv.SubProperty}])
+  gg.push({id:val,title:vv.SubProperty})
 }
 else{
   setFilter( filter.filter((el)=>el.title!=vv.SubProperty));
+  gg=gg.filter((el)=>el.title!=vv.SubProperty);
 
 }
 
@@ -119,10 +122,11 @@ else{
 var ff=[]
 
     console.log(14563)
-    console.log(filter)
+    console.log(val)
+    console.log(gg)
 //  setProduct([])
 // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-filter?.map((item)=>{
+gg?.map((item)=>{
 data.map((item2)=>{
   if(item.id==item2.SubPropertyID)
   ff.push(item2)
@@ -133,7 +137,7 @@ console.log(ff)
 
   setData(ff)
 // }
-if(filter.length==0)
+if(gg.length==0)
 {
 mainSlider()
 }

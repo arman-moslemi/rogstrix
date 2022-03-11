@@ -20,8 +20,202 @@ import PageTitle from "../../assets/img/pageTitle.png"
 import MadeSystem from "../../assets/img/madeSystem.png";
 import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
 import PaginationCustom from "./layouts/Pagination";
-const SelectPowerSupply = () => {
+import React,{useState,useEffect,useContext} from 'react'
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import { AuthContext } from "../../../context/auth-context";
 
+const SelectPowerSupply = () => {
+  const [data,setData]=useState([])
+  const [product,setProduct]=useState([])
+  const [filter,setFilter]=useState([])
+  const [compare,setCompare]=useState([])
+  const [brand,setBrand]=useState([])
+  const params = useParams().id;
+  const [from,setFrom]=useState(0)
+  const [to,setTo]=useState(0)
+  const [head,setHead]=useState("")
+  const history = useHistory();
+console.log(params)
+const { isLoggedIn, token } = useContext(AuthContext);
+const addCompare=(type,id)=>{
+  if(compare.length==3){
+    alert("مقایسه بیشتر از ۴ مورد نمیشود")
+  }
+  else
+{  if(type==1){
+    setCompare([...compare,{id:id}])
+  }
+  else{
+    setCompare( compare.filter((el)=>el.id!=id));
+  
+  }}
+
+}
+const goCompare=()=>{
+  if(compare.length==0){
+    alert("مقایسه بیشتر از ۴ مورد نمیشود")
+  }
+  else{
+
+    localStorage.setItem("compare","")
+    var ss=""
+    compare.map((item)=>{
+  ss+=(item.id+"T")
+    })
+  //  localStorage.setItem("compare",localStorage.getItem("compare")+"T"+id) ;
+    history.push("/CompareSupplyProduct/"+ss)
+  }
+}
+const ProductSave=(id)=>{
+  var Guest=localStorage.getItem("guest")
+
+  const axios = require("axios");
+
+  axios
+      // .post(apiUrl + "AddCustomerProductSave",{
+      .post(apiUrl + "CreateSystemCustomer",{
+        ProductID:id,
+        CustomerID:token.length<10 && token?token:0,
+        GuestID:token.length<10 && token?0:Guest?Guest:0
+      })
+  .then(function (response) {
+    if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+      console.log(222)
+      console.log(response.data.Data2)
+      // response.data.Data2?
+if(!Guest || Guest==0){
+
+localStorage.setItem("guest",response.data.Data2?response.data.Data2:0)
+}
+
+      
+      history.push("/AssembleSecond")
+  }
+  else if(response.data.result == "duplicate"){
+    console.log(888)
+    alert(response.data.Data)
+    history.push("/AssembleSecond")
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+  const mainSlider=()=>{
+    const axios = require("axios");
+
+      axios
+          .post(apiUrl + "GroupProduct",{
+            GroupID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setData(response.data.Data)
+          console.log(55)
+          console.log(response.data.Data)
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .post(apiUrl + "FilterProduct",{
+            GroupID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setProduct(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .get(apiUrl + "AllBrand")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setBrand(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  }
+  const setCost=()=>{
+
+
+    console.log(14563)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+setData([...data].filter((a) => (a.Cost <= to && a.Cost>from) ))
+console.log(data)
+
+}
+var gg=[]
+const proFilter=(type,val,vv)=>{
+
+if(type==1){
+setFilter([...filter,{id:val,title:vv.SubProperty}])
+gg.push({id:val,title:vv.SubProperty})
+}
+else{
+setFilter( filter.filter((el)=>el.title!=vv.SubProperty));
+gg=gg.filter((el)=>el.title!=vv.SubProperty);
+
+}
+
+
+var ff=[]
+
+  console.log(14563)
+  console.log(val)
+  console.log(gg)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+gg?.map((item)=>{
+data.map((item2)=>{
+if(item.id==item2.SubPropertyID)
+ff.push(item2)
+})
+})
+console.log(ff)
+// if(ff.length!=0){
+
+setData(ff)
+// }
+if(gg.length==0)
+{
+mainSlider()
+}
+}
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, [head]);
   return (
     <div className="EachCategoryBody">
       <Header />
@@ -55,15 +249,19 @@ const SelectPowerSupply = () => {
             <img src={PageTitle}/>
             </div>
             <div>
+            {
+                         data[0]?
                 <p>
-                انتخاب منبع تغذیه                </p>
+                انتخاب {data[0][0]?.Title}                </p>
+                :
+                null}
             </div>
             <div>
             <img src={PageTitle}/>
             </div>
         </div>
         <div className="row " style={{marginBottom:25}}>
-          <Col md={3}>
+        <Col md={3}>
           <div className="redBoxFilter">
              <div className="pd2">
              <div className="row">
@@ -73,31 +271,30 @@ const SelectPowerSupply = () => {
                     </p>
                   </Col>
                   <Col md={5} className="ta-left">
-                        <Button className="filterBtn">
+                        {/* <Button className="filterBtn">
                             حذف
-                        </Button>
+                        </Button> */}
                   </Col>
-                  
+
               </div>
              </div>
               <div className="filterFlex">
             <div style={{padding:'1rem'}}>
+              {
+                filter?.map((item)=>{
+                  return(
             <div className="filterSelect">
-                      
-                      کول مستر
-                      <FaTimes style={{marginRight:5}}/>
-                  </div>
-                  <div className="filterSelect">
-                     همه رده انرژی
-                     <FaTimes style={{marginRight:5}}/>
-                  </div>
-                  <div className="filterSelect">
 
-                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰               
-                  <FaTimes style={{marginRight:5}}/>
-                     </div>
+{item.title}                      
+{/* <FaTimes style={{marginRight:5}}/> */}
+                  </div>
+
+                  )
+                })
+              }
+           
             </div>
-                 
+
               </div>
 
           </div>
@@ -116,22 +313,25 @@ const SelectPowerSupply = () => {
           <FaSearch color={'#a0a0a0'}/>
         </div>
         <input
-          
+
           type={'text'}
           placeholder={"نام برند را وارد کنید ..."}
-        
-         
+
+
         />
-        
+
       </div>
-     
+
                </div>
       <div className="pad2">
       <div className="scrollBar">
+            {
+              brand?.map((item)=>{
+                return(
           <div className="d-flex checkBoxDiv">
           <Checkbox
+
         
-        defaultChecked
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
@@ -139,150 +339,21 @@ const SelectPowerSupply = () => {
           },
         }}
       />
+
               <label>
-                  همه
+                  {item.BrandName}
               </label>
+         
           </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کولر مستر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سی سونیک
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              گیگابایت
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ای وی جی ای
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
+         
+         )
+        })
+      }
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
           <div className="whiteBoxProduct">
@@ -296,7 +367,7 @@ const SelectPowerSupply = () => {
                 <AccordionItemPanel>
                <div className="pad2">
                 <RangeSlider/>
-     
+
                </div>
             <div className="rangeBorder">
             <div className="row">
@@ -304,26 +375,27 @@ const SelectPowerSupply = () => {
             <p className="rangeText">
                 از
             </p>
-         
-            
+
+
       </Col>
       <Col md={6}>
       <p className="rangeText">
                 از
             </p>
-           
-           
-         
+
+
+
       </Col>
       </div>
       <div className="row align-items-center">
           <Col md={6}>
           <p className="rangeText marginB0">
-          ۲،۳۰۰،۰۰۰
+          {/* ۲،۳۰۰،۰۰۰ */}
+          <input onChange={(e)=>setTo(e.target.value)} className="rangeInput"/>
             </p>
           </Col>
           <Col md={6}>
-          <input className="rangeInput"/>
+          <input onChange={(e)=>setFrom(e.target.value)} className="rangeInput"/>
           </Col>
       </div>
       <div className="row marginTop15">
@@ -335,29 +407,33 @@ const SelectPowerSupply = () => {
           </Col>
       </div>
             </div>
-            <Button className="rangeBtn">
+            <Button onClick={()=>setCost()}className="rangeBtn">
                 اعمال محدوده قیمت
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
+         {
+           product.map((item)=>{
+             return(
+
           <div className="whiteBoxProduct">
           <Accordion allowZeroExpanded ={true}>
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        رده مصرف انرژی
+                        {item[0].MainProperty}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-              
+
       <div className="pad2">
       <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
+          {/* <div className="d-flex checkBoxDiv">
                <Checkbox
-        
+
         defaultChecked
         sx={{
           color: '#f6303f',
@@ -369,500 +445,52 @@ const SelectPowerSupply = () => {
               <label>
                   همه
               </label>
-          </div>
+          </div> */}
+          {
+            item.map((item2)=>{
+              return(
+
           <div className="d-flex checkBoxDiv">
                <Checkbox
-        
-        defaultChecked
+
+        // defaultChecked
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
             color: '#f6303f',
           },
         }}
-      />
-              <label>
-              +۸۰ تیتانیوم
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
+        value={item2.SubPropertyID}
+        onChange={(e)=>e.target.checked? proFilter(1,e.target.value,item2)
+          :
         
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              +۸۰ پلاتینیوم
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
+         proFilter(2,e.target.value,item2)
         
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              +۸۰ طلایی
-              </label>
-          </div>
-       
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                     مصرف انرژی (وات)
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                <div className="pad2">
-                <RangeSlider/>
-     
-               </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                    طول (میلیمتر)
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                <div className="pad2">
-                <RangeSlider/>
-     
-               </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        ماژولار
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-              
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
         
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              هیچکدام
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             کامل
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             نیمه
-              </label>
-          </div>
-        
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        رنگ
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-              
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                سیاه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سفید
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سیاه/قرمز
-              </label>
-          </div>
-      
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        نوع
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-              
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ATX
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ATX12V
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              Flex ATX
-              </label>
-          </div>
-        
-     
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                       بدون فن
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-              
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             باشد
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              نباشد
-              </label>
-          </div>
-      
           
+         }
+      />
+              <label>
+              {item2.SubProperty}
+              </label>
+          </div>
+              )
+            })
+          }
+        
+
       </div>
       </div>
                 </AccordionItemPanel>
             </AccordionItem>
-         
+
         </Accordion>
           </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                    اتصالات EPS/ATX
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-              
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
+             )
+           })
+         }
+
         
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-         
-       
-       
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              4 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              3 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              2 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-        
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              1 x EPS 8-pin + 1 x ATX 4-pin
-              </label>
-          </div>
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-         
-        </Accordion>
-          </div>
           </Col>
           <Col md={9}>
           
@@ -871,7 +499,7 @@ const SelectPowerSupply = () => {
               <div className="borderDashedBottom">
                 <div>
                   <p>
-                  شناسایی ۱۲۶ قطعه سازگار
+                  شناسایی {data.length} قطعه 
                   </p>
                 </div>
                 <div>
@@ -920,17 +548,24 @@ const SelectPowerSupply = () => {
                </Button>
              </div>
              <div>
-               <Button className="compareBtn">
+               <Button onClick={()=>goCompare()} className="compareBtn">
                  مقایسه انتخاب شده ها (حداکثر 4 مورد)
                </Button>
              </div>
            </div>
           <div className="tableBox">
           <div className="d-flex justify-content-around" id="w95">
-                <div className="ta-center" id="width30">
+                <div className="ta-center" >
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                  نام
+                  مقایسه
+                  
+                </p>
+                </div>
+                <div className="ta-center" >
+                <p className="tableTitle">
+                <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
+                  عکس
                   
                 </p>
                 </div>
@@ -938,30 +573,29 @@ const SelectPowerSupply = () => {
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
-                  فرم فکتور
-                </p>
+نام                </p>
 </div>
-<div className="ta-center">
+{/* <div className="ta-center">
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
                   رده انرژی
                 </p>
-</div>
-<div className="ta-center">
+</div> */}
+{/* <div className="ta-center">
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
                  مصرف(وات)
                 </p>
-</div>
-<div className="ta-center">
+</div> */}
+{/* <div className="ta-center">
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
                  ماژولار
                 </p>
-</div>
+</div> */}
 <div className="ta-center">
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
@@ -976,27 +610,48 @@ const SelectPowerSupply = () => {
                   امتیاز
                 </p>
 </div>
+<div className="ta-center">
+<p className="tableTitle">
+{/* <FaChevronDown className="marginLeftt20" color={'#f6303f'}/> */}
+                 
+                </p>
+</div>
            </div>
            <hr className="mt-0 mb-0"/>
+           {
+                  data?.map((item)=>{
+return(
            <div className="borderBottom d-flex justify-content-around align-items-center">
              <div>
-               <Checkbox     defaultChecked
+               <Checkbox    
+                // defaultChecked
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
             color: '#f6303f',
           },
-        }}/>
+        }}
+         onChange={(e)=>e.target.checked? addCompare(1,e.target.value)
+          :
+        
+          addCompare(2,e.target.value)
+        
+        
+          
+         }
+         value={item[0].ProductID}
+
+        />
              </div>
                 <div className="rowImg">
-                  <img src={MadeSystem}/>
+                  <img src={apiAsset+item[0].Pic1}/>
                 </div>
                 <div>
                   <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
+{item[0].ProductName}
                   </p>
                 </div>
-                <div>
+                {/* <div>
                   <p className="pNameRow">
                     Atx
                   </p>
@@ -1015,11 +670,13 @@ const SelectPowerSupply = () => {
                   <p className="pNameRow">
                     بله
                   </p>
-                </div>
+                </div> */}
                 <div>
+                  
+
                   <p className="pNameRow">
-                    1.257.000
-                  </p>
+{parseInt(item[0]?.Cost)-parseInt(item[0]?.SpecialCost)}                  </p>
+                   
                 </div>
                 <div>
                   <p className="pNameRow">
@@ -1029,403 +686,12 @@ const SelectPowerSupply = () => {
                   </p>
                 </div>
                 <div>
-                  <Button className="addRowBtn">
+                  <Button onClick={()=>ProductSave(item[0].ProductID)} className="addRowBtn">
                     افزودن
                   </Button>
                 </div>
           </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
-          <div className="borderBottom d-flex justify-content-around align-items-center">
-             <div>
-               <Checkbox     defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}/>
-             </div>
-                <div className="rowImg">
-                  <img src={MadeSystem}/>
-                </div>
-                <div>
-                  <p className="productNameRow">
-                  Cooler Master MWE White V2 230V
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    1.257.000
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div>
-                  <Button className="addRowBtn">
-                    افزودن
-                  </Button>
-                </div>
-          </div>
+                  )})}
           </div>
           <div className="paginationBox ta-center">
           <PaginationCustom/>

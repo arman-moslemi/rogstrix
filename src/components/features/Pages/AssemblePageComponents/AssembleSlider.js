@@ -10,12 +10,13 @@ import img2 from "../../../assets/img/img2.png";
 import img3 from "../../../assets/img/img3.png";
 import img4 from "../../../assets/img/img4.png";
 import img5 from "../../../assets/img/img5.png";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 SwiperCore.use([Navigation,Pagination]);
 // if you want to use array
 
 
-const AssembleSlidr = () => {
+const AssembleSlidr = ({data}) => {
   return (
     <div style={{backgroundColor:'#fff'}}>
       
@@ -26,66 +27,20 @@ const AssembleSlidr = () => {
         centeredSlides={true}
         
         >
+            {
+                data?.map((item)=>{
+                    return(
+
   <SwiperSlide>
   <div className="exclusiveSliderCard2">
-      <img src={img1}/>
+      <img src={apiAsset+item.Pic1}/>
       
   </div>
   </SwiperSlide>
-  <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img2}/>
-      
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img3}/>
-      
-  </div>
-  </SwiperSlide> 
-  <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img4}/>
-     
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img5}/>
-      
-  </div>
-  </SwiperSlide>
-  <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img1}/>
-     
-  </div>
-  </SwiperSlide>
-  <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img2}/>
-     
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img3}/>
-      <p>موبایل</p>
-  </div>
-  </SwiperSlide> 
-  <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img4}/>
-    
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard2">
-      <img src={img5}/>
-    
-  </div>
-  </SwiperSlide>
+                    )
+                })
+            }
+  
  
   
  

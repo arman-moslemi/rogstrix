@@ -20,7 +20,7 @@ const CommentBox = ({data,id,type,token}) => {
   const mainSlider=()=>{
     const axios = require("axios");
     console.log(token)
-    if(token)
+    if(token && token.Length<10)
 {type=="product"?
 axios.post(apiUrl + "InsertProductComment",{ProductID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
 .then(function (response) {
@@ -125,7 +125,6 @@ return(
     <div className="starRate">
     {
                       [...new Array(5)].map((item2,index)=>{
-                        console.log(index)
                         return(
 index+1>item.Rate?
 <FaRegStar className="mr-1 ml-1" color="#111111"/>

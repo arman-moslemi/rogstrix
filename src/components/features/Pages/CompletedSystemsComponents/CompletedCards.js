@@ -25,7 +25,7 @@ const CompletedCards = (props) => {
   return (
 
     <div className="completedCard">
-       <Link onClick={()=>history.push("/MakeSystemSingle/"+props.data.SystemID)} >
+       <Link onClick={()=>history.push("/AssembleMain/"+props.data.SystemID)} >
        <div className="imgBox marginBottom15">
        {
   props?.viewOverlay==true?

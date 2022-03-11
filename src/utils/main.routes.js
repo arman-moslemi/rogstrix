@@ -137,7 +137,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/SelectPowerSupply'
+					path='/SelectPowerSupply/:id'
 					name='انتخاب منبع تغذیه'
 					render={(props) => <SelectPowerSupply/>}>
 

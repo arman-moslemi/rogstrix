@@ -22,6 +22,8 @@ const AssembleMain = () => {
   const history = useHistory();
   const [product,setProduct]=useState([])
   const [com,setCom]=useState([])
+  const [rate,setRate]=useState(0)
+
   const [similar,setSimilar]=useState([])
   const [property,setProperty]=useState([])
 
@@ -49,7 +51,78 @@ const AssembleMain = () => {
       .catch(function (error) {
         console.log(error);
       });
+      axios
+      .post(apiUrl + "SingleSystemRelated",{
+        SystemID:params,
+      })
+  .then(function (response) {
+    if (response.data.result == "true") {
+
+      setSimilar(response.data.Data)
+      console.log(777)
+      console.log(response.data.Data)
+
+  }
+  else{
+    console.log(888)
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
+      axios
+          .post(apiUrl + "SingleSystemComment",{
+            SystemID:params
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setCom(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
     }
+    const ProductSave=()=>{
+      if( !isLoggedIn){
+       alert("ابتدا وارد شوید")
+   
+      }
+      else{
+   
+      
+       const axios = require("axios");
+   
+       axios
+           .post(apiUrl + "PersonalizeSystem",{
+             SystemID:params,
+             CustomerID:token
+           })
+       .then(function (response) {
+         if (response.data.result == "true") {
+   alert("با موفقیت ذخیره شد")
+   history.push("/AssembleSecond")
+           console.log(777)
+           console.log(response.data.Data)
+   
+       }
+       else{
+         console.log(888)
+         console.log(response.data.result)
+   
+       }})
+       .catch(function (error) {
+         console.log(error);
+       });
+     }
+     }
     useEffect(() => {
       mainSlider();
   // alert(val)
@@ -67,36 +140,36 @@ const AssembleMain = () => {
             </div>
             <div>
                 <p>
-                سیستم عالی گیمینگ AMD                </p>
+                {property[0]?.SystemName}                </p>
             </div>
             <div>
             <img src={PageTitle}/>
             </div>
         </div>
         <div className="assembleSliderBox">
-          <AssembleSlidr/>
+          <AssembleSlidr data={similar}/>
         </div>
         <div className="assembleBox">
           <div className="topBarBox">
           <div className="d-flex align-items-center">
             <div className="d-flex align-items-center colorWhite">
-                <Button>
+                <Button onClick={()=>ProductSave()}>
                 <FaPlus color={'#fff'}/>
                 <p className="userName">
                     شخصی سازی این سیستم
                 </p>
                 </Button>
             </div>
-            <div className="d-flex align-items-center borderRight1 colorWhite" >
+            {/* <div className="d-flex align-items-center borderRight1 colorWhite" >
                 <FaArrowUp color={'#fff'}/>
                 <p className="userName">
                    2
                 </p>
-            </div>
+            </div> */}
             <div className="d-flex align-items-center borderRight1 colorWhite">
                 <FaRegCommentAlt color={'#fff'}/>
                 <p className="userName">
-                    10
+                    {com?.length}
                 </p>
             </div>
             <div className="d-flex align-items-center borderRight1 colorWhite">
@@ -110,7 +183,7 @@ const AssembleMain = () => {
           </div>
             <div className="d-flex align-items-center">
             <p className="linkCopy">
-            https://rogstrix.ir/list/bRDXKB
+            https://rogstrix.com/AssembleMain/{property[0]?.SystemID}
             </p>
            <Button className="attachBtn">
            <FaLink color={'#fff'}/>
@@ -132,7 +205,7 @@ const AssembleMain = () => {
           <div className="d-flex align-items-center justify-content-between tRow">
             <div className="d-flex">
             <p className="tableFirstRowText">
-              قطعه
+              گروه
             </p>
             <div className="vl"></div>
             </div>
@@ -145,9 +218,9 @@ const AssembleMain = () => {
             <p className="tableFirstRowText">
               خرید
             </p>
-            <p className="tableFirstRowText">
+            {/* <p className="tableFirstRowText">
               حذف
-            </p>
+            </p> */}
           </div>
           {
             property.map((item)=>{
@@ -155,7 +228,7 @@ const AssembleMain = () => {
                 <div className="d-flex align-items-center justify-content-between tRow">
                 <div>
                   <p className="tableFirstRowText">
-          {item.Title}        </p>
+          {item.Group}        </p>
                   {/* <p className="miniText2">
                     {item.EngTitle}
                   </p> */}
@@ -182,11 +255,11 @@ const AssembleMain = () => {
                       خرید
                     </button>
                   </div>
-                  <div>
+                  {/* <div>
                     <button className="glassBtn">
                       <FaTimes/>
                     </button>
-                  </div>
+                  </div> */}
             
               
               
@@ -221,11 +294,10 @@ const AssembleMain = () => {
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                </p>
+{property[0]?.Description}                </p>
             </div>
         <div className="whiteBox3 mt-3">
-          <CommentBox/>
+        <CommentBox token={token} data={com} id={params} type={"system"}/>
           </div>
       </Container>
       <RedBox/>

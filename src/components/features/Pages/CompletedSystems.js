@@ -28,9 +28,11 @@ import Filter from "../../assets/icons/Filter";
 
 const CompletedSystems = () => {
   const [data,setData]=useState([])
+  const [data2,setData2]=useState([])
   const [property,setProperty]=useState([])
   const [filter,setFilter]=useState([])
   const [from,setFrom]=useState(0)
+  const [counter,setCounter]=useState(0)
   const [to,setTo]=useState(0)
   const [title,setTitle]=useState("")
   const mainSlider=()=>{
@@ -40,6 +42,7 @@ const CompletedSystems = () => {
       if (response.data.result == "true") {
 
         setData(response.data.Data)
+        setData2(response.data.Data)
         console.log(11)
         console.log(response.data.Data)
 
@@ -69,7 +72,110 @@ const CompletedSystems = () => {
     });
 
   }
+  var gg=[]
+  var dd=[]
+  const proFilter=(type,val,vv)=>{
 
+if(type==1){
+  setFilter([...filter,{id:val,title:vv.ProductName}])
+  filter?.map((item)=>{
+    gg.push(item)
+  })
+  gg.push({id:val,title:vv.ProductName})
+  var ff=[]
+
+    console.log(14563)
+    console.log(val)
+    console.log(gg)
+    console.log(data)
+    
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+
+data?.map((item2,index1)=>{
+  var count=0;
+  item2?.map((item3,index2)=>{
+gg?.map((item,index3)=>{
+
+ 
+
+    if(item3.ProductID==item.id)
+   {
+     count+=1;
+     if (count==gg.length){
+
+      ff.push(item2)
+    }
+    
+  
+  }
+  })
+})
+})
+
+// if(ff.length!=0){
+
+
+  setData(ff)
+}
+else{
+  setFilter( filter.filter((el)=>el.id!=val));
+  filter?.map((item)=>{
+    gg.push(item)
+  })
+  gg=( gg.filter((el)=>el.id!=val));
+  var ff=[]
+
+    console.log(14563)
+    console.log(val)
+    console.log(gg)
+    console.log(data)
+    
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+
+data2?.map((item2,index1)=>{
+  var count=0;
+  item2?.map((item3,index2)=>{
+gg?.map((item,index3)=>{
+
+ 
+
+    if(item3.ProductID==item.id)
+   {
+     count+=1;
+     if (count==gg.length){
+
+      ff.push(item2)
+    }
+    
+  
+  }
+  })
+})
+})
+
+// if(ff.length!=0){
+
+
+  setData(ff)
+  // mainSlider()
+}
+
+
+
+// }
+if(gg.length==0)
+{
+mainSlider()
+}
+}
+// useEffect(() => {
+//   console.log(5555)
+//   console.log(data2)
+//   setData(data2);
+// // alert(val)
+// }, [counter]);
   useEffect(() => {
     mainSlider();
 // alert(val)
@@ -288,10 +394,11 @@ item.map((item2)=>{
         }}
         value={item2.ProductID}
 
-        onChange={(e)=>e.target.checked?setFilter([...filter,{id:e.target.value,title:item2.ProductName}])
+       
+       onChange={(e)=>e.target.checked? proFilter(1,e.target.value,item2)
         :
-       setFilter( filter.filter((el)=>el.title!=item2.ProductName))
-        
+      
+       proFilter(2,e.target.value,item2)
        }
       />
               <label>

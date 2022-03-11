@@ -56,13 +56,12 @@ const AssembleSecond = () => {
      const axios = require("axios");
      const storedData = JSON.parse(localStorage.getItem("userData"))?.token
   console.log(555)
-  console.log(storedData)
+  console.log(storedData.toString().length)
   // console.log(storedData.length)
   console.log(isLoggedIn)
-     
      axios.post(apiUrl + "SingleSystemImperfect",{
-       CustomerID:storedData?storedData:0,
-       GuestID:storedData?0:Guest
+       CustomerID:storedData.toString().length<10 && storedData?storedData:0,
+       GuestID:storedData.toString().length<10 && storedData?0:Guest
      })
      .then(function (response) {
        if (response.data.result == "true") {
@@ -91,8 +90,8 @@ const AssembleSecond = () => {
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 
     axios.post(apiUrl + "DeleteSystemCustomer",{
-      CustomerID:storedData?storedData:0,
-      GuestID:storedData?0:Guest,
+      CustomerID:storedData.toString().length<10 && storedData?storedData:0,
+      GuestID:storedData.toString().length<10 && storedData?0:Guest,
       ProductID:id
     })
     .then(function (response) {
@@ -331,7 +330,7 @@ product?.length>0?
          
            
               <div className="">
-                <button onClick={()=>history.push("/products/"+item.GroupID)} className="buyAssembleBtn">
+                <button onClick={()=>history.push("/SelectPowerSupply/"+item.GroupID)} className="buyAssembleBtn">
                  + {item.Title}
                 </button>
               </div>
@@ -358,7 +357,7 @@ product?.length>0?
          
            
               <div className="">
-                <button onClick={()=>history.push("/products/"+item.GroupID)} className="buyAssembleBtn">
+                <button onClick={()=>history.push("/SelectPowerSupply/"+item.GroupID)} className="buyAssembleBtn">
                  + {item.Title}
                 </button>
               </div>
