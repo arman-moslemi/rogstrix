@@ -2046,3 +2046,24 @@ align-items: center;
   color: #ff004e;
   font-family: "IRANSans";
 }
+.completedCard a{
+  text-decoration: none !important;
+}
+.bottomIcon{
+  color: #000;
+}
+.wB20{
+  width: 20%;
+}
+.wB60{
+  width: 60%;
+}
+.wB10{
+  width: 10%;
+}
+.wB15{
+  width: 15%;
+}
+.wB65{
+  width: 65%;
+}

@@ -1,5 +1,5 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
 import {
     Accordion,
@@ -751,7 +751,7 @@ return(
         
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };
