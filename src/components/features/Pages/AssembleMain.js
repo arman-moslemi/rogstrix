@@ -1,8 +1,8 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import React,{useState,useEffect,useContext} from 'react'
 
-import FooterMain from "./layouts/FooterMain";
+
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -202,20 +202,20 @@ const AssembleMain = () => {
               </p>
             </div>
           </div> */}
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div className="d-flex">
+          <div className="d-flex align-items-center tRow">
+            <div className="d-flex wB20">
             <p className="tableFirstRowText">
               گروه
             </p>
             <div className="vl"></div>
             </div>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wB60">
               انتخاب قطعه
             </p>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wB10">
               قیمت(تومان)
             </p>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wB10 ta-center">
               خرید
             </p>
             {/* <p className="tableFirstRowText">
@@ -225,15 +225,15 @@ const AssembleMain = () => {
           {
             property.map((item)=>{
               return(
-                <div className="d-flex align-items-center justify-content-between tRow">
-                <div>
+                <div className="d-flex align-items-center tRow">
+                <div className="wB15">
                   <p className="tableFirstRowText">
           {item.Group}        </p>
                   {/* <p className="miniText2">
                     {item.EngTitle}
                   </p> */}
                 </div>
-               <div className="d-flex">
+               <div className="d-flex wB65">
                <div>
                   <img src={apiAsset+item.Pic} className="assembleImg"/>
                 </div>
@@ -245,12 +245,12 @@ const AssembleMain = () => {
                   </p> */}
                 </div>
                </div>
-                <div>
+                <div className="wB10">
                   <p className="productAssembleName">
                   {item.Cost}
                   </p>
                   </div>
-                  <div>
+                  <div className="wB10 ta-center">
                     <button onClick={()=>history.push("/singleProduct/"+item.ProductID)} className="buyAssembleBtn">
                       خرید
                     </button>

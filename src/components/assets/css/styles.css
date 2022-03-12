@@ -1062,7 +1062,6 @@ color: #a0a0a0;
 }
 #w95{
   width: 95% !important;
-margin-right: auto;
 margin-left: auto;
 display: block;
 padding-top: 10px;
@@ -2046,4 +2045,43 @@ align-items: center;
   border:1px solid #ff004e;
   color: #ff004e;
   font-family: "IRANSans";
+}
+.completedCard a{
+  text-decoration: none !important;
+}
+.bottomIcon{
+  color: #000;
+}
+.wB20{
+  width: 20%;
+}
+.wB60{
+  width: 60%;
+}
+.wB10{
+  width: 10%;
+}
+.wB15{
+  width: 15%;
+}
+.wB65{
+  width: 65%;
+}
+.BestSellingCard a{
+  text-decoration: none !important;
+}
+.addToCart :hover{
+  background-color: transparent !important;
+  border: 1px solid #ff004e !important;
+  color:#ff004e !important;
+}
+.addToCart  .btn-primary:hover{
+  background-color: transparent !important;
+  border: 1px solid #ff004e !important;
+  color:#ff004e !important;
+}
+.btn-primary:hover{
+  background-color: transparent !important;
+  border: 1px solid #ff004e !important;
+  color:#ff004e !important;
 }

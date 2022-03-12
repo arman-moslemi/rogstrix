@@ -1,5 +1,5 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
 import {
     Accordion,
@@ -601,7 +601,7 @@ mainSlider()
              </div>
            </div>
           <div className="tableBox">
-          <div className="d-flex justify-content-around" id="w95">
+          <div className="d-flex justify-content-between" id="w95">
                 <div className="ta-center" >
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
@@ -668,7 +668,7 @@ mainSlider()
            {
                   data?.map((item)=>{
 return(
-           <div className="borderBottom d-flex justify-content-around align-items-center">
+           <div className="borderBottom d-flex justify-content-between align-items-center pr-2">
              <div>
                <Checkbox    
                 // defaultChecked
@@ -751,7 +751,7 @@ return(
         
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

@@ -138,7 +138,43 @@ const CartStep2 = () => {
                  </div>
                  </div>
            </div>
-         
+           <div className='whiteBoxCart mt-4 pb-2'>
+           <div className="rightMenuBox1">
+             <div className="d-flex align-items-center justify-content-between">
+      <div className="d-flex align-items-center">
+      
+      <p className="fontWeightBold ml-4" href="#">
+                 کد تخفیف
+                </p>
+      </div>
+      <Button className="saveBtn">
+          
+         ثبت
+      </Button>
+          </div>
+                 </div>
+                 <hr className="grayDashed" />
+                 <div className="shadowBox mb-4">
+              <div className='row align-items-center'>
+                  <Col md={4} className="shaCol1">
+                  <p className="fontWeightBold">
+                   
+کد تخفیف دارید ؟ </p>
+                  
+                  </Col>
+                  <Col md={8} className="ta-left shaCol1">
+                  
+                  <div className='d-flex align-items-center justify-content-end mt-2 f3'>
+                      <p className='fontWeightBold mr-4'>
+                         کد تخفیف خود را وارد کنید :
+                      </p>
+                      <input type="text"/>
+                  </div>
+                  </Col>
+              </div>
+                  
+                 </div>
+                 </div>
             </div>
             <div className="cartCol2">
             <div className='whiteBoxCart pd30'>
