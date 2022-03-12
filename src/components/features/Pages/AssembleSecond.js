@@ -21,6 +21,7 @@ const AssembleSecond = () => {
   const [data,setData]=useState()
   const [product,setProduct]=useState()
   const [agree,setAgree]=useState()
+  const [inc,setInc]=useState([])
   var Guest=localStorage.getItem("guest")
 
   const groups=()=>{
@@ -68,8 +69,14 @@ const AssembleSecond = () => {
   
         setProduct(response.data.Data)
         setAgree(response.data.Data2)
-  
+  var ss=[]
           console.log(666)
+          response.data.Data.map((item)=>{
+ss.push(item.GroupID)
+          }
+          )
+          setInc(ss)
+          // console.log(  response.data.Data.indexOf(el=>el.GroupID==2))
           console.log(response.data.Data)
     
      }
@@ -266,31 +273,32 @@ if(isLoggedIn)
               حذف
             </p>
           </div>
-          <hr className="grayHr"/>
+          {/* <hr className="grayHr"/> */}
         
 {
   
   data?.map((item)=>{
     return(
 product?.length>0?
-    product?.map((item2)=>{
-    return(
-      item.GroupID==item2.GroupID?
+ 
+inc.indexOf(item.GroupID)!=-1 ?
+      <div>
+      <hr className="grayHr"/>
       <div className="d-flex align-items-center justify-content-between tRow">
       <div>
         <p className="tableFirstRowText">
-{item2.Title}        </p>
+{product[inc.indexOf(item.GroupID)].Title}        </p>
         {/* <p className="miniText2">
           {item2.EngTitle}
         </p> */}
       </div>
      <div className="d-flex">
      <div>
-        <img src={apiAsset+item2.Pic1} className="assembleImg"/>
+        <img src={apiAsset+product[inc.indexOf(item.GroupID)].Pic1} className="assembleImg"/>
       </div>
       <div>
         <p className="productAssembleName">
-{item2.ProductName}        </p>
+{product[inc.indexOf(item.GroupID)].ProductName}        </p>
         {/* <p className="miniText2">
         مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
         </p> */}
@@ -298,16 +306,16 @@ product?.length>0?
      </div>
       <div>
         <p className="productAssembleName">
-        {parseInt(item2.Cost)-parseInt(item2.SpecialCost)}تومان
+        {parseInt(product[inc.indexOf(item.GroupID)].Cost)-parseInt(product[inc.indexOf(item.GroupID)].SpecialCost)}تومان
         </p>
         </div>
         <div>
-          <button onClick={()=>history.push("/singleProduct/"+item2.ProductID)} className="buyAssembleBtn">
+          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)].ProductID)} className="buyAssembleBtn">
             خرید
           </button>
         </div>
         <div>
-          <button onClick={()=>deleteProduct(item2.ProductID)} className="glassBtn">
+          <button onClick={()=>deleteProduct(product[inc.indexOf(item.GroupID)].ProductID)} className="glassBtn">
             <FaTimes/>
           </button>
         </div>
@@ -315,9 +323,10 @@ product?.length>0?
     
     
     </div>
-
+</div>
       :
-      <div>
+    
+            <div>
   <hr className="grayHr"/>
           <div className="d-flex align-items-center  tRow">
             <div className="w240">
@@ -340,8 +349,8 @@ product?.length>0?
           
           </div>
           </div>          
-)
-  })
+
+
   :
   
   <div>

@@ -28,6 +28,7 @@ import { AuthContext } from "../../../context/auth-context";
 
 const SelectPowerSupply = () => {
   const [data,setData]=useState([])
+  const [data2,setData2]=useState([])
   const [product,setProduct]=useState([])
   const [filter,setFilter]=useState([])
   const [compare,setCompare]=useState([])
@@ -176,36 +177,82 @@ console.log(data)
 
 }
 var gg=[]
-const proFilter=(type,val,vv)=>{
+  const proFilter=(type,val,vv)=>{
 
 if(type==1){
-setFilter([...filter,{id:val,title:vv.SubProperty}])
-gg.push({id:val,title:vv.SubProperty})
-}
-else{
-setFilter( filter.filter((el)=>el.title!=vv.SubProperty));
-gg=gg.filter((el)=>el.title!=vv.SubProperty);
+  setFilter([...filter,{id:val,title:vv.Title}])
+  gg.push({id:val,title:vv.SubProperty})
+  var ff=[]
 
-}
-
-
-var ff=[]
-
-  console.log(14563)
-  console.log(val)
-  console.log(gg)
+    console.log(14563)
+    console.log(val)
+    console.log(gg)
 //  setProduct([])
 // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-gg?.map((item)=>{
-data.map((item2)=>{
-if(item.id==item2.SubPropertyID)
-ff.push(item2)
+data?.map((item2,index1)=>{
+  var count=0;
+  item2?.map((item3,index2)=>{
+gg?.map((item,index3)=>{
+
+ 
+
+    if(item3.SubGroupPropertyID==item.id)
+   {
+     count+=1;
+     if (count==gg.length){
+
+      ff.push(item2)
+    }
+    
+  
+  }
+  })
 })
 })
 console.log(ff)
 // if(ff.length!=0){
 
-setData(ff)
+  setData(ff)
+}
+else{
+  setFilter( filter.filter((el)=>el.id!=vv.SubGroupPropertyID));
+  gg=gg.filter((el)=>el.id!=vv.SubGroupPropertyID);
+  var ff=[]
+
+    console.log(14563)
+    console.log(val)
+    console.log(gg)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+data2?.map((item2,index1)=>{
+  var count=0;
+  item2?.map((item3,index2)=>{
+gg?.map((item,index3)=>{
+
+ 
+
+    if(item3.SubGroupPropertyID==item.id)
+   {
+     count+=1;
+     if (count==gg.length){
+
+      ff.push(item2)
+    }
+    
+  
+  }
+  })
+})
+})
+console.log(ff)
+// if(ff.length!=0){
+
+  setData(ff)
+
+}
+
+
+
 // }
 if(gg.length==0)
 {
@@ -424,7 +471,7 @@ mainSlider()
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        {item[0].MainProperty}
+                        {item[0].MainTitle}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -460,7 +507,7 @@ mainSlider()
             color: '#f6303f',
           },
         }}
-        value={item2.SubPropertyID}
+        value={item2.SubGroupPropertyID}
         onChange={(e)=>e.target.checked? proFilter(1,e.target.value,item2)
           :
         
@@ -471,7 +518,7 @@ mainSlider()
          }
       />
               <label>
-              {item2.SubProperty}
+              {item2.Title}
               </label>
           </div>
               )
