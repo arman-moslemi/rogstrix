@@ -5,7 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RightMenu from "./UserPanelComponents/RightMenu";
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelPassword from "../../assets/icons/panelPassword";
@@ -155,7 +155,7 @@ else{
 
     </Container>
     <RedBox/>
-    <Footer />
+    <FooterMain />
   </div>
   );
 };

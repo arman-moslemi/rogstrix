@@ -5,7 +5,7 @@ import { FaRegEye } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RightMenu from "./UserPanelComponents/RightMenu";
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelComment from "../../assets/icons/panelComment";
@@ -108,7 +108,7 @@ const UserComments = () => {
     
     </Container>
     <RedBox/>
-    <Footer />
+    <FooterMain />
   </div>
   );
 };

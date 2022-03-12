@@ -1,8 +1,8 @@
 import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import React,{useState,useEffect,useContext} from 'react'
 
-import FooterMain from "./layouts/FooterMain";
+
 import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';

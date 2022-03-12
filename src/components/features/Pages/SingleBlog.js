@@ -1,5 +1,5 @@
 
-import Footer from "./layouts/Footer";
+import FooterMain from "./layouts/FooterMain";
 import Header from "./layouts/Header";
 
 import RedBox from "./layouts/RedBox";
@@ -156,7 +156,7 @@ console.log(params)
 
       </Container>
       <RedBox/>
-      <Footer />
+      <FooterMain />
     </div>
   );
 };

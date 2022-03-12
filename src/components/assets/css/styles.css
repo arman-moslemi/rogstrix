@@ -2067,3 +2067,21 @@ align-items: center;
 .wB65{
   width: 65%;
 }
+.BestSellingCard a{
+  text-decoration: none !important;
+}
+.addToCart :hover{
+  background-color: transparent !important;
+  border: 1px solid #ff004e !important;
+  color:#ff004e !important;
+}
+.addToCart  .btn-primary:hover{
+  background-color: transparent !important;
+  border: 1px solid #ff004e !important;
+  color:#ff004e !important;
+}
+.btn-primary:hover{
+  background-color: transparent !important;
+  border: 1px solid #ff004e !important;
+  color:#ff004e !important;
+}
