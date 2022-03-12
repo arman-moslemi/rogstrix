@@ -332,7 +332,7 @@ mainSlider()
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        {item[0].MainProperty}
+                        {item[0].MainTtitle}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -368,7 +368,7 @@ mainSlider()
             color: '#f6303f',
           },
         }}
-        value={item2.SubPropertyID}
+        value={item2.SubGroupPropertyID}
         onChange={(e)=>e.target.checked? proFilter(1,e.target.value,item2)
           :
         
@@ -379,7 +379,7 @@ mainSlider()
          }
       />
               <label>
-              {item2.SubProperty}
+              {item2.Title}
               </label>
           </div>
               )

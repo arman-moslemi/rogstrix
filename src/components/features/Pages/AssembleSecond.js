@@ -69,6 +69,7 @@ const AssembleSecond = () => {
         setProduct(response.data.Data)
         setAgree(response.data.Data2)
   
+          console.log(666)
           console.log(response.data.Data)
     
      }

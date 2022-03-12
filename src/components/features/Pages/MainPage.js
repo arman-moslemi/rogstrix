@@ -22,6 +22,7 @@ const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [blog,setBlog]=useState([])
   const [newPro,setNew]=useState([])
+  const [rog,setRog]=useState([])
   const [seller,setSeller]=useState()
   const [special,setSpecial]=useState()
   const history = useHistory();
@@ -45,22 +46,7 @@ const MainPage = () => {
         console.log(error);
       });
 
-      axios.get(apiUrl + "LastBlog")
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setBlog(response.data.Data)
-          console.log(11)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
+     
       axios.get(apiUrl + "BestSellersProduct")
       .then(function (response) {
         if (response.data.result == "true") {
@@ -80,12 +66,43 @@ const MainPage = () => {
         console.log(error);
       });
 
+      axios.get(apiUrl + "LastRogProduct")
+      .then(function (response) {
+        if (response.data.result == "true") {
 
+          setRog(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
       axios.post(apiUrl + "LastMainProduct",{MainGroupID:1})
       .then(function (response) {
         if (response.data.result == "true") {
 
           setNew(response.data.Data)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios.get(apiUrl + "LastBlog")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setBlog(response.data.Data)
           console.log(11)
           console.log(response.data.Data)
 
@@ -153,7 +170,34 @@ const MainPage = () => {
     </div>
         </div>
         <BlackBox data={slider}/>
-       <ExclusiveSlider data={slider}/>
+       {/* <ExclusiveSlider data={slider}/> */}
+       <div className="bestSellingDiv">
+       <div className="row margin25 backWhite">
+                   <Col md={12}>
+                   <div className="">
+                        <p className="specialOfferTitle colorBlack">
+                            محصولات راگ
+                        </p>
+                    </div>
+                    <div className="seeAllDiv" style={{paddingLeft:50}}>
+                        <Button onClick={()=>history.push("/home")} className="seeAll">مشاهده همه</Button>
+                    </div>
+                   </Col>
+               </div>
+     <div className="d-flex justify-content-center margin">
+     {
+         rog?.map((item)=>{
+           return(
+
+     <div>
+           <BestSellingSliderCard viewList={true} data={item}/>
+         </div>
+           )
+         })
+       }
+        
+     </div>
+       </div>
        <div>
          <div className="row customRow">
            <Col md={4}>
