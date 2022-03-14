@@ -31,7 +31,7 @@ const CompletedCards = (props) => {
   props?.viewOverlay==true?
          <div className="grayOverlay">
            <div className="userProfile">
-             <img src={userProfile}/>
+             <img src={apiAsset+props.data.Pic}/>
            </div>
            <div className="userName">
              <p>{truncate("",20)}</p>
@@ -41,24 +41,24 @@ const CompletedCards = (props) => {
  null
  }
 
-       <img src={props?.data?.Pic1?apiAsset+props?.data?.Pic1:MadeSystem} className="madeSystemImg"/>
+       <img src={props?.data?.Pic?apiAsset+props?.data?.Pic:MadeSystem} className="madeSystemImg"/>
        </div>
        <p className="completeProductTitle">
        {truncate(props?.data?.SystemName?props?.data?.SystemName:"",100)}
        </p>
       <p className="completeProductDetail">
-     {props?.data?.Description}
+       {truncate(props?.data?.Description?props?.data?.Description:"",20)}
       </p>
       <hr className="bottomDashed7070"/>
       <div className="row">
         <Col md={5} className="pd0">
         <div className="d-flex align-items-center">
-          <div>
+          {/* <div>
             <p className="bottomIcon">
               <FaCommentDots size={18} className="marginLeft10"/>
               5
             </p>
-          </div>
+          </div> */}
           {/* <div style={{marginRight:15}}>
             <p className="bottomIcon">
               <FaLongArrowAltUp size={18} className="marginLeft10"/>

@@ -73,13 +73,14 @@ const ProductSave=(id)=>{
   var Guest=localStorage.getItem("guest")
 
   const axios = require("axios");
+  const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 
   axios
       // .post(apiUrl + "AddCustomerProductSave",{
       .post(apiUrl + "CreateSystemCustomer",{
         ProductID:id,
-        CustomerID:token.length<10 && token?token:0,
-        GuestID:token.length<10 && token?0:Guest?Guest:0
+        CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+        GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0
       })
   .then(function (response) {
     if (response.data.result == "true") {

@@ -17,6 +17,10 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
+    height: 200px;
+}
+.SliderCard:hover{
+    text-decoration: none;
 }
 .sliderCardDiv{
     margin-top: -100px;

@@ -76,7 +76,7 @@ console.log(params)
           <CategoryList cat={setCat} className=""/>
           </div>
           <div className="EachCategoryCol2">
-          <Sorts/>
+          <Sorts data={data} setData={setData}/>
           <div className="categoryDesNone">
           <CategoryList cat={setCat} />
           </div>

@@ -147,7 +147,7 @@ const AssembleMain = () => {
             </div>
         </div>
         <div className="assembleSliderBox">
-          <AssembleSlidr data={similar}/>
+          <AssembleSlidr data={ property}/>
         </div>
         <div className="assembleBox">
           <div className="topBarBox">
@@ -172,14 +172,14 @@ const AssembleMain = () => {
                     {com?.length}
                 </p>
             </div>
-            <div className="d-flex align-items-center borderRight1 colorWhite">
+            {/* <div className="d-flex align-items-center borderRight1 colorWhite">
              <Button>
              <FaShareAlt color={'#fff'}/>
                 <p className="userName">
                     اشتراک گذاری
                 </p>
              </Button>
-            </div>
+            </div> */}
           </div>
             <div className="d-flex align-items-center">
             <p className="linkCopy">
@@ -268,7 +268,22 @@ const AssembleMain = () => {
             })
           }
                         <hr className="grayHr"/>
-
+                        <div className="d-flex justify-content-end tRow mb-4 pb-4">
+            <div className="d-flex mr-4">
+            <p className="miniText2">
+              قیمت کل :
+              </p>
+            <p className="productAssembleName">
+             {property?.length>0?property[0].SystemCost:0} تومان
+              </p>
+             
+            </div>
+            {/* <div>
+            <button className="buyAssembleBtn">
+                  خرید کل قطعات
+                </button>
+            </div> */}
+          </div>
           <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
           <div className="padding20">
             <div className="d-flex">

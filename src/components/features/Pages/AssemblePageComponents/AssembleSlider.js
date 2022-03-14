@@ -17,6 +17,8 @@ SwiperCore.use([Navigation,Pagination]);
 
 
 const AssembleSlidr = ({data}) => {
+  console.log(88)
+  console.log(data)
   return (
     <div style={{backgroundColor:'#fff'}}>
       
@@ -33,7 +35,7 @@ const AssembleSlidr = ({data}) => {
 
   <SwiperSlide>
   <div className="exclusiveSliderCard2">
-      <img src={apiAsset+item.Pic1}/>
+      <img src={apiAsset+item.Pic}/>
       
   </div>
   </SwiperSlide>

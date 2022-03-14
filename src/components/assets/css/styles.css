@@ -2085,3 +2085,20 @@ align-items: center;
   border: 1px solid #ff004e !important;
   color:#ff004e !important;
 }
+.btn :hover{
+  transition:none !important;
+  pointer-events: none !important;
+}
+.wR10{
+  width: 10%;
+}
+.wR5{
+  width: 5%;
+
+}
+.wR55{
+  width: 55%;
+}
+.wR20{
+  width: 20%;
+}

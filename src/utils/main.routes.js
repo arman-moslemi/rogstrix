@@ -284,14 +284,14 @@ render={(props) => <AssembleSecond/>}>
 						</Route>
 						<Route
 
-						path='/CartStep1/:id'
+						path='/CartStep1'
 						name='سبد خرید گام 1'
 						render={(props) => <CartStep1/>}>
 
 						</Route>
 						<Route
 
-path='/CartStep2'
+path='/CartStep2/:id'
 name='سبد خرید گام 2'
 render={(props) => <CartStep2/>}>
 

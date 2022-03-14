@@ -54,7 +54,7 @@ console.log(params)
 
 
       <Container className="EachCategoryContainer" fluid>
-        <div className="breadCrumbs">
+        {/* <div className="breadCrumbs">
           <ul>
             <li>
               <a>
@@ -74,7 +74,7 @@ console.log(params)
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="pageTitle">
             <div>
             <img src={PageTitle}/>
