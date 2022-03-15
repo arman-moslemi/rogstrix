@@ -31,8 +31,7 @@ if(!email || !pass)
 }
 else{
 
-
-    axios.post(apiUrl + "Login",{Email:email,Password:pass})
+    axios.post(apiUrl + "Login",{Email:email,Password:pass,GuestID:localStorage.getItem("guest")})
     .then(function (response) {
       if (response.data.result == "true") {
         console.log(777)

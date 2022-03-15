@@ -9,6 +9,7 @@ import SpecialOffer from "./MainPageComponents/SpecialOffer";
 import ExclusiveSlider from "./MainPageComponents/ExclusiveSlider";
 import NewProductSliderCard from "./MainPageComponents/NewProductSliderCard";
 import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
+import BestSellingSlider from "./MainPageComponents/BestSellingSlider";
 import bannerAssemble from "../../assets/img/bannerAssemble.png";
 import bannerCase from "../../assets/img/bannerCase.png";
 import img7 from "../../assets/img/img7.png";
@@ -255,16 +256,12 @@ const MainPage = () => {
                    </Col>
                </div>
      <div className="d-flex justify-content-center margin">
-     {
-         seller?.map((item)=>{
-           return(
+     
 
      <div>
-           <BestSellingSliderCard viewList={true} data={item}/>
+           <BestSellingSlider  data={seller}/>
          </div>
-           )
-         })
-       }
+         
         
      </div>
        </div>
@@ -325,14 +322,16 @@ const MainPage = () => {
                </div>
       <div className="row">
         {
-          newPro.map((item)=>{
+          newPro.map((item,index2)=>{
             return(
-
+index2<4?
         <Col md={6} className="marginTop30 newProductCol">
         <div className=" whiteBoxSlider">
           <NewProductSliderCard data={item}/>
           </div>
         </Col>
+        :
+        null
             )
           })
         }

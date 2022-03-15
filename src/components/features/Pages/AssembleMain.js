@@ -26,6 +26,8 @@ const AssembleMain = () => {
 
   const [similar,setSimilar]=useState([])
   const [property,setProperty]=useState([])
+  const [warning,setWarning]=useState()
+  const [hoshdar,setHoshdar]=useState()
 
   const mainSlider=()=>{
     const axios = require("axios");
@@ -79,6 +81,23 @@ const AssembleMain = () => {
         if (response.data.result == "true") {
 
           setCom(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .get(apiUrl + "Warning")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setWarning(response.data.Data.Warning)
+          setHoshdar(response.data.Data.Attention)
           console.log(response.data.Data)
 
       }
@@ -235,7 +254,7 @@ const AssembleMain = () => {
                 </div>
                <div className="d-flex wB65">
                <div>
-                  <img src={apiAsset+item.Pic} className="assembleImg"/>
+                  <img src={apiAsset+item.ProductPic} className="assembleImg"/>
                 </div>
                 <div>
                   <p className="productAssembleName">
@@ -291,16 +310,16 @@ const AssembleMain = () => {
                 هشدار !
               </p>
               <p className="productAssembleName MediumFont" >
-              برخی از چیپست‌های مادربورد فلان با سی‌پی‌یوهای فلان سازگاری ندارند و باید فلان چیز را هم نصب کنید تا مشکل برطرف شود.
-              </p>
+{warning}              </p>
             </div>
             <div className="d-flex">
               <p className="hoshdar orange">
                 توجه !
               </p>
               <p className="productAssembleName MediumFont" >
-              توجه داشته باشید که برخی از قطعات ممکن است از نظر اندازه با هم سازگار نباشند و با هم جور نشوند. در حال حاضر هنوز این نوع سازگاری قابل بررسی نیست. </p>
-            </div>
+              {hoshdar}        
+              </p>
+                  </div>
           </div>
         </div>
         <div className="whiteBox3 mt-3">

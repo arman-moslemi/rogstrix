@@ -35,7 +35,7 @@ const AssembleSlidr = ({data}) => {
 
   <SwiperSlide>
   <div className="exclusiveSliderCard2">
-      <img src={apiAsset+item.Pic}/>
+      <img src={apiAsset+item.ProductPic}/>
       
   </div>
   </SwiperSlide>

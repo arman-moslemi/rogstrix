@@ -37,6 +37,7 @@ const CartStep1 = () => {
     const [radio,setRadio]=useState("")
 
     const [open1, setOpen1] = useState(false);
+    const [total, setTotal] = useState(0);
 
 
    const increment = (id,type) => {
@@ -52,7 +53,8 @@ const CartStep1 = () => {
     .then(function (response) {
       if (response.data.result == "true") {
 
-        setData(response.data.Data)
+        // setData(response.data.Data)
+        mainSlider()
         console.log(response.data.Data)
 
     }
@@ -89,7 +91,11 @@ const CartStep1 = () => {
 
               setData(response.data.Data)
               console.log(response.data.Data)
-
+var tot=0
+response.data.Data.map((item)=>{
+    tot+=parseInt(item?.Cost)*item.Number
+})
+setTotal(tot)
           }
           else{
             console.log(response.data.result)
@@ -98,6 +104,23 @@ const CartStep1 = () => {
           .catch(function (error) {
             console.log(error);
           });
+
+
+
+      }
+      const toStep2=()=>{
+        const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+console.log(555)
+console.log(storedData?.toString().length<10 && storedData?true:false)
+         if(storedData?.toString().length<10 && storedData)
+         
+{         history.push("/CartStep2/"+storedData)
+}         else{
+    alert("ابتدا ورورد کنید")
+    history.push("/Login")
+
+}
+
 
 
 
@@ -181,9 +204,9 @@ const deleted=(id)=>{
                      <div  className="d-flex ta-center pd0 d-inline-block align-items-center" style={{borderBottom:"none",marginTop:5}}>
                     <p className="CartColorP">تعداد :</p>
                     <div className="counterDiv">
-              <button onClick={()=>increment(item.ProductID,"mines")} className="decBTN">-</button>
+              <button onClick={()=>increment(item.ShoppingBasketID,"mines")} className="decBTN">-</button>
               <span style={{marginRight:'0'}}>{item.Number}</span>
-              <button onClick={()=>increment(item.ProductID,"add")} className="inBTN">+</button>
+              <button onClick={()=>increment(item.ShoppingBasketID,"add")} className="inBTN">+</button>
             </div>
                     </div>
                     <div className="priceRowCart mb-4 mt-4">
@@ -194,7 +217,9 @@ const deleted=(id)=>{
                     </div>
                     <div>
                         <p className='colorRed'>
-                            {item.Cost} تومان
+                            
+{                        parseInt(item?.Cost)
+}                         تومان
                         </p>
                     </div>
                 </div>
@@ -278,7 +303,7 @@ const deleted=(id)=>{
                     </div>
                     <div>
                         <p>
-                            3.250.000 تومان
+                            {total} تومان
                         </p>
                     </div>
                 </div>
@@ -307,7 +332,7 @@ const deleted=(id)=>{
                         </p>
                     </div>
                 </div> */}
-                <Button className="saveBtn w100 mt-4" style={{marginTop:20}} >
+                <Button onClick={()=>toStep2()} className="saveBtn w100 mt-4" style={{marginTop:20}} >
                     ادامه سفارش
                 </Button>
             </div>

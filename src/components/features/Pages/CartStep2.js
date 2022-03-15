@@ -33,7 +33,8 @@ const CartStep2 = () => {
     const [count,setCount]=useState(1)
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
-    const [tran,setTran]=useState()
+    const [tran,setTran]=useState([])
+    // const [tran2,setTran2]=useState([])
     const [radio,setRadio]=useState("")
     const params = useParams().id;
     const [open1, setOpen1] = useState(false);
@@ -54,7 +55,15 @@ const CartStep2 = () => {
     const [city2,setCity2]=useState(0)
     const [reg2,setReg2]=useState(0)
     const [cities,setCity]=useState([])
-  
+    const [total,setTotal]=useState(0)
+    const [disText,setDiscount]=useState("")
+    const [tranCost,setTranCost]=useState(0)
+    const [hesab,setHesab]=useState("")
+    const [ramz,setRamz]=useState("")
+    const [type,setType]=useState(0)
+    const [send,setSend]=useState("")
+    const history = useHistory();
+
             const getData=()=>{
         const axios = require("axios");
 
@@ -105,6 +114,26 @@ const CartStep2 = () => {
         .catch(function (error) {
           console.log(error);
         });
+
+          axios
+              .post(apiUrl + "ShoppingBasketView",{
+                CustomerID:params              })
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+var tot=0
+response.data.Data.map((item)=>{
+    tot+=parseInt(item?.Cost)*item.Number
+})
+setTotal(tot)
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
 
 
 
@@ -161,15 +190,21 @@ setCity2(0)
           if (response.data.result == "true") {
             console.log(88)
 
+            console.log(response.data.Data)
+            var cc=[]
+            cc.push(response.data?.Data)
+            console.log(cc)
+
              setTran(response.data.Data)
-//              console.log(response.data.Data)
 // setOpen1(false)
 // setOpen2(false)
             // history.push("/RegisterVerify/"+mobile)
 
         }
         else{
-          setTran()
+          // setTran()
+          console.log(response.data)
+
           setTitle("خطا")
           setOpen(true)
         }})
@@ -179,6 +214,64 @@ setCity2(0)
 
 
 
+
+      }
+      const Discount=()=>{
+        const axios = require("axios");
+
+        console.log(444)
+
+        axios.post(apiUrl + "SetDiscount",{CustomerID:params,CostTotal:total,Text:disText})
+        .then(function (response) {
+          if (response.data.result == "true") {
+            console.log(88)
+
+setTotal(response.data.Data)
+
+        }
+        else{
+alert(response.data.message)        
+  setTitle("خطا")
+          setOpen(true)
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
+
+      }
+      const Factor=()=>{
+        const axios = require("axios");
+
+        console.log(444)
+if(send==""){
+  alert("لطفا نحوه ارسال را مشخص کنید")
+}
+else if(radio==0){
+  alert("لطفا آدرس را مشخص کنید")
+
+}
+else{
+        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendID:send})
+        .then(function (response) {
+          if (response.data.result == "true") {
+            console.log(88)
+alert("موفقیت آمیز بود")
+history.push("/UserOrder/"+params)
+        }
+        else{
+alert(response.data.message)        
+  setTitle("خطا")
+          setOpen(true)
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+      }
 
       }
       useEffect(() => {
@@ -507,14 +600,15 @@ null
                   انتخاب نحوه ارسال
                 </p>
       </div>
-      <Button className="saveBtn">
-
-         ثبت
-      </Button>
+     
           </div>
                  </div>
                  <hr className="grayDashed" />
                  <div className="rightMenuBox1 d-flex f1">
+                 {
+                   tran.map((item)=>{
+                     return(
+
                  <div className="shadowBox mb-4 w30">
                      <p className="fontWeightBold">
                      <Radio
@@ -525,10 +619,13 @@ null
            color: '#ff004e',
          },
        }}
+       checked={send===item.SendName}
+       onChange={()=>{setSend(item.SendName);setTranCost(item.Cost)}}
+
      />
-{tran.SendName}                   </p>
+{item.SendName}                   </p>
                    <p className='fontWeightNormal'>
-                       هزینه ارسال : {tran.Cost} تومان
+                       هزینه ارسال : {item.Cost} تومان
                    </p>
 
                  </div>
@@ -537,7 +634,10 @@ null
                 
                
 
-                 </div>
+)
+})
+}
+</div>
            </div>
              :
              null
@@ -551,7 +651,7 @@ null
                  کد تخفیف
                 </p>
       </div>
-      <Button className="saveBtn">
+      <Button onClick={()=>Discount()} className="saveBtn">
           
          ثبت
       </Button>
@@ -572,7 +672,7 @@ null
                       <p className='fontWeightBold mr-4'>
                          کد تخفیف خود را وارد کنید :
                       </p>
-                      <input type="text"/>
+                      <input onChange={(e)=>setDiscount(e.target.value)} type="text"/>
                   </div>
                   </Col>
               </div>
@@ -607,6 +707,9 @@ null
            color: '#ff004e',
          },
        }}
+       checked={type===1}
+       onChange={()=>setType(1)}
+
      />
      پرداخت آنلاین
                    </p>
@@ -627,6 +730,10 @@ null
            color: '#ff004e',
          },
        }}
+       checked={type===2}
+
+       onChange={()=>setType(2)}
+
      />
 پرداخت بانکی                   </p>
                    <p className='fontWeightNormal'>
@@ -641,7 +748,7 @@ null
                       <p className='fontWeightBold mr-4'>
                           کد رهگیری : 
                       </p>
-                      <input type="text"/>
+                      <input onChange={(e)=>setHesab(e.target.value)} type="text"/>
                   </div>
                   </Col>
               </div>
@@ -659,6 +766,9 @@ null
            color: '#ff004e',
          },
        }}
+       checked={type===3}
+
+       onChange={()=>setType(3)}
      />
 پرداخت با اتریوم                  </p>
                    <p className='fontWeightNormal'>
@@ -673,7 +783,7 @@ null
                       <p className='fontWeightBold mr-4'>
                           کد رهگیری : 
                       </p>
-                      <input type="text"/>
+                      <input  onChange={(e)=>setRamz(e.target.value)} type="text"/>
                   </div>
                   </Col>
               </div>
@@ -694,7 +804,7 @@ null
                     </div>
                     <div>
                         <p>
-                            3.250.000 تومان
+                            {total} تومان
                         </p>
                     </div>
                 </div>
@@ -706,7 +816,7 @@ null
                     </div>
                     <div>
                         <p>
-                            125.000 تومان
+                            {tranCost}تومان
                         </p>
                     </div>
                 </div>
@@ -719,11 +829,11 @@ null
                     </div>
                     <div>
                     <p>
-                            3.250.000 تومان
+                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total} تومان
                         </p>
                     </div>
                 </div>
-                <Button className="saveBtn w100 mt-4" style={{marginTop:20}} >
+                <Button onClick={()=>Factor()} className="saveBtn w100 mt-4" style={{marginTop:20}} >
                     پرداخت
                 </Button>
             </div>
