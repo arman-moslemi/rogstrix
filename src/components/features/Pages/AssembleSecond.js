@@ -249,7 +249,7 @@ if(isLoggedIn)
                 تخمین مصرف انرژی : 
               </p>
               <p className="fontWeightLight">
-                340 وات
+                0 وات
               </p>
             </div>
           </div>
