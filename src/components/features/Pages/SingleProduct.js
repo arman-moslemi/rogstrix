@@ -26,6 +26,9 @@ const SingleProduct = () => {
   const [similar,setSimilar]=useState([])
   const [rate,setRate]=useState(0)
   const [color,setColor]=useState()
+  const [count,setCount]=useState(1)
+  var Guest=localStorage.getItem("guest")
+
   const { isLoggedIn, token } = useContext(AuthContext);
   const ProductSave=()=>{
     var Guest=localStorage.getItem("guest")
@@ -64,15 +67,18 @@ if(!Guest || Guest==0){
   }
   const AddToCart=()=>{
     const axios = require("axios");
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+
 console.log(555)
 console.log(token)
     axios
         .post(apiUrl + "ShoppingBasketAdd",{
           ProductID:params,
-          CustomerID:token,
+          CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+          GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,
           Cost:parseInt(product.Cost)-parseInt(product.SpecialCost),
           ColorID:color,
-          Number:1
+          Number:count
 
         })
     .then(function (response) {
@@ -80,7 +86,10 @@ console.log(token)
 alert("با موفقیت ذخیره شد")
         console.log(777)
         console.log(response.data.Data)
-
+        if(response.data.Data)
+{    
+   localStorage.setItem("guest",response.data.Data)
+}
     }
     else{
       console.log(888)
@@ -219,7 +228,6 @@ const images = [
     mainSlider();
 // alert(val)
   }, []);
-  const [count,setCount]=useState(1)
   const [open1, setOpen1] = useState(false);
   const increment = () => {
     setCount(count+1)

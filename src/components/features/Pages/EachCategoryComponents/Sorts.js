@@ -21,7 +21,7 @@ const viewset=()=>{
 console.log(14563)
 //  setProduct([])
 // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-setData([...data].sort((a, b) => (a.Viewer < b.Viewer) ? 1 : -1))
+setData([...data].sort((a, b) => (a.TotalView < b.TotalView) ? 1 : -1))
 console.log(data)
 
 }

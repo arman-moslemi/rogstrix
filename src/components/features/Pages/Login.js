@@ -31,14 +31,17 @@ if(!email || !pass)
 }
 else{
 
-
-    axios.post(apiUrl + "Login",{Email:email,Password:pass})
+    axios.post(apiUrl + "Login",{Email:email,Password:pass,GuestID:localStorage.getItem("guest")})
     .then(function (response) {
       if (response.data.result == "true") {
+        console.log(777)
         console.log(response.data.Data)
-        auth.login(response.data.Data[0].CustomerID);
+        auth.login(response.data.Data.CustomerID);
+        console.log(88)
+
         console.log("auth", auth.isLoggedIn);
-        history.push("/EditInformation/"+response.data.Data[0].CustomerID)
+        localStorage.setItem("guest","");
+        history.push("/EditInformation/"+response.data.Data.CustomerID)
 
     }
     else{
@@ -47,6 +50,8 @@ else{
 
     }})
     .catch(function (error) {
+      console.log(777)
+
       console.log(error);
     });
   }

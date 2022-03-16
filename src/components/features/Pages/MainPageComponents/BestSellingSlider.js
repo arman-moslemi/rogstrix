@@ -10,28 +10,25 @@ SwiperCore.use([Navigation]);
 // if you want to use array
 
 
-const bestSellingSlider = () => {
+const BestSellingSlider = ({data}) => {
   return (
     <div>
          <Swiper className="specialOfferSlider" slidesPerView={5} spaceBetween={0} navigation={true} >
-  <SwiperSlide>
-    <BestSellingSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <BestSellingSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <BestSellingSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <BestSellingSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <BestSellingSliderCard/>
-  </SwiperSlide>
-  <SwiperSlide>
-    <BestSellingSliderCard/>
-  </SwiperSlide>
+         {
+         data?.map((item)=>{
+           return(
+
+    //  <div>
+    //        <BestSellingSliderCard viewList={true} data={item}/>
+    //      </div>
+          <SwiperSlide>
+          <BestSellingSliderCard viewList={true} data={item}/>
+        </SwiperSlide>
+           )
+         })
+       }
+ 
+ 
  
   
  
@@ -41,4 +38,4 @@ const bestSellingSlider = () => {
   );
 };
 
-export default bestSellingSlider;
+export default BestSellingSlider;

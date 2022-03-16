@@ -3,6 +3,7 @@ import "./Styles/cardBox.css"
 import cardImg from "../../../assets/img/cardImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 const CardBox = ({data}) => {
   const history = useHistory();
@@ -11,7 +12,14 @@ const CardBox = ({data}) => {
 
       <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} className="SliderCard">
        <div className="sliderCardDiv">
+         {
+           data?.Pic1?
+           <img src={apiAsset+data.Pic1} className="sliderCardImg"/>
+           :
+
        <img src={cardImg} className="sliderCardImg"/>
+         }
+
        </div>
        <div className="cardTitleW100">
           <p>{data.ProductName}</p>

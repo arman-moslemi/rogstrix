@@ -26,6 +26,8 @@ const AssembleMain = () => {
 
   const [similar,setSimilar]=useState([])
   const [property,setProperty]=useState([])
+  const [warning,setWarning]=useState()
+  const [hoshdar,setHoshdar]=useState()
 
   const mainSlider=()=>{
     const axios = require("axios");
@@ -79,6 +81,23 @@ const AssembleMain = () => {
         if (response.data.result == "true") {
 
           setCom(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .get(apiUrl + "Warning")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setWarning(response.data.Data.Warning)
+          setHoshdar(response.data.Data.Attention)
           console.log(response.data.Data)
 
       }
@@ -147,7 +166,7 @@ const AssembleMain = () => {
             </div>
         </div>
         <div className="assembleSliderBox">
-          <AssembleSlidr data={similar}/>
+          <AssembleSlidr data={ property}/>
         </div>
         <div className="assembleBox">
           <div className="topBarBox">
@@ -172,14 +191,14 @@ const AssembleMain = () => {
                     {com?.length}
                 </p>
             </div>
-            <div className="d-flex align-items-center borderRight1 colorWhite">
+            {/* <div className="d-flex align-items-center borderRight1 colorWhite">
              <Button>
              <FaShareAlt color={'#fff'}/>
                 <p className="userName">
                     اشتراک گذاری
                 </p>
              </Button>
-            </div>
+            </div> */}
           </div>
             <div className="d-flex align-items-center">
             <p className="linkCopy">
@@ -235,7 +254,7 @@ const AssembleMain = () => {
                 </div>
                <div className="d-flex wB65">
                <div>
-                  <img src={apiAsset+item.Pic} className="assembleImg"/>
+                  <img src={apiAsset+item.ProductPic} className="assembleImg"/>
                 </div>
                 <div>
                   <p className="productAssembleName">
@@ -268,7 +287,22 @@ const AssembleMain = () => {
             })
           }
                         <hr className="grayHr"/>
-
+                        <div className="d-flex justify-content-end tRow mb-4 pb-4">
+            <div className="d-flex mr-4">
+            <p className="miniText2">
+              قیمت کل :
+              </p>
+            <p className="productAssembleName">
+             {property?.length>0?property[0].SystemCost:0} تومان
+              </p>
+             
+            </div>
+            {/* <div>
+            <button className="buyAssembleBtn">
+                  خرید کل قطعات
+                </button>
+            </div> */}
+          </div>
           <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
           <div className="padding20">
             <div className="d-flex">
@@ -276,16 +310,16 @@ const AssembleMain = () => {
                 هشدار !
               </p>
               <p className="productAssembleName MediumFont" >
-              برخی از چیپست‌های مادربورد فلان با سی‌پی‌یوهای فلان سازگاری ندارند و باید فلان چیز را هم نصب کنید تا مشکل برطرف شود.
-              </p>
+{warning}              </p>
             </div>
             <div className="d-flex">
               <p className="hoshdar orange">
                 توجه !
               </p>
               <p className="productAssembleName MediumFont" >
-              توجه داشته باشید که برخی از قطعات ممکن است از نظر اندازه با هم سازگار نباشند و با هم جور نشوند. در حال حاضر هنوز این نوع سازگاری قابل بررسی نیست. </p>
-            </div>
+              {hoshdar}        
+              </p>
+                  </div>
           </div>
         </div>
         <div className="whiteBox3 mt-3">

@@ -57,12 +57,12 @@ const AssembleSecond = () => {
      const axios = require("axios");
      const storedData = JSON.parse(localStorage.getItem("userData"))?.token
   console.log(555)
-  console.log(storedData.toString().length)
+  console.log(storedData?.toString().length)
   // console.log(storedData.length)
   console.log(isLoggedIn)
      axios.post(apiUrl + "SingleSystemImperfect",{
-       CustomerID:storedData.toString().length<10 && storedData?storedData:0,
-       GuestID:storedData.toString().length<10 && storedData?0:Guest
+       CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+       GuestID:storedData?.toString().length<10 && storedData?0:Guest
      })
      .then(function (response) {
        if (response.data.result == "true") {
@@ -98,8 +98,8 @@ ss.push(item.GroupID)
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 
     axios.post(apiUrl + "DeleteSystemCustomer",{
-      CustomerID:storedData.toString().length<10 && storedData?storedData:0,
-      GuestID:storedData.toString().length<10 && storedData?0:Guest,
+      CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+      GuestID:storedData?.toString().length<10 && storedData?0:Guest,
       ProductID:id
     })
     .then(function (response) {
@@ -194,7 +194,7 @@ if(isLoggedIn)
                 </p>
                 </Button>
             </div>
-            <div className="d-flex align-items-center borderRight1 colorWhite" >
+            {/* <div className="d-flex align-items-center borderRight1 colorWhite" >
                 <FaArrowUp color={'#fff'}/>
                 <p className="userName">
                    
@@ -205,17 +205,17 @@ if(isLoggedIn)
                 <p className="userName">
                     
                 </p>
-            </div>
-            <div className="d-flex align-items-center borderRight1 colorWhite">
+            </div> */}
+            {/* <div className="d-flex align-items-center borderRight1 colorWhite">
              <Button>
              <FaShareAlt color={'#fff'}/>
                 <p className="userName">
                     اشتراک گذاری
                 </p>
              </Button>
-            </div>
+            </div> */}
           </div>
-            <div className="d-flex align-items-center">
+            {/* <div className="d-flex align-items-center">
             <p className="linkCopy">
             https://rogstrix.ir/list/bRDXKB
             </p>
@@ -223,7 +223,7 @@ if(isLoggedIn)
            <FaLink color={'#fff'}/>
            </Button>
          
-            </div>
+            </div> */}
           </div>
           <div className="secondBox d-flex justify-content-between pd0">
             <div className="d-flex align-items-center colorWhite pd20">
@@ -249,27 +249,27 @@ if(isLoggedIn)
                 تخمین مصرف انرژی : 
               </p>
               <p className="fontWeightLight">
-                340 وات
+                0 وات
               </p>
             </div>
           </div>
-          <div className="d-flex align-items-center justify-content-between tRow">
-            <div className="d-flex">
+          <div className="d-flex align-items-center tRow">
+            <div className="d-flex wR20">
             <p className="tableFirstRowText">
               گروه قطعه
             </p>
             <div className="vl"></div>
             </div>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wR55">
               نام قطعه
             </p>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wR10">
               قیمت(تومان)
             </p>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wR10">
               خرید
             </p>
-            <p className="tableFirstRowText">
+            <p className="tableFirstRowText wR5">
               حذف
             </p>
           </div>
@@ -284,38 +284,38 @@ product?.length>0?
 inc.indexOf(item.GroupID)!=-1 ?
       <div>
       <hr className="grayHr"/>
-      <div className="d-flex align-items-center justify-content-between tRow">
-      <div>
+      <div className="d-flex align-items-center tRow">
+      <div className="wR20">
         <p className="tableFirstRowText">
-{product[inc.indexOf(item.GroupID)].Title}        </p>
+{product[inc?.indexOf(item.GroupID)]?.Title}        </p>
         {/* <p className="miniText2">
           {item2.EngTitle}
         </p> */}
       </div>
-     <div className="d-flex">
+     <div className="d-flex wR55">
      <div>
-        <img src={apiAsset+product[inc.indexOf(item.GroupID)].Pic1} className="assembleImg"/>
+        <img src={apiAsset+product[inc?.indexOf(item.GroupID)]?.Pic1} className="assembleImg"/>
       </div>
       <div>
         <p className="productAssembleName">
-{product[inc.indexOf(item.GroupID)].ProductName}        </p>
+{product[inc?.indexOf(item.GroupID)]?.ProductName}        </p>
         {/* <p className="miniText2">
         مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
         </p> */}
       </div>
      </div>
-      <div>
+      <div className="wR10">
         <p className="productAssembleName">
-        {parseInt(product[inc.indexOf(item.GroupID)].Cost)-parseInt(product[inc.indexOf(item.GroupID)].SpecialCost)}تومان
+        {parseInt(product[inc?.indexOf(item.GroupID)]?.Cost)-parseInt(product[inc?.indexOf(item.GroupID)]?.SpecialCost)}تومان
         </p>
         </div>
-        <div>
-          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)].ProductID)} className="buyAssembleBtn">
+        <div className="wR10">
+          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.ProductID)} className="buyAssembleBtn">
             خرید
           </button>
         </div>
-        <div>
-          <button onClick={()=>deleteProduct(product[inc.indexOf(item.GroupID)].ProductID)} className="glassBtn">
+        <div className="wR5">
+          <button onClick={()=>deleteProduct(product[inc.indexOf(item.GroupID)]?.ProductID)} className="glassBtn">
             <FaTimes/>
           </button>
         </div>
@@ -391,11 +391,11 @@ inc.indexOf(item.GroupID)!=-1 ?
               </p>
              
             </div>
-            <div>
+            {/* <div>
             <button className="buyAssembleBtn">
                   خرید کل قطعات
                 </button>
-            </div>
+            </div> */}
           </div>
           <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
           <hr class="dottedH"></hr>
@@ -417,7 +417,7 @@ inc.indexOf(item.GroupID)!=-1 ?
             </div>
           </div>
         </div>
-        <div className="whiteBox3 mt-3">
+        {/* <div className="whiteBox3 mt-3">
             <p className="boxTitle2 BoldFont">
            توضیحات
                 </p>
@@ -425,7 +425,7 @@ inc.indexOf(item.GroupID)!=-1 ?
                 <p className="productDetail">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
                 </p>
-            </div>
+            </div> */}
         {/* <div className="whiteBox3 mt-3">
           <CommentBox/>
           </div> */}
