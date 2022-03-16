@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "IRANSans-Black";
   src: url("../webfonts/IRANSans_Black.ttf") format("truetype");
@@ -2141,4 +2142,14 @@ align-items: center;
 }
 .pdM{
   padding: 15px;
+}
+.tt2{
+  width: 100%;
+}
+.tt3{
+  width: 100%;
+}
+a:hover{
+  text-decoration: none !important;
+  
 }

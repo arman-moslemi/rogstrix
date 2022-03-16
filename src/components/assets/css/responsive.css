@@ -267,7 +267,7 @@ max-width: 70%;
     }
     .BestSellingCard img{
         width: 100%;
-        height: auto;
+        height: 200px;
     }
     .BestSellingCard .row{
         display: block !important;
@@ -298,6 +298,22 @@ max-width: 70%;
     }
 }
 @media screen and (max-width:880px){
+    .firstSlider{
+        display: none;
+    }
+    .bestSellerContainer  .rightBoxCol{
+        display: none;
+    }
+    .NewProductCardBox img{
+        width: 60%;
+    }
+    .whiteBoxSlider{
+        padding: 1rem;
+        height: auto !important;
+    }
+    .newProductBox{
+        padding:1rem;
+    }
     .MainMenuBtn{
         font-size: 13px;
     }
@@ -329,6 +345,9 @@ max-width: 70%;
     }
     .linkCopy{
         display: none;
+    }
+    .mn{
+        display: block !important;
     }
 }
 @media screen and (max-width:630px){

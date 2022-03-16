@@ -1,49 +1,73 @@
-import React from "react";
-import SwiperCore, {  Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./Styles/weblogSlider.css";
-import { Container ,Col, Button,Row} from "react-bootstrap";
+import React, { Component } from "react";
+import Slider from "react-slick";
 import WeblogCardSlider from "./WeblogCardSlider";
-SwiperCore.use([Navigation]);
-// if you want to use array
 
 
 const WeblogSlider = ({data}) => {
+  const  settings = {
+    dots: true,
+    navigator:true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 1,
+    rtl: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll:1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow:1,
+          slidesToScroll: 1,
+          initialSlide: 0
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 0
+        }},
+        {
+          breakpoint: 300,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 0
+          }
+
+      }
+    ]
+  };
   return (
-    <div>
-         <Swiper className="weblogSlider" slidesPerView={2} spaceBetween={10} navigation={true}   breakpoints={{
-    // when window width is >= 640px
-    640: {
-      width: 640,
-      slidesPerView: 1,
-    },
-    // when window width is >= 768px
-    768: {
-      width: 768,
-      slidesPerView: 2,
-    }} }>
-           {
+    
+     <div className="ttt2">
+        
+     <Slider {...settings}>
+     {
              data?.map((item)=>{
                return(
 
-  <SwiperSlide>
+  <div>
     <WeblogCardSlider data={item}/>
-  </SwiperSlide>
+  </div>
                )
              })
            }
-  {/* <SwiperSlide>
-    <WeblogCardSlider/>
-  </SwiperSlide> */}
 
 
-
-
-  </Swiper>
-
-    </div>
+     </Slider>
+   </div>
   );
 };
 

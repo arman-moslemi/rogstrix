@@ -1,41 +1,65 @@
-import React from "react";
-import SwiperCore, {  Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./Styles/bestSellingSlider.css";
-import { Container ,Col, Button,Row} from "react-bootstrap";
+import React, { Component } from "react";
+import Slider from "react-slick";
 import BestSellingSliderCard from "./BestSellingSliderCard";
-SwiperCore.use([Navigation]);
-// if you want to use array
 
-
-const BestSellingSlider = ({data}) => {
-  return (
-    <div>
-         <Swiper className="specialOfferSlider" slidesPerView={5} spaceBetween={0} navigation={true} >
-         {
+  const BestSellingSlider = ({data}) => {
+    const  settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
+    
+    return (
+      <div className="ttt">
+        
+        <Slider {...settings}>
+        {
          data?.map((item)=>{
            return(
 
     //  <div>
     //        <BestSellingSliderCard viewList={true} data={item}/>
     //      </div>
-          <SwiperSlide>
+          <div>
           <BestSellingSliderCard viewList={true} data={item}/>
-        </SwiperSlide>
+        </div>
            )
          })
        }
  
- 
- 
-  
- 
-  </Swiper>
-  
-    </div>
-  );
-};
 
+        </Slider>
+      </div>
+    );
+  
+};
 export default BestSellingSlider;

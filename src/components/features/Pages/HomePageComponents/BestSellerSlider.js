@@ -1,29 +1,76 @@
-import React from "react";
-import SwiperCore, {  Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./Styles/bestSellerSlider.css";
-import { Container ,Col, Button,Row} from "react-bootstrap";
+import React, { Component } from "react";
+import Slider from "react-slick";
 import SliderCard from "./SliderCard";
-SwiperCore.use([Navigation]);
+import { Container ,Col, Button,Row} from "react-bootstrap";
 // if you want to use array
 
 
 const BestSellerSlider = ({data}) => {
+  const  settings = {
+    dots: true,
+    navigator:true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 1,
+    rtl: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll:1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow:1,
+          slidesToScroll: 1,
+          initialSlide: 0
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 0
+        }},
+        {
+          breakpoint: 300,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 0
+          }
+
+      }
+    ]
+  };
   return (
     <div>
-         <Swiper slidesPerView={3} spaceBetween={30} navigation={true} className="mySwiper">
-           {
+        <div className="ttt5">
+        
+        <Slider {...settings}>
+        {
              data?.map((item)=>{
                return(
 
-  <SwiperSlide>
+  <div>
     <SliderCard data={item}/>
-  </SwiperSlide>
+  </div>
                )
              })
            }
+   
+   
+        </Slider>
+      </div>
+        
 
   <div className="row mar-top-22">
     <Col md={4}>
@@ -40,8 +87,7 @@ const BestSellerSlider = ({data}) => {
       </Button>
     </Col>
   </div>
-  </Swiper>
-
+ 
     </div>
   );
 };

@@ -185,7 +185,7 @@ const MainPage = () => {
                     </div>
                    </Col>
                </div>
-     <div className="d-flex justify-content-center margin">
+     <div className="d-flex justify-content-center margin mn">
      {
          rog?.map((item)=>{
            return(
@@ -258,7 +258,7 @@ const MainPage = () => {
      <div className="d-flex justify-content-center margin">
      
 
-     <div>
+     <div className="tt2">
            <BestSellingSlider  data={seller}/>
          </div>
          
@@ -352,7 +352,7 @@ index2<4?
                     </div>
                    </Col>
                </div>
-               <div>
+               <div className="tt3">
                  <WeblogSlider data={blog}/>
                </div>
 

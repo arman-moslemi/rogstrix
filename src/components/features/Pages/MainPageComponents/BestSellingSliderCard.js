@@ -56,19 +56,19 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
   <p className="productName">
   {truncate(data?.ProductName+" "+data?.BrandName,50)}
   </p>
-<div className="row marginTop30">
+<div className=" marginTop30 bot2 ta-left">
 {  data?.SpecialCost?
 
-  <Col md={4} className="pad0 ta-right">
-    <p className="grayStrokeOut">
+
+    <p className="grayStrokeOut mb-1">
     {data?.Cost}
     </p>
-  </Col>
+ 
     :
     null}
-  <Col md={8} className="pad0 ta-left">
+  
 {  data?.SpecialCost?
-    <p className="grayPrice">
+    <p className="grayPrice ">
     {parseInt(data?.Cost)-parseInt(data?.SpecialCost)}
  تومان
     </p>
@@ -77,10 +77,10 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
     {parseInt(data?.Cost)}
  تومان
     </p>}
-  </Col>
+  
 </div>
 </Link>
-<div className="row">
+<div className="row btnB2">
   <Col md={12} className="ta-right pd0">
     <Button onClick={()=>goCompare()} className="glassBtn2">
       <FaRandom/>
