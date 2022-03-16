@@ -2085,3 +2085,60 @@ align-items: center;
   border: 1px solid #ff004e !important;
   color:#ff004e !important;
 }
+.factorLogo{
+  width: 20%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.factorHeader{
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+}
+.tableBorderLeft{
+  border-left: 1px solid #d4d4d4;
+}
+.pdTable{
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+.pdTable2{
+  padding: 15px;
+}
+.borderBottomTable{
+  border-bottom: 1px solid #d4d4d4;
+}
+.topBarTable{
+  background-color: rgb(202, 202, 202);
+  padding: 10px 15px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.backGray{
+  background-color: rgb(202, 202, 202);
+  padding: 10px 15px;
+}
+.fontWeightBold2{
+  font-family: "IRANSans-Bold";
+  color:#111;
+  font-size: 14px;
+}
+.fontWeightNormal2{
+  font-family: "IRANSans";
+  color:#111;
+  font-size: 12px;
+}
+.pd15{
+  padding: 15px;
+}
+.backBlueLight{
+  background-color: #24e0ff2b;
+}
+.pdM{
+  padding: 15px;
+}
