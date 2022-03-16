@@ -1,14 +1,18 @@
 import react,{useContext,useState} from "react";
 import RedLogo from '../../../assets/img/redLogo.png';
 import { FaSearch , FaUser ,FaShoppingBasket,FaTable,FaTimes} from 'react-icons/fa';
-import { Container ,Col, Button} from "react-bootstrap";
+import { Container ,Col, Button,ToggleButton} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../../../context/auth-context";
 import MenuUser from "../../../assets/icons/userMenu";
 import CartMenu from "../../../assets/icons/cartMenu";
 import MenuSearch from "../../../assets/icons/menuSearch";
 import Dashboard from "../../../assets/icons/dashboard";
+import useDarkMode from 'use-dark-mode';
+
 const Header = () => {
+  const darkMode = useDarkMode(false);
+
   const history = useHistory();
   const { isLoggedIn, token } = useContext(AuthContext);
   const [showSearch, setshowSearch] = useState(false);
@@ -27,12 +31,21 @@ const  _handleKeyDown = (e) => {
       <div>
         <img src={RedLogo} onClick={()=>history.push("/")} className="hedearRedLogo"/>
        </div>
-       <div className="margin-right-60">
+       {/* <div className="margin-right-60">
         <label class="switch">
          <input type="checkbox"/>
             <span class="slider round"></span>
        </label>
-       </div>
+       </div> */}
+        <div>
+      <button type="button" onClick={darkMode.disable}>
+        ☀
+      </button>
+      <ToggleButton checked={darkMode.value} onChange={darkMode.toggle} />
+      <button type="button" onClick={darkMode.enable}>
+        ☾
+      </button>
+    </div>
       </div>
       <div className="d-flex">
         <button className="headerBtn" onClick={()=>onClick()}>

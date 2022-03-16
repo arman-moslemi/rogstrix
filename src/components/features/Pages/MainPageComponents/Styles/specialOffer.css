@@ -49,12 +49,15 @@
     text-align: center;
     margin-top: 15px;
 }
-.specialOfferTitle{
+ .specialOfferTitle{
     font-family: IRANSans-Bold;
     color: #f6303f;
     font-size: 30px;
     display: inline-block;
-}
+} 
+
+
+  
 .seeAll{
     background-color: transparent !important;
     border: none;

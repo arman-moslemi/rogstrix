@@ -99,7 +99,7 @@ input{
 }
 
 body{
-  background-color: #f1f1f1;
+  background-color: red;
 }
 /**********Main Header********/
 .mainHeader{
@@ -687,7 +687,7 @@ justify-content: center;
 /*********MainPage*********/
 .MainPageContainer{
   padding: 0px !important;
-  background-color: #fff !important;
+  background-color: transparent !important;
 }
 .bannerRow{
   background-color: #fff;
@@ -2152,4 +2152,101 @@ align-items: center;
 a:hover{
   text-decoration: none !important;
   
+}
+ body.light-mode {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+body.dark-mode {
+  background-color: #1a1919;
+  color: #999;
+} 
+body.light-mode .Header {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+body.dark-mode .Header {
+  background-color: #1a1919;
+  color: #999;
+} 
+body.light-mode .mainBack {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+body.dark-mode .mainBack {
+  background-color: #1a1919;
+  color: #999;
+} 
+
+body.dark-mode .bannerRow{
+  background-color: #1a1919;
+}
+
+body.dark-mode .customRow{
+  background-color: #1a1919;
+}
+body.dark-mode .backWhite{
+  background-color: #1a1919;
+}
+body.dark-mode .colorBlack{
+  color: #fff !important;
+}
+body.dark-mode .blogCardTitle{
+  color: #fff !important;
+}
+body.dark-mode .blogDescription{
+  color:#fff;
+}
+body.dark-mode .weblogSliderCard{
+  background-color: #1a1919;
+  border: 1px solid #f4f4f4;
+}
+body.dark-mode .bestSellingDiv{
+  background-color: #1a1919;
+}
+body.dark-mode .BestSellingCard{
+  background-color: #1a1919;
+}
+body.dark-mode .productName{
+  color:#fff;
+}
+body.dark-mode .grayPrice{
+  color:#fff;
+}
+body.light-mode svg {
+ /* fill:#000;
+ stroke: #000; */
+}
+body.dark-mode svg {
+ fill:#fff;
+ stroke: #fff; 
+} 
+body.dark-mode  .specialOfferTitle{
+  color: #ff004e;
+}
+body.dark-mode  .headerBtn{
+  color: #fff;
+}
+body.light-mode .specialOfferTitle{
+  color: #ff004e;
+}
+body.dark-mode  .MainMenuBtn {
+  color: #fff;
+}
+
+
+
+.specialOfferTitle.light-mode{
+  font-family: IRANSans-Bold;
+  color: #f6303f;
+  font-size: 30px;
+  display: inline-block;
+} 
+
+
+.specialOfferTitle.dark-mode{
+  color: #ffb921;
 }
