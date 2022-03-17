@@ -243,7 +243,7 @@ const Factor = () => {
       <p className="fontWeightNormal2 mb-2">
           -
         </p>
-      </Col> */}
+      </Col> */} 
       <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
         -
