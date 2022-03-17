@@ -254,12 +254,13 @@ else if(radio==0){
 
 }
 else{
-        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendID:send})
+        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost})
         .then(function (response) {
           if (response.data.result == "true") {
+            console.log(response.data.Data)
             console.log(88)
 alert("موفقیت آمیز بود")
-history.push("/UserOrder/"+params)
+history.push("/Factor/"+response.data.Data)
         }
         else{
 alert(response.data.message)        
@@ -606,7 +607,8 @@ null
                  <hr className="grayDashed" />
                  <div className="rightMenuBox1 d-flex f1">
                  {
-                   tran.map((item)=>{
+                   tran.length!=0?
+                   tran?.map((item)=>{
                      return(
 
                  <div className="shadowBox mb-4 w30">
@@ -636,6 +638,8 @@ null
 
 )
 })
+:
+null
 }
 </div>
            </div>

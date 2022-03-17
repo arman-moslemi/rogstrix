@@ -30,8 +30,9 @@ const Factor = () => {
   const [product,setProduct]=useState()
   const CustomerOrder=()=>{
     const axios = require("axios");
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 
-    axios.post(apiUrl + "OneCustomer",{CustomerID:params})
+    axios.post(apiUrl + "OneCustomer",{CustomerID:storedData})
     .then(function (response) {
       if (response.data.result == "true") {
 
@@ -50,7 +51,8 @@ const Factor = () => {
     });
 
     axios
-        .post(apiUrl + "CustomerOrderDetail",{
+        // .post(apiUrl + "CustomerOrderDetail",{
+        .post(apiUrl + "Factor",{
           FactorNumber:params
         })
     .then(function (response) {
@@ -98,38 +100,38 @@ const Factor = () => {
           <Col md={4} className="tableBorderLeft d-flex pdTable2 borderBottomTable">
             <p className="fontWeightBold">شماره فاکتور : 
             </p>
-            <p className="fontWeightNormal ml-2">5023687</p>
+            <p className="fontWeightNormal ml-2">{product?product[0]?.FactorNumber:null}</p>
           </Col>
           <Col md={4} className="tableBorderLeft pdTable2 d-flex borderBottomTable">
           <p className="fontWeightBold">تاریخ :  
             </p>
-            <p className="fontWeightNormal ml-2">29/12/00</p>
+            <p className="fontWeightNormal ml-2">{product?product[0]?.Date:null}</p>
           </Col>
           <Col md={4} className="tableBorder pdTable2 d-flex borderBottomTable">
           <p className="fontWeightBold">نام و نام خانوادگی :  
             </p>
-            <p className="fontWeightNormal ml-2">حامد مصلحی</p>
+            <p className="fontWeightNormal ml-2">{data?.NameFamily}</p>
           </Col>
         </div>
         <div className="row">
           <Col md={4} className="tableBorderLeft d-flex pdTable2 borderBottomTable">
             <p className="fontWeightBold">کد ملی : 
             </p>
-            <p className="fontWeightNormal ml-2">00162525252</p>
+            <p className="fontWeightNormal ml-2">{data?.NationalCode}</p>
           </Col>
           <Col md={4} className="tableBorderLeft pdTable2 d-flex borderBottomTable">
           <p className="fontWeightBold">شماره تماس : 
             </p>
-            <p className="fontWeightNormal ml-2">09122525252</p>
+            <p className="fontWeightNormal ml-2">{data?.Mobile}</p>
           </Col>
           <Col md={4} className="tableBorder pdTable2 d-flex borderBottomTable">
           <p className="fontWeightBold">ایمیل : 
             </p>
-            <p className="fontWeightNormal ml-2">info@gmail.com</p>
+            <p className="fontWeightNormal ml-2">{data?.Email}</p>
           </Col>
         </div>
         <div className="row">
-          <Col md={4} className="tableBorderLeft d-flex pdTable2 borderBottomTable">
+          {/* <Col md={4} className="tableBorderLeft d-flex pdTable2 borderBottomTable">
             <p className="fontWeightBold">کد پستی :  
             </p>
             <p className="fontWeightNormal ml-2">1212113131</p>
@@ -138,18 +140,18 @@ const Factor = () => {
           <p className="fontWeightBold">شماره بارنامه :   
             </p>
             <p className="fontWeightNormal ml-2">----</p>
-          </Col>
+          </Col> */}
           <Col md={4} className="tableBorder pdTable2 d-flex borderBottomTable">
           <p className="fontWeightBold">وضعیت پرداخت :   
             </p>
-            <p className="fontWeightNormal ml-2">پرداخت نشده</p>
+            <p className="fontWeightNormal ml-2">پرداخت شده</p>
           </Col>
         </div>
         <div className="row">
           <Col md={12} className=" d-flex pdTable2 borderBottomTable">
             <p className="fontWeightBold">آدرس : 
             </p>
-            <p className="fontWeightNormal ml-2">استان تهران،شهر تهران،پاسداران،فلان جا</p>
+            <p className="fontWeightNormal ml-2">{product?product[0]?.Address:null}</p>
           </Col>
         
         </div>
@@ -170,11 +172,11 @@ const Factor = () => {
          قیمت واحد
         </p>
       </Col>
-      <Col md={1} className="ta-right">
+      {/* <Col md={1} className="ta-right">
       <p className="fontWeightBold2 mb-2">
           تخفیف
         </p>
-      </Col>
+      </Col> */}
       <Col md={1} className="ta-right">
       <p className="fontWeightBold2 mb-2">
          تعداد
@@ -188,64 +190,42 @@ const Factor = () => {
     </div>
    
   </div>
+  {
+    product?.map((item)=>{
+      return(
+
   <div className="row pd15 borderBottomTable">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-          مانیتور سامسونگ
-          گارانتی طلایی
+          {item.ProductName+" "+item.BrandName+" گارانتی"+item.Warranty}
         </p>
       </Col>
       
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-         1.500.000 تومان
+         {item.Cost} تومان
         </p>
       </Col>
-      <Col md={1} className="ta-right">
+      {/* <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
           0
         </p>
-      </Col>
+      </Col> */}
       <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-         1
+         {item.Number}
         </p>
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        1.500.000 تومان
+        {item.Cost*item.Number} تومان
         </p>
       </Col>
     </div>
-    <div className="row pd15 borderBottomTable">
-      <Col md={6} className="ta-right">
-      <p className="fontWeightNormal2 mb-2">
-          مانیتور سامسونگ
-          گارانتی طلایی
-        </p>
-      </Col>
-      
-      <Col md={2} className="ta-right">
-      <p className="fontWeightNormal2 mb-2">
-         1.500.000 تومان
-        </p>
-      </Col>
-      <Col md={1} className="ta-right">
-      <p className="fontWeightNormal2 mb-2">
-          0
-        </p>
-      </Col>
-      <Col md={1} className="ta-right">
-      <p className="fontWeightNormal2 mb-2">
-         1
-        </p>
-      </Col>
-      <Col md={2} className="ta-right">
-      <p className="fontWeightNormal2 mb-2">
-        1.500.000 تومان
-        </p>
-      </Col>
-    </div>
+      )
+    })
+  }
+    
     <div className="row pd15 backBlueLight">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
@@ -256,14 +236,14 @@ const Factor = () => {
       
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        12.500 تومان
+      {product?product[0]?.SendCost:null} تومان
         </p>
       </Col>
-      <Col md={1} className="ta-right">
+      {/* <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
           -
         </p>
-      </Col>
+      </Col> */}
       <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
         -
@@ -271,7 +251,7 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        12.500 تومان
+        {product?product[0]?.SendCost:null} تومان
         </p>
       </Col>
     </div>
@@ -289,19 +269,19 @@ const Factor = () => {
       </Col>
       <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-          0
+          
         </p>
       </Col>
       <Col md={1} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-         1
+         
         </p>
       </Col>
-      <Col md={2} className="ta-right">
+      {/* <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        1.512.000 تومان
+        {product?product[0].CostTotal:null} تومان
         </p>
-      </Col>
+      </Col> */}
     </div>
    
     <div className="row backGray">
@@ -315,7 +295,7 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-        1.512.200 تومان
+      {product?product[0]?.CostTotal:null} تومان
         </p>
       </Col>
     </div>
@@ -327,9 +307,9 @@ const Factor = () => {
          توضیحات خریدار : 
         </p>
         <br/>
-        <p className="fontWeightNormal2">
+        {/* <p className="fontWeightNormal2">
         کنسل شد
-        </p>
+        </p> */}
    </div>
    <p className="fontWeightBold mt-4">
          خریدار محترم : 
