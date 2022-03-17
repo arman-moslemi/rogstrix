@@ -37,7 +37,7 @@ const  _handleKeyDown = (e) => {
             <span class="slider round"></span>
        </label>
        </div> */}
-        <div>
+        <div className="mi">
       <button type="button" onClick={darkMode.disable}>
         ☀
       </button>

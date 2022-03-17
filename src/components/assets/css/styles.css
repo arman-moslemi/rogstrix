@@ -2236,17 +2236,100 @@ body.light-mode .specialOfferTitle{
 body.dark-mode  .MainMenuBtn {
   color: #fff;
 }
+body.dark-mode .errorPage{
+  background-color: #1a1919;
+} 
+body.dark-mode .errorPageText{
+  color: #fff;
+}
+body.dark-mode .commingsoonText{
+  color: #fff;
+}
 
-
-
+body.dark-mode .EachCategoryContainer{
+  background-color: #1a1919;
+} 
 .specialOfferTitle.light-mode{
   font-family: IRANSans-Bold;
   color: #f6303f;
   font-size: 30px;
   display: inline-block;
 } 
-
-
+.EachCategoryContainer{
+  padding-bottom: 25px;
+}
+.SingleProduct{
+  background-color: #f4f4f4;
+}
+body.dark-mode .SingleProduct{
+  background-color: #1a1919;
+}
+body.dark-mode .CartContainer {
+  background-color: #1a1919;
+}
+body.dark-mode .categoryBTN{
+  color: #fff;
+}
+body.dark-mode .UserPanelContainer {
+  background-color: #1a1919;
+}
+body.dark-mode .sliderTitle{
+  color: #fff;
+}
+body.dark-mode .sliderSlogan{
+  color: #fff;
+}
+body.dark-mode .sliderDescription{
+  color: #fff;
+}
+body.dark-mode .mainHeader{
+  background-color: #1a1919;
+}
+body.dark-mode .grayBack{
+  background-color: #1a1919;
+}
+body.dark-mode .firstLineStatistic{
+  color: #fff;
+}
+body.dark-mode .whyRogstrix{
+  background-color: #1a1919;
+}
+body.dark-mode .boxTitle{
+  color: #fff;
+}
+body.dark-mode .firstLine3{
+  color: #fff;
+}
+body.dark-mode .secondLine3{
+  color: #fff;
+}
+body.dark-mode .bestSellerContainer{
+  background-color: #1a1919;
+}
+ .sliderTiltleBottom{
+   font-family: "IRANSans";
+ }
 .specialOfferTitle.dark-mode{
+
   color: #ffb921;
+}
+.mi .btn-check{
+  display:none;
+}
+.mi{
+  margin:15px;
+}
+.mi .btn-primary{
+  background-color: #ff004e;
+  background: #ff004e;
+  border: none !important;
+}
+.mi button{
+  background-color: transparent;
+  border: 1px solid #ff004e;
+  box-shadow: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: #ff004e;
 }
