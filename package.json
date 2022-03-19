@@ -18,6 +18,7 @@
     "bootstrap-v4-rtl": "^4.5.2-1",
     "cli-truncate": "^3.1.0",
     "google-map-react": "^2.1.9",
+    "html-react-parser": "^1.4.8",
     "react": "^17.0.1",
     "react-accessible-accordion": "^4.0.0",
     "react-bootstrap": "^2.1.0",

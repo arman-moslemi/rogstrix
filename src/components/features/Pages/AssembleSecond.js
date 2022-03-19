@@ -254,19 +254,19 @@ if(isLoggedIn)
             </div>
           </div>
           <div className="d-flex align-items-center tRow">
-            <div className="d-flex wR20">
+            <div className="d-flex wB20">
             <p className="tableFirstRowText">
-              گروه قطعه
+              گروه
             </p>
             <div className="vl"></div>
             </div>
-            <p className="tableFirstRowText wR55">
-              نام قطعه
+            <p className="tableFirstRowText wB60">
+              انتخاب قطعه
             </p>
-            <p className="tableFirstRowText wR10">
+            <p className="tableFirstRowText wB10">
               قیمت(تومان)
             </p>
-            <p className="tableFirstRowText wR10">
+            <p className="tableFirstRowText wB10 ta-center">
               خرید
             </p>
             <p className="tableFirstRowText wR5">
@@ -285,14 +285,14 @@ inc.indexOf(item.GroupID)!=-1 ?
       <div>
       <hr className="grayHr"/>
       <div className="d-flex align-items-center tRow">
-      <div className="wR20">
+      <div className="wB15">
         <p className="tableFirstRowText">
 {product[inc?.indexOf(item.GroupID)]?.Title}        </p>
         {/* <p className="miniText2">
           {item2.EngTitle}
         </p> */}
       </div>
-     <div className="d-flex wR55">
+     <div className="d-flex wB65">
      <div>
         <img src={apiAsset+product[inc?.indexOf(item.GroupID)]?.Pic1} className="assembleImg"/>
       </div>
@@ -304,12 +304,12 @@ inc.indexOf(item.GroupID)!=-1 ?
         </p> */}
       </div>
      </div>
-      <div className="wR10">
+      <div className="wB10">
         <p className="productAssembleName">
         {parseInt(product[inc?.indexOf(item.GroupID)]?.Cost)-parseInt(product[inc?.indexOf(item.GroupID)]?.SpecialCost)}تومان
         </p>
         </div>
-        <div className="wR10">
+        <div className="wB10 ta-center">
           <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.ProductID)} className="buyAssembleBtn">
             خرید
           </button>

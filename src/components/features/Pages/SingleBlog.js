@@ -144,7 +144,7 @@ console.log(params)
          <Category data={type}/>
          </Col>
          <Col md={9}>
-          <img className="BlogMainImg" src={data.Pic}/>
+          <img className="BlogMainImg" src={apiAsset+data.Pic}/>
         <ShowBlog data={data}/>
         {/* <ReadMore/> */}
         <div className="whiteBox3 mt-3">

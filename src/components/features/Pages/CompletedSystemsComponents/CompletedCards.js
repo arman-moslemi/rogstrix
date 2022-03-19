@@ -46,9 +46,9 @@ const CompletedCards = (props) => {
        <p className="completeProductTitle">
        {truncate(props?.data?.SystemName?props?.data?.SystemName:"",100)}
        </p>
-      <p className="completeProductDetail">
+      {/* <p className="completeProductDetail">
        {truncate(props?.data?.Description?props?.data?.Description:"",20)}
-      </p>
+      </p> */}
       <hr className="bottomDashed7070"/>
       <div className="row">
         <Col md={5} className="pd0">

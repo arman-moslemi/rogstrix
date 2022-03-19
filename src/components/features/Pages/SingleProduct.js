@@ -17,6 +17,8 @@ import { AuthContext } from "../../../context/auth-context";
 import Truck from "../../assets/icons/truck";
 import Box from "../../assets/icons/box";
 import Garantee2 from "../../assets/icons/garantee2";
+import parse  from 'html-react-parser';
+
 const SingleProduct = () => {
   const params = useParams().id;
   const history = useHistory();
@@ -502,7 +504,12 @@ index+1>rate?
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
-{product.Description}                </p>
+                {   product.Description?
+                          parse (product.Description)
+                          :
+                          null}
+{/* {product.Description}          */}
+       </p>
             </div>
 
 

@@ -5,6 +5,8 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaRegUser,FaRegEye,FaRegCopy} from 'react-icons/fa';
 import Blog4 from "../../../assets/img/Blog4.png";
 // if you want to use array
+import parse  from 'html-react-parser';
+
 
 
 const ShowBlog = ({data}) => {
@@ -28,7 +30,7 @@ const ShowBlog = ({data}) => {
           <div className="d-flex align-items-center borderRight1">
               <FaRegEye color={'#a0a0a0'}/>
               <p className="userName">
-                 4845
+                 {data.TotalVisits}
               </p>
           </div>
           <div className="d-flex align-items-center borderRight1">
@@ -41,7 +43,13 @@ const ShowBlog = ({data}) => {
         <div className="row mt-4 pdrightleft2">
          <Col md={12}>
              <p className="blogDes">
-             {data?.Description}                  </p>
+          {   data.Text?
+                          parse (data.Text)
+                          :
+                          null}
+             {/* {data?.Text}              */}
+             
+                  </p>
 
 
             <div className="ta-left d-flex justify-content-end mb-3">

@@ -15,6 +15,8 @@ import PageTitle from "../../assets/img/pageTitle.png";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
 import { Link, useHistory ,useParams} from "react-router-dom";
+import parse  from 'html-react-parser';
+
 
 const AssembleMain = () => {
   const { isLoggedIn, token } = useContext(AuthContext);
@@ -328,7 +330,11 @@ const AssembleMain = () => {
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
-{property[0]?.Description}                </p>
+                {   property[0]?.Description?
+                          parse (property[0]?.Description)
+                          :
+                          null}
+                </p>
             </div>
         <div className="whiteBox3 mt-3">
         <CommentBox token={token} data={com} id={params} type={"system"}/>
