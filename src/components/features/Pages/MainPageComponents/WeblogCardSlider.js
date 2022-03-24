@@ -20,7 +20,8 @@ export const truncate = (str, len) => {
 };
 const WeblogSliderCard = ({data}) => {
   const history = useHistory();
-
+console.log(66)
+console.log(data)
   return (
 
       <div className="weblogSliderCard">
@@ -42,7 +43,7 @@ const WeblogSliderCard = ({data}) => {
                     </div>
                     <div className="blogCardDetail d-flex align-items-center mr10">
                     <FaRegEye color={'#b2b2b2'} />
-                    <p>2875</p>
+                    <p>{data.TotalVisits}</p>
                     </div>
                     <div className="mr10">
                         <FaCircle color={'#b2b2b2'} size={5}/>
@@ -53,7 +54,7 @@ const WeblogSliderCard = ({data}) => {
                     </div>
                 </div>
                 <p className="blogDescription">
-               {truncate(data.Text,250)}
+               {truncate(data.Title,250)}
 
                </p>
             </Col>

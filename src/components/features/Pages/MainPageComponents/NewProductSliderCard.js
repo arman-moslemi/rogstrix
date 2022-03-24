@@ -1,8 +1,9 @@
 import react from "react";
 import "./Styles/newProductSlider.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
-import { Container ,Col, Button,Row} from "react-bootstrap";
+import { Container ,Col, Button,Row, NavItem} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -16,9 +17,11 @@ export const truncate = (str, len) => {
   return str;
 };
 const NewProductSliderCard = ({data}) => {
+  const history = useHistory();
+
   return (
 
-      <div className="NewProductCard">
+      <div onClick={()=>history.push("/singleProduct/"+data.ProductID)} className="NewProductCard">
   <div className="row NewProductCardBox">
   <Col md={7} className="ta-right">
     <p className="newProductName">

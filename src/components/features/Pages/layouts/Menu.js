@@ -76,8 +76,8 @@ const groups=()=>{
      <Button onClick={()=>history.push("/SystemGuide")} className="MainMenuBtn borderRight1">
 
          <GuideMenu className="marginLeft15 menuResponsiveNone"/>
-         راهنمای ساخت سیستم
-     </Button>
+         سیستم های پیشنهادی 
+              </Button>
      {/* <Button className="MainMenuBtn borderRight1">
 
         <UpdateMenu className="marginLeft15 menuResponsiveNone"/>

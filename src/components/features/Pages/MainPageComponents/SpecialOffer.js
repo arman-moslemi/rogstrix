@@ -53,7 +53,7 @@ const SpecialOffer = ({data}) => {
 
           }
           else{
-            console.log(777)
+            console.log(789456)
 
             console.log(response.data.result)
 

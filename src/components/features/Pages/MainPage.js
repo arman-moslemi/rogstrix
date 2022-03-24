@@ -104,7 +104,7 @@ const MainPage = () => {
         if (response.data.result == "true") {
 
           setBlog(response.data.Data)
-          console.log(11)
+          console.log(4879)
           console.log(response.data.Data)
 
       }
@@ -206,9 +206,9 @@ const MainPage = () => {
               <img src={apiAsset+slider?.DownSlider1}/>
                 <div className="">
 
-                  <a href={slider.LinkDownSlider1} className="productLink">
+                  {/* <a href={slider.LinkDownSlider1} className="productLink">
                     مشاهده محصول
-                  </a>
+                  </a> */}
                 </div>
 
               </div>
@@ -217,12 +217,12 @@ const MainPage = () => {
            <div className="productBannerBox" id="backGray">
            <img src={apiAsset+slider?.DownSlider2}/>
 
-                <div className="">
+                {/* <div className="">
 
                   <a href={slider.LinkDownSlider2} className="productLink">
                     مشاهده محصول
                   </a>
-                </div>
+                </div> */}
 
 
               </div>
@@ -230,12 +230,12 @@ const MainPage = () => {
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
            <img src={apiAsset+slider?.DownSlider3}/>
-                <div className="">
+                {/* <div className="">
 
                   <a href={slider.LinkDownSlider3} className="productLink">
                     مشاهده محصول
                   </a>
-                </div>
+                </div> */}
 
               </div>
            </Col>
@@ -270,12 +270,12 @@ const MainPage = () => {
            <Col md={4}>
               <div className="productBannerBox" id="backBlack">
               <img src={apiAsset+slider?.DownSlider4}/>
-                <div className="">
+                {/* <div className="">
 
                   <a href={slider.LinkDownSlider4} className="productLink">
                     مشاهده محصول
                   </a>
-                </div>
+                </div> */}
 
 
 
@@ -284,24 +284,24 @@ const MainPage = () => {
            <Col md={4}>
            <div className="productBannerBox" id="backGray">
            <img src={apiAsset+slider?.DownSlider5}/>
-                <div className="">
+                {/* <div className="">
 
                   <a href={slider.LinkDownSlider5} className="productLink">
                     مشاهده محصول
                   </a>
-                </div>
+                </div> */}
 
               </div>
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
            <img src={apiAsset+slider?.DownSlider6}/>
-                <div className="">
+                {/* <div className="">
 
                   <a href={slider.LinkDownSlider6} className="productLink">
                     مشاهده محصول
                   </a>
-                </div>
+                </div> */}
 
               </div>
            </Col>

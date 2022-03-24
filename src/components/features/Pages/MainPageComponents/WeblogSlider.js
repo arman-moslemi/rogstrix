@@ -11,7 +11,7 @@ const WeblogSlider = ({data}) => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    initialSlide: 1,
+    initialSlide: 0,
     rtl: true,
     responsive: [
       {
@@ -56,6 +56,7 @@ const WeblogSlider = ({data}) => {
      <Slider {...settings}>
      {
              data?.map((item)=>{
+            
                return(
 
   <div>

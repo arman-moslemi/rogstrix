@@ -40,7 +40,7 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
       <div className="BestSellingCard">
         <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} >
   <div className="specialSliderCardBox">
-  <img src={apiAsset+data?.Pic1}/>
+  <img src={data?.Pic1?apiAsset+data?.Pic1:data.Pic?apiAsset+data?.Pic:null}/>
       {/* <ul className="colorList">
         <li>
           <div id="color1"></div>
