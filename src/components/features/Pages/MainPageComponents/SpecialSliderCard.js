@@ -3,6 +3,7 @@ import "./Styles/specialOfferSlider.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -15,9 +16,13 @@ export const truncate = (str, len) => {
   return str;
 };
 const SpecialSliderCard = ({data}) => {
+    const history = useHistory();
+
   return (
 
       <div className="SpecialSliderCard">
+                <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} >
+
   <div className="specialSliderCardBox">
   <img src={apiAsset+data.Pic1}/>
       {/* <ul className="colorList">
@@ -39,7 +44,8 @@ const SpecialSliderCard = ({data}) => {
   <div className="row">
     <Col md={4} className="pd0">
       <div className="timeSpecialOffer">
-        <p>{data.SpecialTime- new Date().getHours()}:00:00</p>
+        {/* <p>{data.SpecialTime- new Date().getHours()}:00:00</p> */}
+        <p>{data.SpecialDate}-{data.SpecialTime}</p>
       </div>
     </Col>
     <Col md={8} className="ta-left pd0">
@@ -51,6 +57,8 @@ const SpecialSliderCard = ({data}) => {
       </p>
     </Col>
   </div>
+  </Link>
+
       </div>
 
   );

@@ -21,6 +21,7 @@ const AssembleSecond = () => {
   const [data,setData]=useState()
   const [product,setProduct]=useState()
   const [agree,setAgree]=useState()
+  const [energy,setEnergy]=useState()
   const [inc,setInc]=useState([])
   var Guest=localStorage.getItem("guest")
 
@@ -69,8 +70,10 @@ const AssembleSecond = () => {
   
         setProduct(response.data.Data)
         setAgree(response.data.Data2)
+        setEnergy(response.data.Energy)
   var ss=[]
           console.log(666)
+          console.log(response.data)
           response.data.Data.map((item)=>{
 ss.push(item.GroupID)
           }
@@ -249,7 +252,7 @@ if(isLoggedIn)
                 تخمین مصرف انرژی : 
               </p>
               <p className="fontWeightLight">
-                0 وات
+             {energy?energy:0} وات
               </p>
             </div>
           </div>

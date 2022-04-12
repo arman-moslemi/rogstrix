@@ -43,7 +43,7 @@ import Factor from '../components/features/Pages/Factor';
 const MainRoutes = (props) => {
 	return (
 		// <BrowserRouter>
-		<HashRouter>
+		<BrowserRouter>
 			<Switch>
 				<Route
 					exact
@@ -303,7 +303,7 @@ render={(props) => <CartStep2/>}>
 
 				{/* <PrivateRoute path='/pages' component={Layout} /> */}
 			</Switch>
-		</HashRouter>
+		</BrowserRouter>
 	);
 };
 

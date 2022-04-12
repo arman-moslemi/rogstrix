@@ -28,6 +28,9 @@ const SingleProduct = () => {
   const [similar,setSimilar]=useState([])
   const [rate,setRate]=useState(0)
   const [color,setColor]=useState()
+  const [list,setList]=useState()
+  const [cost,setCost]=useState()
+  const [specialCost,setSpecialCost]=useState()
   const [count,setCount]=useState(1)
   var Guest=localStorage.getItem("guest")
 
@@ -78,7 +81,7 @@ console.log(token)
           ProductID:params,
           CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
           GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,
-          Cost:parseInt(product.Cost)-parseInt(product.SpecialCost),
+          Cost:parseInt(cost)-parseInt(specialCost),
           ColorID:color,
           Number:count
 
@@ -115,8 +118,10 @@ alert("با موفقیت ذخیره شد")
 
           setProduct(response.data.Data)
           console.log(777)
-          console.log(response.data.Data)
-
+          console.log(response.data)
+          setList(response.data.CostData)
+setCost(response.data.Data.Cost)
+setSpecialCost(response.data.Data.SpecialCost)
       }
       else{
         console.log(888)
@@ -291,10 +296,11 @@ const images = [
                 </p> */}
                 <div className="d-flex">
                   {
-                    product?.ColorID?.split(',').map((item)=>{
+                    // product?.ColorID?.split(',').map((item)=>{
+                    list?.map((item)=>{
                       return(
                         item?
-                    <div onClick={()=>setColor(item)} className="colorBox" style={{backgroundColor:"#"+item}} i>
+                    <div onClick={()=>{setColor(item[0].ColorID);setCost(parseInt(item[0].Cost));setSpecialCost(parseInt(item[0].SpecialCost))}} className="colorBox" style={{backgroundColor:"#"+item[0].ColorID}} i>
                     </div>
                     :
                     null
@@ -451,6 +457,36 @@ index+1>rate?
             </div>
               </div>
               <hr className="grayHr"/>
+              <div className="d-flex align-items-center justify-content-between">
+                <div>
+                <p className="reviewP" id="colorGray">گارانتی : </p></div>
+              <div className="d-flex justify-content-center">
+              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]))}} name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
+  {
+    list?.map((item)=>{
+
+      return(
+      item[0]?.ColorID==color?
+      item.map((item2)=>{
+        // console.log(888889999)
+        // console.log(item2)
+        return(
+          <option value={item2.Cost+"T"+item2.SpecialCost} >{item2.WarrantyName}</option>
+        )
+        }
+      )
+      :
+      null
+      )
+
+
+    })
+  }
+
+              </select>
+            </div>
+              </div>
+              <hr className="grayHr"/>
               <div className="d-flex align-items-center  justify-content-between">
                   <div  className="mr-3">
                   <p className="reviewP" id="colorGray">
@@ -461,17 +497,17 @@ index+1>rate?
                       <div className="d-flex">
                           <div>
                           <p className="strokeOutPrice">
-                           {product.Cost}
+                           {cost}
                             </p>
                           </div>
                           <div>
                               <div className="redBack ml-2">
-                                  <p>{parseInt((parseInt(product.SpecialCost)/parseInt(product.Cost))*100)}%</p>
+                                  <p>{parseInt((parseInt(specialCost)/parseInt(cost))*100)}%</p>
                               </div>
                           </div>
                       </div>
                   <p className="specialPrice">
-                  {parseInt(product.Cost)-parseInt(product.SpecialCost)}تومان
+                  {parseInt(cost)-parseInt(specialCost)}تومان
                   </p>
 
 

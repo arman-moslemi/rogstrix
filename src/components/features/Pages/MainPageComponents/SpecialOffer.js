@@ -48,7 +48,7 @@ const SpecialOffer = ({data}) => {
             if (response.data.result == "true") {
 
               setSpecial(response.data.Data)
-              console.log(999)
+              console.log(159876)
               console.log(response.data.Data)
 
           }
@@ -119,7 +119,7 @@ const SpecialOffer = ({data}) => {
 
                 <SpecialOfferSlider data={special}/>
             </Col>
-            <Col md={2} className="pdTop15" className="colSpecial3">
+            <Col md={2}  className="colSpecial3">
                 <div className="redBanner">
                     <img src={apiAsset+data?.LeftSlider1}/>
                     <p>ایسوس</p>

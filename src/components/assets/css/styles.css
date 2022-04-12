@@ -2208,13 +2208,13 @@ body.dark-mode .bestSellingDiv{
   background-color: #1a1919;
 }
 body.dark-mode .BestSellingCard{
-  background-color: #1a1919;
+  background-color: #fff;
 }
 body.dark-mode .productName{
-  color:#fff;
+  color:#1a1a1a;
 }
 body.dark-mode .grayPrice{
-  color:#fff;
+  color:#1a1a1a;
 }
 body.light-mode svg {
  /* fill:#000;
