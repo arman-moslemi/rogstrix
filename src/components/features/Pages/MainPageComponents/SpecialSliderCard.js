@@ -45,15 +45,16 @@ const SpecialSliderCard = ({data}) => {
     <Col md={4} className="pd0">
       <div className="timeSpecialOffer">
         {/* <p>{data.SpecialTime- new Date().getHours()}:00:00</p> */}
-        <p>{data.SpecialDate}-{data.SpecialTime}</p>
+        {/* <p>{data.SpecialDate}-{data.SpecialTime}</p> */}
+        <p>{data.DistanceTime}</p>
       </div>
     </Col>
     <Col md={8} className="ta-left pd0">
       <p className="specialPrice">
-      {parseInt(data.Cost)-parseInt(data.SpecialCost)}
+      {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}
   </p>
       <p className="strokeOutPrice">
-      {data.Cost}
+      {data.Cost.toLocaleString("en-de")}
       </p>
     </Col>
   </div>

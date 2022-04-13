@@ -24,12 +24,20 @@ data?.map((item)=>{
 
               <div className="mt-4">
                   <p className="firstLine">
-                  {item.MainTitle}:
+                  {item[0].MainTitle}:
                   </p>
+                  {
+                  item.map((item2,index2)=>{
+                    return(
                   <p className="secondLine">
-                  {item.Title}
+{                  index2==item.length-1?
+  item2.Title
 
+:
+  item2.Title+","
+}   
                   </p>
+                  )})}
               </div>
   )
 })

@@ -97,9 +97,20 @@ input{
 .mar-des-bottom-2{
   margin-bottom: 2rem;
 }
+.image-gallery-thumbnails{
+  direction: ltr !important;
+}
+[dir=rtl] .slick-next:before {
+  content: '←';
+  background: red;
+  border-radius: 50%;
+  color: #fff;
+}
 
-body{
-  background-color: red;
+.slick-next:before, [dir=rtl] .slick-prev:before{
+  background: red;
+  border-radius: 50%;
+  color: #fff;
 }
 /**********Main Header********/
 .mainHeader{

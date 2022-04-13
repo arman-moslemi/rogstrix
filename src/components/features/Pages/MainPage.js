@@ -186,7 +186,7 @@ const MainPage = () => {
                    </Col>
                </div>
      <div className="d-flex justify-content-center margin mn">
-     {
+     {/* {
          rog?.map((item)=>{
            return(
 
@@ -195,7 +195,10 @@ const MainPage = () => {
          </div>
            )
          })
-       }
+       } */}
+       <div>
+         <ExclusiveSlider/>
+       </div>
         
      </div>
        </div>

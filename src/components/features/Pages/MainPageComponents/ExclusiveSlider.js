@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from 'react'
 import SwiperCore, {  Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -6,19 +6,49 @@ import "swiper/swiper.min.css";
 import "./Styles/exclusiveSlider.css";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import img1 from "../../../assets/img/img1.png";
-import img2 from "../../../assets/img/img2.png";
-import img3 from "../../../assets/img/img3.png";
-import img4 from "../../../assets/img/img4.png";
-import img5 from "../../../assets/img/img5.png";
+import { apiAsset ,apiUrl} from '../../../../commons/inFormTypes';
+import { Link, useHistory } from "react-router-dom";
+
 
 SwiperCore.use([Navigation]);
 // if you want to use array
 
 
 const ExclusiveSlider = () => {
+    const [data,setData]=useState()
+    const history = useHistory();
+
+    const groups=()=>{
+        const axios = require("axios");
+     
+     
+        axios.get(apiUrl + "AllMainGroup")
+        .then(function (response) {
+          if (response.data.result == "true") {
+     
+             setData(response.data.GroupData)
+     
+             console.log(response.data.GroupData)
+     
+            // history.push("/RegisterVerify/"+mobile)
+     
+        }
+        else{
+     
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+     
+     
+      }
+      useEffect(() => {
+        groups();
+     // alert(val)
+      }, []);
   return (
     <div style={{backgroundColor:'#fff'}}>
-         <div className="row padding30">
+         {/* <div className="row padding30">
                    <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle" id="blackColor">
@@ -29,69 +59,24 @@ const ExclusiveSlider = () => {
                         <Button className="seeAll">مشاهده همه</Button>
                     </div>
                    </Col>
-               </div>
+               </div> */}
          <div className="exclusiveBox">
          <Swiper className="exclusiveSlider" slidesPerView={5} spaceBetween={15} navigation={true} >
+             {
+                 data?.map((item)=>{
+                     return(
+
   <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img1}/>
-      <p>کارت گرافیک</p>
+  <div onClick={()=>history.push("/Home")} className="exclusiveSliderCard">
+      <img src={apiAsset+item[0].MainPic}/>
+      <p>{item[0].MainTitle}</p>
   </div>
   </SwiperSlide>
-  <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img2}/>
-      <p>مانیتور</p>
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img3}/>
-      <p>موبایل</p>
-  </div>
-  </SwiperSlide> 
-  <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img4}/>
-      <p>مادربورد</p>
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img5}/>
-      <p>لپ تاپ</p>
-  </div>
-  </SwiperSlide>
-  <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img1}/>
-      <p>کارت گرافیک</p>
-  </div>
-  </SwiperSlide>
-  <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img2}/>
-      <p>مانیتور</p>
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img3}/>
-      <p>موبایل</p>
-  </div>
-  </SwiperSlide> 
-  <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img4}/>
-      <p>مادربورد</p>
-  </div>
-  </SwiperSlide>
-   <SwiperSlide>
-  <div className="exclusiveSliderCard">
-      <img src={img5}/>
-      <p>لپ تاپ</p>
-  </div>
-  </SwiperSlide>
+                     )
+                 })
+             }
+
+ 
  
   
  

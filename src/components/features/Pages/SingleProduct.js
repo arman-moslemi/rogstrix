@@ -312,18 +312,34 @@ const images = [
                 </div>
                 <p className="boxTitle2 NormalFont">ویژگی‌های محصول</p>
 {
-  property.map((item)=>{
+  property.map((item,index)=>{
     return(
+    index<5?
 
                 <div className="d-flex align-items-center mb-2">
                 <FaCaretLeft/>
                 <p className="detailTitle">
-                   {item.MainTitle}:
+                   {item[0].MainTitle}:
                 </p>
+                {
+                  item.map((item2,index2)=>{
+                    return(
+
                 <p className="detail2Title">
-                    {item.Title}
+{                  index2==item.length-1?
+  item2.Title
+
+:
+  item2.Title+","
+}                  
+
                 </p>
+                    )
+                  })
+                }
                 </div>
+    :
+    null
     )
   })
 }
@@ -502,12 +518,12 @@ index+1>rate?
                           </div>
                           <div>
                               <div className="redBack ml-2">
-                                  <p>{parseInt((parseInt(specialCost)/parseInt(cost))*100)}%</p>
+                                  <p>{(parseInt((parseInt(specialCost)/parseInt(cost))*100)).toLocaleString("en-de")}%</p>
                               </div>
                           </div>
                       </div>
                   <p className="specialPrice">
-                  {parseInt(cost)-parseInt(specialCost)}تومان
+                  {(parseInt(cost)-parseInt(specialCost)).toLocaleString("en-de")}تومان
                   </p>
 
 

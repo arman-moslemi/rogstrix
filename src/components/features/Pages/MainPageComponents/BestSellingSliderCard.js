@@ -69,12 +69,12 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
   
 {  data?.SpecialCost?
     <p className="grayPrice ">
-    {parseInt(data?.Cost)-parseInt(data?.SpecialCost)}
+    {(parseInt(data?.Cost)-parseInt(data?.SpecialCost)).toLocaleString("en-de")}
  تومان
     </p>
     :
     <p className="grayPrice">
-    {parseInt(data?.Cost)}
+    {parseInt(data?.Cost).toLocaleString("en-de")}
  تومان
     </p>}
   

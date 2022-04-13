@@ -28,7 +28,7 @@ const NewProductSliderCard = ({data}) => {
     {truncate(data.ProductName+" "+data.BrandName,45)}
     </p>
     <p className="newProductPrice">
-    {parseInt(data.Cost)-parseInt(data.SpecialCost)} تومان
+    {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")} تومان
     </p>
   </Col>
   <Col md={5} className="ta-left">
