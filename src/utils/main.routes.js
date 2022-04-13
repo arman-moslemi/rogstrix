@@ -40,10 +40,13 @@ import CartStep1 from '../components/features/Pages/CartStep1';
 import CartStep2 from '../components/features/Pages/CartStep2';
 import AssembleSecond from '../components/features/Pages/AssembleSecond';
 import Factor from '../components/features/Pages/Factor';
+import ScrollToTop from '../components/features/layouts/ScrollToTop';
+
 const MainRoutes = (props) => {
 	return (
 		// <BrowserRouter>
 		<BrowserRouter>
+		<ScrollToTop/>
 			<Switch>
 				<Route
 					exact

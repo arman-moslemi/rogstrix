@@ -76,15 +76,11 @@ const BestSellerSlider = ({data}) => {
     <Col md={4}>
 
     </Col>
-    <Col md={4} className="ta-center">
-    <p className="sliderTiltleBottom">
-      انواع مانیتورها
-      </p>
-    </Col>
+    
     <Col md={4} className="ta-left">
-      <Button className="seeAll">
+      {/* <Button className="seeAll">
         مشاهده همه
-      </Button>
+      </Button> */}
     </Col>
   </div>
  

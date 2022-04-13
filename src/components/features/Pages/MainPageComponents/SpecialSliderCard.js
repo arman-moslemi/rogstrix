@@ -6,7 +6,7 @@ import { apiAsset } from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
-  if (str.length > len && str.length > 0) {
+  if (str.length > len && str.length > 0) { 
     let new_str = str + " ";
     new_str = str.substr(0, len);
     new_str = str.substr(0, new_str.lastIndexOf(" "));

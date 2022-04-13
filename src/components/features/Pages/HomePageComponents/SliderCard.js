@@ -2,12 +2,18 @@ import react from "react";
 import "./Styles/sliderCard.css"
 import cardImg from "../../../assets/img/cardImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 const SliderCard = ({data}) => {
+  const history = useHistory();
+
   return (
 
       <div className="SliderCard">
+                        <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} >
+
        <div className="sliderCardDiv">
-       <img src={cardImg} className="sliderCardImg"/>
+       <img src={apiAsset+data.Pic1} className="sliderCardImg"/>
        </div>
        <div className="cardTitleW100">
           <p>{data.Title}</p>
@@ -26,12 +32,13 @@ const SliderCard = ({data}) => {
          </Col>
          <Col md={6} className="ta-left">
           <p className="strokeOutPrice">
-{data.Cost}          </p>
+{data.Cost}     تومان     </p>
           <p className="cardPrice">
-          {parseInt(data.Cost)-parseInt(data.SpecialCost)}
+          {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}تومان
        </p>
          </Col>
        </div>
+       </Link>
       </div>
 
   );
