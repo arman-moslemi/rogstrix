@@ -1,4 +1,4 @@
-import react from "react";
+import react,{useEffect,useState} from "react";
 import "./Styles/specialOfferSlider.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
@@ -17,7 +17,33 @@ export const truncate = (str, len) => {
 };
 const SpecialSliderCard = ({data}) => {
     const history = useHistory();
-
+    const [time, setTime] = useState(() => new Date().getTime());
+    const [main, setMainTime] = useState(data.DistanceTime);
+    const [ minutes, setMinutes ] = useState(data.DistanceTime.split(':')[1]);
+    const [seconds, setSeconds ] =  useState(1);
+    const [hour, setHour ] =  useState(data.DistanceTime.split(':')[0]);
+    useEffect(() => {
+      let myInterval = setInterval(() => {
+        if (seconds > 0) {
+            setSeconds(seconds - 1);
+        }
+        if (seconds === 0) {
+            if (minutes === 0) {
+              if (hour === 0) {
+                clearInterval(myInterval)
+            } else {
+                setHour(hour - 1);
+                setMinutes(59);
+            }            } else {
+                setMinutes(minutes - 1);
+                setSeconds(59);
+            }
+        } 
+    }, 1000)
+    return ()=> {
+        clearInterval(myInterval);
+      };
+    }, [seconds]);
   return (
 
       <div className="SpecialSliderCard">
@@ -46,7 +72,7 @@ const SpecialSliderCard = ({data}) => {
       <div className="timeSpecialOffer">
         {/* <p>{data.SpecialTime- new Date().getHours()}:00:00</p> */}
         {/* <p>{data.SpecialDate}-{data.SpecialTime}</p> */}
-        <p>{data.DistanceTime}</p>
+        <p>{hour+":"+minutes+":"+seconds}</p>
       </div>
     </Col>
     <Col md={8} className="ta-left pd0">

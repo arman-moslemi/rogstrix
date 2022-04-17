@@ -1674,9 +1674,31 @@ display: flex;
 .backRed{
   background-color: #f6303f !important;
 }
+.about{
+  background-color: #fff;
+  padding:25px 15px;
+  border-radius: 10px;
+}
+.aboutText{
+  font-family: IRANSans;
+  color:#1a1a1a;
+  text-align: right;
+  line-height: 2.2;
+
+}
+.grayB{
+  background-color: #f4f4f4;
+  padding: 5%;
+}
+.aboutHeader{
+  font-family: IRANSans-Bold;
+  color: #000;
+  font-size: 20px;
+  text-align: right;
+}
 .enamadBox{
   height: 143px;
-  background-color: #fff;
+  /* background-color: #fff; */
 
   padding: 5px;
   width: 100%;
@@ -2260,6 +2282,9 @@ body.dark-mode .commingsoonText{
 body.dark-mode .EachCategoryContainer{
   background-color: #1a1919;
 } 
+body.dark-mode .grayB{
+  background-color: #1a1919;
+}
 .specialOfferTitle.light-mode{
   font-family: IRANSans-Bold;
   color: #f6303f;

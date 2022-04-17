@@ -13,16 +13,14 @@ const Header = () => {
                    200 +
                 </p>
                 <p className="secondLineStatistic">
-                    محصول جدید
-                </p>
+کل محصولات                </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
                    800 + 
                 </p>
                 <p className="secondLineStatistic">
-                   کل محصولات
-                </p>
+محصولات راگ                </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
@@ -37,8 +35,7 @@ const Header = () => {
                     5.000 + 
                 </p>
                 <p className="secondLineStatistic">
-                    خرید محصول
-                </p>
+فروش محصول                </p>
             </Col>
      
           

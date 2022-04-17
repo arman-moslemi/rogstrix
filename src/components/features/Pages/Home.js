@@ -51,10 +51,10 @@ const Home = () => {
       });
 
   }
-  const setcategory=()=>{
+  const setcategory=(id)=>{
     const axios = require("axios");
 
-    axios.post(apiUrl + "LastRogMainProduct ",{MainGroupID:cat})
+    axios.post(apiUrl + "LastRogMainProduct ",{MainGroupID:id})
     .then(function (response) {
       if (response.data.result == "true") {
 
@@ -82,7 +82,7 @@ const Home = () => {
     <FirstSlider data={slider}/>
     <div className="row mt-5">
       <Col md={2}>
-      <CategoryList cat={setCat}/>
+      <CategoryList cat={setcategory}/>
       </Col>
       <Col md={10}>
       <div className="bestsliderBox bestSellerContainerCol2">

@@ -11,6 +11,7 @@ import Plus2 from "../../../assets/img/plus2.png";
 import sliderManitor from "../../../assets/img/sliderManitor.png";
 import sliderCase from "../../../assets/img/sliderCase.png";
 import sliderMouse from "../../../assets/img/sliderMouse.png";
+import { apiAsset } from "../../../../commons/inFormTypes";
 SwiperCore.use([Navigation]);
 // if you want to use array
 
@@ -34,7 +35,7 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="firstCol">
           <p className="sliderTitle">راگ استریکس</p>
           <p className="sliderSlogan">
-          Republic of Gaming
+          Republic of Gamer
           </p>
           <p className="sliderDescription">
           بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
@@ -63,7 +64,7 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="secondCol">
           <img src={Plus1} className="plus1Img"/>
           <img src={Plus2} className="plus2Img"/>
-          <img src={Case} className="sliderImg"/>
+          <img src={apiAsset+data.RogSlider1} className="sliderImg"/>
         </Col>
         </div>
 
@@ -74,7 +75,7 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="firstCol">
           <p className="sliderTitle">راگ استریکس</p>
           <p className="sliderSlogan">
-          Republic of Gaming
+          Republic of Gamer
           </p>
           <p className="sliderDescription">
           بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
@@ -103,7 +104,7 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="secondCol">
           <img src={Plus1} className="plus1Img"/>
           <img src={Plus2} className="plus2Img"/>
-          <img src={Case} className="sliderImg"/>
+          <img src={apiAsset+data.RogSlider2} className="sliderImg"/>
         </Col>
         </div>
 

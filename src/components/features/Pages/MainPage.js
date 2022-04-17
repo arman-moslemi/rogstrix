@@ -121,6 +121,7 @@ const MainPage = () => {
     mainSlider();
 // alert(val)
   }, []);
+  
   return (
     <>
 
