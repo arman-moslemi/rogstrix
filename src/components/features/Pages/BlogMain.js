@@ -18,13 +18,33 @@ import BlogBox from "./BlogComponents/BlogBox";
 const BlogMain = () => {
   const [blog,setBlog]=useState([])
   const [type,setType]=useState([])
-  const [cat,setCat]=useState([])
+  const [cat,setCat]=useState(0)
 
   const mainSlider=()=>{
     const axios = require("axios");
 
 
-    axios.get(apiUrl + "AllBlog")
+    
+    if(cat!=0)
+    {axios.post(apiUrl + "SingleBlogRelated",{BlogTypeID:cat})
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+        setBlog(response.data.Data)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+ }
+else{
+  axios.get(apiUrl + "AllBlog")
     .then(function (response) {
       if (response.data.result == "true") {
 
@@ -56,15 +76,41 @@ const BlogMain = () => {
     .catch(function (error) {
       console.log(error);
     });
+}
 
+
+
+  }
+  const RelType=()=>{
+    const axios = require("axios");
+
+if(cat!=0)
+    {axios.post(apiUrl + "SingleBlogRelated",{BlogTypeID:cat})
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+        setBlog(response.data.Data)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+ }
 
 
   }
 
   useEffect(() => {
     mainSlider();
+
 // alert(val)
-  }, []);
+  }, [cat]);
   return (
     <div className="SingleProduct">
         <Header/>

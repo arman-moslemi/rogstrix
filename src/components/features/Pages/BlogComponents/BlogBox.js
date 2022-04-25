@@ -38,7 +38,7 @@ const BlogBox = ({data}) => {
             <div className="d-flex align-items-center borderRight1">
                 <FaRegEye color={'#a0a0a0'}/>
                 <p className="userName">
-                   4845
+                   {data.TotalVisits}
                 </p>
             </div>
             <div className="d-flex align-items-center borderRight1">

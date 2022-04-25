@@ -141,7 +141,7 @@ console.log(params)
        <Col md={3}>
          <SuggestionBlogs data={special}/>
          <RelatedPost BlogTypeID={data.BlogTypeID}/>
-         <Category data={type}/>
+         {/* <Category data={type}/> */}
          </Col>
          <Col md={9}>
           <img className="BlogMainImg" src={apiAsset+data.Pic}/>

@@ -80,7 +80,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="/About/Aboutus">
                   درباره ما
                 </a>
               </li>

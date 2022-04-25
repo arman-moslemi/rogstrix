@@ -295,7 +295,7 @@ render={(props) => <AssembleSecond/>}>
 						</Route>
 						<Route
 
-path='/About'
+path='/About/:id'
 name='درباره ما'
 render={(props) => <AboutUsPage/>}>
 

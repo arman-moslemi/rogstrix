@@ -25,22 +25,22 @@ const FooterMain = () => {
           </p>
           <ul className="footerLightUl">
             <li>
-              <a href="#">
+              <a href="/About/Liecence">
                 مجوز و گواهی نامه ها
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/Rules">
                قوانین و مقررات
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/Privatee">
                حریم خصوصی
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/RuleWarranty">
                قوانین گارانتی
               </a>
             </li>
@@ -50,7 +50,7 @@ const FooterMain = () => {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/Aboutus">
                 درباره ما
               </a>
             </li>
@@ -62,35 +62,35 @@ const FooterMain = () => {
           </p>
           <ul className="footerLightUl">
             <li>
-              <a href="#">
+              <a href="/About/OriginalProduct">
                 تضمین اصالت کالا
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/ReturnProduct">
                شرایط عودت کالا
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/SendProduct">
                نحوه ارسال کالا
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/Help">
                راهنمای خرید
               </a>
             </li>
-            <li>
-              <a href="#">
+            {/* <li>
+              <a href="/About/">
                تخفیف ها
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/About/">
                 استخدام
               </a>
-            </li>
+            </li> */}
           </ul>
           </Col>
           <Col md={3} xs={4}>
