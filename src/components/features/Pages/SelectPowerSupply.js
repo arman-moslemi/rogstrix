@@ -84,7 +84,7 @@ const ProductSave=(id)=>{
     .then(function (response) {
       console.log(589)
       console.log(response.data)
-      if (response.data.result == "true") {
+      if (response.data.result == "true" ||response.data.result == "false"  ) {
 alert("با موفقیت ذخیره شد")
       console.log(222)
       console.log(response.data.Data2)
