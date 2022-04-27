@@ -35,7 +35,7 @@ const AssembleMain = () => {
     const axios = require("axios");
 
       axios
-          .post(apiUrl + "CompareSystem",{
+          .post(apiUrl + "CompareCustomerSystem",{
             SystemID:params,
           })
       .then(function (response) {
@@ -148,6 +148,40 @@ const AssembleMain = () => {
       mainSlider();
   // alert(val)
     }, []);
+    const AddToCart=(id)=>{
+      const axios = require("axios");
+      var Guest=localStorage.getItem("guest")
+
+      const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+  console.log(555)
+  console.log(id)
+  console.log(token)
+      axios
+          .post(apiUrl + "ShoppingBasketAdd",{
+            SystemID:id,
+            CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+            GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,
+                        Cost:property[0].SystemCost,
+            // ColorID:color,
+            Number:1
+  
+          })
+      .then(function (response) {
+        if (response.data.result == "true") {
+  alert("با موفقیت ذخیره شد")
+          console.log(777)
+          console.log(response.data.Data)
+  
+      }
+      else{
+        console.log(888)
+        console.log(response.data.result)
+  
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   return (
     <div className="EachCategoryBody">
       <Header />
@@ -299,13 +333,13 @@ const AssembleMain = () => {
               </p>
              
             </div>
-            {/* <div>
-            <button className="buyAssembleBtn">
+            <div>
+            <button onClick={()=>AddToCart(property[0]?.SystemID)} className="buyAssembleBtn">
                   خرید کل قطعات
                 </button>
-            </div> */}
+            </div>
           </div>
-          <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
+          {/* <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
           <div className="padding20">
             <div className="d-flex">
               <p className="hoshdar">
@@ -322,7 +356,7 @@ const AssembleMain = () => {
               {hoshdar}        
               </p>
                   </div>
-          </div>
+          </div> */}
         </div>
         <div className="whiteBox3 mt-3">
             <p className="boxTitle2 BoldFont">

@@ -2,11 +2,12 @@ import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 import MainPageHeader from "./layouts/MainPageHeader";
+import Header from "./layouts/Header";
 import FooterMain from "./layouts/FooterMain";
 import WhyRogstrix from "./HomePageComponents/WhyRogstrix";
 import FirstSlider from "./HomePageComponents/FirstSlider";
 import Statistic from "./HomePageComponents/Statistic";
-import CategoryList from "./EachCategoryComponents/CategoryList";
+import CategoryListRog from "./EachCategoryComponents/CategoryListRog";
 import BestSellerSlider from "./HomePageComponents/BestSellerSlider";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 const Home = () => {
@@ -77,12 +78,13 @@ const Home = () => {
   }, []);
   return (
     <>
-      <MainPageHeader  />
+      {/* <MainPageHeader  /> */}
+      <Header  />
 
     <FirstSlider data={slider}/>
     <div className="row mt-5">
       <Col md={2}>
-      <CategoryList cat={setcategory}/>
+      <CategoryListRog cat={setcategory} isRog={true}/>
       </Col>
       <Col md={10}>
       <div className="bestsliderBox bestSellerContainerCol2">

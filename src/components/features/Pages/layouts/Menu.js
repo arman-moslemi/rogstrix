@@ -23,6 +23,8 @@ import {useParams } from "react-router-dom";
 
 const Menu = () => {
    const [showMega, setShowMega] = useState(false);
+   const [menu, setMenu] = useState(false);
+   const [pak, setPak] = useState(1);
 const onClick = () =>{
    setShowMega(!showMega);
 };
@@ -33,13 +35,15 @@ const groups=()=>{
    const axios = require("axios");
 
 
-   axios.get(apiUrl + "AllMainGroup")
+   // axios.get(apiUrl + "AllMainGroup")
+   axios.get(apiUrl + "GroupBrand")
    .then(function (response) {
      if (response.data.result == "true") {
 
-        setData(response.data.GroupData)
+      //   setData(response.data.GroupData)
+        setData(response.data.Data)
 
-        console.log(response.data.GroupData)
+        console.log(response.data.Data)
 
        // history.push("/RegisterVerify/"+mobile)
 
@@ -97,48 +101,101 @@ const groups=()=>{
    </div>
    {showMega ?<div className="megaMenu">
       <div className="MegaMenuFirstRow">
-         <Link onClick={()=>history.push("/EachCategory/1")} className="megaMenuFirstRowBox" >
-            <MegaMenuCase/>
+         <Link onClick={()=>history.push("/EachCategory/1")} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
+            <p className='menuTextBack'>
+            قطعات کامپیوتر              </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/2")} className="megaMenuFirstRowBox" >
-            <MegaMenuLapTop/>
+         <Link onClick={()=>history.push("/EachCategory/2")}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
+            {/* <MegaMenuLapTop/> */}
+            <p className='menuTextBack'>
+            لپتاپ  
+            </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/3")} className="megaMenuFirstRowBox" >
-            <MegaMenuTablet/>
+         <Link onClick={()=>history.push("/EachCategory/3")} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
+            {/* <MegaMenuTablet/> */}
+            <p className='menuTextBack'>
+           تبلت
+            </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/4")} className="megaMenuFirstRowBox" >
-            <MegaMenuMobile/>
+         <Link onClick={()=>history.push("/EachCategory/4")} onMouseOver={()=>{setMenu(true);setPak(4)}} className="megaMenuFirstRowBox" >
+            {/* <MegaMenuMobile/> */}
+            <p className='menuTextBack'>
+              موبایل و گجت   
+            </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/5")} className="megaMenuFirstRowBox" >
-            <MegaMenuServer/>
+         <Link onClick={()=>history.push("/EachCategory/5")} onMouseOver={()=>{setMenu(true);setPak(5)}} className="megaMenuFirstRowBox" >
+            <p className='menuTextBack'>
+             شبکه و سرور
+            </p>
          </Link>
          <Link onClick={()=>history.push("/EachCategory/6")} className="megaMenuFirstRowBox" >
-            <MegaMenuPrinter/>
+            <p className='menuTextBack'>
+            کالای اداری            </p>
          </Link>
          <Link onClick={()=>history.push("/EachCategory/7")} className="megaMenuFirstRowBox" >
-            <MegaMenuCamera/>
+            <p className='menuTextBack'>
+            تصویربرداری            </p>
          </Link>
          <Link onClick={()=>history.push("/EachCategory/8")} className="megaMenuFirstRowBox" >
-            <MegaMenuConsole/>
+            <p className='menuTextBack'>
+کنسول بازی            </p>
          </Link>
       </div>
+      {/* <div className="MegaMenuSecondRow">
+         <Link onClick={()=>history.push("/EachCategory/1")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+            قطعات کامپیوتر            </p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/2")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+لپتاپ            </p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/3")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+تبلت            </p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/4")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+موبایل و گجت            </p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/5")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+شبکه و سرور            </p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/6")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+کالای اداری            تصویربرداری</p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/7")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+            </p>
+         </Link>
+         <Link onClick={()=>history.push("/EachCategory/8")} className="megaMenuSecondRowBox" >
+            <p className='menuTextBack2'>
+کنسول بازی            </p>
+         </Link>
+      </div> */}
+      {
+         menu?
+
+
       <div className="MegaMenuContainer">
          {
-            data.map((item)=>{
+            data?.filter(t=>t[0].MainGroupID==pak).map((item)=>{
                return(
       <div className="MegaMenuCol">
 
             <ul>
                <li className="listTitle">
-                  <Link onClick={()=>history.push("/EachCategory/"+item[0].MainGroupID)}>
-{item[0].MainTitle}                  </Link>
+                  <Link onClick={()=>history.push("/products/"+item[0].GroupID)}>
+{item[0].Title}                  </Link>
                </li>
 {
    item.map((item2)=>{
       return(
                <li className="listItems">
-                  <Link onClick={()=>history.push("/products/"+item2.GroupID)}>
-{item2.Title }                 </Link>
+                  <Link onClick={()=>history.push("/products/"+item2.GroupID+"/"+item2.BrandID)}>
+{item2.BrandName }                 </Link>
                </li>
 
       )
@@ -465,6 +522,9 @@ const groups=()=>{
             </ul>
          </div> */}
       </div>
+         :
+         null
+      }
    </div>:null}
    </div>
    <div className="responsiveHeader">

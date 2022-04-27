@@ -8,6 +8,7 @@ import Login from '../components/features/Pages/Login';
 import Verify from "../components/features/Pages/Verify";
 import ErrorPage from "../components/features/Pages/404";
 import Products from '../components/features/Pages/Products';
+import ProductsRog from '../components/features/Pages/ProductsRog';
 import ProductsSearch from '../components/features/Pages/ProductsSearch';
 import ProductsSpecial from '../components/features/Pages/ProductsSpecial';
 import MainPage from "../components/features/Pages/MainPage";
@@ -113,9 +114,16 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/Products/:id'
+					path='/Products/:id/:brands?'
 					name='Products'
 					render={(props) => <Products/>}>
+
+					</Route>
+					<Route
+
+					path='/ProductsRog/:id'
+					name='Products'
+					render={(props) => <ProductsRog/>}>
 
 					</Route>
 					<Route

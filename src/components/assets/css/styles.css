@@ -285,7 +285,7 @@ text-shadow: 1px 1px 10px #ff004eb0;
   font-family: Kalameh;
   float: right;
 
-		height: 100%;
+		height: 75%;
   color:#fff;
 		background: #ff004e;
 		padding: 10px;
@@ -294,7 +294,7 @@ text-shadow: 1px 1px 10px #ff004eb0;
   display: flex;
   align-items: center;
 		font-size: 40px;
-    writing-mode: sideways-lr;
+    writing-mode: tb-rl !important;
     box-shadow: 1px 1px 20px 1px rgba(255, 0, 78, 0.58);
 width: 100%;
 border: 1px solid #707070;
@@ -305,6 +305,9 @@ justify-content: center;
 .rightBoxCol div{
   position: relative;
   height: 100%;
+}
+.mainHeader .d-flex{
+  align-items: center !important;
 }
 .rightBoxCol{
   padding-right: 0px !important;
@@ -1078,6 +1081,7 @@ margin-left: auto;
 display: block;
 padding-top: 10px;
 padding-bottom: 10px;
+margin-right: auto;
 }
 .tableTitle{
   margin-bottom: 0px;
@@ -1590,14 +1594,42 @@ background-color: #fff;
   z-index: 10000;
 }
 .MegaMenuFirstRow{
-  background-color: #111;
+  background-color: #1a1919;
   display: flex;
+}
+.MegaMenuSecondRow{
+  background-color: #f3f3f3;
+  display: flex;
+}
+.menuTextBack{
+  color: #fff;
+  font-family: 'IRANSans' !important;
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-bottom: 0px;
+}
+.menuTextBack2{
+  color: #1a1a1a;
+  font-family: 'IRANSans' !important;
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-bottom: 0px;
 }
 .megaMenuFirstRowBox{
   width: 12.5%;
-  height: 170px;
-  border-right: 0.5px solid #5a5a5a;
-  border-left: 0.5px solid #5a5a5a;
+  height:50px;
+  /* border-right: 0.5px solid #5a5a5a;
+  border-left: 0.5px solid #5a5a5a; */
+  align-content: center;
+justify-content: center;
+display: flex;
+align-items: center;
+}
+.megaMenuSecondRowBox{
+  width:auto;
+  height:50px;
+  /* border-right: 0.5px solid #5a5a5a;
+  border-left: 0.5px solid #5a5a5a; */
   align-content: center;
 justify-content: center;
 display: flex;
@@ -1611,9 +1643,7 @@ align-items: center;
   fill: #f6303f;
   stroke: #f6303f;
 }
-.megaMenuFirstRowBox:hover{
-  background-color: #fff;
-}
+
 .megaMenuFirstRowBox:hover path{
   fill: #f6303f;
   stroke: #f6303f;
@@ -2368,4 +2398,16 @@ body.dark-mode .bestSellerContainer{
   width: 30px;
   border-radius: 50%;
   color: #ff004e;
+}
+.wi10{
+  width: 10%;
+}
+.wi15{
+  width: 15%;
+}
+.wi50{
+  width: 50%;
+}
+.wi5{
+  width: 5%;
 }

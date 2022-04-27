@@ -1,6 +1,11 @@
 @media screen and (max-width:550px){
     .logo-light{
-        width: 150px !important;
+        width: 90px !important;
+        height: 30px;
+    }
+    .mouseImg{
+        width: 100% !important;
+        height: auto !important;
     }
     .backgroundFooter{
         padding-right: 2rem;
@@ -15,6 +20,9 @@
     }
     .swiper-slide {
         width: 220px;
+      }
+      .mainHeader{
+          padding:10px !important;
       }
 }
 @media screen and (max-width:460px){

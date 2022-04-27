@@ -29,6 +29,7 @@ const Products = () => {
   const [filter,setFilter]=useState([])
   const [brand,setBrand]=useState([])
   const params = useParams().id;
+  const brandparams = useParams().brands;
   const [from,setFrom]=useState(0)
   const [to,setTo]=useState(0)
   const [head,setHead]=useState("")
@@ -43,10 +44,16 @@ console.log(params)
           })
       .then(function (response) {
         if (response.data.result == "true") {
+if(brandparams){
 
-          setData(response.data.Data)
+  setData(response.data.Data.filter(t=>t[0].BrandID==brandparams))
+}else{
+  setData(response.data.Data)
+
+}
           setData2(response.data.Data)
           console.log(55)
+          console.log(brandparams)
           console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
       }
@@ -460,7 +467,7 @@ mainSlider()
                          data[0]?
                       <p className="whiteBoxTitle">
 
-                         همه {data[0][0]?.Title} ها
+                         همه {data[0][0]?.GroupName} ها
                          </p>
                          :
                          null

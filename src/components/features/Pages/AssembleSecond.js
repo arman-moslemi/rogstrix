@@ -164,7 +164,40 @@ if(isLoggedIn)
      groups2();
   // alert(val)
    }, []);
- 
+  
+  const AddToCart=(id)=>{
+    const axios = require("axios");
+    var Guest=localStorage.getItem("guest")
+
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+console.log(555)
+console.log(token)
+    axios
+        .post(apiUrl + "ShoppingBasketAdd",{
+          SystemID:id,
+          CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+          GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,
+          Cost:parseInt(product[0].Cost)-parseInt(product[0].SpecialCost),
+          // ColorID:color,
+          Number:1
+
+        })
+    .then(function (response) {
+      if (response.data.result == "true") {
+alert("با موفقیت ذخیره شد")
+        console.log(777)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(888)
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
    return (
     
     <div className="EachCategoryBody">
@@ -218,15 +251,20 @@ if(isLoggedIn)
              </Button>
             </div> */}
           </div>
-            {/* <div className="d-flex align-items-center">
+          {
+            product?.length>0?
+            <div className="d-flex align-items-center">
             <p className="linkCopy">
-            https://rogstrix.ir/list/bRDXKB
+            https://rogstrix.ir/AssembleMain/{product[0]?.SystemID}
             </p>
            <Button className="attachBtn">
            <FaLink color={'#fff'}/>
            </Button>
          
-            </div> */}
+            </div>
+            :
+            null
+          }
           </div>
           <div className="secondBox d-flex justify-content-between pd0">
             <div className="d-flex align-items-center colorWhite pd20">
@@ -394,13 +432,13 @@ inc.indexOf(item.GroupID)!=-1 ?
               </p>
              
             </div>
-            {/* <div>
-            <button className="buyAssembleBtn">
+            <div>
+            <button onClick={()=>AddToCart(product[0]?.SystemID)} className="buyAssembleBtn">
                   خرید کل قطعات
                 </button>
-            </div> */}
+            </div>
           </div>
-          <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
+          {/* <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
           <hr class="dottedH"></hr>
           <div className="padding20">
             <div className="d-flex">
@@ -418,7 +456,7 @@ inc.indexOf(item.GroupID)!=-1 ?
               <p className="productAssembleName MediumFont" >
               توجه داشته باشید که برخی از قطعات ممکن است از نظر اندازه با هم سازگار نباشند و با هم جور نشوند. در حال حاضر هنوز این نوع سازگاری قابل بررسی نیست. </p>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* <div className="whiteBox3 mt-3">
             <p className="boxTitle2 BoldFont">
