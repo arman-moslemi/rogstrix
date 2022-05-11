@@ -62,6 +62,7 @@ const CartStep2 = () => {
     const [ramz,setRamz]=useState("")
     const [type,setType]=useState(0)
     const [send,setSend]=useState("")
+    const [personal,setPersonal]=useState()
     const history = useHistory();
 
             const getData=()=>{
@@ -80,6 +81,7 @@ const CartStep2 = () => {
              setAddress2(response.data.Data.Address2)
              console.log(999)
              console.log(response.data.Data)
+             setPersonal(response.data.Data)
 
             // history.push("/RegisterVerify/"+mobile)
 
@@ -252,6 +254,9 @@ if(send==""){
 else if(radio==0){
   alert("لطفا آدرس را مشخص کنید")
 
+}
+else if(personal?.NationalCode==""|| personal?.NameFamily==""){
+  alert("لطفا اسم یا کارت ملی را وارد نمایید")
 }
 else{
         axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost})

@@ -105,7 +105,7 @@ else
 setOpen1(false)
             setTitle("تیکت با موفقیت ثبت شد")
             setOpen(true)
-
+            ProductSave()
             // history.push("/RegisterVerify/"+mobile)
 
         }

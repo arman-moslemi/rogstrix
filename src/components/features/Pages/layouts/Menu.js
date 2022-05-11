@@ -101,42 +101,42 @@ const groups=()=>{
    </div>
    {showMega ?<div className="megaMenu">
       <div className="MegaMenuFirstRow">
-         <Link onClick={()=>history.push("/EachCategory/1")} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/1");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             قطعات کامپیوتر              </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/2")}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/2");window.location.reload()}}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
             {/* <MegaMenuLapTop/> */}
             <p className='menuTextBack'>
             لپتاپ  
             </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/3")} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/3");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
             {/* <MegaMenuTablet/> */}
             <p className='menuTextBack'>
            تبلت
             </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/4")} onMouseOver={()=>{setMenu(true);setPak(4)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/4");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(4)}} className="megaMenuFirstRowBox" >
             {/* <MegaMenuMobile/> */}
             <p className='menuTextBack'>
               موبایل و گجت   
             </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/5")} onMouseOver={()=>{setMenu(true);setPak(5)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/5");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(5)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
              شبکه و سرور
             </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/6")} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/6");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             کالای اداری            </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/7")} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/7");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             تصویربرداری            </p>
          </Link>
-         <Link onClick={()=>history.push("/EachCategory/8")} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/8");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
 کنسول بازی            </p>
          </Link>
@@ -187,14 +187,14 @@ const groups=()=>{
 
             <ul>
                <li className="listTitle">
-                  <Link onClick={()=>history.push("/products/"+item[0].GroupID)}>
+                  <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
 {item[0].Title}                  </Link>
                </li>
 {
    item.map((item2)=>{
       return(
                <li className="listItems">
-                  <Link onClick={()=>history.push("/products/"+item2.GroupID+"/"+item2.BrandID)}>
+                  <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}>
 {item2.BrandName }                 </Link>
                </li>
 

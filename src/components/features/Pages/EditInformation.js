@@ -44,7 +44,7 @@ const EditInformation = () => {
       const axios = require("axios");
 
 
-        axios.post(apiUrl + "EditCustomerFull",{CustomerID:1,Mobile:mobile,Email:email,Password:"",NameFamily:name+","+family,NationalCode:nationalCode,
+        axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:"",NameFamily:name+","+family,NationalCode:nationalCode,
         Phone:phone+prePhone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:""
     })
         .then(function (response) {
@@ -76,20 +76,21 @@ const EditInformation = () => {
 
              setData(response.data.Data)
              console.log(response.data.Data)
-             setName(response.data.Data.NameFamily.split(',')[0])
-             setFamily(response.data.Data.NameFamily.split(',')[1])
+             console.log(response.data.Data.Mobile)
+             setName(response.data.Data.NameFamily?.split(',')[0])
+             setFamily(response.data.Data.NameFamily?.split(',')[1])
              setEmail(response.data.Data.Email)
              setMobile(response.data.Data.Mobile)
-             setPhone(response.data.Data.Phone.substring(0, 8))
-             setPrePhone(response.data.Data.Phone.substring(8, response.data.Data.Phone.Length))
+             setPhone(response.data.Data.Phone?.substring(0, 8))
+             setPrePhone(response.data.Data.Phone?.substring(8, response.data.Data.Phone?.Length))
              setCardNumber(response.data.Data.CardNumber)
              setBirthday(response.data.Data.Birthday)
              setCompanyName(response.data.Data.CompanyName)
              setEconomicCode(response.data.Data.EconomicCode)
              setNationalCodeCompany(response.data.Data.NationalCodeCompany)
              setNationalCode(response.data.Data.NationalCode)
-             setPhoneCompany(response.data.Data.PhoneCompany.substring(0, 8))
-             setPrePhoneCompany(response.data.Data.PhoneCompany.substring(8, response.data.Data.PhoneCompany))
+             setPhoneCompany(response.data.Data.PhoneCompany?.substring(0, 8))
+             setPrePhoneCompany(response.data.Data.PhoneCompany?.substring(8, response.data.Data.PhoneCompany))
              setGender(response.data.Data.Gender)
              setRegistrationCode(response.data.Data.RegistrationCode)
             // history.push("/RegisterVerify/"+mobile)

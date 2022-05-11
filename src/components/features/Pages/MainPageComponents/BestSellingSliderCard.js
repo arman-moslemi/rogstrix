@@ -23,13 +23,16 @@ const BestSellingSliderCard = ({data}) => {
 
   const getCompare=()=>{
 setCompare(localStorage.getItem("compare"))
-
+console.log(localStorage.getItem("compare"))
+console.log(159873)
 if(localStorage.getItem("compare")?.split('T')?.length>4)
 {localStorage.setItem("compare","")
 }
   }
   const goCompare=()=>{
-    !localStorage.getItem("compare")?localStorage.setItem("compare",localStorage.getItem("compare")):localStorage.setItem("compare",localStorage.getItem("compare")+"T"+data.ProductID) ;
+    // !localStorage.getItem("compare")?localStorage.setItem("compare",localStorage.getItem("compare")):localStorage.setItem("compare",localStorage.getItem("compare")+"T"+data.ProductID) ;
+    console.log(222)
+   localStorage.setItem("compare",localStorage.getItem("compare")+data.ProductID+"T")
     history.push("/CompareSupplyProduct/"+localStorage.getItem("compare"))
   }
   useEffect(() => {

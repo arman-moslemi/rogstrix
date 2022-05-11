@@ -272,7 +272,7 @@ const MainPage = () => {
        <div>
          <div className="row customRow">
            <Col md={4}>
-              <div className="productBannerBox" id="backBlack">
+              <Link to={slider.LinkDownSlider4} href={slider.LinkDownSlider4}className="productBannerBox" id="backBlack">
               <img src={apiAsset+slider?.DownSlider4}/>
                 {/* <div className="">
 
@@ -283,10 +283,10 @@ const MainPage = () => {
 
 
 
-              </div>
+              </Link>
            </Col>
            <Col md={4}>
-           <div className="productBannerBox" id="backGray">
+           <Link to={slider.LinkDownSlider5} className="productBannerBox" id="backGray">
            <img src={apiAsset+slider?.DownSlider5}/>
                 {/* <div className="">
 
@@ -295,10 +295,10 @@ const MainPage = () => {
                   </a>
                 </div> */}
 
-              </div>
+              </Link>
            </Col>
            <Col md={4}>
-           <div className="productBannerBox" id="backBlack">
+           <Link href={slider.LinkDownSlider6} className="productBannerBox" id="backBlack">
            <img src={apiAsset+slider?.DownSlider6}/>
                 {/* <div className="">
 
@@ -307,7 +307,7 @@ const MainPage = () => {
                   </a>
                 </div> */}
 
-              </div>
+              </Link>
            </Col>
          </div>
        </div>

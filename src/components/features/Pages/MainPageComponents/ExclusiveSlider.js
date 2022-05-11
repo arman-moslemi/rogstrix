@@ -61,7 +61,7 @@ const ExclusiveSlider = () => {
                    </Col>
                </div> */}
          <div className="exclusiveBox">
-         <Swiper className="exclusiveSlider" slidesPerView={5} spaceBetween={15} navigation={true} >
+         <Swiper className="exclusiveSlider" slidesPerView={5} spaceBetween={5} navigation={true} >
              {
                  data?.map((item)=>{
                      return(

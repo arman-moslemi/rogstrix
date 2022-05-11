@@ -1,5 +1,5 @@
 import React from "react";
-import SwiperCore, { EffectCoverflow, Navigation, Pagination } from "swiper";
+import SwiperCore, { Autoplay, EffectCoverflow, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
@@ -8,7 +8,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import MainPageSlide1 from "../../../assets/img/MainPageSlide1.png"
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 
-SwiperCore.use([Navigation,Pagination]);
+SwiperCore.use([Navigation,Pagination,Autoplay]);
 // if you want to use array
 
 
@@ -21,7 +21,10 @@ const MainSlider = ({data}) => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-
+        autoplay={{
+          delay: 2500,
+          
+        }}
 
         className="MainPageSlider"
       >

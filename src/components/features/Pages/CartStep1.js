@@ -38,6 +38,7 @@ const CartStep1 = () => {
 
     const [open1, setOpen1] = useState(false);
     const [total, setTotal] = useState(0);
+    const [ID, setID] = useState(0);
 
 
    const increment = (id,type) => {
@@ -152,7 +153,7 @@ const deleted=(id)=>{
         // getData()
 
     // alert(val)
-      }, []);
+      }, [ID]);
   return (
     <div className="EachCategoryBody">
      <Header/>
@@ -204,7 +205,7 @@ const deleted=(id)=>{
                      <div  className="d-flex ta-center pd0 d-inline-block align-items-center" style={{borderBottom:"none",marginTop:5}}>
                     <p className="CartColorP">تعداد :</p>
                     <div className="counterDiv">
-              <button onClick={()=>increment(item.ShoppingBasketID,"mines")} className="decBTN">-</button>
+              <button onClick={()=>item.Number==1?null:increment(item.ShoppingBasketID,"mines")} className="decBTN">-</button>
               <span style={{marginRight:'0'}}>{item.Number}</span>
               <button onClick={()=>increment(item.ShoppingBasketID,"add")} className="inBTN">+</button>
             </div>
@@ -218,7 +219,7 @@ const deleted=(id)=>{
                     <div>
                         <p className='colorRed'>
                             
-{                        parseInt(item?.Cost)
+{                        parseInt(item?.Cost).toLocaleString("en-de")
 }                         تومان
                         </p>
                     </div>
@@ -227,7 +228,7 @@ const deleted=(id)=>{
                          {/* <Button className="glassBtn" id="colorBlue">
                              ویرایش
                          </Button> */}
-                         <Button onClick={()=>deleted(item.ShoppingBasketID)} className="glassBtn borderRight" id="colorRed">
+                         <Button onClick={()=>{deleted(item.ShoppingBasketID);setID(item.ShoppingBasketID)}} className="glassBtn borderRight" id="colorRed">
                              حذف
                          </Button>
                      </div>
@@ -303,7 +304,7 @@ const deleted=(id)=>{
                     </div>
                     <div>
                         <p>
-                            {total} تومان
+                            {total.toLocaleString("en-de")} تومان
                         </p>
                     </div>
                 </div>

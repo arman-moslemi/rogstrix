@@ -38,9 +38,9 @@ const CardBox = ({data}) => {
          </Col> */}
          <Col md={6} className="ta-left">
           <p className="strokeOutPrice">
-{data.Cost}          </p>
+{data.Cost.toLocaleString("en-de")}          </p>
           <p className="cardPrice">
-{parseInt(data.Cost)-parseInt(data.SpecialCost)}
+{(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}
         </p>
          </Col>
        </div>
