@@ -37,7 +37,7 @@ const CompletedSystems = () => {
   const [title,setTitle]=useState("")
   const mainSlider=()=>{
     const axios = require("axios");
-    axios.get(apiUrl + "AllDefaultSystems")
+    axios.get(apiUrl + "AllFactorSystems")
     .then(function (response) {
       if (response.data.result == "true") {
 
@@ -465,7 +465,7 @@ onChange={(e)=>setTitle(e.target.value)}
 return(
 
   <Col md={4}>
-                  <CompletedCards data={item[0]} viewOverlay={true}/>
+                  <CompletedCards data={item} viewOverlay={true}/>
                 </Col>
                   )
                   })

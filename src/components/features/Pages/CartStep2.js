@@ -259,7 +259,7 @@ else if(personal?.NationalCode==""|| personal?.NameFamily==""){
   alert("لطفا اسم یا کارت ملی را وارد نمایید")
 }
 else{
-        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost})
+        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText})
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(response.data.Data)

@@ -21,7 +21,8 @@ export const truncate = (str, len) => {
 };
 const CompletedCards = (props) => {
   const history = useHistory();
-
+console.log(789456)
+console.log(props.data)
   return (
 
     <div className="completedCard">
@@ -31,7 +32,7 @@ const CompletedCards = (props) => {
   props?.viewOverlay==true?
          <div className="grayOverlay">
            <div className="userProfile">
-             <img src={apiAsset+props.data.Pic}/>
+             <img src={apiAsset+props.data?.Pic}/>
            </div>
            <div className="userName">
              <p>{truncate("",20)}</p>
@@ -72,7 +73,7 @@ const CompletedCards = (props) => {
         </Col>
         <Col md={7} className="pd0 ta-left">
           <p className="completedPrice">
-          {props?.data?.Cost} تومان
+          {props?.data?.SystemCost} تومان
           </p>
         </Col>
       </div>

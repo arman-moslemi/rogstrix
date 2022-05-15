@@ -159,6 +159,37 @@ if(isLoggedIn)
  
  
   }
+   const again=()=>{
+    const axios = require("axios");
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+ console.log(555)
+ console.log(storedData?.toString().length)
+ // console.log(storedData.length)
+ console.log(isLoggedIn)
+    axios.post(apiUrl + "CreateSystemCustomerAgain",{
+      CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+      GuestID:storedData?.toString().length<10 && storedData?0:Guest
+    })
+    .then(function (response) {
+      if (response.data.result == "true") {
+ 
+      window.location.reload()
+   
+    }
+    else{
+     console.log(999)
+
+    }})
+    .catch(function (error) {
+     console.log(999)
+
+      console.log(error);
+    });
+    
+  
+ 
+ 
+  }
    useEffect(() => {
      groups();
      groups2();
@@ -227,6 +258,14 @@ alert("با موفقیت ذخیره شد")
                 <FaPlus color={'#fff'}/>
                 <p className="userName">
                     ذخیره این سیستم
+                </p>
+                </Button>
+            </div>
+            <div className="d-flex align-items-center colorWhite">
+                <Button onClick={()=>again()}>
+                <FaPlus color={'#fff'}/>
+                <p className="userName">
+شروع دوباره
                 </p>
                 </Button>
             </div>

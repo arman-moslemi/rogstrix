@@ -73,9 +73,7 @@ const ProductSave=(id)=>{
   var Guest=localStorage.getItem("guest")
   const axios = require("axios");
   const storedData = JSON.parse(localStorage.getItem("userData"))?.token
-  
   axios
-  // .post(apiUrl + "AddCustomerProductSave",{
     .post(apiUrl + "CreateSystemCustomer",{
       ProductID:id,
       CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
@@ -83,11 +81,12 @@ const ProductSave=(id)=>{
     })
     .then(function (response) {
       console.log(589)
+      console.log(id)
       console.log(response.data)
       if (response.data.result == "true" ||response.data.result == "false"  ) {
 alert("با موفقیت ذخیره شد")
       console.log(222)
-      console.log(response.data.Data2)
+      console.log(response.data)
       // response.data.Data2?
 if(!Guest || Guest==0){
 
