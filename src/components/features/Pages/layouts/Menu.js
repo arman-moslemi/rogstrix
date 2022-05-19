@@ -19,9 +19,13 @@ import MegaMenuTablet from "../../../assets/icons/MegaMenuTablet";
 import { Link, useHistory } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+
 // import CustomizedDialogs from './layouts/AlertModal';
 
 const Menu = () => {
+   const {t,i18n} = useTranslation();
+
    const [showMega, setShowMega] = useState(false);
    const [menu, setMenu] = useState(false);
    const [pak, setPak] = useState(1);
@@ -69,18 +73,18 @@ const groups=()=>{
      <Button onClick={()=>history.push("/CompletedSystems")} className="MainMenuBtn borderRight1">
 
         <MenuCase  className="marginLeft15 menuResponsiveNone"/>
-        سیستم‌های تکمیل شده
+        {t("سیستم‌های تکمیل شده")}
      </Button>
      <Button onClick={()=>history.push("/AssembleSecond")} className="MainMenuBtn borderRight1">
  
       <AssembleMenu  className="marginLeft15 menuResponsiveNone"/>
-         ساخت سیستم
+      {t("ساخت سیستم")}
      </Button>
 
      <Button onClick={()=>history.push("/SystemGuide")} className="MainMenuBtn borderRight1">
 
          <GuideMenu className="marginLeft15 menuResponsiveNone"/>
-         سیستم های پیشنهادی 
+         {t("سیستم های پیشنهادی")}
               </Button>
      {/* <Button className="MainMenuBtn borderRight1">
 
@@ -89,7 +93,7 @@ const groups=()=>{
      </Button> */}
      <Button className="MainMenuBtn borderRight1" onClick={onClick}>
   <MouseMenu className="marginLeft15 menuResponsiveNone"/>
-  مشاهده محصولات
+  {t("مشاهده محصولات")}
   <FaChevronDown/>
   </Button>
 
@@ -103,42 +107,45 @@ const groups=()=>{
       <div className="MegaMenuFirstRow">
          <Link onClick={()=>{history.push("/EachCategory/1");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            قطعات کامپیوتر              </p>
+            {t("قطعات کامپیوتر")}             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/2");window.location.reload()}}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
             {/* <MegaMenuLapTop/> */}
             <p className='menuTextBack'>
-            لپتاپ  
+            {t("لپتاپ")} 
             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/3");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
             {/* <MegaMenuTablet/> */}
             <p className='menuTextBack'>
-           تبلت
+            {t("تبلت")}
             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/4");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(4)}} className="megaMenuFirstRowBox" >
             {/* <MegaMenuMobile/> */}
             <p className='menuTextBack'>
-              موبایل و گجت   
+            {t("موبایل و گجت")}   
             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/5");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(5)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-             شبکه و سرور
+            {t("شبکه و سرور")}
             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/6");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            کالای اداری            </p>
+            {t("کالای اداری")}   
+                     </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/7");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            تصویربرداری            </p>
+            {t("تصویربرداری")}    
+                    </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/8");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-کنسول بازی            </p>
+            {t("کنسول بازی")}    
+                    </p>
          </Link>
       </div>
       {/* <div className="MegaMenuSecondRow">
