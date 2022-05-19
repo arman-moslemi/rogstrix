@@ -47,7 +47,8 @@ const SpecialSliderCard = ({data}) => {
   return (
 
       <div className="SpecialSliderCard">
-                <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} >
+                {/* <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} > */}
+                <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(" ","_"))} >
 
   <div className="specialSliderCardBox">
   <img src={apiAsset+data.Pic1}/>

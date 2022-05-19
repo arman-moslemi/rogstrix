@@ -32,6 +32,7 @@ const SingleProduct = () => {
   const [cost,setCost]=useState()
   const [specialCost,setSpecialCost]=useState()
   const [count,setCount]=useState(1)
+  const [id,setID]=useState()
   var Guest=localStorage.getItem("guest")
 
   const { isLoggedIn, token } = useContext(AuthContext);
@@ -43,7 +44,7 @@ const SingleProduct = () => {
     axios
         // .post(apiUrl + "AddCustomerProductSave",{
         .post(apiUrl + "CreateSystemCustomer",{
-          ProductID:params,
+          ProductID:id,
           CustomerID:isLoggedIn?token:0,
           GuestID:isLoggedIn?0:Guest?Guest:0
         })
@@ -78,7 +79,7 @@ console.log(555)
 console.log(token)
     axios
         .post(apiUrl + "ShoppingBasketAdd",{
-          ProductID:params,
+          ProductID:id,
           CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
           GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,
           Cost:parseInt(cost)-parseInt(specialCost),
@@ -109,107 +110,111 @@ alert("با موفقیت ذخیره شد")
     const axios = require("axios");
 
       axios
-          .post(apiUrl + "SingleProduct",{
-            ProductID:params,
+          .post(apiUrl + "SingleProductByName",{
+            // ProductID:params,
+            ProductName:params.replace('_'," "),
             CustomerID:isLoggedIn?token:""
           })
-      .then(function (response) {
-        if (response.data.result == "true") {
+      .then(function (response2) {
+        console.log(response2.data)
+        if (response2.data.result == "true") {
 
-          setProduct(response.data.Data)
+          setProduct(response2.data.Data)
+          setID(response2.data.ProductID)
           console.log(777)
-          console.log(response.data)
-          setList(response.data.CostData)
-setCost(response.data.Data.Cost)
-setSpecialCost(response.data.Data.SpecialCost)
+          console.log(response2.data)
+          setList(response2.data.CostData)
+setCost(response2.data.Data.Cost)
+setSpecialCost(response2.data.Data.SpecialCost)
+
+axios
+.post(apiUrl + "SingleProperty",{
+  ProductID:response2.data.ProductID
+})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setProperty(response.data.Data)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+axios
+.post(apiUrl + "SingleProductComment ",{
+  ProductID:response2.data.ProductID
+})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setCom(response.data.Data)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+
+axios
+.post(apiUrl + "SimilarProduct",{
+  ProductID:response2.data.ProductID,
+})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setSimilar(response.data.Data)
+console.log(777)
+console.log(response.data.Data)
+
+}
+else{
+console.log(888)
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+
+axios
+.post(apiUrl + "ProductRateShow",{
+ProductID:response2.data.ProductID,
+})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setRate(response.data.Data)
+console.log(222)
+console.log(response.data.Data)
+
+}
+else{
+console.log(888)
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
       }
       else{
         console.log(888)
-        console.log(response.data.result)
+        console.log(response2.data.result)
 
       }})
       .catch(function (error) {
         console.log(error);
       });
 
-      axios
-          .post(apiUrl + "SingleProperty",{
-            ProductID:params
-          })
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setProperty(response.data.Data)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-      axios
-          .post(apiUrl + "SingleProductComment ",{
-            ProductID:params
-          })
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setCom(response.data.Data)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-
-      axios
-          .post(apiUrl + "SimilarProduct",{
-            ProductID:params,
-          })
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setSimilar(response.data.Data)
-          console.log(777)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(888)
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-
-      axios
-      .post(apiUrl + "ProductRateShow",{
-        ProductID:params,
-      })
-  .then(function (response) {
-    if (response.data.result == "true") {
-
-      setRate(response.data.Data)
-      console.log(222)
-      console.log(response.data.Data)
-
-  }
-  else{
-    console.log(888)
-    console.log(response.data.result)
-
-  }})
-  .catch(function (error) {
-    console.log(error);
-  });
   }
 
 const images = [

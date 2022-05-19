@@ -21,7 +21,9 @@ const SuggestionBlogs = ({data}) => {
              data.map((item)=>{
                  return(
          <li>
-             <Link onClick={()=>history.push("/singleProduct/"+item.ProductID)}>
+             {/* <Link onClick={()=>history.push("/singleProduct/"+item.ProductID)}> */}
+             <Link onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))}>
+                 
 {item.ProductName+" "+item.BrandName}             </Link>
          </li>
 

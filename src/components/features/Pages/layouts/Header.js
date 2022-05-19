@@ -9,6 +9,7 @@ import CartMenu from "../../../assets/icons/cartMenu";
 import MenuSearch from "../../../assets/icons/menuSearch";
 import Dashboard from "../../../assets/icons/dashboard";
 import useDarkMode from 'use-dark-mode';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const darkMode = useDarkMode(false);
@@ -17,12 +18,17 @@ const Header = () => {
   const { isLoggedIn, token } = useContext(AuthContext);
   const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
+  const {t,i18n} = useTranslation();
+
   const onClick = () =>{
     setshowSearch(!showSearch);
   };
 const  _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       history.push("/ProductsSearch/"+search)    }
+  }
+  const changeLang=(dd)=>{
+    i18n.changeLanguage(dd);
   }
   return (
    <Container fluid className="pad0">
@@ -66,9 +72,9 @@ const  _handleKeyDown = (e) => {
         <CartMenu style={{marginLeft:10}}/>
         سبد خرید
         </button>
-        <select name="Lang" id="language">
-            <option value="persian">Fa</option>
-            <option value="english">En</option>
+        <select onChange={(e) => changeLang(e.target.value)} name="Lang" id="language">
+            <option value="ir">Fa</option>
+            <option value="en">En</option>
 
         </select>
       </div>

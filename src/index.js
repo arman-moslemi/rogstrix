@@ -8,6 +8,7 @@ import './components/assets/css/responsive.css';
 // import * as serviceWorker from './serviceWorker';
 import { StateProvider } from './utils/StateProvider';
 import reducer, { initialState } from './utils/reducer';
+import './i18n';
 ReactDOM.render(
 	<React.StrictMode>
 		<StateProvider initialState={initialState} reducer={reducer}>

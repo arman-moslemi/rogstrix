@@ -12,8 +12,11 @@ import aparat from "../../../assets/img/aparat.png";
 import up from "../../../assets/img/up.png";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import RedFooterLogo from "../../../assets/icons/redFooterLogo";
+import { useTranslation } from 'react-i18next';
 
 const FooterMain = () => {
+  const {t,i18n} = useTranslation();
+
   return (
    <div>
       <div className="backgroundFooter">
@@ -21,64 +24,64 @@ const FooterMain = () => {
         <div className="row">
           <Col md={3} xs={4}>
           <p className="footerLightTitle">
-            راگ استریکس
+          {t("راگ استریکس")}
           </p>
           <ul className="footerLightUl">
             <li>
               <a href="/About/Liecence">
-                مجوز و گواهی نامه ها
+              {t("مجوز و گواهی نامه ها")}
               </a>
             </li>
             <li>
               <a href="/About/Rules">
-               قوانین و مقررات
+              {t("قوانین و مقررات")}
               </a>
             </li>
             <li>
               <a href="/About/Privatee">
-               حریم خصوصی
+              {t("حریم خصوصی")}
               </a>
             </li>
             <li>
               <a href="/About/RuleWarranty">
-               قوانین گارانتی
+              {t("قوانین گارانتی")}
               </a>
             </li>
             <li>
               <a href="#">
-                تماس با ما
+              {t("تماس با ما")}
               </a>
             </li>
             <li>
               <a href="/About/Aboutus">
-                درباره ما
+              {t("درباره ما")}
               </a>
             </li>
           </ul>
           </Col>
           <Col md={3} xs={4}>
           <p className="footerLightTitle">
-            راهنما
+          {t("راهنما")}
           </p>
           <ul className="footerLightUl">
             <li>
               <a href="/About/OriginalProduct">
-                تضمین اصالت کالا
+              {t("تضمین اصالت کالا")}
               </a>
             </li>
             <li>
               <a href="/About/ReturnProduct">
-               شرایط عودت کالا
+              {t("شرایط عودت کالا")}
               </a>
             </li>
             <li>
               <a href="/About/SendProduct">
-               نحوه ارسال کالا
+              {t("نحوه ارسال کالا")}
               </a>
             </li>
             <li>
               <a href="/About/Help">
-               راهنمای خرید
+              {t("راهنمای خرید")}
               </a>
             </li>
             {/* <li>
@@ -95,47 +98,47 @@ const FooterMain = () => {
           </Col>
           <Col md={3} xs={4}>
           <p className="footerLightTitle">
-            مطالب مفید
+          {t("مطالب مفید")}
           </p>
           <ul className="footerLightUl">
             <li>
               <a href="#">
-                قیمت گوشی سامسونگ
+              {t("قیمت گوشی سامسونگ")}
               </a>
             </li>
             <li>
               <a href="#">
-              قیمت گوشی شیائومی
+              {t("قیمت گوشی شیائومی")}
               </a>
             </li>
             <li>
               <a href="#">
-               قیمت گوشی هواوی
+              {t("قیمت گوشی هواوی")}
               </a>
             </li>
             <li>
               <a href="#">
-               قیمت لپ تاپ
+              {t("قیمت لپ تاپ")}
               </a>
             </li>
             <li>
               <a href="#">
-              قیمت دوربین عکاسی
+              {t("قیمت دوربین عکاسی")}
               </a>
             </li>
             <li>
               <a href="#">
-                قیمت ساعت هوشمند
+              {t("قیمت ساعت هوشمند")}
               </a>
             </li>
             <li>
               <a href="#">
-                لیست تکنولوژی های برتر
+              {t("لیست تکنولوژی های برتر")}
               </a>
             </li>
             <li>
               <a href="#">
-                برندها
+              {t("برندها")}
               </a>
             </li>
           </ul>
@@ -144,7 +147,7 @@ const FooterMain = () => {
             <RedFooterLogo className="d-none Logores-block"/>
         <div className="footerResNone">
         <p className="footerLightTitle">
-            راه های ارتباطی با راگ استریکس
+        {t("راه های ارتباطی با راگ استریکس")}
           </p>
           <div className="socialRow mt-4">
             <div className="socialIcon">
@@ -168,13 +171,13 @@ const FooterMain = () => {
           </div>
          
           <br/>
-          <p className="mailTitle mt-4">عضویت در خبرنامه</p>
+          <p className="mailTitle mt-4">{t("عضویت در خبرنامه")}</p>
           <div className="d-flex-start-start">
             <div>
-              <input placeholder="نشانی ایمیل خود را وارد کنید"  className="emailInput w230"/>
+              <input placeholder={t("نشانی ایمیل خود را وارد کنید")}  className="emailInput w230"/>
             </div>
             <div>
-              <button type="submit" className="submitBtn backRed">عضویت</button>
+              <button type="submit" className="submitBtn backRed">{t("عضویت")}</button>
             </div>
           </div>
           <div className="row mt-4">
@@ -198,13 +201,13 @@ const FooterMain = () => {
           </div>
         </div>
         <div className="footerDesNone">
-        <p className="mailTitle mt-4 ta-center">عضویت در خبرنامه</p>
+        <p className="mailTitle mt-4 ta-center">{t("عضویت در خبرنامه")}</p>
           <div className="d-flex justify-content-center">
             <div>
-              <input placeholder="نشانی ایمیل خود را وارد کنید"  className="emailInput w230"/>
+              <input placeholder={t("نشانی ایمیل خود را وارد کنید")}  className="emailInput w230"/>
             </div>
             <div>
-              <button type="submit" className="submitBtn backRed">عضویت</button>
+              <button type="submit" className="submitBtn backRed">{t("عضویت")}</button>
             </div>
           </div>
        
@@ -245,7 +248,7 @@ const FooterMain = () => {
       </Container>
     </div>
     <div className="lastFooterRow">
-      <p>کلیه حقوق مادی و معنوی برای گروه جمهوری گیمرهای ایران محفوظ است.</p>
+      <p>{t("کلیه حقوق مادی و معنوی برای گروه جمهوری گیمرهای ایران محفوظ است.")}</p>
     </div>
    </div>
   );

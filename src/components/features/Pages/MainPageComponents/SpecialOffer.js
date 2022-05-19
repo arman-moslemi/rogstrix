@@ -6,6 +6,7 @@ import SpecialOfferSlider from "./SpecialOfferSlider";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 // if you want to use array
 
@@ -13,6 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 const SpecialOffer = ({data}) => {
     const [special,setSpecial]=useState([])
     const history = useHistory();
+    const {t,i18n} = useTranslation();
 
     const mainProduct=(ss)=>{
         const axios = require("axios");
@@ -75,11 +77,11 @@ const SpecialOffer = ({data}) => {
                    <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle">
-                            پیشنهادهای ویژه
+                        {t("پیشنهادهای ویژه")}
                         </p>
                     </div>
                     <div className="seeAllDiv">
-                        <Button onClick={()=>history.push("/ProductsSpecial")} className="seeAll">مشاهده همه</Button>
+                        <Button onClick={()=>history.push("/ProductsSpecial")} className="seeAll">{t("مشاهده همه")}</Button>
                     </div>
                    </Col>
                </div>
@@ -88,30 +90,30 @@ const SpecialOffer = ({data}) => {
             <ul className="specialOfferUl">
             <li onClick={()=>mainProduct(1)}>
                     {/* <a href="#"> */}
-                        کامپیوتر
-                    {/* </a> */}
+                    {t("قطعات کامپیوتر")}  
+                                        {/* </a> */}
                 </li>
                 <li onClick={()=>mainProduct(2)}>
-                        لپ تاپ
+                {t("لپتاپ")} 
                 </li>
                 <li onClick={()=>mainProduct(3)}>
-                        تبلت
+                {t("تبلت")}
                 </li>
 
                 <li onClick={()=>mainProduct(4)}>
-                       موبایل و گجت
+                {t("موبایل و گجت")}   
                 </li>
                 <li onClick={()=>mainProduct(5)}>
-                        شبکه و سرور
+                {t("شبکه و سرور")}
                 </li>
                 <li onClick={()=>mainProduct(6)}>
-                       کالای اداری
+                {t("کالای اداری")}   
                 </li>
                 <li>
-                        تصویربرداری
+                {t("تصویربرداری")}    
                 </li>
                 <li onClick={()=>mainProduct(7)}>
-                        کنسول بازی
+                {t("کنسول بازی")}    
                 </li>
             </ul>
             </Col>
@@ -122,11 +124,11 @@ const SpecialOffer = ({data}) => {
             <Col md={2}  className="colSpecial3">
                 <div className="redBanner">
                     <img src={apiAsset+data?.LeftSlider1}/>
-                    <p>ایسوس</p>
+                    {/* <p>ایسوس</p> */}
                 </div>
                 <div className="blackBanner">
                     <img src={apiAsset+data?.LeftSlider2}/>
-                    <p>سامسونگ</p>
+                    {/* <p>سامسونگ</p> */}
                 </div>
                 </Col>
         </div>

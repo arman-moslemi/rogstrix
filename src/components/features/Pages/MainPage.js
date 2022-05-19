@@ -18,6 +18,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import WeblogSlider from "./MainPageComponents/WeblogSlider";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
   const [slider,setSlider]=useState([])
@@ -27,6 +28,7 @@ const MainPage = () => {
   const [seller,setSeller]=useState()
   const [special,setSpecial]=useState()
   const history = useHistory();
+  const {t,i18n} = useTranslation();
 
   const mainSlider=()=>{
     const axios = require("axios");
@@ -141,10 +143,10 @@ const MainPage = () => {
           </Col>
           <Col md={10} className="bannerCol2">
           <p className="bannerFirstLine">
-          ساخت و اسمبل کردن سیستم
+          {t("ساخت و اسمبل کردن سیستم")}
           </p>
           <p className="bannerSecondLine">
-          انتخاب، مقایسه و اسمبل سریع از بین قطعات برندهای مختلف
+          {t("انتخاب، مقایسه و اسمبل سریع از بین قطعات برندهای مختلف")}
           </p>
           </Col>
 
@@ -159,10 +161,10 @@ const MainPage = () => {
           </Col>
           <Col md={10} className="bannerCol2">
           <p className="bannerFirstLine">
-          سیستم های آماده
+          {t("سیستم های آماده")}
           </p>
           <p className="bannerSecondLine">
-          خرید از بین سیستم های آماده و بسته شده توسط کاربران
+          {t("خرید از بین سیستم های آماده و بسته شده توسط کاربران")}
           </p>
           </Col>
 
@@ -178,11 +180,11 @@ const MainPage = () => {
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
-                            محصولات راگ
+                        {t("محصولات راگ")}
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
-                        <Button onClick={()=>history.push("/home")} className="seeAll">مشاهده همه</Button>
+                        <Button onClick={()=>history.push("/home")} className="seeAll">{t("مشاهده همه")}</Button>
                     </div>
                    </Col>
                </div>
@@ -251,7 +253,7 @@ const MainPage = () => {
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
-                            محصولات پر فروش
+                        {t("محصولات پر فروش")}
                         </p>
                     </div>
                     {/* <div className="seeAllDiv" style={{paddingLeft:50}}>
@@ -316,11 +318,11 @@ const MainPage = () => {
                    <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle colorWhite">
-                           محصولات جدید
+                        {t("محصولات جدید")}
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
-                        <Button className="seeAll">مشاهده همه</Button>
+                        <Button className="seeAll"> {t("مشاهده همه")}</Button>
                     </div>
                    </Col>
                </div>
@@ -348,11 +350,11 @@ index2<4?
                    <Col md={12} className="resTaCenter">
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
-                           وبلاگ و خبرنامه
+                        {t("وبلاگ و خبرنامه")}
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
-                        <Button onClick={()=>history.push('/BlogMain')} className="seeAll">مشاهده همه</Button>
+                        <Button onClick={()=>history.push('/BlogMain')} className="seeAll"> {t("مشاهده همه")}</Button>
                     </div>
                    </Col>
                </div>
