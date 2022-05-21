@@ -79,7 +79,7 @@ const CartStep1 = () => {
       // const params = useParams().id;
       const history = useHistory();
       var Guest=localStorage.getItem("guest")
-      const mainSlider=()=>{
+      const mainSlider=async()=>{
         const axios = require("axios");
         const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 

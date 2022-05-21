@@ -17,7 +17,7 @@ const CommentBox = ({data,id,type,token}) => {
   const [rate,setRate]=useState(5)
   const [open,setOpen]=useState(false)
   const [title,setTitle]=useState("")
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
     console.log(token)
     if(token && token.Length<10)

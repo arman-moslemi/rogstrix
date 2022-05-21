@@ -4,13 +4,16 @@ import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import ErrorImg from "../../assets/img/404.png";
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import React,{useState,useEffect} from 'react'
+
 const ErrorPage = () => {
+  const [language,setLanguage]=useState();
 
   return (
     <>
      
     
-      <Header/> 
+     <Header setLanguage={setLanguage}/>
       <Menu/> 
       <Container className="errorPage ta-center" fluid>
        <img src={ErrorImg} className="errorImg"/>

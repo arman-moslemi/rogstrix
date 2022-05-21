@@ -21,12 +21,15 @@ import PaginationCustom from "./layouts/Pagination";
 import CompletedCards from "./CompletedSystemsComponents/CompletedCards";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import Filter from "../../assets/icons/Filter";
+import { useTranslation } from 'react-i18next';
 
 
 
 
 
 const CompletedSystems = () => {
+  const {t,i18n} = useTranslation();
+
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
   const [property,setProperty]=useState([])
@@ -35,7 +38,7 @@ const CompletedSystems = () => {
   const [counter,setCounter]=useState(0)
   const [to,setTo]=useState(0)
   const [title,setTitle]=useState("")
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
     axios.get(apiUrl + "AllFactorSystems")
     .then(function (response) {
@@ -247,7 +250,7 @@ console.log(data)
           <ul>
             <li>
               <a>
-                سایت راگ استریکس
+              {t("سایت راگ استریکس")}
               </a>
             </li>
 
@@ -259,7 +262,7 @@ console.log(data)
             </div>
             <div>
                 <p>
-                    سیستم های تکمیل شده
+                {t("سیستم های تکمیل شده")}
                 </p>
             </div>
             <div>
@@ -273,12 +276,12 @@ console.log(data)
              <div className="row">
                   <Col md={7}>
                     <p className="filterText">
-                        فیلترهای اعمال شده
+                    {t("فیلترهای اعمال شده")}
                     </p>
                   </Col>
                   <Col md={5} className="ta-left">
                         <Button onClick={()=>window.location.reload()} className="filterBtn">
-                            حذف
+                        {t("حذف")}
                         </Button>
                   </Col>
 
@@ -308,7 +311,7 @@ console.log(data)
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                      محدوده قیمت
+                    {t("محدوده قیمت")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -320,14 +323,14 @@ console.log(data)
             <div className="row">
       <Col md={6}>
             <p className="rangeText">
-                تا
+            {t("تا")}
             </p>
 
 
       </Col>
       <Col md={6}>
       <p className="rangeText">
-                از
+      {t("از")}
             </p>
 
 
@@ -355,7 +358,7 @@ console.log(data)
       </div>
             </div>
             <Button onClick={()=>setCost()} className="rangeBtn">
-                اعمال محدوده قیمت
+            {t("اعمال محدوده قیمت")}
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -428,16 +431,16 @@ item.map((item2)=>{
               <div className="borderDashedBottom">
                 <div>
                   <p>
-                    همه سیستم های تکمیل شده
+                  {t("همه سیستم های تکمیل شده")}
                   </p>
                 </div>
                 <div>
-                <label for="sort" className="sortLabel">مرتب کردن بر اساس</label>
+                <label for="sort" className="sortLabel">{t("مرتب کردن بر اساس")}</label>
   <select name="sort" id="sort">
-    <option onClick={()=>viewset()}>پربازدیدترین</option>
-    <option  onClick={()=>cheap()}>ارزان ترین</option>
-    <option  onClick={()=>expensive()}>گران ترین</option>
-    <option  onClick={()=>newest()}>جدید ترین</option>
+    <option onClick={()=>viewset()}>{t("پربازدیدترین")}</option>
+    <option  onClick={()=>cheap()}>{t("ارزان ترین")}</option>
+    <option  onClick={()=>expensive()}>{t("گران ترین")}</option>
+    <option  onClick={()=>newest()}>{t("جدید ترین")}</option>
   </select>
 
                 </div>
@@ -449,7 +452,7 @@ item.map((item2)=>{
       <input
           className="searchInput"
           type={'text'}
-          placeholder={"جستجو در میان سیستم ها ..."}
+          placeholder={t("جستجو در میان سیستم ها ...")}
 onChange={(e)=>setTitle(e.target.value)}
 
         />

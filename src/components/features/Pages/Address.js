@@ -19,7 +19,11 @@ import CustomizedDialogs from './layouts/AlertModal';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
+
 const Address = () => {
+  const [language,setLanguage]=useState();
+
     const [data,setData]=useState([])
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
@@ -43,10 +47,14 @@ const Address = () => {
     const handleOpen3 = () => setOpen3(true);
     const handleClose2 = () => setOpen2(false);
     const handleClose3 = () => setOpen3(false);
-    const getData=()=>{
+    
+    const {t,i18n} = useTranslation();
+
+    const getData=async()=>{
         const axios = require("axios");
 
-
+        const lang=await localStorage.getItem("lang")
+        i18n.changeLanguage(lang)
         axios.post(apiUrl + "OneCustomer",{CustomerID:params})
         .then(function (response) {
           if (response.data.result == "true") {
@@ -132,7 +140,7 @@ setCity2(0)
       }
     useEffect(() => {
   getData()
-    }, []);
+    }, [language]);
 
 const style = {
     position: 'absolute',
@@ -149,7 +157,7 @@ const style = {
 
   return (
     <div className="">
-    <Header />
+      <Header setLanguage={setLanguage}/>
   <Menu/>
 
 

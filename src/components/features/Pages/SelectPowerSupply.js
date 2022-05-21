@@ -106,7 +106,7 @@ localStorage.setItem("guest",response.data.Data2?response.data.Data2:0)
     console.log(error);
   });
 }
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
       axios

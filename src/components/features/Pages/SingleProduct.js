@@ -106,7 +106,7 @@ alert("با موفقیت ذخیره شد")
       console.log(error);
     });
   }
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
       axios

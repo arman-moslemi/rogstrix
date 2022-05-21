@@ -13,9 +13,11 @@ import { Link, useHistory } from "react-router-dom";
 import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
+import { useTranslation } from 'react-i18next';
 
 const AssembleSecond = () => {
   const { isLoggedIn, token } = useContext(AuthContext);
+  const [language,setLanguage]=useState();
 
   const history = useHistory();
   const [data,setData]=useState()
@@ -25,10 +27,13 @@ const AssembleSecond = () => {
   const [inc,setInc]=useState([])
   var Guest=localStorage.getItem("guest")
 
-  const groups=()=>{
+  const groups=async()=>{
      const axios = require("axios");
-  
-     axios.get(apiUrl + "AllMainGroup")
+     const lang=await localStorage.getItem("lang")
+     i18n.changeLanguage(lang)
+     axios.get(apiUrl + "AllMainGroup",{ headers: {
+      lang: i18n.language
+    }})
      .then(function (response) {
        if (response.data.result == "true") {
   
@@ -56,6 +61,8 @@ const AssembleSecond = () => {
    }
   const groups2=async()=>{
      const axios = require("axios");
+     const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
      const storedData = JSON.parse(localStorage.getItem("userData"))?.token
   console.log(555)
   console.log(storedData?.toString().length)
@@ -64,7 +71,9 @@ const AssembleSecond = () => {
      axios.post(apiUrl + "SingleSystemImperfect",{
        CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
        GuestID:storedData?.toString().length<10 && storedData?0:Guest
-     })
+     },{ headers: {
+      lang: i18n.language
+    }})
      .then(function (response) {
        if (response.data.result == "true") {
   
@@ -194,7 +203,7 @@ if(isLoggedIn)
      groups();
      groups2();
   // alert(val)
-   }, []);
+   }, [language]);
   
   const AddToCart=(id)=>{
     const axios = require("axios");
@@ -232,7 +241,7 @@ alert("با موفقیت ذخیره شد")
    return (
     
     <div className="EachCategoryBody">
-      <Header />
+      <Header setLanguage={setLanguage}/>
     <Menu/>
 
    

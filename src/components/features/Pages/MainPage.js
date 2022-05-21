@@ -29,12 +29,15 @@ const MainPage = () => {
   const [special,setSpecial]=useState()
   const history = useHistory();
   const {t,i18n} = useTranslation();
+  const [language,setLanguage]=useState();
 
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
-
+console.log(i18n.language)
       axios
-          .get(apiUrl + "MainSlider")
+          .get(apiUrl + "MainSlider",{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -128,7 +131,7 @@ const MainPage = () => {
     <>
 
 
-      <Header/>
+      <Header setLanguage={setLanguage}/>
       <Menu/>
       <Container className="MainPageContainer ta-center" fluid>
         <MainSlider data={slider}/>

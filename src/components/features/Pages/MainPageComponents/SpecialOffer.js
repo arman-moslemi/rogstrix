@@ -41,7 +41,7 @@ const SpecialOffer = ({data}) => {
 
 
       }
-      const mainSlider=()=>{
+      const mainSlider=async()=>{
         const axios = require("axios");
 
 

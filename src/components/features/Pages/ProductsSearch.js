@@ -20,19 +20,24 @@ import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-import PaginationCustom from "./layouts/Pagination";
+import { useTranslation } from 'react-i18next';
 const ProductsSearch = () => {
+  const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
   const [data,setData]=useState([])
   const params = useParams().id;
   const history = useHistory();
 console.log(params)
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
-
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
       axios
           .post(apiUrl + "MenuSearch",{
             Title:params
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -55,10 +60,10 @@ console.log(params)
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, []);
+  }, [language]);
   return (
     <div className="EachCategoryBody">
-      <Header />
+      <Header setLanguage={setLanguage}/>
 
 
 

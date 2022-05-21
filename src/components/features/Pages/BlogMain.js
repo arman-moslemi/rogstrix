@@ -14,19 +14,25 @@ import BlogHeader from "./layouts/BlogHeader";
 import {FaCaretLeft} from 'react-icons/fa';
 import Category from "./BlogComponents/Category";
 import BlogBox from "./BlogComponents/BlogBox";
+import { useTranslation } from 'react-i18next';
 
 const BlogMain = () => {
   const [blog,setBlog]=useState([])
   const [type,setType]=useState([])
   const [cat,setCat]=useState(0)
+  const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
 
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
-
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
 
     
     if(cat!=0)
-    {axios.post(apiUrl + "SingleBlogRelated",{BlogTypeID:cat})
+    {axios.post(apiUrl + "SingleBlogRelated",{BlogTypeID:cat},{ headers: {
+      lang: i18n.language
+    }})
     .then(function (response) {
       if (response.data.result == "true") {
 
@@ -44,7 +50,9 @@ const BlogMain = () => {
     });
  }
 else{
-  axios.get(apiUrl + "AllBlog")
+  axios.get(apiUrl + "AllBlog",{ headers: {
+    lang: i18n.language
+  }})
     .then(function (response) {
       if (response.data.result == "true") {
 
@@ -110,10 +118,10 @@ if(cat!=0)
     mainSlider();
 
 // alert(val)
-  }, [cat]);
+  }, [cat,language]);
   return (
     <div className="SingleProduct">
-        <Header/>
+      <Header setLanguage={setLanguage}/>
       <BlogHeader/>
 
 

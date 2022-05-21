@@ -22,7 +22,11 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
+import { useTranslation } from 'react-i18next';
+
 const Products = () => {
+  const [language,setLanguage]=useState();
+
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
   const [product,setProduct]=useState([])
@@ -35,13 +39,16 @@ const Products = () => {
   const [head,setHead]=useState("")
   const history = useHistory();
 console.log(params)
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
-
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
       axios
           .post(apiUrl + "GroupProduct",{
             GroupID:params
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 if(brandparams){
@@ -67,7 +74,9 @@ setHead(response.data.Data[0][0].Title)
       axios
           .post(apiUrl + "FilterProduct",{
             GroupID:params
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -84,7 +93,9 @@ setHead(response.data.Data[0][0].Title)
         console.log(error);
       });
       axios
-          .get(apiUrl + "AllBrand")
+          .get(apiUrl + "AllBrand",{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -200,10 +211,10 @@ mainSlider()
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, [head]);
+  }, [head,language]);
   return (
     <div className="EachCategoryBody">
-      <Header />
+      <Header setLanguage={setLanguage}/>
 <Menu/>
 
 

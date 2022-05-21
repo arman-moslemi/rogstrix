@@ -34,7 +34,7 @@ const [special,setSpecial]=useState([])
 const { isLoggedIn, token } = useContext(AuthContext);
 
 console.log(params)
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
       axios

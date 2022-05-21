@@ -11,7 +11,7 @@ const AboutUs = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
 
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
 axios.get(apiUrl + "Information")

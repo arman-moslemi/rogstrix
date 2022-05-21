@@ -12,7 +12,7 @@ import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 const RelatedPost = (props) => {
     const [releated,setRel]=useState([])
 
-    const mainSlider=()=>{
+    const mainSlider=async()=>{
         const axios = require("axios");
 
         axios.post(apiUrl + "SingleBlogRelated ",{BlogTypeID:props.BlogTypeID})

@@ -11,7 +11,7 @@ import Dashboard from "../../../assets/icons/dashboard";
 import useDarkMode from 'use-dark-mode';
 import { useTranslation } from 'react-i18next';
 
-const Header = () => {
+const Header = ({setLanguage}) => {
   const darkMode = useDarkMode(false);
 
   const history = useHistory();
@@ -27,8 +27,11 @@ const  _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       history.push("/ProductsSearch/"+search)    }
   }
-  const changeLang=(dd)=>{
+  const changeLang=async(dd)=>{
+    await localStorage.setItem("lang",dd)
     i18n.changeLanguage(dd);
+    setLanguage(dd)
+    // window.location.reload()
   }
   return (
    <Container fluid className="pad0">
@@ -104,9 +107,9 @@ const  _handleKeyDown = (e) => {
          <img src={RedLogo} className=""/>
          </div>
          <div className="responsiveLanguage">
-         <select name="Lang" id="language">
-            <option value="persian">Fa</option>
-            <option value="english">En</option>
+         <select name="Lang" defaultValue={"en"} id="language">
+            <option value="ir">Fa</option>
+            <option value="en">En</option>
 
         </select>
          </div>

@@ -10,16 +10,22 @@ import Statistic from "./HomePageComponents/Statistic";
 import CategoryListRog from "./EachCategoryComponents/CategoryListRog";
 import BestSellerSlider from "./HomePageComponents/BestSellerSlider";
 import { Container ,Col, Button,Row} from "react-bootstrap";
+import { useTranslation } from 'react-i18next';
 const Home = () => {
   const [slider,setSlider]=useState([])
   const [special,setSpecial]=useState([])
   const [cat,setCat]=useState()
+  const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
 
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
-
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
       axios
-          .get(apiUrl + "RogSlider")
+          .get(apiUrl + "RogSlider",{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -34,7 +40,9 @@ const Home = () => {
       .catch(function (error) {
         console.log(error);
       });
-      axios.post(apiUrl + "LastRogMainProduct ",{MainGroupID:1})
+      axios.post(apiUrl + "LastRogMainProduct ",{MainGroupID:1},{ headers: {
+        lang: i18n.language
+      }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -75,11 +83,11 @@ const Home = () => {
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, []);
+  }, [language]);
   return (
     <>
       {/* <MainPageHeader  /> */}
-      <Header  />
+      <Header setLanguage={setLanguage}/>
 
     <FirstSlider data={slider}/>
     <div className="row mt-5">

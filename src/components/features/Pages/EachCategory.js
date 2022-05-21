@@ -11,19 +11,31 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
+import { useTranslation } from 'react-i18next';
+
 const EachCategory = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
   const history = useHistory();
 const [cat,setCat]=useState(params);
-console.log(params)
-  const mainSlider=()=>{
-    const axios = require("axios");
+const [language,setLanguage]=useState();
+const {t,i18n} = useTranslation();
 
+console.log(params)
+
+  const mainSlider=async()=>{
+    const axios = require("axios");
+    console.log(i18n.language)
+
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
+    console.log(888)
       axios
           .post(apiUrl + "MainProduct",{
             MainGroupID:cat
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -47,10 +59,10 @@ console.log(params)
     mainSlider();
     
 // alert(val)
-  }, [cat]);
+  }, [cat,language]);
   return (
     <div className="EachCategoryBody">
-      <Header />
+      <Header setLanguage={setLanguage}/>
 <Menu/>
 
 

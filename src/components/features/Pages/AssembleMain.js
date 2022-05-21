@@ -16,10 +16,14 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
 import { Link, useHistory ,useParams} from "react-router-dom";
 import parse  from 'html-react-parser';
+import { useTranslation } from 'react-i18next';
 
 
 const AssembleMain = () => {
   const { isLoggedIn, token } = useContext(AuthContext);
+  const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
+
   const params = useParams().id;
   const history = useHistory();
   const [product,setProduct]=useState([])
@@ -31,13 +35,17 @@ const AssembleMain = () => {
   const [warning,setWarning]=useState()
   const [hoshdar,setHoshdar]=useState()
 
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
       axios
           .post(apiUrl + "CompareCustomerSystem",{
             SystemID:params,
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -58,7 +66,9 @@ const AssembleMain = () => {
       axios
       .post(apiUrl + "SingleSystemRelated",{
         SystemID:params,
-      })
+      },{ headers: {
+        lang: i18n.language
+      }})
   .then(function (response) {
     if (response.data.result == "true") {
 
@@ -78,7 +88,9 @@ const AssembleMain = () => {
       axios
           .post(apiUrl + "SingleSystemComment",{
             SystemID:params
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -94,7 +106,9 @@ const AssembleMain = () => {
         console.log(error);
       });
       axios
-          .get(apiUrl + "Warning")
+          .get(apiUrl + "Warning",{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -147,7 +161,7 @@ const AssembleMain = () => {
     useEffect(() => {
       mainSlider();
   // alert(val)
-    }, []);
+    }, [language]);
     const AddToCart=(id)=>{
       const axios = require("axios");
       var Guest=localStorage.getItem("guest")
@@ -184,7 +198,7 @@ const AssembleMain = () => {
     }
   return (
     <div className="EachCategoryBody">
-      <Header />
+      <Header setLanguage={setLanguage}/>
     <Menu/>
 
    

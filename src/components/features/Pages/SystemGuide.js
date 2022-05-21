@@ -19,7 +19,7 @@ const SystemGuide = () => {
   const params = useParams().id;
   const history = useHistory();
 console.log(params)
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
       axios

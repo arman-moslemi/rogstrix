@@ -34,7 +34,7 @@ const Products = () => {
   const [head,setHead]=useState("")
   const history = useHistory();
 console.log(params)
-  const mainSlider=()=>{
+  const mainSlider=async()=>{
     const axios = require("axios");
 
       axios
