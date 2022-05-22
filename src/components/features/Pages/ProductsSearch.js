@@ -28,8 +28,8 @@ const ProductsSearch = () => {
   const params = useParams().id;
   const history = useHistory();
 console.log(params)
-  const mainSlider=async()=>{
-    const axios = require("axios");
+const mainSlider=async()=>{
+  const axios = require("axios");
     const lang=await localStorage.getItem("lang")
     i18n.changeLanguage(lang)
       axios

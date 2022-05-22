@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 const AssembleSecond = () => {
   const { isLoggedIn, token } = useContext(AuthContext);
   const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
 
   const history = useHistory();
   const [data,setData]=useState()

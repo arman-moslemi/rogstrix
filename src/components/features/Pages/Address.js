@@ -50,9 +50,10 @@ const Address = () => {
     
     const {t,i18n} = useTranslation();
 
-    const getData=async()=>{
-        const axios = require("axios");
+      const getData=async()=>{
 
+        const axios = require("axios");
+ 
         const lang=await localStorage.getItem("lang")
         i18n.changeLanguage(lang)
         axios.post(apiUrl + "OneCustomer",{CustomerID:params})

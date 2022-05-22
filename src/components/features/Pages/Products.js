@@ -26,6 +26,7 @@ import { useTranslation } from 'react-i18next';
 
 const Products = () => {
   const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
 
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
@@ -39,8 +40,8 @@ const Products = () => {
   const [head,setHead]=useState("")
   const history = useHistory();
 console.log(params)
-  const mainSlider=async()=>{
-    const axios = require("axios");
+const mainSlider=async()=>{
+  const axios = require("axios");
     const lang=await localStorage.getItem("lang")
     i18n.changeLanguage(lang)
       axios
