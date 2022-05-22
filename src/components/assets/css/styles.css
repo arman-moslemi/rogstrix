@@ -2399,6 +2399,39 @@ body.dark-mode .bestSellerContainer{
   border-radius: 50%;
   color: #ff004e;
 }
+.navbar-collapse {
+  position: fixed;
+  top: 0px;
+  right: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  width: 75%;
+  height: 100%;
+}
+
+.navbar-collapse.collapsing {
+  right: -75%;
+  transition: height 0s ease;
+}
+
+.navbar-collapse.show {
+  right: 0;
+  transition: right 300ms ease-in-out;
+}
+
+.navbar-toggler.collapsed ~ .navbar-collapse {
+  transition: right 500ms ease-in-out;
+}
+#responsive-navbar-nav{
+  background-color: #fff;
+  z-index: 10000;
+  padding-top: 5%;
+  font-family: 'IRANSans';
+}
+#responsive-navbar-nav .dropdown-menu{
+  border: none !important;
+}
 .wi10{
   width: 10%;
 }

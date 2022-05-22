@@ -58,7 +58,7 @@ const ShowBlog = ({data}) => {
                 <FaRegCopy className="colorGray"/>
                 </Button>
                     <p className="urlCopy">
-                    http://rogstrix.com/singleBlog/{data.BlogID}
+                    http://rogstrix.com/singleBlog/{data?.EngTitle?.replace(" ","_")}
                     </p>
 
                 </div>

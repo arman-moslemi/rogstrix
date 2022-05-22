@@ -43,7 +43,7 @@ const ProductsViewdCard = (props) => {
 <div className="row marginTop30">
   <Col md={4} className="pad0 ta-right">
     <p className="grayStrokeOut">
-    {props.data.Cost }   </p>
+    {props.data.Cost.toLocaleString("en-de") }   </p>
   </Col>
   <Col md={8} className="pad0 ta-left">
     <p className="grayPrice">

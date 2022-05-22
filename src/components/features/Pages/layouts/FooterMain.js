@@ -13,10 +13,48 @@ import up from "../../../assets/img/up.png";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import RedFooterLogo from "../../../assets/icons/redFooterLogo";
 import { useTranslation } from 'react-i18next';
+import React,{useState,useEffect,useContext} from 'react'
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 
 const FooterMain = () => {
   const {t,i18n} = useTranslation();
+  const [data,setData]=useState([])
 
+  const mainSlider=async()=>{
+    const axios = require("axios");
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
+
+    
+   axios.get(apiUrl + "Information",{ headers: {
+      lang: i18n.language
+    }})
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+        setData(response.data.Data)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    
+
+
+
+
+  }
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
    <div>
       <div className="backgroundFooter">
@@ -150,22 +188,22 @@ const FooterMain = () => {
         {t("راه های ارتباطی با راگ استریکس")}
           </p>
           <div className="socialRow mt-4">
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Aparat)} className="socialIcon">
               <img src={aparat}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Linkedin)} className="socialIcon">
               <img src={linkdin}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Facebook)} className="socialIcon">
               <img src={facebook} style={{height:27,width:13}}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Telegram)} className="socialIcon">
               <img src={telegram}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Twitter)} className="socialIcon">
               <img src={twitter}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Instagram)} className="socialIcon">
               <img src={insta}/>
             </div>
           </div>
@@ -212,22 +250,22 @@ const FooterMain = () => {
           </div>
        
           <div className="socialRow mt-4">
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Aparat)} className="socialIcon">
               <img src={aparat}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Linkedin)}className="socialIcon">
               <img src={linkdin}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Facebook)} className="socialIcon">
               <img src={facebook} style={{height:27,width:13}}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Telegram)}className="socialIcon">
               <img src={telegram}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Twitter)}className="socialIcon">
               <img src={twitter}/>
             </div>
-            <div className="socialIcon">
+            <div onClick={()=>window.open(data?.Instagram)} className="socialIcon">
               <img src={insta}/>
             </div>
           </div>

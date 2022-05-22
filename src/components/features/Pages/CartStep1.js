@@ -138,6 +138,7 @@ const deleted=(id)=>{
 
           setData(response.data.Data)
           console.log(response.data.Data)
+          mainSlider();
 
       }
       else{
@@ -153,7 +154,7 @@ const deleted=(id)=>{
         // getData()
 
     // alert(val)
-      }, [ID]);
+      }, []);
   return (
     <div className="EachCategoryBody">
      <Header/>

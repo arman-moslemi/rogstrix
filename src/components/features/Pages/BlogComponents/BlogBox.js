@@ -60,7 +60,7 @@ const BlogBox = ({data}) => {
           <hr className="grayHr"/>
           <div className="row pdrightleft2">
               <Col md={12} className="ta-left">
-                  <Button onClick={()=>history.push("/SingleBlog/"+data.BlogID)} className="addComment  mb-3">
+                  <Button onClick={()=>history.push("/SingleBlog/"+data.EngTitle.replace(" ","_"))} className="addComment  mb-3">
                       ادامه مطلب
                   </Button>
               </Col>

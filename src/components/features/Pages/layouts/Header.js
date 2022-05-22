@@ -1,4 +1,4 @@
-import react,{useContext,useState} from "react";
+import react,{useContext,useState,useEffect} from "react";
 import RedLogo from '../../../assets/img/redLogo.png';
 import { FaSearch , FaUser ,FaShoppingBasket,FaTable,FaTimes} from 'react-icons/fa';
 import { Container ,Col, Button,ToggleButton} from "react-bootstrap";
@@ -10,6 +10,8 @@ import MenuSearch from "../../../assets/icons/menuSearch";
 import Dashboard from "../../../assets/icons/dashboard";
 import useDarkMode from 'use-dark-mode';
 import { useTranslation } from 'react-i18next';
+import { Nav, Navbar, NavDropdown, NavItem,Offcanvas } from "react-bootstrap";
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 
 const Header = ({setLanguage}) => {
   const darkMode = useDarkMode(false);
@@ -33,6 +35,39 @@ const  _handleKeyDown = (e) => {
     setLanguage(dd)
     // window.location.reload()
   }
+  const [data,setData]=useState()
+
+const groups=()=>{
+   const axios = require("axios");
+
+
+   // axios.get(apiUrl + "AllMainGroup")
+   axios.get(apiUrl + "GroupBrand")
+   .then(function (response) {
+     if (response.data.result == "true") {
+
+      //   setData(response.data.GroupData)
+        setData(response.data.Data)
+
+        console.log(888)
+        console.log(response.data.Data)
+
+       // history.push("/RegisterVerify/"+mobile)
+
+   }
+   else{
+
+   }})
+   .catch(function (error) {
+     console.log(error);
+   });
+
+
+ }
+ useEffect(() => {
+   groups();
+// alert(val)
+ }, []);
   return (
    <Container fluid className="pad0">
     <div className="Header">
@@ -95,13 +130,160 @@ const  _handleKeyDown = (e) => {
      :
      null
      }
-     
+         
      <div className="responsiveHeader">
        <div className="d-flex align-items-center borderBottomResponsive">
        <div className="responsiveLanguage">
-       <button className="headerBtn">
-       <Dashboard/>
-       </button>
+       <Navbar collapseOnSelect expand={false} variant="light" className="w100">
+     {/* <img src={Logo}/> */}
+<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+<Navbar.Collapse id="responsive-navbar-nav">
+<Navbar.Toggle style={{float:'left',border:'none'}}>X</Navbar.Toggle>
+  <Nav className="myPd">
+  
+   
+  {/* <Nav.Link href="#" className="responsiveLink mt-2">شروع بازی</Nav.Link> */}
+  
+   
+  <NavDropdown title={"قطعات کامپیوتر" } id="collasible-nav-dropdown">
+     {data?.filter(t=>t[0].MainGroupID==1).map((item)=>{
+      return(
+        
+  <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+   item?.map((item2)=>{
+      return(
+            <NavDropdown.Item >
+            {item2.BrandName } 
+            </NavDropdown.Item>
+
+ )})}
+          </NavDropdown>
+      )})}
+          </NavDropdown>
+
+<NavDropdown title={"لبتاب" } id="collasible-nav-dropdown">
+{data?.filter(t=>t.MainGroupID==2).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+<NavDropdown title={"تبلت" } id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==3).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+<NavDropdown title={"موبایل و گجت" } id="collasible-nav-dropdown">
+{data?.filter(t=>t.MainGroupID==4).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+<NavDropdown title={"شبکه و سرور" } id="collasible-nav-dropdown">
+{data?.filter(t=>t.MainGroupID==5).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+<NavDropdown title={"کالای اداری" } id="collasible-nav-dropdown">
+{data?.filter(t=>t.MainGroupID==6).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+<NavDropdown title={"تصویربرداری" } id="collasible-nav-dropdown">
+{data?.filter(t=>t.MainGroupID==7).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+<NavDropdown title={"کنسول بازی" } id="collasible-nav-dropdown">
+{data?.filter(t=>t.MainGroupID==8).map((item)=>{
+ return(
+   
+<NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
+{
+item?.map((item2)=>{
+ return(
+       <NavDropdown.Item >
+       {item2.BrandName } 
+       </NavDropdown.Item>
+
+)})}
+     </NavDropdown>
+ )})}
+     </NavDropdown>
+ 
+  {/* <Nav.Link onClick={()=>history.push("AboutUs")} className="responsiveLink">درباره ما</Nav.Link>
+  <Nav.Link onClick={()=>history.push("Rank")} className="responsiveLink">بانک امتیازات</Nav.Link> */}
+ 
+   
+
+  </Nav>
+
+</Navbar.Collapse>
+</Navbar>
          </div>
          <div className="responsiveHeaderLogo">
          <img src={RedLogo} className=""/>

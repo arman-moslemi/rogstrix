@@ -76,6 +76,7 @@ if(!Guest || Guest==0){
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 
 console.log(555)
+console.log(id)
 console.log(token)
     axios
         .post(apiUrl + "ShoppingBasketAdd",{
@@ -120,7 +121,7 @@ alert("با موفقیت ذخیره شد")
         if (response2.data.result == "true") {
 
           setProduct(response2.data.Data)
-          setID(response2.data.ProductID)
+          setID(response2.data.Data.ProductID)
           console.log(777)
           console.log(response2.data)
           setList(response2.data.CostData)
@@ -285,7 +286,7 @@ const images = [
         <div className="singleBox1">
         <div className="row">
         <Col md={3} id="singleOrder1">
-        <ImageGallery items={images} showNav={false} showFullscreenButton={false} showPlayButton={false}/>
+        <ImageGallery items={images} showNav={false} showFullscreenButton={true} showPlayButton={false}/>
         </Col>
         <Col md={6} id="singleOrder3">
         <div className="d-flex justify-content-between">

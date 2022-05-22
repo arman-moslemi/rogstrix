@@ -38,28 +38,19 @@ console.log(params)
     const axios = require("axios");
 
       axios
-          .post(apiUrl + "SingleBlog",{
-            BlogID:params
+          .post(apiUrl + "SingleBlogByName",{
+            BlogName:params?.replace("_"," ")
           })
-      .then(function (response) {
-        if (response.data.result == "true") {
+      .then(function (response2) {
+        if (response2.data.result == "true") {
 
-          setData(response.data.Data[0])
+          setData(response2.data.Data[0])
           console.log(888)
           console.log(params)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-      axios
+          console.log(response2.data.Data)
+          axios
           .post(apiUrl + "SingleBlogComment",{
-            BlogID:params
+            BlogID:response2.data.Data.BlogID
           })
       .then(function (response) {
         if (response.data.result == "true") {
@@ -75,6 +66,15 @@ console.log(params)
       .catch(function (error) {
         console.log(error);
       });
+      }
+      else{
+        console.log(response2.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+   
       axios.get(apiUrl + "BlogType")
       .then(function (response) {
         if (response.data.result == "true") {

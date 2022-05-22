@@ -344,7 +344,7 @@ const AssembleMain = () => {
               قیمت کل :
               </p>
             <p className="productAssembleName">
-             {property?.length>0?property[0].SystemCost:0} تومان
+             {property?.length>0?property[0].SystemCost.toLocaleString("en-de"):0} تومان
               </p>
              
             </div>

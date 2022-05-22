@@ -26,6 +26,9 @@ const AssembleSecond = () => {
   const [agree,setAgree]=useState()
   const [energy,setEnergy]=useState()
   const [inc,setInc]=useState([])
+  const [warning,setWarning]=useState()
+  const [hoshdar,setHoshdar]=useState()
+
   var Guest=localStorage.getItem("guest")
 
   const groups=async()=>{
@@ -56,7 +59,25 @@ const AssembleSecond = () => {
        console.log(error);
      });
      
-   
+     axios
+     .get(apiUrl + "Warning",{ headers: {
+       lang: i18n.language
+     }})
+ .then(function (response) {
+   if (response.data.result == "true") {
+
+     setWarning(response.data.Data.Warning)
+     setHoshdar(response.data.Data.Attention)
+     console.log(response.data.Data)
+
+ }
+ else{
+   console.log(response.data.result)
+
+ }})
+ .catch(function (error) {
+   console.log(error);
+ });
   
   
    }
@@ -148,7 +169,7 @@ if(isLoggedIn)
       if (response.data.result == "true") {
         setProduct(response.data.Data)
         setAgree(response.data.Data2)
-  
+  alert("با موفقیت ذخیره شد")
           console.log(response.data.Data)
   
     }
@@ -196,7 +217,7 @@ if(isLoggedIn)
       console.log(error);
     });
     
-  
+   
  
  
   }
@@ -304,7 +325,7 @@ alert("با موفقیت ذخیره شد")
             product?.length>0?
             <div className="d-flex align-items-center">
             <p className="linkCopy">
-            https://rogstrix.ir/AssembleMain/{product[0]?.SystemID}
+            https://rogstrix.com/AssembleMain/{product[0]?.SystemID}
             </p>
            <Button className="attachBtn">
            <FaLink color={'#fff'}/>
@@ -478,7 +499,7 @@ inc.indexOf(item.GroupID)!=-1 ?
               قیمت کل :
               </p>
             <p className="productAssembleName">
-             {product?.length>0?product[0].SystemCost:0} تومان
+             {product?.length>0?product[0].SystemCost.toLocaleString("en-de"):0} تومان
               </p>
              
             </div>
@@ -488,7 +509,7 @@ inc.indexOf(item.GroupID)!=-1 ?
                 </button>
             </div>
           </div>
-          {/* <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
+          <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
           <hr class="dottedH"></hr>
           <div className="padding20">
             <div className="d-flex">
@@ -496,17 +517,15 @@ inc.indexOf(item.GroupID)!=-1 ?
                 هشدار !
               </p>
               <p className="productAssembleName MediumFont" >
-              برخی از چیپست‌های مادربورد فلان با سی‌پی‌یوهای فلان سازگاری ندارند و باید فلان چیز را هم نصب کنید تا مشکل برطرف شود.
-              </p>
+              {hoshdar}               </p>
             </div>
             <div className="d-flex">
               <p className="hoshdar orange">
                 توجه !
               </p>
               <p className="productAssembleName MediumFont" >
-              توجه داشته باشید که برخی از قطعات ممکن است از نظر اندازه با هم سازگار نباشند و با هم جور نشوند. در حال حاضر هنوز این نوع سازگاری قابل بررسی نیست. </p>
-            </div>
-          </div> */}
+              {warning}            </p> </div>
+          </div>
         </div>
         {/* <div className="whiteBox3 mt-3">
             <p className="boxTitle2 BoldFont">

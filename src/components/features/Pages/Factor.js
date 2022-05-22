@@ -197,7 +197,7 @@ const Factor = () => {
   <div className="row pd15 borderBottomTable">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-          {item.ProductName+" "+item.BrandName+" گارانتی"+item.Warranty}
+          {item.ProdutName+" "+item.BrandName}
         </p>
       </Col>
       

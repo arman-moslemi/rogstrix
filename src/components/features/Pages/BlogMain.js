@@ -122,7 +122,7 @@ if(cat!=0)
   return (
     <div className="SingleProduct">
       <Header setLanguage={setLanguage}/>
-      <BlogHeader/>
+      <BlogHeader data={type} cat={setCat}/>
 
 
 

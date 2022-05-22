@@ -25,7 +25,7 @@ console.log(data)
   return (
 
       <div className="weblogSliderCard">
-        <div  onClick={()=>history.push("/SingleBlog/"+data.BlogID)} className="row">
+        <div  onClick={()=>history.push("/SingleBlog/"+data.EngTitle.replace(" ","_"))} className="row">
             <Col md={4}>
                 <img src={apiAsset+data.Pic}/>
             </Col>

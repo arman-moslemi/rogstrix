@@ -56,6 +56,14 @@ const EditInformation = () => {
             console.log(response.data.Data)
 
         }
+       else if (response.data.result == "duplicate") {
+
+          setTitle("کدملی بافت نشد")
+          setOpen(true)
+          console.log(11)
+          console.log(response.data.Data)
+
+      }
         else{
             setTitle("عملیات با خطا روبرو شد")
             setOpen(true)

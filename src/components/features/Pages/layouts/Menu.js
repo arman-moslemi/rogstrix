@@ -47,6 +47,7 @@ const groups=()=>{
       //   setData(response.data.GroupData)
         setData(response.data.Data)
 
+        console.log(888)
         console.log(response.data.Data)
 
        // history.push("/RegisterVerify/"+mobile)
@@ -536,30 +537,30 @@ const groups=()=>{
    </div>
    <div className="responsiveHeader">
    <div className="d-flex align-items-center justify-content-around pdTB10">
-      <div className="responsiveMenuBox">
-         <button>
+      <div  className="responsiveMenuBox">
+         <button onClick={()=>history.push("/CompletedSystems")} >
          <MenuCase/>
          </button>
       </div>
       <div className="responsiveMenuBox">
-         <button>
+         <button onClick={()=>history.push("/AssembleSecond")}>
          <AssembleMenu/>
          </button>
       </div>
       <div className="responsiveMenuBox">
-         <button>
+         <button  onClick={()=>history.push("/SystemGuide")}>
          <GuideMenu/>
          </button>
 
       </div>
-      <div className="responsiveMenuBox">
+      {/* <div className="responsiveMenuBox">
          <button>
          <UpdateMenu/>
          </button>
 
-      </div>
-      <div className="responsiveMenuBox">
-         <button>
+      </div> */}
+      <div  className="responsiveMenuBox">
+         <button onClick={()=>history.push("/Home")}>
          <RedMenuLogo/>
          </button>
 
