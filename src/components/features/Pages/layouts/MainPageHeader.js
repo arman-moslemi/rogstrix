@@ -40,7 +40,7 @@ const MainPageHeader = ({data}) => {
           <Button className="headerBTN">
           <Search className="mar-des-right-1"/>
           </Button>
-          <Button className="headerBTN">
+          <Button onClick={()=>history.push("/Cart")} className="headerBTN">
           <Basket className="mar-des-right-1"/>
           </Button>
          </div>

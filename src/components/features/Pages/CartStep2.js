@@ -634,7 +634,9 @@ null
                    <p className='fontWeightNormal'>
                        هزینه ارسال : {item.Cost} تومان
                    </p>
-
+                   <p className='fontWeightNormal'>
+                       مدت ارسال : {item.Days} روز
+                   </p>
                  </div>
 
                  

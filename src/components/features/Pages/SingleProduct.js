@@ -36,6 +36,14 @@ const SingleProduct = () => {
   var Guest=localStorage.getItem("guest")
 
   const { isLoggedIn, token } = useContext(AuthContext);
+  const goCompare=()=>{
+ 
+  
+    localStorage.setItem("compare",localStorage.getItem("compare")+"T"+id) ;
+    
+      history.push("/CompareSupplyProduct/"+localStorage.getItem("compare"))
+    
+  }
   const ProductSave=()=>{
     var Guest=localStorage.getItem("guest")
 
@@ -279,7 +287,7 @@ const images = [
             /
             <li>
               <Link onClick={()=>history.push("/products/"+product.GroupID)}>
-{product.Title}              </Link>
+{product.GroupName}              </Link>
             </li>
           </ul>
         </div>
@@ -391,10 +399,10 @@ const images = [
                                                
                                                 </div>
                
-                {/* {
-                isLoggedIn?
+                {
+             
 
-                <Button  className="save-btn-single left5" id="save-btn">
+                <Button onClick={()=>goCompare()}  className="save-btn-single left5" id="save-btn">
                                                     <svg className="save-svg" xmlns="http://www.w3.org/2000/svg" width="27.45"
                                                         height="29.652" viewBox="0 0 27.45 29.652">
                                                         <g id="save" transform="translate(0.5 0.489)">
@@ -406,9 +414,8 @@ const images = [
                                                         </g>
                                                     </svg>
                                                 </Button>
-                :
-                null
-              } */}
+             
+              }
                 <p className="boxTitle2">
                     مشخصات فروش
                 </p>
@@ -465,7 +472,13 @@ index+1>rate?
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                  ارسال تا ۳ روز دیگر                    </p>
+                  {product.Type==3?
+                  "کپی":
+                  product.Type==2?
+                  "ریفر":
+                  "اصلی"
+                
+                }                    </p>
                   </div>
               </div>
               <hr className="grayHr"/>

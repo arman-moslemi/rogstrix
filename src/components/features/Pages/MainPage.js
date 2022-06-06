@@ -139,8 +139,8 @@ console.log(i18n.language)
         <div className="bannerRow">
     <div className="row">
       <Col md={6}>
-      <div className="bannerBackground">
-        <div className="row align-items-center">
+      <div  className="bannerBackground">
+        <Link onClick={()=>history.push("/AssembleSecond")} className="row align-items-center">
           <Col md={2} className="bannerCol1">
             <img src={bannerAssemble} className="redbannerImg"/>
           </Col>
@@ -153,12 +153,12 @@ console.log(i18n.language)
           </p>
           </Col>
 
-        </div>
+        </Link>
       </div>
       </Col>
       <Col md={6}>
-      <div className="bannerBackground">
-        <div className="row align-items-center">
+      <div  className="bannerBackground">
+        <Link onClick={()=>history.push("/CompletedSystems")}className="row align-items-center">
           <Col md={2} className="bannerCol1">
             <img src={bannerCase} className="redbannerImg"/>
           </Col>
@@ -171,7 +171,7 @@ console.log(i18n.language)
           </p>
           </Col>
 
-        </div>
+        </Link>
       </div>
       </Col>
     </div>

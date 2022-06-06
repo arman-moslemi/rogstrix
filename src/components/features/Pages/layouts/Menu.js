@@ -203,7 +203,7 @@ const groups=()=>{
       return(
                <li className="listItems">
                   <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}>
-{item2.BrandName }                 </Link>
+{item2.Link }                 </Link>
                </li>
 
       )

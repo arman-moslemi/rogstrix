@@ -314,16 +314,16 @@ item?.map((item2)=>{
          </Col>
          <Col xs={6} className="d-flex align-items-center">
 
-        <button className="headerBtn">
+        <button onClick={()=>onClick()} className="headerBtn">
         <MenuUser style={{marginLeft:10}} />
 
         </button>
-        <button className="headerBtn" >
+        <button onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
         <CartMenu  style={{marginLeft:10}}/>
 
         </button>
         <label class="switch">
-         <input type="checkbox"/>
+         <input  onChange={darkMode.toggle} type="checkbox"/>
             <span class="slider round"></span>
        </label>
          </Col>
