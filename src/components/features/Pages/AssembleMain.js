@@ -225,7 +225,7 @@ const AssembleMain = () => {
                 <Button onClick={()=>ProductSave()}>
                 <FaPlus color={'#fff'}/>
                 <p className="userName">
-                    شخصی سازی این سیستم
+                {t("شخصی سازی این سیستم")}
                 </p>
                 </Button>
             </div>
@@ -274,18 +274,18 @@ const AssembleMain = () => {
           <div className="d-flex align-items-center tRow">
             <div className="d-flex wB20">
             <p className="tableFirstRowText">
-              گروه
+            {t("گروه")}
             </p>
             <div className="vl"></div>
             </div>
             <p className="tableFirstRowText wB60">
-              انتخاب قطعه
+            {t("انتخاب قطعه")}
             </p>
             <p className="tableFirstRowText wB10">
-              قیمت(تومان)
+            {t("قیمت(تومان)")}
             </p>
             <p className="tableFirstRowText wB10 ta-center">
-              خرید
+            {t("خرید")}
             </p>
             {/* <p className="tableFirstRowText">
               حذف
@@ -322,7 +322,7 @@ const AssembleMain = () => {
                   <div className="wB10 ta-center">
                     {/* <button onClick={()=>history.push("/singleProduct/"+item.ProductID)} className="buyAssembleBtn"> */}
                     <button onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))} className="buyAssembleBtn">
-                      خرید
+                    {t("خرید")}
                     </button>
                   </div>
                   {/* <div>
@@ -341,7 +341,7 @@ const AssembleMain = () => {
                         <div className="d-flex justify-content-end tRow mb-4 pb-4">
             <div className="d-flex mr-4">
             <p className="miniText2">
-              قیمت کل :
+            {t("قیمت کل :")}
               </p>
             <p className="productAssembleName">
              {property?.length>0?property[0].SystemCost.toLocaleString("en-de"):0} تومان
@@ -350,7 +350,7 @@ const AssembleMain = () => {
             </div>
             <div>
             <button onClick={()=>AddToCart(property[0]?.SystemID)} className="buyAssembleBtn">
-                  خرید کل قطعات
+            {t("خرید کل قطعات")}
                 </button>
             </div>
           </div>
@@ -375,7 +375,7 @@ const AssembleMain = () => {
         </div>
         <div className="whiteBox3 mt-3">
             <p className="boxTitle2 BoldFont">
-           توضیحات
+            {t("توضیحات")}
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">

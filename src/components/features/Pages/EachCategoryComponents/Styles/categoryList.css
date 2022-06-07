@@ -12,12 +12,33 @@ list-style: none;
 }
 
 .categoryList{
-padding-top: 30px;
-text-align: center;
+    padding-top: 30px;
+    text-align: center;
+    height: 380px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 .categoryBTN:focus {
     border-right: 4px solid #ff004e !important;
     outline: none !important;
     color: #fff;
     background-image:linear-gradient(to right, rgba(255, 0, 78, 0.05), rgba(255, 0, 78, 0.36)) !important;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

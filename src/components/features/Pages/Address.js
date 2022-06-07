@@ -174,7 +174,7 @@ const style = {
       <div className="d-flex align-items-center">
       <PanelAddress className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                   آدرس های من
+      {t("آدرس های من")}
                 </p>
       </div>
       {
@@ -184,7 +184,7 @@ const style = {
 
       <Button className="addressAdd" onClick={handleOpen1}>
           <FaPlus className="mr-2"/>
-          افزودن آدرس جدید
+          {t("افزودن آدرس جدید")}
       </Button>
       }
       <Modal
@@ -195,14 +195,14 @@ const style = {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            افزودن آدرس جدید
+          {t("افزودن آدرس جدید")}
           </Typography>
           <hr/>
          <div className="row">
          <Col md={4}>
 
                                 <p className="fontWeightMedium mb-2">
-                                   شهر
+                                {t("شهر")}
                                 </p>
                                 <select onChange={(e)=>!address1?setCity1(e.target.value):setCity2(e.target.value)} name="state" id="state" className="informationSelect">
                                 {
@@ -223,7 +223,7 @@ const style = {
 
   <div>
   <p className="fontWeightMedium mb-2">
-     منطقه
+  {t("منطقه")}
   </p>
   <select onChange={(e)=>!address1?setReg1(e.target.value):setReg2(e.target.value)} name="state" id="state" className="informationSelect">
   {[...new Array(22)].map((item,index)=>{
@@ -241,18 +241,18 @@ const style = {
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
-                                   کد پستی
+             {t("کد پستی")}
                                 </p>
                                 <input onChange={(e)=>address1?setPostalCode2(e.target.value):setPostalCode1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-             آدرس                                </p>
+             {t("آدرس")}                               </p>
                                 <textarea  onChange={(e)=>address1?setAddress2(e.target.value):setAddress1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
-                     ذخیره
+                 {t("ذخیره")}
                  </Button>
              </Col>
          </div>
@@ -270,7 +270,7 @@ const style = {
 {address1}                     </p>
                      <div className="d-flex align-items-center justify-content-end">
                          <Button className="glassBtn" id="colorBlue" onClick={handleOpen2}>
-                             ویرایش
+                         {t("ویرایش")}
                          </Button>
                          <Modal
         open={open2}
@@ -280,14 +280,14 @@ const style = {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            ویرایش آدرس
+          {t("ویرایش آدرس")}
           </Typography>
           <hr/>
          <div className="row">
              <Col md={4}>
 
                                 <p className="fontWeightMedium mb-2">
-                                   شهر
+                                {t("شهر")}
                                 </p>
                                 <select onChange={(e)=>setCity1(e.target.value)} name="state" id="state" className="informationSelect">
                                 {
@@ -308,7 +308,7 @@ const style = {
 
   <div>
   <p className="fontWeightMedium mb-2">
-     منطقه
+  {t("منطقه")}
   </p>
   <select onChange={(e)=>setReg1(e.target.value)} name="state" id="state" className="informationSelect">
   {[...new Array(22)].map((item,index)=>{
@@ -326,25 +326,25 @@ const style = {
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
-                                   کد پستی
+             {t("کد پستی")}
                                 </p>
                                 <input onChange={(e)=>setPostalCode1(e.target.value)}value={postalCode1} className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-آدرس                                </p>
+             {t("آدرس")}                 </p>
                                 <textarea onChange={(e)=>setAddress1(e.target.value)} value={address1}className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()}className="saveBtn mt-4">
-                     ذخیره
+                 {t("ذخیره")}
                  </Button>
              </Col>
          </div>
         </Box>
       </Modal>
       <Button onClick={()=>{setAddress1("");setPostalCode1("");AddAddress("delete1")}} className="glassBtn" id="colorRed">
-                                   حذف
+      {t("حذف")}
                          </Button>
                      </div>
                  </div>
@@ -359,7 +359,7 @@ null
                      </p>
                      <div className="d-flex align-items-center justify-content-end">
                          <Button onClick={()=>handleOpen3()} className="glassBtn" id="colorBlue">
-                             ویرایش
+                         {t("ویرایش")}
                          </Button>
                          <Modal
         open={open3}
@@ -369,14 +369,14 @@ null
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            ویرایش آدرس
+          {t("ویرایش آدرس")}
           </Typography>
           <hr/>
          <div className="row">
          <Col md={4}>
 
 <p className="fontWeightMedium mb-2">
-   شهر
+{t("شهر")}
 </p>
 <select onChange={(e)=>setCity2(e.target.value)} name="state" id="state" className="informationSelect">
 {
@@ -397,7 +397,7 @@ city2==1577?
 
 <div>
 <p className="fontWeightMedium mb-2">
-منطقه
+{t("منطقه")}
 </p>
 <select onChange={(e)=>setReg2(e.target.value)} name="state" id="state" className="informationSelect">
 {[...new Array(22)].map((item,index)=>{
@@ -415,25 +415,25 @@ null
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
-                                   کد پستی
+             {t("کد پستی")}
                                 </p>
                                 <input onChange={(e)=>setPostalCode2(e.target.value)} value={postalCode2} className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-آدرس                                </p>
+             {t("آدرس")}                                </p>
                                 <textarea onChange={(e)=>setAddress2(e.target.value)} value={address2} className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
-                     ذخیره
+                 {t("ذخیره")}
                  </Button>
              </Col>
          </div>
         </Box>
       </Modal>
                          <Button onClick={()=>{setAddress2("");setPostalCode2("");AddAddress("delete2")}} className="glassBtn" id="colorRed">
-                             حذف
+                         {t("حذف")}
                          </Button>
                      </div>
                  </div>

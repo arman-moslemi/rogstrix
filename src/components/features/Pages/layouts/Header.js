@@ -125,7 +125,28 @@ const groups=()=>{
             <div className="desktopSerachBox">
             <FaSearch onClick={()=>history.push("/ProductsSearch/"+search)}/>
             <input className="" onKeyDown={_handleKeyDown} onChange={(e)=>setSearch(e.target.value)} placeholder="محصول مورد نظر را جستجو کنید..."/>
-           </div>
+            </div>
+           <ul class="suggestions">
+            {/* <li className="suggestions li" 
+            >
+                  <p>
+                    salam
+                  </p>
+                </li>
+                <li className="suggestions li" 
+            >
+                  <p>
+                    salam
+                  </p>
+                </li>
+                <li className="suggestions li" 
+            >
+                  <p>
+                    salam
+                  </p>
+                </li> */}
+                
+</ul>
      </div>
      :
      null

@@ -14,7 +14,11 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
+
 const ChangePassword = () => {
+  const {t,i18n} = useTranslation();
+
   const params = useParams().id;
   const [data,setData]=useState()
   const [old,setOld]=useState()
@@ -110,7 +114,7 @@ else{
 
       <PanelPassword className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                   تغییر کلمه عبور
+      {t("تغییر کلمه عبور")}
                 </p>
           </div>
                  </div>
@@ -120,21 +124,21 @@ else{
                        <Col md={12}>
                        <div className="d-flex align-items-center justify-content-between mt-4 mb-4 w80block">
                                 <p className="fontWeightMedium">
-                                   * کلمه عبور فعلی
+                                   * {t("کلمه عبور فعلی")}
                                 </p>
                                 <input onChange={(e)=>setOld(e.target.value)} className="EditInformationInput w70"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4 w80block">
                                 <p className="fontWeightMedium">
-                                  * کلمه عبور جدید
+                                  * {t("کلمه عبور جدید")}
                                 </p>
                                 <input onChange={(e)=>setNew(e.target.value)} className="EditInformationInput w70"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4 w80block">
                                 <p className="fontWeightMedium">
-                                   * تکرار کلمه عبور جدید
+                                   * {t("تکرار کلمه عبور جدید")}
                                 </p>
                                 <input onChange={(e)=>setAgain(e.target.value)} className="EditInformationInput w70"/>
 
@@ -144,7 +148,7 @@ else{
                      <div className="row">
          <Col md={12} className="ta-left">
              <Button onClick={()=>changePass()} className="saveBtn">
-                 ذخیره تغییرات
+             {t("ذخیره تغییرات")}
              </Button>
          </Col>
      </div>

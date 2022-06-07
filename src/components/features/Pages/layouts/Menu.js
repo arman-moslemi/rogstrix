@@ -202,7 +202,8 @@ const groups=()=>{
    item.map((item2)=>{
       return(
                <li className="listItems">
-                  <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}>
+                  {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
+                  <Link onClick={()=>window.location.replace(item2.Link)}>
 {item2.Link }                 </Link>
                </li>
 

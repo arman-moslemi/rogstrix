@@ -17,6 +17,8 @@ import CustomizedDialogs from './layouts/AlertModal';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -30,6 +32,8 @@ const style = {
   p: 4,
 };
 const CartStep2 = () => {
+  const {t,i18n} = useTranslation();
+
     const [count,setCount]=useState(1)
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
@@ -294,7 +298,7 @@ alert(response.data.message)
    
       <Container className="CartContainer" fluid>
       <p className="CartTitle">
-          سبد خرید
+      {t("سبد خرید")}
       </p>
       <div className="cartDiv align-items-baseline">
       <div className="cartCol1 mt-4 pb-2">
@@ -304,12 +308,12 @@ alert(response.data.message)
       <div className="d-flex align-items-center">
 
       <p className="fontWeightBold ml-4" href="#">
-                   انتخاب آدرس
+      {t("انتخاب آدرس")}
                 </p>
       </div>
       <Button className="addressAdd" onClick={handleOpen1}>
           <FaPlus className="mr-2"/>
-          افزودن آدرس جدید
+          {t("افزودن آدرس جدید")}
       </Button>
       <Modal
         open={open1}
@@ -319,14 +323,14 @@ alert(response.data.message)
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            افزودن آدرس جدید
+          {t("افزودن آدرس جدید")}
           </Typography>
           <hr/>
          <div className="row">
          <Col md={4}>
 
                                 <p className="fontWeightMedium mb-2">
-                                   شهر
+                                {t("شهر")}
                                 </p>
                                 <select onChange={(e)=>!address1?setCity1(e.target.value):setCity2(e.target.value)} name="state" id="state" className="informationSelect">
                                 {
@@ -347,7 +351,7 @@ alert(response.data.message)
 
   <div>
   <p className="fontWeightMedium mb-2">
-     منطقه
+  {t("منطقه")}
   </p>
   <select onChange={(e)=>!address1?setReg1(e.target.value):setReg2(e.target.value)} name="state" id="state" className="informationSelect">
   {[...new Array(22)].map((item,index)=>{
@@ -365,18 +369,18 @@ alert(response.data.message)
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
-                                   کد پستی
+             {t("کد پستی")}
                                 </p>
                                 <input onChange={(e)=>address1?setPostalCode2(e.target.value):setPostalCode1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-             آدرس                                </p>
+             {t("آدرس")}                                </p>
                                 <textarea  onChange={(e)=>address1?setAddress2(e.target.value):setAddress1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
-                     ذخیره
+                 {t("ذخیره")}
                  </Button>
              </Col>
          </div>
@@ -405,7 +409,7 @@ onChange={()=>{setRadio(1);Transporter(1)}}
 {address1}                     </p>
                      <div className="d-flex align-items-center justify-content-end">
                          <Button className="glassBtn" id="colorBlue" onClick={handleOpen2}>
-                             ویرایش
+                         {t("ویرایش")}
                          </Button>
                          <Modal
         open={open2}
@@ -415,14 +419,14 @@ onChange={()=>{setRadio(1);Transporter(1)}}
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            ویرایش آدرس
+          {t("ویرایش آدرس")}
           </Typography>
           <hr/>
          <div className="row">
              <Col md={4}>
 
                                 <p className="fontWeightMedium mb-2">
-                                   شهر
+                                {t("شهر")}
                                 </p>
                                 <select onChange={(e)=>setCity1(e.target.value)} name="state" id="state" className="informationSelect">
                                 {
@@ -443,7 +447,7 @@ onChange={()=>{setRadio(1);Transporter(1)}}
 
   <div>
   <p className="fontWeightMedium mb-2">
-     منطقه
+  {t("منطقه")}
   </p>
   <select onChange={(e)=>setReg1(e.target.value)} name="state" id="state" className="informationSelect">
   {[...new Array(22)].map((item,index)=>{
@@ -461,25 +465,25 @@ onChange={()=>{setRadio(1);Transporter(1)}}
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
-                                   کد پستی
+             {t("کد پستی")}
                                 </p>
                                 <input onChange={(e)=>setPostalCode1(e.target.value)}value={postalCode1} className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-آدرس                                </p>
+             {t("آدرس")}                             </p>
                                 <textarea onChange={(e)=>setAddress1(e.target.value)} value={address1}className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()}className="saveBtn mt-4">
-                     ذخیره
+                 {t("ذخیره")}
                  </Button>
              </Col>
          </div>
         </Box>
       </Modal>
       <Button onClick={()=>{setAddress1("");setPostalCode1("");AddAddress("delete1")}} className="glassBtn" id="colorRed">
-                                   حذف
+      {t("حذف")}
                          </Button>
                      </div>
                  </div>
@@ -505,7 +509,7 @@ onChange={()=>{setRadio(2);Transporter(2)}}
                      </p>
                      <div className="d-flex align-items-center justify-content-end">
                          <Button onClick={()=>handleOpen3()} className="glassBtn" id="colorBlue">
-                             ویرایش
+                         {t("ویرایش")}
                          </Button>
                          <Modal
         open={open3}
@@ -515,14 +519,14 @@ onChange={()=>{setRadio(2);Transporter(2)}}
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            ویرایش آدرس
+          {t("ویرایش آدرس")}
           </Typography>
           <hr/>
          <div className="row">
          <Col md={4}>
 
 <p className="fontWeightMedium mb-2">
-   شهر
+{t("شهر")}
 </p>
 <select onChange={(e)=>setCity2(e.target.value)} name="state" id="state" className="informationSelect">
 {
@@ -543,7 +547,7 @@ city2==1577?
 
 <div>
 <p className="fontWeightMedium mb-2">
-منطقه
+{t("منطقه")}
 </p>
 <select onChange={(e)=>setReg2(e.target.value)} name="state" id="state" className="informationSelect">
 {[...new Array(22)].map((item,index)=>{
@@ -561,25 +565,25 @@ null
 </Col>
              <Col md={4}>
              <p className="fontWeightMedium mb-2">
-                                   کد پستی
+             {t("کد پستی")}
                                 </p>
                                 <input onChange={(e)=>setPostalCode2(e.target.value)} value={postalCode2} className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
-آدرس                                </p>
+             {t("آدرس")}                                </p>
                                 <textarea onChange={(e)=>setAddress2(e.target.value)} value={address2} className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
-                     ذخیره
+                 {t("ذخیره")}
                  </Button>
              </Col>
          </div>
         </Box>
       </Modal>
                          <Button onClick={()=>{setAddress2("");setPostalCode2("");AddAddress("delete2")}} className="glassBtn" id="colorRed">
-                             حذف
+                         {t("حذف")}
                          </Button>
                      </div>
                  </div>
@@ -603,7 +607,7 @@ null
       <div className="d-flex align-items-center">
 
       <p className="fontWeightBold ml-4" href="#">
-                  انتخاب نحوه ارسال
+      {t("انتخاب نحوه ارسال")}
                 </p>
       </div>
      
@@ -632,10 +636,10 @@ null
      />
 {item.SendName}                   </p>
                    <p className='fontWeightNormal'>
-                       هزینه ارسال : {item.Cost} تومان
+                   {t("هزینه ارسال :")} {item.Cost} {t("تومان")}
                    </p>
                    <p className='fontWeightNormal'>
-                       مدت ارسال : {item.Days} روز
+                   {t("مدت ارسال :")} {item.Days} {t("روز")}
                    </p>
                  </div>
 
@@ -659,12 +663,12 @@ null
       <div className="d-flex align-items-center">
       
       <p className="fontWeightBold ml-4" href="#">
-                 کد تخفیف
+      {t("کد تخفیف")}
                 </p>
       </div>
       <Button onClick={()=>Discount()} className="saveBtn">
           
-         ثبت
+      {t("ثبت")}
       </Button>
           </div>
                  </div>
@@ -674,14 +678,14 @@ null
                   <Col md={4} className="shaCol1">
                   <p className="fontWeightBold">
                    
-کد تخفیف دارید ؟ </p>
+                  {t("کد تخفیف دارید ؟")} </p>
                   
                   </Col>
                   <Col md={8} className="ta-left shaCol1">
                   
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
-                         کد تخفیف خود را وارد کنید :
+                      {t("کد تخفیف خود را وارد کنید :")}
                       </p>
                       <input onChange={(e)=>setDiscount(e.target.value)} type="text"/>
                   </div>
@@ -697,12 +701,12 @@ null
       <div className="d-flex align-items-center">
       
       <p className="fontWeightBold ml-4" href="#">
-                  انتخاب نحوه پرداخت
+      {t("انتخاب نحوه پرداخت")}
                 </p>
       </div>
       <Button className="saveBtn">
           
-         ثبت
+      {t("ثبت")}
       </Button>
           </div>
                  </div>
@@ -722,10 +726,10 @@ null
        onChange={()=>setType(1)}
 
      />
-     پرداخت آنلاین
+     {t("پرداخت آنلاین")}
                    </p>
                    <p className='fontWeightNormal'>
-                   میتوانید از طریق درگاه پرداخت بانکی،اقدام به تسویه حساب نمایید
+                   {t("میتوانید از طریق درگاه پرداخت بانکی،اقدام به تسویه حساب نمایید")}
                    </p>
                   
                  </div>
@@ -746,18 +750,18 @@ null
        onChange={()=>setType(2)}
 
      />
-پرداخت بانکی                   </p>
+{t("پرداخت بانکی")}                   </p>
                    <p className='fontWeightNormal'>
-                   پس از واریز مبلغ به شماره حساب فوق کد رهگیری را ثبت نمایید
+                   {t("پس از واریز مبلغ به شماره حساب فوق کد رهگیری را ثبت نمایید")}
                    </p>
                   </Col>
                   <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
-                  شماره حساب : 1010252536254152635596596595
+                  {t("شماره حساب : 1010252536254152635596596595")}
                   </p>
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
-                          کد رهگیری : 
+                      {t("کد رهگیری :")}
                       </p>
                       <input onChange={(e)=>setHesab(e.target.value)} type="text"/>
                   </div>
@@ -781,18 +785,18 @@ null
 
        onChange={()=>setType(3)}
      />
-پرداخت با اتریوم                  </p>
+{t("پرداخت با اتریوم")}                  </p>
                    <p className='fontWeightNormal'>
-                   پس از واریز مبلغ به آدرس کیف پول فوق،کد رهگیری را اینجا ثبت نمایید
+                   {t("پس از واریز مبلغ به آدرس کیف پول فوق،کد رهگیری را اینجا ثبت نمایید")}
                    </p>
                   </Col>
                   <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
-                  آدرس کیف پول : http://wllet......
+                  {t("آدرس کیف پول")} : http://wllet......
                   </p>
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
-                          کد رهگیری : 
+                      {t("کد رهگیری :")}
                       </p>
                       <input  onChange={(e)=>setRamz(e.target.value)} type="text"/>
                   </div>
@@ -810,24 +814,24 @@ null
             <div className="priceRowCart mb-4">
                     <div>
                         <p>
-                            جمع سبد خرید : 
+                        {t("جمع سبد خرید :")}
                         </p>
                     </div>
                     <div>
                         <p>
-                            {total} تومان
+                            {total} {t("تومان")}
                         </p>
                     </div>
                 </div>
                 <div className="priceRowCart mb-4">
                     <div>
                         <p>
-                            هزینه ارسال :
+                        {t("هزینه ارسال :")}
                         </p>
                     </div>
                     <div>
                         <p>
-                            {tranCost}تومان
+                            {tranCost}{t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -835,22 +839,21 @@ null
                 <div className="priceRowCart mb-4">
                     <div>
                         <p>
-                            قابل پرداخت :
+                        {t("قابل پرداخت :")}
                         </p>
                     </div>
                     <div>
                     <p>
-                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total} تومان
+                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total} {t("تومان")}
                         </p>
                     </div>
                 </div>
                 <Button onClick={()=>Factor()} className="saveBtn w100 mt-4" style={{marginTop:20}} >
-                    پرداخت
+                {t("پرداخت")}
                 </Button>
             </div>
               <p className='fontWeightNormal mt-4'>
-              کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، 
-برای ثبت سفارش مراحل بعدی را تکمیل کنید.
+              {t("کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، برای ثبت سفارش مراحل بعدی را تکمیل کنید.")}
 
               </p>
             </div>

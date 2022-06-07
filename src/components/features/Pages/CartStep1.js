@@ -16,6 +16,7 @@ import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const style = {
     position: 'absolute',
@@ -30,6 +31,8 @@ const style = {
     p: 4,
   };
 const CartStep1 = () => {
+    const {t,i18n} = useTranslation();
+
     const [count,setCount]=useState(1)
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
@@ -163,7 +166,7 @@ const deleted=(id)=>{
 
       <Container className="CartContainer" fluid>
       <p className="CartTitle">
-          سبد خرید
+      {t("سبد خرید")}
       </p>
       
         <div className="cartDiv">
@@ -173,7 +176,7 @@ const deleted=(id)=>{
              <div className="d-flex align-items-center">
 
       <p className="fontWeightBold" href="#">
-                   محصولات انتخاب شده
+      {t("محصولات انتخاب شده")}
                 </p>
           </div>
                  </div>
@@ -198,13 +201,13 @@ const deleted=(id)=>{
                             </div>
                             <p className="CartColorP mt-4">
                                 <FaAward/>
-                                    ضمانت اصل بودن کالا
+                                {t("ضمانت اصل بودن کالا")}
                                 </p>
                         </div>
                      </div>
                      <div>
                      <div  className="d-flex ta-center pd0 d-inline-block align-items-center" style={{borderBottom:"none",marginTop:5}}>
-                    <p className="CartColorP">تعداد :</p>
+                    <p className="CartColorP"> {t("تعداد :")}</p>
                     <div className="counterDiv">
               <button onClick={()=>item.Number==1?null:increment(item.ShoppingBasketID,"mines")} className="decBTN">-</button>
               <span style={{marginRight:'0'}}>{item.Number}</span>
@@ -214,14 +217,14 @@ const deleted=(id)=>{
                     <div className="priceRowCart mb-4 mt-4">
                     <div>
                         <p className='colorRed'>
-                            قیمت :
+                        {t("قیمت :")}
                         </p>
                     </div>
                     <div>
                         <p className='colorRed'>
                             
 {                        parseInt(item?.Cost).toLocaleString("en-de")
-}                         تومان
+}                         {t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -230,7 +233,7 @@ const deleted=(id)=>{
                              ویرایش
                          </Button> */}
                          <Button onClick={()=>{deleted(item.ShoppingBasketID);setID(item.ShoppingBasketID)}} className="glassBtn borderRight" id="colorRed">
-                             حذف
+                         {t("حذف")}
                          </Button>
                      </div>
                      </div>
@@ -300,12 +303,12 @@ const deleted=(id)=>{
             <div className="priceRowCart mb-4">
                     <div>
                         <p>
-                            جمع سبد خرید : 
+                        {t("جمع سبد خرید :")} 
                         </p>
                     </div>
                     <div>
                         <p>
-                            {total.toLocaleString("en-de")} تومان
+                            {total.toLocaleString("en-de")} {t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -335,12 +338,11 @@ const deleted=(id)=>{
                     </div>
                 </div> */}
                 <Button onClick={()=>toStep2()} className="saveBtn w100 mt-4" style={{marginTop:20}} >
-                    ادامه سفارش
+                {t("ادامه سفارش")}
                 </Button>
             </div>
               <p className='fontWeightNormal mt-4'>
-              کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، 
-برای ثبت سفارش مراحل بعدی را تکمیل کنید.
+              {t("کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، برای ثبت سفارش مراحل بعدی را تکمیل کنید.")}
 
               </p>
             </div>

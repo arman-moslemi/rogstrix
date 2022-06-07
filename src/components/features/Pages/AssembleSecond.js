@@ -274,7 +274,7 @@ alert("با موفقیت ذخیره شد")
             </div>
             <div>
                 <p>
-                ساخت سیستم               </p>
+                {t("ساخت سیستم")}               </p>
             </div>
             <div>
             <img src={PageTitle}/>
@@ -288,7 +288,7 @@ alert("با موفقیت ذخیره شد")
                 <Button onClick={()=>ProductSave()}>
                 <FaPlus color={'#fff'}/>
                 <p className="userName">
-                    ذخیره این سیستم
+                {t("ذخیره این سیستم")}
                 </p>
                 </Button>
             </div>
@@ -296,7 +296,7 @@ alert("با موفقیت ذخیره شد")
                 <Button onClick={()=>again()}>
                 <FaPlus color={'#fff'}/>
                 <p className="userName">
-شروع دوباره
+                {t("شروع دوباره")}
                 </p>
                 </Button>
             </div>
@@ -340,7 +340,7 @@ alert("با موفقیت ذخیره شد")
             <div className="d-flex align-items-center colorWhite pd20">
               <FaRegCheckCircle color={'#fff'}/>
               <p className="fontWeightBold">
-                سازگاری قطعات :
+              {t("سازگاری قطعات :")}
               </p>
               {
                 agree?
@@ -350,38 +350,38 @@ alert("با موفقیت ذخیره شد")
 </p>
                 :
               <p className="fontWeightLight">
-                هیچ ناسازگاری یا مشکلی وجود ندارد.
+                {t("هیچ ناسازگاری یا مشکلی وجود ندارد.")}
               </p>
               }
             </div>
             <div className="d-flex align-items-center colorWhite backBlue pd20">
               <FaRegCheckCircle color={'#fff'}/>
               <p className="fontWeightBold">
-                تخمین مصرف انرژی : 
+              {t("تخمین مصرف انرژی :")}
               </p>
               <p className="fontWeightLight">
-             {energy?energy:0} وات
+             {energy?energy:0} {t("وات")}
               </p>
             </div>
           </div>
           <div className="d-flex align-items-center tRow">
             <div className="d-flex wB20">
             <p className="tableFirstRowText">
-              گروه
+            {t("گروه")}
             </p>
             <div className="vl"></div>
             </div>
             <p className="tableFirstRowText wB60">
-              انتخاب قطعه
+            {t("انتخاب قطعه")}
             </p>
             <p className="tableFirstRowText wB10">
-              قیمت(تومان)
+            {t("قیمت(تومان)")}
             </p>
             <p className="tableFirstRowText wB10 ta-center">
-              خرید
+            {t("خرید")}
             </p>
             <p className="tableFirstRowText wR5">
-              حذف
+            {t("حذف")}
             </p>
           </div>
           {/* <hr className="grayHr"/> */}
@@ -423,7 +423,7 @@ inc.indexOf(item.GroupID)!=-1 ?
         <div className="wB10 ta-center">
           {/* <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.ProductID)} className="buyAssembleBtn"> */}
           <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.EngProductName.replace(" ","_"))} className="buyAssembleBtn">
-            خرید
+          {t("خرید")}
           </button>
         </div>
         <div className="wR5">
@@ -496,7 +496,7 @@ inc.indexOf(item.GroupID)!=-1 ?
           <div className="d-flex justify-content-end tRow mb-4 pb-4">
             <div className="d-flex mr-4">
             <p className="miniText2">
-              قیمت کل :
+            {t("قیمت کل :")}
               </p>
             <p className="productAssembleName">
              {product?.length>0?product[0].SystemCost.toLocaleString("en-de"):0} تومان
@@ -505,23 +505,23 @@ inc.indexOf(item.GroupID)!=-1 ?
             </div>
             <div>
             <button onClick={()=>AddToCart(product[0]?.SystemID)} className="buyAssembleBtn">
-                  خرید کل قطعات
+            {t("خرید کل قطعات")}
                 </button>
             </div>
           </div>
-          <p class="boxTitle2 BoldFont pr-4 pl-4">در خصوص ناسازگاری‌ها و مشکلات احتمالی</p>
+          <p class="boxTitle2 BoldFont pr-4 pl-4">{t("در خصوص ناسازگاری‌ها و مشکلات احتمالی")}</p>
           <hr class="dottedH"></hr>
           <div className="padding20">
             <div className="d-flex">
               <p className="hoshdar">
-                هشدار !
+              {t("هشدار !")}
               </p>
               <p className="productAssembleName MediumFont" >
               {hoshdar}               </p>
             </div>
             <div className="d-flex">
               <p className="hoshdar orange">
-                توجه !
+              {t("توجه !")}
               </p>
               <p className="productAssembleName MediumFont" >
               {warning}            </p> </div>
