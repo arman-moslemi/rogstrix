@@ -37,6 +37,7 @@ const SingleProduct = () => {
   const [count,setCount]=useState(1)
   const [id,setID]=useState()
   var Guest=localStorage.getItem("guest")
+  const [language,setLanguage]=useState();
 
   const { isLoggedIn, token } = useContext(AuthContext);
   const goCompare=()=>{
@@ -268,7 +269,7 @@ const images = [
       }
   return (
     <div className="SingleProduct">
-        <Header/>
+      <Header setLanguage={setLanguage}/>
       <Menu/>
 
 

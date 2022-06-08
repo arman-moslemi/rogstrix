@@ -33,7 +33,7 @@ const  _handleKeyDown = (e) => {
   const changeLang=async(dd)=>{
     await localStorage.setItem("lang",dd)
     i18n.changeLanguage(dd);
-    setLanguage(dd)
+    // setLanguage(dd)
     // window.location.reload()
   }
   const [data,setData]=useState()
@@ -335,6 +335,7 @@ item?.map((item2)=>{
          </div>
          <div className="responsiveLanguage">
          <select name="Lang" defaultValue={"en"} id="language">
+            <option ></option>
             <option value="ir">Fa</option>
             <option value="en">En</option>
 
