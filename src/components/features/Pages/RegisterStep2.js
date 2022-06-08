@@ -9,6 +9,7 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const RegisterStep2 = () => {
   const history = useHistory();
@@ -17,6 +18,8 @@ const RegisterStep2 = () => {
     const [title,setTitle]=useState("")
     const [email,setEmail]=useState()
     const [pass,setPass]=useState()
+    const {t,i18n} = useTranslation();
+
     const submit=()=>{
       const axios = require("axios");
       console.log(email)
@@ -62,13 +65,13 @@ const RegisterStep2 = () => {
            </button> */}
             <img src={RedLogo}/>
             <p className="loginTitle">
-              ثبت نام
+            {t("ثبت نام")}
             </p>
             <p className="loginText">
-            ایمیل خود را وارد کنید.
+            {t("ایمیل خود را وارد کنید")}
             </p>
-            <input className="inputLogin mt-2" placeholder="ایمیل خود را وارد کنید" type="email"onChange={(e)=>setEmail(e.target.value)}/>
-            <input className="inputLogin marTop35" placeholder="رمز عبور خود را وارد کنید" type="password"onChange={(e)=>setPass(e.target.value)}/>
+            <input className="inputLogin mt-2" placeholder= {t("ایمیل خود را وارد کنید")} type="email"onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="inputLogin marTop35" placeholder= {t("رمز عبور خود را وارد کنید")} type="password"onChange={(e)=>setPass(e.target.value)}/>
             <div className="row ma-top-1 d-flex-start-start">
                 <Col md={6} xs={6} sm={6} className="pad0">
                 <div className="d-flex checkBoxDiv">
@@ -83,7 +86,7 @@ const RegisterStep2 = () => {
         }}
       />
               <label className="rememberPassLable" style={{color:'#fff',fontSize:12}}>
-              مرا به خاطر بسپار
+              {t("مرا به خاطر بسپار")}
               </label>
           </div>
                 </Col>
@@ -93,12 +96,12 @@ const RegisterStep2 = () => {
             </div>
             <div className="mar-top-30">
                 <button onClick={()=>submit()} className="loginBtn" type="submit">
-                ثبت نام در راگ استریکس
+                {t("ثبت نام در راگ استریکس")}
                 </button>
             </div>
             <div className="mar-top-20">
                 <p className="rememberPassLable">
-                    با ورود و ثبت نام در <a href="#" className="whiteColor">راگ استریکس</a> شما <a href="#" className="underLine">شرایط و قوانین</a> استفاده از سرویس های این سایت و <a href="#" className="underLine">قوانین حریم خصوصی</a> آن را می پذیرید.
+                {t("با ورود و ثبت نام در")} <a href="#" className="whiteColor"> {t("راگ استریکس")}</a>  {t("شما")} <a href="#" className="underLine">{t("شرایط و قوانین")}</a> {t("استفاده از سرویس های این سایت و")} <a href="#" className="underLine"> {t("قوانین حریم خصوصی")}</a>  {t("آن را می پذیرید.")}
                 </p>
             </div>
        </div>

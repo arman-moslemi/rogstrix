@@ -28,7 +28,7 @@ console.log(props.data)
     <div className="completedCard">
        <Link onClick={()=>history.push("/AssembleMain/"+props.data.SystemID)} >
        <div className="imgBox marginBottom15">
-       {
+       {/* {
   props?.viewOverlay==true?
          <div className="grayOverlay">
            <div className="userProfile">
@@ -40,7 +40,7 @@ console.log(props.data)
          </div>
  :
  null
- }
+ } */}
 
        <img src={props?.data?.Pic?apiAsset+props?.data?.Pic:MadeSystem} className="madeSystemImg"/>
        </div>

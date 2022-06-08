@@ -19,6 +19,7 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const style = {
     position: 'absolute',
@@ -34,6 +35,8 @@ const style = {
   };
 const TicketList = () => {
     const [open1, setOpen1] = useState(false);
+    const {t,i18n} = useTranslation();
+
     const handleOpen1 = () => setOpen1(true);
     const handleClose1 = () => setOpen1(false);
     const [open2, setOpen2] = useState(false);
@@ -142,10 +145,10 @@ setOpen1(false)
                  <div className="d-flex align-items-center">
       <PanelInformation className="rightMenuImg"/>
       <p className="fontWeightBold ml-4 md-0" href="#">
-تیکت ها و پشتیبانی ها
+      {t("تیکت ها و پشتیبانی ها")}
    </p>
    </div>
-   <Button className="addTicketBtn w15" onClick={handleOpen1}>+ پیام جدید</Button>
+   <Button className="addTicketBtn w15" onClick={handleOpen1}>+ {t("پیام جدید")}</Button>
    <Modal
         open={open1}
         onClose={handleClose1}
@@ -154,7 +157,7 @@ setOpen1(false)
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            پیام جدید
+          {t("پیام جدید")}
           </Typography>
           <hr/>
           <Row style={{margin:"0px"}}>
@@ -164,9 +167,9 @@ setOpen1(false)
 <Col md={12} style={{margin:"20px !important"}}>
   <div className="serviceForm pd0">
       <div className="cFormDiv3 ta-right d-flex align-items-center"  style={{marginTop:"20px"}}>
-     <p>عنوان پیام : </p>
+     <p>{t("عنوان پیام")} : </p>
 
-     <input onChange={(e)=>setTitleSup(e.target.value)} placeholder="عنوان پیام خود را وارد کنید" type='text' style={{float:"right !important"}} className="EditInformationInput"/>
+     <input onChange={(e)=>setTitleSup(e.target.value)} placeholder={t("عنوان پیام خود را وارد کنید")} type='text' style={{float:"right !important"}} className="EditInformationInput"/>
       </div>
       </div>
   </Col>
@@ -174,7 +177,7 @@ setOpen1(false)
 <Row style={{margin:"0px",marginTop:"20px !important"}}>
     <Col md={12} style={{marginTop:"20px"}}>
     <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
-     <p>متن پیام : </p>
+     <p>{t("متن پیام")} : </p>
 
      <textarea onChange={(e)=>setText(e.target.value)} placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"20px 0px"}}  className="EditInformationInput w100 mt-2"/>
       </div>
@@ -183,7 +186,7 @@ setOpen1(false)
 <div className="row mt-4">
          <Col md={12} className="ta-left">
              <Button onClick={()=>AddSupport()} className="saveBtn">
-                 ارسال پیام
+             {t("ارسال پیام")}
              </Button>
          </Col>
      </div>
@@ -195,16 +198,16 @@ setOpen1(false)
                  <div className="rightMenuBox1">
 <div className="d-flex">
 <div className="ta-right" id="w50">
-    <p className="fontWeightBold ml-4 md-0">موضوع</p>
+    <p className="fontWeightBold ml-4 md-0">{t("موضوع")}</p>
 </div>
 <div className="w20 ta-center">
-<p className="fontWeightBold ml-4 md-0">وضعیت</p>
+<p className="fontWeightBold ml-4 md-0">{t("وضعیت")}</p>
 </div>
 <div className="w20 ta-center">
-<p className="fontWeightBold ml-4 md-0">آخرین به روزرسانی</p>
+<p className="fontWeightBold ml-4 md-0">{t("آخرین به روزرسانی")}</p>
 </div>
 <div className="w20 ta-center">
-<p className="fontWeightBold ml-4 md-0">مشاهده</p>
+<p className="fontWeightBold ml-4 md-0">{t("مشاهده")}</p>
 </div>
 
 </div>
@@ -221,18 +224,18 @@ setOpen1(false)
   {
     item.Status==1?
     <div className="statusTicketBtn2 w28 h40"
-> درانتظار پاسخ
+> {t("درانتظار پاسخ")}
     </div>
     :
     item.Status==2?
     <div className="statusTicketBtn3 w28 h40"
-> پاسخ داده شده
+> {t("پاسخ داده شده")}
     </div>
 :
 
 
 <div className="statusTicketBtn w28 h40"
-> بسته شده
+> {t("بسته شده")}
     </div>
   }
  

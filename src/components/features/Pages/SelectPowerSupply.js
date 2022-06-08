@@ -25,6 +25,7 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/auth-context";
+import { useTranslation } from 'react-i18next';
 
 const SelectPowerSupply = () => {
   const [data,setData]=useState([])
@@ -38,6 +39,8 @@ const SelectPowerSupply = () => {
   const [to,setTo]=useState(0)
   const [head,setHead]=useState("")
   const history = useHistory();
+  const {t,i18n} = useTranslation();
+
 console.log(params)
 const { isLoggedIn, token } = useContext(AuthContext);
 const addCompare=(type,id)=>{
@@ -275,21 +278,10 @@ mainSlider()
           <ul>
             <li>
               <a>
-                سایت راگ استریکس
+              {t("سایت راگ استریکس")}
               </a>
             </li>
-            /
-            <li>
-              <a>
-                سی پی یو
-              </a>
-            </li>
-            /
-            <li>
-              <a>
-              AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor
-              </a>
-            </li>
+       
           </ul>
         </div>
         <div className="pageTitle">
@@ -300,7 +292,7 @@ mainSlider()
             {
                          data[0]?
                 <p>
-                انتخاب {data[0][0]?.Title}                </p>
+                {t("انتخاب")} {data[0][0]?.Title}                </p>
                 :
                 null}
             </div>
@@ -315,7 +307,7 @@ mainSlider()
              <div className="row">
                   <Col md={7}>
                     <p className="filterText">
-                        فیلترهای اعمال شده
+                    {t("فیلترهای اعمال شده")}
                     </p>
                   </Col>
                   <Col md={5} className="ta-left">
@@ -351,7 +343,7 @@ mainSlider()
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        برندها
+                    {t("برندها")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -363,7 +355,7 @@ mainSlider()
         <input
 
           type={'text'}
-          placeholder={"نام برند را وارد کنید ..."}
+          placeholder={t("نام برند را وارد کنید ...")}
 
 
         />
@@ -409,7 +401,7 @@ mainSlider()
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                      محدوده قیمت
+                    {t("محدوده قیمت")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -421,14 +413,15 @@ mainSlider()
             <div className="row">
       <Col md={6}>
             <p className="rangeText">
-                از
+            {t("از")}
             </p>
 
 
       </Col>
       <Col md={6}>
       <p className="rangeText">
-                از
+      {t("از")}
+
             </p>
 
 
@@ -448,15 +441,15 @@ mainSlider()
       </div>
       <div className="row marginTop15">
           <Col md={6}>
-              <p className="rangeText maxFont">تومان</p>
+              <p className="rangeText maxFont"> {t("تومان")}</p>
           </Col>
           <Col md={6}>
-              <p className="rangeText maxFont">تومان</p>
+              <p className="rangeText maxFont">{t("تومان")}</p>
           </Col>
       </div>
             </div>
             <Button onClick={()=>setCost()}className="rangeBtn">
-                اعمال محدوده قیمت
+            {t("اعمال محدوده قیمت")}
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -547,7 +540,7 @@ mainSlider()
               <div className="borderDashedBottom">
                 <div>
                   <p>
-                  شناسایی {data.length} قطعه 
+                  {t("شناسایی")} {data.length} {t("قطعه")}
                   </p>
                 </div>
                 <div>
@@ -563,7 +556,7 @@ mainSlider()
                 }}
               />
                       <label>
-                         نمایش همه قطعات
+                      {t("نمایش همه قطعات")}
                       </label>
                   </div>
                 </div>
@@ -575,7 +568,7 @@ mainSlider()
       <input
           className="searchInput"
           type={'text'}
-          placeholder={"جستجو در میان منبع تغذیه..."}
+          placeholder={t("جستجو در میان منبع تغذیه...")}
         
          
         />
@@ -587,17 +580,17 @@ mainSlider()
            <div className="selectRow">
              <div>
                <Button className="selectAll marginLeft60">
-                 انتخاب همه
+               {t("انتخاب همه")}
                </Button>
              </div>
              <div>
                <Button className="selectAll marginLeft60">
-                 حذف انتخاب همه
+               {t("حذف انتخاب همه")}
                </Button>
              </div>
              <div>
                <Button onClick={()=>goCompare()} className="compareBtn">
-                 مقایسه انتخاب شده ها (حداکثر 4 مورد)
+               {t("مقایسه انتخاب شده ها (حداکثر 4 مورد)")}
                </Button>
              </div>
            </div>
@@ -606,14 +599,14 @@ mainSlider()
                 <div className="ta-right wi10" >
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                  مقایسه
+                {t("مقایسه")}
                   
                 </p>
                 </div>
                 <div className="ta-right wi15" >
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                  عکس
+                {t("عکس")}
                   
                 </p>
                 </div>
@@ -621,7 +614,7 @@ mainSlider()
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
-نام                </p>
+                {t("نام")}              </p>
 </div>
 {/* <div className="ta-center">
 <p className="tableTitle">
@@ -648,14 +641,14 @@ mainSlider()
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
-                  قیمت (تومان)
+{t("قیمت")} ({t("تومان")})
                 </p>
 </div>
 <div className="ta-right wi10">
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
-                  امتیاز
+{t("امتیاز")}
                 </p>
 </div>
 <div className="ta-right wi5">
@@ -727,7 +720,7 @@ return(
   {parseInt(item[0]?.Cost)-parseInt(item[0]?.SpecialCost)}                  </p>
 :
 <p className="pNameRow">
-به زودی
+{t("به زودی")}
   </p>
 }
 
@@ -744,7 +737,7 @@ return(
                 {
   parseInt(item[0]?.Cost)!=0?
                   <Button onClick={()=>ProductSave(item[0].ProductID)} className="addRowBtn">
-                    افزودن
+                    {t("افزودن")}
                   </Button>
                   :
                   null}

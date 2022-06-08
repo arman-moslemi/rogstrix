@@ -14,10 +14,13 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { useTranslation } from 'react-i18next';
+
 const SavedProducts = () => {
     const params = useParams().id;
     const [data,setData]=useState()
     const [product,setProduct]=useState()
+    const {t,i18n} = useTranslation();
 
     const ProductSave=()=>{
         const axios = require("axios");
@@ -82,7 +85,7 @@ const SavedProducts = () => {
              <div className="d-flex align-items-center">
       <PanelSeen className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                  محصولات ذخیره شده
+      {t("محصولات ذخیره شده")}
                 </p>
           </div>
                  </div>

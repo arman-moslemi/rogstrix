@@ -18,8 +18,11 @@ import Truck from "../../assets/icons/truck";
 import Box from "../../assets/icons/box";
 import Garantee2 from "../../assets/icons/garantee2";
 import parse  from 'html-react-parser';
+import { useTranslation } from 'react-i18next';
 
 const SingleProduct = () => {
+  const {t,i18n} = useTranslation();
+
   const params = useParams().id;
   const history = useHistory();
   const [product,setProduct]=useState([])
@@ -276,7 +279,7 @@ const images = [
             <li>
               <a>
                   <FaCaretLeft/>
-                سایت راگ استریکس
+                  {t("سایت راگ استریکس")}
               </a>
             </li>
             /
@@ -301,7 +304,7 @@ const images = [
         <p className="boxTitle2 BoldFont">
 {product.ProductName+" "+product.BrandName}                </p>
 <Button onClick={()=>ProductSave()} className="addAseembleBtn" >
-                                            +  افزودن به ساخت سیستم
+                                            +  {t("افزودن به ساخت سیستم")}
                                                 </Button>
         </div>
                 <hr className="grayHr"/>
@@ -324,7 +327,7 @@ const images = [
                   }
 
                 </div>
-                <p className="boxTitle2 NormalFont">ویژگی‌های محصول</p>
+                <p className="boxTitle2 NormalFont">{t("ویژگی‌های محصول")}</p>
 {
   property.map((item,index)=>{
     return(
@@ -369,7 +372,7 @@ const images = [
 
                 <Button className="mavaredBishtar mt-3">
 
-                موارد بیشتر
+                {t("موارد بیشتر")}
                 <FaPlus className="ml-2"/>
                 </Button>
                 {/* <div className="d-flex align-items-center mt-4">
@@ -417,7 +420,7 @@ const images = [
              
               }
                 <p className="boxTitle2">
-                    مشخصات فروش
+                {t("مشخصات فروش")}
                 </p>
                 <div className="d-flex align-items-center justify-content-between">
 
@@ -439,7 +442,7 @@ index+1>rate?
                   </div>
                   <div>
                     <p className="reviewP" id="colorGray">
-                    امتیاز: {rate} از ۵ ({com.length} نظر)
+                    {t("امتیاز")}: {rate} {t("از ۵")} ({com.length} {t("نظر")})
                     </p>
                   </div>
 
@@ -451,7 +454,7 @@ index+1>rate?
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                    ضمانت اصل بودن کالا
+                  {t("از ضمانت اصل بودن کالا")}
                     </p>
                   </div>
               </div>
@@ -462,7 +465,7 @@ index+1>rate?
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                  از این کالا {product.Number} عدد در انبار موجود است
+                  {t("از این کالا")} {product.Number} {t("از عدد در انبار موجود است")}
                                 </p>
                   </div>
               </div>
@@ -473,10 +476,11 @@ index+1>rate?
                   <div>
                   <p className="reviewP" id="colorGray">
                   {product.Type==3?
-                  "کپی":
+                  t("کپی")
+                  :
                   product.Type==2?
-                  "ریفر":
-                  "اصلی"
+                  t("ریفر"):
+                  t("اصلی")
                 
                 }                    </p>
                   </div>
@@ -484,7 +488,7 @@ index+1>rate?
               <hr className="grayHr"/>
               <div className="d-flex align-items-center justify-content-between">
                 <div>
-                <p className="reviewP" id="colorGray">تعداد : </p></div>
+                <p className="reviewP" id="colorGray">{t("تعداد")} : </p></div>
               <div className="counterDiv d-flex justify-content-center">
               <button onClick={()=>decrement()} className="decBTN">-</button>
               <span style={{marginRight:'0'}}>{count}</span>
@@ -494,7 +498,7 @@ index+1>rate?
               <hr className="grayHr"/>
               <div className="d-flex align-items-center justify-content-between">
                 <div>
-                <p className="reviewP" id="colorGray">گارانتی : </p></div>
+                <p className="reviewP" id="colorGray">{t("گارانتی")} : </p></div>
               <div className="d-flex justify-content-center">
               <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]))}} name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
   {
@@ -525,7 +529,7 @@ index+1>rate?
               <div className="d-flex align-items-center  justify-content-between">
                   <div  className="mr-3">
                   <p className="reviewP" id="colorGray">
-                  قیمت محصول                   </p>
+                  {t("قیمت محصول")}                   </p>
 
                   </div>
                   <div>
@@ -542,7 +546,7 @@ index+1>rate?
                           </div>
                       </div>
                   <p className="specialPrice">
-                  {(parseInt(cost)-parseInt(specialCost)).toLocaleString("en-de")}تومان
+                  {(parseInt(cost)-parseInt(specialCost)).toLocaleString("en-de")}{t("تومان")}
                   </p>
 
 
@@ -558,7 +562,7 @@ index+1>rate?
                   </div>
               </div> */}
               <Button onClick={()=>AddToCart()} className="addToCart mt-4">
-                  افزودن به سبد خرید
+              {t("افزودن به سبد خرید")}
               </Button>
             </div>
         </Col>
@@ -571,7 +575,7 @@ index+1>rate?
           <Col md={9} id="singleOrder2">
             <div className="whiteBox3">
             <p className="boxTitle2 BoldFont">
-            توضیحات درباره {product.ProductName+" "+product.BrandName}
+            {t("توضیحات درباره")} {product.ProductName+" "+product.BrandName}
                 </p>
                 <hr className="dottedH"/>
                 <p className="productDetail">
@@ -591,11 +595,11 @@ index+1>rate?
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
-                           محصولات مشابه
+                        {t("محصولات مشابه")}
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
-                        <Button className="seeAll">مشاهده همه</Button>
+                        <Button className="seeAll">{t("مشاهده همه")}</Button>
                     </div>
                    </Col>
                </div>

@@ -14,10 +14,14 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
+import { useTranslation } from 'react-i18next';
+
 const SystemGuide = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
   const history = useHistory();
+  const {t,i18n} = useTranslation();
+
 console.log(params)
   const mainSlider=async()=>{
     const axios = require("axios");
@@ -81,7 +85,7 @@ console.log(params)
             </div>
             <div>
                 <p>
-                سیستم های پیشنهادی            </p>
+                {t("سیستم های پیشنهادی")}           </p>
             </div>
             <div>
             <img src={PageTitle}/>

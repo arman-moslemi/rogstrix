@@ -72,7 +72,7 @@ console.log(params)
           <ul>
             <li>
               <a>
-                سایت راگ استریکس
+              {t("سایت راگ استریکس")}
               </a>
             </li>
          
@@ -89,7 +89,7 @@ console.log(params)
                   </div>
                   <div>
                       <p className="whiteBoxTitle">
-                          پیشنهادات ویژه
+                      {t("پیشنهادات ویژه")}
                       </p>
                   </div>
                   <div className="dashedHrdiv">

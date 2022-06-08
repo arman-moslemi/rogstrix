@@ -10,6 +10,8 @@ import Menu from "./layouts/Menu";
 import RedBox from "./layouts/RedBox";
 import PanelComment from "../../assets/icons/panelComment";
 import Checkbox from '@mui/material/Checkbox';
+import { useTranslation } from 'react-i18next';
+
 export const truncate = (str, len) => {
     console.log("truncate", str, str.length, len);
     if (str.length > len && str.length > 0) {
@@ -22,7 +24,8 @@ export const truncate = (str, len) => {
     return str;
   };
 const UserComments = () => {
-  
+  const {t,i18n} = useTranslation();
+
   return (
     <div className="">
     <Header />
@@ -40,7 +43,7 @@ const UserComments = () => {
              <div className="d-flex align-items-center">
       <PanelComment className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                 نظرات من
+      {t("نظرات من")}
                 </p>
           </div>
                  </div>
@@ -48,18 +51,18 @@ const UserComments = () => {
                  <div className="grayBoxTop">
                      <div id="w35">
                          <p>
-                             محصول
+                         {t("محصول")}
                          </p>
                      </div>
                      <div id="w50">
                         <p>
-                          متن
+                        {t("متن")}
                         </p>
                      </div>
                
                      <div id="w15">
                      <p>
-                            تاریخ
+                     {t("تاریخ")}
                         </p>
                          </div>
                         

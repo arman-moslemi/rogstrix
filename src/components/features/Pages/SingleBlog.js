@@ -23,6 +23,8 @@ import {useParams } from "react-router-dom";
 import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
+import { useTranslation } from 'react-i18next';
+
 const SingleBlog = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
@@ -31,6 +33,8 @@ const [cat,setCat]=useState();
 const [com,setCom]=useState([]);
 const [type,setType]=useState([])
 const [special,setSpecial]=useState([])
+const {t,i18n} = useTranslation();
+
 const { isLoggedIn, token } = useContext(AuthContext);
 
 console.log(params)
@@ -129,7 +133,7 @@ console.log(params)
             <li>
               <a>
               <FaCaretLeft/>
-                سایت راگ استریکس/
+              {t("سایت راگ استریکس")}
               </a>
 
               <a>

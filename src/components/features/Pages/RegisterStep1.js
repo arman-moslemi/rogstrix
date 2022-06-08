@@ -7,9 +7,11 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const RegisterStep1 = () => {
     const history = useHistory();
+    const {t,i18n} = useTranslation();
 
     const [mobile,setMobile]=useState()
     const [open,setOpen]=useState(false)
@@ -57,13 +59,13 @@ localStorage.setItem("ver",response.data.Data)
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-                ثبت نام
+            {t("ثبت نام")}
             </p>
             <p className="loginText">
-            شماره موبایل خود را وارد کنید.
+            {t("شماره موبایل خود را وارد کنید.")}
             </p>
-            <input className="inputLogin  marTop35" placeholder="شماره موبایل خود را وارد کنید" type="text"  onChange={(e)=>setMobile(e.target.value)}/>
-            <div className="d-flex justify-content-between mar-top-35 align-items-center">
+            <input className="inputLogin  marTop35" placeholder={t("شماره موبایل خود را وارد کنید")} type="text"  onChange={(e)=>setMobile(e.target.value)}/>
+            {/* <div className="d-flex justify-content-between mar-top-35 align-items-center">
                 <div>
                 <p className="rememberPassLable marBottom0">کد تصویر را وارد کنید</p>
                 </div>
@@ -77,10 +79,10 @@ localStorage.setItem("ver",response.data.Data)
                     </p>
                 </div>
                 </div>
-            </div>
+            </div> */}
             <div className="mar-top-40">
                 <button onClick={()=>login()} className="loginBtn" type="submit">
-ثبت                </button>
+                {t("ثبت")}                </button>
             </div>
 
        </div>

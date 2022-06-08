@@ -9,11 +9,12 @@ import React,{useState,useContext} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
 import { AuthContext } from "../../../context/auth-context";
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const history = useHistory();
   const auth = useContext(AuthContext);
-
+  const {t,i18n} = useTranslation();
   const [open,setOpen]=useState(false)
   const [title,setTitle]=useState("")
   const [email,setEmail]=useState()

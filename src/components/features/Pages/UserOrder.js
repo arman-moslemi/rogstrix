@@ -12,6 +12,7 @@ import Checkbox from '@mui/material/Checkbox';
 import {useParams } from "react-router-dom";
 import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+import { useTranslation } from 'react-i18next';
 
 export const truncate = (str, len) => {
     // console.log("truncate", str, str.length, len);
@@ -25,6 +26,8 @@ export const truncate = (str, len) => {
     return str;
   };
 const UserOrder = () => {
+  const {t,i18n} = useTranslation();
+
     const params = useParams().id;
     const [data,setData]=useState()
     const [product,setProduct]=useState()
@@ -92,7 +95,7 @@ const UserOrder = () => {
              <div className="d-flex align-items-center">
       <PanelOrder className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                   سفارش های من
+      {t("سفارش های من")}
                 </p>
           </div>
                  </div>
@@ -100,37 +103,37 @@ const UserOrder = () => {
                  <div className="grayBoxTop">
                      <div id="w7">
                          <p>
-                             شماره
+                         {t("شماره")}
                          </p>
                      </div>
                      <div id="w28">
                         <p>
-                            محصولات
+                        {t("محصولات")}
                         </p>
                      </div>
                      <div id="w15">
                      <p>
-                           تاریخ
+                     {t("تاریخ")}
                         </p>
                      </div>
                      <div id="w12">
                      <p>
-                            مبلغ
+                     {t("مبلغ")}
                         </p>
                      </div>
                      <div id="w12">
                      <p>
-                            پرداخت
+                     {t("پرداخت")}
                         </p>
                          </div>
                          <div id="w12">
                          <p>
-                            وضعیت
+                         {t("وضعیت")}
                         </p>
                          </div>
                          <div id="w12">
                          <p>
-                            مشاهده فاکتور
+                         {t("مشاهده فاکتور")}
                         </p>
                          </div>
                  </div>
@@ -159,12 +162,12 @@ const UserOrder = () => {
                      <div id="w12">
 {item[0].Payment==1?
                      <p>
-‍‍‍پرداخت شده
+{t("‍‍‍پرداخت شده")}
                        </p>
 :
 <p>
 
-  ‍‍‍پرداخت نشده
+{t("‍‍‍پرداخت نشده")}
 </p>
 }
 
@@ -173,16 +176,16 @@ const UserOrder = () => {
 {
 item.Condition==0?
   <p>
-    ارسال نشده
+    {t("ارسال نشده")}
   </p>
                            :
                            item.Status==1?
                            <p>
-                           درحال ارسال
+                           {t("درحال ارسال")}
                          </p>
                            :
                            <p>
-ارسال شده                         </p>
+{t("ارسال شده")}                         </p>
 
 }                    
 

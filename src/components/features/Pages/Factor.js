@@ -13,6 +13,8 @@ import {useParams } from "react-router-dom";
 import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import LogoBlack from "../../assets/img/Logo-black.png";
+import { useTranslation } from 'react-i18next';
+
 export const truncate = (str, len) => {
     // console.log("truncate", str, str.length, len);
     if (str?.length > len && str?.length > 0) {
@@ -28,6 +30,8 @@ const Factor = () => {
   const params = useParams().id;
   const [data,setData]=useState()
   const [product,setProduct]=useState()
+  const {t,i18n} = useTranslation();
+
   const CustomerOrder=()=>{
     const axios = require("axios");
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
@@ -89,43 +93,43 @@ const Factor = () => {
       </div>
       <Container>
         <p className="fontWeightBold mb-2">
-          پیش فاکتور
+        {t("پیش فاکتور")}
         </p>
         <p className="fontWeightBold mb-4">
-          مشخصات سفارش
+        {t("مشخصات سفارش")}
         </p>
       <div className="row pdTable">
     <Col md={12} className="pd0">
     <div className="row">
           <Col md={4} className="tableBorderLeft d-flex pdTable2 borderBottomTable">
-            <p className="fontWeightBold">شماره فاکتور : 
+            <p className="fontWeightBold">{t("شماره فاکتور :")}
             </p>
             <p className="fontWeightNormal ml-2">{product?product[0]?.FactorNumber:null}</p>
           </Col>
           <Col md={4} className="tableBorderLeft pdTable2 d-flex borderBottomTable">
-          <p className="fontWeightBold">تاریخ :  
+          <p className="fontWeightBold">{t("تاریخ")} :  
             </p>
             <p className="fontWeightNormal ml-2">{product?product[0]?.Date:null}</p>
           </Col>
           <Col md={4} className="tableBorder pdTable2 d-flex borderBottomTable">
-          <p className="fontWeightBold">نام و نام خانوادگی :  
+          <p className="fontWeightBold">{t("نام و نام خانوادگی")} :  
             </p>
             <p className="fontWeightNormal ml-2">{data?.NameFamily}</p>
           </Col>
         </div>
         <div className="row">
           <Col md={4} className="tableBorderLeft d-flex pdTable2 borderBottomTable">
-            <p className="fontWeightBold">کد ملی : 
+            <p className="fontWeightBold">{t("کدملی")} : 
             </p>
             <p className="fontWeightNormal ml-2">{data?.NationalCode}</p>
           </Col>
           <Col md={4} className="tableBorderLeft pdTable2 d-flex borderBottomTable">
-          <p className="fontWeightBold">شماره تماس : 
+          <p className="fontWeightBold">{t("شماره تماس")} : 
             </p>
             <p className="fontWeightNormal ml-2">{data?.Mobile}</p>
           </Col>
           <Col md={4} className="tableBorder pdTable2 d-flex borderBottomTable">
-          <p className="fontWeightBold">ایمیل : 
+          <p className="fontWeightBold">{t("ایمیل")} : 
             </p>
             <p className="fontWeightNormal ml-2">{data?.Email}</p>
           </Col>
@@ -142,14 +146,14 @@ const Factor = () => {
             <p className="fontWeightNormal ml-2">----</p>
           </Col> */}
           <Col md={4} className="tableBorder pdTable2 d-flex borderBottomTable">
-          <p className="fontWeightBold">وضعیت پرداخت :   
+          <p className="fontWeightBold">{t("وضعیت پرداخت")} :   
             </p>
-            <p className="fontWeightNormal ml-2">پرداخت شده</p>
+            <p className="fontWeightNormal ml-2">{t("پرداخت شده")}</p>
           </Col>
         </div>
         <div className="row">
           <Col md={12} className=" d-flex pdTable2 borderBottomTable">
-            <p className="fontWeightBold">آدرس : 
+            <p className="fontWeightBold">{t("آدرس")} : 
             </p>
             <p className="fontWeightNormal ml-2">{product?product[0]?.Address:null}</p>
           </Col>
@@ -163,13 +167,13 @@ const Factor = () => {
     <div className="row">
       <Col md={6} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-          شرح محصول
+      {t("شرح محصول")}
         </p>
       </Col>
       
       <Col md={2} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-         قیمت واحد
+      {t("قیمت واحد")}
         </p>
       </Col>
       {/* <Col md={1} className="ta-right">
@@ -179,12 +183,12 @@ const Factor = () => {
       </Col> */}
       <Col md={1} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-         تعداد
+      {t("تعداد")}
         </p>
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-        قیمت کل
+      {t("قیمت کل")}
         </p>
       </Col>
     </div>
@@ -203,7 +207,7 @@ const Factor = () => {
       
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-         {item.Cost} تومان
+         {item.Cost} {t("تومان")}
         </p>
       </Col>
       {/* <Col md={1} className="ta-right">
@@ -218,7 +222,7 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        {item.Cost*item.Number} تومان
+        {item.Cost*item.Number} {t("تومان")}
         </p>
       </Col>
     </div>
@@ -229,14 +233,14 @@ const Factor = () => {
     <div className="row pd15 backBlueLight">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-          هزینه ارسال از طریق پست سفارشی  :
-          زمان فوق با توجه به محدوده جغرافیایی به صورت تقریبی بین 2 تا 4 روز کاری متفاوت است.تحویل در بازه زمانی 10-17.سقف بیمه پست برای هر محصول 20 میلیون تومان است.
+      {t("هزینه ارسال از طریق پست سفارشی")}  :
+      {t("زمان فوق با توجه به محدوده جغرافیایی به صورت تقریبی بین 2 تا 4 روز کاری متفاوت است.تحویل در بازه زمانی 10-17.سقف بیمه پست برای هر محصول 20 میلیون تومان است.")}
         </p>
       </Col>
       
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-      {product?product[0]?.SendCost:null} تومان
+      {product?product[0]?.SendCost:null} {t("تومان")}
         </p>
       </Col>
       {/* <Col md={1} className="ta-right">
@@ -251,14 +255,14 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        {product?product[0]?.SendCost:null} تومان
+        {product?product[0]?.SendCost:null} {t("تومان")}
         </p>
       </Col>
     </div>
     <div className="row pd15 borderBottomTable">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-          مجمع کل : 
+      {t("جمع کل")} : 
         </p>
       </Col>
       
@@ -290,12 +294,12 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-         مبلغ قابل پرداخت : 
+      {t("مبلغ قابل پرداخت")} : 
         </p>
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-      {product?product[0]?.CostTotal:null} تومان
+      {product?product[0]?.CostTotal:null} {t("تومان")}
         </p>
       </Col>
     </div>
@@ -304,7 +308,7 @@ const Factor = () => {
   </div>
   <div className="pdTable pdM mt-2">
    <p className="fontWeightBold">
-         توضیحات خریدار : 
+   {t("توضیحات خریدار")} : 
         </p>
         <br/>
         {/* <p className="fontWeightNormal2">
@@ -312,11 +316,11 @@ const Factor = () => {
         </p> */}
    </div>
    <p className="fontWeightBold mt-4">
-         خریدار محترم : 
+   {t("خریدار محترم")} : 
         </p>
         <br/>
         <p className="fontWeightNormal2">
-        کلیه قوانین و مقررات مربوط به خرید اینترنتی از وب سایت ما،مندرج و قابل مشاهده است.لذا خرید کالا از این شرکت به منزله پذیرش کلیه قوانین و مقررات اعم از قانون تجارت الکترونیک و قانون حمایت از حقوق مصرف کننده و دستورالعمل صادره از اتحادیه کسب و کار مجازی وزارت صنعت و معدن و تجارت بوده و در محاکم قابل استفاده است.
+        {t("کلیه قوانین و مقررات مربوط به خرید اینترنتی از وب سایت ما،مندرج و قابل مشاهده است.لذا خرید کالا از این شرکت به منزله پذیرش کلیه قوانین و مقررات اعم از قانون تجارت الکترونیک و قانون حمایت از حقوق مصرف کننده و دستورالعمل صادره از اتحادیه کسب و کار مجازی وزارت صنعت و معدن و تجارت بوده و در محاکم قابل استفاده است.")}
         </p>
   {/* <div className="factorTable">
         

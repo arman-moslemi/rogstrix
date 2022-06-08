@@ -22,6 +22,8 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
+import { useTranslation } from 'react-i18next';
+
 const Products = () => {
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
@@ -32,6 +34,8 @@ const Products = () => {
   const [from,setFrom]=useState(0)
   const [to,setTo]=useState(0)
   const [head,setHead]=useState("")
+  const {t,i18n} = useTranslation();
+
   const history = useHistory();
 console.log(params)
   const mainSlider=async()=>{
@@ -205,7 +209,7 @@ mainSlider()
           <ul>
             <li>
               <a>
-                سایت راگ استریکس
+              {t("سایت راگ استریکس")}
               </a>
             </li>
             /
@@ -223,7 +227,7 @@ mainSlider()
              <div className="row">
                   <Col md={7}>
                     <p className="filterText">
-                        فیلترهای اعمال شده
+                    {t("فیلترهای اعمال شده")}
                     </p>
                   </Col>
                   <Col md={5} className="ta-left">
@@ -259,7 +263,7 @@ mainSlider()
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        برندها
+                    {t("برندها")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -271,7 +275,7 @@ mainSlider()
         <input
 
           type={'text'}
-          placeholder={"نام برند را وارد کنید ..."}
+          placeholder={t("نام برند را وارد کنید ...")}
 
 
         />
@@ -317,7 +321,7 @@ mainSlider()
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                      محدوده قیمت
+                    {t("محدوده قیمت")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -327,16 +331,16 @@ mainSlider()
                </div>
             <div className="rangeBorder">
             <div className="row">
-      <Col md={6}>
+            <Col md={6}>
             <p className="rangeText">
-                از
+            {t("از")}
             </p>
 
 
       </Col>
       <Col md={6}>
       <p className="rangeText">
-                از
+      {t("از")}
             </p>
 
 
@@ -356,15 +360,15 @@ mainSlider()
       </div>
       <div className="row marginTop15">
           <Col md={6}>
-              <p className="rangeText maxFont">تومان</p>
+              <p className="rangeText maxFont">{t("تومان")}</p>
           </Col>
           <Col md={6}>
-              <p className="rangeText maxFont">تومان</p>
+              <p className="rangeText maxFont">{t("تومان")}</p>
           </Col>
       </div>
             </div>
             <Button onClick={()=>setCost()}className="rangeBtn">
-                اعمال محدوده قیمت
+            {t("اعمال محدوده قیمت")}
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -460,7 +464,7 @@ mainSlider()
                          data[0]?
                       <p className="whiteBoxTitle">
 
-                         همه {data[0][0]?.GroupName} ها
+{t("همه")} {data[0][0]?.GroupName} {t("ها")}
                          </p>
                          :
                          null

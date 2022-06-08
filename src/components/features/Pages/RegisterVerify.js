@@ -8,6 +8,7 @@ import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const RegisterVerify = () => {
     const history = useHistory();
@@ -15,6 +16,8 @@ const RegisterVerify = () => {
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
     const [code,setCode]=useState()
+    const {t,i18n} = useTranslation();
+
     const submit=()=>{
       const axios = require("axios");
       console.log(code)
@@ -64,21 +67,21 @@ if(ss==code)
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-                کد تایید
+            {t("کد تایید")}
             </p>
             <p className="loginText">
-            کد تایید ارسال شده را وارد کنید
+            {t("کد تایید ارسال شده را وارد کنید")}
             </p>
-            <input className="inputLogin marTop35" placeholder="کد تایید را وارد کنید" type="text" onChange={(e)=>setCode(e.target.value)}/>
+            <input className="inputLogin marTop35" placeholder={t("کد تایید را وارد کنید")} type="text" onChange={(e)=>setCode(e.target.value)}/>
 
             <div className="mar-top-40">
                 <button onClick={()=>submit()} className="loginBtn" type="submit">
-                تایید شماره موبایل
+                {t("تایید شماره موبایل")}
                 </button>
             </div>
             <div className="mar-top-20">
                 <p className="rememberPassLable">
-                    با ورود و ثبت نام در <a href="#" className="whiteColor">راگ استریکس</a> شما <a href="#" className="underLine">شرایط و قوانین</a> استفاده از سرویس های این سایت و <a href="#" className="underLine">قوانین حریم خصوصی</a> آن را می پذیرید.
+                {t("با ورود و ثبت نام در")} <a href="#" className="whiteColor"> {t("راگ استریکس")}</a>  {t("شما")} <a href="#" className="underLine">{t("شرایط و قوانین")}</a> {t("استفاده از سرویس های این سایت و")} <a href="#" className="underLine"> {t("قوانین حریم خصوصی")}</a>  {t("آن را می پذیرید.")}
                 </p>
             </div>
        </div>

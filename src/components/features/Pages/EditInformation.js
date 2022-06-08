@@ -14,9 +14,12 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const EditInformation = () => {
     const [showText, setShowText] = useState(false);
+    const {t,i18n} = useTranslation();
+
     const onClick = () => setShowText(!showText);
     const [data,setData]=useState([])
     const [open,setOpen]=useState(false)
@@ -138,7 +141,7 @@ const EditInformation = () => {
              <div className="d-flex align-items-center">
       <PanelInformation className="rightMenuImg"/>
       <p className="fontWeightBold ml-4" href="#">
-                    مشخصات کاربری
+      {t("مشخصات کاربری")}
                 </p>
           </div>
                  </div>
@@ -147,39 +150,39 @@ const EditInformation = () => {
                      <div className="row">
                          <Col md={6} className="customCol">
                             <p className="colTitle">
-                                حساب حقیقی
+                            {t("حساب حقیقی")}
                             </p>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    ایمیل
+                                {t("ایمیل")}
                                 </p>
                                 <input onChange={(e)=>setEmail(e.target.value)} value={email} disabled={true} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    * نام
+                                    * {t("نام")}
                                 </p>
                                 <input onChange={(e)=>setName(e.target.value)} value={name} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    * نام خانوادگی
+                                    * {t("نام خانوادگی")}
                                 </p>
                                 <input onChange={(e)=>setFamily(e.target.value)} value={family} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   جنسیت
+                                {t("جنسیت")}
                                 </p>
                                 <select name="gender" id="gender" onChange={(ss)=>{setGender(ss.target.value)}} value={gender==true||gender=="man"?"man":"woman"} className="informationSelect">
-                                   <option value="man">آقا</option>
-                                    <option value="woman">خانم</option>
+                                   <option value="man">{t("آقا")}</option>
+                                    <option value="woman">{t("خانم")}</option>
 
                                   </select>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   * کدملی
+                                   * {t("کدملی")}
                                 </p>
                                 <input onChange={(e)=>setNationalCode(e.target.value)} value={nationalCode} className="EditInformationInput"/>
                             </div>
@@ -199,20 +202,20 @@ const EditInformation = () => {
         }}
       />
               <label className="fontWeightMedium">
-              تبعه خارجی فاقد کدملی هستم.
+              {t("تبعه خارجی فاقد کدملی هستم.")}
               </label>
           </div>
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                  * موبایل
+                                  * {t("موبایل")}
                                 </p>
                                 <input disabled={true} value={mobile} className="EditInformationInput"/>
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    تلفن ثابت
+                                {t("تلفن ثابت")}
                                 </p>
                                <div className="d-flex justify-content-start">
                                <input onChange={(e)=>setPhone(e.target.value)} value={phone} className="EditInformationInput" style={{width:150,marginLeft:10}}/>
@@ -246,14 +249,14 @@ const EditInformation = () => {
                             </div> */}
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   تاریخ تولد
+                                {t("تاریخ تولد")}
                                 </p>
                                 <input onChange={(e)=>setBirthday(e.target.value)} value={birthday}className="EditInformationInput"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   شماره کارت
+                                {t("شماره کارت")}
                                 </p>
                                 <input onChange={(e)=>setCardNumber(e.target.value)} value={cardNumber}className="EditInformationInput"/>
 
@@ -262,12 +265,12 @@ const EditInformation = () => {
                          </Col>
                          <Col md={6} className="customCol">
                          <p className="colTitle">
-                                حساب حقوقی
+                         {t("حساب حقوقی")}
                             </p>
                             <div className="mt-4">
                             {showText ?<Button className="saveBtn w100" style={{marginTop:20}} onClick={onClick}>
-                               حساب حقیقی                            </Button>:<Button className="saveBtn w100" style={{marginTop:20}} onClick={onClick}>
-                                فعال کردن حساب حقوقی
+                            {t("حساب حقیقی")}                            </Button>:<Button className="saveBtn w100" style={{marginTop:20}} onClick={onClick}>
+                            {t("فعال کردن حساب حقوقی")}
                             </Button>}
                             </div>
 
@@ -284,45 +287,44 @@ const EditInformation = () => {
         }}
       />
               <label className="fontWeightMedium">
-              مایل به تکمیل اطلاعات حقوقی برای خرید سازمانی هستم.
+              {t("مایل به تکمیل اطلاعات حقوقی برای خرید سازمانی هستم.")}
               </label>
           </div>
           <p className="fontWeightMedium">
-          با تکمیل اطلاعات حقوقی سازمان مورد نظر خود می‌توانید اقدام
-به خرید سازمانی با دریافت فاکتور رسمی و گواهی ارزش افزوده
-نمایید.
+          {t("با تکمیل اطلاعات حقوقی سازمان مورد نظر خود می‌توانید اقدام به خرید سازمانی با دریافت فاکتور رسمی و گواهی ارزش افزودنمایید.")}
+
                                 </p>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    نام شرکت یا اداره
+                                {t("نام شرکت یا اداره")}
                                 </p>
                                 <input onChange={(e)=>setCompanyName(e.target.value)} value={companyName}className="EditInformationInput"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    کد اقتصادی
+                                {t("کد اقتصادی")}
                                 </p>
                                 <input onChange={(e)=>setEconomicCode(e.target.value)}value={economicCode} className="EditInformationInput"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   شناسه ملی
+                                {t("شناسه ملی")}
                                 </p>
                                 <input onChange={(e)=>setNationalCodeCompany(e.target.value)} value={nationalCodeCompany}className="EditInformationInput"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                   شماره ثبت
+                                {t("شماره ثبت")}
                                 </p>
                                 <input onChange={(e)=>setRegistrationCode(e.target.value)}value={registrationCode} className="EditInformationInput"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                    تلفن ثابت
+                                {t("تلفن ثابت")}
                                 </p>
                                <div className="d-flex justify-content-start">
                                <input onChange={(e)=>setPrePhoneCompany(e.target.value)} value={prePhoneCompany} className="EditInformationInput" style={{width:150,marginLeft:10}}/>
@@ -360,7 +362,7 @@ const EditInformation = () => {
                      <div className="row mt-4">
          <Col md={12} className="ta-left">
              <Button onClick={()=>editInfo()} className="saveBtn">
-                 ذخیره تغییرات
+             {t("ذخیره تغییرات")}
              </Button>
          </Col>
      </div>

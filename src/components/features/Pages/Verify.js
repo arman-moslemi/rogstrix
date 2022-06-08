@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaTimes } from 'react-icons/fa';
 import '../../../components/assets/css/styles.css';
 import RedLogo from '../../assets/img/redLogo.png';
+import { useTranslation } from 'react-i18next';
+
 const Verify = () => {
+    const {t,i18n} = useTranslation();
 
   return (
    <div className="loginPage">

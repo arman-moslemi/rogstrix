@@ -7,10 +7,11 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import React,{useState,useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import CustomizedDialogs from './layouts/AlertModal';
+import { useTranslation } from 'react-i18next';
 
 const RecoveryPass = () => {
     const history = useHistory();
-
+    const {t,i18n} = useTranslation();
     const [mobile,setMobile]=useState()
     const [open,setOpen]=useState(false)
     const [title,setTitle]=useState("")
@@ -59,12 +60,12 @@ setOpen(true)
            </button>
             <img src={RedLogo}/>
             <p className="loginTitle">
-                بازیابی رمز عبور
+            {t("بازیابی رمز عبور")}
             </p>
             <p className="loginText">
-            شماره موبایل خود را وارد کنید
+            {t("شماره موبایل خود را وارد کنید")}
             </p>
-            <input className="inputLogin  marTop35" placeholder="شماره موبایل خود را وارد کنید" onChange={(e)=>setMobile(e.target.value)}type="text"/>
+            <input className="inputLogin  marTop35" placeholder={t("شماره موبایل خود را وارد کنید")} onChange={(e)=>setMobile(e.target.value)}type="text"/>
             {/* <div className="d-flex justify-content-between mar-top-35 align-items-center">
                 <div>
                 <p className="rememberPassLable marBottom0">کد تصویر را وارد کنید</p>
@@ -82,7 +83,7 @@ setOpen(true)
             </div> */}
             <div className="mar-top-40">
                 <button onClick={()=>login()} className="loginBtn" type="submit">
-                ارسال درخواست بازیابی رمز عبور
+                {t("ارسال درخواست بازیابی رمز عبور")}
                 </button>
             </div>
 
