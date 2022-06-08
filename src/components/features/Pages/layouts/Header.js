@@ -20,6 +20,7 @@ const Header = ({setLanguage}) => {
   const { isLoggedIn, token } = useContext(AuthContext);
   const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
+  const [auto, setAuto] = useState("");
   const {t,i18n} = useTranslation();
 
   const onClick = () =>{
@@ -64,6 +65,30 @@ const groups=()=>{
 
 
  }
+ const  _handleKeyDownAuto = async(e) => {
+  const axios = require("axios");
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
+      axios
+          .post(apiUrl + "MenuSearch",{
+            Title:search
+          },{ headers: {
+            lang: i18n.language
+          }})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setAuto(response.data.Data)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });}
  useEffect(() => {
    groups();
 // alert(val)
@@ -124,27 +149,26 @@ const groups=()=>{
        <div className="searchBoxDiv ta-center">
             <div className="desktopSerachBox">
             <FaSearch onClick={()=>history.push("/ProductsSearch/"+search)}/>
-            <input className="" onKeyDown={_handleKeyDown} onChange={(e)=>setSearch(e.target.value)} placeholder="محصول مورد نظر را جستجو کنید..."/>
+            <input className="" onKeyDown={_handleKeyDown} onChange={(e)=>{setSearch(e.target.value);_handleKeyDownAuto()}} placeholder="محصول مورد نظر را جستجو کنید..."/>
             </div>
            <ul class="suggestions">
-            {/* <li className="suggestions li" 
+             {
+               auto && search?
+auto.map((item)=>{
+  return(
+            <li className="suggestions li" 
             >
                   <p>
-                    salam
+                    {item?.ProductName}
                   </p>
                 </li>
-                <li className="suggestions li" 
-            >
-                  <p>
-                    salam
-                  </p>
-                </li>
-                <li className="suggestions li" 
-            >
-                  <p>
-                    salam
-                  </p>
-                </li> */}
+
+  )
+})
+               :
+               null
+             }
+           
                 
 </ul>
      </div>

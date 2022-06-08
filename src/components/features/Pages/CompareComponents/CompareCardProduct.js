@@ -6,6 +6,7 @@ import MadeSystem from "../../../assets/img/madeSystem.png";
 import {FaStar,FaRegStar} from 'react-icons/fa';
 import { apiUrl,apiAsset } from "../../../../commons/inFormTypes";
 import { AuthContext } from "../../../../context/auth-context";
+import { useTranslation } from 'react-i18next';
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -19,6 +20,7 @@ export const truncate = (str, len) => {
 };
 const CompareCardProduct = ({data}) => {
   const { isLoggedIn, token } = useContext(AuthContext);
+  const {t,i18n} = useTranslation();
 
   const AddToCart=()=>{
     const axios = require("axios");
@@ -59,15 +61,15 @@ alert("با موفقیت ذخیره شد")
               <div className="row mt-3">
                   <Col md={7}>
                     <p className="priceText">
-                        قیمت محصول :
+                    {t("قیمت محصول :")}
                     </p>
                     <p className="price">
-                        {data[0].Cost}تومان
+                        {data[0].Cost}{t("تومان")}
                     </p>
                   </Col>
                   <Col md={5}>
                       <Button onClick={()=>AddToCart()} className="addBtn">
-                          افزودن
+                      {t("افزودن")}
                       </Button>
                   </Col>
               </div>

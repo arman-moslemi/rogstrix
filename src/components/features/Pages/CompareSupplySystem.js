@@ -12,6 +12,8 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import CompareCards from "./CompareComponents/CompareCards";
+import { useTranslation } from 'react-i18next';
+
 const CompareSupplySystem = () => {
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
@@ -19,6 +21,8 @@ const CompareSupplySystem = () => {
   const [data4,setData4]=useState([])  
   const params = useParams().id;
   const history = useHistory();
+  const {t,i18n} = useTranslation();
+
 console.log(params)
   const mainSlider=async()=>{
     const axios = require("axios");
@@ -70,7 +74,8 @@ console.log(params)
             </div>
             <div>
                 <p>
-                مقایسه              </p>
+                {t("مقایسه")}  
+            </p>
             </div>
             <div>
             <img src={PageTitle}/>
