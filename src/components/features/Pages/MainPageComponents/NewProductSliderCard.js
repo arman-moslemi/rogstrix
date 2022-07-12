@@ -22,7 +22,7 @@ const NewProductSliderCard = ({data}) => {
   return (
 
       // <div onClick={()=>history.push("/singleProduct/"+data.ProductID)} className="NewProductCard">
-      <div onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(" ","_"))} className="NewProductCard">
+      <div onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} className="NewProductCard">
   <div className="row NewProductCardBox">
   <Col md={7} className="ta-right">
     <p className="newProductName">

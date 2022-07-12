@@ -321,7 +321,7 @@ const AssembleMain = () => {
                   </div>
                   <div className="wB10 ta-center">
                     {/* <button onClick={()=>history.push("/singleProduct/"+item.ProductID)} className="buyAssembleBtn"> */}
-                    <button onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))} className="buyAssembleBtn">
+                    <button onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(/%20/g, " "))} className="buyAssembleBtn">
                     {t("خرید")}
                     </button>
                   </div>

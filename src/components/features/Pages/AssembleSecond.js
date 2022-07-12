@@ -422,7 +422,7 @@ inc.indexOf(item.GroupID)!=-1 ?
         </div>
         <div className="wB10 ta-center">
           {/* <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.ProductID)} className="buyAssembleBtn"> */}
-          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.EngProductName.replace(" ","_"))} className="buyAssembleBtn">
+          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.EngProductName.replace(/%20/g, " "))} className="buyAssembleBtn">
           {t("خرید")}
           </button>
         </div>

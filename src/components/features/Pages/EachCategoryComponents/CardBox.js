@@ -11,7 +11,7 @@ const CardBox = ({data}) => {
   return (
 
       // <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} className="SliderCard">
-      <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(" ","_"))} className="SliderCard">
+      <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} className="SliderCard">
        <div className="sliderCardDiv">
          {
            data?.Pic1?

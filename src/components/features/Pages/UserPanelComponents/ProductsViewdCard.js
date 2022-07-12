@@ -22,7 +22,7 @@ const ProductsViewdCard = (props) => {
   return (
 
       // <Link onClick={()=>history.push("/singleProduct/"+props.data.ProductID)} className="BestSellingCard">
-      <Link onClick={()=>history.push("/singleProduct/"+props.data.EngProductName.replace(" ","_"))} className="BestSellingCard">
+      <Link onClick={()=>history.push("/singleProduct/"+props.data.EngProductName.replace(/%20/g, " "))} className="BestSellingCard">
   <div className="specialSliderCardBox">
   <img src={apiAsset+props.data.Pic1}/>
       {/* <ul className="colorList">

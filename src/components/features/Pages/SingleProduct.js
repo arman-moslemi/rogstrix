@@ -125,7 +125,7 @@ alert("با موفقیت ذخیره شد")
       axios
           .post(apiUrl + "SingleProductByName",{
             // ProductID:params,
-            ProductName:params.replace('_'," "),
+            ProductName:params.replace('-'," "),
             CustomerID:isLoggedIn?token:""
           })
       .then(function (response2) {

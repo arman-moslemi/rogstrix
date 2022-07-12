@@ -23,7 +23,7 @@ const SavedProductsCard = (props) => {
   return (
 
     //  <Link onClick={()=>history.push("/singleProduct/"+props.data.ProductID)} className="completedCard">
-     <Link onClick={()=>history.push("/singleProduct/"+props.data.EngProductName.replace(" ","_"))} className="completedCard">
+     <Link onClick={()=>history.push("/singleProduct/"+props.data.EngProductName.replace(/%20/g, " "))} className="completedCard">
        <div className="imgBox marginBottom15">
        {
   props.viewOverlay==true?

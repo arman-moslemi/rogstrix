@@ -157,7 +157,7 @@ const groups=()=>{
 auto.map((item)=>{
   return(
             <li className="suggestions li" 
-            onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))}
+            onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(/%20/g, " "))}
 
             >
                   <p>
@@ -366,7 +366,7 @@ item?.map((item2)=>{
 auto.map((item)=>{
   return(
             <li className="suggestions li" 
-            onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))}
+            onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(/%20/g, " "))}
             >
                   <p>
                     {item?.ProductName}

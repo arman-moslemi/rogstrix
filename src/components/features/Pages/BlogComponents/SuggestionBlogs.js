@@ -22,7 +22,7 @@ const SuggestionBlogs = ({data}) => {
                  return(
          <li>
              {/* <Link onClick={()=>history.push("/singleProduct/"+item.ProductID)}> */}
-             <Link onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))}>
+             <Link onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(/%20/g, " "))}>
                  
 {item.ProductName+" "+item.BrandName}             </Link>
          </li>
