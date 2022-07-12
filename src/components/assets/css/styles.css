@@ -2484,3 +2484,22 @@ body.dark-mode .bestSellerContainer{
 .suggestions li:not(:last-of-type) {
   
 }
+.responsiveRog{
+  display: none;
+}
+.firstSlider{
+  display: block;
+}
+.suggestionRes{
+  background-color: #fff !important;
+  z-index: 100000;
+  width: 165px !important;
+}
+
+.suggestionRes .suggestions{
+  width: 100% !important;
+} 
+.suggestionRes .suggestions p{
+font-size: 10px !important;
+font-family: 'IRANSans';
+}

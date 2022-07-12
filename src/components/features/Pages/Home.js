@@ -1,6 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
-
+import SwiperCore, { Autoplay, EffectCoverflow, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import "./MainPageComponents/Styles/mainSlider.css";
 import MainPageHeader from "./layouts/MainPageHeader";
 import Header from "./layouts/Header";
 import FooterMain from "./layouts/FooterMain";
@@ -11,13 +15,17 @@ import CategoryListRog from "./EachCategoryComponents/CategoryListRog";
 import BestSellerSlider from "./HomePageComponents/BestSellerSlider";
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
+import MainPageSlide1 from "../../assets/img/MainPageSlide1.png";
+SwiperCore.use([Navigation,Pagination,Autoplay]);
 const Home = () => {
+  
+
   const [slider,setSlider]=useState([])
   const [special,setSpecial]=useState([])
   const [cat,setCat]=useState()
   const [language,setLanguage]=useState();
   const {t,i18n} = useTranslation();
-
+ 
   const mainSlider=async()=>{
     const axios = require("axios");
     const lang=await localStorage.getItem("lang")
@@ -89,7 +97,36 @@ const Home = () => {
       {/* <MainPageHeader  /> */}
       <Header setLanguage={setLanguage}/>
 
-    <FirstSlider data={slider}/>
+    <FirstSlider data={slider} className="desktopRog"/>
+    <div className="responsiveRog">
+      <Swiper
+        pagination={true}
+        navigation={true}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        autoplay={{
+          delay: 2500,
+          
+        }}
+
+        className="MainPageSlider"
+      >
+       <SwiperSlide>
+       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+
+       </SwiperSlide>
+       <SwiperSlide>
+       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+
+       </SwiperSlide>
+       <SwiperSlide>
+       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+
+       </SwiperSlide>
+      </Swiper>
+    </div>
+
     <div className="row mt-5">
       <Col md={2}>
       <CategoryListRog cat={setcategory} isRog={true}/>

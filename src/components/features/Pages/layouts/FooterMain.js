@@ -19,7 +19,13 @@ import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 const FooterMain = () => {
   const {t,i18n} = useTranslation();
   const [data,setData]=useState([])
+  const scrollToTop = () => {
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+};
   const mainSlider=async()=>{
     const axios = require("axios");
     const lang=await localStorage.getItem("lang")
@@ -277,7 +283,7 @@ const FooterMain = () => {
         </div>
         <div className="row">
           <Col md={12} className="ta-center">
-            <button className="upBtn">
+            <button className="upBtn" onClick={()=>scrollToTop()}>
             <img src={up}/>
             </button>
           </Col>

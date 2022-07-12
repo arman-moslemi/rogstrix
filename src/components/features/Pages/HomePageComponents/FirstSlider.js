@@ -109,6 +109,46 @@ const FirstSlider = ({data}) => {
         </div>
 
        </SwiperSlide>
+       <SwiperSlide>
+        <div className="row sliderRow">
+
+        <Col md={6} className="firstCol">
+          <p className="sliderTitle">راگ استریکس</p>
+          <p className="sliderSlogan">
+          Republic of Gamer
+          </p>
+          <p className="sliderDescription">
+          بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
+          </p>
+          <Button className="sliderBtn">
+            پر طرفدارها
+          </Button>
+          <div className="blackBoxRow">
+
+              <div className="blackBox">
+                <img src={sliderMouse}/>
+              </div>
+
+
+            <div className="blackBox">
+                <img src={sliderCase}/>
+              </div>
+
+
+            <div className="blackBox">
+                <img src={sliderMouse}/>
+              </div>
+
+          </div>
+        </Col>
+        <Col md={6} className="secondCol">
+          <img src={Plus1} className="plus1Img"/>
+          <img src={Plus2} className="plus2Img"/>
+          <img src={apiAsset+data.RogSlider3} className="sliderImg"/>
+        </Col>
+        </div>
+
+       </SwiperSlide>
       </Swiper>
     </div>
   );

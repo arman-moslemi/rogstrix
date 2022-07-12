@@ -16,6 +16,12 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+};
   return (
    <div>
       <div className="backgroundFooter">
@@ -122,7 +128,7 @@ const Footer = () => {
         </div>
         <div className="row">
           <Col md={12} className="ta-center">
-            <button className="upBtn">
+            <button className="upBtn" onClick={()=>scrollToTop()} >
             <img src={up}/>
             </button>
           </Col>

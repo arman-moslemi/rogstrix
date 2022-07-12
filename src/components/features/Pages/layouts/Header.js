@@ -157,6 +157,8 @@ const groups=()=>{
 auto.map((item)=>{
   return(
             <li className="suggestions li" 
+            onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))}
+
             >
                   <p>
                     {item?.ProductName}
@@ -352,11 +354,33 @@ item?.map((item2)=>{
           style={{width:'100%'}}
           type={'text'}
           placeholder={"جستجو ..."}
-
+          onKeyDown={_handleKeyDown} 
+          onChange={(e)=>{setSearch(e.target.value);_handleKeyDownAuto()}}
 
         />
-
+    
       </div>
+      <ul class="suggestions suggestionRes">
+             {
+               auto && search?
+auto.map((item)=>{
+  return(
+            <li className="suggestions li" 
+            onClick={()=>history.push("/singleProduct/"+item.EngProductName.replace(" ","_"))}
+            >
+                  <p>
+                    {item?.ProductName}
+                  </p>
+                </li>
+
+  )
+})
+               :
+               null
+             }
+           
+                
+</ul>
          </Col>
          <Col xs={6} className="d-flex align-items-center">
 
