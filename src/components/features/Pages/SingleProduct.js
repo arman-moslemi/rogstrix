@@ -142,7 +142,7 @@ setSpecialCost(response2.data.Data.SpecialCost)
 
 axios
 .post(apiUrl + "SingleProperty",{
-  ProductID:response2.data.ProductID
+  ProductID:response2.data.Data.ProductID
 })
 .then(function (response) {
 if (response.data.result == "true") {
@@ -160,7 +160,7 @@ console.log(error);
 });
 axios
 .post(apiUrl + "SingleProductComment ",{
-  ProductID:response2.data.ProductID
+  ProductID:response2.data.Data.ProductID
 })
 .then(function (response) {
 if (response.data.result == "true") {
@@ -179,7 +179,7 @@ console.log(error);
 
 axios
 .post(apiUrl + "SimilarProduct",{
-  ProductID:response2.data.ProductID,
+  ProductID:response2.data.Data.ProductID,
 })
 .then(function (response) {
 if (response.data.result == "true") {
@@ -200,7 +200,7 @@ console.log(error);
 
 axios
 .post(apiUrl + "ProductRateShow",{
-ProductID:response2.data.ProductID,
+ProductID:response2.data.Data.ProductID,
 })
 .then(function (response) {
 if (response.data.result == "true") {
