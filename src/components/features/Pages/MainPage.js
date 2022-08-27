@@ -183,7 +183,7 @@ console.log(i18n.language)
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
-                        {t("محصولات راگ")}
+                        {t("محصولات فروشگاه راگ")}
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
@@ -324,7 +324,7 @@ console.log(i18n.language)
                         {t("محصولات جدید")}
                         </p>
                     </div>
-                    <div className="seeAllDiv" style={{paddingLeft:50}}>
+                    <div className="seeAllDiv" onClick={()=>history.push("/EachCategory/1")} style={{paddingLeft:50}}>
                         <Button className="seeAll"> {t("مشاهده همه")}</Button>
                     </div>
                    </Col>

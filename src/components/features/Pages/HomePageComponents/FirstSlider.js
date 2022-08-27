@@ -12,11 +12,15 @@ import sliderManitor from "../../../assets/img/sliderManitor.png";
 import sliderCase from "../../../assets/img/sliderCase.png";
 import sliderMouse from "../../../assets/img/sliderMouse.png";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
+
 SwiperCore.use([Navigation]);
 // if you want to use array
 
 
 const FirstSlider = ({data}) => {
+  const history = useHistory();
+
   return (
     <div>
       <Swiper
@@ -40,7 +44,7 @@ const FirstSlider = ({data}) => {
           <p className="sliderDescription">
           بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
           </p>
-          <Button className="sliderBtn">
+          <Button onClick={()=>history.push("EachCategory/1")} className="sliderBtn">
             پر طرفدارها
           </Button>
           <div className="blackBoxRow">
@@ -80,7 +84,7 @@ const FirstSlider = ({data}) => {
           <p className="sliderDescription">
           بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
           </p>
-          <Button className="sliderBtn">
+          <Button onClick={()=>history.push("EachCategory/1")} className="sliderBtn">
             پر طرفدارها
           </Button>
           <div className="blackBoxRow">
@@ -120,7 +124,7 @@ const FirstSlider = ({data}) => {
           <p className="sliderDescription">
           بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
           </p>
-          <Button className="sliderBtn">
+          <Button onClick={()=>history.push("EachCategory/1")} className="sliderBtn">
             پر طرفدارها
           </Button>
           <div className="blackBoxRow">

@@ -621,6 +621,9 @@ justify-content: center;
   border-right: 1px solid #a7a7a7;
   border-left: none !important;
 }
+.borderNone{
+border:none !important;
+}
 .borderLeft1{
   border-left: 1px solid #a7a7a7;
   border-right: 1px solid #a7a7a7;
@@ -1161,7 +1164,7 @@ margin-right: auto;
   padding: 5px;
   border: 1px solid #111;
   width: 100%;
-  height: 333px;
+  height: auto;
 }
 .image-gallery-image{
   object-fit: unset !important;
@@ -1602,6 +1605,10 @@ background-color: #fff;
   background-color: #f3f3f3;
   display: flex;
 }
+.singleBox1 .BoldFont{
+  font-size: 18px !important;
+  margin-bottom: 0px !important;
+}
 .menuTextBack{
   color: #fff;
   font-family: 'IRANSans' !important;
@@ -1654,6 +1661,7 @@ align-items: center;
 background-color: #fff;
 padding: 25px;
 display: flex;
+flex-wrap:wrap;
 }
 .MegaMenuCol{
   width: 20%;
@@ -2110,6 +2118,7 @@ align-items: center;
   border:1px solid #ff004e;
   color: #ff004e;
   font-family: "IRANSans";
+  font-size: 12px;
 }
 .completedCard a{
   text-decoration: none !important;

@@ -54,7 +54,7 @@ localStorage.setItem("ver",response.data.Data)
        <div className="loginBox">
        <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
 
-           <button className="closeBtn">
+           <button onClick={()=>          history.push("/Login")} className="closeBtn">
            <FaTimes className="closeIcon" size={25}/>
            </button>
             <img src={RedLogo}/>

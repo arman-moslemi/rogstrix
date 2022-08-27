@@ -398,7 +398,7 @@ inc.indexOf(item.GroupID)!=-1 ?
       <div className="d-flex align-items-center tRow">
       <div className="wB15">
         <p className="tableFirstRowText">
-{product[inc?.indexOf(item.GroupID)]?.Title}        </p>
+{product[inc?.indexOf(item.GroupID)]?.SubTitle}        </p>
         {/* <p className="miniText2">
           {item2.EngTitle}
         </p> */}
@@ -443,7 +443,7 @@ inc.indexOf(item.GroupID)!=-1 ?
           <div className="d-flex align-items-center  tRow">
             <div className="w240">
               <p className="tableFirstRowText">
-             {item.Title}         
+             {item.SubTitle}         
              </p>
               <p className="miniText2">
              {item.EngTitle}             
@@ -453,7 +453,7 @@ inc.indexOf(item.GroupID)!=-1 ?
            
               <div className="">
                 <button onClick={()=>history.push("/SelectPowerSupply/"+item.GroupID)} className="buyAssembleBtn">
-                 + {item.Title}
+                 + {item.SubTitle}
                 </button>
               </div>
             
@@ -470,7 +470,7 @@ inc.indexOf(item.GroupID)!=-1 ?
           <div className="d-flex align-items-center  tRow">
             <div className="w240">
               <p className="tableFirstRowText">
-             {item.Title}         
+             {item.SubTitle}         
              </p>
               {/* <p className="miniText2">
              {item.EngTitle}             
@@ -480,7 +480,7 @@ inc.indexOf(item.GroupID)!=-1 ?
            
               <div className="">
                 <button onClick={()=>history.push("/SelectPowerSupply/"+item.GroupID)} className="buyAssembleBtn">
-                 + {item.Title}
+                 + {item.SubTitle}
                 </button>
               </div>
             

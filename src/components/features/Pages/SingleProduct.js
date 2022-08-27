@@ -297,7 +297,7 @@ const images = [
         </div>
         <div className="singleBox1">
         <div className="row">
-        <Col md={3} id="singleOrder1">
+        <Col md={3} id="singleOrder1" style={{paddingLeft:0}}>
         <ImageGallery items={images} showNav={false} showFullscreenButton={true} showPlayButton={false}/>
         </Col>
         <Col md={6} id="singleOrder3">

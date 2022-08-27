@@ -39,16 +39,16 @@ const groups=()=>{
    const axios = require("axios");
 
 
-   // axios.get(apiUrl + "AllMainGroup")
-   axios.get(apiUrl + "GroupBrand")
+   axios.get(apiUrl + "AllMainGroup")
+   // axios.get(apiUrl + "GroupBrand")
    .then(function (response) {
      if (response.data.result == "true") {
 
       //   setData(response.data.GroupData)
-        setData(response.data.Data)
+        setData(response.data.GroupData)
 
-        console.log(888)
-        console.log(response.data.Data)
+        console.log(888888888)
+        console.log(response.data.GroupData)
 
        // history.push("/RegisterVerify/"+mobile)
 
@@ -71,18 +71,18 @@ const groups=()=>{
    <div className="desktopMenu">
    <div className="mainBack">
    <div className="MainMenu d-flex">
-     <Button onClick={()=>history.push("/CompletedSystems")} className="MainMenuBtn borderRight1">
+     <Button onClick={()=>history.push("/CompletedSystems")} className="MainMenuBtn borderNone">
 
         <MenuCase  className="marginLeft15 menuResponsiveNone"/>
         {t("سیستم‌های تکمیل شده")}
      </Button>
-     <Button onClick={()=>history.push("/AssembleSecond")} className="MainMenuBtn borderRight1">
+     <Button onClick={()=>history.push("/AssembleSecond")} className="MainMenuBtn borderNone">
  
       <AssembleMenu  className="marginLeft15 menuResponsiveNone"/>
       {t("ساخت سیستم")}
      </Button>
 
-     <Button onClick={()=>history.push("/SystemGuide")} className="MainMenuBtn borderRight1">
+     <Button onClick={()=>history.push("/SystemGuide")} className="MainMenuBtn borderNone">
 
          <GuideMenu className="marginLeft15 menuResponsiveNone"/>
          {t("سیستم های پیشنهادی")}
@@ -92,13 +92,13 @@ const groups=()=>{
         <UpdateMenu className="marginLeft15 menuResponsiveNone"/>
         ارتقائ لپ تاپ
      </Button> */}
-     <Button className="MainMenuBtn borderRight1" onClick={onClick}>
+     <Button className="MainMenuBtn borderNone" onClick={onClick}>
   <MouseMenu className="marginLeft15 menuResponsiveNone"/>
   {t("مشاهده محصولات")}
   <FaChevronDown/>
   </Button>
 
-     <Button onClick={()=>history.push("/Home")} className="MainMenuBtn borderLeft1">
+     <Button onClick={()=>history.push("/Home")} className="MainMenuBtn borderNone">
       <RedMenuLogo/>
      </Button>
 
@@ -190,6 +190,7 @@ const groups=()=>{
       <div className="MegaMenuContainer">
          {
             data?.filter(t=>t[0].MainGroupID==pak).map((item)=>{
+               console.log(item)
                return(
       <div className="MegaMenuCol">
 
@@ -204,7 +205,7 @@ const groups=()=>{
                <li className="listItems">
                   {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
                   <Link onClick={()=>window.location.replace(item2.Link)}>
-{item2.Link }                 </Link>
+{item2.SubTitle }                 </Link>
                </li>
 
       )
