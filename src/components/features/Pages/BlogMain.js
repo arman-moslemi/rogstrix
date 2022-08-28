@@ -15,9 +15,11 @@ import {FaCaretLeft} from 'react-icons/fa';
 import Category from "./BlogComponents/Category";
 import BlogBox from "./BlogComponents/BlogBox";
 import { useTranslation } from 'react-i18next';
+import { Link, useHistory } from "react-router-dom";
 
 const BlogMain = () => {
   const [blog,setBlog]=useState([])
+  const [slider,setSlider]=useState([])
   const [type,setType]=useState([])
   const [cat,setCat]=useState(0)
   const [language,setLanguage]=useState();
@@ -27,7 +29,24 @@ const BlogMain = () => {
     const axios = require("axios");
     const lang=await localStorage.getItem("lang")
     i18n.changeLanguage(lang)
+    axios.get(apiUrl + "BlogPic",{ headers: {
+      lang: i18n.language
+    }})
+    .then(function (response) {
+      if (response.data.result == "true") {
 
+        setSlider(response.data.Data)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
     
     if(cat!=0)
     {axios.post(apiUrl + "SingleBlogRelated",{BlogTypeID:cat},{ headers: {
@@ -129,26 +148,26 @@ if(cat!=0)
       <Container className="EachCategoryContainer" fluid>
        <div className="row mt-5 mb-5">
          <Col md={8}>
-          <div style={{position:'relative'}}>
-          <img className="BlogMainImg" src={Blog2}/>
+          <Link to={slider.BlogLink1} style={{position:'relative'}}>
+          <img className="BlogMainImg" src={apiAsset+slider[0].BlogPic1} />
           <div className="redDiv" style={{position:'absolute'}}>
-            <p>بررسی گوشی گلکسی زد 4</p>
+            <p>{slider.BlogText1}</p>
           </div>
-          </div>
+          </Link>
          </Col>
          <Col md={4}>
-         <div style={{position:'relative'}}>
-         <img className="BlogSecondImg" src={Blog3}/>
+         <Link to={slider.BlogLink1} style={{position:'relative'}}>
+         <img className="BlogSecondImg" src={apiAsset+slider[0].BlogPic2}/>
           <div className="redDiv" style={{position:'absolute'}}>
-            <p>بررسی گوشی گلکسی زد 4</p>
+          <p>{slider.BlogText2}</p>
           </div>
-         </div>
-          <div style={{position:'relative'}}>
-          <img className="BlogSecondImg margintop20" src={Blog4}/>
+         </Link>
+         <Link to={slider.BlogLink1} style={{position:'relative'}}>
+          <img className="BlogSecondImg margintop20" src={apiAsset+slider[0].BlogPic3}/>
           <div className="redDiv" style={{position:'absolute'}}>
-            <p>بررسی گوشی گلکسی زد 4</p>
+          <p>{slider.BlogText3}</p>
           </div>
-          </div>
+          </Link>
          </Col>
        </div>
        <div className="row">

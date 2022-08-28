@@ -1,7 +1,7 @@
 import react from "react";
 import "./Styles/sliderCard.css"
 import cardImg from "../../../assets/img/cardImg.png"
-import { Container ,Col, Button,Row} from "react-bootstrap";
+import { Container ,Col, Button,Row, NavItem} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 const SliderCard = ({data}) => {
@@ -36,10 +36,19 @@ const SliderCard = ({data}) => {
         </p>
         <p className="cardDes">
           نوع : آرگونومیک
-        </p>
-        <p className="cardDes">
-          مناسب برای : بازی
         </p> */}
+                 {data.Available?
+                  <p className="cardDes">
+                    موجود
+                  </p>
+                 : <p className="cardDes">
+                  ناموجود
+                 </p>
+                 
+                 
+                 }
+
+       
          </Col>
          <Col md={6} className="ta-left">
           <p className="strokeOutPrice">

@@ -5,6 +5,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import {FaRegUser,FaRegEye} from 'react-icons/fa';
 import Blog3 from "../../../assets/img/Blog3.png";
 import { Link, useHistory } from "react-router-dom";
+import { apiAsset } from "../../../../commons/inFormTypes";
 
 // if you want to use array
 
@@ -50,7 +51,7 @@ const BlogBox = ({data}) => {
           </div>
           <div className="row mt-4 pdrightleft2">
               <Col md={3} xs={12} sm={12}>
-                  <img src={Blog3} className="Blogimg"/>
+                  <img src={apiAsset+data.Pic} className="Blogimg"/>
               </Col>
               <Col md={9} xs={12} sm={12}>
                   <p className="blogDes">

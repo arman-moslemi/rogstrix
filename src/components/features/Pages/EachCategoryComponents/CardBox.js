@@ -26,6 +26,16 @@ const CardBox = ({data}) => {
           <p>{data.ProductName}</p>
        </div>
        <div className="row pad-right-1 pad-left-1 mar-top-2">
+       {data.Available?
+                  <p className="cardDes">
+                    موجود
+                  </p>
+                 : <p className="cardDes">
+                  ناموجود
+                 </p>
+                 
+                 
+                 }
          {/* <Col md={6} className="ta-right">
         <p className="cardDes">
           نوع اتصال : بی سیم

@@ -204,7 +204,7 @@ const groups=()=>{
       return(
                <li className="listItems">
                   {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
-                  <Link onClick={()=>window.location.replace(item2.Link)}>
+                  <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
 {item2.SubTitle }                 </Link>
                </li>
 

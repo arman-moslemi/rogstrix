@@ -39,6 +39,7 @@ const Home = () => {
 
           setSlider(response.data.Data[0])
           console.log(response.data.Data[0])
+          console.log(response.data.Data[0].NewSlider)
 
       }
       else{
@@ -113,15 +114,15 @@ const Home = () => {
         className="MainPageSlider"
       >
        <SwiperSlide>
-       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+       <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
 
        </SwiperSlide>
        <SwiperSlide>
-       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+       <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
 
        </SwiperSlide>
        <SwiperSlide>
-       <img src={MainPageSlide1} className="MainPageSliderImg"/>
+       <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
 
        </SwiperSlide>
       </Swiper>

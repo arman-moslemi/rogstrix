@@ -392,24 +392,24 @@ alert("با موفقیت ذخیره شد")
     return(
 product?.length>0?
  
-inc.indexOf(item.GroupID)!=-1 ?
+inc.indexOf(item.SubGroupID)!=-1 ?
       <div>
       <hr className="grayHr"/>
       <div className="d-flex align-items-center tRow">
       <div className="wB15">
         <p className="tableFirstRowText">
-{product[inc?.indexOf(item.GroupID)]?.SubTitle}        </p>
+{product[inc?.indexOf(item.SubGroupID)]?.SubTitle}        </p>
         {/* <p className="miniText2">
           {item2.EngTitle}
         </p> */}
       </div>
      <div className="d-flex wB65">
      <div>
-        <img src={apiAsset+product[inc?.indexOf(item.GroupID)]?.Pic1} className="assembleImg"/>
+        <img src={apiAsset+product[inc?.indexOf(item.SubGroupID)]?.Pic1} className="assembleImg"/>
       </div>
       <div>
         <p className="productAssembleName">
-{product[inc?.indexOf(item.GroupID)]?.ProductName}        </p>
+{product[inc?.indexOf(item.SubGroupID)]?.ProductName}        </p>
         {/* <p className="miniText2">
         مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
         </p> */}
@@ -417,17 +417,17 @@ inc.indexOf(item.GroupID)!=-1 ?
      </div>
       <div className="wB10">
         <p className="productAssembleName">
-        {parseInt(product[inc?.indexOf(item.GroupID)]?.Cost)-parseInt(product[inc?.indexOf(item.GroupID)]?.SpecialCost)}تومان
+        {parseInt(product[inc?.indexOf(item.SubGroupID)]?.Cost)-parseInt(product[inc?.indexOf(item.SubGroupID)]?.SpecialCost)}تومان
         </p>
         </div>
         <div className="wB10 ta-center">
           {/* <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.ProductID)} className="buyAssembleBtn"> */}
-          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.GroupID)]?.EngProductName.replace(/%20/g, " "))} className="buyAssembleBtn">
+          <button onClick={()=>history.push("/singleProduct/"+product[inc.indexOf(item.SubGroupID)]?.EngProductName.replace(/%20/g, " "))} className="buyAssembleBtn">
           {t("خرید")}
           </button>
         </div>
         <div className="wR5">
-          <button onClick={()=>deleteProduct(product[inc.indexOf(item.GroupID)]?.ProductID)} className="glassBtn">
+          <button onClick={()=>deleteProduct(product[inc.indexOf(item.SubGroupID)]?.ProductID)} className="glassBtn">
             <FaTimes/>
           </button>
         </div>
@@ -452,7 +452,7 @@ inc.indexOf(item.GroupID)!=-1 ?
          
            
               <div className="">
-                <button onClick={()=>history.push("/SelectPowerSupply/"+item.GroupID)} className="buyAssembleBtn">
+                <button onClick={()=>history.push("/SelectPowerSupply/"+item.SubGroupID)} className="buyAssembleBtn">
                  + {item.SubTitle}
                 </button>
               </div>
@@ -479,7 +479,7 @@ inc.indexOf(item.GroupID)!=-1 ?
          
            
               <div className="">
-                <button onClick={()=>history.push("/SelectPowerSupply/"+item.GroupID)} className="buyAssembleBtn">
+                <button onClick={()=>history.push("/SelectPowerSupply/"+item.SubGroupID)} className="buyAssembleBtn">
                  + {item.SubTitle}
                 </button>
               </div>

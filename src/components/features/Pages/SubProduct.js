@@ -1,6 +1,6 @@
 import Header from "./layouts/Header";
-import FooterMain from "./layouts/FooterMain";
 import Menu from "./layouts/Menu";
+import FooterMain from "./layouts/FooterMain";
 import {
     Accordion,
     AccordionItem,
@@ -12,127 +12,79 @@ import RedBox from "./layouts/RedBox";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
-import { FaTimes , FaSearch ,FaChevronDown  } from 'react-icons/fa';
+import { FaTimes , FaSearch ,FaChevronLeft } from 'react-icons/fa';
 import Sorts from './EachCategoryComponents/Sorts';
 import RangeSlider from './ProductsComponents/RangeSlider';
 import Checkbox from '@mui/material/Checkbox';
-import PageTitle from "../../assets/img/pageTitle.png"
-import MadeSystem from "../../assets/img/madeSystem.png";
 import BestSellingProductsSlider from './ProductsComponents/BestSellingProductsSlider';
-import PaginationCustom from "./layouts/Pagination";
-import React,{useState,useEffect,useContext} from 'react'
+import React,{useState,useEffect} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-import { AuthContext } from "../../../context/auth-context";
+import PaginationCustom from "./layouts/Pagination";
 import { useTranslation } from 'react-i18next';
 
-const SelectPowerSupply = () => {
+const SubProducts = () => {
+  const [language,setLanguage]=useState();
+  const {t,i18n} = useTranslation();
+
   const [data,setData]=useState([])
   const [data2,setData2]=useState([])
   const [product,setProduct]=useState([])
   const [filter,setFilter]=useState([])
-  const [compare,setCompare]=useState([])
   const [brand,setBrand]=useState([])
   const params = useParams().id;
+  const brandparams = useParams().brands;
   const [from,setFrom]=useState(0)
   const [to,setTo]=useState(0)
   const [head,setHead]=useState("")
   const history = useHistory();
-  const {t,i18n} = useTranslation();
-
 console.log(params)
-const { isLoggedIn, token } = useContext(AuthContext);
-const addCompare=(type,id)=>{
-  if(compare.length==3){
-    alert("مقایسه بیشتر از ۴ مورد نمیشود")
-  }
-  else
-{  if(type==1){
-    setCompare([...compare,{id:id}])
-  }
-  else{
-    setCompare( compare.filter((el)=>el.id!=id));
-  
-  }}
-
-}
-const goCompare=()=>{
-  if(compare.length==0){
-    alert("مقایسه بیشتر از ۴ مورد نمیشود")
-  }
-  else{
-
-    localStorage.setItem("compare","")
-    var ss=""
-    compare.map((item)=>{
-  ss+=(item.id+"T")
-    })
-  //  localStorage.setItem("compare",localStorage.getItem("compare")+"T"+id) ;
-    history.push("/CompareSupplyProduct/"+ss)
-  }
-}
-const ProductSave=(id)=>{
-  var Guest=localStorage.getItem("guest")
+const mainSlider=async()=>{
   const axios = require("axios");
-  const storedData = JSON.parse(localStorage.getItem("userData"))?.token
-  axios
-    .post(apiUrl + "CreateSystemCustomer",{
-      ProductID:id,
-      CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
-      GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0
-    })
-    .then(function (response) {
-      console.log(589)
-      console.log(id)
-      console.log(response.data)
-      if (response.data.result == "true" ||response.data.result == "false"  ) {
-alert("با موفقیت ذخیره شد")
-      console.log(222)
-      console.log(response.data)
-      // response.data.Data2?
-if(!Guest || Guest==0){
-
-localStorage.setItem("guest",response.data.Data2?response.data.Data2:0)
-}
-
-      
-      history.push("/AssembleSecond")
-  }
-  else if(response.data.result == "duplicate"){
-    console.log(888)
-    alert(response.data.Data)
-    history.push("/AssembleSecond")
-
-  }})
-  .catch(function (error) {
-    console.log(error);
-  });
-}
-  const mainSlider=async()=>{
-    const axios = require("axios");
-
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
       axios
           .post(apiUrl + "SubGroupProduct",{
             SubGroupID:params
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
+if(brandparams){
 
-          setData(response.data.Data)
+  setData(response.data.Data.filter(t=>t[0].BrandID==brandparams))
+}else{
+  setData(response.data.Data)
+
+}
+          setData2(response.data.Data)
           console.log(55)
+          console.log(brandparams)
           console.log(response.data.Data)
-          axios
-          .post(apiUrl + "FilterProduct",{
-            GroupID:response.data.Data[0][0].GroupID
-          })
-      .then(function (response) {
-        if (response.data.result == "true") {
+setHead(response.data.Data[0][0].Title)
+axios
+.post(apiUrl + "FilterProduct",{
+  GroupID:response.data.Data[0][0].GroupID
+},{ headers: {
+  lang: i18n.language
+}})
+.then(function (response) {
+if (response.data.result == "true") {
 
-          setProduct(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
+setProduct(response.data.Data)
+console.log(44)
+console.log(response.data.Data)
 
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
       }
       else{
         console.log(response.data.result)
@@ -141,17 +93,11 @@ localStorage.setItem("guest",response.data.Data2?response.data.Data2:0)
       .catch(function (error) {
         console.log(error);
       });
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-    
+   
       axios
-          .get(apiUrl + "AllBrand")
+          .get(apiUrl + "AllBrand",{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -267,13 +213,13 @@ mainSlider()
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, [head]);
+  }, [head,language]);
   return (
     <div className="EachCategoryBody">
-      <Header />
-    <Menu/>
+      <Header setLanguage={setLanguage}/>
+<Menu/>
 
-   
+
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
@@ -282,27 +228,16 @@ mainSlider()
               {t("سایت راگ استریکس")}
               </a>
             </li>
-       
+            /
+            <li>
+              <a>
+{data[0]?.Title}              </a>
+            </li>
+           
           </ul>
         </div>
-        <div className="pageTitle">
-            <div>
-            <img src={PageTitle}/>
-            </div>
-            <div>
-            {
-                         data[0]?
-                <p>
-                {t("انتخاب")} {data[0][0]?.Title}                </p>
-                :
-                null}
-            </div>
-            <div>
-            <img src={PageTitle}/>
-            </div>
-        </div>
         <div className="row " style={{marginBottom:25}}>
-        <Col md={3}>
+          <Col md={3}>
           <div className="redBoxFilter">
              <div className="pd2">
              <div className="row">
@@ -422,7 +357,6 @@ mainSlider()
       <Col md={6}>
       <p className="rangeText">
       {t("از")}
-
             </p>
 
 
@@ -442,7 +376,7 @@ mainSlider()
       </div>
       <div className="row marginTop15">
           <Col md={6}>
-              <p className="rangeText maxFont"> {t("تومان")}</p>
+              <p className="rangeText maxFont">{t("تومان")}</p>
           </Col>
           <Col md={6}>
               <p className="rangeText maxFont">{t("تومان")}</p>
@@ -535,230 +469,81 @@ mainSlider()
         
           </Col>
           <Col md={9}>
-          
+          <Sorts setData={setData} data={data}/>
           <div className="productsWhiteBox">
-          <div className="whiteBoxHeader">
-              <div className="borderDashedBottom">
-                <div>
-                  <p>
-                  {t("شناسایی")} {data.length} {t("قطعه")}
-                  </p>
-                </div>
-                <div>
-                <div className="d-flex checkBoxDiv">
-                       <Checkbox
-                
-                defaultChecked
-                sx={{
-                  color: '#f6303f',
-                  '&.Mui-checked': {
-                    color: '#f6303f',
-                  },
-                }}
-              />
-                      <label>
-                      {t("نمایش همه قطعات")}
-                      </label>
+              <div className="whiteBoxHeader">
+                  <div className="dashedHrdiv">
+                      <hr className="dashedHr"/>
                   </div>
-                </div>
-                <div className="d-flex">
-                <div >
-          <FaSearch color={'#a0a0a0'} size={20}/>
-        </div>
-      <div>
-      <input
-          className="searchInput"
-          type={'text'}
-          placeholder={t("جستجو در میان منبع تغذیه...")}
-        
-         
-        />
-      </div>
-        
-                </div>
+                  <div>
+                       {
+                         data[0]?
+                      <p className="whiteBoxTitle">
+
+{t("همه")} {data[0][0]?.SubTitle} {t("ها")}
+                         </p>
+                         :
+                         null
+                       }
+                  </div>
+                  <div className="dashedHrdiv">
+                      <hr className="dashedHr"/>
+                  </div>
+                  {/* <div>
+                      <Button className="allProductsBtn">
+                      مشاهده همه
+                          <FaChevronLeft/>
+
+                          </Button>
+                  </div> */}
               </div>
-              </div>
-           <div className="selectRow">
-             <div>
-               <Button className="selectAll marginLeft60">
-               {t("انتخاب همه")}
-               </Button>
-             </div>
-             <div>
-               <Button className="selectAll marginLeft60">
-               {t("حذف انتخاب همه")}
-               </Button>
-             </div>
-             <div>
-               <Button onClick={()=>goCompare()} className="compareBtn">
-               {t("مقایسه انتخاب شده ها (حداکثر 4 مورد)")}
-               </Button>
-             </div>
-           </div>
-          <div className="tableBox">
-          <div className="d-flex" id="w95">
-                <div className="ta-right wi10" >
-                <p className="tableTitle">
-                <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                {t("مقایسه")}
-                  
-                </p>
-                </div>
-                <div className="ta-right wi15" >
-                <p className="tableTitle">
-                <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                {t("عکس")}
-                  
-                </p>
-                </div>
-                <div className="ta-right wi50">
-                <p className="tableTitle">
-                <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                 
-                {t("نام")}              </p>
-</div>
-{/* <div className="ta-center">
-<p className="tableTitle">
-<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                 
-                  رده انرژی
-                </p>
-</div> */}
-{/* <div className="ta-center">
-<p className="tableTitle">
-<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                 
-                 مصرف(وات)
-                </p>
-</div> */}
-{/* <div className="ta-center">
-<p className="tableTitle">
-<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                 
-                 ماژولار
-                </p>
-</div> */}
-<div className="ta-right wi10" >
-<p className="tableTitle">
-<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                 
-{t("قیمت")} ({t("تومان")})
-                </p>
-</div>
-<div className="ta-right wi10">
-<p className="tableTitle">
-<FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
-                 
-{t("امتیاز")}
-                </p>
-</div>
-<div className="ta-right wi5">
-<p className="tableTitle">
-{/* <FaChevronDown className="marginLeftt20" color={'#f6303f'}/> */}
-                 
-                </p>
-</div>
-           </div>
-           <hr className="mt-0 mb-0"/>
-           {
+              <div className="row">
+                {
                   data?.map((item)=>{
 return(
-           <div id="w95" className="borderBottom d-flex align-items-center pr-2">
-             <div className="wi10">
-               <Checkbox    
-                // defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-         onChange={(e)=>e.target.checked? addCompare(1,e.target.value)
-          :
-        
-          addCompare(2,e.target.value)
-        
-        
-          
-         }
-         value={item[0].ProductID}
 
-        />
-             </div>
-                <div className="rowImg wi15">
-                  <img src={apiAsset+item[0].Pic1}/>
-                </div>
-                <div className="wi50">
-                  <p className="productNameRow">
-{item[0].ProductName}
-                  </p>
-                </div>
-                {/* <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    Atx
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    500 W
-                  </p>
-                </div>
-                <div>
-                  <p className="pNameRow">
-                    بله
-                  </p>
-                </div> */}
-                <div className="wi10">
-                  
-                {
-  parseInt(item[0]?.Cost)!=0?
-  <p className="pNameRow">
-  {parseInt(item[0]?.Cost)-parseInt(item[0]?.SpecialCost)}                  </p>
-:
-<p className="pNameRow">
-{t("به زودی")}
-  </p>
-}
 
-                   
-                </div>
-                <div className="wi10">
-                  <p className="pNameRow">
-                   
-                   (123)
-                   <p className="redColor">5</p>
-                  </p>
-                </div>
-                <div className="wi5">
-                {
-  parseInt(item[0]?.Cost)!=0?
-                  <Button onClick={()=>ProductSave(item[0].ProductID)} className="addRowBtn">
-                    {t("افزودن")}
-                  </Button>
-                  :
-                  null}
-                </div>
+                  <Col md={3} className="marginTop15">
+                        <BestSellingSliderCard data={item[0]}/>
+                  </Col>
+)
+                  })
+                }
+                  {/* <Col md={3} className="marginTop15">
+                        <BestSellingSliderCard/>
+                  </Col> */}
+
+
+
+              </div>
           </div>
-                  )})}
-          </div>
-          <div className="paginationBox ta-center">
-          <PaginationCustom/>
-          </div>
-          </div>
-        
+          {/* <div className="productsWhiteBox">
+          <div className="row margin25">
+                   <Col md={12}>
+                   <div className="">
+                        <p className="specialOfferTitle colorBlack">
+                           محصولات پرفروش
+                        </p>
+                    </div>
+                    <div className="seeAllDiv" style={{paddingLeft:50}}>
+                        <Button className="seeAll">مشاهده همه
+                        <FaChevronLeft/>
+                        </Button>
+                    </div>
+                   </Col>
+               </div>
+              <div className="myPadding">
+              <BestSellingProductsSlider/>
+              </div>
+          </div> */}
           </Col>
-         
+
         </div>
-        
+
       </Container>
       <RedBox/>
       <FooterMain />
     </div>
   );
 };
-export default SelectPowerSupply;
+export default SubProducts;

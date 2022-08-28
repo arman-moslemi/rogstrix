@@ -195,9 +195,7 @@ const deleted=(id)=>{
                                 <div className="CartColor" style={{backgroundColor:"#"+item.ColorID}}>
 
                                 </div>
-                                {/* <p className="CartColorP">
-                                    رنگ سبز
-                                </p> */}
+                                <p className="CartColorP">گارانتی:{item.WarrantyName}                                </p>
                             </div>
                             <p className="CartColorP mt-4">
                                 <FaAward/>

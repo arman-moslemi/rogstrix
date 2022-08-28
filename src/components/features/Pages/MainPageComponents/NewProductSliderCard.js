@@ -34,6 +34,16 @@ const NewProductSliderCard = ({data}) => {
   </Col>
   <Col md={5} className="ta-left">
   <img src={apiAsset+data.Pic1}/>
+  {data.Available?
+                  <p className="cardDes">
+                    موجود
+                  </p>
+                 : <p className="cardDes">
+                  ناموجود
+                 </p>
+                 
+                 
+                 }
       {/* <ul className="colorList">
         <li>
           <div id="color1"></div>

@@ -36,6 +36,7 @@ const SingleProduct = () => {
   const [specialCost,setSpecialCost]=useState()
   const [count,setCount]=useState(1)
   const [id,setID]=useState()
+  const [warID,setWarID]=useState()
   var Guest=localStorage.getItem("guest")
   const [language,setLanguage]=useState();
 
@@ -86,7 +87,9 @@ if(!Guest || Guest==0){
   const AddToCart=()=>{
     const axios = require("axios");
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
-
+if(warID==""){
+  alert("گارنتی را وارد نماپید")
+}
 console.log(555)
 console.log(id)
 console.log(token)
@@ -97,7 +100,8 @@ console.log(token)
           GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,
           Cost:parseInt(cost)-parseInt(specialCost),
           ColorID:color,
-          Number:count
+          Number:count,
+          WarrantyID:warID
 
         })
     .then(function (response) {
@@ -501,7 +505,10 @@ index+1>rate?
                 <div>
                 <p className="reviewP" id="colorGray">{t("گارانتی")} : </p></div>
               <div className="d-flex justify-content-center">
-              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]))}} name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
+              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]));setWarID(parseInt(e.target.value.split('T')[2]))}} name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
+              <option value="" >{"انتخاب کنید"}</option>
+
+ 
   {
     list?.map((item)=>{
 
@@ -511,7 +518,7 @@ index+1>rate?
         // console.log(888889999)
         // console.log(item2)
         return(
-          <option value={item2.Cost+"T"+item2.SpecialCost} >{item2.WarrantyName}</option>
+          <option value={item2.Cost+"T"+item2.SpecialCost+"T"+item2.WarrantyID} >{item2.WarrantyName}</option>
         )
         }
       )
@@ -562,9 +569,16 @@ index+1>rate?
                 10 نفر در حال مشاهده این محصول هستند                </p>
                   </div>
               </div> */}
+              {
+product?.Available?
               <Button onClick={()=>AddToCart()} className="addToCart mt-4">
               {t("افزودن به سبد خرید")}
               </Button>
+
+:
+
+<p>ناموجود</p>
+              }
             </div>
         </Col>
         </div>
