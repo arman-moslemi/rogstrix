@@ -118,11 +118,11 @@ const Home = () => {
 
        </SwiperSlide>
        <SwiperSlide>
-       <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
+       <img src={apiAsset+slider?.NewSlider2} className="MainPageSliderImg"/>
 
        </SwiperSlide>
        <SwiperSlide>
-       <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
+       <img src={apiAsset+slider?.NewSlider3} className="MainPageSliderImg"/>
 
        </SwiperSlide>
       </Swiper>

@@ -21,6 +21,7 @@ const Header = ({setLanguage}) => {
   const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
   const [auto, setAuto] = useState("");
+  const [defLang, setDefLang] = useState("ir");
   const {t,i18n} = useTranslation();
 
   const onClick = () =>{
@@ -40,7 +41,9 @@ const  _handleKeyDown = (e) => {
 
 const groups=()=>{
    const axios = require("axios");
-
+   console.log(55)
+   console.log(localStorage.getItem("lang"))
+setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
 
    // axios.get(apiUrl + "AllMainGroup")
    axios.get(apiUrl + "GroupBrand")
@@ -123,19 +126,19 @@ const groups=()=>{
         {!isLoggedIn?
         <button onClick={()=>history.push("/Login")} className="headerBtn">
           <MenuUser style={{marginLeft:10}}/>
-        ثبت نام / ورود
+          {t("ثبت نام / ورود")}
 
         </button>
         :
         <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
           <MenuUser style={{marginLeft:10}} />
-کاربر
+{t("کاربر")}
         </button>        }
         <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
         <CartMenu style={{marginLeft:10}}/>
-        سبد خرید
+        {t("سبد خرید")}
         </button>
-        <select onChange={(e) => changeLang(e.target.value)} name="Lang" id="language">
+        <select onChange={(e) => changeLang(e.target.value)} defaultValue={"en"} name="Lang" id="language">
             <option value="ir">Fa</option>
             <option value="en">En</option>
 
@@ -336,7 +339,10 @@ item?.map((item2)=>{
          <img src={RedLogo} className=""/>
          </div>
          <div className="responsiveLanguage">
-         <select name="Lang" defaultValue={"en"} id="language">
+         <select name="Lang" 
+        //  defaultValue={"en"}
+         defaultValue={defLang}
+          id="language">
             <option ></option>
             <option value="ir">Fa</option>
             <option value="en">En</option>
