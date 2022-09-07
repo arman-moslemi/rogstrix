@@ -3,6 +3,7 @@ import "./Styles/singleProduct.css"
 import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -15,13 +16,22 @@ export const truncate = (str, len) => {
   return str;
 };
 const SimilarSliderCard = ({data}) => {
+  console.log(555)
+  console.log(data)
+  const history = useHistory();
+
   return (
 
-      <div className="BestSellingCard">
+      // <Link className="BestSellingCard">
+                                <Link  className="BestSellingCard" onClick={()=>{history.push("/singleProduct/"+data.EngProductName);window.location.reload()}} >
+
 
   <p className="productName">
   <img src={apiAsset+data?.Pic1}/>
   </p>
+  <div className="cardTitleW100">
+          <p>{truncate(data.ProductName,45)}</p>
+       </div>
 <div className="row marginTop30">
   <Col md={4} className="pad0 ta-right">
     <p className="grayStrokeOut">
@@ -49,7 +59,7 @@ null
 } */}
 
 
-      </div>
+      </Link>
 
   );
 };

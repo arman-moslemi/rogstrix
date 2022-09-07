@@ -1,64 +1,60 @@
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-
+import React,{useState,useEffect} from 'react'
+import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import './Styles/categoryList.css';
+import { useTranslation } from 'react-i18next';
+
 const CategoryListRog = (props) => {
   const history = useHistory();
+  const [data,setData]=useState([])
 
+  const mainSlider=async()=>{
+    const axios = require("axios");
+
+    
+      axios
+          .get(apiUrl + "GroupRefrence")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setData(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  }
+  useEffect(() => {
+    mainSlider();
+// alert(val)
+  }, []);
   return (
     <>
      <ul className="categoryList">
+      {
+        data.map((item)=>{
+          return(
+
               <li>
-                <button onClick={()=>{props.cat(1);history.push("/ProductsRog/1")}} className="categoryBTN">
-                  کیس
+                <button onClick={()=>{props.cat(item.GroupID);history.push("/ProductsRog/"+item.GroupID)}} className="categoryBTN">
+                  {item.Title}
                 </button>
               </li>
-              <li>
-                <button onClick={()=>{props.cat(2);history.push("/ProductsRog/2")}} className="categoryBTN">
-                  کیبورد
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(3);history.push("/ProductsRog/3")}} className="categoryBTN">
-                 موس
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(4); history.push("/ProductsRog/4") }} className="categoryBTN">
-                  مانیتور
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(5); history.push("/ProductsRog/5") }} className="categoryBTN">
-                 لپ تاپ
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(6); history.push("/ProductsRog/6") }} className="categoryBTN">
-                 کارت گرافیک
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(7); history.push("/ProductsRog/7") }} className="categoryBTN">
-                 مادربورد
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(8); history.push("/ProductsRog/8") }} className="categoryBTN">
-                 موبایل
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(9); history.push("/ProductsRog/9") }} className="categoryBTN">
-                 پاور
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{props.cat(10); history.push("/ProductsRog/10") }} className="categoryBTN">
-                 هدفون
-                </button>
-              </li>
+          )
+        })
+      }
+         
             </ul>
     </>
   );

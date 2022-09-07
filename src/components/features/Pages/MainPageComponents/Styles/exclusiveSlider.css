@@ -8,6 +8,18 @@
     background-image:url('../../../../assets/img/specialSliderLeft.png') !important;
    
   }
+  .exclusiveSliderCard img{
+    height: 160px !important;
+    min-height: 160px !important;
+  }
+  .exclusiveSliderCard{
+    width: 70% !important;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .exclusiveSliderCard p{
+    font-size: 15px !important;
+  }
   .exclusiveSlider .swiper-button-prev{
  
     bottom: 50%;

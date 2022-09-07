@@ -178,11 +178,11 @@ console.log(i18n.language)
         </div>
         <BlackBox data={slider}/>
        {/* <ExclusiveSlider data={slider}/> */}
-       <div className="bestSellingDiv">
-       <div className="row margin25 backWhite">
+       <div className="bestSellingDiv" style={{backgroundColor:'#fff'}}>
+       <div className="row margin25 backWhite" style={{paddingTop:25}}>
                    <Col md={12}>
                    <div className="">
-                        <p className="specialOfferTitle colorBlack">
+                        <p className="specialOfferTitle" style={{color:'#1a1a1a'}}>
                         {t("محصولات فروشگاه راگ")}
                         </p>
                     </div>

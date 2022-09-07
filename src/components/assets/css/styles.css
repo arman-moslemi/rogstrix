@@ -2262,7 +2262,7 @@ body.dark-mode .customRow{
   background-color: #1a1919;
 }
 body.dark-mode .backWhite{
-  background-color: #1a1919;
+  background-color: #fff;
 }
 body.dark-mode .colorBlack{
   color: #fff !important;
@@ -2511,4 +2511,7 @@ body.dark-mode .bestSellerContainer{
 .suggestionRes .suggestions p{
 font-size: 10px !important;
 font-family: 'IRANSans';
+}
+.slick-slider{
+  direction: rtl !important;
 }

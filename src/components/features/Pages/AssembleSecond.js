@@ -106,7 +106,7 @@ const AssembleSecond = () => {
           console.log(666)
           console.log(response.data)
           response.data.Data.map((item)=>{
-ss.push(item.GroupID)
+ss.push(item.SubGroupID)
           }
           )
           setInc(ss)
