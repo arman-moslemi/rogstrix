@@ -34,7 +34,7 @@ console.log(params)
     const axios = require("axios");
 
       axios
-          .post(apiUrl + "LastSpecialMainProduct",{ headers: {
+          .get(apiUrl + "LastSpecialMainProductNew",{ headers: {
             lang: i18n.language
           }})
       .then(function (response) {

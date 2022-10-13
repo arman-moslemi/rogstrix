@@ -10,11 +10,13 @@ import {
     AccordionItemButton,
     AccordionItemPanel,
   } from 'react-accessible-accordion';
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 // if you want to use array
 
 
-const Category = ({data,cat}) => {
+const Category = ({data,cat,type}) => {
+    const history = useHistory();
+
   return (
       <>
   <div className="whiteCategory BCategoryResNone">
@@ -34,7 +36,7 @@ const Category = ({data,cat}) => {
                       return(
                       <li>
 
-              <Link onClick={()=>cat(item.BlogTypeID)}>
+              <Link onClick={()=>type=="second"?history.push("/BlogMain"):cat(item.BlogTypeID)}>
 {item.TypeName}              </Link>
           </li>
                       )

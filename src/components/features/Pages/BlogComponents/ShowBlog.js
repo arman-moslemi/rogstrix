@@ -13,6 +13,7 @@ const ShowBlog = ({data}) => {
     console.log(99)
     console.log(data.Title)
   return (
+    
     <div className="blogBox mb-3 mt-4">
     <div className="blackRow">
         <div>
@@ -54,7 +55,19 @@ const ShowBlog = ({data}) => {
 
             <div className="ta-left d-flex justify-content-end mb-3">
                 <div className="grayBox d-flex align-items-center">
-                <Button className="addToClipboard" onClick={() =>      {navigator.clipboard.writeText(' http://rogstrix.com/singleBlog/'+data.BlogID);alert('copied!')}}>
+                <Button className="addToClipboard" onClick={() =>      {
+                    // navigator.clipboard.writeText(' http://rogstrix.com/singleBlog/'+data?.EngTitle?.replace(/%20/g, " "))
+                    navigator.clipboard
+                    .writeText( ' http://rogstrix.com/singleBlog/'+data?.EngTitle?.replace(/%20/g, " "))
+                    .then(() => {
+                      alert("successfully copied");
+                    })
+                    .catch(() => {
+                      alert("something went wrong");
+                    });
+                    // ;alert('copied!')
+                }}
+                    >
                 <FaRegCopy className="colorGray"/>
                 </Button>
                     <p className="urlCopy">

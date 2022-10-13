@@ -350,9 +350,9 @@ item?.map((item2)=>{
          <div className="responsiveLanguage">
          <select name="Lang" 
         //  defaultValue={"en"}
-         defaultValue={defLang}
-          id="language">
-            <option ></option>
+        onChange={(e) =>{ changeLang(e.target.value)}}         
+         defaultValue={ss}
+                  id="language">
             <option value="en">En</option>
             <option value="ir">Fa</option>
 
