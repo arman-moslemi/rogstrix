@@ -192,29 +192,69 @@ const groups=()=>{
             data?.filter(t=>t[0].MainGroupID==pak).map((item)=>{
                console.log(item)
                return(
-      <div className="MegaMenuCol">
+                  <>
+                    <div className="MegaMenuCol">
 
-            <ul>
-               <li className="listTitle">
-                  <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
+<ul>
+   <li className="listTitle">
+      <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
 {item[0].Title}                  </Link>
-               </li>
+   </li>
 {
-   item.map((item2)=>{
-      return(
-               <li className="listItems">
-                  {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
-                  <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+item.map((item2,index)=>{
+return(
+index<12?
+   <li className="listItems">
+      {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
+      <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
 {item2.SubTitle }                 </Link>
-               </li>
+   </li>
+   :
+null
 
-      )
-   })
+)
+})
 }
 
 
-            </ul>
-         </div>
+</ul>
+
+</div>
+{
+   item.length>12?
+<div className="MegaMenuCol">
+
+<ul>
+   <li className="listTitle">
+      <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
+               </Link>
+   </li>
+{
+item.map((item2,index)=>{
+return(
+index>12?
+   <li className="listItems">
+      {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
+      <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+{item2.SubTitle }                 </Link>
+   </li>
+   :
+null
+
+)
+})
+}
+
+
+</ul>
+
+</div>
+   :
+   null
+}
+
+                  </>
+    
    )
 })
          }

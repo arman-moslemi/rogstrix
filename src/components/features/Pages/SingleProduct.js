@@ -144,15 +144,17 @@ alert("با موفقیت ذخیره شد")
           setList(response2.data.CostData)
 setCost(response2.data.Data.Cost)
 setSpecialCost(response2.data.Data.SpecialCost)
+ setWarID(response2.data.Data.WarrantyID)
 
 axios
-.post(apiUrl + "SingleProperty",{
+.post(apiUrl + "SinglePropertyNew",{
   ProductID:response2.data.Data.ProductID
 })
 .then(function (response) {
 if (response.data.result == "true") {
 
 setProperty(response.data.Data)
+console.log(45678)
 console.log(response.data.Data)
 
 }
@@ -507,7 +509,7 @@ index+1>rate?
                 <p className="reviewP" id="colorGray">{t("گارانتی")} : </p></div>
               <div className="d-flex justify-content-center">
               <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]));setWarID(parseInt(e.target.value.split('T')[2]))}} name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
-              <option value="" >{"انتخاب کنید"}</option>
+              {/* <option value="" >{"انتخاب کنید"}</option> */}
 
  
   {
@@ -607,18 +609,19 @@ product?.Available?
           </Col>
         </div>
         <div className="whiteBox3 mt-3 pd30">
-            <div className="row margin25 ">
+            {/* <div className="row margin25 ">
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle colorBlack">
                         {t("محصولات مشابه")}
+                        
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
                         <Button className="seeAll">{t("مشاهده همه")}</Button>
                     </div>
                    </Col>
-               </div>
+               </div> */}
               <SimilarSlider data={similar}/>
             </div>
             <div className="whiteBox3 mt-3">

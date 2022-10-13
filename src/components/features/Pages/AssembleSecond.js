@@ -410,9 +410,14 @@ inc.indexOf(item.SubGroupID)!=-1 ?
       <div>
         <p className="productAssembleName">
 {product[inc?.indexOf(item.SubGroupID)]?.ProductName}        </p>
-        {/* <p className="miniText2">
-        مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-        </p> */}
+        <p className="miniText2">
+        گارانتی:{product[inc?.indexOf(item.SubGroupID)]?.WarrantyName} 
+
+        </p>
+        <p className="miniText2">
+        رنگ:{product[inc?.indexOf(item.SubGroupID)]?.Color} 
+        
+        </p>
       </div>
      </div>
       <div className="wB10">

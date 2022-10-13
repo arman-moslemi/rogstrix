@@ -25,14 +25,14 @@
     border-radius: 10px;
     height: 172px;
     width: 172px;
-    background: radial-gradient(circle,#fe367e 0,#ff2454 100%);
+    /* background: radial-gradient(circle,#fe367e 0,#ff2454 100%); */
 }
 .blackBanner{
     padding: 15px;
     border-radius: 10px;
     height: 172px;
     width: 172px;
-    background: radial-gradient(circle,#17181a75 0,#17181a 60%);
+    /* background: radial-gradient(circle,#17181a75 0,#17181a 60%); */
     margin-top: 20px;
 }
 

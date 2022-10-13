@@ -120,6 +120,26 @@ console.log(i18n.language)
       .catch(function (error) {
         console.log(error);
       });
+
+      axios
+      .post(apiUrl + "LastSpecialMainProduct",{ headers: {
+        lang: i18n.language
+      }})
+  .then(function (response) {
+    if (response.data.result == "true") {
+
+      setSpecial(response.data.Data)
+      console.log(77)
+      console.log(response.data.Data)
+
+  }
+  else{
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
   }
 
   useEffect(() => {
@@ -191,8 +211,8 @@ console.log(i18n.language)
                     </div>
                    </Col>
                </div>
-     <div className="d-flex justify-content-center margin mn">
-     {/* {
+     <div className="d-flex justify-content-center margin mn  marginBottom30">
+     {
          rog?.map((item)=>{
            return(
 
@@ -201,10 +221,10 @@ console.log(i18n.language)
          </div>
            )
          })
-       } */}
-       <div>
+       }
+       {/* <div>
          <ExclusiveSlider/>
-       </div>
+       </div> */}
         
      </div>
        </div>
@@ -212,7 +232,7 @@ console.log(i18n.language)
          <div className="row customRow">
            <Col md={4}>
               <div className="productBannerBox" id="backBlack">
-              <img src={apiAsset+slider?.DownSlider1}/>
+              <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider1}/>
                 <div className="">
 
                   {/* <a href={slider.LinkDownSlider1} className="productLink">
@@ -224,7 +244,7 @@ console.log(i18n.language)
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backGray">
-           <img src={apiAsset+slider?.DownSlider2}/>
+           <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider2}/>
 
                 {/* <div className="">
 
@@ -238,7 +258,7 @@ console.log(i18n.language)
            </Col>
            <Col md={4}>
            <div className="productBannerBox" id="backBlack">
-           <img src={apiAsset+slider?.DownSlider3}/>
+           <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider3}/>
                 {/* <div className="">
 
                   <a href={slider.LinkDownSlider3} className="productLink">
@@ -278,7 +298,7 @@ console.log(i18n.language)
          <div className="row customRow">
            <Col md={4}>
               <Link to={slider.LinkDownSlider4} href={slider.LinkDownSlider4}className="productBannerBox" id="backBlack">
-              <img src={apiAsset+slider?.DownSlider4}/>
+              <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider4}/>
                 {/* <div className="">
 
                   <a href={slider.LinkDownSlider4} className="productLink">
@@ -292,7 +312,7 @@ console.log(i18n.language)
            </Col>
            <Col md={4}>
            <Link to={slider.LinkDownSlider5} className="productBannerBox" id="backGray">
-           <img src={apiAsset+slider?.DownSlider5}/>
+           <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider5}/>
                 {/* <div className="">
 
                   <a href={slider.LinkDownSlider5} className="productLink">
@@ -304,7 +324,7 @@ console.log(i18n.language)
            </Col>
            <Col md={4}>
            <Link href={slider.LinkDownSlider6} className="productBannerBox" id="backBlack">
-           <img src={apiAsset+slider?.DownSlider6}/>
+           <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider6}/>
                 {/* <div className="">
 
                   <a href={slider.LinkDownSlider6} className="productLink">

@@ -309,14 +309,15 @@ const AssembleMain = () => {
                 <div>
                   <p className="productAssembleName">
           {item.ProductName}        </p>
-                  {/* <p className="miniText2">
-                  مشخصات خنک کننده: دور فن: ۲۰۰تا۲۱۰۰ - بدون آب
-                  </p> */}
+                  <p className="miniText2">
+                  گارانتی:{item.WarrantyName}                 </p>
+                  <p className="miniText2">
+                  رنگ:{item.Color}                 </p>
                 </div>
                </div>
                 <div className="wB10">
                   <p className="productAssembleName">
-                  {item.Cost}
+                  {item.Cost?.toLocaleString("en-de")}
                   </p>
                   </div>
                   <div className="wB10 ta-center">

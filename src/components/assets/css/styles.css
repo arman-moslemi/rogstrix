@@ -739,7 +739,7 @@ border:none !important;
 
 .productBannerBox{
   display: flex;
-  padding: 30px;
+  /* padding: 30px; */
   border-radius: 20px;
   justify-content: space-between;
   align-items: center;
@@ -2282,6 +2282,7 @@ body.dark-mode .bestSellingDiv{
 }
 body.dark-mode .BestSellingCard{
   background-color: #fff;
+  margin-bottom: 80px;
 }
 body.dark-mode .productName{
   color:#1a1a1a;

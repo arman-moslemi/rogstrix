@@ -21,8 +21,9 @@ const Header = ({setLanguage}) => {
   const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
   const [auto, setAuto] = useState("");
-  const [defLang, setDefLang] = useState("ir");
+  const [defLang, setDefLang] = useState("");
   const {t,i18n} = useTranslation();
+  var ss="ir";
 
   const onClick = () =>{
     setshowSearch(!showSearch);
@@ -34,8 +35,12 @@ const  _handleKeyDown = (e) => {
   const changeLang=async(dd)=>{
     await localStorage.setItem("lang",dd)
     i18n.changeLanguage(dd);
+    console.log(123456)
+    console.log(dd)
     // setLanguage(dd)
-    // window.location.reload()
+    localStorage.setItem("lang",dd)
+    window.location.reload()
+
   }
   const [data,setData]=useState()
 
@@ -43,8 +48,10 @@ const groups=()=>{
    const axios = require("axios");
    console.log(55)
    console.log(localStorage.getItem("lang"))
-setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
-
+// setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")÷
+ss= localStorage.getItem("lang")
+setDefLang(ss)
+console.log(ss)
    // axios.get(apiUrl + "AllMainGroup")
    axios.get(apiUrl + "GroupBrand")
    .then(function (response) {
@@ -96,6 +103,7 @@ setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
    groups();
 // alert(val)
  }, []);
+ ss=localStorage.getItem("lang")
   return (
    <Container fluid className="pad0">
     <div className="Header">
@@ -138,9 +146,10 @@ setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
         <CartMenu style={{marginLeft:10}}/>
         {t("سبد خرید")}
         </button>
-        <select onChange={(e) => changeLang(e.target.value)} defaultValue={"en"} name="Lang" id="language">
-            <option value="ir">Fa</option>
+        <select onChange={(e) =>{ changeLang(e.target.value)}}          defaultValue={ss}
+ name="Lang" id="language">
             <option value="en">En</option>
+            <option value="ir">Fa</option>
 
         </select>
       </div>
@@ -344,8 +353,8 @@ item?.map((item2)=>{
          defaultValue={defLang}
           id="language">
             <option ></option>
-            <option value="ir">Fa</option>
             <option value="en">En</option>
+            <option value="ir">Fa</option>
 
         </select>
          </div>

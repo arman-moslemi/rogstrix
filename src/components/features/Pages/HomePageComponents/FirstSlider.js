@@ -13,6 +13,7 @@ import sliderCase from "../../../assets/img/sliderCase.png";
 import sliderMouse from "../../../assets/img/sliderMouse.png";
 import { apiAsset } from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 SwiperCore.use([Navigation]);
 // if you want to use array
@@ -20,6 +21,7 @@ SwiperCore.use([Navigation]);
 
 const FirstSlider = ({data}) => {
   const history = useHistory();
+  const {t,i18n} = useTranslation();
 
   return (
     <div>
@@ -37,15 +39,15 @@ const FirstSlider = ({data}) => {
         <div className="row sliderRow">
 
         <Col md={6} className="firstCol">
-          <p className="sliderTitle">راگ استریکس</p>
+          <p className="sliderTitle">{t("راگ استریکس")}</p>
           <p className="sliderSlogan">
-          Republic of Gamer
+          {t("جمهوری گیمرها")}
           </p>
           <p className="sliderDescription">
-          بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
+          {t("بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور.")}
           </p>
           <Button onClick={()=>history.push("EachCategory/1")} className="sliderBtn">
-            پر طرفدارها
+          {t("پر طرفدارها")}
           </Button>
           <div className="blackBoxRow">
 
@@ -77,15 +79,15 @@ const FirstSlider = ({data}) => {
         <div className="row sliderRow">
 
         <Col md={6} className="firstCol">
-          <p className="sliderTitle">راگ استریکس</p>
+          <p className="sliderTitle">{t("راگ استریکس")}</p>
           <p className="sliderSlogan">
-          Republic of Gamer
+          {t("جمهوری گیمرها")}
           </p>
           <p className="sliderDescription">
-          بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
+          {t("بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور.")}
           </p>
           <Button onClick={()=>history.push("EachCategory/1")} className="sliderBtn">
-            پر طرفدارها
+          {t("پر طرفدارها")}
           </Button>
           <div className="blackBoxRow">
 
@@ -117,15 +119,16 @@ const FirstSlider = ({data}) => {
         <div className="row sliderRow">
 
         <Col md={6} className="firstCol">
-          <p className="sliderTitle">راگ استریکس</p>
+          <p className="sliderTitle">{t("راگ استریکس")}</p>
           <p className="sliderSlogan">
-          Republic of Gamer
+          {t("جمهوری گیمرها")}
           </p>
           <p className="sliderDescription">
-          بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور. سیستم‌های مناسب رندرینگ و کارهای سنگین گرافیکی
+          {t("بزرگترین مرجع تخصصی محصولات گیمینگ شرکت ایسوس با جدیدترین  محصولات تخصصی گیمینگ ویژه گیمرهای حرفه‌ای و آماتور.")}
+
           </p>
           <Button onClick={()=>history.push("EachCategory/1")} className="sliderBtn">
-            پر طرفدارها
+          {t("پر طرفدارها")}
           </Button>
           <div className="blackBoxRow">
 

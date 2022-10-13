@@ -30,7 +30,7 @@ const SimilarSliderCard = ({data}) => {
   <img src={apiAsset+data?.Pic1}/>
   </p>
   <div className="cardTitleW100">
-          <p>{truncate(data.ProductName,45)}</p>
+          <p>{truncate(data.ProductName,60)}</p>
        </div>
 <div className="row marginTop30">
   <Col md={4} className="pad0 ta-right">

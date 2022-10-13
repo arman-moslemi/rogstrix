@@ -9,18 +9,18 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 const SingleProductRedBox = ({data}) => {
   return (
     <div className="SingleProductRedBox">
+                {
+data?.map((item)=>{
+  return(
+    <>
      <div className="redBoxTitle">
        <p>
-       مشخصات فنی
-       </p>
+{item[0].ParentTitle}       </p>
      </div>
      <hr className="whiteDotted"/>
      <div className="redBox2">
 
-
-              {
-data?.map((item)=>{
-  return(
+    
 
               <div className="mt-4">
                   <p className="firstLine">
@@ -39,19 +39,16 @@ data?.map((item)=>{
                   </p>
                   )})}
               </div>
+
+
+
+     </div>
+     </>
   )
 })
               }
-              {/* <hr className="compareHR"/><div className="mt-4">
-                  <p className="firstLine">
-                    Core Clock
-                  </p>
-                  <p className="secondLine">
-                    3.7 GHz
-                  </p>
-              </div> */}
+         
 
-     </div>
     </div>
   );
 };
