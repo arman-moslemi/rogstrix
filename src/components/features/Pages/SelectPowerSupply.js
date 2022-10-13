@@ -692,6 +692,10 @@ return(
                   <p className="productNameRow">
 {item[0].ProductName}
                   </p>
+                  <p className="miniText2">
+                  گارانتی:{item[0].WarrantyName}                 </p>
+                  <p className="miniText2">
+                  رنگ:{item[0].ColorName}                 </p>
                 </div>
                 {/* <div>
                   <p className="pNameRow">

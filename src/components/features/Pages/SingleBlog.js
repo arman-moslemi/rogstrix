@@ -140,8 +140,8 @@ console.log(params)
               {t("سایت راگ استریکس")}
               </a>
 
-              <a>
-{data.Title}              </a>
+              <a href="/BlogMain">
+/ {data.TypeName}              </a>
             </li>
           </ul>
         </div>

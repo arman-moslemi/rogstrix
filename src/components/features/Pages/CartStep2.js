@@ -66,8 +66,10 @@ const CartStep2 = () => {
     const [ramz,setRamz]=useState("")
     const [type,setType]=useState(0)
     const [send,setSend]=useState("")
+    const [bank,setBank]=useState("")
     const [personal,setPersonal]=useState()
     const history = useHistory();
+
 
             const getData=()=>{
         const axios = require("axios");
@@ -85,8 +87,9 @@ const CartStep2 = () => {
              setAddress2(response.data.Data.Address2)
              console.log(999)
              console.log(response.data.Data)
+             console.log(response.data.InfoData)
              setPersonal(response.data.Data)
-
+             setBank(response.data.InfoData)
             // history.push("/RegisterVerify/"+mobile)
 
         }
@@ -757,7 +760,13 @@ null
                   </Col>
                   <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
-                  {t("شماره حساب : 1010252536254152635596596595")}
+                  {t("شماره حساب : ")}{bank?.Hesab}
+                  </p>
+                  <p className="fontWeightBold">
+                  {t("شماره کارت : ")}{bank?.CardNumber}
+                  </p>
+                  <p className="fontWeightBold">
+                  {t("شماره شبا : ")}{bank?.Sheba}
                   </p>
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
@@ -785,18 +794,18 @@ null
 
        onChange={()=>setType(3)}
      />
-{t("پرداخت با اتریوم")}                  </p>
+{t("پرداخت با تتر USDT")}                  </p>
                    <p className='fontWeightNormal'>
                    {t("پس از واریز مبلغ به آدرس کیف پول فوق،کد رهگیری را اینجا ثبت نمایید")}
                    </p>
                   </Col>
                   <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
-                  {t("آدرس کیف پول")} : http://wllet......
+                  {t("آدرس کیف پول")} {bank.Wallet}
                   </p>
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
-                      {t("کد رهگیری :")}
+                      {t("کد رهگیری TXID :")}
                       </p>
                       <input  onChange={(e)=>setRamz(e.target.value)} type="text"/>
                   </div>

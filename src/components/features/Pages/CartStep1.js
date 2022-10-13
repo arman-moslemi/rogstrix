@@ -192,7 +192,7 @@ const deleted=(id)=>{
                             <p className="CartProductName">
 {item.ProductName}                            </p>
                             <div className="d-flex align-items-center">
-                                <div className="CartColor" style={{backgroundColor:"#"+item.ColorID}}>
+                                <div className="CartColor" style={{backgroundColor:"#"+item.ColorHex}}>
 
                                 </div>
                                 <p className="CartColorP">گارانتی:{item.WarrantyName}                                </p>

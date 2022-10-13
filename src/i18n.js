@@ -273,7 +273,8 @@ const resources = {
       "ضمانت اصالت کالاخرید کالای اصل ایسوس راگ با بیمه نامه معتبر.":"Guarantee of the originality of the purchase of the original product of ASUS ROG with a valid insurance policy.",
       "ضمانت بازگشت ۷ روزه":"7-day return guarantee",
       "امکان بازگشت محصول در صورت مشکل فنی یا مغایرت کالا":"Possibility of product return in case of technical problem or product discrepancy",
-     "محصولات مشابه":"Similar Products"
+     "محصولات مشابه":"Similar Products",
+     "پرداخت با تتر USDT":"USDT Pay"
  
     }
     

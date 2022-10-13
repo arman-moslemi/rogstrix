@@ -140,7 +140,7 @@ alert("با موفقیت ذخیره شد")
           setProduct(response2.data.Data)
           setID(response2.data.Data.ProductID)
           console.log(777)
-          console.log(response2.data)
+          console.log(response2.data.Data)
           setList(response2.data.CostData)
 setCost(response2.data.Data.Cost)
 setSpecialCost(response2.data.Data.SpecialCost)
@@ -300,6 +300,11 @@ const images = [
               <Link onClick={()=>history.push("/products/"+product.GroupID)}>
 {product.GroupName}              </Link>
             </li>
+            /
+            <li>
+              <Link onClick={()=>history.push("/Subproduct/"+product.SubGroupID)}>
+{product.SubTitle}              </Link>
+            </li>
           </ul>
         </div>
         <div className="singleBox1">
@@ -311,10 +316,14 @@ const images = [
         <div className="d-flex justify-content-between">
         <p className="boxTitle2 BoldFont">
 {product.ProductName+" "+product.BrandName}                </p>
+
 <Button onClick={()=>ProductSave()} className="addAseembleBtn" >
                                             +  {t("افزودن به ساخت سیستم")}
                                                 </Button>
         </div>
+        <p className="reviewP" id="colorGray">
+                  {product?.EngProductName}
+                    </p>
                 <hr className="grayHr"/>
                 {/* <p className="boxTitle2 mediumFont">
                     رنگ : مشکی
@@ -325,8 +334,11 @@ const images = [
                     list?.map((item)=>{
                       return(
                         item?
-                    <div onClick={()=>{setColor(item[0].ColorID);setCost(parseInt(item[0].Cost));setSpecialCost(parseInt(item[0].SpecialCost))}} className="colorBox" style={{backgroundColor:"#"+item[0].ColorID}} i>
+                        <>
+                    <div onClick={()=>{setColor(item[0].ColorID);setCost(parseInt(item[0].Cost));setSpecialCost(parseInt(item[0].SpecialCost))}} className="colorBox" style={{backgroundColor:"#"+item[0].ColorHex}} i>
                     </div>
+                        <p>{item[0].ColorName}</p>
+                    </>
                     :
                     null
 
@@ -508,7 +520,8 @@ index+1>rate?
                 <div>
                 <p className="reviewP" id="colorGray">{t("گارانتی")} : </p></div>
               <div className="d-flex justify-content-center">
-              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]));setWarID(parseInt(e.target.value.split('T')[2]))}} name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
+              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]));setWarID(parseInt(e.target.value.split('T')[2]))}} 
+              name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
               {/* <option value="" >{"انتخاب کنید"}</option> */}
 
  
@@ -516,7 +529,7 @@ index+1>rate?
     list?.map((item)=>{
 
       return(
-      item[0]?.ColorID==color?
+      // item[0]?.ColorID==color?
       item.map((item2)=>{
         // console.log(888889999)
         // console.log(item2)
@@ -525,8 +538,8 @@ index+1>rate?
         )
         }
       )
-      :
-      null
+      // :
+      // null
       )
 
 
@@ -543,6 +556,9 @@ index+1>rate?
                   {t("قیمت محصول")}                   </p>
 
                   </div>
+                  {
+                    product?.Available?
+
                   <div>
                       <div className="d-flex">
                           <div>
@@ -562,6 +578,9 @@ index+1>rate?
 
 
                   </div>
+                    :
+                    null
+                  }
               </div>
               {/* <div className="d-flex align-items-center mt-5">
                   <div  className="mr-3">

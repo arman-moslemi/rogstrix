@@ -415,7 +415,7 @@ inc.indexOf(item.SubGroupID)!=-1 ?
 
         </p>
         <p className="miniText2">
-        رنگ:{product[inc?.indexOf(item.SubGroupID)]?.Color} 
+        رنگ:{product[inc?.indexOf(item.SubGroupID)]?.ColorName} 
         
         </p>
       </div>

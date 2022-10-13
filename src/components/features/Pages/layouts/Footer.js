@@ -101,7 +101,7 @@ const Footer = () => {
               <input placeholder="نشانی ایمیل خود را وارد کنید"  className="emailInput"/>
             </div>
             <div>
-              <button type="submit" className="submitBtn">عضویت</button>
+            <button onClick={()=>isLoggedIn?alert("یا موفقیت عضو خبرنامه شدید"):alert("لطفا وارد شوید")}  className="submitBtn backRed">{t("عضویت")}</button>
             </div>
           </div>
           <div className="socialRow">

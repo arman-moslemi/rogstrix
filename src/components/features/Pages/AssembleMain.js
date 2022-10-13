@@ -312,7 +312,7 @@ const AssembleMain = () => {
                   <p className="miniText2">
                   گارانتی:{item.WarrantyName}                 </p>
                   <p className="miniText2">
-                  رنگ:{item.Color}                 </p>
+                  رنگ:{item.ColorName}                 </p>
                 </div>
                </div>
                 <div className="wB10">
