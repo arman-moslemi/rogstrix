@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.312a0516.chunk.css",
-    "main.js": "/static/js/main.1be5a75b.chunk.js",
-    "main.js.map": "/static/js/main.1be5a75b.chunk.js.map",
+    "main.css": "/static/css/main.53834da9.chunk.css",
+    "main.js": "/static/js/main.cbf0caa1.chunk.js",
+    "main.js.map": "/static/js/main.cbf0caa1.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.b2750547.js",
     "runtime-main.js.map": "/static/js/runtime-main.b2750547.js.map",
     "static/css/2.e7bacf2c.chunk.css": "/static/css/2.e7bacf2c.chunk.css",
-    "static/js/2.bb66d3c3.chunk.js": "/static/js/2.bb66d3c3.chunk.js",
-    "static/js/2.bb66d3c3.chunk.js.map": "/static/js/2.bb66d3c3.chunk.js.map",
+    "static/js/2.5fef8045.chunk.js": "/static/js/2.5fef8045.chunk.js",
+    "static/js/2.5fef8045.chunk.js.map": "/static/js/2.5fef8045.chunk.js.map",
     "static/js/3.e07c7a5e.chunk.js": "/static/js/3.e07c7a5e.chunk.js",
     "static/js/3.e07c7a5e.chunk.js.map": "/static/js/3.e07c7a5e.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.e7bacf2c.chunk.css.map": "/static/css/2.e7bacf2c.chunk.css.map",
-    "static/css/main.312a0516.chunk.css.map": "/static/css/main.312a0516.chunk.css.map",
-    "static/js/2.bb66d3c3.chunk.js.LICENSE.txt": "/static/js/2.bb66d3c3.chunk.js.LICENSE.txt",
+    "static/css/main.53834da9.chunk.css.map": "/static/css/main.53834da9.chunk.css.map",
+    "static/js/2.5fef8045.chunk.js.LICENSE.txt": "/static/js/2.5fef8045.chunk.js.LICENSE.txt",
     "static/media/404.214af310.png": "/static/media/404.214af310.png",
     "static/media/Blog2.dc54644e.png": "/static/media/Blog2.dc54644e.png",
     "static/media/Blog3.403c249f.png": "/static/media/Blog3.403c249f.png",
@@ -36,6 +36,7 @@
     "static/media/madeSystem.e5d9d840.png": "/static/media/madeSystem.e5d9d840.png",
     "static/media/majazi.bdd842b1.png": "/static/media/majazi.bdd842b1.png",
     "static/media/redBanner.043e4135.png": "/static/media/redBanner.043e4135.png",
+    "static/media/redLogo.6c24cc64.png": "/static/media/redLogo.6c24cc64.png",
     "static/media/samandehi.69639753.png": "/static/media/samandehi.69639753.png",
     "static/media/sliderCase.7364d5c0.png": "/static/media/sliderCase.7364d5c0.png",
     "static/media/sliderManitor.6a65cf59.png": "/static/media/sliderManitor.6a65cf59.png",
@@ -46,8 +47,8 @@
   "entrypoints": [
     "static/js/runtime-main.b2750547.js",
     "static/css/2.e7bacf2c.chunk.css",
-    "static/js/2.bb66d3c3.chunk.js",
-    "static/css/main.312a0516.chunk.css",
-    "static/js/main.1be5a75b.chunk.js"
+    "static/js/2.5fef8045.chunk.js",
+    "static/css/main.53834da9.chunk.css",
+    "static/js/main.cbf0caa1.chunk.js"
   ]
 }
