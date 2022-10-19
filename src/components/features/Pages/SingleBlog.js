@@ -56,14 +56,16 @@ console.log(params)
           console.log(888)
           console.log(params)
           console.log(response2.data.Data)
+          console.log(response2.data.Data[0].BlogID)
           axios
           .post(apiUrl + "SingleBlogComment",{
-            BlogID:response2.data.Data.BlogID
+            BlogID:response2.data.Data[0].BlogID
           })
       .then(function (response) {
         if (response.data.result == "true") {
 
           setCom(response.data.Data)
+          console.log(555)
           console.log(response.data.Data)
 
       }

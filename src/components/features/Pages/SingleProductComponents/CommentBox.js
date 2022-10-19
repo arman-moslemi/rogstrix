@@ -109,8 +109,9 @@ setOpen(true)
             {
               data?.map((item)=>{
 return(
-
-<div className="mt-3" style={{border:'1px dotted #f6303f',padding:25,borderRadius:5}}>
+item.Agree?
+<>
+  <div className="mt-3" style={{border:'1px dotted #f6303f',padding:25,borderRadius:5}}>
     <div className="d-flex align-items-center">
         <div>
         <img className="profileComment" src={UserProfile}/>
@@ -148,24 +149,36 @@ index+1>item.Rate?
 
 
 </div>
+        
+        {
+          item.AnswerText?
+          <div style={{display:'flex',marginTop:20}}>
+          <img src={UserProfile} style={{width:50,height:50,marginLeft:10}}/>
+          <div style={{display:'flex',flexDirection:'column'}}>
+          <p style={{fontFamily:'IRANSans-Medium',marginBottom:5}}>
+            {item.Username}
+          </p>
+          <p style={{fontFamily:'IRANSans-Light',color:'#898989',fontSize:12}}>
+{item.DateAnswer}          </p>
+          </div>
+                     <div style={{backgroundColor:'#fff',height:120,width:'90%',border:'1px dotted #d7d7d7',borderRadius:5,marginRight:'auto',padding:10}}>
+                     <p className="commentText">
+                     {item.AnswerText}  
+</p>
+          </div>
+                     </div>
+                 
+          :
+          null
+        }
+            </>
+:null
 
+
+          
 )
               })
             }
-           <div style={{display:'flex',marginTop:20}}>
-<img src={UserProfile} style={{width:50,height:50,marginLeft:10}}/>
-<div style={{display:'flex',flexDirection:'column'}}>
-<p style={{fontFamily:'IRANSans-Medium',marginBottom:5}}>
-  ادمین
-</p>
-<p style={{fontFamily:'IRANSans-Light',color:'#898989',fontSize:12}}>
-  ۰۱/۰۹/۱۲
-</p>
-</div>
-           <div style={{backgroundColor:'#fff',height:120,width:'90%',border:'1px dotted #d7d7d7',borderRadius:5,marginRight:'auto'}}>
-
-</div>
-           </div>
 <hr className="dottedH" id="borderRed"/>
             {/* <div className="mt-3">
                 <div className="d-flex align-items-center">

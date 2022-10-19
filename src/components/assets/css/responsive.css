@@ -90,13 +90,15 @@ font-size: 13px;
     }
     .categoryList li{
         display: inline-block;
+        text-align: center;
     }
     .categoryList {
-        padding-top: 5px;
-        text-align: center;
-        width: 100%;
-        overflow-y: scroll;
-        white-space: nowrap;}
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;    
+    }
         .categoryBTN {
             color: #17181a;
             font-family: IRANSans;
