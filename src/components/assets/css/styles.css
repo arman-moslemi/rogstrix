@@ -1304,6 +1304,24 @@ margin-bottom: 0px;
   border-radius: 5px;
 
 }
+.assembleSliderBox{
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.newCardRes{
+  display: inline-block !important;
+
+}
+.newCardRes img{
+  width:100% !important;
+  height: 100% !important;
+}
+.assembleSliderBoxRes{
+  background-color: #fff;
+}
 .redBoxTitle{
   padding: 1rem;
 }
@@ -2515,4 +2533,9 @@ font-family: 'IRANSans';
 }
 .slick-slider{
   direction: rtl !important;
+}
+.MuiSlider-sizeMedium{
+  width: 80% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
 }

@@ -69,11 +69,12 @@
     padding: 10px;
   }
   .BestSellingCard img{
-    width: 180px;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
     display: block;
-    height: 180px;
+    height: auto;
+    max-height: 180px;
   }
   .colorList div{
     width: 15px;

@@ -215,7 +215,7 @@ const AssembleMain = () => {
             <img src={PageTitle}/>
             </div>
         </div>
-        <div className="assembleSliderBox">
+        <div className="assembleSliderBox assembleSliderBoxRes">
           <AssembleSlidr data={ property}/>
         </div>
         <div className="assembleBox">

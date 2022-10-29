@@ -407,7 +407,7 @@ auto.map((item)=>{
         <CartMenu  style={{marginLeft:10}}/>
 
         </button>
-        <label class="switch">
+        <label class="switch resColor">
          <input  onChange={darkMode.toggle} type="checkbox"/>
             <span class="slider round"></span>
        </label>

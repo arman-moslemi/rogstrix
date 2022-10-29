@@ -368,6 +368,9 @@ max-width: 70%;
     .responsiveHeader{
         display:block !important;
     }
+    .resColor{
+        display: none !important;
+    }
     .responsiveHeader{
         background-color: #fff;
        
@@ -414,6 +417,7 @@ max-width: 70%;
         padding-bottom: 10px !important;
         border-bottom: 1px solid #d2d2d2;
     }
+ 
     .borderRight1{
         padding-right: 10px !important;
         padding-left: 10px !important;
@@ -633,6 +637,10 @@ max-width: 70%;
   @media screen and (max-width: 768px) {
     .swiper-container {
       width: 100% !important;
+    }
+    .exclusiveSliderCard2{
+        width: 150px !important;
+        height: 150px !important;
     }
   }
 @media screen and (max-width:900px){

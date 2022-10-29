@@ -39,6 +39,8 @@ const Products = () => {
   const [to,setTo]=useState(0)
   const [head,setHead]=useState("")
   const history = useHistory();
+  const [max,setMax]=useState(1000)
+
 console.log(params)
 const mainSlider=async()=>{
   const axios = require("axios");
@@ -52,6 +54,10 @@ const mainSlider=async()=>{
           }})
       .then(function (response) {
         if (response.data.result == "true") {
+          console.log(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
+
+          setMax(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
+
 if(brandparams){
 
   setData(response.data.Data.filter(t=>t[0].BrandID==brandparams))
@@ -94,7 +100,8 @@ setHead(response.data.Data[0][0].Title)
         console.log(error);
       });
       axios
-          .get(apiUrl + "AllBrand",{ headers: {
+          // .get(apiUrl + "AllBrand",{ headers: {
+          .post(apiUrl + "BrandGroup",{GroupID:params},{ headers: {
             lang: i18n.language
           }})
       .then(function (response) {
@@ -117,15 +124,15 @@ setHead(response.data.Data[0][0].Title)
 
   }
   const setCost=()=>{
-
-
-    console.log(14563)
-//  setProduct([])
-// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-setData([...data].filter((a) => (a.Cost <= to && a.Cost>from) ))
-console.log(data)
-
-}
+    setData(data2)
+        console.log(14563)
+        console.log(data)
+    //  setProduct([])
+    // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+    setData(data.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
+    console.log(data)
+    
+    }
 var gg=[]
   const proFilter=(type,val,vv)=>{
 
@@ -282,7 +289,7 @@ mainSlider()
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-               <div className="pad2">
+               {/* <div className="pad2">
                <div className="d-flex searchInput">
                 <div >
           <FaSearch color={'#a0a0a0'}/>
@@ -297,7 +304,7 @@ mainSlider()
 
       </div>
 
-               </div>
+               </div> */}
       <div className="pad2">
       <div className="scrollBar">
             {
@@ -341,7 +348,7 @@ mainSlider()
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                <div className="pad2">
-                <RangeSlider/>
+               <RangeSlider max={max} setFrom={setFrom} setTo={setTo}/>
 
                </div>
             <div className="rangeBorder">
