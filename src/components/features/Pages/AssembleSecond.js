@@ -364,23 +364,23 @@ alert("با موفقیت ذخیره شد")
               </p>
             </div>
           </div>
-          <div className="d-flex align-items-center tRow">
-            <div className="d-flex wB20">
+          <div className="d-flex align-items-center tRow tRowRes">
+            <div className="d-flex wB20 wB201">
             <p className="tableFirstRowText">
             {t("گروه")}
             </p>
             <div className="vl"></div>
             </div>
-            <p className="tableFirstRowText wB60">
+            <p className="tableFirstRowText wB60 wB601">
             {t("انتخاب قطعه")}
             </p>
-            <p className="tableFirstRowText wB10">
+            <p className="tableFirstRowText wB10 wB101">
             {t("قیمت(تومان)")}
             </p>
-            <p className="tableFirstRowText wB10 ta-center">
+            <p className="tableFirstRowText wB10 wB101 ta-center">
             {t("خرید")}
             </p>
-            <p className="tableFirstRowText wR5">
+            <p className="tableFirstRowText wR5 wB101">
             {t("حذف")}
             </p>
           </div>

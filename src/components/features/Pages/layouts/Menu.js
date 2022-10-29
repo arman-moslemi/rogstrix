@@ -29,17 +29,21 @@ const Menu = () => {
    const [showMega, setShowMega] = useState(false);
    const [menu, setMenu] = useState(false);
    const [pak, setPak] = useState(1);
+   
 const onClick = () =>{
    setShowMega(!showMega);
 };
 const history = useHistory();
 const [data,setData]=useState()
 
-const groups=()=>{
+const groups=async()=>{
    const axios = require("axios");
+   const lang=await localStorage.getItem("lang")
+   i18n.changeLanguage(lang)
 
-
-   axios.get(apiUrl + "AllMainGroup")
+   axios.get(apiUrl + "AllMainGroup",{ headers: {
+      lang: i18n.language
+    }})
    // axios.get(apiUrl + "GroupBrand")
    .then(function (response) {
      if (response.data.result == "true") {
@@ -221,7 +225,7 @@ null
 
 </div>
 {
-   item.length>12?
+   item.length>12 ?
 <div className="MegaMenuCol">
 
 <ul>
@@ -232,7 +236,7 @@ null
 {
 item.map((item2,index)=>{
 return(
-index>12?
+index>12 && index<25?
    <li className="listItems">
       {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
       <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
@@ -252,7 +256,38 @@ null
    :
    null
 }
+{
+   item.length>25?
+<div className="MegaMenuCol">
 
+<ul>
+   <li className="listTitle">
+      <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
+               </Link>
+   </li>
+{
+item.map((item2,index)=>{
+return(
+index>25?
+   <li className="listItems">
+      {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
+      <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+{item2.SubTitle }                 </Link>
+   </li>
+   :
+null
+
+)
+})
+}
+
+
+</ul>
+
+</div>
+   :
+   null
+}
                   </>
     
    )

@@ -354,8 +354,9 @@ max-width: 70%;
         width: 170px;
     }
     .linkCopy{
-        display: none;
+        
     }
+    .topBarBox
     .mn{
         display: block !important;
     }
@@ -647,5 +648,69 @@ max-width: 70%;
     }
     .breadCrumbs ul{
         display: unset;
+    }
+    .topBarBox{
+        display: inline-block !important;
+        width: 100% !important;
+    }
+    .colorWhite{
+        
+    }
+    .wB201{
+        min-width:200px !important;     
+        width:auto !important; 
+    }
+    .wB601{
+        width:auto !important;
+        min-width: 200px !important;
+    }
+    .wB101{
+        width:auto !important;
+        min-width: 150px !important;
+    }
+    .tRowRes{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    .wB202{
+        min-width:200px !important;     
+        width:auto !important; 
+    }
+    .wB602{
+        width:auto !important;
+    
+    }
+    .wB102{
+        width:auto !important;
+        min-width: 150px !important;
+    }
+    .productAssembleNameRes{
+        font-size: 12px !important;
+    }
+    .miniText2Res{
+        font-size: 10px !important;
+    }
+    .resRowRes{
+        display: block !important;
+    }
+    .secondBox{
+        display: block !important;
+    }
+    .buyAssembleBtn{
+        width: auto !important;
+        font-size: 12px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .productAssembleNameRes2{
+        text-align: left !important;
+    }
+    .bannerRow{
+        padding-right: 0px !important;
+        padding-left:0px !important;
+    }
+    .bannerBackground{
+        padding: 15px !important;
     }
 }
