@@ -248,8 +248,16 @@ max-width: 70%;
     }
 }
 @media screen and (max-width:1100px){
+    .blogDes img{
+        width: 100% !important;
+        height: auto !important;
+        }
+        .blogDes 
     .menuResponsiveNone{
         display: none;
+    }
+    .productDetail img{
+        width: 100% !important;
     }
     .fontWeightBold{
         font-size: 13px;

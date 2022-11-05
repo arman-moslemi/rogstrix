@@ -2539,3 +2539,6 @@ font-family: 'IRANSans';
   margin-right: auto !important;
   margin-left: auto !important;
 }
+.newProductName:hover{
+  cursor: pointer;
+}

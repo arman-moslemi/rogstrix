@@ -11,7 +11,7 @@ import parse  from 'html-react-parser';
 
 const ShowBlog = ({data}) => {
     console.log(99)
-    console.log(data.Title)
+    console.log(data)
   return (
     
     <div className="blogBox mb-3 mt-4">

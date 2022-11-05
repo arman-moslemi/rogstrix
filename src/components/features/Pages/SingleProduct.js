@@ -88,7 +88,7 @@ if(!Guest || Guest==0){
     const axios = require("axios");
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 if(warID==""){
-  alert("گارنتی را وارد نماپید")
+  alert("گارانتی را وارد نماپید")
 }
 console.log(555)
 console.log(id)
@@ -145,6 +145,7 @@ alert("با موفقیت ذخیره شد")
 setCost(response2.data.Data.Cost)
 setSpecialCost(response2.data.Data.SpecialCost)
  setWarID(response2.data.Data.WarrantyID)
+ setColor(response2.data.Data.ColorID)
 
 axios
 .post(apiUrl + "SinglePropertyNew",{

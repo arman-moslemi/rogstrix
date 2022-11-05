@@ -317,7 +317,8 @@ const AssembleMain = () => {
                </div>
                 <div className="wB10 wB102">
                   <p className="productAssembleName productAssembleNameRes productAssembleNameRes2">
-                  {item.Cost?.toLocaleString("en-de")}
+                  {/* {item.Cost?.toLocaleString("en-de")} */}
+                  {item.SpecialCost?(parseInt(item.Cost)-parseInt(item.SpecialCost)).toLocaleString("en-de"): item.Cost?.toLocaleString("en-de")}
                   </p>
                   </div>
                   <div className="wB10 ta-center wB102">
