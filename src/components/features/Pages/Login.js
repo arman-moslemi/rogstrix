@@ -42,6 +42,7 @@ else{
 
         console.log("auth", auth.isLoggedIn);
         localStorage.setItem("guest","");
+        localStorage.setItem("name",response.data.Data?.NameFamily?.split(',')[0]+" "+response.data.Data?.NameFamily?.split(',')[1])   
         history.push("/EditInformation/"+response.data.Data.CustomerID)
 
     }

@@ -43,12 +43,13 @@ const  _handleKeyDown = (e) => {
 
   }
   const [data,setData]=useState()
+  const [name,setName]=useState()
 
 const groups=()=>{
    const axios = require("axios");
    console.log(55)
    console.log(localStorage.getItem("lang"))
-// setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")÷
+ setName(localStorage.getItem("name")?localStorage.getItem("name"):"")
 ss= localStorage.getItem("lang")
 setDefLang(ss)
 console.log(ss)
@@ -140,7 +141,7 @@ console.log(ss)
         :
         <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
           <MenuUser style={{marginLeft:10}} />
-{t("کاربر")}
+{name}
         </button>        }
         <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
         <CartMenu style={{marginLeft:10}}/>
