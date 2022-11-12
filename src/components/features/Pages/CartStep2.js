@@ -68,6 +68,8 @@ const CartStep2 = () => {
     const [send,setSend]=useState("")
     const [bank,setBank]=useState("")
     const [personal,setPersonal]=useState()
+    const [regions,setReg]=useState([])
+
     const history = useHistory();
 
 
@@ -110,6 +112,7 @@ const CartStep2 = () => {
           if (response.data.result == "true") {
 
              setCity(response.data.Data)
+             setReg(response.data.Data2)
 
              console.log(response.data.Data)
 
@@ -357,9 +360,9 @@ alert(response.data.message)
   {t("منطقه")}
   </p>
   <select onChange={(e)=>!address1?setReg1(e.target.value):setReg2(e.target.value)} name="state" id="state" className="informationSelect">
-  {[...new Array(22)].map((item,index)=>{
+  {regions.map((item,index)=>{
               return(
-     <option  value={index+1}>{index+1}</option>
+     <option  value={item.RegionID}>{item.RegionName}</option>
   )}  )
 }
               </select>
@@ -453,9 +456,9 @@ onChange={()=>{setRadio(1);Transporter(1)}}
   {t("منطقه")}
   </p>
   <select onChange={(e)=>setReg1(e.target.value)} name="state" id="state" className="informationSelect">
-  {[...new Array(22)].map((item,index)=>{
+  {regions.map((item,index)=>{
               return(
-     <option  value={index+1}>{index+1}</option>
+     <option  value={item.RegionID}>{item.RegionName}</option>
   )}  )
 }
               </select>
@@ -553,10 +556,10 @@ city2==1577?
 {t("منطقه")}
 </p>
 <select onChange={(e)=>setReg2(e.target.value)} name="state" id="state" className="informationSelect">
-{[...new Array(22)].map((item,index)=>{
-return(
-<option  value={index+1}>{index+1}</option>
-)}  )
+{regions.map((item,index)=>{
+              return(
+     <option  value={item.RegionID}>{item.RegionName}</option>
+  )}  )
 }
 </select>
 </div>

@@ -27,10 +27,12 @@ const SingleProduct = () => {
   const history = useHistory();
   const [product,setProduct]=useState([])
   const [property,setProperty]=useState([])
+  const [propertyNew,setPropertyNew]=useState([])
   const [com,setCom]=useState([])
   const [similar,setSimilar]=useState([])
   const [rate,setRate]=useState(0)
   const [color,setColor]=useState()
+  const [maxOrder,setMaxOrder]=useState(0)
   const [list,setList]=useState()
   const [cost,setCost]=useState()
   const [specialCost,setSpecialCost]=useState()
@@ -88,8 +90,12 @@ if(!Guest || Guest==0){
     const axios = require("axios");
     const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 if(warID==""){
-  alert("گارانتی را وارد نماپید")
+  return alert("گارانتی را وارد نماپید")
 }
+if(count>maxOrder){
+ return alert("سفارش شما از سقف بیشتر میباشد")
+}
+
 console.log(555)
 console.log(id)
 console.log(token)
@@ -146,9 +152,30 @@ setCost(response2.data.Data.Cost)
 setSpecialCost(response2.data.Data.SpecialCost)
  setWarID(response2.data.Data.WarrantyID)
  setColor(response2.data.Data.ColorID)
+ setMaxOrder(response2.data.Data.MaxOrder)
 
 axios
 .post(apiUrl + "SinglePropertyNew",{
+  ProductID:response2.data.Data.ProductID
+})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setPropertyNew(response.data.Data)
+console.log(45678)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+
+axios
+.post(apiUrl + "SingleProperty",{
   ProductID:response2.data.Data.ProductID
 })
 .then(function (response) {
@@ -487,7 +514,7 @@ index+1>rate?
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                  {t("از این کالا")} {product.Number} {t("از عدد در انبار موجود است")}
+                  {t("از این کالا")} {maxOrder} {t("از عدد در انبار موجود است")}
                                 </p>
                   </div>
               </div>
@@ -522,7 +549,7 @@ index+1>rate?
                 <div>
                 <p className="reviewP" id="colorGray">{t("گارانتی")} : </p></div>
               <div className="d-flex justify-content-center">
-              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]));setWarID(parseInt(e.target.value.split('T')[2]))}} 
+              <select  onChange={(e)=>{setCost(parseInt(e.target.value.split('T')[0]));setSpecialCost(parseInt(e.target.value.split('T')[1]));setWarID(parseInt(e.target.value.split('T')[2]));setMaxOrder(parseInt(e.target.value.split('T')[3]))}} 
               name="waranty" id="waranty" className="w100 informationSelect" style={{fontSize:12}}>
               {/* <option value="" >{"انتخاب کنید"}</option> */}
 
@@ -536,7 +563,7 @@ index+1>rate?
         // console.log(888889999)
         // console.log(item2)
         return(
-          <option value={item2.Cost+"T"+item2.SpecialCost+"T"+item2.WarrantyID} >{item2.WarrantyName}</option>
+          <option value={item2.Cost+"T"+item2.SpecialCost+"T"+item2.WarrantyID+"T"+item2.MaxOrder} >{item2.WarrantyName}</option>
         )
         }
       )
@@ -609,7 +636,7 @@ product?.Available?
         </div>
         <div className="row mt-4 mb-3">
           <Col md={3} id="singleOrder1">
-            <SingleProductRedBox data={property}/>
+            <SingleProductRedBox data={propertyNew}/>
           </Col>
           <Col md={9} id="singleOrder2">
             <div className="whiteBox3">

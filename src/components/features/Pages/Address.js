@@ -36,6 +36,7 @@ const Address = () => {
     const [city2,setCity2]=useState(0)
     const [reg2,setReg2]=useState(0)
     const [cities,setCity]=useState([])
+    const [regions,setReg]=useState([])
     const history = useHistory();
     const params = useParams().id;
     const [open1, setOpen1] = useState(false);
@@ -80,8 +81,10 @@ const Address = () => {
           if (response.data.result == "true") {
 
              setCity(response.data.Data)
+             setReg(response.data.Data2)
 
              console.log(response.data.Data)
+             console.log(response.data.Data2)
 
             // history.push("/RegisterVerify/"+mobile)
 
@@ -226,9 +229,9 @@ const style = {
   {t("منطقه")}
   </p>
   <select onChange={(e)=>!address1?setReg1(e.target.value):setReg2(e.target.value)} name="state" id="state" className="informationSelect">
-  {[...new Array(22)].map((item,index)=>{
+  {regions.map((item,index)=>{
               return(
-     <option  value={index+1}>{index+1}</option>
+     <option  value={item.RegionID}>{item.RegionName}</option>
   )}  )
 }
               </select>
@@ -311,9 +314,9 @@ const style = {
   {t("منطقه")}
   </p>
   <select onChange={(e)=>setReg1(e.target.value)} name="state" id="state" className="informationSelect">
-  {[...new Array(22)].map((item,index)=>{
+  {regions.map((item,index)=>{
               return(
-     <option  value={index+1}>{index+1}</option>
+     <option  value={item.RegionID}>{item.RegionName}</option>
   )}  )
 }
               </select>
@@ -400,10 +403,10 @@ city2==1577?
 {t("منطقه")}
 </p>
 <select onChange={(e)=>setReg2(e.target.value)} name="state" id="state" className="informationSelect">
-{[...new Array(22)].map((item,index)=>{
-return(
-<option  value={index+1}>{index+1}</option>
-)}  )
+{regions.map((item,index)=>{
+              return(
+     <option  value={item.RegionID}>{item.RegionName}</option>
+  )}  )
 }
 </select>
 </div>
