@@ -93,11 +93,11 @@ const SpecialOffer = ({data}) => {
             <ul className="specialOfferUl">
             <li onClick={()=>mainProduct(1)}>
                     {/* <a href="#"> */}
-                    {t("قطعات کامپیوتر")}  
+                    {t("کامپیوتر و قطعات")}  
                                         {/* </a> */}
                 </li>
                 <li onClick={()=>mainProduct(2)}>
-                {t("لپتاپ")} 
+                {t(" لپتاپ و کامپیوتر آماده و قطعات")}  
                 </li>
                 <li onClick={()=>mainProduct(3)}>
                 {t("تبلت")}
@@ -110,13 +110,13 @@ const SpecialOffer = ({data}) => {
                 {t("شبکه و سرور")}
                 </li>
                 <li onClick={()=>mainProduct(6)}>
-                {t("کالای اداری")}   
+                {t(" ماشین های اداری و قطعات")}    
                 </li>
                 <li>
-                {t("تصویربرداری")}    
+                {t("دوربین و لوازم جانبی")}      
                 </li>
                 <li onClick={()=>mainProduct(7)}>
-                {t("کنسول بازی")}    
+                {t("کنسول و لوارم بازی")}    
                 </li>
             </ul>
             </Col>

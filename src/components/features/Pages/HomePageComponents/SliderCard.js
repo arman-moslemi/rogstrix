@@ -30,7 +30,7 @@ const SliderCard = ({data}) => {
           <p>{truncate(data.ProductName,45)}</p>
        </div>
        <div className="row pad-right-1 pad-left-1 mar-top-2">
-         <Col md={6} className="ta-right">
+         <Col md={4} className="ta-right">
         {/* <p className="cardDes">
           نوع اتصال : بی سیم
         </p>
@@ -50,7 +50,7 @@ const SliderCard = ({data}) => {
 
        
          </Col>
-         <Col md={6} className="ta-left">
+         <Col md={8} className="ta-left">
           <p className="strokeOutPrice">
 {data.Cost}     تومان     </p>
           <p className="cardPrice">

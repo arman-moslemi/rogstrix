@@ -514,7 +514,8 @@ index+1>rate?
                   </div>
                   <div>
                   <p className="reviewP" id="colorGray">
-                  {t("از این کالا")} {maxOrder} {t("از عدد در انبار موجود است")}
+                  {/* {t("از این کالا")} {maxOrder} {t("از عدد در انبار موجود است")} */}
+                {t("کالا آماده ارسال به سراسر کشور")}
                                 </p>
                   </div>
               </div>
@@ -591,15 +592,25 @@ index+1>rate?
                   <div>
                       <div className="d-flex">
                           <div>
-                          <p className="strokeOutPrice">
-                           {cost}
-                            </p>
+                            {
+                              specialCost!=0?
+                              <p className="strokeOutPrice">
+                              {cost}
+                               </p>
+                              :
+null
+                            }
+                        
                           </div>
+                          {
+                              specialCost!=0?
                           <div>
                               <div className="redBack ml-2">
                                   <p>{(parseInt((parseInt(specialCost)/parseInt(cost))*100)).toLocaleString("en-de")}%</p>
                               </div>
                           </div>
+                          :
+                          null}
                       </div>
                   <p className="specialPrice">
                   {(parseInt(cost)-parseInt(specialCost)).toLocaleString("en-de")}{t("تومان")}

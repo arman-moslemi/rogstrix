@@ -287,6 +287,10 @@ max-width: 70%;
         width: 100%;
         height: 200px;
     }
+    .BestSellingCard{
+        width:200px !important
+    }
+
     .BestSellingCard .row{
         display: block !important;
     }
@@ -300,6 +304,7 @@ max-width: 70%;
     }
     .BestSellingCard{
         padding: 0.5rem !important;
+        width:200px !important
     }
     .priceRowCart p{
         font-size: 10px;

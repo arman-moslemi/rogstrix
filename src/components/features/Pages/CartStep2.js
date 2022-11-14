@@ -67,6 +67,7 @@ const CartStep2 = () => {
     const [type,setType]=useState(0)
     const [send,setSend]=useState("")
     const [bank,setBank]=useState("")
+    const [des,setDes]=useState("")
     const [personal,setPersonal]=useState()
     const [regions,setReg]=useState([])
 
@@ -269,7 +270,7 @@ else if(personal?.NationalCode==""|| personal?.NameFamily==""){
   alert("لطفا اسم یا کارت ملی را وارد نمایید")
 }
 else{
-        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText})
+        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText,Description:des})
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(response.data.Data)
@@ -669,6 +670,43 @@ null
       <div className="d-flex align-items-center">
       
       <p className="fontWeightBold ml-4" href="#">
+      {t("توضیحات")}
+                </p>
+      </div>
+      {/* <Button onClick={()=>Discount()} className="saveBtn">
+          
+      {t("ثبت")}
+      </Button> */}
+          </div>
+                 </div>
+                 <hr className="grayDashed" />
+                 <div className="shadowBox mb-4">
+              <div className='row align-items-center'>
+                  {/* <Col md={4} className="shaCol1">
+                  <p className="fontWeightBold">
+                   
+                  {t("کد تخفیف دارید ؟")} </p>
+                  
+                  </Col> */}
+                  <Col md={12} className="ta-right shaCol1">
+                  
+                  {/* <div className='d-flex align-items-center justify-content-end mt-2 f3'> */}
+                      {/* <p className='fontWeightBold mr-4'>
+                      {t("کد تخفیف خود را وارد کنید :")}
+                      </p> */}
+                      <input onChange={(e)=>setDes(e.target.value)} style={{width:"100%"}} type="text"/>
+                  {/* </div> */}
+                  </Col>
+              </div>
+                  
+                 </div>
+                 </div>
+              <div className='whiteBoxCart mt-4 pb-2'>
+           <div className="rightMenuBox1">
+             <div className="d-flex align-items-center justify-content-between">
+      <div className="d-flex align-items-center">
+      
+      <p className="fontWeightBold ml-4" href="#">
       {t("کد تخفیف")}
                 </p>
       </div>
@@ -710,10 +748,10 @@ null
       {t("انتخاب نحوه پرداخت")}
                 </p>
       </div>
-      <Button className="saveBtn">
+      {/* <Button className="saveBtn">
           
       {t("ثبت")}
-      </Button>
+      </Button> */}
           </div>
                  </div>
                  <hr className="grayDashed" />

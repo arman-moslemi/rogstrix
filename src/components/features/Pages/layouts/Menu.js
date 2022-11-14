@@ -112,12 +112,12 @@ const groups=async()=>{
       <div className="MegaMenuFirstRow">
          <Link onClick={()=>{history.push("/EachCategory/1");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            {t("قطعات کامپیوتر")}             </p>
+            {t("کامپیوتر و قطعات")}             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/2");window.location.reload()}}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
             {/* <MegaMenuLapTop/> */}
             <p className='menuTextBack'>
-            {t("لپتاپ")} 
+            {t(" لپتاپ و کامپیوتر آماده و قطعات")} 
             </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/3");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
@@ -139,17 +139,17 @@ const groups=async()=>{
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/6");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            {t("کالای اداری")}   
+            {t(" ماشین های اداری و قطعات")}   
                      </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/7");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            {t("تصویربرداری")}    
+            {t("دوربین و لوازم جانبی")}    
                     </p>
          </Link>
          <Link onClick={()=>{history.push("/EachCategory/8");window.location.reload()}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
-            {t("کنسول بازی")}    
+            {t("کنسول و لوارم بازی")}    
                     </p>
          </Link>
       </div>

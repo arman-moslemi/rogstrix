@@ -165,6 +165,11 @@ const Factor = () => {
   <div className="pdTable">
   <div className="topBarTable">
     <div className="row">
+      <Col md={1} className="ta-right">
+      <p className="fontWeightBold2 mb-2">
+      {t("ردیف")}
+        </p>
+      </Col>
       <Col md={6} className="ta-right">
       <p className="fontWeightBold2 mb-2">
       {t("شرح محصول")}
@@ -195,10 +200,15 @@ const Factor = () => {
    
   </div>
   {
-    product?.map((item)=>{
+    product?.map((item,index)=>{
       return(
 
   <div className="row pd15 borderBottomTable">
+      <Col md={1} className="ta-right">
+      <p className="fontWeightNormal2 mb-2">
+          {index+1}
+        </p>
+      </Col>
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
           {item.ProductName+" "+item.BrandName}
@@ -311,9 +321,8 @@ const Factor = () => {
    {t("توضیحات خریدار")} : 
         </p>
         <br/>
-        {/* <p className="fontWeightNormal2">
-        کنسل شد
-        </p> */}
+        <p className="fontWeightNormal2">
+{product[0]?.Description}        </p>
    </div>
    <p className="fontWeightBold mt-4">
    {t("خریدار محترم")} : 

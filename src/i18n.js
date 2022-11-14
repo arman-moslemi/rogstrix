@@ -13,14 +13,14 @@ const resources = {
       "ساخت سیستم":"System construction",
       "سیستم های پیشنهادی":"Suggested systems",
       "مشاهده محصولات":"View products",
-      "قطعات کامپیوتر":"computer pieces",
-      "لپتاپ":"Laptop",
+      "کامپیوتر و قطعات":"computer",
+      " لپتاپ و کامپیوتر آماده و قطعات":"Laptop",
       "تبلت":"Tablet",
       "موبایل و گجت":"Mobile",
-      "شبکه و سرور":"Network & Server",
-      "کالای اداری":"Office product",
-      "تصویربرداری":"Imaging",
-      "کنسول بازی":"Game Console",
+      "شبکه و سرور":"Network",
+      " ماشین های اداری و قطعات":"Office",
+      "دوربین و لوازم جانبی":"Camera",
+      "کنسول و لوارم بازی":"Console",
       "انتخاب، مقایسه و اسمبل سریع از بین قطعات برندهای مختلف":"Quick selection, comparison and assembly from different brands of parts",
       "خرید از بین سیستم های آماده و بسته شده توسط کاربران":"Purchase from among the systems prepared and closed by users",
       "محصولات راگ":"Rog products",
@@ -274,8 +274,9 @@ const resources = {
       "ضمانت بازگشت ۷ روزه":"7-day return guarantee",
       "امکان بازگشت محصول در صورت مشکل فنی یا مغایرت کالا":"Possibility of product return in case of technical problem or product discrepancy",
      "محصولات مشابه":"Similar Products",
-     "پرداخت با تتر USDT":"USDT Pay"
- 
+     "پرداخت با تتر USDT":"USDT Pay",
+     "کالا آماده ارسال به سراسر کشور":"Product Ready for Transfer to All Country",
+ "ردیف":"no"
     }
     
   }

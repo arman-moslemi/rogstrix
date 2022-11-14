@@ -203,7 +203,7 @@ console.log(i18n.language)
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle" style={{color:'#1a1a1a'}}>
-                        {t("محصولات فروشگاه راگ")}
+                        {t("محصولات راگ")}
                         </p>
                     </div>
                     <div className="seeAllDiv" style={{paddingLeft:50}}>
@@ -211,7 +211,7 @@ console.log(i18n.language)
                     </div>
                    </Col>
                </div>
-     <div className="d-flex justify-content-center margin mn  marginBottom30">
+     <div className="d-flex justify-content-center margin mn  marginBottom30" style={{overflowY:'hidden',overflowX:'scroll'}}>
      {
          rog?.map((item)=>{
            return(
