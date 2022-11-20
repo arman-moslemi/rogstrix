@@ -272,7 +272,7 @@ console.log(i18n.language)
        </div>
 
        <div className="bestSellingDiv">
-       <div className="row margin25 backWhite">
+       <div className="row margin25  p">
                    <Col md={12}>
                    <div className="">
                         <p className="specialOfferTitle colorBlack">

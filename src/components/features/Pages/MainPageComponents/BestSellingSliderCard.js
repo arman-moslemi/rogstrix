@@ -44,7 +44,7 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
         {/* <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} > */}
         <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} >
   <div className="specialSliderCardBox">
-  <img src={data?.Pic1?apiAsset+data?.Pic1:data.Pic?apiAsset+data?.Pic:null}/>
+  <img src={data?.Pic1?apiAsset+data?.Pic1:data.Pic?apiAsset+data?.Pic:null} className="lastEditImg"/>
       {/* <ul className="colorList">
         <li>
           <div id="color1"></div>

@@ -116,3 +116,11 @@ bottom: -20px;
       width: 768px;
     }
   }
+
+  .lastEditImg{
+    width: 180px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    display: block !important;
+    height: 180px !important;
+  }

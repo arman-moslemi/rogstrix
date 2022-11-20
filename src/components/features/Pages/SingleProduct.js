@@ -357,7 +357,7 @@ const images = [
                 {/* <p className="boxTitle2 mediumFont">
                     رنگ : مشکی
                 </p> */}
-                <div className="d-flex">
+                <div className="d-flex" style={{flexWrap:'wrap'}}>
                   {
                     // product?.ColorID?.split(',').map((item)=>{
                     list?.map((item)=>{
@@ -382,7 +382,7 @@ const images = [
     return(
     index<5?
 
-                <div className="d-flex align-items-center mb-2">
+                <div className="d-flex align-items-center mb-2" style={{flexWrap:'wrap'}}>
                 <FaCaretLeft/>
                 <p className="detailTitle">
                    {item[0].MainTitle}:

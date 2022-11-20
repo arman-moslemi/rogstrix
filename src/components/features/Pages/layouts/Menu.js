@@ -102,7 +102,7 @@ const groups=async()=>{
   <FaChevronDown/>
   </Button>
 
-     <Button onClick={()=>history.push("/Home")} className="MainMenuBtn borderNone">
+     <Button onClick={()=>history.push("/Home")} className="MainMenuBtn2 borderNone">
       <RedMenuLogo/>
      </Button>
 

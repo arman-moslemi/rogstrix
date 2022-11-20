@@ -538,7 +538,7 @@ mainSlider()
           
           <div className="productsWhiteBox">
           <div className="whiteBoxHeader">
-              <div className="borderDashedBottom">
+              <div className="borderDashedBottom" style={{flexWrap:'wrap'}}>
                 <div>
                   <p>
                   {t("شناسایی")} {data.length} {t("قطعه")}
@@ -570,7 +570,7 @@ mainSlider()
           className="searchInput"
           type={'text'}
           placeholder={t("جستجو در میان منبع تغذیه...")}
-        
+        style={{width:'100%'}}
          
         />
       </div>
@@ -578,7 +578,7 @@ mainSlider()
                 </div>
               </div>
               </div>
-           <div className="selectRow">
+           <div className="selectRow" style={{flexWrap:'wrap'}}>
              <div>
                <Button className="selectAll marginLeft60">
                {t("انتخاب همه")}
@@ -597,21 +597,21 @@ mainSlider()
            </div>
           <div className="tableBox">
           <div className="d-flex" id="w95">
-                <div className="ta-right wi10" >
+                <div className="ta-right wi10 wRes" >
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                 {t("مقایسه")}
                   
                 </p>
                 </div>
-                <div className="ta-right wi15" >
+                <div className="ta-right wi15 wRes" >
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                 {t("عکس")}
                   
                 </p>
                 </div>
-                <div className="ta-right wi50">
+                <div className="ta-right wi50 wRes">
                 <p className="tableTitle">
                 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
@@ -638,21 +638,21 @@ mainSlider()
                  ماژولار
                 </p>
 </div> */}
-<div className="ta-right wi10" >
+<div className="ta-right wi10 wRes" >
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
 {t("قیمت")} ({t("تومان")})
                 </p>
 </div>
-<div className="ta-right wi10">
+<div className="ta-right wi10 wRes">
 <p className="tableTitle">
 <FaChevronDown className="marginLeftt20" color={'#f6303f'}/>
                  
 {t("امتیاز")}
                 </p>
 </div>
-<div className="ta-right wi5">
+<div className="ta-right wi5 wRes">
 <p className="tableTitle">
 {/* <FaChevronDown className="marginLeftt20" color={'#f6303f'}/> */}
                  
@@ -685,10 +685,10 @@ return(
 
         />
              </div>
-                <div className="rowImg wi15">
+                <div className="rowImg wi15 wRes">
                   <img src={apiAsset+item[0].Pic1}/>
                 </div>
-                <div className="wi50">
+                <div className="wi50 wRes">
                   <p className="productNameRow">
 {item[0].ProductName}
                   </p>
@@ -717,7 +717,7 @@ return(
                     بله
                   </p>
                 </div> */}
-                <div className="wi10">
+                <div className="wi10 wRes">
                   
                 {
   parseInt(item[0]?.Cost)!=0?
@@ -731,14 +731,14 @@ return(
 
                    
                 </div>
-                <div className="wi10">
+                <div className="wi10 wRes">
                   <p className="pNameRow">
                    
                    (123)
                    <p className="redColor">5</p>
                   </p>
                 </div>
-                <div className="wi5">
+                <div className="wi5 wRes">
                 {
   parseInt(item[0]?.Cost)!=0?
                   <Button onClick={()=>ProductSave(item[0].ProductID)} className="addRowBtn">

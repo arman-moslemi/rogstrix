@@ -572,7 +572,7 @@ max-width: 70%;
         display: none !important;
       }
 }
-@media screen and (max-width:1358px){
+@media screen and (max-width:1350px){
     .sortLable li button{
         padding: 2px !important;
         font-size: 10px !important;
@@ -654,6 +654,55 @@ max-width: 70%;
     .exclusiveSliderCard2{
         width: 150px !important;
         height: 150px !important;
+    }
+    .wRes{
+        width:auto !important;
+    }
+    #w95{
+        overflow-x: auto;
+        white-space:nowrap ;
+    }
+    .wi15{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    
+    .wi50{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    .wi5{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    .wi10{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    .tRow{
+        overflow-x: auto;
+        white-space: nowrap;
+        overflow-y: hidden;
+    }
+    .wB15{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
+    }
+    .wB65{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
+    }
+    .wB10{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
+    }
+    .wR5{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
     }
   }
 @media screen and (max-width:900px){
