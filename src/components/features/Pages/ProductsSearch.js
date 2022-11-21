@@ -26,7 +26,17 @@ const ProductsSearch = () => {
   const {t,i18n} = useTranslation();
   const [data,setData]=useState([])
   const params = useParams().id;
+  const [product,setProduct]=useState([])
+  const [brand,setBrand]=useState([])
+  const [data2,setData2]=useState([])
+
   const history = useHistory();
+  const [from,setFrom]=useState(0)
+  const [to,setTo]=useState(0)
+  const [head,setHead]=useState("")
+  const [max,setMax]=useState(1000)
+  const [filter,setFilter]=useState([])
+
 console.log(params)
 const mainSlider=async()=>{
   const axios = require("axios");
@@ -43,7 +53,50 @@ const mainSlider=async()=>{
 
           setData(response.data.Data)
           console.log(response.data.Data)
+          axios
+          .post(apiUrl + "FilterProduct",{
+            GroupID:response.data.Data[0].GroupID
+          },{ headers: {
+            lang: i18n.language
+          }})
+          .then(function (response) {
+          if (response.data.result == "true") {
+          
+          setProduct(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+          
+          }
+          else{
+          console.log(response.data.result)
+          
+          }})
+          .catch(function (error) {
+          console.log(error);
+          });
 
+
+
+          axios
+          // .get(apiUrl + "AllBrand",{ headers: {
+          .post(apiUrl + "BrandGroup",{GroupID:response.data.Data[0].GroupID},{ headers: {
+            lang: i18n.language
+          }})
+      .then(function (response) {
+        if (response.data.result == "true") {
+    
+          setBrand(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+    
+      }
+      else{
+        console.log(response.data.result)
+    
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
       }
       else{
         console.log(response.data.result)
@@ -55,7 +108,104 @@ const mainSlider=async()=>{
 
 
 
+      
+
+
+  
   }
+  const setCost=()=>{
+    setData(data2)
+        console.log(14563)
+        console.log(data)
+    //  setProduct([])
+    // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+    setData(data.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
+    console.log(data)
+    
+    }
+  var gg=[]
+  const proFilter=(type,val,vv)=>{
+
+if(type==1){
+  setFilter([...filter,{id:val,title:vv.Title}])
+  gg.push({id:val,title:vv.SubProperty})
+  var ff=[]
+
+    console.log(14563)
+    console.log(val)
+    console.log(gg)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+data?.map((item2,index1)=>{
+  var count=0;
+  item2?.map((item3,index2)=>{
+gg?.map((item,index3)=>{
+
+ 
+
+    if(item3.SubGroupPropertyID==item.id)
+   {
+     count+=1;
+     if (count==gg.length){
+
+      ff.push(item2)
+    }
+    
+  
+  }
+  })
+})
+})
+console.log(ff)
+// if(ff.length!=0){
+
+  setData(ff)
+}
+else{
+  setFilter( filter.filter((el)=>el.id!=vv.SubGroupPropertyID));
+  gg=gg.filter((el)=>el.id!=vv.SubGroupPropertyID);
+  var ff=[]
+
+    console.log(14563)
+    console.log(val)
+    console.log(gg)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+data2?.map((item2,index1)=>{
+  var count=0;
+  item2?.map((item3,index2)=>{
+gg?.map((item,index3)=>{
+
+ 
+
+    if(item3.SubGroupPropertyID==item.id)
+   {
+     count+=1;
+     if (count==gg.length){
+
+      ff.push(item2)
+    }
+    
+  
+  }
+  })
+})
+})
+console.log(ff)
+// if(ff.length!=0){
+
+  setData(ff)
+
+}
+
+
+
+// }
+if(gg.length==0)
+{
+mainSlider()
+}
+}
 
   useEffect(() => {
     mainSlider();
@@ -79,39 +229,38 @@ const mainSlider=async()=>{
           </ul>
         </div>
         <div className="row " style={{marginBottom:25}}>
-          <Col md={3}>
+        <Col md={3}>
           <div className="redBoxFilter">
              <div className="pd2">
              <div className="row">
                   <Col md={7}>
                     <p className="filterText">
-                        فیلترهای اعمال شده
+                    {t("فیلترهای اعمال شده")}
                     </p>
                   </Col>
                   <Col md={5} className="ta-left">
-                        <Button className="filterBtn">
+                        {/* <Button className="filterBtn">
                             حذف
-                        </Button>
+                        </Button> */}
                   </Col>
 
               </div>
              </div>
               <div className="filterFlex">
             <div style={{padding:'1rem'}}>
+              {
+                filter?.map((item)=>{
+                  return(
             <div className="filterSelect">
 
-                      کول مستر
-                      <FaTimes style={{marginRight:5}}/>
+{item.title}                      
+{/* <FaTimes style={{marginRight:5}}/> */}
                   </div>
-                  <div className="filterSelect">
-                     همه رده انرژی
-                     <FaTimes style={{marginRight:5}}/>
-                  </div>
-                  <div className="filterSelect">
 
-                  قیمت از ۲،۴۰۰،۰۰۰ تا ۷،۲۱۰،۰۰۰
-                  <FaTimes style={{marginRight:5}}/>
-                     </div>
+                  )
+                })
+              }
+           
             </div>
 
               </div>
@@ -122,11 +271,11 @@ const mainSlider=async()=>{
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        برندها
+                    {t("برندها")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-               <div className="pad2">
+               {/* <div className="pad2">
                <div className="d-flex searchInput">
                 <div >
           <FaSearch color={'#a0a0a0'}/>
@@ -134,20 +283,23 @@ const mainSlider=async()=>{
         <input
 
           type={'text'}
-          placeholder={"نام برند را وارد کنید ..."}
+          placeholder={t("نام برند را وارد کنید ...")}
 
 
         />
 
       </div>
 
-               </div>
+               </div> */}
       <div className="pad2">
       <div className="scrollBar">
+            {
+              brand?.map((item)=>{
+                return(
           <div className="d-flex checkBoxDiv">
           <Checkbox
 
-        defaultChecked
+        
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
@@ -155,145 +307,16 @@ const mainSlider=async()=>{
           },
         }}
       />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
 
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
               <label>
-              کولر مستر
+                  {item.BrandName}
               </label>
+         
           </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سی سونیک
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              گیگابایت
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ای وی جی ای
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              کورسیر
-              </label>
-          </div>
+         
+         )
+        })
+      }
       </div>
       </div>
                 </AccordionItemPanel>
@@ -306,26 +329,26 @@ const mainSlider=async()=>{
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                      محدوده قیمت
+                    {t("محدوده قیمت")}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                <div className="pad2">
-                <RangeSlider/>
+               <RangeSlider max={max} setFrom={setFrom} setTo={setTo}/>
 
                </div>
             <div className="rangeBorder">
             <div className="row">
       <Col md={6}>
             <p className="rangeText">
-                از
+            {t("از")}
             </p>
 
 
       </Col>
       <Col md={6}>
       <p className="rangeText">
-                از
+      {t("از")}
             </p>
 
 
@@ -335,43 +358,48 @@ const mainSlider=async()=>{
       <div className="row align-items-center">
           <Col md={6}>
           <p className="rangeText marginB0">
-          ۲،۳۰۰،۰۰۰
+          {/* ۲،۳۰۰،۰۰۰ */}
+          <input onChange={(e)=>setTo(e.target.value)} className="rangeInput"/>
             </p>
           </Col>
           <Col md={6}>
-          <input className="rangeInput"/>
+          <input onChange={(e)=>setFrom(e.target.value)} className="rangeInput"/>
           </Col>
       </div>
       <div className="row marginTop15">
           <Col md={6}>
-              <p className="rangeText maxFont">تومان</p>
+              <p className="rangeText maxFont">{t("تومان")}</p>
           </Col>
           <Col md={6}>
-              <p className="rangeText maxFont">تومان</p>
+              <p className="rangeText maxFont">{t("تومان")}</p>
           </Col>
       </div>
             </div>
-            <Button className="rangeBtn">
-                اعمال محدوده قیمت
+            <Button onClick={()=>setCost()}className="rangeBtn">
+            {t("اعمال محدوده قیمت")}
             </Button>
                 </AccordionItemPanel>
             </AccordionItem>
 
         </Accordion>
           </div>
+         {
+           product.map((item)=>{
+             return(
+
           <div className="whiteBoxProduct">
           <Accordion allowZeroExpanded ={true}>
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        رده مصرف انرژی
+                        {item[0].MainTitle}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
 
       <div className="pad2">
       <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
+          {/* <div className="d-flex checkBoxDiv">
                <Checkbox
 
         defaultChecked
@@ -385,52 +413,39 @@ const mainSlider=async()=>{
               <label>
                   همه
               </label>
-          </div>
+          </div> */}
+          {
+            item.map((item2)=>{
+              return(
+
           <div className="d-flex checkBoxDiv">
                <Checkbox
 
-        defaultChecked
+        // defaultChecked
         sx={{
           color: '#f6303f',
           '&.Mui-checked': {
             color: '#f6303f',
           },
         }}
+        value={item2.SubGroupPropertyID}
+        onChange={(e)=>e.target.checked? proFilter(1,e.target.value,item2)
+          :
+        
+         proFilter(2,e.target.value,item2)
+        
+        
+          
+         }
       />
               <label>
-              +۸۰ تیتانیوم
+              {item2.Title}
               </label>
           </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              +۸۰ پلاتینیوم
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              +۸۰ طلایی
-              </label>
-          </div>
+              )
+            })
+          }
+        
 
       </div>
       </div>
@@ -439,449 +454,14 @@ const mainSlider=async()=>{
 
         </Accordion>
           </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                     مصرف انرژی (وات)
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                <div className="pad2">
-                <RangeSlider/>
+             )
+           })
+         }
 
-               </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                    طول (میلیمتر)
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                <div className="pad2">
-                <RangeSlider/>
-
-               </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        ماژولار
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              هیچکدام
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             کامل
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             نیمه
-              </label>
-          </div>
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        رنگ
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                سیاه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سفید
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              سیاه/قرمز
-              </label>
-          </div>
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        نوع
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ATX
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              ATX12V
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              Flex ATX
-              </label>
-          </div>
-
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                       بدون فن
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-             باشد
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              نباشد
-              </label>
-          </div>
-
-
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
-          <div className="whiteBoxProduct">
-          <Accordion allowZeroExpanded ={true}>
-            <AccordionItem className="productAccardion">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                    اتصالات EPS/ATX
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-
-      <div className="pad2">
-      <div className="scrollBar">
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-                  همه
-              </label>
-          </div>
-
-
-
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              4 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              3 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              2 x EPS 8-pin
-              </label>
-          </div>
-          <div className="d-flex checkBoxDiv">
-               <Checkbox
-
-        defaultChecked
-        sx={{
-          color: '#f6303f',
-          '&.Mui-checked': {
-            color: '#f6303f',
-          },
-        }}
-      />
-              <label>
-              1 x EPS 8-pin + 1 x ATX 4-pin
-              </label>
-          </div>
-      </div>
-      </div>
-                </AccordionItemPanel>
-            </AccordionItem>
-
-        </Accordion>
-          </div>
+        
           </Col>
           <Col md={9}>
-          <Sorts/>
+          <Sorts setData={setData} data={data}/>
           <div className="productsWhiteBox">
               {/* <div className="whiteBoxHeader">
                   <div className="dashedHrdiv">

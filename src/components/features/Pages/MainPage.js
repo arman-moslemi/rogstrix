@@ -42,6 +42,8 @@ console.log(i18n.language)
         if (response.data.result == "true") {
 
           setSlider(response.data.Data[0])
+          console.log(3425)
+          console.log(response.data.Data[0])
 
       }
       else{
@@ -92,7 +94,8 @@ console.log(i18n.language)
       .then(function (response) {
         if (response.data.result == "true") {
 
-          setNew(response.data.Data)
+          setNew(response.data.Data.sort((a, b) => (a.ProductID < b.ProductID) ? 1 : -1))
+          // newPro.sort((a, b) => (a.ProductID > b.ProductID) ? 1 : -1)
           console.log(11)
           console.log(response.data.Data)
 

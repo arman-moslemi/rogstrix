@@ -97,7 +97,7 @@ console.log(params)
             همه {data[0]?.MainTitle}ها
           </p>
 
-          <div className="CardBoxDiv margin-top-3">
+          <div className="CardBoxDiv margin-top-9">
             {
               data.map((item)=>{
 return(

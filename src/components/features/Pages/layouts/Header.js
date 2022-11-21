@@ -54,15 +54,15 @@ ss= localStorage.getItem("lang")
 setDefLang(ss)
 console.log(ss)
    // axios.get(apiUrl + "AllMainGroup")
-   axios.get(apiUrl + "GroupBrand")
+   axios.get(apiUrl + "AllMainGroup")
    .then(function (response) {
      if (response.data.result == "true") {
 
       //   setData(response.data.GroupData)
-        setData(response.data.Data)
+        setData(response.data.GroupData)
 
-        console.log(888)
-        console.log(response.data.Data)
+        console.log(12238897)
+        console.log(response.data.GroupData)
 
        // history.push("/RegisterVerify/"+mobile)
 
@@ -129,7 +129,7 @@ console.log(ss)
     </div>
       </div>
       <div className="d-flex">
-        <button className="headerBtn" onClick={()=>onClick()}>
+        <button className="headerBtn" onClick={()=>history.push("/Login")}>
         <MenuSearch/>
         </button>
         {!isLoggedIn?
@@ -205,7 +205,7 @@ auto.map((item)=>{
   {/* <Nav.Link href="#" className="responsiveLink mt-2">شروع بازی</Nav.Link> */}
   
    
-  <NavDropdown title={"قطعات کامپیوتر" } id="collasible-nav-dropdown">
+  <NavDropdown title={    t("کامپیوتر و قطعات")   } id="collasible-nav-dropdown">
      {data?.filter(t=>t[0].MainGroupID==1).map((item)=>{
       return(
         
@@ -213,32 +213,36 @@ auto.map((item)=>{
 {
    item?.map((item2)=>{
       return(
-            <NavDropdown.Item >
-            {item2.BrandName } 
-            </NavDropdown.Item>
+            // <NavDropdown.Item  >
+           <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+            {item2.SubTitle } 
+           </p>
+            // </NavDropdown.Item>
 
  )})}
           </NavDropdown>
       )})}
           </NavDropdown>
 
-<NavDropdown title={"لبتاب" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==2).map((item)=>{
+<NavDropdown title= {t(" لپتاپ و کامپیوتر آماده و قطعات")}  id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==2).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"تبلت" } id="collasible-nav-dropdown">
+<NavDropdown title={t("تبلت")} id="collasible-nav-dropdown">
 {data?.filter(t=>t[0].MainGroupID==3).map((item)=>{
  return(
    
@@ -246,79 +250,84 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"موبایل و گجت" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==4).map((item)=>{
+<NavDropdown title={t("موبایل و گجت")}  id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==4).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"شبکه و سرور" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==5).map((item)=>{
+<NavDropdown title= {t("شبکه و سرور")} id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==5).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"کالای اداری" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==6).map((item)=>{
+<NavDropdown title={t(" ماشین های اداری و قطعات")}  id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==6).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"تصویربرداری" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==7).map((item)=>{
+<NavDropdown title=  {t("دوربین و لوازم جانبی")} id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==7).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"کنسول بازی" } id="collasible-nav-dropdown">
+<NavDropdown title={t("کنسول و لوارم بازی")}  id="collasible-nav-dropdown">
 {data?.filter(t=>t.MainGroupID==8).map((item)=>{
  return(
    
@@ -326,9 +335,10 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
@@ -400,7 +410,7 @@ auto.map((item)=>{
          </Col>
          <Col xs={6} className="d-flex align-items-center">
 
-        <button onClick={()=>onClick()} className="headerBtn">
+        <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
         <MenuUser style={{marginLeft:10}} />
 
         </button>
