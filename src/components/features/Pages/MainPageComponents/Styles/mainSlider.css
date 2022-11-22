@@ -37,8 +37,11 @@
       bottom: 30px !important;
   }
   @media screen and (max-width:1000px){
+    .MainPageSlider .swiper-pagination-bullets{
+      display: none !important;
+    }
     .MainPageSlider{
-      height: 50vh;
+      height: 25vh;
     }
    .MainPageSlider .swiper-slide{
       width: 100% !important;
