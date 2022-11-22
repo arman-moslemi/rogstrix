@@ -17,9 +17,10 @@ const SliderCard = ({data}) => {
     }
     return str;
   };
+  
   return (
 
-      <div className="SliderCard">
+      <div className="SliderCard sd1s">
                         {/* <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} > */}
                         <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} >
 
@@ -27,7 +28,7 @@ const SliderCard = ({data}) => {
        <img src={apiAsset+data.Pic1} className="sliderCardImg"/>
        </div>
        <div className="cardTitleW100">
-          <p>{truncate(data.ProductName,45)}</p>
+          <p>{truncate(data.ProductName,70)}</p>
        </div>
        <div className="row pad-right-1 pad-left-1 mar-top-2">
          <Col md={4} className="ta-right">

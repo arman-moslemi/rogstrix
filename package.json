@@ -31,6 +31,7 @@
     "react-image-gallery": "^1.2.7",
     "react-medium-image-zoom": "^4.4.0",
     "react-mega-menu": "^1.0.1",
+    "react-multi-carousel": "^2.8.2",
     "react-paginate": "^8.1.0",
     "react-range": "^1.8.12",
     "react-router-dom": "^5.2.0",

@@ -322,7 +322,7 @@ const Factor = () => {
         </p>
         <br/>
         <p className="fontWeightNormal2">
-{product[0]?.Description}        </p>
+{product?product[0]?.Description:null}      </p>
    </div>
    <p className="fontWeightBold mt-4">
    {t("خریدار محترم")} : 

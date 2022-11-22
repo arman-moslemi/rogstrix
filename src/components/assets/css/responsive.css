@@ -592,6 +592,9 @@ max-width: 70%;
     .SliderCard{
         width: 330px;
     }
+    .sd1s{
+        width: 95% !important;
+    }
     
 }
 .swiper-container {

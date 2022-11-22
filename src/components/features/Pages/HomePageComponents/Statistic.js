@@ -2,7 +2,10 @@ import react from "react";
 import "./Styles/statistic.css"
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
-const Header = () => {
+const Header = ({data}) => {
+
+
+
   return (
    
       <div className="whyRogstrix">
@@ -10,21 +13,21 @@ const Header = () => {
         
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                   200 +
+                   {data?.Product} +
                 </p>
                 <p className="secondLineStatistic">
 کل محصولات                </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                   800 + 
+            {data?.ROGProduct} + 
                 </p>
                 <p className="secondLineStatistic">
 محصولات راگ                </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                    1.500 + 
+                    {data?.Customer} + 
                 </p>
                 <p className="secondLineStatistic">
                     مشتری یکتا
@@ -32,7 +35,7 @@ const Header = () => {
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                    5.000 + 
+                    {data?.Factor} + 
                 </p>
                 <p className="secondLineStatistic">
 فروش محصول                </p>

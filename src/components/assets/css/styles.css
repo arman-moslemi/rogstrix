@@ -2578,3 +2578,9 @@ body.dark-mode .backWhite2 p{
 .shaCol1{
   padding: 0px !important;
 }
+.rtl.react-multiple-carousel__arrow--right{
+  display: block !important;
+}
+.rtl.react-multiple-carousel__arrow--left{
+  display: block !important;
+}

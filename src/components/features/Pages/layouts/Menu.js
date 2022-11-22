@@ -137,17 +137,17 @@ const groups=async()=>{
             {t("شبکه و سرور")}
             </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/6");window.location.reload()}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/6");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(6)}}className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t(" ماشین های اداری و قطعات")}   
                      </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/7");window.location.reload()}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/7");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(7)}}className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t("دوربین و لوازم جانبی")}    
                     </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/8");window.location.reload()}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/8");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(8)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t("کنسول و لوارم بازی")}    
                     </p>
