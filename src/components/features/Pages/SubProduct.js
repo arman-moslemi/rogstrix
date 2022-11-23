@@ -70,8 +70,9 @@ const mainSlider=async()=>{
           console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
 axios
-.post(apiUrl + "FilterProduct",{
-  GroupID:response.data.Data[0][0].GroupID
+.post(apiUrl + "FilterSubProduct",{
+  // GroupID:response.data.Data[0][0].GroupID
+  SubGroupID:params
 },{ headers: {
   lang: i18n.language
 }})
