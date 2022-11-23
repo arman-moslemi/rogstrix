@@ -40,7 +40,7 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
   }, []);
     return (
       
-      <div className="BestSellingCard">
+      <div className="BestSellingCard sd2s">
         {/* <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} > */}
         <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} >
   <div className="specialSliderCardBox">

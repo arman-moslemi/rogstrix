@@ -276,7 +276,8 @@ const resources = {
      "محصولات مشابه":"Similar Products",
      "پرداخت با تتر USDT":"USDT Pay",
      "کالا آماده ارسال به سراسر کشور":"Product Ready for Transfer to All Country",
- "ردیف":"no"
+ "ردیف":"no",
+ "کد تخفیف اعمال شد":"Discount Activation Success"
     }
     
   }

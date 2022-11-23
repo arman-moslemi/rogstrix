@@ -28,6 +28,7 @@ const MainSlider = ({data}) => {
 
         className="MainPageSlider"
       >
+
        <SwiperSlide >
         <a href={data?.LinkMainSlider1}>
 

@@ -422,7 +422,7 @@ inc.indexOf(item.SubGroupID)!=-1 ?
      </div>
       <div className="wB10">
         <p className="productAssembleName">
-        {parseInt(product[inc?.indexOf(item.SubGroupID)]?.Cost)-parseInt(product[inc?.indexOf(item.SubGroupID)]?.SpecialCost)}تومان
+        {(parseInt(product[inc?.indexOf(item.SubGroupID)]?.Cost)-parseInt(product[inc?.indexOf(item.SubGroupID)]?.SpecialCost))?.toLocaleString("en-de")} تومان
         </p>
         </div>
         <div className="wB10 ta-center">

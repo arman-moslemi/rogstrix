@@ -152,6 +152,7 @@ const responsive = {
 
         className="MainPageSlider"
       >
+       
        <SwiperSlide>
        <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
 

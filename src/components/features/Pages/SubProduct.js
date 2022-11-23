@@ -509,7 +509,7 @@ mainSlider()
 return(
 
 
-                  <Col md={3} className="marginTop15">
+                  <Col md={4} className="marginTop15">
                         <BestSellingSliderCard data={item[0]}/>
                   </Col>
 )

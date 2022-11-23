@@ -129,7 +129,7 @@ console.log(ss)
     </div>
       </div>
       <div className="d-flex">
-        <button className="headerBtn" onClick={()=>history.push("/Login")}>
+        <button className="headerBtn" onClick={()=>onClick()}>
         <MenuSearch/>
         </button>
         {!isLoggedIn?

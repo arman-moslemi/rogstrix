@@ -462,7 +462,9 @@ const images = [
                                                                 d="M26.445,9.087A2.865,2.865,0,0,0,24,7.5H5.6c-1.65,0-1.1,1.7-1.1,3.779V30.171c0,2.078-.554,3.779,1.1,3.779H24a2.865,2.865,0,0,0,2.445-1.587L33,20.725Z"
                                                                 transform="translate(33.95 -4.411) rotate(90)" fill="none"
                                                                 stroke="#e74868" stroke-width="1" />
+                                                           
                                                            <FaRandom color="#ff004e" style={{margin:50}}/>
+                                                          
                                                         </g>
                                                     </svg>
                                                 </Button>
@@ -479,9 +481,9 @@ const images = [
                       [...new Array(5)].map((item,index)=>{
                         return(
 index+1>rate?
-<FaRegStar className="mr-1 ml-1" color="#111111"/>
+<FaRegStar className="mr-1 ml-1 sd4s" color="#111111"/>
                           :
-                          <FaStar className="mr-1 ml-1" color="#f6303f"/>
+                          <FaStar className="mr-1 ml-1 sd5s" color="#f6303f"/>
 
                         )
                       })
@@ -498,7 +500,7 @@ index+1>rate?
               </div>
               <hr className="grayHr"/>
               <div className="d-flex align-items-center">
-                  <div  className="mr-3">
+                  <div  className="mr-3 sd3s">
                       <Garantee2/>
                   </div>
                   <div>
@@ -509,7 +511,7 @@ index+1>rate?
               </div>
               <hr className="grayHr"/>
               <div className="d-flex align-items-center">
-                  <div  className="mr-3">
+                  <div  className="mr-3 sd3s">
                       <Box/>
                   </div>
                   <div>
@@ -520,7 +522,7 @@ index+1>rate?
                   </div>
               </div>
               <div className="d-flex align-items-center">
-                  <div  className="mr-3">
+                  <div  className="mr-3 sd3s">
                       <Truck/>
                   </div>
                   <div>

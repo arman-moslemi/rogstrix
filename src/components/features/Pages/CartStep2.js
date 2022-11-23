@@ -240,6 +240,7 @@ setCity2(0)
             console.log(88)
 
 setTotal(response.data.Data)
+alert(t("کد تخفیف اعمال شد"))        
 
         }
         else{
@@ -869,7 +870,7 @@ null
                     </div>
                     <div>
                         <p>
-                            {total} {t("تومان")}
+                            {total?.toLocaleString("en-de")} {t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -881,7 +882,7 @@ null
                     </div>
                     <div>
                         <p>
-                            {tranCost}{t("تومان")}
+                            {tranCost?.toLocaleString("en-de")}{t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -894,7 +895,7 @@ null
                     </div>
                     <div>
                     <p>
-                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total} {t("تومان")}
+                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost))?.toLocaleString("en-de"):total?.toLocaleString("en-de")} {t("تومان")}
                         </p>
                     </div>
                 </div>

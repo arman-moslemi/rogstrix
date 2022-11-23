@@ -19,7 +19,9 @@ import WeblogSlider from "./MainPageComponents/WeblogSlider";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import SliderCard from "../Pages/HomePageComponents/SliderCard";
 const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [blog,setBlog]=useState([])
@@ -30,7 +32,23 @@ const MainPage = () => {
   const history = useHistory();
   const {t,i18n} = useTranslation();
   const [language,setLanguage]=useState();
-
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1000 },
+      items: 3,
+      slidesToSlide: 2
+    },
+    tablet: {
+      breakpoint: { max: 1000, min: 464 },
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
+    }
+  };
   const mainSlider=async()=>{
     const axios = require("axios");
 console.log(i18n.language)
@@ -214,8 +232,8 @@ console.log(i18n.language)
                     </div>
                    </Col>
                </div>
-     <div className="d-flex justify-content-center margin mn  marginBottom30" style={{overflowY:'hidden',overflowX:'scroll'}}>
-     {
+     {/* <div className="d-flex justify-content-center margin mn  marginBottom30" style={{overflowY:'hidden',overflowX:'scroll'}}> */}
+     {/* {
          rog?.map((item)=>{
            return(
 
@@ -224,12 +242,53 @@ console.log(i18n.language)
          </div>
            )
          })
-       }
-       {/* <div>
-         <ExclusiveSlider/>
-       </div> */}
+       } */}
+    
+    <Carousel
+  swipeable={true}
+  draggable={true}
+  showDots={true}
+  arrows={true}
+  responsive={responsive}
+
+  ssr={true} 
+  // means to render carousel on server-side.
+  infinite={true}
+  autoPlay={false }
+  autoPlaySpeed={1000}
+  keyBoardControl={true}
+  customTransition="ease-in-out .8"
+  transitionDuration={500}
+  containerClass="carousel-container"
+  // removeArrowOnDeviceType={['desktop']}
+  rtl={true}
+  // deviceType={"desktop"}
+
+  dotListClass="custom-dot-list-style"
+  itemClass="carousel-item-padding-40-px"
+  
+>
+{
+             rog?.map((item)=>{
+               return(
+
+  item?
+  <div>
+   <SliderCard data={item}/>
+  </div>
+  :
+  null
+
+               )
+          })
+         }
+  <div>
+
+  </div>
+ 
+</Carousel>
         
-     </div>
+     {/* </div> */}
        </div>
        <div>
          <div className="row customRow">
