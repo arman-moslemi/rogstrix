@@ -25,7 +25,7 @@ const SimilarSliderCard = ({data}) => {
   return (
     <div className="SpecialSliderCard">
     {/* <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} > */}
-    <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} >
+    <Link onClick={()=>{history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "));window.location.reload()}} >
 
 <div className="specialSliderCardBox">
 <img src={apiAsset+data.Pic1}/>

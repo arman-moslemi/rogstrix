@@ -277,7 +277,14 @@ const resources = {
      "پرداخت با تتر USDT":"USDT Pay",
      "کالا آماده ارسال به سراسر کشور":"Product Ready for Transfer to All Country",
  "ردیف":"no",
- "کد تخفیف اعمال شد":"Discount Activation Success"
+ "کد تخفیف اعمال شد":"Discount Activation Success",
+ "ضمانت اصالت کالا":"Guarantee of product authenticity",
+ "خرید کالای اصل ایسوس راگ با بیمه نامه معتبر.":"Buy the original ASUS ROG product with a valid insurance policy.",
+ "کل محصولات":"All Product",
+ "محصولات راگ":"Rog Product",
+ "مشتری یکتا":"Unique Customer",
+ "فروش محصول":"Product sales"
+
     }
     
   }

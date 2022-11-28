@@ -1,8 +1,10 @@
 import react from "react";
 import "./Styles/statistic.css"
+import { useTranslation } from 'react-i18next';
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
 const Header = ({data}) => {
+    const {t,i18n} = useTranslation();
 
 
 
@@ -16,21 +18,21 @@ const Header = ({data}) => {
                    {data?.Product} +
                 </p>
                 <p className="secondLineStatistic">
-کل محصولات                </p>
+{t("کل محصولات")}               </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
             {data?.ROGProduct} + 
                 </p>
                 <p className="secondLineStatistic">
-محصولات راگ                </p>
+{t("محصولات راگ") }             </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
                     {data?.Customer} + 
                 </p>
                 <p className="secondLineStatistic">
-                    مشتری یکتا
+                    {t("مشتری یکتا")}
                 </p>
             </Col>
             <Col md={3} className="ta-center">
@@ -38,7 +40,7 @@ const Header = ({data}) => {
                     {data?.Factor} + 
                 </p>
                 <p className="secondLineStatistic">
-فروش محصول                </p>
+{t("فروش محصول")}              </p>
             </Col>
      
           

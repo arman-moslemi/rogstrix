@@ -22,6 +22,9 @@ import { useTranslation } from 'react-i18next';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SliderCard from "../Pages/HomePageComponents/SliderCard";
+import SpecialOfferSlider from "../Pages/MainPageComponents/SpecialOfferSlider";
+import SpecialSliderCard from "../Pages/MainPageComponents/SpecialSliderCard";
+
 const MainPage = () => {
   const [slider,setSlider]=useState([])
   const [blog,setBlog]=useState([])
@@ -32,10 +35,29 @@ const MainPage = () => {
   const history = useHistory();
   const {t,i18n} = useTranslation();
   const [language,setLanguage]=useState();
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1000 },
       items: 3,
+      slidesToSlide: 2
+    },
+    tablet: {
+      breakpoint: { max: 1000, min: 464 },
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
+    }
+  };
+
+  const responsiveSpecial = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1000 },
+      items: 2,
       slidesToSlide: 2
     },
     tablet: {
@@ -161,12 +183,62 @@ console.log(i18n.language)
   .catch(function (error) {
     console.log(error);
   });
+
+
+
+
+  axios.post(apiUrl + "LastSpecialMainProduct",{MainGroupID:1})
+  .then(function (response) {
+    console.log(159876)
+
+    console.log(response)
+
+    if (response.data.result == "true") {
+
+      setSpecial(response.data.Data)
+      console.log(response.data.Data)
+
+  }
+  else{
+    console.log(789456)
+
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
   }
 
   useEffect(() => {
     mainSlider();
 // alert(val)
   }, []);
+  const mainProduct=(ss)=>{
+    const axios = require("axios");
+
+
+      axios.post(apiUrl + "SpecialMainProduct",{MainGroupID:ss})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setSpecial(response.data.Data)
+          console.log(999)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(999)
+
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+  }
   
   return (
     <>
@@ -176,7 +248,119 @@ console.log(i18n.language)
       <Menu/>
       <Container className="MainPageContainer ta-center" fluid>
         <MainSlider data={slider}/>
-        <SpecialOffer data={slider}/>
+        {/* <SpecialOffer data={slider}/> */}
+        <div className="MainPageSpecialOffer">
+        <div className="row margin25">
+                   <Col md={12} className="resTaCenter">
+                   <div className="">
+                        <p className="specialOfferTitle">
+                        {t("پیشنهادهای ویژه")}
+                        </p>
+                    </div>
+                    <div className="seeAllDiv">
+                        <Button onClick={()=>history.push("/ProductsSpecial")} className="seeAll">{t("مشاهده همه")}</Button>
+                    </div>
+                   </Col>
+               </div>
+        <div className="row">
+        <Col md={2} className="pdTop15 colSpecial1">
+            <ul className="specialOfferUl">
+            <li onClick={()=>mainProduct(1)}>
+                    {/* <a href="#"> */}
+                    {t("کامپیوتر و قطعات")}  
+                                        {/* </a> */}
+                </li>
+                <li onClick={()=>mainProduct(2)}>
+                {t(" لپتاپ و کامپیوتر آماده و قطعات")}  
+                </li>
+                <li onClick={()=>mainProduct(3)}>
+                {t("تبلت")}
+                </li>
+
+                <li onClick={()=>mainProduct(4)}>
+                {t("موبایل و گجت")}   
+                </li>
+                <li onClick={()=>mainProduct(5)}>
+                {t("شبکه و سرور")}
+                </li>
+                <li onClick={()=>mainProduct(6)}>
+                {t(" ماشین های اداری و قطعات")}    
+                </li>
+                <li>
+                {t("دوربین و لوازم جانبی")}      
+                </li>
+                <li onClick={()=>mainProduct(7)}>
+                {t("کنسول و لوارم بازی")}    
+                </li>
+            </ul>
+            </Col>
+            <Col md={8} className="colSpecial2">
+
+                {/* <SpecialOfferSlider data={special}/> */}
+                <Carousel
+  swipeable={true}
+  draggable={true}
+  showDots={true}
+  arrows={true}
+  responsive={responsiveSpecial}
+
+  ssr={true} 
+  // means to render carousel on server-side.
+  infinite={true}
+  autoPlay={false }
+  autoPlaySpeed={1000}
+  keyBoardControl={true}
+  customTransition="ease-in-out .8"
+  transitionDuration={500}
+  containerClass="carousel-container"
+  // removeArrowOnDeviceType={['desktop']}
+  rtl={true}
+  // deviceType={"desktop"}
+
+  dotListClass="custom-dot-list-style"
+  itemClass="carousel-item-padding-40-px"
+  
+>
+{
+             special?.map((item)=>{
+               return(
+
+  item?
+  <div>
+   <SpecialSliderCard data={item}/>
+  </div>
+  :
+  null
+
+               )
+          })
+         }
+  <div>
+
+  </div>
+ 
+</Carousel>
+            </Col>
+            <Col md={2}  className="colSpecial3">
+                <div className="redBanner">
+                    <img style={{borderRadius:20}} src={apiAsset+slider?.LeftSlider1}/>
+                    {/* <p>ایسوس</p> */}
+                </div>
+                <div className="blackBanner">
+                    <img style={{borderRadius:20}} src={apiAsset+slider?.LeftSlider2}/>
+                    {/* <p>سامسونگ</p> */}
+                </div>
+                </Col>
+        </div>
+    </div>
+
+
+
+
+
+
+
+        
         <div className="bannerRow">
     <div className="row">
       <Col md={6}>

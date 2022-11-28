@@ -240,7 +240,8 @@ setCity2(0)
             console.log(88)
 
 setTotal(response.data.Data)
-alert(t("کد تخفیف اعمال شد"))        
+// alert(t("کد تخفیف اعمال شد"))        
+alert(response.data.message)        
 
         }
         else{
@@ -271,7 +272,7 @@ else if(personal?.NationalCode==""|| personal?.NameFamily==""){
   alert("لطفا اسم یا کارت ملی را وارد نمایید")
 }
 else{
-        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText,Description:des})
+        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)+parseInt(tranCost*9/100)):parseInt(total+parseInt(total*9/100)),Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText,Description:des})
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(response.data.Data)
@@ -766,6 +767,8 @@ null
          '&.Mui-checked': {
            color: '#ff004e',
          },
+         fill: "#f6303f" ,
+         stroke:" #f6303f" 
        }}
        checked={type===1}
        onChange={()=>setType(1)}
@@ -895,7 +898,7 @@ null
                     </div>
                     <div>
                     <p>
-                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost))?.toLocaleString("en-de"):total?.toLocaleString("en-de")} {t("تومان")}
+                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)+parseInt(tranCost*9/100))?.toLocaleString("en-de"):parseInt(total+parseInt(total*9/100))?.toLocaleString("en-de")} {t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -905,6 +908,10 @@ null
             </div>
               <p className='fontWeightNormal mt-4'>
               {t("کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، برای ثبت سفارش مراحل بعدی را تکمیل کنید.")}
+
+              </p>
+              <p className='fontWeightNormal mt-4'>
+              {t("۹درصد ارزش افزوده")}
 
               </p>
             </div>
