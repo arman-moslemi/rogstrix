@@ -20,6 +20,7 @@ const Header = ({setLanguage}) => {
   const { isLoggedIn, token } = useContext(AuthContext);
   const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
+  const [cart, setCart] = useState(0);
   const [auto, setAuto] = useState("");
   const [defLang, setDefLang] = useState("");
   const {t,i18n} = useTranslation();
@@ -73,6 +74,31 @@ console.log(ss)
    .catch(function (error) {
      console.log(error);
    });
+
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+    var Guest=localStorage.getItem("guest")
+
+      axios
+          .post(apiUrl + "ShoppingBasketView",{
+            CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+            GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,              })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setCart(response.data?.Data?.length)
+      
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  
 
 
  }
@@ -143,10 +169,20 @@ console.log(ss)
           <MenuUser style={{marginLeft:10}} />
 {name}
         </button>        }
-        <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
+        <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" style={{position:'relative'}}>
         <CartMenu style={{marginLeft:10}}/>
         {t("سبد خرید")}
+        {
+          cart!=0?
+          <div className="badgetCart">
+          
+          </div>
+          :
+          null
+        }
+     
         </button>
+      
         <select onChange={(e) =>{ changeLang(e.target.value)}}          defaultValue={ss}
  name="Lang" id="language">
             <option value="en">En</option>
@@ -409,14 +445,33 @@ auto.map((item)=>{
 </ul>
          </Col>
          <Col xs={6} className="d-flex align-items-center">
+         {!isLoggedIn?
 
-        <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
-        <MenuUser style={{marginLeft:10}} />
+<>
 
-        </button>
-        <button onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
+<button onClick={()=>history.push("/Login")} className="headerBtn">
+<MenuUser style={{marginLeft:10}} />
+</button>
+
+</>
+:
+<>
+
+<button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
+<MenuUser style={{marginLeft:10}} />
+</button>
+
+</>
+         }
+        <button onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" style={{position:'relative'}} >
         <CartMenu  style={{marginLeft:10}}/>
-
+        {
+          cart!=0?
+        <div className="badgetCartRes">
+          
+          </div>
+          :
+          null}
         </button>
         <label class="switch resColor">
          <input  onChange={darkMode.toggle} type="checkbox"/>

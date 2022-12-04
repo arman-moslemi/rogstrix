@@ -14,7 +14,7 @@ const BlogHeader = ({data,cat}) => {
       {
          data?.map((item)=>{
 return(
-     <Button onClick={()=>{window.location.reload();cat(item.BlogTypeID)}} className="MainMenuBtn borderNone">
+     <Button onClick={()=>{cat(item.BlogTypeID)}} className="MainMenuBtn borderNone">
      
  
         {item.TypeName}

@@ -110,7 +110,7 @@ else{
             </div>
             <div className="mar-top-20">
                 <p className="rememberPassLable">
-                    با ورود و ثبت نام در <a href="#" className="whiteColor">راگ استریکس</a> شما <a href="#" className="underLine">شرایط و قوانین</a> استفاده از سرویس های این سایت و <a href="#" className="underLine">قوانین حریم خصوصی</a> آن را می پذیرید.
+                    با ورود و ثبت نام در <a href="/" className="whiteColor">راگ استریکس</a> شما <a href="/About/Rules" className="underLine">شرایط و قوانین</a> استفاده از سرویس های این سایت و <a href="/About/Rules" className="underLine">قوانین حریم خصوصی</a> آن را می پذیرید.
                 </p>
             </div>
        </div>

@@ -2602,3 +2602,25 @@ body.dark-mode .save-svg svg{
   fill: #f6303f !important;
   stroke: #f6303f !important;
 }
+body.dark-mode .MuiRadio-root svg{
+  fill: #f6303f !important;
+  stroke: #f6303f !important;
+}
+.badgetCart{
+  width: 12px;
+    height: 12px;
+    background-color: #f6303f;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 80px;
+}
+.badgetCartRes{
+  width: 12px;
+    height: 12px;
+    background-color: #f6303f;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 25%;
+}
