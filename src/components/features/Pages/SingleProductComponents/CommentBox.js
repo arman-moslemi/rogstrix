@@ -20,7 +20,7 @@ const CommentBox = ({data,id,type,token}) => {
   const mainSlider=async()=>{
     const axios = require("axios");
     console.log(token)
-    if(token && token.Length<10)
+    if(token )
 {type=="product"?
 axios.post(apiUrl + "InsertProductComment",{ProductID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
 .then(function (response) {

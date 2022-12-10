@@ -275,7 +275,7 @@ const Factor = () => {
     <div className="row pd15 borderBottomTable">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-      {t("جمع کل")} : 
+      {t("۹٪ ارزش افزوده")} 
         </p>
       </Col>
       

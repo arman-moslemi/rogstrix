@@ -154,15 +154,23 @@ const responsive = {
       >
        
        <SwiperSlide>
+       <a href={slider?.NewLink}>
+
        <img src={apiAsset+slider?.NewSlider} className="MainPageSliderImg"/>
+       </a>
 
        </SwiperSlide>
        <SwiperSlide>
+       <a href={slider?.NewLink2}>
+
        <img src={apiAsset+slider?.NewSlider2} className="MainPageSliderImg"/>
-
+</a>
        </SwiperSlide>
        <SwiperSlide>
+       <a href={slider?.NewLink3}>
+
        <img src={apiAsset+slider?.NewSlider3} className="MainPageSliderImg"/>
+       </a>
 
        </SwiperSlide>
       </Swiper>

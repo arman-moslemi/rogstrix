@@ -54,8 +54,9 @@ const mainSlider=async()=>{
           setData(response.data.Data)
           console.log(response.data.Data)
           axios
-          .post(apiUrl + "FilterProduct",{
-            GroupID:response.data.Data[0].GroupID
+          .post(apiUrl + "FilterSubProduct",{
+            // GroupID:response.data.Data[0]?.GroupID
+            SubGroupID:response.data.Data[0]?.SubGroupID
           },{ headers: {
             lang: i18n.language
           }})

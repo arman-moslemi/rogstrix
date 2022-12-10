@@ -58,7 +58,7 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
       </ul> */}
   </div>
   <p className="productName">
-  {truncate(data?.ProductName+" "+data?.BrandName,50)}
+  {truncate(data?.ProductName+" "+data?.BrandName,140)}
   </p>
 <div className=" marginTop30 bot2 ta-left">
 {  data?.SpecialCost?

@@ -61,12 +61,12 @@ const MainPage = () => {
       slidesToSlide: 2
     },
     tablet: {
-      breakpoint: { max: 1000, min: 464 },
+      breakpoint: { max: 1000, min: 790 },
       items: 2,
       slidesToSlide: 2 // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 790, min: 0 },
       items: 1,
       slidesToSlide: 1 // optional, default to 1.
     }
@@ -590,7 +590,7 @@ console.log(i18n.language)
                         {t("محصولات جدید")}
                         </p>
                     </div>
-                    <div className="seeAllDiv" onClick={()=>history.push("/EachCategory/1")} style={{paddingLeft:50}}>
+                    <div className="seeAllDiv" onClick={()=>history.push("/products/89")} style={{paddingLeft:50}}>
                         <Button className="seeAll"> {t("مشاهده همه")}</Button>
                     </div>
                    </Col>

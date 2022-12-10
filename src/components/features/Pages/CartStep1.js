@@ -116,6 +116,12 @@ setTotal(tot)
         const storedData = JSON.parse(localStorage.getItem("userData"))?.token
 console.log(555)
 console.log(storedData?.toString().length<10 && storedData?true:false)
+if(data.length=0)
+         
+{
+    alert("سبد خرید خالی است!")
+
+}
          if(storedData?.toString().length<10 && storedData)
          
 {         history.push("/CartStep2/"+storedData)
@@ -190,7 +196,7 @@ const deleted=(id)=>{
                         <img src={apiAsset+item.Pic1} className="CartProductImg"/>
                         <div>
                             <p className="CartProductName">
-{item.ProductName}                            </p>
+{item.ProductName?item.ProductName:item?.SystemName}                            </p>
                             <div className="d-flex align-items-center">
                                 <div className="CartColor" style={{backgroundColor:"#"+item.ColorHex}}>
 

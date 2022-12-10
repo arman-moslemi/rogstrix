@@ -86,3 +86,13 @@ max-width: 0%;
       padding: 10px;
     }
   }
+  @media screen and (max-width:450px){
+  .colSpecial1{
+    flex: 0 0 100%;
+max-width: 100%;
+  }
+  .colSpecial2{
+    flex: 0 0 100%;
+max-width: 100%;
+  }
+}

@@ -70,7 +70,10 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="secondCol">
           <img src={Plus1} className="plus1Img"/>
           <img src={Plus2} className="plus2Img"/>
+          <a href={data?.LinkRogSlider1}>
+
           <img src={apiAsset+data.MainRogSlider1} className="sliderImg"/>
+          </a>
         </Col>
         </div>
 
@@ -110,7 +113,10 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="secondCol">
           <img src={Plus1} className="plus1Img"/>
           <img src={Plus2} className="plus2Img"/>
+          <a href={data?.LinkRogSlider1}>
+
           <img src={apiAsset+data.RogSlider1} className="sliderImg"/>
+          </a>
         </Col>
         </div>
 
@@ -150,7 +156,9 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="secondCol">
           <img src={Plus1} className="plus1Img"/>
           <img src={Plus2} className="plus2Img"/>
+          <a href={data?.LinkRogSlider2}>
           <img src={apiAsset+data.RogSlider2} className="sliderImg"/>
+        </a>
         </Col>
         </div>
 
@@ -191,7 +199,10 @@ const FirstSlider = ({data}) => {
         <Col md={6} className="secondCol">
           <img src={Plus1} className="plus1Img"/>
           <img src={Plus2} className="plus2Img"/>
+          <a href={data?.LinkRogSlider3}>
+
           <img src={apiAsset+data.RogSlider3} className="sliderImg"/>
+          </a>
         </Col>
         </div>
 

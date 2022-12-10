@@ -2606,6 +2606,10 @@ body.dark-mode .MuiRadio-root svg{
   fill: #f6303f !important;
   stroke: #f6303f !important;
 }
+body.dark-mode .MuiCheckbox-root svg{
+  fill: #f6303f !important;
+  stroke: #f6303f !important;
+}
 .badgetCart{
   width: 12px;
     height: 12px;

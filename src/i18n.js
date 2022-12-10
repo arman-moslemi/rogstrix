@@ -283,7 +283,8 @@ const resources = {
  "کل محصولات":"All Product",
  "محصولات راگ":"Rog Product",
  "مشتری یکتا":"Unique Customer",
- "فروش محصول":"Product sales"
+ "فروش محصول":"Product sales",
+ "۹٪ ارزش افزوده": "9% added value"
 
     }
     
