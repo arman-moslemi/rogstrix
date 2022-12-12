@@ -35,6 +35,7 @@ const [type,setType]=useState([])
 const [special,setSpecial]=useState([])
 const {t,i18n} = useTranslation();
 const [language,setLanguage]=useState();
+const [id,setID]=useState()
 
 const { isLoggedIn, token } = useContext(AuthContext);
 
@@ -57,6 +58,7 @@ console.log(params)
           console.log(params)
           console.log(response2.data.Data)
           console.log(response2.data.Data[0].BlogID)
+          setID(response2.data.Data[0].BlogID)
           axios
           .post(apiUrl + "SingleBlogComment",{
             BlogID:response2.data.Data[0].BlogID
@@ -159,7 +161,7 @@ console.log(params)
         <ShowBlog data={data}/>
         {/* <ReadMore/> */}
         <div className="whiteBox3 mt-3">
-         <CommentBox data={com} id={params} token={token}/>
+         <CommentBox data={com} id={id} token={token}/>
             </div>
          </Col>
 

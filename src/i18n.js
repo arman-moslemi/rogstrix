@@ -284,7 +284,11 @@ const resources = {
  "محصولات راگ":"Rog Product",
  "مشتری یکتا":"Unique Customer",
  "فروش محصول":"Product sales",
- "۹٪ ارزش افزوده": "9% added value"
+ "۹٪ ارزش افزوده": "9% added value",
+ "نظرات و دیدگاه":"Comments",
+ "کاربر":"User",
+ "امتیاز شما به این محصول":"Your Rate",
+ "ارسال نظر":"Send Comment"
 
     }
     

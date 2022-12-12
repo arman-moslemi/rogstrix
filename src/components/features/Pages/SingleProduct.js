@@ -131,6 +131,8 @@ alert("با موفقیت ذخیره شد")
   }
   const mainSlider=async()=>{
     const axios = require("axios");
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
 
       axios
           .post(apiUrl + "SingleProductByName",{
@@ -138,7 +140,9 @@ alert("با موفقیت ذخیره شد")
             // ProductName:params.replace('-'," "),
             ProductName:params,
             CustomerID:isLoggedIn?token:""
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response2) {
         console.log(response2.data)
         if (response2.data.result == "true") {
@@ -157,7 +161,9 @@ setSpecialCost(response2.data.Data.SpecialCost)
 axios
 .post(apiUrl + "SinglePropertyNew",{
   ProductID:response2.data.Data.ProductID
-})
+},{ headers: {
+  lang: i18n.language
+}})
 .then(function (response) {
 if (response.data.result == "true") {
 
@@ -177,7 +183,9 @@ console.log(error);
 axios
 .post(apiUrl + "SingleProperty",{
   ProductID:response2.data.Data.ProductID
-})
+},{ headers: {
+  lang: i18n.language
+}})
 .then(function (response) {
 if (response.data.result == "true") {
 
@@ -216,7 +224,9 @@ console.log(error);
 axios
 .post(apiUrl + "SimilarProduct",{
   ProductID:response2.data.Data.ProductID,
-})
+},{ headers: {
+  lang: i18n.language
+}})
 .then(function (response) {
 if (response.data.result == "true") {
 
@@ -686,7 +696,7 @@ product?.Available?
               <SimilarSlider data={similar}/>
             </div>
             <div className="whiteBox3 mt-3">
-         <CommentBox token={token} data={com} id={params} type={"product"}/>
+         <CommentBox token={token} data={com} id={id} type={"product"}/>
             </div>
 
       </Container>

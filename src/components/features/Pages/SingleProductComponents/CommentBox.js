@@ -10,9 +10,12 @@ import {useParams } from "react-router-dom";
 import CustomizedDialogs from '../layouts/AlertModal';
 import StartRate from './StarRate';
 // if you want to use array
+import { useTranslation } from 'react-i18next';
 
 
 const CommentBox = ({data,id,type,token}) => {
+  const {t,i18n} = useTranslation();
+
   const [releated,setRel]=useState()
   const [rate,setRate]=useState(5)
   const [open,setOpen]=useState(false)
@@ -80,20 +83,20 @@ setOpen(true)
   return (
     <>
        <p className="boxTitle2 BoldFont" id="colorRed">
-            نظرات و دیدگاه
+        {t("نظرات و دیدگاه")}    
                 </p>
                 <hr className="dottedH" id="borderRed"/>
            <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
           <img className="profileComment" src={UserProfile}/>
              <p className="commenterName">
-کاربر             </p>
+{t("کاربر" )}            </p>
 <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
 
           </div>
           <div className="d-flex align-items-center">
             <p className='commenterName' style={{marginTop:8,marginLeft:10}}>
-              امتیاز شما به این محصول :
+              {t("امتیاز شما به این محصول")} :
             </p>
             <StartRate  setRate={setRate} />
           </div>
@@ -102,7 +105,7 @@ setOpen(true)
             <div className="row mt-2">
               <Col md={12} className="ta-left pd0">
                 <Button onClick={()=>mainSlider()} className="addComment">
-                 ارسال نظر
+                 {t("ارسال نظر")}
                 </Button>
               </Col>
             </div>
