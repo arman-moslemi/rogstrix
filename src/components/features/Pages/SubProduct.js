@@ -127,10 +127,11 @@ console.log(error);
   const setCost=()=>{
 setData(data2)
     console.log(14563)
+    console.log(data2)
     console.log(data)
 //  setProduct([])
 // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-setData(data.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
+setData(data2.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
 console.log(data)
 
 }

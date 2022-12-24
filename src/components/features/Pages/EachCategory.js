@@ -12,6 +12,7 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
 import { useTranslation } from 'react-i18next';
+import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
 
 const EachCategory = () => {
   const [data,setData]=useState([])
@@ -102,8 +103,11 @@ console.log(params)
               data.map((item)=>{
 return(
 
-              <CardBox data={item} className="test" />
+              // <CardBox data={item} className="test" />
+              <Col md={3} className="marginTop15">
 
+              <BestSellingSliderCard data={item}/>
+</Col>
 )
               })
             }

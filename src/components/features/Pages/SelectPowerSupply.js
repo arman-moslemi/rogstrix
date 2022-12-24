@@ -123,8 +123,8 @@ localStorage.setItem("guest",response.data.Data2?response.data.Data2:0)
           console.log(55)
           console.log(response.data.Data)
           axios
-          .post(apiUrl + "FilterProduct",{
-            GroupID:response.data.Data[0][0].GroupID
+          .post(apiUrl + "FilterSubProduct",{
+           SubGroupID:response.data.Data[0][0].SubGroupID
           })
       .then(function (response) {
         if (response.data.result == "true") {

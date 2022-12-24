@@ -92,7 +92,8 @@ const CartStep1 = () => {
                 GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,              })
           .then(function (response) {
             if (response.data.result == "true") {
-
+console.log(12376678)
+console.log(data?.length)
               setData(response.data.Data)
               console.log(response.data.Data)
 var tot=0
@@ -114,25 +115,28 @@ setTotal(tot)
       }
       const toStep2=()=>{
         const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+console.log(234555)
+console.log(data?.length)
 console.log(555)
 console.log(storedData?.toString().length<10 && storedData?true:false)
-if(data.length=0)
+if(data.length==0)
          
 {
     alert("سبد خرید خالی است!")
 
-}
-         if(storedData?.toString().length<10 && storedData)
-         
-{         history.push("/CartStep2/"+storedData)
-}         else{
-    alert("ابتدا ورورد کنید")
-    history.push("/Login")
+}     
+else if(storedData?.toString().length>10 && !storedData){
+  alert("ابتدا ورود کنید")
+  history.push("/Login")
 
 }
+ else      
+{        
+   history.push("/CartStep2/"+storedData)
+  // alert("سبد خرید خالی است!")
 
 
-
+}
 
       }
 const deleted=(id)=>{

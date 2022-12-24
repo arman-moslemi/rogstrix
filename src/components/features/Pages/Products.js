@@ -129,7 +129,7 @@ setHead(response.data.Data[0][0].Title)
         console.log(data)
     //  setProduct([])
     // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-    setData(data.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
+    setData(data2.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
     console.log(data)
     
     }
