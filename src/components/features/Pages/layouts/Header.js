@@ -155,6 +155,10 @@ console.log(ss)
     </div>
       </div>
       <div className="d-flex">
+      <div className="cardTitleW100" style={{marginLeft:100}}>
+
+        <p>سایت در حال بروز رسانی میباشد</p>
+        </div>
         <button className="headerBtn" onClick={()=>onClick()}>
         <MenuSearch/>
         </button>
