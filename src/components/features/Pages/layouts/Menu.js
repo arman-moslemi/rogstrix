@@ -75,15 +75,20 @@ const groups=async()=>{
    <div className="desktopMenu">
    <div className="mainBack">
    <div className="MainMenu d-flex">
+   <Button className="MainMenuBtn borderNone" onClick={onClick}>
+  <MouseMenu className="marginLeft15 menuResponsiveNone"/>
+  {t("مشاهده محصولات")}
+  <FaChevronDown/>
+  </Button>
      <Button onClick={()=>history.push("/CompletedSystems")} className="MainMenuBtn borderNone">
 
         <MenuCase  className="marginLeft15 menuResponsiveNone"/>
-        {t("سیستم‌های تکمیل شده")}
+        {t("گالری سیستم های فروخته شده")}
      </Button>
      <Button onClick={()=>history.push("/AssembleSecond")} className="MainMenuBtn borderNone">
  
       <AssembleMenu  className="marginLeft15 menuResponsiveNone"/>
-      {t("ساخت سیستم")}
+      {t("اسمبل آنلاین")}
      </Button>
 
      <Button onClick={()=>history.push("/SystemGuide")} className="MainMenuBtn borderNone">
@@ -96,11 +101,7 @@ const groups=async()=>{
         <UpdateMenu className="marginLeft15 menuResponsiveNone"/>
         ارتقائ لپ تاپ
      </Button> */}
-     <Button className="MainMenuBtn borderNone" onClick={onClick}>
-  <MouseMenu className="marginLeft15 menuResponsiveNone"/>
-  {t("مشاهده محصولات")}
-  <FaChevronDown/>
-  </Button>
+ 
 
      <Button onClick={()=>history.push("/Home")} className="MainMenuBtn2 borderNone">
       <RedMenuLogo/>
@@ -110,44 +111,44 @@ const groups=async()=>{
    </div>
    {showMega ?<div className="megaMenu">
       <div className="MegaMenuFirstRow">
-         <Link onClick={()=>{history.push("/EachCategory/1");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Computer");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(1)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t("کامپیوتر و قطعات")}             </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/2");window.location.reload()}}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Laptop");window.location.reload()}}  onMouseOver={()=>{setMenu(true);setPak(2)}}className="megaMenuFirstRowBox" >
             {/* <MegaMenuLapTop/> */}
             <p className='menuTextBack'>
             {t(" لپتاپ و کامپیوتر آماده و قطعات")} 
             </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/3");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Tablet");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(3)}} className="megaMenuFirstRowBox" >
             {/* <MegaMenuTablet/> */}
             <p className='menuTextBack'>
             {t("تبلت")}
             </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/4");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(4)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Mobile");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(4)}} className="megaMenuFirstRowBox" >
             {/* <MegaMenuMobile/> */}
             <p className='menuTextBack'>
             {t("موبایل و گجت")}   
             </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/5");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(5)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Network");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(5)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t("شبکه و سرور")}
             </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/6");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(6)}}className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Office");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(6)}}className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t(" ماشین های اداری و قطعات")}   
                      </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/7");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(7)}}className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Camera");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(7)}}className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t("دوربین و لوازم جانبی")}    
                     </p>
          </Link>
-         <Link onClick={()=>{history.push("/EachCategory/8");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(8)}} className="megaMenuFirstRowBox" >
+         <Link onClick={()=>{history.push("/EachCategory/Console");window.location.reload()}} onMouseOver={()=>{setMenu(true);setPak(8)}} className="megaMenuFirstRowBox" >
             <p className='menuTextBack'>
             {t("کنسول و لوارم بازی")}    
                     </p>
@@ -201,7 +202,7 @@ const groups=async()=>{
 
 <ul>
    <li className="listTitle">
-      <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
+      <Link onClick={()=>{history.push("/products/"+item[0].EngTitle);window.location.reload()}}>
 {item[0].Title}                  </Link>
    </li>
 {
@@ -209,8 +210,7 @@ item.map((item2,index)=>{
 return(
 index<12?
    <li className="listItems">
-      {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
-      <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+      <Link onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 {item2.SubTitle }                 </Link>
    </li>
    :
@@ -230,7 +230,7 @@ null
 
 <ul>
    <li className="listTitle">
-      <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
+      <Link onClick={()=>{history.push("/products/"+item[0].EngTitle);window.location.reload()}}>
                </Link>
    </li>
 {
@@ -239,7 +239,7 @@ return(
 index>12 && index<25?
    <li className="listItems">
       {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
-      <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+      <Link onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 {item2.SubTitle }                 </Link>
    </li>
    :
@@ -262,7 +262,7 @@ null
 
 <ul>
    <li className="listTitle">
-      <Link onClick={()=>{history.push("/products/"+item[0].GroupID);window.location.reload()}}>
+      <Link onClick={()=>{history.push("/products/"+item[0].EngTitle);window.location.reload()}}>
                </Link>
    </li>
 {
@@ -271,7 +271,7 @@ return(
 index>25?
    <li className="listItems">
       {/* <Link onClick={()=>{history.push("/products/"+item2.GroupID+"/"+item2.BrandID);window.location.reload()}}> */}
-      <Link onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+      <Link onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 {item2.SubTitle }                 </Link>
    </li>
    :

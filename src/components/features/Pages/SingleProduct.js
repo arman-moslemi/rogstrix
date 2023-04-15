@@ -297,6 +297,11 @@ const images = [
 
   useEffect(() => {
     mainSlider();
+    document.title = product?.ProductName;
+    // document.title = params;
+    document.getElementsByTagName("META")[2].content="Product";
+
+
 // alert(val)
   }, []);
   const [open1, setOpen1] = useState(false);

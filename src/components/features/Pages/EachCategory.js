@@ -13,6 +13,7 @@ import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
 import { useTranslation } from 'react-i18next';
 import BestSellingSliderCard from "./MainPageComponents/BestSellingSliderCard";
+import parse  from 'html-react-parser';
 
 const EachCategory = () => {
   const [data,setData]=useState([])
@@ -32,8 +33,10 @@ console.log(params)
     i18n.changeLanguage(lang)
     console.log(888)
       axios
-          .post(apiUrl + "MainProduct",{
-            MainGroupID:cat
+          // .post(apiUrl + "MainProduct",{
+          //   MainGroupID:cat
+          .post(apiUrl + "MainProductByName",{
+            MainGroupName:cat
           },{ headers: {
             lang: i18n.language
           }})
@@ -76,27 +79,40 @@ console.log(params)
               </a>
             </li>
             /
+            {
+              data?
             <li>
               <Link onClick={()=>history.push("/EachCategory/"+params)}>
 {data[0]?.MainTitle}              </Link>
             </li>
+:
+null
+}
 
           </ul>
         </div>
 
        <div className="EachCategoryRow marginTop3 mb-4">
        <div className="EachCategoryCol1 categoryResNone">
-          <CategoryList cat={setCat} className=""/>
+          {/* <CategoryList cat={setCat} className=""/> */}
           </div>
           <div className="EachCategoryCol2">
           <Sorts data={data} setData={setData}/>
           <div className="categoryDesNone">
-          <CategoryList cat={setCat} />
+          {/* <CategoryList cat={setCat} /> */}
           </div>
            <div className="whiteBoxCategory">
-          <p className="BoxTitle">
+            {
+              data?
+              <p className="BoxTitle">
+              همه {data[0]?.MainTitle}ها
+            </p>
+              :
+              null
+            }
+          {/* <p className="BoxTitle">
             همه {data[0]?.MainTitle}ها
-          </p>
+          </p> */}
 
           <div className="CardBoxDiv margin-top-9">
             {
@@ -118,6 +134,9 @@ return(
           </div>
           <div className="paginationBox ta-center">
           <PaginationCustom/>
+          </div>
+          <div style={{marginTop:20}}>
+            {parse(data[0][0]?.MainDescription)}
           </div>
         </div>
           </div>

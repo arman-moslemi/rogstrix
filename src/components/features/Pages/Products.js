@@ -23,6 +23,7 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
 import { useTranslation } from 'react-i18next';
+import parse  from 'html-react-parser';
 
 const Products = () => {
   const [language,setLanguage]=useState();
@@ -47,8 +48,10 @@ const mainSlider=async()=>{
     const lang=await localStorage.getItem("lang")
     i18n.changeLanguage(lang)
       axios
-          .post(apiUrl + "GroupProduct",{
-            GroupID:params
+          // .post(apiUrl + "GroupProduct",{
+          //   GroupID:params
+          .post(apiUrl + "GroupProductByName",{
+            GroupName:params
           },{ headers: {
             lang: i18n.language
           }})
@@ -70,6 +73,48 @@ if(brandparams){
           console.log(brandparams)
           console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
+
+axios
+.post(apiUrl + "FilterProduct",{
+  GroupID:response.data.Data[0][0].GroupID
+},{ headers: {
+  lang: i18n.language
+}})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setProduct(response.data.Data)
+console.log(44)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+axios
+// .get(apiUrl + "AllBrand",{ headers: {
+.post(apiUrl + "BrandGroup",{GroupID:response.data.Data[0][0].GroupID},{ headers: {
+  lang: i18n.language
+}})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setBrand(response.data.Data)
+console.log(44)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
       }
       else{
         console.log(response.data.result)
@@ -78,47 +123,7 @@ setHead(response.data.Data[0][0].Title)
       .catch(function (error) {
         console.log(error);
       });
-      axios
-          .post(apiUrl + "FilterProduct",{
-            GroupID:params
-          },{ headers: {
-            lang: i18n.language
-          }})
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setProduct(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-      axios
-          // .get(apiUrl + "AllBrand",{ headers: {
-          .post(apiUrl + "BrandGroup",{GroupID:params},{ headers: {
-            lang: i18n.language
-          }})
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setBrand(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
+    
 
 
 
@@ -229,16 +234,30 @@ mainSlider()
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
-            <li>
-              <a>
-              {t("سایت راگ استریکس")}
-              </a>
-            </li>
-            /
-            <li>
-              <a>
-{data[0]?.Title}              </a>
-            </li>
+            {
+               
+                data[0]?
+                <>
+                <li>
+                <a>
+                {t("سایت راگ استریکس")}
+                </a>
+              </li>
+              /
+               <li>
+                <a href={"/EachCategory/"+data[0][0]?.EngMainGroupName}>
+                {data[0][0]?.MainTitle}             </a>
+              </li>
+              /
+              <li >
+                <a >
+                {data[0][0]?.GroupName}            </a>
+              </li>
+              </>
+                :
+                null
+            }
+          
            
           </ul>
         </div>
@@ -522,6 +541,9 @@ return(
 
 
               </div>
+              <div style={{marginTop:20}}>
+            {parse(data[0][0]?.GroupDescription)}
+          </div>
           </div>
           {/* <div className="productsWhiteBox">
           <div className="row margin25">

@@ -254,7 +254,7 @@ auto.map((item)=>{
    item?.map((item2)=>{
       return(
             // <NavDropdown.Item  >
-           <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+           <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
             {item2.SubTitle } 
            </p>
@@ -273,7 +273,7 @@ auto.map((item)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>
@@ -290,7 +290,7 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>
@@ -307,7 +307,7 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>
@@ -324,7 +324,7 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>
@@ -341,7 +341,7 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>
@@ -358,7 +358,7 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>
@@ -375,7 +375,7 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-  <p onClick={()=>{history.push("/Subproduct/"+item2.SubGroupID);window.location.reload()}}>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
 
   {item2.SubTitle } 
  </p>

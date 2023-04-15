@@ -23,6 +23,7 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
 import { useTranslation } from 'react-i18next';
+import parse  from 'html-react-parser';
 
 const SubProducts = () => {
   const [language,setLanguage]=useState();
@@ -46,8 +47,10 @@ const mainSlider=async()=>{
     const lang=await localStorage.getItem("lang")
     i18n.changeLanguage(lang)
       axios
-          .post(apiUrl + "SubGroupProduct",{
-            SubGroupID:params
+          // .post(apiUrl + "SubGroupProduct",{
+          .post(apiUrl + "SubGroupProductByName",{
+            // SubGroupID:params
+            SubGroupName:params
           },{ headers: {
             lang: i18n.language
           }})
@@ -65,14 +68,33 @@ const mainSlider=async()=>{
             setData(response.data.Data)
           
           }
+          axios
+          // .get(apiUrl + "AllBrand"
+          .post(apiUrl + "BrandSubGroup",{SubGroupID:response.data.Data[0][0].SubGroupID},{ headers: {
+            lang: i18n.language
+          }})
+      .then(function (response) {
+        if (response.data.result == "true") {
 
+          setBrand(response.data.Data)
+          console.log(44)
+          console.log(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
           console.log(brandparams)
           console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
 axios
 .post(apiUrl + "FilterSubProduct",{
   // GroupID:response.data.Data[0][0].GroupID
-  SubGroupID:params
+  SubGroupID:response.data.Data[0][0].SubGroupID
 },{ headers: {
   lang: i18n.language
 }})
@@ -100,26 +122,7 @@ console.log(error);
         console.log(error);
       });
    
-      axios
-          // .get(apiUrl + "AllBrand"
-          .post(apiUrl + "BrandSubGroup",{SubGroupID:params},{ headers: {
-            lang: i18n.language
-          }})
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setBrand(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
+    
 
 
 
@@ -230,17 +233,36 @@ mainSlider()
 
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
-          <ul>
-            <li>
-              <a>
-              {t("سایت راگ استریکس")}
-              </a>
-            </li>
-            /
-            <li>
-              <a>
-{data[0]?.Title}              </a>
-            </li>
+        <ul>
+            {
+               
+                data[0]?
+                <>
+                <li>
+                <a>
+                {t("سایت راگ استریکس")}
+                </a>
+              </li>
+              /
+               <li>
+                <a href={"/EachCategory/"+data[0][0]?.EngMainGroupName}>
+                {data[0][0]?.MainTitle}             </a>
+              </li>
+              /
+              <li >
+                <a href={"/products/"+data[0][0]?.EngGroupName}>
+                {data[0][0]?.GroupName}            </a>
+              </li>
+              /
+              <li >
+                <a >
+                {data[0][0]?.SubTitle}            </a>
+              </li>
+              </>
+                :
+                null
+            }
+          
            
           </ul>
         </div>
@@ -524,6 +546,15 @@ return(
 
 
               </div>
+              {
+               
+               data[0]?
+              <div style={{marginTop:20}}>
+              {parse (data[0][0]?.SubGroupDescription)}
+
+              </div>
+              :
+              null}
           </div>
           {/* <div className="productsWhiteBox">
           <div className="row margin25">

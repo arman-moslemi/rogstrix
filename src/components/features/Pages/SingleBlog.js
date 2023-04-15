@@ -126,6 +126,9 @@ console.log(params)
 
   useEffect(() => {
     mainSlider();
+    // document.title =data?.Title;
+    document.title =params;
+
 // alert(val)
   }, []);
   return (

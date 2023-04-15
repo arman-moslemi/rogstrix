@@ -9,8 +9,8 @@ const resources = {
     translation: {
       "سیستم های آماده": "Ready systems",
       "ساخت و اسمبل کردن سیستم":"Build and assemble the system",
-      "سیستم‌های تکمیل شده":"Completed systems",
-      "ساخت سیستم":"System construction",
+      "گالری سیستم های فروخته شده":"Sold systems Gallery",
+      "اسمبل آنلاین":"Assemble online",
       "سیستم های پیشنهادی":"Suggested systems",
       "مشاهده محصولات":"View products",
       "کامپیوتر و قطعات":"computer",
