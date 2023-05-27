@@ -64,7 +64,7 @@ alert("با موفقیت ذخیره شد")
                     {t("قیمت محصول :")}
                     </p>
                     <p className="price">
-                        {data[0].Cost}{t("تومان")}
+                        {data[0].Cost.toLocaleString("en-de")}{t("تومان")}
                     </p>
                   </Col>
                   <Col md={5}>

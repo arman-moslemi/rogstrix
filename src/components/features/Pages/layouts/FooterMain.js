@@ -95,7 +95,7 @@ const FooterMain = () => {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/ContactUs">
               {t("تماس با ما")}
               </a>
             </li>

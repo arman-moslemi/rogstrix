@@ -30,7 +30,7 @@ const CompareCards = ({data}) => {
                         قیمت محصول :
                     </p>
                     <p className="price">
-                        {data[0].Cost} تومان
+                        {data[0].Cost.toLocaleString("en-de")} تومان
                     </p>
                   </Col>
                   <Col md={5}>
