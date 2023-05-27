@@ -51,7 +51,7 @@ const MainPage = () => {
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1 // optional, default to 1.
+      slidesToSlide: 2 // optional, default to 1.
     }
   };
 
@@ -101,7 +101,7 @@ console.log(i18n.language)
         if (response.data.result == "true") {
 
           setSeller(response.data.Data)
-          console.log(22)
+          console.log(889988)
           console.log(response.data.Data)
 
       }
@@ -312,11 +312,11 @@ console.log(i18n.language)
   ssr={true} 
   // means to render carousel on server-side.
   infinite={true}
-  autoPlay={false }
+  autoPlay={true }
   autoPlaySpeed={1000}
   keyBoardControl={true}
   customTransition="ease-in-out .8"
-  transitionDuration={500}
+  transitionDuration={4000}
   containerClass="carousel-container"
   // removeArrowOnDeviceType={['desktop']}
   rtl={true}
@@ -443,11 +443,11 @@ console.log(i18n.language)
   ssr={true} 
   // means to render carousel on server-side.
   infinite={true}
-  autoPlay={false }
+  autoPlay={true }
   autoPlaySpeed={1000}
   keyBoardControl={true}
   customTransition="ease-in-out .8"
-  transitionDuration={500}
+  transitionDuration={4000}
   containerClass="carousel-container"
   // removeArrowOnDeviceType={['desktop']}
   rtl={true}
@@ -483,7 +483,8 @@ console.log(i18n.language)
        <div>
          <div className="row customRow">
            <Col md={4}>
-              <div className="productBannerBox" id="backBlack">
+              <Link to={slider.LinkDownSlider1} href={slider.LinkDownSlider1}className="productBannerBox" id="backBlack">
+
               <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider1}/>
                 <div className="">
 
@@ -492,10 +493,11 @@ console.log(i18n.language)
                   </a> */}
                 </div>
 
-              </div>
+              </Link>
            </Col>
            <Col md={4}>
-           <div className="productBannerBox" id="backGray">
+           <Link to={slider.LinkDownSlider2} href={slider.LinkDownSlider2}className="productBannerBox" id="backGray">
+
            <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider2}/>
 
                 {/* <div className="">
@@ -506,10 +508,10 @@ console.log(i18n.language)
                 </div> */}
 
 
-              </div>
+              </Link>
            </Col>
            <Col md={4}>
-           <div className="productBannerBox" id="backBlack">
+           <Link to={slider.LinkDownSlider3} href={slider.LinkDownSlider3}className="productBannerBox" id="backBlack">
            <img style={{borderRadius:20}} src={apiAsset+slider?.DownSlider3}/>
                 {/* <div className="">
 
@@ -518,7 +520,7 @@ console.log(i18n.language)
                   </a>
                 </div> */}
 
-              </div>
+              </Link>
            </Col>
          </div>
        </div>

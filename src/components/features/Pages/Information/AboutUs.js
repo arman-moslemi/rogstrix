@@ -6,15 +6,20 @@ import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import parse  from 'html-react-parser';
+import { useTranslation } from 'react-i18next';
 
 const AboutUs = () => {
   const [data,setData]=useState([])
   const params = useParams().id;
+  const {t,i18n} = useTranslation();
 
   const mainSlider=async()=>{
     const axios = require("axios");
-
-axios.get(apiUrl + "Information")
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
+axios.get(apiUrl + "Information",{ headers: {
+  lang: i18n.language
+}})
     .then(function (response) {
       if (response.data.result == "true") {
 

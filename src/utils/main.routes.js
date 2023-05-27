@@ -43,6 +43,7 @@ import CartStep2 from '../components/features/Pages/CartStep2';
 import AssembleSecond from '../components/features/Pages/AssembleSecond';
 import Factor from '../components/features/Pages/Factor';
 import AboutUsPage from '../components/features/Pages/AboutUsPage';
+import ContactUsPage from '../components/features/Pages/ContactUsPage';
 import ScrollToTop from '../components/features/layouts/ScrollToTop';
 
 const MainRoutes = (props) => {
@@ -314,6 +315,13 @@ render={(props) => <AssembleSecond/>}>
 path='/About/:id'
 name='درباره ما'
 render={(props) => <AboutUsPage/>}>
+
+</Route>
+<Route
+
+path='/ContactUs'
+name='درباره ما'
+render={(props) => <ContactUsPage/>}>
 
 </Route>
 						<Route
