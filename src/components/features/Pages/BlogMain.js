@@ -149,7 +149,7 @@ if(cat!=0)
        <div className="row mt-5 mb-5">
          <Col md={8}>
           <Link to={slider.BlogLink1} style={{position:'relative'}}>
-          <img className="BlogMainImg" src={apiAsset+slider[0].BlogPic1} />
+          <img className="BlogMainImg" src={apiAsset+slider[0]?.BlogPic1} />
           <div className="redDiv" style={{position:'absolute'}}>
             <p>{slider.BlogText1}</p>
           </div>
@@ -157,13 +157,13 @@ if(cat!=0)
          </Col>
          <Col md={4}>
          <Link to={slider.BlogLink1} style={{position:'relative'}}>
-         <img className="BlogSecondImg" src={apiAsset+slider[0].BlogPic2}/>
+         <img className="BlogSecondImg" src={apiAsset+slider[0]?.BlogPic2}/>
           <div className="redDiv" style={{position:'absolute'}}>
           <p>{slider.BlogText2}</p>
           </div>
          </Link>
          <Link to={slider.BlogLink1} style={{position:'relative'}}>
-          <img className="BlogSecondImg margintop20" src={apiAsset+slider[0].BlogPic3}/>
+          <img className="BlogSecondImg margintop20" src={apiAsset+slider[0]?.BlogPic3}/>
           <div className="redDiv" style={{position:'absolute'}}>
           <p>{slider.BlogText3}</p>
           </div>

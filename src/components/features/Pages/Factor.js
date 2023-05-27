@@ -165,6 +165,11 @@ const Factor = () => {
   <div className="pdTable">
   <div className="topBarTable">
     <div className="row">
+      <Col md={1} className="ta-right">
+      <p className="fontWeightBold2 mb-2">
+      {t("ردیف")}
+        </p>
+      </Col>
       <Col md={6} className="ta-right">
       <p className="fontWeightBold2 mb-2">
       {t("شرح محصول")}
@@ -195,19 +200,27 @@ const Factor = () => {
    
   </div>
   {
-    product?.map((item)=>{
+    product?.map((item,index)=>{
       return(
 
   <div className="row pd15 borderBottomTable">
+      <Col md={1} className="ta-right">
+      <p className="fontWeightNormal2 mb-2">
+          {index+1}
+        </p>
+      </Col>
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-          {item.ProdutName+" "+item.BrandName}
+          {item.ProductName+" "+item.ColorName+" "+item.BrandName}
+        </p>
+      <p className="fontWeightNormal2 mb-2">
+          {item.WarrantyName} 
         </p>
       </Col>
       
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-         {item.Cost} {t("تومان")}
+         {item.Cost?.toLocaleString("en-de")} {t("تومان")}
         </p>
       </Col>
       {/* <Col md={1} className="ta-right">
@@ -222,7 +235,7 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        {item.Cost*item.Number} {t("تومان")}
+        {(item.Cost*item.Number)?.toLocaleString("en-de")} {t("تومان")}
         </p>
       </Col>
     </div>
@@ -240,7 +253,7 @@ const Factor = () => {
       
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-      {product?product[0]?.SendCost:null} {t("تومان")}
+      {product?product[0]?.SendCost?.toLocaleString("en-de"):null} {t("تومان")}
         </p>
       </Col>
       {/* <Col md={1} className="ta-right">
@@ -255,14 +268,14 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-        {product?product[0]?.SendCost:null} {t("تومان")}
+        {product?product[0]?.SendCost?.toLocaleString("en-de"):null} {t("تومان")}
         </p>
       </Col>
     </div>
     <div className="row pd15 borderBottomTable">
       <Col md={6} className="ta-right">
       <p className="fontWeightNormal2 mb-2">
-      {t("جمع کل")} : 
+      {t("۹٪ ارزش افزوده")} 
         </p>
       </Col>
       
@@ -299,7 +312,7 @@ const Factor = () => {
       </Col>
       <Col md={2} className="ta-right">
       <p className="fontWeightBold2 mb-2">
-      {product?product[0]?.CostTotal:null} {t("تومان")}
+      {product?product[0]?.CostTotal?.toLocaleString("en-de"):null} {t("تومان")}
         </p>
       </Col>
     </div>
@@ -311,9 +324,8 @@ const Factor = () => {
    {t("توضیحات خریدار")} : 
         </p>
         <br/>
-        {/* <p className="fontWeightNormal2">
-        کنسل شد
-        </p> */}
+        <p className="fontWeightNormal2">
+{product?product[0]?.Description:null}      </p>
    </div>
    <p className="fontWeightBold mt-4">
    {t("خریدار محترم")} : 

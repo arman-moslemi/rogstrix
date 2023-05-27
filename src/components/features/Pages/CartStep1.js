@@ -92,7 +92,8 @@ const CartStep1 = () => {
                 GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,              })
           .then(function (response) {
             if (response.data.result == "true") {
-
+console.log(12376678)
+console.log(data?.length)
               setData(response.data.Data)
               console.log(response.data.Data)
 var tot=0
@@ -114,19 +115,28 @@ setTotal(tot)
       }
       const toStep2=()=>{
         const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+console.log(234555)
+console.log(data?.length)
 console.log(555)
 console.log(storedData?.toString().length<10 && storedData?true:false)
-         if(storedData?.toString().length<10 && storedData)
+if(data.length==0)
          
-{         history.push("/CartStep2/"+storedData)
-}         else{
-    alert("ابتدا ورورد کنید")
-    history.push("/Login")
+{
+    alert("سبد خرید خالی است!")
+
+}     
+else if(storedData?.toString().length>10 && !storedData){
+  alert("ابتدا ورود کنید")
+  history.push("/Login")
 
 }
+ else      
+{        
+   history.push("/CartStep2/"+storedData)
+  // alert("سبد خرید خالی است!")
 
 
-
+}
 
       }
 const deleted=(id)=>{
@@ -190,9 +200,9 @@ const deleted=(id)=>{
                         <img src={apiAsset+item.Pic1} className="CartProductImg"/>
                         <div>
                             <p className="CartProductName">
-{item.ProductName}                            </p>
+{item.ProductName?item.ProductName:item?.SystemName}                            </p>
                             <div className="d-flex align-items-center">
-                                <div className="CartColor" style={{backgroundColor:"#"+item.ColorID}}>
+                                <div className="CartColor" style={{backgroundColor:"#"+item.ColorHex}}>
 
                                 </div>
                                 <p className="CartColorP">گارانتی:{item.WarrantyName}                                </p>

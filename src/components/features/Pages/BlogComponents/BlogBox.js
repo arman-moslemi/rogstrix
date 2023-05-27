@@ -6,6 +6,7 @@ import {FaRegUser,FaRegEye} from 'react-icons/fa';
 import Blog3 from "../../../assets/img/Blog3.png";
 import { Link, useHistory } from "react-router-dom";
 import { apiAsset } from "../../../../commons/inFormTypes";
+import parse  from 'html-react-parser';
 
 // if you want to use array
 
@@ -13,8 +14,8 @@ export const truncate = (str, len) => {
     if (str?.length > len && str?.length > 0) {
       let new_str = str + " ";
       new_str = str?.substr(0, len);
-      new_str = str?.substr(0, new_str.lastIndexOf(" "));
-      new_str = new_str.length > 0 ? new_str : str?.substr(0, len);
+      new_str = str?.substr(0, new_str?.lastIndexOf(" "));
+      new_str = new_str?.length > 0 ? new_str : str?.substr(0, len);
       return new_str + "...";
     }
     return str;
@@ -55,7 +56,17 @@ const BlogBox = ({data}) => {
               </Col>
               <Col md={9} xs={12} sm={12}>
                   <p className="blogDes">
-{ truncate(data?.Description,200)}                  </p>
+{ 
+truncate(
+    
+//      data.Text?
+        parse (data.Text?.substring(0,300))
+    //     :
+    //     "123"  
+    
+    ,200)
+}....             
+         </p>
               </Col>
           </div>
           <hr className="grayHr"/>

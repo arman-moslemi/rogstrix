@@ -23,22 +23,17 @@ const AssembleSlidr = ({data}) => {
     <div style={{backgroundColor:'#fff'}}>
       
          <div className="exclusiveBox2">
-         <Swiper className="exclusiveSlider2" slidesPerView={4} spaceBetween={35} navigation={true}  pagination={false}
-        
-        grabCursor={true}
-        centeredSlides={true}
-        
-        >
+      
             {
                 data?.map((item)=>{
                     return(
 
-  <SwiperSlide>
-  <div className="exclusiveSliderCard2">
+
+  <div className="exclusiveSliderCard2 newCardRes" >
       <img src={apiAsset+item.ProductPic}/>
       
   </div>
-  </SwiperSlide>
+  
                     )
                 })
             }
@@ -46,7 +41,7 @@ const AssembleSlidr = ({data}) => {
  
   
  
-  </Swiper>
+  
          </div>
   
     </div>

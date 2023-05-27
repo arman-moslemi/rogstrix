@@ -5,7 +5,9 @@ const SvgComponent = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     width={18.498}
     height={11.956}
+
     {...props}
+
   >
     <g data-name="Group 3331">
       <g data-name="Group 1094">

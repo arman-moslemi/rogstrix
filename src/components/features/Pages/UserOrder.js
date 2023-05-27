@@ -190,9 +190,10 @@ item.Condition==0?
 }                    
 
                          </div>
-                         <div id="w12">
+                         <div id="w12" >
                          <a href={"/Factor/"+item[0].FactorNumber}>
-                             <FaRegEye color={'#ff004e'}/>
+
+                             <FaRegEye className="mr-1 ml-1 sd5s" color={'#ff004e'}/>
                          </a>
                          </div>
                  </div>

@@ -66,8 +66,13 @@ const CartStep2 = () => {
     const [ramz,setRamz]=useState("")
     const [type,setType]=useState(0)
     const [send,setSend]=useState("")
+    const [bank,setBank]=useState("")
+    const [des,setDes]=useState("")
     const [personal,setPersonal]=useState()
+    const [regions,setReg]=useState([])
+
     const history = useHistory();
+
 
             const getData=()=>{
         const axios = require("axios");
@@ -85,8 +90,9 @@ const CartStep2 = () => {
              setAddress2(response.data.Data.Address2)
              console.log(999)
              console.log(response.data.Data)
+             console.log(response.data.InfoData)
              setPersonal(response.data.Data)
-
+             setBank(response.data.InfoData)
             // history.push("/RegisterVerify/"+mobile)
 
         }
@@ -107,6 +113,7 @@ const CartStep2 = () => {
           if (response.data.result == "true") {
 
              setCity(response.data.Data)
+             setReg(response.data.Data2)
 
              console.log(response.data.Data)
 
@@ -233,6 +240,8 @@ setCity2(0)
             console.log(88)
 
 setTotal(response.data.Data)
+// alert(t("کد تخفیف اعمال شد"))        
+alert(response.data.message)        
 
         }
         else{
@@ -263,7 +272,7 @@ else if(personal?.NationalCode==""|| personal?.NameFamily==""){
   alert("لطفا اسم یا کارت ملی را وارد نمایید")
 }
 else{
-        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total,Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText})
+        axios.post(apiUrl + "PaymentType",{CustomerID:params,TotalCost:tranCost?parseInt(parseInt(total)+parseInt(tranCost)+parseInt(tranCost*9/100)):parseInt(total+parseInt(total*9/100)),Text:hesab?hesab:ramz,Type:type,Address:radio,SendCost:tranCost,DiscountText:disText,Description:des})
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(response.data.Data)
@@ -354,9 +363,9 @@ alert(response.data.message)
   {t("منطقه")}
   </p>
   <select onChange={(e)=>!address1?setReg1(e.target.value):setReg2(e.target.value)} name="state" id="state" className="informationSelect">
-  {[...new Array(22)].map((item,index)=>{
+  {regions.map((item,index)=>{
               return(
-     <option  value={index+1}>{index+1}</option>
+     <option  value={item.RegionID}>{item.RegionName}</option>
   )}  )
 }
               </select>
@@ -450,9 +459,9 @@ onChange={()=>{setRadio(1);Transporter(1)}}
   {t("منطقه")}
   </p>
   <select onChange={(e)=>setReg1(e.target.value)} name="state" id="state" className="informationSelect">
-  {[...new Array(22)].map((item,index)=>{
+  {regions.map((item,index)=>{
               return(
-     <option  value={index+1}>{index+1}</option>
+     <option  value={item.RegionID}>{item.RegionName}</option>
   )}  )
 }
               </select>
@@ -550,10 +559,10 @@ city2==1577?
 {t("منطقه")}
 </p>
 <select onChange={(e)=>setReg2(e.target.value)} name="state" id="state" className="informationSelect">
-{[...new Array(22)].map((item,index)=>{
-return(
-<option  value={index+1}>{index+1}</option>
-)}  )
+{regions.map((item,index)=>{
+              return(
+     <option  value={item.RegionID}>{item.RegionName}</option>
+  )}  )
 }
 </select>
 </div>
@@ -663,6 +672,43 @@ null
       <div className="d-flex align-items-center">
       
       <p className="fontWeightBold ml-4" href="#">
+      {t("توضیحات")}
+                </p>
+      </div>
+      {/* <Button onClick={()=>Discount()} className="saveBtn">
+          
+      {t("ثبت")}
+      </Button> */}
+          </div>
+                 </div>
+                 <hr className="grayDashed" />
+                 <div className="shadowBox mb-4">
+              <div className='row align-items-center'>
+                  {/* <Col md={4} className="shaCol1">
+                  <p className="fontWeightBold">
+                   
+                  {t("کد تخفیف دارید ؟")} </p>
+                  
+                  </Col> */}
+                  <Col md={12} className="ta-right shaCol1">
+                  
+                  {/* <div className='d-flex align-items-center justify-content-end mt-2 f3'> */}
+                      {/* <p className='fontWeightBold mr-4'>
+                      {t("کد تخفیف خود را وارد کنید :")}
+                      </p> */}
+                      <input onChange={(e)=>setDes(e.target.value)} style={{width:"100%"}} type="text"/>
+                  {/* </div> */}
+                  </Col>
+              </div>
+                  
+                 </div>
+                 </div>
+              <div className='whiteBoxCart mt-4 pb-2'>
+           <div className="rightMenuBox1">
+             <div className="d-flex align-items-center justify-content-between">
+      <div className="d-flex align-items-center">
+      
+      <p className="fontWeightBold ml-4" href="#">
       {t("کد تخفیف")}
                 </p>
       </div>
@@ -704,10 +750,10 @@ null
       {t("انتخاب نحوه پرداخت")}
                 </p>
       </div>
-      <Button className="saveBtn">
+      {/* <Button className="saveBtn">
           
       {t("ثبت")}
-      </Button>
+      </Button> */}
           </div>
                  </div>
                  <hr className="grayDashed" />
@@ -721,6 +767,8 @@ null
          '&.Mui-checked': {
            color: '#ff004e',
          },
+         fill: "#f6303f" ,
+         stroke:" #f6303f" 
        }}
        checked={type===1}
        onChange={()=>setType(1)}
@@ -757,7 +805,13 @@ null
                   </Col>
                   <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
-                  {t("شماره حساب : 1010252536254152635596596595")}
+                  {t("شماره حساب : ")}{bank?.Hesab}
+                  </p>
+                  <p className="fontWeightBold">
+                  {t("شماره کارت : ")}{bank?.CardNumber}
+                  </p>
+                  <p className="fontWeightBold">
+                  {t("شماره شبا : ")}{bank?.Sheba}
                   </p>
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
@@ -785,18 +839,18 @@ null
 
        onChange={()=>setType(3)}
      />
-{t("پرداخت با اتریوم")}                  </p>
+{t("پرداخت با تتر USDT")}                  </p>
                    <p className='fontWeightNormal'>
                    {t("پس از واریز مبلغ به آدرس کیف پول فوق،کد رهگیری را اینجا ثبت نمایید")}
                    </p>
                   </Col>
                   <Col md={6} className="ta-left shaCol1">
                   <p className="fontWeightBold">
-                  {t("آدرس کیف پول")} : http://wllet......
+                  {t("آدرس کیف پول")} {bank.Wallet}
                   </p>
                   <div className='d-flex align-items-center justify-content-end mt-2 f3'>
                       <p className='fontWeightBold mr-4'>
-                      {t("کد رهگیری :")}
+                      {t("کد رهگیری TXID :")}
                       </p>
                       <input  onChange={(e)=>setRamz(e.target.value)} type="text"/>
                   </div>
@@ -819,7 +873,7 @@ null
                     </div>
                     <div>
                         <p>
-                            {total} {t("تومان")}
+                            {total?.toLocaleString("en-de")} {t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -831,7 +885,7 @@ null
                     </div>
                     <div>
                         <p>
-                            {tranCost}{t("تومان")}
+                            {tranCost?.toLocaleString("en-de")}{t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -844,7 +898,7 @@ null
                     </div>
                     <div>
                     <p>
-                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)):total} {t("تومان")}
+                            {tranCost?parseInt(parseInt(total)+parseInt(tranCost)+parseInt(tranCost*9/100))?.toLocaleString("en-de"):parseInt(total+parseInt(total*9/100))?.toLocaleString("en-de")} {t("تومان")}
                         </p>
                     </div>
                 </div>
@@ -854,6 +908,10 @@ null
             </div>
               <p className='fontWeightNormal mt-4'>
               {t("کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، برای ثبت سفارش مراحل بعدی را تکمیل کنید.")}
+
+              </p>
+              <p className='fontWeightNormal mt-4'>
+              {t("۹درصد ارزش افزوده")}
 
               </p>
             </div>

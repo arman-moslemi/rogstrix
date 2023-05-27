@@ -42,6 +42,7 @@ else{
 
         console.log("auth", auth.isLoggedIn);
         localStorage.setItem("guest","");
+        localStorage.setItem("name",response.data.Data?.NameFamily?.split(',')[0]+" "+response.data.Data?.NameFamily?.split(',')[1])   
         history.push("/EditInformation/"+response.data.Data.CustomerID)
 
     }
@@ -109,7 +110,7 @@ else{
             </div>
             <div className="mar-top-20">
                 <p className="rememberPassLable">
-                    با ورود و ثبت نام در <a href="#" className="whiteColor">راگ استریکس</a> شما <a href="#" className="underLine">شرایط و قوانین</a> استفاده از سرویس های این سایت و <a href="#" className="underLine">قوانین حریم خصوصی</a> آن را می پذیرید.
+                    با ورود و ثبت نام در <a href="/" className="whiteColor">راگ استریکس</a> شما <a href="/About/Rules" className="underLine">شرایط و قوانین</a> استفاده از سرویس های این سایت و <a href="/About/Rules" className="underLine">قوانین حریم خصوصی</a> آن را می پذیرید.
                 </p>
             </div>
        </div>

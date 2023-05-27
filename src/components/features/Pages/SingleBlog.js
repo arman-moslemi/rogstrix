@@ -34,17 +34,22 @@ const [com,setCom]=useState([]);
 const [type,setType]=useState([])
 const [special,setSpecial]=useState([])
 const {t,i18n} = useTranslation();
+const [language,setLanguage]=useState();
+const [id,setID]=useState()
 
 const { isLoggedIn, token } = useContext(AuthContext);
 
 console.log(params)
   const mainSlider=async()=>{
     const axios = require("axios");
-
+    const lang=await localStorage.getItem("lang")
+    i18n.changeLanguage(lang)
       axios
           .post(apiUrl + "SingleBlogByName",{
             BlogName:params?.replace("_"," ")
-          })
+          },{ headers: {
+            lang: i18n.language
+          }})
       .then(function (response2) {
         if (response2.data.result == "true") {
 
@@ -52,14 +57,17 @@ console.log(params)
           console.log(888)
           console.log(params)
           console.log(response2.data.Data)
+          console.log(response2.data.Data[0].BlogID)
+          setID(response2.data.Data[0].BlogID)
           axios
           .post(apiUrl + "SingleBlogComment",{
-            BlogID:response2.data.Data.BlogID
+            BlogID:response2.data.Data[0].BlogID
           })
       .then(function (response) {
         if (response.data.result == "true") {
 
           setCom(response.data.Data)
+          console.log(555)
           console.log(response.data.Data)
 
       }
@@ -118,12 +126,15 @@ console.log(params)
 
   useEffect(() => {
     mainSlider();
+    // document.title =data?.Title;
+    document.title =params;
+
 // alert(val)
   }, []);
   return (
     <div className="SingleProduct">
-        <Header/>
-      <BlogHeader/>
+      <Header setLanguage={setLanguage}/>
+      <BlogHeader data={type} cat={setCat}/>
 
 
 
@@ -136,15 +147,16 @@ console.log(params)
               {t("سایت راگ استریکس")}
               </a>
 
-              <a>
-{data.Title}              </a>
+              <a href="/BlogMain">
+/ {data.TypeName}              </a>
             </li>
           </ul>
         </div>
        <div className="row mt-2 mb-5">
        <Col md={3}>
          <SuggestionBlogs data={special}/>
-         <RelatedPost BlogTypeID={data.BlogTypeID}/>
+           <Category data={type} cat={setCat} type="second"/>
+         {/* <RelatedPost BlogTypeID={data.BlogTypeID}/> */}
          {/* <Category data={type}/> */}
          </Col>
          <Col md={9}>
@@ -152,7 +164,7 @@ console.log(params)
         <ShowBlog data={data}/>
         {/* <ReadMore/> */}
         <div className="whiteBox3 mt-3">
-         <CommentBox data={com} id={params} token={token}/>
+         <CommentBox data={com} id={id} token={token}/>
             </div>
          </Col>
 

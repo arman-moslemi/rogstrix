@@ -15,10 +15,13 @@ import RedFooterLogo from "../../../assets/icons/redFooterLogo";
 import { useTranslation } from 'react-i18next';
 import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
+import { AuthContext } from "../../../../context/auth-context";
 
 const FooterMain = () => {
   const {t,i18n} = useTranslation();
   const [data,setData]=useState([])
+  const { isLoggedIn, token } = useContext(AuthContext);
+
   const scrollToTop = () => {
 
     window.scrollTo({
@@ -221,7 +224,7 @@ const FooterMain = () => {
               <input placeholder={t("نشانی ایمیل خود را وارد کنید")}  className="emailInput w230"/>
             </div>
             <div>
-              <button type="submit" className="submitBtn backRed">{t("عضویت")}</button>
+              <button onClick={()=>isLoggedIn?alert("یا موفقیت عضو خبرنامه شدید"):alert("لطفا وارد شوید")}   className="submitBtn backRed">{t("عضویت")}</button>
             </div>
           </div>
           <div className="row mt-4">
@@ -251,7 +254,7 @@ const FooterMain = () => {
               <input placeholder={t("نشانی ایمیل خود را وارد کنید")}  className="emailInput w230"/>
             </div>
             <div>
-              <button type="submit" className="submitBtn backRed">{t("عضویت")}</button>
+              <button onClick={()=>isLoggedIn?alert("یا موفقیت عضو خبرنامه شدید"):alert("لطفا وارد شوید")}  className="submitBtn backRed">{t("عضویت")}</button>
             </div>
           </div>
        

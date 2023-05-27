@@ -65,7 +65,7 @@ const SpecialSliderCard = ({data}) => {
       </ul> */}
   </div>
   <p className="productName">
-    {truncate(data.ProductName+" "+data.BrandName,30)}
+    {truncate(data.ProductName+" "+data.BrandName,70)}
   </p>
   <hr className="redHr"/>
   <div className="row">

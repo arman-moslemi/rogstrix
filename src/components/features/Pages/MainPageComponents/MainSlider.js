@@ -28,16 +28,26 @@ const MainSlider = ({data}) => {
 
         className="MainPageSlider"
       >
-       <SwiperSlide>
+
+       <SwiperSlide >
+        <a href={data?.LinkMainSlider1}>
+
        <img src={apiAsset+data?.MainSlider1} className="MainPageSliderImg"/>
+        </a>
 
        </SwiperSlide>
        <SwiperSlide>
+       <a href={data?.LinkMainSlider2}>
+
        <img src={apiAsset+data?.MainSlider2} className="MainPageSliderImg"/>
+       </a>
 
        </SwiperSlide>
        <SwiperSlide>
+       <a href={data?.LinkMainSlider3}>
+
        <img src={apiAsset+data?.MainSlider3} className="MainPageSliderImg"/>
+       </a>
 
        </SwiperSlide>
       </Swiper>

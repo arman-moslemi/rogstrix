@@ -57,7 +57,7 @@ const SpecialOfferSlider = ({data}) => {
         
     <Slider {...settings}>
     {
-             data.map((item)=>{
+             data?.map((item)=>{
                return(
 
   <div  >

@@ -8,5 +8,6 @@
     color: #fff;
 }
 .secondLine{
-    color: rgb(207, 207, 207);
+    /* color: rgb(207, 207, 207); */
+    color: #fff !important;
 }

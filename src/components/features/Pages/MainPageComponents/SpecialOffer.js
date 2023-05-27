@@ -45,12 +45,15 @@ const SpecialOffer = ({data}) => {
         const axios = require("axios");
 
 
-          axios.post(apiUrl + "LastSpecialMainProduct")
+          axios.post(apiUrl + "LastSpecialMainProduct",{MainGroupID:1})
           .then(function (response) {
+            console.log(159876)
+
+            console.log(response)
+
             if (response.data.result == "true") {
 
               setSpecial(response.data.Data)
-              console.log(159876)
               console.log(response.data.Data)
 
           }
@@ -90,11 +93,11 @@ const SpecialOffer = ({data}) => {
             <ul className="specialOfferUl">
             <li onClick={()=>mainProduct(1)}>
                     {/* <a href="#"> */}
-                    {t("قطعات کامپیوتر")}  
+                    {t("کامپیوتر و قطعات")}  
                                         {/* </a> */}
                 </li>
                 <li onClick={()=>mainProduct(2)}>
-                {t("لپتاپ")} 
+                {t(" لپتاپ و کامپیوتر آماده و قطعات")}  
                 </li>
                 <li onClick={()=>mainProduct(3)}>
                 {t("تبلت")}
@@ -107,13 +110,13 @@ const SpecialOffer = ({data}) => {
                 {t("شبکه و سرور")}
                 </li>
                 <li onClick={()=>mainProduct(6)}>
-                {t("کالای اداری")}   
+                {t(" ماشین های اداری و قطعات")}    
                 </li>
                 <li>
-                {t("تصویربرداری")}    
+                {t("دوربین و لوازم جانبی")}      
                 </li>
                 <li onClick={()=>mainProduct(7)}>
-                {t("کنسول بازی")}    
+                {t("کنسول و لوارم بازی")}    
                 </li>
             </ul>
             </Col>
@@ -123,11 +126,11 @@ const SpecialOffer = ({data}) => {
             </Col>
             <Col md={2}  className="colSpecial3">
                 <div className="redBanner">
-                    <img src={apiAsset+data?.LeftSlider1}/>
+                    <img style={{borderRadius:20}} src={apiAsset+data?.LeftSlider1}/>
                     {/* <p>ایسوس</p> */}
                 </div>
                 <div className="blackBanner">
-                    <img src={apiAsset+data?.LeftSlider2}/>
+                    <img style={{borderRadius:20}} src={apiAsset+data?.LeftSlider2}/>
                     {/* <p>سامسونگ</p> */}
                 </div>
                 </Col>

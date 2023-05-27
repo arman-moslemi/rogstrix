@@ -37,8 +37,11 @@
       bottom: 30px !important;
   }
   @media screen and (max-width:1000px){
+    .MainPageSlider .swiper-pagination-bullets{
+      display: none !important;
+    }
     .MainPageSlider{
-      height: 50vh;
+      height: 25vh;
     }
    .MainPageSlider .swiper-slide{
       width: 100% !important;
@@ -83,3 +86,13 @@ max-width: 0%;
       padding: 10px;
     }
   }
+  @media screen and (max-width:450px){
+  .colSpecial1{
+    flex: 0 0 100%;
+max-width: 100%;
+  }
+  .colSpecial2{
+    flex: 0 0 100%;
+max-width: 100%;
+  }
+}

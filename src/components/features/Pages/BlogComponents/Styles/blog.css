@@ -68,6 +68,10 @@
     font-family: IRANSans-Light;
     line-height: 2;
     font-size: 14px;
+    
+}
+.blogDes table{
+    width:100% !important;
 }
 .pdrightleft2{
     padding-right: 2rem;

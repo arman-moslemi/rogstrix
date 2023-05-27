@@ -1,8 +1,13 @@
 import react from "react";
 import "./Styles/statistic.css"
+import { useTranslation } from 'react-i18next';
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
-const Header = () => {
+const Header = ({data}) => {
+    const {t,i18n} = useTranslation();
+
+
+
   return (
    
       <div className="whyRogstrix">
@@ -10,32 +15,32 @@ const Header = () => {
         
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                   200 +
+                   {data?.Product} +
                 </p>
                 <p className="secondLineStatistic">
-کل محصولات                </p>
+{t("کل محصولات")}               </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                   800 + 
+            {data?.ROGProduct} + 
                 </p>
                 <p className="secondLineStatistic">
-محصولات راگ                </p>
+{t("محصولات راگ") }             </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                    1.500 + 
+                    {data?.Customer} + 
                 </p>
                 <p className="secondLineStatistic">
-                    مشتری یکتا
+                    {t("مشتری یکتا")}
                 </p>
             </Col>
             <Col md={3} className="ta-center">
             <p className="firstLineStatistic">
-                    5.000 + 
+                    {data?.Factor} + 
                 </p>
                 <p className="secondLineStatistic">
-فروش محصول                </p>
+{t("فروش محصول")}              </p>
             </Col>
      
           

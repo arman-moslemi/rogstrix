@@ -40,11 +40,11 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
   }, []);
     return (
       
-      <div className="BestSellingCard">
+      <div className="BestSellingCard sd2s">
         {/* <Link onClick={()=>history.push("/singleProduct/"+data.ProductID)} > */}
         <Link onClick={()=>history.push("/singleProduct/"+data.EngProductName.replace(/%20/g, " "))} >
   <div className="specialSliderCardBox">
-  <img src={data?.Pic1?apiAsset+data?.Pic1:data.Pic?apiAsset+data?.Pic:null}/>
+  <img src={data?.Pic1?apiAsset+data?.Pic1:data.Pic?apiAsset+data?.Pic:null} className="lastEditImg"/>
       {/* <ul className="colorList">
         <li>
           <div id="color1"></div>
@@ -58,7 +58,7 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
       </ul> */}
   </div>
   <p className="productName">
-  {truncate(data?.ProductName+" "+data?.BrandName,50)}
+  {truncate(data?.ProductName+" "+data?.BrandName,140)}
   </p>
 <div className=" marginTop30 bot2 ta-left">
 {  data?.SpecialCost?

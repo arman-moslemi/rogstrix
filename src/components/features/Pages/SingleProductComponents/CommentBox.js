@@ -10,9 +10,12 @@ import {useParams } from "react-router-dom";
 import CustomizedDialogs from '../layouts/AlertModal';
 import StartRate from './StarRate';
 // if you want to use array
+import { useTranslation } from 'react-i18next';
 
 
 const CommentBox = ({data,id,type,token}) => {
+  const {t,i18n} = useTranslation();
+
   const [releated,setRel]=useState()
   const [rate,setRate]=useState(5)
   const [open,setOpen]=useState(false)
@@ -20,7 +23,7 @@ const CommentBox = ({data,id,type,token}) => {
   const mainSlider=async()=>{
     const axios = require("axios");
     console.log(token)
-    if(token && token.Length<10)
+    if(token )
 {type=="product"?
 axios.post(apiUrl + "InsertProductComment",{ProductID:id,CustomerID:token,Title:"",Text:releated,Rate:rate})
 .then(function (response) {
@@ -80,20 +83,20 @@ setOpen(true)
   return (
     <>
        <p className="boxTitle2 BoldFont" id="colorRed">
-            نظرات و دیدگاه
+        {t("نظرات و دیدگاه")}    
                 </p>
                 <hr className="dottedH" id="borderRed"/>
            <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
           <img className="profileComment" src={UserProfile}/>
              <p className="commenterName">
-کاربر             </p>
+{t("کاربر" )}            </p>
 <CustomizedDialogs Title={title} open={open} setOpen={setOpen}/>
 
           </div>
           <div className="d-flex align-items-center">
             <p className='commenterName' style={{marginTop:8,marginLeft:10}}>
-              امتیاز شما به این محصول :
+              {t("امتیاز شما به این محصول")} :
             </p>
             <StartRate  setRate={setRate} />
           </div>
@@ -102,15 +105,16 @@ setOpen(true)
             <div className="row mt-2">
               <Col md={12} className="ta-left pd0">
                 <Button onClick={()=>mainSlider()} className="addComment">
-                 ارسال نظر
+                 {t("ارسال نظر")}
                 </Button>
               </Col>
             </div>
             {
               data?.map((item)=>{
 return(
-
-<div className="mt-3">
+item.Agree?
+<>
+  <div className="mt-3" style={{border:'1px dotted #f6303f',padding:25,borderRadius:5}}>
     <div className="d-flex align-items-center">
         <div>
         <img className="profileComment" src={UserProfile}/>
@@ -148,6 +152,33 @@ index+1>item.Rate?
 
 
 </div>
+        
+        {
+          item.AnswerText?
+          <div style={{display:'flex',marginTop:20}}>
+          <img src={UserProfile} style={{width:50,height:50,marginLeft:10}}/>
+          <div style={{display:'flex',flexDirection:'column'}}>
+          <p style={{fontFamily:'IRANSans-Medium',marginBottom:5}}>
+            {item.Username}
+          </p>
+          <p style={{fontFamily:'IRANSans-Light',color:'#898989',fontSize:12}}>
+{item.DateAnswer}          </p>
+          </div>
+                     <div style={{backgroundColor:'#fff',height:120,width:'90%',border:'1px dotted #d7d7d7',borderRadius:5,marginRight:'auto',padding:10}}>
+                     <p className="commentText">
+                     {item.AnswerText}  
+</p>
+          </div>
+                     </div>
+                 
+          :
+          null
+        }
+            </>
+:null
+
+
+          
 )
               })
             }

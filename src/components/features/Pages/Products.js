@@ -23,6 +23,7 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import PaginationCustom from "./layouts/Pagination";
 import { useTranslation } from 'react-i18next';
+import parse  from 'html-react-parser';
 
 const Products = () => {
   const [language,setLanguage]=useState();
@@ -39,19 +40,27 @@ const Products = () => {
   const [to,setTo]=useState(0)
   const [head,setHead]=useState("")
   const history = useHistory();
+  const [max,setMax]=useState(1000)
+
 console.log(params)
 const mainSlider=async()=>{
   const axios = require("axios");
     const lang=await localStorage.getItem("lang")
     i18n.changeLanguage(lang)
       axios
-          .post(apiUrl + "GroupProduct",{
-            GroupID:params
+          // .post(apiUrl + "GroupProduct",{
+          //   GroupID:params
+          .post(apiUrl + "GroupProductByName",{
+            GroupName:params
           },{ headers: {
             lang: i18n.language
           }})
       .then(function (response) {
         if (response.data.result == "true") {
+          console.log(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
+
+          setMax(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
+
 if(brandparams){
 
   setData(response.data.Data.filter(t=>t[0].BrandID==brandparams))
@@ -64,6 +73,48 @@ if(brandparams){
           console.log(brandparams)
           console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
+
+axios
+.post(apiUrl + "FilterProduct",{
+  GroupID:response.data.Data[0][0].GroupID
+},{ headers: {
+  lang: i18n.language
+}})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setProduct(response.data.Data)
+console.log(44)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+axios
+// .get(apiUrl + "AllBrand",{ headers: {
+.post(apiUrl + "BrandGroup",{GroupID:response.data.Data[0][0].GroupID},{ headers: {
+  lang: i18n.language
+}})
+.then(function (response) {
+if (response.data.result == "true") {
+
+setBrand(response.data.Data)
+console.log(44)
+console.log(response.data.Data)
+
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
       }
       else{
         console.log(response.data.result)
@@ -72,60 +123,21 @@ setHead(response.data.Data[0][0].Title)
       .catch(function (error) {
         console.log(error);
       });
-      axios
-          .post(apiUrl + "FilterProduct",{
-            GroupID:params
-          },{ headers: {
-            lang: i18n.language
-          }})
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setProduct(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
-      axios
-          .get(apiUrl + "AllBrand",{ headers: {
-            lang: i18n.language
-          }})
-      .then(function (response) {
-        if (response.data.result == "true") {
-
-          setBrand(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
+    
 
 
 
   }
   const setCost=()=>{
-
-
-    console.log(14563)
-//  setProduct([])
-// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-setData([...data].filter((a) => (a.Cost <= to && a.Cost>from) ))
-console.log(data)
-
-}
+    setData(data2)
+        console.log(14563)
+        console.log(data)
+    //  setProduct([])
+    // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+    setData(data2.filter((a) => (a[0].Cost <= to && a[0].Cost>from) ))
+    console.log(data)
+    
+    }
 var gg=[]
   const proFilter=(type,val,vv)=>{
 
@@ -222,16 +234,30 @@ mainSlider()
       <Container className="EachCategoryContainer" fluid>
         <div className="breadCrumbs">
           <ul>
-            <li>
-              <a>
-              {t("سایت راگ استریکس")}
-              </a>
-            </li>
-            /
-            <li>
-              <a>
-{data[0]?.Title}              </a>
-            </li>
+            {
+               
+                data[0]?
+                <>
+                <li>
+                <a>
+                {t("سایت راگ استریکس")}
+                </a>
+              </li>
+              /
+               <li>
+                <a href={"/EachCategory/"+data[0][0]?.EngMainGroupName}>
+                {data[0][0]?.MainTitle}             </a>
+              </li>
+              /
+              <li >
+                <a >
+                {data[0][0]?.GroupName}            </a>
+              </li>
+              </>
+                :
+                null
+            }
+          
            
           </ul>
         </div>
@@ -282,7 +308,7 @@ mainSlider()
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-               <div className="pad2">
+               {/* <div className="pad2">
                <div className="d-flex searchInput">
                 <div >
           <FaSearch color={'#a0a0a0'}/>
@@ -297,7 +323,7 @@ mainSlider()
 
       </div>
 
-               </div>
+               </div> */}
       <div className="pad2">
       <div className="scrollBar">
             {
@@ -341,7 +367,7 @@ mainSlider()
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                <div className="pad2">
-                <RangeSlider/>
+               <RangeSlider max={max} setFrom={setFrom} setTo={setTo}/>
 
                </div>
             <div className="rangeBorder">
@@ -515,6 +541,9 @@ return(
 
 
               </div>
+              <div style={{marginTop:20}}>
+            {parse(data[0][0]?.GroupDescription)}
+          </div>
           </div>
           {/* <div className="productsWhiteBox">
           <div className="row margin25">

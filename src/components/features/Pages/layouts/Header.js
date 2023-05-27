@@ -20,9 +20,11 @@ const Header = ({setLanguage}) => {
   const { isLoggedIn, token } = useContext(AuthContext);
   const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
+  const [cart, setCart] = useState(0);
   const [auto, setAuto] = useState("");
-  const [defLang, setDefLang] = useState("ir");
+  const [defLang, setDefLang] = useState("");
   const {t,i18n} = useTranslation();
+  var ss="ir";
 
   const onClick = () =>{
     setshowSearch(!showSearch);
@@ -34,27 +36,34 @@ const  _handleKeyDown = (e) => {
   const changeLang=async(dd)=>{
     await localStorage.setItem("lang",dd)
     i18n.changeLanguage(dd);
+    console.log(123456)
+    console.log(dd)
     // setLanguage(dd)
-    // window.location.reload()
+    localStorage.setItem("lang",dd)
+    window.location.reload()
+
   }
   const [data,setData]=useState()
+  const [name,setName]=useState()
 
 const groups=()=>{
    const axios = require("axios");
    console.log(55)
    console.log(localStorage.getItem("lang"))
-setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
-
+ setName(localStorage.getItem("name")?localStorage.getItem("name"):"")
+ss= localStorage.getItem("lang")
+setDefLang(ss)
+console.log(ss)
    // axios.get(apiUrl + "AllMainGroup")
-   axios.get(apiUrl + "GroupBrand")
+   axios.get(apiUrl + "AllMainGroup")
    .then(function (response) {
      if (response.data.result == "true") {
 
       //   setData(response.data.GroupData)
-        setData(response.data.Data)
+        setData(response.data.GroupData)
 
-        console.log(888)
-        console.log(response.data.Data)
+        console.log(12238897)
+        console.log(response.data.GroupData)
 
        // history.push("/RegisterVerify/"+mobile)
 
@@ -65,6 +74,31 @@ setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
    .catch(function (error) {
      console.log(error);
    });
+
+    const storedData = JSON.parse(localStorage.getItem("userData"))?.token
+    var Guest=localStorage.getItem("guest")
+
+      axios
+          .post(apiUrl + "ShoppingBasketView",{
+            CustomerID:storedData?.toString().length<10 && storedData?storedData:0,
+            GuestID:storedData?.toString().length<10 && storedData?0:Guest?Guest:0,              })
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+          setCart(response.data?.Data?.length)
+      
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+  
 
 
  }
@@ -96,6 +130,7 @@ setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
    groups();
 // alert(val)
  }, []);
+ ss=localStorage.getItem("lang")
   return (
    <Container fluid className="pad0">
     <div className="Header">
@@ -120,6 +155,10 @@ setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
     </div>
       </div>
       <div className="d-flex">
+      <div className="cardTitleW100" style={{marginLeft:100}}>
+
+        <p>سایت در حال بروز رسانی میباشد</p>
+        </div>
         <button className="headerBtn" onClick={()=>onClick()}>
         <MenuSearch/>
         </button>
@@ -132,15 +171,26 @@ setDefLang(localStorage.getItem("lang")?localStorage.getItem("lang"):"ir")
         :
         <button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
           <MenuUser style={{marginLeft:10}} />
-{t("کاربر")}
+{name}
         </button>        }
-        <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
+        <button  onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" style={{position:'relative'}}>
         <CartMenu style={{marginLeft:10}}/>
         {t("سبد خرید")}
+        {
+          cart!=0?
+          <div className="badgetCart">
+          
+          </div>
+          :
+          null
+        }
+     
         </button>
-        <select onChange={(e) => changeLang(e.target.value)} defaultValue={"en"} name="Lang" id="language">
-            <option value="ir">Fa</option>
+      
+        <select onChange={(e) =>{ changeLang(e.target.value)}}          defaultValue={ss}
+ name="Lang" id="language">
             <option value="en">En</option>
+            <option value="ir">Fa</option>
 
         </select>
       </div>
@@ -195,7 +245,7 @@ auto.map((item)=>{
   {/* <Nav.Link href="#" className="responsiveLink mt-2">شروع بازی</Nav.Link> */}
   
    
-  <NavDropdown title={"قطعات کامپیوتر" } id="collasible-nav-dropdown">
+  <NavDropdown title={    t("کامپیوتر و قطعات")   } id="collasible-nav-dropdown">
      {data?.filter(t=>t[0].MainGroupID==1).map((item)=>{
       return(
         
@@ -203,32 +253,36 @@ auto.map((item)=>{
 {
    item?.map((item2)=>{
       return(
-            <NavDropdown.Item >
-            {item2.BrandName } 
-            </NavDropdown.Item>
+            // <NavDropdown.Item  >
+           <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+            {item2.SubTitle } 
+           </p>
+            // </NavDropdown.Item>
 
  )})}
           </NavDropdown>
       )})}
           </NavDropdown>
 
-<NavDropdown title={"لبتاب" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==2).map((item)=>{
+<NavDropdown title= {t(" لپتاپ و کامپیوتر آماده و قطعات")}  id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==2).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"تبلت" } id="collasible-nav-dropdown">
+<NavDropdown title={t("تبلت")} id="collasible-nav-dropdown">
 {data?.filter(t=>t[0].MainGroupID==3).map((item)=>{
  return(
    
@@ -236,79 +290,84 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"موبایل و گجت" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==4).map((item)=>{
+<NavDropdown title={t("موبایل و گجت")}  id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==4).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"شبکه و سرور" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==5).map((item)=>{
+<NavDropdown title= {t("شبکه و سرور")} id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==5).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"کالای اداری" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==6).map((item)=>{
+<NavDropdown title={t(" ماشین های اداری و قطعات")}  id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==6).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"تصویربرداری" } id="collasible-nav-dropdown">
-{data?.filter(t=>t.MainGroupID==7).map((item)=>{
+<NavDropdown title=  {t("دوربین و لوازم جانبی")} id="collasible-nav-dropdown">
+{data?.filter(t=>t[0].MainGroupID==7).map((item)=>{
  return(
    
 <NavDropdown title={item[0]?.Title}  id="collasible-nav-dropdown">
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
  )})}
      </NavDropdown>
-<NavDropdown title={"کنسول بازی" } id="collasible-nav-dropdown">
+<NavDropdown title={t("کنسول و لوارم بازی")}  id="collasible-nav-dropdown">
 {data?.filter(t=>t.MainGroupID==8).map((item)=>{
  return(
    
@@ -316,9 +375,10 @@ item?.map((item2)=>{
 {
 item?.map((item2)=>{
  return(
-       <NavDropdown.Item >
-       {item2.BrandName } 
-       </NavDropdown.Item>
+  <p onClick={()=>{history.push("/Subproduct/"+item2.EngSubTitle);window.location.reload()}}>
+
+  {item2.SubTitle } 
+ </p>
 
 )})}
      </NavDropdown>
@@ -341,11 +401,11 @@ item?.map((item2)=>{
          <div className="responsiveLanguage">
          <select name="Lang" 
         //  defaultValue={"en"}
-         defaultValue={defLang}
-          id="language">
-            <option ></option>
-            <option value="ir">Fa</option>
+        onChange={(e) =>{ changeLang(e.target.value)}}         
+         defaultValue={ss}
+                  id="language">
             <option value="en">En</option>
+            <option value="ir">Fa</option>
 
         </select>
          </div>
@@ -389,16 +449,35 @@ auto.map((item)=>{
 </ul>
          </Col>
          <Col xs={6} className="d-flex align-items-center">
+         {!isLoggedIn?
 
-        <button onClick={()=>onClick()} className="headerBtn">
-        <MenuUser style={{marginLeft:10}} />
+<>
 
-        </button>
-        <button onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" >
+<button onClick={()=>history.push("/Login")} className="headerBtn">
+<MenuUser style={{marginLeft:10}} />
+</button>
+
+</>
+:
+<>
+
+<button onClick={()=>history.push("/EditInformation/"+token)} className="headerBtn">
+<MenuUser style={{marginLeft:10}} />
+</button>
+
+</>
+         }
+        <button onClick={()=>history.push("/CartStep1/"+token)} className="headerBtn" style={{position:'relative'}} >
         <CartMenu  style={{marginLeft:10}}/>
-
+        {
+          cart!=0?
+        <div className="badgetCartRes">
+          
+          </div>
+          :
+          null}
         </button>
-        <label class="switch">
+        <label class="switch resColor">
          <input  onChange={darkMode.toggle} type="checkbox"/>
             <span class="slider round"></span>
        </label>

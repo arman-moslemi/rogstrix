@@ -47,8 +47,8 @@ const EditInformation = () => {
       const axios = require("axios");
 
 
-        axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:"",NameFamily:name+","+family,NationalCode:nationalCode,
-        Phone:phone+prePhone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:""
+        axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:null,NameFamily:name+","+family,NationalCode:nationalCode,
+        Phone:phone+prePhone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null
     })
         .then(function (response) {
           if (response.data.result == "true") {

@@ -6,11 +6,15 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function RangeSlider() {
-  const [value, setValue] = React.useState([20, 37]);
+export default function RangeSlider({max,setFrom,setTo}) {
+  const [value, setValue] = React.useState([0, max?max:1000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log(3333)
+    console.log(newValue)
+    setFrom(newValue[0])
+    setTo(newValue[1])
   };
 
   return (
@@ -21,6 +25,7 @@ export default function RangeSlider() {
         onChange={handleChange}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
+        max={max?max:1000}
         sx={{
             width: 300,
             color: '#f6303f',

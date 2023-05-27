@@ -614,6 +614,16 @@ justify-content: center;
   padding: 20px;
   font-family: IRANSans-Light;
 }
+.MainMenuBtn2{
+  background-color: transparent !important;
+  border-radius: 0px;
+
+  border-top: none;
+  border-bottom:none;
+  color: #1a1a1a;
+  padding: 20px;
+  font-family: IRANSans-Light;
+}
 .marginLeft15{
   margin-left: 15px;
 }
@@ -730,7 +740,7 @@ border:none !important;
 .bannerSecondLine{
   font-family: IRANSans-Light;
   text-align: right;
-  font-size: 18px;
+  font-size: 17px;
   color: #fff;
 }
 .blackBox{
@@ -739,7 +749,7 @@ border:none !important;
 
 .productBannerBox{
   display: flex;
-  padding: 30px;
+  /* padding: 30px; */
   border-radius: 20px;
   justify-content: space-between;
   align-items: center;
@@ -1303,6 +1313,24 @@ margin-bottom: 0px;
   background-color: #f6303f;
   border-radius: 5px;
 
+}
+.assembleSliderBox{
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.newCardRes{
+  display: inline-block !important;
+
+}
+.newCardRes img{
+  width:100% !important;
+  height: 100% !important;
+}
+.assembleSliderBoxRes{
+  background-color: #fff;
 }
 .redBoxTitle{
   padding: 1rem;
@@ -2282,6 +2310,7 @@ body.dark-mode .bestSellingDiv{
 }
 body.dark-mode .BestSellingCard{
   background-color: #fff;
+  margin-bottom: 80px;
 }
 body.dark-mode .productName{
   color:#1a1a1a;
@@ -2514,4 +2543,88 @@ font-family: 'IRANSans';
 }
 .slick-slider{
   direction: rtl !important;
+}
+.MuiSlider-sizeMedium{
+  width: 80% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.newProductName:hover{
+  cursor: pointer;
+}
+body.dark-mode .MainMenuBtn2 svg{
+  fill: transparent !important;
+  stroke: transparent !important;
+}
+
+body.dark-mode .breadCrumbs ul li a{
+  color: #fff !important;
+}
+
+body.dark-mode .responsiveMenuBox svg{
+  fill: transparent !important;
+  stroke: transparent !important;
+}
+.backWhite2{
+  background-color: #fff;
+}
+
+body.dark-mode .backWhite2{
+  background-color: #1a1919;
+}
+body.dark-mode .backWhite2 p{
+  color: #fff !important;
+}
+.shaCol1{
+  padding: 0px !important;
+}
+.rtl.react-multiple-carousel__arrow--right{
+  display: block !important;
+}
+.rtl.react-multiple-carousel__arrow--left{
+  display: block !important;
+}
+body.dark-mode .sd3s svg{
+  fill: transparent !important;
+  stroke: transparent !important;
+}
+body.dark-mode .sd5s {
+  fill: #f6303f !important;
+  stroke: #f6303f !important;
+  color: #f6303f !important;
+}
+body.dark-mode .sd4s{
+  fill:#111 !important;
+  stroke: #111 !important;
+  color: #111 !important;
+}
+body.dark-mode .save-svg svg{
+  fill: #f6303f !important;
+  stroke: #f6303f !important;
+}
+body.dark-mode .MuiRadio-root svg{
+  fill: #f6303f !important;
+  stroke: #f6303f !important;
+}
+body.dark-mode .MuiCheckbox-root svg{
+  fill: #f6303f !important;
+  stroke: #f6303f !important;
+}
+.badgetCart{
+  width: 12px;
+    height: 12px;
+    background-color: #f6303f;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 80px;
+}
+.badgetCartRes{
+  width: 12px;
+    height: 12px;
+    background-color: #f6303f;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 25%;
 }

@@ -53,7 +53,7 @@ const MainRoutes = (props) => {
 			<Switch>
 				<Route
 					exact
-					path='/MainPage'
+					path='/'
 					name='صفحه اصلی'
 					render={(props) => <MainPage {...props} />}
 				/>

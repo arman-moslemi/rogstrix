@@ -44,7 +44,14 @@ const SavedProductsCard = (props) => {
        <img src={apiAsset+props.data.Pic1} className="madeSystemImg"/>
        </div>
        <p className="completeProductTitle">
-       {truncate(props.data.ProductName+" "+props.data.BrandName,100)}
+        {
+          props.data.SystemName?
+          truncate(props.data.SystemName+" "+props.data.BrandName,100)
+
+          :
+
+       truncate(props.data.ProductName+" "+props.data.BrandName,100)
+        }
        </p>
       <p className="completeProductDetail">
 {props.data.Description}      <br/>

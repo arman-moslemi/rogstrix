@@ -90,13 +90,15 @@ font-size: 13px;
     }
     .categoryList li{
         display: inline-block;
+        text-align: center;
     }
     .categoryList {
-        padding-top: 5px;
-        text-align: center;
-        width: 100%;
-        overflow-y: scroll;
-        white-space: nowrap;}
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;    
+    }
         .categoryBTN {
             color: #17181a;
             font-family: IRANSans;
@@ -246,8 +248,16 @@ max-width: 70%;
     }
 }
 @media screen and (max-width:1100px){
+    .blogDes img{
+        width: 100% !important;
+        height: auto !important;
+        }
+        .blogDes 
     .menuResponsiveNone{
         display: none;
+    }
+    .productDetail img{
+        width: 100% !important;
     }
     .fontWeightBold{
         font-size: 13px;
@@ -277,6 +287,10 @@ max-width: 70%;
         width: 100%;
         height: 200px;
     }
+    .BestSellingCard{
+        width:200px !important
+    }
+
     .BestSellingCard .row{
         display: block !important;
     }
@@ -290,6 +304,7 @@ max-width: 70%;
     }
     .BestSellingCard{
         padding: 0.5rem !important;
+        width:200px !important
     }
     .priceRowCart p{
         font-size: 10px;
@@ -352,8 +367,9 @@ max-width: 70%;
         width: 170px;
     }
     .linkCopy{
-        display: none;
+        
     }
+    .topBarBox
     .mn{
         display: block !important;
     }
@@ -364,6 +380,9 @@ max-width: 70%;
     }
     .responsiveHeader{
         display:block !important;
+    }
+    .resColor{
+        display: none !important;
     }
     .responsiveHeader{
         background-color: #fff;
@@ -411,6 +430,7 @@ max-width: 70%;
         padding-bottom: 10px !important;
         border-bottom: 1px solid #d2d2d2;
     }
+ 
     .borderRight1{
         padding-right: 10px !important;
         padding-left: 10px !important;
@@ -552,7 +572,7 @@ max-width: 70%;
         display: none !important;
       }
 }
-@media screen and (max-width:1358px){
+@media screen and (max-width:1350px){
     .sortLable li button{
         padding: 2px !important;
         font-size: 10px !important;
@@ -571,6 +591,9 @@ max-width: 70%;
 @media screen and (max-width:1431px){
     .SliderCard{
         width: 330px;
+    }
+    .sd1s{
+        width: 95% !important;
     }
     
 }
@@ -628,8 +651,64 @@ max-width: 70%;
 
   
   @media screen and (max-width: 768px) {
+    .sd2s{
+        width: 100% !important;
+    }
     .swiper-container {
       width: 100% !important;
+    }
+    .exclusiveSliderCard2{
+        width: 150px !important;
+        height: 150px !important;
+    }
+    .wRes{
+        width:auto !important;
+    }
+    #w95{
+        overflow-x: auto;
+        white-space:nowrap ;
+    }
+    .wi15{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    
+    .wi50{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    .wi5{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    .wi10{
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    .tRow{
+        overflow-x: auto;
+        white-space: nowrap;
+        overflow-y: hidden;
+    }
+    .wB15{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
+    }
+    .wB65{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
+    }
+    .wB10{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
+    }
+    .wR5{
+        width: auto !important;
+        margin-right: 10px !important;
+        margin-left:10px !important;
     }
   }
 @media screen and (max-width:900px){
@@ -645,5 +724,69 @@ max-width: 70%;
     }
     .breadCrumbs ul{
         display: unset;
+    }
+    .topBarBox{
+        display: inline-block !important;
+        width: 100% !important;
+    }
+    .colorWhite{
+        
+    }
+    .wB201{
+        min-width:200px !important;     
+        width:auto !important; 
+    }
+    .wB601{
+        width:auto !important;
+        min-width: 200px !important;
+    }
+    .wB101{
+        width:auto !important;
+        min-width: 150px !important;
+    }
+    .tRowRes{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    .wB202{
+        min-width:200px !important;     
+        width:auto !important; 
+    }
+    .wB602{
+        width:auto !important;
+    
+    }
+    .wB102{
+        width:auto !important;
+        min-width: 150px !important;
+    }
+    .productAssembleNameRes{
+        font-size: 12px !important;
+    }
+    .miniText2Res{
+        font-size: 10px !important;
+    }
+    .resRowRes{
+        display: block !important;
+    }
+    .secondBox{
+        display: block !important;
+    }
+    .buyAssembleBtn{
+        width: auto !important;
+        font-size: 12px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .productAssembleNameRes2{
+        text-align: left !important;
+    }
+    .bannerRow{
+        padding-right: 0px !important;
+        padding-left:0px !important;
+    }
+    .bannerBackground{
+        padding: 15px !important;
     }
 }
