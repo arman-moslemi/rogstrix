@@ -5,7 +5,7 @@ import AboutUs from "./Information/AboutUs"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import React,{useState,useEffect} from 'react'
 
-const AboutUsPage = () => {
+const   AboutUsPage = () => {
   const [language,setLanguage]=useState();
 
   return (
