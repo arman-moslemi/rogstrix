@@ -14,6 +14,7 @@ import React,{useState,useEffect,useContext} from 'react'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { AuthContext } from "../../../context/auth-context";
 import { useTranslation } from 'react-i18next';
+import parse  from 'html-react-parser';
 
 const AssembleSecond = () => {
   const { isLoggedIn, token } = useContext(AuthContext);
@@ -522,14 +523,14 @@ inc.indexOf(item.SubGroupID)!=-1 ?
               {t("هشدار !")}
               </p>
               <p className="productAssembleName MediumFont" >
-              {hoshdar}               </p>
+              {hoshdar?parse(hoshdar):null}               </p>
             </div>
             <div className="d-flex">
               <p className="hoshdar orange">
               {t("توجه !")}
               </p>
               <p className="productAssembleName MediumFont" >
-              {warning}            </p> </div>
+              {warning?parse(warning):null}            </p> </div>
           </div>
         </div>
         {/* <div className="whiteBox3 mt-3">

@@ -160,26 +160,26 @@ const UserOrder = () => {
 {item[0].CostTotal}                        </p>
                      </div>
                      <div id="w12">
-{item[0].Payment==1?
+{/* {item[0].Payment==1? */}
                      <p>
 {t("‍‍‍پرداخت شده")}
                        </p>
-:
-<p>
+{/* // :
+// <p>
 
-{t("‍‍‍پرداخت نشده")}
-</p>
-}
+// {t("‍‍‍پرداخت نشده")}
+// </p> */}
+{/* } */}
 
                          </div>
                          <div id="w12">
 {
-item.Condition==0?
+item[0].Condition==0?
   <p>
     {t("ارسال نشده")}
   </p>
                            :
-                           item.Status==1?
+                           item[0].Condition==1?
                            <p>
                            {t("درحال ارسال")}
                          </p>

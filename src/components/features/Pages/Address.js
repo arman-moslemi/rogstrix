@@ -64,6 +64,8 @@ const Address = () => {
              setData(response.data.Data)
              setAddress1(response.data.Data.Address1)
              setAddress2(response.data.Data.Address2)
+             setPostalCode1(response.data.Data?.PostalCode1)
+             setPostalCode2(response.data.Data?.PostalCode2)
              console.log(response.data.Data)
 
             // history.push("/RegisterVerify/"+mobile)

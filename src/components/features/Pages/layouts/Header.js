@@ -46,16 +46,20 @@ const  _handleKeyDown = (e) => {
   const [data,setData]=useState()
   const [name,setName]=useState()
 
-const groups=()=>{
+const groups=async()=>{
    const axios = require("axios");
    console.log(55)
    console.log(localStorage.getItem("lang"))
  setName(localStorage.getItem("name")?localStorage.getItem("name"):"")
 ss= localStorage.getItem("lang")
+const lang=await localStorage.getItem("lang")
+i18n.changeLanguage(lang)
 setDefLang(ss)
 console.log(ss)
    // axios.get(apiUrl + "AllMainGroup")
-   axios.get(apiUrl + "AllMainGroup")
+   axios.get(apiUrl + "AllMainGroup",{ headers: {
+    lang: i18n.language
+  }})
    .then(function (response) {
      if (response.data.result == "true") {
 
@@ -189,8 +193,8 @@ console.log(ss)
       
         <select onChange={(e) =>{ changeLang(e.target.value)}}          defaultValue={ss}
  name="Lang" id="language">
-            <option value="en">En</option>
             <option value="ir">Fa</option>
+            <option value="en">En</option>
 
         </select>
       </div>
@@ -396,7 +400,7 @@ item?.map((item2)=>{
 </Navbar>
          </div>
          <div className="responsiveHeaderLogo">
-         <img src={RedLogo} className=""/>
+         <img src={RedLogo} className="" onClick={()=>history.push("/")}/>
          </div>
          <div className="responsiveLanguage">
          <select name="Lang" 

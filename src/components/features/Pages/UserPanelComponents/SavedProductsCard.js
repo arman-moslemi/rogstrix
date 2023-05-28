@@ -61,12 +61,12 @@ const SavedProductsCard = (props) => {
       <div className="row">
         <Col md={5} className="pd0">
         <div className="d-flex align-items-center">
-          <div>
+          {/* <div>
             <p className="bottomIcon">
               <FaCommentDots size={18} className="marginLeft10"/>
               5
             </p>
-          </div>
+          </div> */}
           {/* <div style={{marginRight:15}}>
             <p className="bottomIcon">
               <FaLongArrowAltUp size={18} className="marginLeft10"/>
