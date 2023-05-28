@@ -249,8 +249,8 @@ const resources = {
       "وضعیت":"status",
       "آخرین به روزرسانی":"latest update",
       "مشاهده":"view",
-      "درانتظار پاسخ":"waiting for an answer",
-      "پاسخ داده شده":"has been answered",
+      "درانتظار پاسخ":"waiting",
+      "پاسخ داده شده":"answered",
       "بسته شده":"closed",
       "سفارش های من":"My orders",
       "شماره":"No",
@@ -288,8 +288,19 @@ const resources = {
  "نظرات و دیدگاه":"Comments",
  "کاربر":"User",
  "امتیاز شما به این محصول":"Your Rate",
- "ارسال نظر":"Send Comment"
-
+ "ارسال نظر":"Send Comment",
+ "مشخصات فروش":"Sales Details",
+ "آدرس های من":"My Adresses",
+ "تغییر کلمه عبور":"Change Password",
+"سفارش های من":"My Orders",
+"تیکت های من":"My Tickets",
+"سیستم های ذخیره شده":"Saved Systems",
+"محصولات مشاهده شده":"Viewed Products",
+"خروج":"Sign Out",
+"کلمه عبور فعلی":"Current Password",
+"کلمه عبور جدید":"New Password",
+"تکرار کلمه عبور جدید":"New Password Repeat",
+"مبلغ":"Cost"
     }
     
   }

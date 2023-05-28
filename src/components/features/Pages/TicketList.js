@@ -245,9 +245,13 @@ setOpen1(false)
 </div>
 <div className="ta-center" id="w5">
 {/* <p className="fontWeightBold ml-4 md-0">مشاهده</p> */}
-<Button className="glassBtn">
-<FaEye className="ml-4 md-0 " />
-</Button>
+{/* <Button 
+className="viewBtn"
+> */}
+<FaEye 
+// className="ml-4 md-0 " 
+/>
+{/* </Button> */}
 
 </div>
 </div>

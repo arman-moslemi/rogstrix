@@ -1498,6 +1498,11 @@ border: 1px solid #ff004e !important;
   border: none !important;
   font-family: IRANSans-Medium;
 }
+.viewBtn{
+  /* background-color: transparent !important; */
+  border: none !important;
+  font-family: IRANSans-Medium;
+}
 #colorBlue{
   color: #25bddc;
 }
