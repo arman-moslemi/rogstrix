@@ -7,6 +7,7 @@ import MadeSystem from "../../../assets/img/madeSystem.png";
 import userProfile from "../../../assets/img/userProfile.png";
 import { apiUrl ,apiAsset} from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -21,6 +22,8 @@ export const truncate = (str, len) => {
 };
 const CompletedCards = (props) => {
   const history = useHistory();
+  const {t,i18n} = useTranslation();
+
 console.log(789456)
 console.log(props.data)
   return (
@@ -73,7 +76,7 @@ console.log(props.data)
         </Col>
         <Col md={7} className="pd0 ta-left">
           <p className="completedPrice">
-          {props?.data?.SystemCost} تومان
+          {props?.data?.SystemCost?props?.data?.SystemCost.toLocaleString("en-de"):props?.data?.Cost.toLocaleString("en-de")} {t("تومان")}
           </p>
         </Col>
       </div>

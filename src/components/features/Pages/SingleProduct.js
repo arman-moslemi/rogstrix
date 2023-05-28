@@ -508,7 +508,7 @@ index+1>rate?
                   </div>
                   <div>
                     <p className="reviewP" id="colorGray">
-                    {t("امتیاز")}: {rate} {t("از ۵")} ({com?.length} {t("نظر")})
+                    {t("امتیاز")}: {rate?rate:null} {t("از ۵")} ({com?.length} {t("نظر")})
                     </p>
                   </div>
 

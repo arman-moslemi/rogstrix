@@ -32,7 +32,7 @@ if(!email || !pass)
 }
 else{
 
-    axios.post(apiUrl + "Login",{Email:email,Password:pass,GuestID:localStorage.getItem("guest")})
+    axios.post(apiUrl + "Login",{Mobile:email,Password:pass,GuestID:localStorage.getItem("guest")})
     .then(function (response) {
       if (response.data.result == "true") {
         console.log(777)
@@ -74,9 +74,9 @@ else{
                ورود
             </p>
             <p className="loginText">
-            ایمیل خود را وارد کنید.
+            موبایل خود را وارد کنید.
             </p>
-            <input className="inputLogin mt-2" placeholder="ایمیل خود را وارد کنید" type="email" onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="inputLogin mt-2" placeholder="موبایل خود را وارد کنید" type="email" onChange={(e)=>setEmail(e.target.value)}/>
             <input className="inputLogin marTop35" placeholder="رمز عبور خود را وارد کنید" type="password"onChange={(e)=>setPass(e.target.value)}/>
             <div className="row ma-top-1 d-flex-start-start">
                 <Col md={6} xs={6} sm={6} className="pad0">

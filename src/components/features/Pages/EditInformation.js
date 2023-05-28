@@ -45,10 +45,18 @@ const EditInformation = () => {
 
     const editInfo=()=>{
       const axios = require("axios");
-
-
+if(prePhone.length+phone.length>11)
+{
+  setTitle("تلفن درست نیست")
+  setOpen(true)
+}
+if((prePhoneCompany+phoneCompany).length>11)
+{
+  setTitle("تلفن شرکت درست نیست")
+  setOpen(true)
+}
         axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:null,NameFamily:name+","+family,NationalCode:nationalCode,
-        Phone:phone+prePhone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null
+        Phone:prePhone+phone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null
     })
         .then(function (response) {
           if (response.data.result == "true") {
