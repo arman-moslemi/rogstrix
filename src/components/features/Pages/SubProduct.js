@@ -40,6 +40,8 @@ const SubProducts = () => {
   const [to,setTo]=useState(0)
   const [max,setMax]=useState(1000)
   const [head,setHead]=useState("")
+  const [page,setPage]=useState(1)
+  const [count,setCount]=useState(0)
   const history = useHistory();
 console.log(params)
 const mainSlider=async()=>{
@@ -50,7 +52,8 @@ const mainSlider=async()=>{
           // .post(apiUrl + "SubGroupProduct",{
           .post(apiUrl + "SubGroupProductByName",{
             // SubGroupID:params
-            SubGroupName:params
+            SubGroupName:params,
+            page:page
           },{ headers: {
             lang: i18n.language
           }})
@@ -58,6 +61,7 @@ const mainSlider=async()=>{
         if (response.data.result == "true") {
 
           setData2(response.data.Data)
+          setCount(parseInt(parseInt(response.data.Count)/15)+1)
           console.log(55)
           console.log(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
           setMax(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
@@ -156,9 +160,8 @@ data?.map((item2,index1)=>{
   item2?.map((item3,index2)=>{
 gg?.map((item,index3)=>{
 
- 
-
-    if(item3.SubGroupPropertyID==item.id)
+ item3.SubGroupProperty.map((item4)=>{
+  if(item4.SubGroupPropertyID==item.id)
    {
      count+=1;
      if (count==gg.length){
@@ -168,6 +171,14 @@ gg?.map((item,index3)=>{
     
   
   }
+
+ })
+
+  
+
+
+
+  
   })
 })
 })
@@ -191,9 +202,10 @@ data2?.map((item2,index1)=>{
   item2?.map((item3,index2)=>{
 gg?.map((item,index3)=>{
 
- 
+  item3.SubGroupProperty.map((item4)=>{
 
-    if(item3.SubGroupPropertyID==item.id)
+
+    if(item4.SubGroupPropertyID==item.id)
    {
      count+=1;
      if (count==gg.length){
@@ -203,6 +215,12 @@ gg?.map((item,index3)=>{
     
   
   }
+
+})
+
+
+
+
   })
 })
 })
@@ -224,7 +242,7 @@ mainSlider()
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, [head,language]);
+  }, [head,language,page]);
   return (
     <div className="EachCategoryBody">
       <Header setLanguage={setLanguage}/>
@@ -547,6 +565,15 @@ return(
 
               </div>
               {
+                count!=0?
+                <div className="paginationBox ta-center">
+                <PaginationCustom setPage={setPage} count={count}/>
+                </div>
+                :
+                null
+              }
+            
+              {
                
                data[0]?
               <div style={{marginTop:20}}>
@@ -575,6 +602,7 @@ return(
               <BestSellingProductsSlider/>
               </div>
           </div> */}
+          
           </Col>
 
         </div>

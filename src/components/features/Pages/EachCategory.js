@@ -22,7 +22,8 @@ const EachCategory = () => {
 const [cat,setCat]=useState(params);
 const [language,setLanguage]=useState();
 const {t,i18n} = useTranslation();
-
+const [page,setPage]=useState(1)
+const [count,setCount]=useState(0)
 console.log(params)
 
   const mainSlider=async()=>{
@@ -33,10 +34,11 @@ console.log(params)
     i18n.changeLanguage(lang)
     console.log(888)
       axios
-          // .post(apiUrl + "MainProduct",{
-          //   MainGroupID:cat
+
           .post(apiUrl + "MainProductByName",{
-            MainGroupName:cat
+            MainGroupName:cat,
+            page:page
+
           },{ headers: {
             lang: i18n.language
           }})
@@ -45,6 +47,7 @@ console.log(params)
 
           setData(response.data.Data)
           console.log(response.data.Data)
+          setCount(parseInt(parseInt(response.data.Count)/15)+1)
 
       }
       else{
@@ -63,7 +66,7 @@ console.log(params)
     mainSlider();
     
 // alert(val)
-  }, [cat,language]);
+  }, [cat,language,page]);
   return (
     <div className="EachCategoryBody">
       <Header setLanguage={setLanguage}/>
@@ -132,12 +135,24 @@ return(
             </Col> */}
 
           </div>
-          <div className="paginationBox ta-center">
-          <PaginationCustom/>
-          </div>
+      
+          {
+                count!=0?
+                <div className="paginationBox ta-center">
+                <PaginationCustom setPage={setPage} count={count}/>
+                </div>
+                :
+                null
+              }
+              {
+                data[0]?
           <div style={{marginTop:20}}>
-            {parse(data[0][0]?.MainDescription)}
+             { data[0][0]?.MainDescription?
+              parse(data[0][0]?.MainDescription):
+              null}
           </div>
+          :
+          null}
         </div>
           </div>
        </div>

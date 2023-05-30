@@ -41,7 +41,8 @@ const Products = () => {
   const [head,setHead]=useState("")
   const history = useHistory();
   const [max,setMax]=useState(1000)
-
+  const [count,setCount]=useState(0)
+  const [page,setPage]=useState(1)
 console.log(params)
 const mainSlider=async()=>{
   const axios = require("axios");
@@ -51,12 +52,15 @@ const mainSlider=async()=>{
           // .post(apiUrl + "GroupProduct",{
           //   GroupID:params
           .post(apiUrl + "GroupProductByName",{
-            GroupName:params
+            GroupName:params,
+            page:page
           },{ headers: {
             lang: i18n.language
           }})
       .then(function (response) {
         if (response.data.result == "true") {
+          console.log(parseInt(parseInt(response.data.Count)/15)+1)
+          setCount(parseInt(parseInt(response.data.Count)/15)+1)
           console.log(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
 
           setMax(response.data.Data.sort((a, b) => (a.Cost < b.Cost) ? 1 : -1)[0][0]?.Cost)
@@ -224,7 +228,7 @@ mainSlider()
   useEffect(() => {
     mainSlider();
 // alert(val)
-  }, [head,language]);
+  }, [head,language,page]);
   return (
     <div className="EachCategoryBody">
       <Header setLanguage={setLanguage}/>
@@ -541,9 +545,26 @@ return(
 
 
               </div>
-              <div style={{marginTop:20}}>
-            {parse(data[0][0]?.GroupDescription)}
-          </div>
+              {
+                count!=0?
+                <div className="paginationBox ta-center">
+                <PaginationCustom setPage={setPage} count={count}/>
+                </div>
+                :
+                null
+              }
+              {
+                data[0]?
+                <div style={{marginTop:20}}>
+                 { data[0][0]?.GroupDescription?
+              parse(data[0][0]?.GroupDescription):
+              null}
+              </div>
+                :
+null
+
+              }
+             
           </div>
           {/* <div className="productsWhiteBox">
           <div className="row margin25">
