@@ -59,6 +59,8 @@ const CartStep2 = () => {
     const [city2,setCity2]=useState(0)
     const [reg2,setReg2]=useState(0)
     const [cities,setCity]=useState([])
+    const [cities2,setCities2]=useState([])
+    const [provinces,setProvince]=useState([])
     const [total,setTotal]=useState(0)
     const [disText,setDiscount]=useState("")
     const [tranCost,setTranCost]=useState(0)
@@ -69,6 +71,7 @@ const CartStep2 = () => {
     const [bank,setBank]=useState("")
     const [des,setDes]=useState("")
     const [personal,setPersonal]=useState()
+    const [legal,setLegal]=useState()
     const [regions,setReg]=useState([])
 
     const history = useHistory();
@@ -93,6 +96,7 @@ const CartStep2 = () => {
              console.log(response.data.InfoData)
              setPersonal(response.data.Data)
              setBank(response.data.InfoData)
+             setLegal(response.data.Data.IsLegal)
             // history.push("/RegisterVerify/"+mobile)
 
         }
@@ -114,6 +118,7 @@ const CartStep2 = () => {
 
              setCity(response.data.Data)
              setReg(response.data.Data2)
+             setProvince(response.data.Data3)
 
              console.log(response.data.Data)
 
@@ -336,14 +341,32 @@ alert(response.data.message)
           </Typography>
           <hr/>
          <div className="row">
-         <Col md={4}>
+         <Col md={3}>
+
+<p className="fontWeightMedium mb-2">
+{t("استان")}
+</p>
+<select onChange={(e)=>setCities2(cities.filter(t=>t.ProvinceID==e.target.value))} name="state" id="state" className="informationSelect">
+{
+    provinces.map((item)=>{
+      return(
+
+        <option  value={item.ProvinceID}>{item.ProvinceName}</option>
+      )
+    })
+  }
+
+  </select>
+
+</Col>
+         <Col md={3}>
 
                                 <p className="fontWeightMedium mb-2">
                                 {t("شهر")}
                                 </p>
                                 <select onChange={(e)=>!address1?setCity1(e.target.value):setCity2(e.target.value)} name="state" id="state" className="informationSelect">
                                 {
-                                    cities.map((item)=>{
+                                    cities2.map((item)=>{
                                       return(
 
                                         <option  value={item.CityID}>{item.CityName}</option>
@@ -354,7 +377,7 @@ alert(response.data.message)
                                   </select>
 
              </Col>
-             <Col md={4}>
+             <Col md={2}>
 {
   city1==1577||city2==1577?
 
@@ -432,14 +455,32 @@ onChange={()=>{setRadio(1);Transporter(1)}}
           </Typography>
           <hr/>
          <div className="row">
-             <Col md={4}>
+         <Col md={3}>
+
+<p className="fontWeightMedium mb-2">
+{t("استان")}
+</p>
+<select onChange={(e)=>setCities2(cities.filter(t=>t.ProvinceID==e.target.value))} name="state" id="state" className="informationSelect">
+{
+    provinces.map((item)=>{
+      return(
+
+        <option  value={item.ProvinceID}>{item.ProvinceName}</option>
+      )
+    })
+  }
+
+  </select>
+
+</Col>
+             <Col md={3}>
 
                                 <p className="fontWeightMedium mb-2">
                                 {t("شهر")}
                                 </p>
                                 <select onChange={(e)=>setCity1(e.target.value)} name="state" id="state" className="informationSelect">
                                 {
-                                    cities.map((item)=>{
+                                    cities2.map((item)=>{
                                       return(
 
                                         <option  value={item.CityID}>{item.CityName}</option>
@@ -450,7 +491,7 @@ onChange={()=>{setRadio(1);Transporter(1)}}
                                   </select>
 
              </Col>
-             <Col md={4}>
+             <Col md={2}>
 {
   city1==1577?
 
@@ -532,14 +573,32 @@ onChange={()=>{setRadio(2);Transporter(2)}}
           </Typography>
           <hr/>
          <div className="row">
-         <Col md={4}>
+         <Col md={3}>
+
+<p className="fontWeightMedium mb-2">
+{t("استان")}
+</p>
+<select onChange={(e)=>setCities2(cities.filter(t=>t.ProvinceID==e.target.value))} name="state" id="state" className="informationSelect">
+{
+    provinces.map((item)=>{
+      return(
+
+        <option  value={item.ProvinceID}>{item.ProvinceName}</option>
+      )
+    })
+  }
+
+  </select>
+
+</Col>
+         <Col md={3}>
 
 <p className="fontWeightMedium mb-2">
 {t("شهر")}
 </p>
 <select onChange={(e)=>setCity2(e.target.value)} name="state" id="state" className="informationSelect">
 {
-    cities.map((item)=>{
+    cities2.map((item)=>{
       return(
 
         <option  value={item.CityID}>{item.CityName}</option>
@@ -550,7 +609,7 @@ onChange={()=>{setRadio(2);Transporter(2)}}
   </select>
 
 </Col>
-<Col md={4}>
+<Col md={2}>
 {
 city2==1577?
 
@@ -910,10 +969,16 @@ null
               {t("کالاهای موجود در سبد خرید شما ثبت و رزرو نشده اند ، برای ثبت سفارش مراحل بعدی را تکمیل کنید.")}
 
               </p>
-              <p className='fontWeightNormal mt-4'>
-              {t("۹درصد ارزش افزوده")}
-
-              </p>
+              {
+                legal?
+                <p className='fontWeightNormal mt-4'>
+                {t("۹درصد ارزش افزوده")}
+  
+                </p>
+                :
+                null
+              }
+             
             </div>
       </div>
           

@@ -55,8 +55,15 @@ if((prePhoneCompany+phoneCompany).length>11)
   setTitle("تلفن شرکت درست نیست")
   setOpen(true)
 }
+if(showText){
+  if(companyName==""|| nationalCodeCompany==""){
+    setTitle("مقادیر حقوقی را وارد نمایید")
+    setOpen(true)
+  }
+}
         axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:null,NameFamily:name+","+family,NationalCode:nationalCode,
-        Phone:prePhone+phone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null
+        Phone:prePhone+phone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null,
+        IsLegal:showText
     })
         .then(function (response) {
           if (response.data.result == "true") {
@@ -112,6 +119,7 @@ if((prePhoneCompany+phoneCompany).length>11)
              setPrePhoneCompany(response.data.Data.PhoneCompany?.substring(8, response.data.Data.PhoneCompany))
              setGender(response.data.Data.Gender)
              setRegistrationCode(response.data.Data.RegistrationCode)
+             setShowText(response.data.Data.IsLegal)
             // history.push("/RegisterVerify/"+mobile)
 
         }

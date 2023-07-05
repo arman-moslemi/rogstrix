@@ -136,13 +136,13 @@ const MainPage = () => {
       .catch(function (error) {
         console.log(error);
       });
-    axios.post(apiUrl + "LastMainProduct", { MainGroupID: 1 })
+    axios.get(apiUrl + "LastProduct")
       .then(function (response) {
         if (response.data.result == "true") {
 
           setNew(response.data.Data.sort((a, b) => (a.ProductID < b.ProductID) ? 1 : -1))
           // newPro.sort((a, b) => (a.ProductID > b.ProductID) ? 1 : -1)
-          console.log(11)
+          console.log("new")
           console.log(response.data.Data)
 
         }
@@ -159,12 +159,10 @@ const MainPage = () => {
         if (response.data.result == "true") {
 
           setBlog(response.data.Data)
-          console.log(4879)
-          console.log(response.data.Data)
+
 
         }
         else {
-          console.log(response.data.result)
 
         }
       })
@@ -182,12 +180,10 @@ const MainPage = () => {
         if (response.data.result == "true") {
 
           setSpecial(response.data.Data)
-          console.log(77)
-          console.log(response.data.Data)
+    
 
         }
         else {
-          console.log(response.data.result)
 
         }
       })
@@ -360,12 +356,16 @@ const MainPage = () => {
             </Col>
             <Col md={2} className="colSpecial3">
               <div className="redBanner">
+              <a href={ slider?.LinkLeftSlider1} >
                 <img style={{ borderRadius: 20 }} src={apiAsset + slider?.LeftSlider1} />
                 {/* <p>ایسوس</p> */}
+              </a>
               </div>
               <div className="blackBanner">
+              <a href={ slider?.LinkLeftSlider2} >
                 <img style={{ borderRadius: 20 }} src={apiAsset + slider?.LeftSlider2} />
                 {/* <p>سامسونگ</p> */}
+              </a>
               </div>
             </Col>
           </div>
@@ -610,14 +610,14 @@ const MainPage = () => {
                   {t("محصولات جدید")}
                 </p>
               </div>
-              <div className="seeAllDiv" onClick={() => history.push("/products/89")} style={{ paddingLeft: 50 }}>
+              {/* <div className="seeAllDiv" onClick={() => history.push("/products/89")} style={{ paddingLeft: 50 }}>
                 <Button className="seeAll"> {t("مشاهده همه")}</Button>
-              </div>
+              </div> */}
             </Col>
           </div>
           <div className="row">
             {
-              newPro.map((item, index2) => {
+              newPro?.map((item, index2) => {
                 return (
                   index2 < 4 ?
                     <Col md={6} className="marginTop30 newProductCol">

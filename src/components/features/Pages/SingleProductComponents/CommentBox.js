@@ -121,7 +121,7 @@ item.Agree?
         </div>
         <div>
         <p className="commenterName font12">
-{item.NameFamily.split(',')[0]+" "+item.NameFamily.split(',')[1]} </p>
+{item.NameFamily?.split(',')[0]+" "+item.NameFamily?.split(',')[1]?item.NameFamily?.split(',')[1]:""} </p>
  <div className="d-flex align-items-center">
     <p className="commentDate">
 {item.Date}    </p>

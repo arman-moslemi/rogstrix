@@ -7,7 +7,6 @@ import { Link, useHistory } from "react-router-dom";
 const SliderCard = ({data}) => {
   const history = useHistory();
    const truncate = (str, len) => {
-    console.log("truncate", str, str.length, len);
     if (str.length > len && str.length > 0) {
       let new_str = str + " ";
       new_str = str.substr(0, len);

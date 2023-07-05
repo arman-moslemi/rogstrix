@@ -20,8 +20,7 @@ export const truncate = (str, len) => {
 };
 const WeblogSliderCard = ({data}) => {
   const history = useHistory();
-console.log(66)
-console.log(data)
+
   return (
 
       <div className="weblogSliderCard">

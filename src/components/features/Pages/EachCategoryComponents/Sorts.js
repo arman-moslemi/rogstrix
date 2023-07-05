@@ -11,7 +11,7 @@ const Sorts = ({data,setData}) => {
     console.log(14563)
 //  setProduct([])
 // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-setData([...data].sort((a, b) => (a.Cost < b.Cost) ? 1 : -1))
+setData([...data].sort((a, b) => (a[0].Cost < b[0].Cost) ? 1 : -1))
 console.log(data)
 
 }
@@ -21,7 +21,7 @@ const viewset=()=>{
 console.log(14563)
 //  setProduct([])
 // var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
-setData([...data].sort((a, b) => (a.TotalView < b.TotalView) ? 1 : -1))
+setData([...data].sort((a, b) => (a[0].TotalView < b[0].TotalView) ? 1 : -1))
 console.log(data)
 
 }
@@ -29,7 +29,7 @@ const cheap=()=>{
 
 
 
-  setData([...data].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1))
+  setData([...data].sort((a, b) => (a[0].Cost > b[0].Cost) ? 1 : -1))
 console.log(data)
 
 }
@@ -37,7 +37,7 @@ const newest=()=>{
 
 
 
-  setData([...data].sort((a, b) => (a.ProductID < b.ProductID) ? 1 : -1))
+  setData([...data].sort((a, b) => (a[0].ProductID < b[0].ProductID) ? 1 : -1))
 console.log(data)
 
 }

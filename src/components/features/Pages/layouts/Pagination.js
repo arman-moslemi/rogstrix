@@ -11,7 +11,7 @@ export default function PaginationCustom({setPage,count}) {
       <Pagination
         count={count!=0?count:5}
         variant="outlined" shape="rounded"
-        onChange={(e,page)=>setPage(page)}
+        onChange={(e,page)=>{setPage(page);window. scrollTo(0, 0)}}
         renderItem={(item) => (
           <PaginationItem
             components={{ previous: ArrowForwardIcon, next: ArrowBackIcon }}

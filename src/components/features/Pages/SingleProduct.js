@@ -146,6 +146,7 @@ alert("با موفقیت ذخیره شد")
       .then(function (response2) {
         console.log(response2.data)
         if (response2.data.result == "true") {
+          document.title =response2.data.Data.ProductName;
 
           setProduct(response2.data.Data)
           setID(response2.data.Data.ProductID)
@@ -297,7 +298,9 @@ const images = [
 
   useEffect(() => {
     mainSlider();
-    document.title = product?.ProductName;
+    console.log(44444)
+    console.log(product)
+    // document.title =product.length>0? product?.ProductName:"123";
     // document.title = params;
     document.getElementsByTagName("META")[2].content="Product";
 

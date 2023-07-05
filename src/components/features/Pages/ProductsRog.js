@@ -41,20 +41,28 @@ const Products = () => {
   const [cat,setCat]=useState(params);
   const [language,setLanguage]=useState();
   const history = useHistory();
+  const [page,setPage]=useState(1)
+  const [count,setCount]=useState(0)
+
 console.log(params)
   const mainSlider=async()=>{
     const axios = require("axios");
 
       axios
           .post(apiUrl + "GroupProductROG",{
-            GroupID:params
+            GroupID:params,
+            page:page
+
           })
       .then(function (response) {
         if (response.data.result == "true") {
+          setCount(parseInt(parseInt(response.data.Count)/15)+1)
 
           setData(response.data.Data)
           setData2(response.data.Data)
           console.log(55)
+          console.log(parseInt(parseInt(response.data.Count)/15)+1)
+
           console.log(response.data.Data)
 setHead(response.data.Data[0][0].Title)
       }
@@ -73,8 +81,7 @@ setHead(response.data.Data[0][0].Title)
         if (response.data.result == "true") {
 
           setProduct(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
+  
 
       }
       else{
@@ -90,8 +97,7 @@ setHead(response.data.Data[0][0].Title)
         if (response.data.result == "true") {
 
           setBrand(response.data.Data)
-          console.log(44)
-          console.log(response.data.Data)
+        
 
       }
       else{
@@ -610,9 +616,14 @@ return(
       </Col> */}
 
     </div>
-    <div className="paginationBox ta-center">
-    <PaginationCustom/>
-    </div>
+    {
+                count!=0?
+                <div className="paginationBox ta-center">
+                <PaginationCustom setPage={setPage} count={count}/>
+                </div>
+                :
+                null
+              }
   </div>
     </div>
  </div>

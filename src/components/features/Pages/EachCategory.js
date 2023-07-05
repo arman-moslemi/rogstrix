@@ -106,9 +106,9 @@ null
           </div>
            <div className="whiteBoxCategory">
             {
-              data?
+              data[0]?
               <p className="BoxTitle">
-              همه {data[0]?.MainTitle}ها
+              همه {data[0][0]?.MainTitle}ها
             </p>
               :
               null
@@ -125,7 +125,7 @@ return(
               // <CardBox data={item} className="test" />
               <Col md={3} className="marginTop15">
 
-              <BestSellingSliderCard data={item}/>
+              <BestSellingSliderCard data={item[0]}/>
 </Col>
 )
               })
