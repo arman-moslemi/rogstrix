@@ -375,7 +375,12 @@ console.log(data)
             <AccordionItem className="productAccardion">
                 <AccordionItemHeading>
                     <AccordionItemButton>
-{item[0].Title}                    </AccordionItemButton>
+                      {item[0]?
+                      item[0]?.SubTitle
+                    :
+                    null  
+                    }
+                  </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
 
