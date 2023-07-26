@@ -236,8 +236,8 @@ const MainPage = () => {
 
   useEffect(() => {
     mainSlider();
-    document.title = "راگ استریکس | فروشگاه اینترنتی قطعات و سیستم های کامپیوتری";
-    document.getElementsByTagName("META")[2].content = "راگ استریکس | فروشگاه اینترنتی قطعات و سیستم های کامپیوتری";
+    document.title = "Rogstrixراگ استریکس | فروشگاه اینترنتی قطعات و سیستم های کامپیوتری";
+    document.getElementsByTagName("META")[2].content = "راگ استریکس مرجع فروش اینترنتی بهترین و با گیفیت ترین تجهیزات کامپیوتر | همراه با اسمبل أنلاین و مشاوره رایگان";
 
 
     // alert(val)
