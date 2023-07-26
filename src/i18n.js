@@ -300,11 +300,15 @@ const resources = {
 "کلمه عبور فعلی":"Current Password",
 "کلمه عبور جدید":"New Password",
 "تکرار کلمه عبور جدید":"New Password Repeat",
-"مبلغ":"Cost"
-    }
+"مبلغ":"Cost",
+"پیشنهادهای ویژه":"Special Offers",
+"مقایسه محصول":"Product Comparison",
+"تومان":"toman",
+"موجود":"avaible",
+"ناموجود":"not avaible"
     
   }
-};
+}};
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next

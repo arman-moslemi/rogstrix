@@ -316,7 +316,7 @@ const CartStep1 = () => {
                   </p>
                 </div>
                 <div>
-                  <p>
+                  <p >
                     {total.toLocaleString("en-de")} {t("تومان")}
                   </p>
                 </div>

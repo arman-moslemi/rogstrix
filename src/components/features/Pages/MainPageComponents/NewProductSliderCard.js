@@ -4,6 +4,7 @@ import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row, NavItem} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -18,6 +19,7 @@ export const truncate = (str, len) => {
 };
 const NewProductSliderCard = ({data}) => {
   const history = useHistory();
+  const { t, i18n } = useTranslation();
 
   return (
 
@@ -28,18 +30,18 @@ const NewProductSliderCard = ({data}) => {
     <p className="newProductName">
     {truncate(data.ProductName+" "+data.BrandName,100)}
     </p>
-    <p className="newProductPrice">
-    {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")} تومان
+    <p className={i18n.language=="en"?"newProductPriceEn":"newProductPrice"}>
+    {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}  {t("تومان")}  
     </p>
   </Col>
   <Col md={5} className="ta-left">
   <img src={apiAsset+data.Pic1}/>
   {data.Available?
                   <p className="cardDes">
-                    موجود
+                    {t("موجود")}
                   </p>
                  : <p className="cardDes">
-                  ناموجود
+                  {t("ناموجود")}
                  </p>
                  
                  

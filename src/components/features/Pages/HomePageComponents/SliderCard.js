@@ -4,6 +4,8 @@ import cardImg from "../../../assets/img/cardImg.png"
 import { Container ,Col, Button,Row, NavItem} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+
 const SliderCard = ({data}) => {
   const history = useHistory();
    const truncate = (str, len) => {
@@ -16,7 +18,8 @@ const SliderCard = ({data}) => {
     }
     return str;
   };
-  
+  const { t, i18n } = useTranslation();
+
   return (
 
       <div className="SliderCard sd1s">
@@ -39,10 +42,10 @@ const SliderCard = ({data}) => {
         </p> */}
                  {data.Available?
                   <p className="cardDes">
-                    موجود
+                    {t("موجود")}
                   </p>
                  : <p className="cardDes">
-                  ناموجود
+                  {t("ناموجود")}
                  </p>
                  
                  
@@ -51,10 +54,10 @@ const SliderCard = ({data}) => {
        
          </Col>
          <Col md={8} className="ta-left">
-          <p className="strokeOutPrice">
-{data.Cost}     تومان     </p>
-          <p className="cardPrice">
-          {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}تومان
+          <p className={i18n.language=="en"?"strokeOutPriceEn":"strokeOutPrice"}>
+{data.Cost}     {t("تومان")}     </p>
+          <p className={i18n.language=="en"?"cardPriceEn":"cardPriceEn"}>
+          {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")} {t("تومان")} 
        </p>
          </Col>
        </div>
