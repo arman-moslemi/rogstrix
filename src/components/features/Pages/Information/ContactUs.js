@@ -7,7 +7,11 @@ import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import parse  from 'html-react-parser';
 import { useTranslation } from 'react-i18next';
-
+import PhoneIcon from "../../../assets/icons/phone";
+import Address from "../../../assets/icons/address";
+import Email from "../../../assets/icons/email";
+import Mobile from "../../../assets/icons/mobile";
+import RedLogo from "../../../assets/img/redLogo.png"
 const ContactUs = () => {
   const [data,setData]=useState([])
   const {t,i18n} = useTranslation();
@@ -53,10 +57,42 @@ axios.get(apiUrl + "Information",{ headers: {
         {/* لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. */}
         {   data.length!=0?
 <>
-<p>Phone:{data?.Phone}</p>
-<p>Mobile:{data?.Mobile}</p>
-<p>Address:{data?.Address}</p>
-<p>Email:{data?.Email}</p>
+<div style={{display:"flex",justifyContent:'space-between',alignItems:'center'}}>
+  
+  <div style={{display:'flex',flexDirection:'column'}}>
+    <span className="aboutText" style={{color:'#ed2124',fontWeight:"'900' !important",fontSize:'25px'}}>
+      تماس با ما
+    </span>
+    <div style={{display:'flex',alignItems:'center',marginTop:'20px'}}>
+      <PhoneIcon/>
+      <p className="aboutText" style={{color:'red',fontWeight:'bold',marginBottom:'0px',marginRight:'10px'}}>شماره تماس : 
+      <span style={{color:'#000'}}>{data?.Phone}</span>
+      </p>
+    </div>
+    <div style={{display:'flex',alignItems:'center',marginTop:'20px'}}>
+      <Mobile/>
+      <p className="aboutText" style={{color:'red',fontWeight:'bold',marginBottom:'0px',marginRight:'10px'}}>شماره موبایل : 
+      <span style={{color:'#000'}}>{data?.Mobile}</span>
+      </p>
+    </div>
+    <div style={{display:'flex',alignItems:'center',marginTop:'20px'}}>
+      <Address/>
+      <p className="aboutText" style={{color:'red',fontWeight:'bold',marginBottom:'0px',marginRight:'10px'}}>آدرس :  
+      <span style={{color:'#000'}}>{data?.Address}</span>
+      </p>
+    </div>
+    <div style={{display:'flex',alignItems:'center',marginTop:'20px'}}>
+      <Email/>
+      <p className="aboutText" style={{color:'red',fontWeight:'bold',marginBottom:'0px',marginRight:'10px'}}>ایمیل : 
+      <span style={{color:'#000'}}>{data?.Email}</span>
+      </p>
+    </div>
+  </div>
+  <div>
+    <img src={RedLogo} style={{width:'400px'}}/>
+  </div>
+</div>
+
 
 
 </>
