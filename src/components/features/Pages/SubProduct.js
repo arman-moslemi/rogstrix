@@ -576,11 +576,14 @@ return(
               {
                
                data[0]?
+               data[0][0]?.SubGroupDescription?
+
               <div style={{marginTop:20}}>
               {parse (data[0][0]?.SubGroupDescription)}
 
               </div>
               :
+              null:
               null}
           </div>
           {/* <div className="productsWhiteBox">
