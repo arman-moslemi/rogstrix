@@ -230,7 +230,11 @@ const FooterMain = () => {
           <div className="row mt-4">
             <Col md={4} className="pd22">
               <div className="enamadBox">
-                <img src={Enamad}/>
+              <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=323944&amp;Code=K4jIx7AwomBstoeXvUYO">
+                <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=323944&amp;Code=K4jIx7AwomBstoeXvUYO" alt=""  id="K4jIx7AwomBstoeXvUYO"/>
+
+                </a>
+                {/* <img src={Enamad}/> */}
               </div>
              
             </Col>

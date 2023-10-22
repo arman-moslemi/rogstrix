@@ -161,7 +161,8 @@ console.log(ss)
       <div className="d-flex">
       <div className="cardTitleW100" style={{marginLeft:100}}>
 
-        <p>سایت در حال بروز رسانی میباشد</p>
+        {/* <p>سایت در حال بروز رسانی میباشد</p> */}
+        <p>{t("تلفن:۵۵۵۸۰۴۷۵-۰۲۱")}</p>
         </div>
         <button className="headerBtn" onClick={()=>onClick()}>
         <MenuSearch/>

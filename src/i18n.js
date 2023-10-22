@@ -300,7 +300,8 @@ const resources = {
 "کلمه عبور فعلی":"Current Password",
 "کلمه عبور جدید":"New Password",
 "تکرار کلمه عبور جدید":"New Password Repeat",
-"مبلغ":"Cost"
+"مبلغ":"Cost",
+"تلفن:۵۵۵۸۰۴۷۵-۰۲۱":"Phone:021-5580475"
     }
     
   }
