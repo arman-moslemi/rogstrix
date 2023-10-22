@@ -71,3 +71,14 @@
     color: #ff004e;
     font-size: 20px !important;
 }
+.strokeOutPriceEn{
+    color: #898989;
+    text-decoration: line-through;
+    font-size: 20px;
+    margin-bottom: 5px !important;
+}
+.cardPriceEn{
+    font-weight: bold;
+    color: #ff004e;
+    font-size: 20px !important;
+}

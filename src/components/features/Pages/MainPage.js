@@ -99,7 +99,11 @@ const MainPage = () => {
       });
 
 
-    axios.get(apiUrl + "BestSellersProduct")
+    axios.get(apiUrl + "BestSellersProduct", {
+      headers: {
+        lang: i18n.language
+      }
+    })
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -119,7 +123,11 @@ const MainPage = () => {
         console.log(error);
       });
 
-    axios.get(apiUrl + "LastRogProduct")
+    axios.get(apiUrl + "LastRogProduct", {
+      headers: {
+        lang: i18n.language
+      }
+    })
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -136,7 +144,11 @@ const MainPage = () => {
       .catch(function (error) {
         console.log(error);
       });
-    axios.get(apiUrl + "LastProduct")
+    axios.get(apiUrl + "LastProduct", {
+      headers: {
+        lang: i18n.language
+      }
+    })
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -154,7 +166,11 @@ const MainPage = () => {
       .catch(function (error) {
         console.log(error);
       });
-    axios.get(apiUrl + "LastBlog")
+    axios.get(apiUrl + "LastBlog", {
+      headers: {
+        lang: i18n.language
+      }
+    })
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -220,8 +236,8 @@ const MainPage = () => {
 
   useEffect(() => {
     mainSlider();
-    document.title = "راگ استریکس | فروشگاه اینترنتی قطعات و سیستم های کامپیوتری";
-    document.getElementsByTagName("META")[2].content = "راگ استریکس | فروشگاه اینترنتی قطعات و سیستم های کامپیوتری";
+    document.title = "Rogstrixراگ استریکس | فروشگاه اینترنتی قطعات و سیستم های کامپیوتری";
+    document.getElementsByTagName("META")[2].content = "راگ استریکس مرجع فروش اینترنتی بهترین و با گیفیت ترین تجهیزات کامپیوتر | همراه با اسمبل أنلاین و مشاوره رایگان";
 
 
     // alert(val)
@@ -230,7 +246,11 @@ const MainPage = () => {
     const axios = require("axios");
 
 
-    axios.post(apiUrl + "SpecialMainProduct", { MainGroupID: ss })
+    axios.post(apiUrl + "SpecialMainProduct", { MainGroupID: ss }, {
+      headers: {
+        lang: i18n.language
+      }
+    })
       .then(function (response) {
         if (response.data.result == "true") {
 

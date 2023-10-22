@@ -4,6 +4,7 @@ import specialSliderImg from "../../../assets/img/specialSliderImg.png"
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export const truncate = (str, len) => {
   if (str.length > len && str.length > 0) { 
@@ -22,6 +23,8 @@ const SpecialSliderCard = ({data}) => {
     const [ minutes, setMinutes ] = useState(data.DistanceTime.split(':')[1]);
     const [seconds, setSeconds ] =  useState(1);
     const [hour, setHour ] =  useState(data.DistanceTime.split(':')[0]);
+    const { t, i18n } = useTranslation();
+
     useEffect(() => {
       let myInterval = setInterval(() => {
         if (seconds > 0) {
@@ -77,10 +80,10 @@ const SpecialSliderCard = ({data}) => {
       </div>
     </Col>
     <Col md={8} className="ta-left pd0">
-      <p className="specialPrice">
-      {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}
+      <p className={i18n.language=="en"?"specialPriceEn":"specialPrice"}>
+      {(parseInt(data.Cost)-parseInt(data.SpecialCost)).toLocaleString("en-de")}{t("تومان")}
   </p>
-      <p className="strokeOutPrice">
+      <p className={i18n.language=="en"?"strokeOutPriceEn":"strokeOutPrice"}>
       {data.Cost.toLocaleString("en-de")}
       </p>
     </Col>

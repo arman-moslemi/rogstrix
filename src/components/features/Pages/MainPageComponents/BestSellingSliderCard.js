@@ -5,6 +5,7 @@ import { Container ,Col, Button,Row} from "react-bootstrap";
 import { apiAsset } from "../../../../commons/inFormTypes";
 import {FaRandom} from 'react-icons/fa';
 import { Link, useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export const truncate = (str, len) => {
   // console.log("truncate", str, str.length, len);
@@ -20,7 +21,7 @@ export const truncate = (str, len) => {
 const BestSellingSliderCard = ({data}) => {
   const [compare,setCompare]=useState()
   const history = useHistory();
-
+  const { t, i18n } = useTranslation();
   const getCompare=()=>{
 setCompare(localStorage.getItem("compare"))
 console.log(localStorage.getItem("compare"))
@@ -72,14 +73,14 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
     null}
   
 {  data?.SpecialCost?
-    <p className="grayPrice ">
+    <p className={i18n.language=="en"?"grayPriceEn":"grayPrice"}>
     {(parseInt(data?.Cost)-parseInt(data?.SpecialCost)).toLocaleString("en-de")}
- تومان
+    {t("تومان")} 
     </p>
     :
-    <p className="grayPrice">
+    <p className={i18n.language=="en"?"grayPriceEn":"grayPrice"}>
     {parseInt(data?.Cost).toLocaleString("en-de")}
- تومان
+    {t("تومان")} 
     </p>}
   
 </div>
@@ -88,7 +89,7 @@ if(localStorage.getItem("compare")?.split('T')?.length>4)
   <Col md={12} className="ta-right pd0">
     <Button onClick={()=>goCompare()} className="glassBtn2">
       <FaRandom/>
-      مقایسه محصول
+      {t("مقایسه محصول")}
 
     </Button>
     </Col>

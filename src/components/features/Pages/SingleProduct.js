@@ -561,7 +561,7 @@ index+1>rate?
                 <p className="reviewP" id="colorGray">{t("تعداد")} : </p></div>
               <div className="counterDiv d-flex justify-content-center">
               <button onClick={()=>decrement()} className="decBTN">-</button>
-              <span style={{marginRight:'0'}}>{count}</span>
+              <span style={{marginRight:'0',fontFamily:""}} >{count}</span>
               <button onClick={()=>increment()} className="inBTN">+</button>
             </div>
               </div>
@@ -614,7 +614,7 @@ index+1>rate?
                           <div>
                             {
                               specialCost!=0?
-                              <p className="strokeOutPrice">
+                              <p className={i18n.language=="en"?"strokeOutPriceEn":"strokeOutPrice"}>
                               {cost}
                                </p>
                               :
@@ -632,7 +632,7 @@ null
                           :
                           null}
                       </div>
-                  <p className="specialPrice">
+                  <p className={i18n.language=="en"?"specialPriceEn":"specialPrice"}>
                   {(parseInt(cost)-parseInt(specialCost)).toLocaleString("en-de")}{t("تومان")}
                   </p>
 
@@ -659,7 +659,7 @@ product?.Available?
 
 :
 
-<p>ناموجود</p>
+<p>{t("ناموجود")}</p>
               }
             </div>
         </Col>
