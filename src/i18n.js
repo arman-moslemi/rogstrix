@@ -301,7 +301,7 @@ const resources = {
 "کلمه عبور جدید":"New Password",
 "تکرار کلمه عبور جدید":"New Password Repeat",
 "مبلغ":"Cost",
-"تلفن:۵۵۵۸۰۴۷۵-۰۲۱":"Phone:021-5580475",
+"تلفن:55580475-09198768404":"Phone:09198768404-5580475",
     
 "پیشنهادهای ویژه":"Special Offers",
 "مقایسه محصول":"Product Comparison",

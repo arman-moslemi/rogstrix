@@ -162,7 +162,7 @@ console.log(ss)
       <div className="cardTitleW100" style={{marginLeft:100}}>
 
         {/* <p>سایت در حال بروز رسانی میباشد</p> */}
-        <p>{t("تلفن:۵۵۵۸۰۴۷۵-۰۲۱")}</p>
+        <p>{t("تلفن:55580475-09198768404")}</p>
         </div>
         <button className="headerBtn" onClick={()=>onClick()}>
         <MenuSearch/>
