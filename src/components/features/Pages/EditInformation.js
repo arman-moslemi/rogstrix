@@ -45,52 +45,64 @@ const EditInformation = () => {
 
     const editInfo=()=>{
       const axios = require("axios");
+      console.log(5555)
+      console.log(showText)
+      console.log(companyName)
 if(prePhone.length+phone.length>11)
 {
   setTitle("تلفن درست نیست")
   setOpen(true)
 }
-if((prePhoneCompany+phoneCompany).length>11)
-{
-  setTitle("تلفن شرکت درست نیست")
-  setOpen(true)
-}
-if(showText){
-  if(companyName==""|| nationalCodeCompany==""){
-    setTitle("مقادیر حقوقی را وارد نمایید")
+else{
+  if((prePhoneCompany+phoneCompany).length>11)
+  {
+    setTitle("تلفن شرکت درست نیست")
     setOpen(true)
   }
-}
-        axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:null,NameFamily:name+","+family,NationalCode:nationalCode,
-        Phone:prePhone+phone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null,
-        IsLegal:showText
-    })
-        .then(function (response) {
-          if (response.data.result == "true") {
+  else{
+    if(showText){
+      if( companyName==""|| nationalCodeCompany=="" || registrationCode==""){
+        setTitle("مقادیر حقوقی را وارد نمایید")
+        setOpen(true)
+      }
+    }
+    else{
+      
+      axios.post(apiUrl + "EditCustomerFull",{CustomerID:params,Mobile:mobile,Email:email,Password:null,NameFamily:name+","+family,NationalCode:nationalCode,
+      Phone:prePhone+phone,CardNumber:cardNumber,Birthday:birthday,CompanyName:companyName,EconomicCode:economicCode,NationalCodeCompany:nationalCodeCompany,PhoneCompany:prePhoneCompany+phoneCompany,RegistrationCode:registrationCode,Gender:gender=="man"?true:gender=="woman"?false:null,
+      IsLegal:showText
+  })
+      .then(function (response) {
+        if (response.data.result == "true") {
 
-            setTitle("اطلاعات با موفقیت ذخیره شد")
-            setOpen(true)
-            console.log(11)
-            console.log(response.data.Data)
-
-        }
-       else if (response.data.result == "duplicate") {
-
-          setTitle("کدملی بافت نشد")
+          setTitle("اطلاعات با موفقیت ذخیره شد")
           setOpen(true)
           console.log(11)
           console.log(response.data.Data)
 
       }
-        else{
-            setTitle("عملیات با خطا روبرو شد")
-            setOpen(true)
-          console.log(response.data.result)
+     else if (response.data.result == "duplicate") {
 
-        }})
-        .catch(function (error) {
-          console.log(error);
-        });
+        setTitle("کدملی بافت نشد")
+        setOpen(true)
+        console.log(11)
+        console.log(response.data.Data)
+
+    }
+      else{
+          setTitle("عملیات با خطا روبرو شد")
+          setOpen(true)
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+}
+
+
     }
     const getData=()=>{
         const axios = require("axios");
@@ -188,7 +200,7 @@ if(showText){
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                {t("جنسیت")}
+                                * {t("جنسیت")}
                                 </p>
                                 <select name="gender" id="gender" onChange={(ss)=>{setGender(ss.target.value)}} value={gender==true||gender=="man"?"man":"woman"} className="informationSelect">
                                    <option value="man">{t("آقا")}</option>
@@ -231,7 +243,7 @@ if(showText){
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                {t("تلفن ثابت")}
+                                *{t("تلفن ثابت")}
                                 </p>
                                <div className="d-flex justify-content-start">
                                <input onChange={(e)=>setPhone(e.target.value)} value={phone} className="EditInformationInput" style={{width:150,marginLeft:10}}/>
@@ -265,14 +277,14 @@ if(showText){
                             </div> */}
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                {t("تاریخ تولد")}
+                                *{t("تاریخ تولد")}
                                 </p>
                                 <input onChange={(e)=>setBirthday(e.target.value)} value={birthday}className="EditInformationInput"/>
 
                             </div>
                             <div className="d-flex align-items-center justify-content-between mt-4 mb-4">
                                 <p className="fontWeightMedium">
-                                {t("شماره کارت")}
+                                * {t("شماره کارت")}
                                 </p>
                                 <input onChange={(e)=>setCardNumber(e.target.value)} value={cardNumber}className="EditInformationInput"/>
 

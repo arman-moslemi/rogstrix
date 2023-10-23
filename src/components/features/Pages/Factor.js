@@ -152,12 +152,21 @@ const Factor = () => {
           </Col>
         </div>
         <div className="row">
-          <Col md={12} className=" d-flex pdTable2 borderBottomTable">
+          <Col md={6} className=" d-flex pdTable2 borderBottomTable">
             <p className="fontWeightBold">{t("آدرس")} : 
             </p>
             <p className="fontWeightNormal ml-2">{product?product[0]?.Address:null}</p>
           </Col>
-        
+          <Col md={3} className=" d-flex pdTable2 borderBottomTable">
+            <p className="fontWeightBold">{t("کدپستی")} : 
+            </p>
+            <p className="fontWeightNormal ml-2">{product?product[0]?.PostalCode:null}</p>
+          </Col>
+          <Col md={3} className=" d-flex pdTable2 borderBottomTable">
+            <p className="fontWeightBold">{t("نحوه ارسال")} : 
+            </p>
+            <p className="fontWeightNormal ml-2">{product?product[0]?.SendName:null}</p>
+          </Col>
         </div>
      
     </Col>

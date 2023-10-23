@@ -288,10 +288,11 @@ const CartStep2 = () => {
     else {
 
 if(type==1){
-  axios.post("https://ipg.vandar.io/api/v3/send", { api_key: "d20dd1ded3606541a870ced272110510aeb0a65d", amount: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)),callback_url:"localhost:3000/callback" },  {
-    Accept: 'application/json',
+  axios.post("https://ipg.vandar.io/api/v3/send", { api_key: "d20dd1ded3606541a870ced272110510aeb0a65d", amount: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)),
+  callback_url:"rogstrix.com/callback" }, {headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
-  },)
+  }})
         .then(function (response) {
           if (response.data.result == "true") {
             console.log(response)
@@ -313,7 +314,7 @@ if(type==1){
 
 
 
-      // axios.post(apiUrl + "PaymentType", { CustomerID: params, TotalCost: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)), Text: hesab ? hesab : ramz, Type: type, Address: radio, SendCost: tranCost, DiscountText: disText, Description: des })
+      // axios.post(apiUrl + "PaymentType", { CustomerID: params, TotalCost: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)), Text: hesab ? hesab : ramz, Type: type, Address: radio, SendCost: tranCost, DiscountText: disText, Description: des, })
       //   .then(function (response) {
       //     if (response.data.result == "true") {
       //       console.log(response.data.Data)
