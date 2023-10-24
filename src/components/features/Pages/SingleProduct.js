@@ -19,6 +19,7 @@ import Box from "../../assets/icons/box";
 import Garantee2 from "../../assets/icons/garantee2";
 import parse  from 'html-react-parser';
 import { useTranslation } from 'react-i18next';
+import {Helmet} from "react-helmet";
 
 const SingleProduct = () => {
   const {t,i18n} = useTranslation();
@@ -322,7 +323,21 @@ const images = [
         setCount(count-1)
       }
   return (
+    
     <div className="SingleProduct">
+                  <Helmet>
+
+      <meta name="product_id" content={product?.ProductID}/>
+<meta name="product_name" content={product?.ProductName}/>
+<meta property="og:image" content={apiAsset+product?.Pic1}/>
+<meta name="product_price" content={product?.SpecialCost}/>
+<meta name="product_old_price" content={product?.Cost}/>
+<meta name="availability"
+//  content="instock or outofstock"
+ content={product?.Available?"instock":"outofstock"}
+/>
+<meta name="guarantee" content={product?.WarrantyName}/>
+</Helmet>
       <Header setLanguage={setLanguage}/>
       <Menu/>
 

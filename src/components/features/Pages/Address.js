@@ -248,12 +248,12 @@ const style = {
              <p className="fontWeightMedium mb-2">
              {t("کد پستی")}
                                 </p>
-                                <input onChange={(e)=>address1?setPostalCode2(e.target.value):setPostalCode1(e.target.value)}  className="EditInformationInput w100"/>
+                                <input onChange={(e)=>data?.Address1?setPostalCode2(e.target.value):setPostalCode1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12}>
              <p className="fontWeightMedium mb-2 mt-4">
              {t("آدرس")}                               </p>
-                                <textarea  onChange={(e)=>address1?setAddress2(e.target.value):setAddress1(e.target.value)}  className="EditInformationInput w100"/>
+                                <textarea  onChange={(e)=>data?.Address1?setAddress2(e.target.value):setAddress1(e.target.value)}  className="EditInformationInput w100"/>
              </Col>
              <Col md={12} className="ta-left">
                  <Button onClick={()=>AddAddress()} className="saveBtn mt-4">
@@ -268,7 +268,7 @@ const style = {
                  <hr className="grayDashed" />
                  <div className="rightMenuBox1">
                      {
-                         address1?
+                         data?.Address1?
 
                  <div className="shadowBox mb-4">
                      <p className="fontWeightNormal">
@@ -357,7 +357,7 @@ const style = {
 null
                      }
                      {
-                         address2?
+                         data?.Address2?
                  <div className="shadowBox mb-4">
                      <p className="fontWeightNormal">
                      {address2}

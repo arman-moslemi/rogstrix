@@ -38,9 +38,11 @@ const CartStep2 = () => {
   const [open, setOpen] = useState(false)
   const [title, setTitle] = useState("")
   const [tran, setTran] = useState([])
+  const [data, setData] = useState([])
   // const [tran2,setTran2]=useState([])
   const [radio, setRadio] = useState("")
   const params = useParams().id;
+  const [check, setCheck] = useState(false);
   const [open1, setOpen1] = useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
@@ -88,7 +90,7 @@ const CartStep2 = () => {
       .then(function (response) {
         if (response.data.result == "true") {
 
-          //  setData(response.data.Data)
+           setData(response.data.Data)
           setAddress1(response.data.Data.Address1)
           setAddress2(response.data.Data.Address2)
           console.log(999)
@@ -178,7 +180,8 @@ const CartStep2 = () => {
     console.log(444)
 
     axios.post(apiUrl + "CustomerAddress", {
-      CustomerID: params, Address1: type == "delete1" ? "" : address1, Address2: type == "delete2" ? "" : address2, PostalCode1: type == "delete1" ? "" : postalCode1, PostalCode2: type == "delete2" ? "" : postalCode2
+      CustomerID: params, Address1: type == "delete1" ? "" : address1, Address2: type == "delete2" ? "" : address2,
+      PostalCode1: type == "delete1" ? "" : postalCode1, PostalCode2: type == "delete2" ? "" : postalCode2
       , CityID1: parseInt(city1), CityID2: parseInt(city2), RegionID1: reg1, RegionID2: reg2
     })
       .then(function (response) {
@@ -187,8 +190,9 @@ const CartStep2 = () => {
 
           //              setData(response.data.Data)
           //              console.log(response.data.Data)
-          // setOpen1(false)
-          // setOpen2(false)
+          getData()
+          setOpen1(false)
+          setOpen2(false)
           // history.push("/RegisterVerify/"+mobile)
 
         }
@@ -287,18 +291,42 @@ const CartStep2 = () => {
     }
     else {
 
-if(type==1){
-  axios.post("https://ipg.vandar.io/api/v3/send", { api_key: "d20dd1ded3606541a870ced272110510aeb0a65d", amount: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)),
-  callback_url:"rogstrix.com/callback" }, {headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  }})
+      if (type == 1) {
+        axios.post("https://ipg.vandar.io/api/v3/send", {
+          api_key: "d20dd1ded3606541a870ced272110510aeb0a65d", amount: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)),
+          callback_url: "rogstrix.com/callback"
+        }, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(function (response) {
+            if (response.data.result == "true") {
+              console.log(response)
+              console.log(88)
+              alert("موفقیت آمیز بود")
+              window.location.href = "https://ipg.vandar.io/v3/" + response?.data?.token;
+            }
+            else {
+              alert(response.data.message)
+              setTitle("خطا")
+              setOpen(true)
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+ if(type==2 || type==3){
+if(hesab!=null || ramz!=null)
+     { axios.post(apiUrl + "PaymentType", { CustomerID: params, TotalCost: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)), Text: hesab ? hesab : ramz, Type: type, Address: radio, SendCost: tranCost, DiscountText: disText, Description: des, })
         .then(function (response) {
           if (response.data.result == "true") {
-            console.log(response)
+            console.log(response.data.Data)
             console.log(88)
             alert("موفقیت آمیز بود")
-            window.location.href="https://ipg.vandar.io/v3/"+response?.data?.token;
+            history.push("/Factor/" + response.data.Data)
           }
           else {
             alert(response.data.message)
@@ -308,29 +336,15 @@ if(type==1){
         })
         .catch(function (error) {
           console.log(error);
-        });
+        });}
+        else{
+          setTitle("کد رهگیری را وارد نمایید")
+          setOpen(true)
+        }
 }
- 
 
 
 
-      // axios.post(apiUrl + "PaymentType", { CustomerID: params, TotalCost: tranCost ? parseInt(parseInt(total) + parseInt(tranCost) + parseInt(tranCost * 9 / 100)) : parseInt(total + parseInt(total * 9 / 100)), Text: hesab ? hesab : ramz, Type: type, Address: radio, SendCost: tranCost, DiscountText: disText, Description: des, })
-      //   .then(function (response) {
-      //     if (response.data.result == "true") {
-      //       console.log(response.data.Data)
-      //       console.log(88)
-      //       alert("موفقیت آمیز بود")
-      //       history.push("/Factor/" + response.data.Data)
-      //     }
-      //     else {
-      //       alert(response.data.message)
-      //       setTitle("خطا")
-      //       setOpen(true)
-      //     }
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
 
 
     }
@@ -341,7 +355,7 @@ if(type==1){
     getData()
 
     // alert(val)
-  }, []);
+  }, [check]);
   return (
     <div className="EachCategoryBody">
       <Header />
@@ -442,12 +456,12 @@ if(type==1){
                           <p className="fontWeightMedium mb-2">
                             {t("کد پستی")}
                           </p>
-                          <input onChange={(e) => address1 ? setPostalCode2(e.target.value) : setPostalCode1(e.target.value)} className="EditInformationInput w100" />
+                          <input onChange={(e) => data?.Address1  ? setPostalCode2(e.target.value) : setPostalCode1(e.target.value)} className="EditInformationInput w100" />
                         </Col>
                         <Col md={12}>
                           <p className="fontWeightMedium mb-2 mt-4">
                             {t("آدرس")}                                </p>
-                          <textarea onChange={(e) => address1 ? setAddress2(e.target.value) : setAddress1(e.target.value)} className="EditInformationInput w100" />
+                          <textarea onChange={(e) => data?.Address1 ? setAddress2(e.target.value) : setAddress1(e.target.value)} className="EditInformationInput w100" />
                         </Col>
                         <Col md={12} className="ta-left">
                           <Button onClick={() => AddAddress()} className="saveBtn mt-4">
@@ -462,7 +476,7 @@ if(type==1){
               <hr className="grayDashed" />
               <div className="rightMenuBox1">
                 {
-                  address1 ?
+                 data?.Address1 ?
 
                     <div className="shadowBox mb-4">
                       <p className="fontWeightNormal">
@@ -479,9 +493,9 @@ if(type==1){
                         />
                         {address1}                     </p>
                       <div className="d-flex align-items-center justify-content-end">
-                        <Button className="glassBtn" id="colorBlue" onClick={handleOpen2}>
+                        {/* <Button className="glassBtn" id="colorBlue" onClick={handleOpen2}>
                           {t("ویرایش")}
-                        </Button>
+                        </Button> */}
                         <Modal
                           open={open2}
                           onClose={handleClose2}
@@ -581,7 +595,7 @@ if(type==1){
                     null
                 }
                 {
-                  address2 ?
+                  data?.Address2 ?
                     <div className="shadowBox mb-4">
                       <p className="fontWeightNormal">
                         <Radio
@@ -598,9 +612,9 @@ if(type==1){
                         {address2}
                       </p>
                       <div className="d-flex align-items-center justify-content-end">
-                        <Button onClick={() => handleOpen3()} className="glassBtn" id="colorBlue">
+                        {/* <Button onClick={() => handleOpen3()} className="glassBtn" id="colorBlue">
                           {t("ویرایش")}
-                        </Button>
+                        </Button> */}
                         <Modal
                           open={open3}
                           onClose={handleClose3}
@@ -724,6 +738,116 @@ if(type==1){
                   </div>
                   <hr className="grayDashed" />
                   <div className="rightMenuBox1 d-flex f1">
+                  <div className="shadowBox mb-4 w30">
+                              <p className="fontWeightBold">
+                                <Radio
+
+                                  sx={{
+                                    color: '#ff004e',
+                                    '&.Mui-checked': {
+                                      color: '#ff004e',
+                                    },
+                                  }}
+                                  checked={send === "تحویل حضوری"}
+                                  onChange={() => { setSend("تحویل حضوری"); setTranCost(0) }}
+
+                                />
+                                {"تحویل حضوری"}                   </p>
+                              <p className='fontWeightNormal'>
+                                {t("هزینه ارسال :")} {0} {t("تومان")}
+                              </p>
+                              <p className='fontWeightNormal'>
+                                {t("مدت ارسال :")} {0} {t("روز")}
+                              </p>
+                            </div>
+                            <div className="shadowBox mb-4 w30">
+                              <p className="fontWeightBold">
+                                <Radio
+
+                                  sx={{
+                                    color: '#ff004e',
+                                    '&.Mui-checked': {
+                                      color: '#ff004e',
+                                    },
+                                  }}
+                                  checked={send === "پیک پس کرایه"}
+                                  onChange={() => { setSend("پیک پس کرایه"); setTranCost(0) }}
+
+                                />
+                                {"پیک پس کرایه"}                   </p>
+                              <p className='fontWeightNormal'>
+                                {t("هزینه ارسال :")} {0} {t("تومان")}
+                              </p>
+                              <p className='fontWeightNormal'>
+                                {t("مدت ارسال :")} {0} {t("روز")}
+                              </p>
+                            </div>
+                            <div className="shadowBox mb-4 w30">
+                              <p className="fontWeightBold">
+                                <Radio
+
+                                  sx={{
+                                    color: '#ff004e',
+                                    '&.Mui-checked': {
+                                      color: '#ff004e',
+                                    },
+                                  }}
+                                  checked={send === "پست پس کرایه"}
+                                  onChange={() => { setSend("پست پس کرایه"); setTranCost(0) }}
+
+                                />
+                                {"پست پس کرایه"}                   </p>
+                              <p className='fontWeightNormal'>
+                                {t("هزینه ارسال :")} {0} {t("تومان")}
+                              </p>
+                              <p className='fontWeightNormal'>
+                                {t("مدت ارسال :")} {0} {t("روز")}
+                              </p>
+                            </div>
+                            <div className="shadowBox mb-4 w30">
+                              <p className="fontWeightBold">
+                                <Radio
+
+                                  sx={{
+                                    color: '#ff004e',
+                                    '&.Mui-checked': {
+                                      color: '#ff004e',
+                                    },
+                                  }}
+                                  checked={send === "تیباکس پس کرایه"}
+                                  onChange={() => { setSend("تیباکس پس کرایه"); setTranCost(0) }}
+
+                                />
+                                {"تیباکس پس کرایه"}                   </p>
+                              <p className='fontWeightNormal'>
+                                {t("هزینه ارسال :")} {0} {t("تومان")}
+                              </p>
+                              <p className='fontWeightNormal'>
+                                {t("مدت ارسال :")} {0} {t("روز")}
+                              </p>
+                            </div>
+                            <div className="shadowBox mb-4 w30">
+                              <p className="fontWeightBold">
+                                <Radio
+
+                                  sx={{
+                                    color: '#ff004e',
+                                    '&.Mui-checked': {
+                                      color: '#ff004e',
+                                    },
+                                  }}
+                                  checked={send === "باربری پس کرایه"}
+                                  onChange={() => { setSend("باربری پس کرایه"); setTranCost(0) }}
+
+                                />
+                                {"باربری پس کرایه"}                   </p>
+                              <p className='fontWeightNormal'>
+                                {t("هزینه ارسال :")} {0} {t("تومان")}
+                              </p>
+                              <p className='fontWeightNormal'>
+                                {t("مدت ارسال :")} {0} {t("روز")}
+                              </p>
+                            </div>
                     {
                       tran.length != 0 ?
                         tran?.map((item) => {
